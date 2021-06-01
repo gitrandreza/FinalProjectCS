@@ -4,13 +4,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SU21-Final Project")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Imprint Manager System")]
+[assembly: AssemblyDescription("This is a  sale management application for a customized gift service")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("TSTC")]
-[assembly: AssemblyProduct("SU21-Final Project")]
+[assembly: AssemblyCompany("Ricky Randreza")]
+[assembly: AssemblyProduct("Imprint Manager System")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
-[assembly: AssemblyTrademark("TSTC")]
+[assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible

@@ -1,11 +1,11 @@
 ﻿//ToDo: Change the entries below indicated by {} to your values
 //*******************************************
 //*******************************************
-// Programmer: {Your name goes here}
-// Course: INEW 2332.{xxxx} (Final Project)
-// Program Description: {Program Purpose Goes here}
+// Programmer: Ricky Randreza
+// Course: INEW 2332.7Z1 (Final Project)
+// Program Description: A sale management application of custom gift service that print design on items 
 //*******************************************
-// Form Purpose: {What is this form used for}
+// Form Purpose: This is the point of sale form or the customer view
 //*******************************************
 //*******************************************
 

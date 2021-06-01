@@ -35,11 +35,11 @@ namespace SU21_Final_Project
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(610, 332);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Tag = "2021.05.02";
-            this.Text = "{Your Project Name Goes Here}";
+            this.Text = "Imprint Manager System";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.ResumeLayout(false);
 
