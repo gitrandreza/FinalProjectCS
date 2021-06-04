@@ -26,11 +26,14 @@ namespace SU21_Final_Project
     public partial class frmMain : Form
     {
         //Establish connection to the database       
-        private SqlConnection dataConnection;
+        private SqlConnection Connection;
         string query;
-
+        //test query
+        SqlCommand Cmd;
+        SqlDataAdapter dataAd;
+        DataTable dt;
         //connect to database
-        
+
 
         public frmMain()
         {
@@ -42,27 +45,53 @@ namespace SU21_Final_Project
             try
             {
                 //connect to database
-                dataConnection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
                 //open the database
-                dataConnection.Open();
+                Connection.Open();
                 //display message
-                lblMessage.Text = dataConnection.State.ToString();
+                lblMessage.Text = Connection.State.ToString();
                 //close the database
-                dataConnection.Close();
+                Connection.Close();
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error :" + ex);
             }
-           
 
-            //test query
-            SqlCommand Cmd;
-            SqlDataAdapter dataAd;
-            DataTable dt;
+            
 
+
+
+        }
+
+     
+
+        //Method to display table item
+        public void displayAllItems()
+        {
+            try
+            {
+                Connection.Open();
+                dataAd = new SqlDataAdapter("SELECT Description  FROM RandrezaVoharisoaM21Su2332.Items", Connection);
+                dt = new DataTable();
+                dataAd.Fill(dt);
+                dgrdAll.DataSource = dt;
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex);
+            }
+        }
+
+        private void tabItemCategory_Selected(object sender, TabControlEventArgs e)
+        {
+            if (tabItemCategory.SelectedTab.Name=="tabAll")
+            {
+                displayAllItems();
+            }
         }
     }
 }

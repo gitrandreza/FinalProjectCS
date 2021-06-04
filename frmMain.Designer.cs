@@ -29,6 +29,9 @@ namespace SU21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblMessage = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,15 +44,22 @@ namespace SU21_Final_Project
             this.tabGifts = new System.Windows.Forms.TabPage();
             this.tabBags = new System.Windows.Forms.TabPage();
             this.tabAll = new System.Windows.Forms.TabPage();
+            this.dgrdAll = new System.Windows.Forms.DataGridView();
+            this.pbxAll = new System.Windows.Forms.PictureBox();
+            this.dgrdCart = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             this.tabItemCategory.SuspendLayout();
+            this.tabAll.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgrdAll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxAll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgrdCart)).BeginInit();
             this.SuspendLayout();
             // 
             // lblMessage
             // 
             this.lblMessage.AutoSize = true;
             this.lblMessage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblMessage.Location = new System.Drawing.Point(720, 377);
+            this.lblMessage.Location = new System.Drawing.Point(722, 429);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(95, 15);
             this.lblMessage.TabIndex = 0;
@@ -63,7 +73,7 @@ namespace SU21_Final_Project
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(827, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(829, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -79,13 +89,13 @@ namespace SU21_Final_Project
             // newOrderToolStripMenuItem
             // 
             this.newOrderToolStripMenuItem.Name = "newOrderToolStripMenuItem";
-            this.newOrderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newOrderToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.newOrderToolStripMenuItem.Text = "&New Order";
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.closeToolStripMenuItem.Text = "&Close";
             // 
             // aboutToolStripMenuItem
@@ -109,8 +119,9 @@ namespace SU21_Final_Project
             this.tabItemCategory.Location = new System.Drawing.Point(0, 28);
             this.tabItemCategory.Name = "tabItemCategory";
             this.tabItemCategory.SelectedIndex = 0;
-            this.tabItemCategory.Size = new System.Drawing.Size(421, 370);
+            this.tabItemCategory.Size = new System.Drawing.Size(421, 259);
             this.tabItemCategory.TabIndex = 2;
+            this.tabItemCategory.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabItemCategory_Selected);
             // 
             // tabClothes
             // 
@@ -118,7 +129,7 @@ namespace SU21_Final_Project
             this.tabClothes.Location = new System.Drawing.Point(4, 22);
             this.tabClothes.Name = "tabClothes";
             this.tabClothes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabClothes.Size = new System.Drawing.Size(413, 344);
+            this.tabClothes.Size = new System.Drawing.Size(413, 233);
             this.tabClothes.TabIndex = 0;
             this.tabClothes.Text = "           Clothes         ";
             this.tabClothes.UseVisualStyleBackColor = true;
@@ -128,7 +139,7 @@ namespace SU21_Final_Project
             this.tabGifts.Location = new System.Drawing.Point(4, 22);
             this.tabGifts.Name = "tabGifts";
             this.tabGifts.Padding = new System.Windows.Forms.Padding(3);
-            this.tabGifts.Size = new System.Drawing.Size(413, 344);
+            this.tabGifts.Size = new System.Drawing.Size(413, 233);
             this.tabGifts.TabIndex = 1;
             this.tabGifts.Text = "              Gifts             ";
             this.tabGifts.UseVisualStyleBackColor = true;
@@ -138,26 +149,86 @@ namespace SU21_Final_Project
             this.tabBags.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabBags.Location = new System.Drawing.Point(4, 22);
             this.tabBags.Name = "tabBags";
-            this.tabBags.Size = new System.Drawing.Size(413, 344);
+            this.tabBags.Size = new System.Drawing.Size(413, 233);
             this.tabBags.TabIndex = 2;
             this.tabBags.Text = "            Bags           ";
             this.tabBags.UseVisualStyleBackColor = true;
             // 
             // tabAll
             // 
+            this.tabAll.Controls.Add(this.dgrdAll);
+            this.tabAll.Controls.Add(this.pbxAll);
             this.tabAll.Location = new System.Drawing.Point(4, 22);
             this.tabAll.Name = "tabAll";
-            this.tabAll.Size = new System.Drawing.Size(413, 344);
+            this.tabAll.Size = new System.Drawing.Size(413, 233);
             this.tabAll.TabIndex = 3;
             this.tabAll.Text = "            All           ";
             this.tabAll.UseVisualStyleBackColor = true;
+            // 
+            // dgrdAll
+            // 
+            this.dgrdAll.BackgroundColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgrdAll.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgrdAll.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgrdAll.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dgrdAll.Location = new System.Drawing.Point(8, 14);
+            this.dgrdAll.Name = "dgrdAll";
+            this.dgrdAll.ReadOnly = true;
+            this.dgrdAll.RowHeadersVisible = false;
+            this.dgrdAll.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgrdAll.Size = new System.Drawing.Size(128, 206);
+            this.dgrdAll.TabIndex = 6;
+            // 
+            // pbxAll
+            // 
+            this.pbxAll.Location = new System.Drawing.Point(205, 14);
+            this.pbxAll.Name = "pbxAll";
+            this.pbxAll.Size = new System.Drawing.Size(202, 206);
+            this.pbxAll.TabIndex = 0;
+            this.pbxAll.TabStop = false;
+            // 
+            // dgrdCart
+            // 
+            this.dgrdCart.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgrdCart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgrdCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgrdCart.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgrdCart.Location = new System.Drawing.Point(551, 28);
+            this.dgrdCart.Name = "dgrdCart";
+            this.dgrdCart.ReadOnly = true;
+            this.dgrdCart.RowHeadersVisible = false;
+            this.dgrdCart.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgrdCart.Size = new System.Drawing.Size(251, 259);
+            this.dgrdCart.TabIndex = 3;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(827, 401);
+            this.ClientSize = new System.Drawing.Size(829, 453);
+            this.Controls.Add(this.dgrdCart);
             this.Controls.Add(this.tabItemCategory);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.menuStrip1);
@@ -169,6 +240,10 @@ namespace SU21_Final_Project
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabItemCategory.ResumeLayout(false);
+            this.tabAll.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgrdAll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxAll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgrdCart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,6 +263,9 @@ namespace SU21_Final_Project
         private System.Windows.Forms.TabPage tabGifts;
         private System.Windows.Forms.TabPage tabBags;
         private System.Windows.Forms.TabPage tabAll;
+        private System.Windows.Forms.DataGridView dgrdAll;
+        private System.Windows.Forms.PictureBox pbxAll;
+        private System.Windows.Forms.DataGridView dgrdCart;
     }
 }
 
