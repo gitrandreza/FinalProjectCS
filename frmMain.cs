@@ -32,7 +32,8 @@ namespace SU21_Final_Project
         SqlCommand Cmd;
         SqlDataAdapter dataAd;
         DataTable dt;
-        //connect to database
+
+        Items myItems = new Items();
 
 
         public frmMain()
@@ -42,6 +43,8 @@ namespace SU21_Final_Project
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+
+
             try
             {
                 //connect to database
@@ -60,13 +63,13 @@ namespace SU21_Final_Project
                 MessageBox.Show("Error :" + ex);
             }
 
-            
+
 
 
 
         }
 
-     
+
 
         //Method to display table item
         public void displayAllItems()
@@ -77,7 +80,7 @@ namespace SU21_Final_Project
                 dataAd = new SqlDataAdapter("SELECT Description  FROM RandrezaVoharisoaM21Su2332.Items", Connection);
                 dt = new DataTable();
                 dataAd.Fill(dt);
-                dgrdAll.DataSource = dt;
+                dgvAll.DataSource = dt;
                 Connection.Close();
             }
             catch (Exception ex)
@@ -88,10 +91,39 @@ namespace SU21_Final_Project
 
         private void tabItemCategory_Selected(object sender, TabControlEventArgs e)
         {
-            if (tabItemCategory.SelectedTab.Name=="tabAll")
+            if (tabItemCategory.SelectedTab.Name == "tabAll")
             {
                 displayAllItems();
             }
+        }
+
+        private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+
+                if (e.RowIndex >= 0)
+                {
+                    //instantiate object from product class and assign value from cell
+                    DataGridViewRow row = this.dgvAll.Rows[e.RowIndex];
+
+                    myItems.name = row.Cells["Description"].Value.ToString();
+                    myItems.quantity = int.Parse(row.Cells["Quantity"].Value.ToString());
+                    myItems.price = Convert.ToDouble(row.Cells["RetailPrice"].Value.ToString());
+
+
+                    lblAvailable.Text = Convert.ToString(myItems.quantity);
+                    lblPrice.Text = Convert.ToString(myItems.price);
+                    lblItemName.Text = Convert.ToString(myItems.name);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex);
+            }
+
         }
     }
 }
