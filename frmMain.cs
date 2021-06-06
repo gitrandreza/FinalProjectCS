@@ -19,7 +19,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-
+using System.IO;
 
 namespace SU21_Final_Project
 {
@@ -71,13 +71,13 @@ namespace SU21_Final_Project
 
 
 
-        //Method to display table item
+        //Method to display table item by category
         public void displayAllItems()
         {
             try
             {
                 Connection.Open();
-                dataAd = new SqlDataAdapter("SELECT Description  FROM RandrezaVoharisoaM21Su2332.Items", Connection);
+                dataAd = new SqlDataAdapter("SELECT Description, Quantity, RetailPrice  FROM RandrezaVoharisoaM21Su2332.Items", Connection);
                 dt = new DataTable();
                 dataAd.Fill(dt);
                 dgvAll.DataSource = dt;
@@ -89,15 +89,42 @@ namespace SU21_Final_Project
             }
         }
 
+        public void displayGiftItems()
+        {
+            try
+            {
+                Connection.Open();
+                dataAd = new SqlDataAdapter("SELECT Description, Quantity, RetailPrice  FROM RandrezaVoharisoaM21Su2332.Items WHERE CategoryID = 2 ;", Connection);
+                dt = new DataTable();
+                dataAd.Fill(dt);
+                dgvGift.DataSource = dt;
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex);
+            }
+        }
+
+ 
+
+        //Tab selection
         private void tabItemCategory_Selected(object sender, TabControlEventArgs e)
         {
             if (tabItemCategory.SelectedTab.Name == "tabAll")
             {
                 displayAllItems();
             }
+
+            if (tabItemCategory.SelectedTab.Name == "tabGifts")
+            {
+                displayGiftItems();
+            }
         }
 
-        private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
+
+
+        private void dgvAll_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -123,7 +150,40 @@ namespace SU21_Final_Project
             {
                 MessageBox.Show("Error :" + ex);
             }
+        }
 
+        private void dgvGift_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+
+                if (e.RowIndex >= 0)
+                {
+                    //instantiate object from product class and assign value from cell
+                    DataGridViewRow row = this.dgvGift.Rows[e.RowIndex];
+
+                    myItems.name = row.Cells["Description"].Value.ToString();
+                    myItems.quantity = int.Parse(row.Cells["Quantity"].Value.ToString());
+                    myItems.price = Convert.ToDouble(row.Cells["RetailPrice"].Value.ToString());
+
+
+                    lblAvailable.Text = Convert.ToString(myItems.quantity);
+                    lblPrice.Text = Convert.ToString(myItems.price);
+                    lblItemName.Text = Convert.ToString(myItems.name);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex);
+            }
+        }
+
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+            new Imprint_Manager_Form().Show();
+            this.Hide();
         }
     }
 }
