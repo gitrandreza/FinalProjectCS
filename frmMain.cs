@@ -183,20 +183,7 @@ namespace SU21_Final_Project
 
                 }
 
-                //Display Image
-                Connection.Open();
-                byte[] imgData;
-                SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where Description = '" + lblItemName.Text + "'", Connection);
-                SqlDataReader reader = cmd.ExecuteReader();
-                reader.Read();
-                long bufLength = reader.GetBytes(0, 0, null, 0, 0);
-                imgData = new byte[bufLength];
-                reader.GetBytes(0, 0, imgData, 0, (int)bufLength);
-                MemoryStream ms = new MemoryStream(imgData);
-                ms.Position = 0;
-                pbxAll.Image = Image.FromStream(ms);
-                reader.Close();
-                Connection.Close();
+               
 
             }
             catch (Exception ex)
