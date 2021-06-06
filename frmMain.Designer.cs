@@ -29,9 +29,10 @@ namespace SU21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblMessage = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,25 +45,31 @@ namespace SU21_Final_Project
             this.tabGifts = new System.Windows.Forms.TabPage();
             this.tabBags = new System.Windows.Forms.TabPage();
             this.tabAll = new System.Windows.Forms.TabPage();
+            this.lblAvailable = new System.Windows.Forms.Label();
             this.dgvAll = new System.Windows.Forms.DataGridView();
             this.pbxAll = new System.Windows.Forms.PictureBox();
-            this.dgrdCart = new System.Windows.Forms.DataGridView();
-            this.gbxSelectedItem = new System.Windows.Forms.GroupBox();
             this.lblPrice = new System.Windows.Forms.Label();
-            this.lblItemName = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.dgvCart = new System.Windows.Forms.DataGridView();
+            this.gbxSelectedItem = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblItemName = new System.Windows.Forms.Label();
             this.tbxQuantity = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.lblAvailable = new System.Windows.Forms.Label();
+            this.dgvGift = new System.Windows.Forms.DataGridView();
+            this.pbxGift = new System.Windows.Forms.PictureBox();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.btnAdmin = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabItemCategory.SuspendLayout();
+            this.tabGifts.SuspendLayout();
             this.tabAll.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAll)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgrdCart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
             this.gbxSelectedItem.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGift)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxGift)).BeginInit();
             this.SuspendLayout();
             // 
             // lblMessage
@@ -99,13 +106,13 @@ namespace SU21_Final_Project
             // newOrderToolStripMenuItem
             // 
             this.newOrderToolStripMenuItem.Name = "newOrderToolStripMenuItem";
-            this.newOrderToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.newOrderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newOrderToolStripMenuItem.Text = "&New Order";
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.closeToolStripMenuItem.Text = "&Close";
             // 
             // aboutToolStripMenuItem
@@ -146,6 +153,8 @@ namespace SU21_Final_Project
             // 
             // tabGifts
             // 
+            this.tabGifts.Controls.Add(this.dgvGift);
+            this.tabGifts.Controls.Add(this.pbxGift);
             this.tabGifts.Location = new System.Drawing.Point(4, 22);
             this.tabGifts.Name = "tabGifts";
             this.tabGifts.Padding = new System.Windows.Forms.Padding(3);
@@ -166,10 +175,8 @@ namespace SU21_Final_Project
             // 
             // tabAll
             // 
-            this.tabAll.Controls.Add(this.lblAvailable);
             this.tabAll.Controls.Add(this.dgvAll);
             this.tabAll.Controls.Add(this.pbxAll);
-            this.tabAll.Controls.Add(this.lblPrice);
             this.tabAll.Location = new System.Drawing.Point(4, 22);
             this.tabAll.Name = "tabAll";
             this.tabAll.Size = new System.Drawing.Size(413, 233);
@@ -177,63 +184,83 @@ namespace SU21_Final_Project
             this.tabAll.Text = "            All           ";
             this.tabAll.UseVisualStyleBackColor = true;
             // 
+            // lblAvailable
+            // 
+            this.lblAvailable.BackColor = System.Drawing.Color.Transparent;
+            this.lblAvailable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblAvailable.Location = new System.Drawing.Point(212, 290);
+            this.lblAvailable.Name = "lblAvailable";
+            this.lblAvailable.Size = new System.Drawing.Size(72, 28);
+            this.lblAvailable.TabIndex = 18;
+            // 
             // dgvAll
             // 
             this.dgvAll.BackgroundColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAll.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAll.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvAll.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAll.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dgvAll.Location = new System.Drawing.Point(8, 14);
             this.dgvAll.Name = "dgvAll";
             this.dgvAll.ReadOnly = true;
             this.dgvAll.RowHeadersVisible = false;
-            this.dgvAll.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAll.Size = new System.Drawing.Size(128, 206);
+            this.dgvAll.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvAll.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvAll.Size = new System.Drawing.Size(103, 200);
             this.dgvAll.TabIndex = 6;
-            this.dgvAll.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAll);
+            this.dgvAll.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAll_CellClick);
             // 
             // pbxAll
             // 
-            this.pbxAll.Location = new System.Drawing.Point(225, 14);
+            this.pbxAll.Location = new System.Drawing.Point(195, 14);
             this.pbxAll.Name = "pbxAll";
-            this.pbxAll.Size = new System.Drawing.Size(185, 169);
+            this.pbxAll.Size = new System.Drawing.Size(215, 200);
+            this.pbxAll.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxAll.TabIndex = 0;
             this.pbxAll.TabStop = false;
             // 
-            // dgrdCart
+            // lblPrice
             // 
-            this.dgrdCart.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgrdCart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgrdCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgrdCart.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgrdCart.Location = new System.Drawing.Point(535, 73);
-            this.dgrdCart.Name = "dgrdCart";
-            this.dgrdCart.ReadOnly = true;
-            this.dgrdCart.RowHeadersVisible = false;
-            this.dgrdCart.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgrdCart.Size = new System.Drawing.Size(282, 210);
-            this.dgrdCart.TabIndex = 3;
+            this.lblPrice.BackColor = System.Drawing.Color.Transparent;
+            this.lblPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblPrice.Location = new System.Drawing.Point(316, 290);
+            this.lblPrice.Name = "lblPrice";
+            this.lblPrice.Size = new System.Drawing.Size(72, 28);
+            this.lblPrice.TabIndex = 17;
+            // 
+            // dgvCart
+            // 
+            this.dgvCart.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCart.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvCart.Location = new System.Drawing.Point(497, 54);
+            this.dgvCart.Name = "dgvCart";
+            this.dgvCart.ReadOnly = true;
+            this.dgvCart.RowHeadersVisible = false;
+            this.dgvCart.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvCart.Size = new System.Drawing.Size(282, 210);
+            this.dgvCart.TabIndex = 3;
             // 
             // gbxSelectedItem
             // 
@@ -242,47 +269,10 @@ namespace SU21_Final_Project
             this.gbxSelectedItem.Controls.Add(this.lblItemName);
             this.gbxSelectedItem.Location = new System.Drawing.Point(12, 325);
             this.gbxSelectedItem.Name = "gbxSelectedItem";
-            this.gbxSelectedItem.Size = new System.Drawing.Size(405, 119);
+            this.gbxSelectedItem.Size = new System.Drawing.Size(405, 134);
             this.gbxSelectedItem.TabIndex = 4;
             this.gbxSelectedItem.TabStop = false;
             this.gbxSelectedItem.Text = "Your Selection";
-            // 
-            // lblPrice
-            // 
-            this.lblPrice.BackColor = System.Drawing.Color.Transparent;
-            this.lblPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblPrice.Location = new System.Drawing.Point(338, 186);
-            this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(72, 28);
-            this.lblPrice.TabIndex = 17;
-            // 
-            // lblItemName
-            // 
-            this.lblItemName.BackColor = System.Drawing.Color.Transparent;
-            this.lblItemName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblItemName.Location = new System.Drawing.Point(48, 21);
-            this.lblItemName.Name = "lblItemName";
-            this.lblItemName.Size = new System.Drawing.Size(121, 23);
-            this.lblItemName.TabIndex = 20;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(494, 457);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 15);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Available";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(175, 64);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(0, 15);
-            this.label9.TabIndex = 12;
             // 
             // label1
             // 
@@ -294,9 +284,27 @@ namespace SU21_Final_Project
             this.label1.TabIndex = 14;
             this.label1.Text = "Item:";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(175, 64);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(0, 15);
+            this.label9.TabIndex = 12;
+            // 
+            // lblItemName
+            // 
+            this.lblItemName.BackColor = System.Drawing.Color.Transparent;
+            this.lblItemName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblItemName.Location = new System.Drawing.Point(48, 21);
+            this.lblItemName.Name = "lblItemName";
+            this.lblItemName.Size = new System.Drawing.Size(121, 23);
+            this.lblItemName.TabIndex = 20;
+            // 
             // tbxQuantity
             // 
-            this.tbxQuantity.Location = new System.Drawing.Point(172, 299);
+            this.tbxQuantity.Location = new System.Drawing.Point(119, 294);
             this.tbxQuantity.Name = "tbxQuantity";
             this.tbxQuantity.Size = new System.Drawing.Size(62, 20);
             this.tbxQuantity.TabIndex = 21;
@@ -305,20 +313,62 @@ namespace SU21_Final_Project
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(74, 301);
+            this.label4.Location = new System.Drawing.Point(21, 296);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(91, 15);
             this.label4.TabIndex = 20;
             this.label4.Text = "Add Quantity:";
             // 
-            // lblAvailable
+            // dgvGift
             // 
-            this.lblAvailable.BackColor = System.Drawing.Color.Transparent;
-            this.lblAvailable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblAvailable.Location = new System.Drawing.Point(225, 186);
-            this.lblAvailable.Name = "lblAvailable";
-            this.lblAvailable.Size = new System.Drawing.Size(72, 28);
-            this.lblAvailable.TabIndex = 18;
+            this.dgvGift.BackgroundColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvGift.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvGift.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvGift.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dgvGift.Location = new System.Drawing.Point(5, 16);
+            this.dgvGift.Name = "dgvGift";
+            this.dgvGift.ReadOnly = true;
+            this.dgvGift.RowHeadersVisible = false;
+            this.dgvGift.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvGift.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvGift.Size = new System.Drawing.Size(103, 200);
+            this.dgvGift.TabIndex = 20;
+            this.dgvGift.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGift_CellClick);
+            // 
+            // pbxGift
+            // 
+            this.pbxGift.Location = new System.Drawing.Point(222, 16);
+            this.pbxGift.Name = "pbxGift";
+            this.pbxGift.Size = new System.Drawing.Size(185, 169);
+            this.pbxGift.TabIndex = 19;
+            this.pbxGift.TabStop = false;
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.Location = new System.Drawing.Point(577, 25);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(75, 23);
+            this.btnLogin.TabIndex = 22;
+            this.btnLogin.Text = "Login";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            // 
+            // btnAdmin
+            // 
+            this.btnAdmin.Location = new System.Drawing.Point(683, 25);
+            this.btnAdmin.Name = "btnAdmin";
+            this.btnAdmin.Size = new System.Drawing.Size(75, 23);
+            this.btnAdmin.TabIndex = 23;
+            this.btnAdmin.Text = "Admin";
+            this.btnAdmin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAdmin.UseVisualStyleBackColor = true;
+            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
             // 
             // frmMain
             // 
@@ -326,14 +376,17 @@ namespace SU21_Final_Project
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(829, 471);
+            this.Controls.Add(this.btnAdmin);
+            this.Controls.Add(this.btnLogin);
+            this.Controls.Add(this.lblAvailable);
             this.Controls.Add(this.tbxQuantity);
+            this.Controls.Add(this.lblPrice);
             this.Controls.Add(this.gbxSelectedItem);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.dgrdCart);
+            this.Controls.Add(this.dgvCart);
             this.Controls.Add(this.tabItemCategory);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.label2);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Tag = "2021.05.02";
@@ -342,12 +395,15 @@ namespace SU21_Final_Project
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabItemCategory.ResumeLayout(false);
+            this.tabGifts.ResumeLayout(false);
             this.tabAll.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAll)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAll)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgrdCart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).EndInit();
             this.gbxSelectedItem.ResumeLayout(false);
             this.gbxSelectedItem.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGift)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxGift)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -369,16 +425,19 @@ namespace SU21_Final_Project
         private System.Windows.Forms.TabPage tabAll;
         private System.Windows.Forms.DataGridView dgvAll;
         private System.Windows.Forms.PictureBox pbxAll;
-        private System.Windows.Forms.DataGridView dgrdCart;
+        private System.Windows.Forms.DataGridView dgvCart;
         private System.Windows.Forms.Label lblAvailable;
         private System.Windows.Forms.Label lblPrice;
         private System.Windows.Forms.GroupBox gbxSelectedItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblItemName;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbxQuantity;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dgvGift;
+        private System.Windows.Forms.PictureBox pbxGift;
+        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Button btnAdmin;
     }
 }
 
