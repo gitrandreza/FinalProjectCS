@@ -43,6 +43,7 @@ namespace SU21_Final_Project
             {
                
                 //insert image
+
                 byte[] image = File.ReadAllBytes("C:\\T-Shirt.jpg");
 
                 Connection.Open();
