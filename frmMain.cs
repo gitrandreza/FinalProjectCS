@@ -162,7 +162,7 @@ namespace SU21_Final_Project
             }
         }
 
-        private void dgvGift_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DgvGift_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
