@@ -12,10 +12,11 @@ using System.IO;
 
 namespace SU21_Final_Project
 {
-    public partial class Imprint_Manager_Form : Form
+    public partial class frmAdmin : Form
     {
-        private SqlConnection Connection;
-        public Imprint_Manager_Form()
+        public SqlConnection Connection;
+
+        public frmAdmin()
         {
             InitializeComponent();
         }

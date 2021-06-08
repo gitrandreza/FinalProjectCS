@@ -23,10 +23,11 @@ using System.IO;
 
 namespace SU21_Final_Project
 {
+    
     public partial class frmMain : Form
     {
         //Establish connection to the database       
-        private SqlConnection Connection;
+        public SqlConnection Connection;
         string query;
         //test query
         SqlCommand Cmd;
@@ -137,8 +138,6 @@ namespace SU21_Final_Project
                     lblPrice.Text = Convert.ToString(myItems.price);
                     lblItemName.Text = Convert.ToString(myItems.name);
 
-
-
                 }
 
                 //Display Image
@@ -162,37 +161,7 @@ namespace SU21_Final_Project
             }
         }
 
-        private void DgvGift_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
 
-                if (e.RowIndex >= 0)
-                {
-                    //instantiate object from product class and assign value from cell
-                    DataGridViewRow row = this.dgvGift.Rows[e.RowIndex];
-
-                    myItems.name = row.Cells["Description"].Value.ToString();
-                    myItems.quantity = int.Parse(row.Cells["Quantity"].Value.ToString());
-                    myItems.price = Convert.ToDouble(row.Cells["RetailPrice"].Value.ToString());
-
-
-                    lblAvailable.Text = Convert.ToString(myItems.quantity);
-                    lblPrice.Text = Convert.ToString(myItems.price);
-                    lblItemName.Text = Convert.ToString(myItems.name);
-
-                }
-
-
-
-               
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error :" + ex);
-            }
-        }
 
         private void dgvGift_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -215,6 +184,21 @@ namespace SU21_Final_Project
 
                 }
 
+
+                //Display Image
+                Connection.Open();
+                byte[] imgData;
+                SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where Description = '" + lblItemName.Text + "'", Connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                long bufLength = reader.GetBytes(0, 0, null, 0, 0);
+                imgData = new byte[bufLength];
+                reader.GetBytes(0, 0, imgData, 0, (int)bufLength);
+                MemoryStream ms = new MemoryStream(imgData);
+                ms.Position = 0;
+                pbxAll.Image = Image.FromStream(ms);
+                reader.Close();
+
             }
             catch (Exception ex)
             {
@@ -224,8 +208,13 @@ namespace SU21_Final_Project
 
         private void btnAdmin_Click(object sender, EventArgs e)
         {
-            new Imprint_Manager_Form().Show();
+            new frmAdmin().Show();
             this.Hide();
+        }
+
+        private void btnSignIn_Click(object sender, EventArgs e)
+        {
+            new frmLogin().ShowDialog();
         }
     }
 }

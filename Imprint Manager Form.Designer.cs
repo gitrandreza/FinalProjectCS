@@ -1,7 +1,7 @@
 ﻿
 namespace SU21_Final_Project
 {
-    partial class Imprint_Manager_Form
+    partial class frmAdmin
     {
         /// <summary>
         /// Required designer variable.
@@ -53,15 +53,15 @@ namespace SU21_Final_Project
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // Imprint_Manager_Form
+            // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnInsertImage);
-            this.Name = "Imprint_Manager_Form";
-            this.Text = "Imprint_Manager_Form";
+            this.Name = "frmAdmin";
+            this.Text = "Admin";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
