@@ -79,8 +79,7 @@ Contact | Information
 --------|------
 Name | Ricky Randreza
 Email | rickyrandreza25@gmail.com
-Social Media Link | Your Social Media link(s) (if applicable)
-Google Group/mailing list | Your mail distribution list (if applicable)
+
 
 ### License
 
