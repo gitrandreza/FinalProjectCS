@@ -45,7 +45,7 @@ namespace SU21_Final_Project
                
                 //insert image
 
-                byte[] image = File.ReadAllBytes("C:\\T-Shirt.jpg");
+                byte[] image = File.ReadAllBytes("C:\\T-Shirt.png");
 
                 Connection.Open();
 
@@ -57,9 +57,9 @@ namespace SU21_Final_Project
 
                 MessageBox.Show("File was successfully added to the database.", "File Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(new SqlCommand("SELECT Image FROM RandrezaVoharisoaM21Su2332.Items WHERE CategoryId = 1", Connection));
-                DataSet dataSet = new DataSet();
-                dataAdapter.Fill(dataSet);
+                //SqlDataAdapter dataAdapter = new SqlDataAdapter(new SqlCommand("SELECT Image FROM RandrezaVoharisoaM21Su2332.Items WHERE CategoryId = 2", Connection));
+                //DataSet dataSet = new DataSet();
+                //dataAdapter.Fill(dataSet);
 
                 //Display Image
                 byte[] imgData;

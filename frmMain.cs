@@ -27,12 +27,9 @@ namespace SU21_Final_Project
     public partial class frmMain : Form
     {
         //Establish connection to the database       
-        public SqlConnection Connection;
-        string query;
-        //test query
-        SqlCommand Cmd;
-        SqlDataAdapter dataAd;
-        DataTable dt;
+        SqlConnection Connection;
+        SqlDataAdapter dataAdapter;
+        DataTable dataTable;
 
         Items myItems = new Items();
 
@@ -67,15 +64,15 @@ namespace SU21_Final_Project
         }
 
         //Method to display table item by category
-        public void displayAllItems()
+        public void DisplayAllItems()
         {
             try
             {
                 Connection.Open();
-                dataAd = new SqlDataAdapter("SELECT Description, Quantity, RetailPrice  FROM RandrezaVoharisoaM21Su2332.Items", Connection);
-                dt = new DataTable();
-                dataAd.Fill(dt);
-                dgvAll.DataSource = dt;
+                dataAdapter = new SqlDataAdapter("SELECT Description, Quantity, RetailPrice  FROM RandrezaVoharisoaM21Su2332.Items", Connection);
+                dataTable= new DataTable();
+                dataAdapter.Fill(dataTable);
+                dgvAll.DataSource = dataTable;
                 Connection.Close();
             }
             catch (Exception ex)
@@ -84,15 +81,15 @@ namespace SU21_Final_Project
             }
         }
 
-        public void displayGiftItems()
+        public void DisplayGiftItems()
         {
             try
             {
                 Connection.Open();
-                dataAd = new SqlDataAdapter("SELECT Description, Quantity, RetailPrice  FROM RandrezaVoharisoaM21Su2332.Items WHERE CategoryID = 2 ;", Connection);
-                dt = new DataTable();
-                dataAd.Fill(dt);
-                dgvGift.DataSource = dt;
+                dataAdapter = new SqlDataAdapter("SELECT Description, Quantity, RetailPrice  FROM RandrezaVoharisoaM21Su2332.Items WHERE CategoryID = 2 ;", Connection);
+                dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                dgvGift.DataSource = dataTable;
                 Connection.Close();
             }
             catch (Exception ex)
@@ -108,12 +105,12 @@ namespace SU21_Final_Project
         {
             if (tabItemCategory.SelectedTab.Name == "tabAll")
             {
-                displayAllItems();
+                DisplayAllItems();
             }
 
             if (tabItemCategory.SelectedTab.Name == "tabGifts")
             {
-                displayGiftItems();
+                DisplayGiftItems();
             }
         }
 
@@ -123,25 +120,26 @@ namespace SU21_Final_Project
         {
             try
             {
+                Connection.Open();
 
                 if (e.RowIndex >= 0)
                 {
                     //instantiate object from Items class and assign value from cell
                     DataGridViewRow row = this.dgvAll.Rows[e.RowIndex];
 
-                    myItems.name = row.Cells["Description"].Value.ToString();
-                    myItems.quantity = int.Parse(row.Cells["Quantity"].Value.ToString());
-                    myItems.price = Convert.ToDouble(row.Cells["RetailPrice"].Value.ToString());
+                    myItems.Name = row.Cells["Description"].Value.ToString();
+                    myItems.Quantity = int.Parse(row.Cells["Quantity"].Value.ToString());
+                    myItems.Price = Convert.ToDouble(row.Cells["RetailPrice"].Value.ToString());
 
 
-                    lblAvailable.Text = Convert.ToString(myItems.quantity);
-                    lblPrice.Text = Convert.ToString(myItems.price);
-                    lblItemName.Text = Convert.ToString(myItems.name);
+                    lblAvailable.Text = Convert.ToString(myItems.Quantity);
+                    lblPrice.Text = Convert.ToString(myItems.Price);
+                    lblItemName.Text = Convert.ToString(myItems.Name);
 
                 }
 
                 //Display Image
-                Connection.Open();
+               
                 byte[] imgData;
                 SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where Description = '" + lblItemName.Text + "'", Connection);
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -167,26 +165,25 @@ namespace SU21_Final_Project
         {
             try
             {
-
+                Connection.Open();
                 if (e.RowIndex >= 0)
                 {
                     //instantiate object from product class and assign value from cell
                     DataGridViewRow row = this.dgvGift.Rows[e.RowIndex];
 
-                    myItems.name = row.Cells["Description"].Value.ToString();
-                    myItems.quantity = int.Parse(row.Cells["Quantity"].Value.ToString());
-                    myItems.price = Convert.ToDouble(row.Cells["RetailPrice"].Value.ToString());
+                    myItems.Name = row.Cells["Description"].Value.ToString();
+                    myItems.Quantity = int.Parse(row.Cells["Quantity"].Value.ToString());
+                    myItems.Price = Convert.ToDouble(row.Cells["RetailPrice"].Value.ToString());
 
 
-                    lblAvailable.Text = Convert.ToString(myItems.quantity);
-                    lblPrice.Text = Convert.ToString(myItems.price);
-                    lblItemName.Text = Convert.ToString(myItems.name);
+                    lblAvailable.Text = Convert.ToString(myItems.Quantity);
+                    lblPrice.Text = Convert.ToString(myItems.Price);
+                    lblItemName.Text = Convert.ToString(myItems.Name);
 
                 }
 
-
                 //Display Image
-                Connection.Open();
+                
                 byte[] imgData;
                 SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where Description = '" + lblItemName.Text + "'", Connection);
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -196,9 +193,10 @@ namespace SU21_Final_Project
                 reader.GetBytes(0, 0, imgData, 0, (int)bufLength);
                 MemoryStream ms = new MemoryStream(imgData);
                 ms.Position = 0;
-                pbxAll.Image = Image.FromStream(ms);
+                pbxGift.Image = Image.FromStream(ms);
                 reader.Close();
 
+                Connection.Close();
             }
             catch (Exception ex)
             {
