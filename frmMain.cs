@@ -23,7 +23,7 @@ using System.IO;
 
 namespace SU21_Final_Project
 {
-    
+
     public partial class frmMain : Form
     {
         //Establish connection to the database       
@@ -70,7 +70,7 @@ namespace SU21_Final_Project
             {
                 Connection.Open();
                 dataAdapter = new SqlDataAdapter("SELECT Description, Quantity, RetailPrice  FROM RandrezaVoharisoaM21Su2332.Items", Connection);
-                dataTable= new DataTable();
+                dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvAll.DataSource = dataTable;
                 Connection.Close();
@@ -98,7 +98,41 @@ namespace SU21_Final_Project
             }
         }
 
- 
+        public void DisplayClothesItems()
+        {
+            try
+            {
+                Connection.Open();
+                dataAdapter = new SqlDataAdapter("SELECT Description, Quantity, RetailPrice  FROM RandrezaVoharisoaM21Su2332.Items WHERE CategoryID = 1 ;", Connection);
+                dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                dgvClothes.DataSource = dataTable;
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex);
+            }
+        }
+
+        public void DisplayBagsItems()
+        {
+            try
+            {
+                Connection.Open();
+                dataAdapter = new SqlDataAdapter("SELECT Description, Quantity, RetailPrice  FROM RandrezaVoharisoaM21Su2332.Items WHERE CategoryID = 3 ;", Connection);
+                dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                dgvBags.DataSource = dataTable;
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex);
+            }
+        }
+
+
 
         //Tab selection
         private void tabItemCategory_Selected(object sender, TabControlEventArgs e)
@@ -112,9 +146,121 @@ namespace SU21_Final_Project
             {
                 DisplayGiftItems();
             }
+
+            if (tabItemCategory.SelectedTab.Name == "tabClothes")
+            {
+                DisplayClothesItems();
+            }
+
+            if (tabItemCategory.SelectedTab.Name == "tabBags")
+            {
+                DisplayBagsItems();
+            }
         }
 
 
+
+
+
+        private void dgvGift_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                Connection.Open();
+
+                if (e.RowIndex >= 0)
+                {
+                    //instantiate object from Items class and assign value from cell
+                    DataGridViewRow row = this.dgvGift.Rows[e.RowIndex];
+
+                    myItems.Name = row.Cells["Description"].Value.ToString();
+                    myItems.Quantity = int.Parse(row.Cells["Quantity"].Value.ToString());
+                    myItems.Price = Convert.ToDouble(row.Cells["RetailPrice"].Value.ToString());
+
+
+                    lblAvailable.Text = Convert.ToString(myItems.Quantity);
+                    lblPrice.Text = Convert.ToString(myItems.Price);
+                    lblItemName.Text = Convert.ToString(myItems.Name);
+
+                }
+
+                //Display Image
+
+                byte[] imgData;
+                SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where Description = '" + lblItemName.Text + "'", Connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                long bufLength = reader.GetBytes(0, 0, null, 0, 0);
+                imgData = new byte[bufLength];
+                reader.GetBytes(0, 0, imgData, 0, (int)bufLength);
+                MemoryStream ms = new MemoryStream(imgData);
+                ms.Position = 0;
+                pbxGift.Image = Image.FromStream(ms);
+                reader.Close();
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex);
+            }
+        }
+    
+
+
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+            new frmAdmin().Show();
+            this.Hide();
+        }
+
+        private void btnSignIn_Click(object sender, EventArgs e)
+        {
+            new frmLogin().ShowDialog();
+        }
+
+
+        private void dgvClothes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                Connection.Open();
+
+                if (e.RowIndex >= 0)
+                {
+                    //instantiate object from Items class and assign value from cell
+                    DataGridViewRow row = this.dgvClothes.Rows[e.RowIndex];
+
+                    myItems.Name = row.Cells["Description"].Value.ToString();
+                    myItems.Quantity = int.Parse(row.Cells["Quantity"].Value.ToString());
+                    myItems.Price = Convert.ToDouble(row.Cells["RetailPrice"].Value.ToString());
+
+
+                    lblAvailable.Text = Convert.ToString(myItems.Quantity);
+                    lblPrice.Text = Convert.ToString(myItems.Price);
+                    lblItemName.Text = myItems.Name;
+
+                }
+
+                //Display Image
+
+                byte[] imgData;
+                SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where Description = '" + lblItemName.Text + "'", Connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                long bufLength = reader.GetBytes(0, 0, null, 0, 0);
+                imgData = new byte[bufLength];
+                reader.GetBytes(0, 0, imgData, 0, (int)bufLength);
+                MemoryStream ms = new MemoryStream(imgData);
+                ms.Position = 0;
+                pbxClothes.Image = Image.FromStream(ms);
+                reader.Close();
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex);
+            }
+        }
 
         private void dgvAll_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -134,12 +280,12 @@ namespace SU21_Final_Project
 
                     lblAvailable.Text = Convert.ToString(myItems.Quantity);
                     lblPrice.Text = Convert.ToString(myItems.Price);
-                    lblItemName.Text = Convert.ToString(myItems.Name);
+                    lblItemName.Text = myItems.Name;
 
                 }
 
                 //Display Image
-               
+
                 byte[] imgData;
                 SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where Description = '" + lblItemName.Text + "'", Connection);
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -159,31 +305,44 @@ namespace SU21_Final_Project
             }
         }
 
-
-
-        private void dgvGift_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvBags_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 Connection.Open();
+
                 if (e.RowIndex >= 0)
                 {
-                    //instantiate object from product class and assign value from cell
-                    DataGridViewRow row = this.dgvGift.Rows[e.RowIndex];
+                    //instantiate object from Items class and assign value from cell
+                    DataGridViewRow row = this.dgvBags.Rows[e.RowIndex];
 
-                    myItems.Name = row.Cells["Description"].Value.ToString();
-                    myItems.Quantity = int.Parse(row.Cells["Quantity"].Value.ToString());
-                    myItems.Price = Convert.ToDouble(row.Cells["RetailPrice"].Value.ToString());
+                    myItems.Name = row.Cells["Description"].Value.ToString();                    
+                    string strQuantity = row.Cells["Quantity"].Value.ToString();
+                    int intQuantity; 
+                    bool intResultTryParse = int.TryParse(strQuantity, out intQuantity);
+                    if (intResultTryParse == true)
+                    {
+                        myItems.Quantity= intQuantity;
+                    }
+
+                    string strPrice = row.Cells["RetailPrice"].Value.ToString();
+                    double dblPrice;
+                    bool dblResultTryParse = double.TryParse(strPrice, out dblPrice);
+                    if (dblResultTryParse == true)
+                    {
+                        myItems.Price = dblPrice;
+                    }
 
 
-                    lblAvailable.Text = Convert.ToString(myItems.Quantity);
-                    lblPrice.Text = Convert.ToString(myItems.Price);
-                    lblItemName.Text = Convert.ToString(myItems.Name);
+                    //Display in the label
+                    lblAvailable.Text = myItems.Quantity.ToString();
+                    lblPrice.Text = myItems.Price.ToString();
+                    lblItemName.Text = myItems.Name;
 
                 }
 
                 //Display Image
-                
+
                 byte[] imgData;
                 SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where Description = '" + lblItemName.Text + "'", Connection);
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -193,26 +352,14 @@ namespace SU21_Final_Project
                 reader.GetBytes(0, 0, imgData, 0, (int)bufLength);
                 MemoryStream ms = new MemoryStream(imgData);
                 ms.Position = 0;
-                pbxGift.Image = Image.FromStream(ms);
+                pbxBags.Image = Image.FromStream(ms);
                 reader.Close();
-
                 Connection.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error :" + ex);
             }
-        }
-
-        private void btnAdmin_Click(object sender, EventArgs e)
-        {
-            new frmAdmin().Show();
-            this.Hide();
-        }
-
-        private void btnSignIn_Click(object sender, EventArgs e)
-        {
-            new frmLogin().ShowDialog();
         }
     }
 }

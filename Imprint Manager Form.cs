@@ -45,11 +45,11 @@ namespace SU21_Final_Project
                
                 //insert image
 
-                byte[] image = File.ReadAllBytes("C:\\T-Shirt.png");
+                byte[] image = File.ReadAllBytes("C:\\Grocery.png");
 
                 Connection.Open();
 
-                string insertQuery = "UPDATE RandrezaVoharisoaM21Su2332.Items set Image = @Image where ItemID= 8001"; // @Image is a parameter we will fill in later
+                string insertQuery = "UPDATE RandrezaVoharisoaM21Su2332.Items set Image = @Image where ItemID= 8029"; // @Image is a parameter we will fill in later
                 SqlCommand insertCmd = new SqlCommand(insertQuery, Connection);
                 SqlParameter sqlParams = insertCmd.Parameters.AddWithValue("@Image", image); // The parameter will be the image as a byte array
                 sqlParams.DbType = System.Data.DbType.Binary; // The type of data we are sending to the server will be a binary file
@@ -63,7 +63,7 @@ namespace SU21_Final_Project
 
                 //Display Image
                 byte[] imgData;
-                SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where Description = 'T-Shirt'", Connection);
+                SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where Description = 'Grocery Bag'", Connection);
                 SqlDataReader reader = cmd.ExecuteReader();
                 reader.Read();
                 long bufLength = reader.GetBytes(0, 0, null, 0, 0);
