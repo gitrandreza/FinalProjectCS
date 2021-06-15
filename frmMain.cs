@@ -31,6 +31,7 @@ namespace SU21_Final_Project
         SqlDataAdapter dataAdapter;
         DataTable dataTable;
 
+        //Instantiate Item class
         Items myItems = new Items();
 
 
@@ -41,14 +42,13 @@ namespace SU21_Final_Project
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-
+            
 
             try
             {
                 //connect to database
                 Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
-                //open the database
                 Connection.Open();
                 //display message
                 lblMessage.Text = Connection.State.ToString();
@@ -58,12 +58,14 @@ namespace SU21_Final_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error :" + ex);
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            DisplayClothesItems();
+            
         }
 
-        //Method to display table item by category
+        //**************************Method to display table item by category**************************
         public void DisplayAllItems()
         {
             try
@@ -77,7 +79,7 @@ namespace SU21_Final_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error :" + ex);
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -94,7 +96,7 @@ namespace SU21_Final_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error :" + ex);
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -111,7 +113,7 @@ namespace SU21_Final_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error :" + ex);
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -128,11 +130,37 @@ namespace SU21_Final_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error :" + ex);
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        //**************************END Method to display table item by category**************************
 
 
+        //Method to display Item Picture
+        void DisplayImage(string selectedItem, PictureBox pictureBox)
+        {
+            try
+            {
+                Connection.Open();
+                byte[] imgData;
+                SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where Description = '" + selectedItem + "'", Connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                long bufLength = reader.GetBytes(0, 0, null, 0, 0);
+                imgData = new byte[bufLength];
+                reader.GetBytes(0, 0, imgData, 0, (int)bufLength);
+                MemoryStream ms = new MemoryStream(imgData);
+                ms.Position = 0;
+                pictureBox.Image = Image.FromStream(ms);
+                reader.Close();
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
 
         //Tab selection
         private void tabItemCategory_Selected(object sender, TabControlEventArgs e)
@@ -160,8 +188,7 @@ namespace SU21_Final_Project
 
 
 
-
-
+        //*************************ITEM SELECTION****************************************
         private void dgvGift_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -178,46 +205,22 @@ namespace SU21_Final_Project
                     myItems.Price = Convert.ToDouble(row.Cells["RetailPrice"].Value.ToString());
 
 
-                    lblAvailable.Text = Convert.ToString(myItems.Quantity);
+                    lblQuantityAvailable.Text = Convert.ToString(myItems.Quantity);
                     lblPrice.Text = Convert.ToString(myItems.Price);
                     lblItemName.Text = Convert.ToString(myItems.Name);
 
                 }
 
-                //Display Image
-
-                byte[] imgData;
-                SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where Description = '" + lblItemName.Text + "'", Connection);
-                SqlDataReader reader = cmd.ExecuteReader();
-                reader.Read();
-                long bufLength = reader.GetBytes(0, 0, null, 0, 0);
-                imgData = new byte[bufLength];
-                reader.GetBytes(0, 0, imgData, 0, (int)bufLength);
-                MemoryStream ms = new MemoryStream(imgData);
-                ms.Position = 0;
-                pbxGift.Image = Image.FromStream(ms);
-                reader.Close();
                 Connection.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error :" + ex);
+                
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            DisplayImage(myItems.Name,pbxGift);
         }
-    
-
-
-        private void btnAdmin_Click(object sender, EventArgs e)
-        {
-            new frmAdmin().Show();
-            this.Hide();
-        }
-
-        private void btnSignIn_Click(object sender, EventArgs e)
-        {
-            new frmLogin().ShowDialog();
-        }
-
 
         private void dgvClothes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -231,35 +234,38 @@ namespace SU21_Final_Project
                     DataGridViewRow row = this.dgvClothes.Rows[e.RowIndex];
 
                     myItems.Name = row.Cells["Description"].Value.ToString();
-                    myItems.Quantity = int.Parse(row.Cells["Quantity"].Value.ToString());
-                    myItems.Price = Convert.ToDouble(row.Cells["RetailPrice"].Value.ToString());
+                    string strQuantity = row.Cells["Quantity"].Value.ToString();
+                    int intQuantity;
+                    bool intResultTryParse = int.TryParse(strQuantity, out intQuantity);
+                    if (intResultTryParse == true)
+                    {
+                        myItems.Quantity = intQuantity;
+                    }
+
+                    string strPrice = row.Cells["RetailPrice"].Value.ToString();
+                    double dblPrice;
+                    bool dblResultTryParse = double.TryParse(strPrice, out dblPrice);
+                    if (dblResultTryParse == true)
+                    {
+                        myItems.Price = dblPrice;
+                    }
 
 
-                    lblAvailable.Text = Convert.ToString(myItems.Quantity);
-                    lblPrice.Text = Convert.ToString(myItems.Price);
+                    //Display in the label
+                    lblQuantityAvailable.Text = myItems.Quantity.ToString();
+                    lblPrice.Text = myItems.Price.ToString();
                     lblItemName.Text = myItems.Name;
 
                 }
 
-                //Display Image
-
-                byte[] imgData;
-                SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where Description = '" + lblItemName.Text + "'", Connection);
-                SqlDataReader reader = cmd.ExecuteReader();
-                reader.Read();
-                long bufLength = reader.GetBytes(0, 0, null, 0, 0);
-                imgData = new byte[bufLength];
-                reader.GetBytes(0, 0, imgData, 0, (int)bufLength);
-                MemoryStream ms = new MemoryStream(imgData);
-                ms.Position = 0;
-                pbxClothes.Image = Image.FromStream(ms);
-                reader.Close();
                 Connection.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error :" + ex);
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            DisplayImage(myItems.Name,pbxClothes);
         }
 
         private void dgvAll_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -274,35 +280,39 @@ namespace SU21_Final_Project
                     DataGridViewRow row = this.dgvAll.Rows[e.RowIndex];
 
                     myItems.Name = row.Cells["Description"].Value.ToString();
-                    myItems.Quantity = int.Parse(row.Cells["Quantity"].Value.ToString());
-                    myItems.Price = Convert.ToDouble(row.Cells["RetailPrice"].Value.ToString());
+                    string strQuantity = row.Cells["Quantity"].Value.ToString();
+                    int intQuantity;
+                    bool intResultTryParse = int.TryParse(strQuantity, out intQuantity);
+                    if (intResultTryParse == true)
+                    {
+                        myItems.Quantity = intQuantity;
+                    }
+
+                    string strPrice = row.Cells["RetailPrice"].Value.ToString();
+                    double dblPrice;
+                    bool dblResultTryParse = double.TryParse(strPrice, out dblPrice);
+                    if (dblResultTryParse == true)
+                    {
+                        myItems.Price = dblPrice;
+                    }
 
 
-                    lblAvailable.Text = Convert.ToString(myItems.Quantity);
-                    lblPrice.Text = Convert.ToString(myItems.Price);
+                    //Display in the label
+                    lblQuantityAvailable.Text = myItems.Quantity.ToString();
+                    lblPrice.Text = myItems.Price.ToString();
                     lblItemName.Text = myItems.Name;
 
                 }
 
-                //Display Image
-
-                byte[] imgData;
-                SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where Description = '" + lblItemName.Text + "'", Connection);
-                SqlDataReader reader = cmd.ExecuteReader();
-                reader.Read();
-                long bufLength = reader.GetBytes(0, 0, null, 0, 0);
-                imgData = new byte[bufLength];
-                reader.GetBytes(0, 0, imgData, 0, (int)bufLength);
-                MemoryStream ms = new MemoryStream(imgData);
-                ms.Position = 0;
-                pbxAll.Image = Image.FromStream(ms);
-                reader.Close();
+            
                 Connection.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error :" + ex);
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            DisplayImage(myItems.Name, pbxAll);
         }
 
         private void dgvBags_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -335,31 +345,131 @@ namespace SU21_Final_Project
 
 
                     //Display in the label
-                    lblAvailable.Text = myItems.Quantity.ToString();
+                    lblQuantityAvailable.Text = myItems.Quantity.ToString();
                     lblPrice.Text = myItems.Price.ToString();
                     lblItemName.Text = myItems.Name;
 
                 }
-
-                //Display Image
-
-                byte[] imgData;
-                SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where Description = '" + lblItemName.Text + "'", Connection);
-                SqlDataReader reader = cmd.ExecuteReader();
-                reader.Read();
-                long bufLength = reader.GetBytes(0, 0, null, 0, 0);
-                imgData = new byte[bufLength];
-                reader.GetBytes(0, 0, imgData, 0, (int)bufLength);
-                MemoryStream ms = new MemoryStream(imgData);
-                ms.Position = 0;
-                pbxBags.Image = Image.FromStream(ms);
-                reader.Close();
                 Connection.Close();
+                
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error :" + ex);
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            DisplayImage(myItems.Name,pbxBags);
+        }
+        //***************************END ITEM SELECTION********************************************
+
+
+        
+
+
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+            new frmAdmin().Show();
+            this.Hide();
+        }
+
+        private void btnSignIn_Click(object sender, EventArgs e)
+        {
+            new frmLogin().ShowDialog();
+        }
+
+        //***********************ADD LIST*********************************************
+
+        //Method to pass value in DatagridviewList
+        private void addCart(string strName, string strDecoration, string strColor, string strSize,
+            string strQuantity, string strTotalPrice)
+        {
+            string[] row = { strName, strDecoration, strColor, strSize, strQuantity, strTotalPrice };
+            dgvList.Rows.Add(row);
+
+        }
+
+        private void btnAddToList_Click(object sender, EventArgs e)
+        {
+            //Build datagriedviewList 
+            dgvList.ColumnCount = 6;
+            dgvList.Columns[0].Name = "Name";
+            dgvList.Columns[1].Name = "Type of Decoration";
+            dgvList.Columns[2].Name = "Color";
+            dgvList.Columns[3].Name = "Size";
+            dgvList.Columns[4].Name = "Quantity";
+            dgvList.Columns[5].Name = "Total Price";
+
+            //Get selection information from input tools
+            string strItemName = lblItemName.Text;
+
+            string strItemDeco="N/A";
+                if (radEmbroidered.Checked == true)
+                {
+                    strItemDeco = "Embroidered";
+                }
+                else if (radPrinted.Checked == true)
+                {
+                    strItemDeco = "Printed";
+                }
+
+                else if (radBlank.Checked == true)
+                {
+                    strItemDeco = "Blank";
+                }
+
+            string strItemColor;
+                if (cboColor.SelectedItem==null)
+                {
+                 strItemColor = "N/A";
+               
+                }
+                else
+                {
+                strItemColor = cboColor.SelectedItem.ToString();
+            }
+
+
+            string strItemSize = "N/A";
+            if (radSmall.Checked == true)
+            {
+                strItemSize = "Small";
+            }
+            else if (radMedium.Checked == true)
+            {
+                strItemSize = "Medium";
+            }
+
+            else if (radLarge.Checked == true)
+            {
+                strItemSize = "Large";
+            }
+
+            string strItemQuantity="";
+            if (tbxQuantity.Text != "")
+            {
+                strItemQuantity = tbxQuantity.Text;
+            }
+            else
+            {
+                MessageBox.Show("Please add quantity", "Missing Entry", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+
+            string strPrice = lblPrice.Text;
+            double dblPrice;
+            bool dblPriceTryParse = double.TryParse(strPrice, out dblPrice);
+
+            string strQuantity = tbxQuantity.Text;
+            int intQuantity;
+            bool intQuantityTryParse = int.TryParse(strQuantity, out intQuantity);
+
+            double dblTotalPrice=dblPrice*intQuantity;
+            lblMessage.Text =dblTotalPrice.ToString();
+            string strItemTotalPrice = dblTotalPrice.ToString();
+            
+
+            addCart(strItemName,strItemDeco,strItemColor,strItemSize,strItemQuantity,strItemTotalPrice);
         }
     }
 }
