@@ -400,7 +400,7 @@ namespace SU21_Final_Project
             dgvList.Columns[4].Name = "Quantity";
             dgvList.Columns[5].Name = "Total Price";
 
-            //Get selection information from input tools
+            //Get selection information from input 
             string strItemName = lblItemName.Text;
 
             string strItemDeco="N/A";
@@ -427,49 +427,61 @@ namespace SU21_Final_Project
                 else
                 {
                 strItemColor = cboColor.SelectedItem.ToString();
-            }
+                }
 
 
             string strItemSize = "N/A";
-            if (radSmall.Checked == true)
-            {
-                strItemSize = "Small";
-            }
-            else if (radMedium.Checked == true)
-            {
-                strItemSize = "Medium";
-            }
+                if (radSmall.Checked == true)
+                {
+                    strItemSize = "Small";
+                }
+                else if (radMedium.Checked == true)
+                {
+                    strItemSize = "Medium";
+                }
 
-            else if (radLarge.Checked == true)
-            {
-                strItemSize = "Large";
-            }
+                else if (radLarge.Checked == true)
+                {
+                    strItemSize = "Large";
+                }
 
-            string strItemQuantity="";
-            if (tbxQuantity.Text != "")
-            {
-                strItemQuantity = tbxQuantity.Text;
-            }
-            else
-            {
-                MessageBox.Show("Please add quantity", "Missing Entry", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+                string strItemQuantity="";
+                if (tbxQuantity.Text != "")
+                {
+                    strItemQuantity = tbxQuantity.Text;
+                }
+                else
+                {
+                    MessageBox.Show("Please add quantity", "Missing Entry", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
 
 
-            string strPrice = lblPrice.Text;
-            double dblPrice;
-            bool dblPriceTryParse = double.TryParse(strPrice, out dblPrice);
+                string strPrice = lblPrice.Text;
+                double dblPrice;
+                bool dblPriceTryParse = double.TryParse(strPrice, out dblPrice);
 
-            string strQuantity = tbxQuantity.Text;
-            int intQuantity;
-            bool intQuantityTryParse = int.TryParse(strQuantity, out intQuantity);
+                string strQuantity = tbxQuantity.Text;
+                int intQuantity;
+                bool intQuantityTryParse = int.TryParse(strQuantity, out intQuantity);
 
-            double dblTotalPrice=dblPrice*intQuantity;
-            lblMessage.Text =dblTotalPrice.ToString();
-            string strItemTotalPrice = dblTotalPrice.ToString();
+                double dblTotalPrice=dblPrice*intQuantity;
+                lblMessage.Text =dblTotalPrice.ToString();
+                string strItemTotalPrice = dblTotalPrice.ToString();
             
+                //Call add cart function to display selection in the cart
+                addCart(strItemName,strItemDeco,strItemColor,strItemSize,strItemQuantity,strItemTotalPrice);
+        }
 
-            addCart(strItemName,strItemDeco,strItemColor,strItemSize,strItemQuantity,strItemTotalPrice);
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            
+                int selectedIndex = dgvList.CurrentCell.RowIndex;
+                if (selectedIndex > -1)
+                {
+                    dgvList.Rows.RemoveAt(selectedIndex);
+                    dgvList.Refresh();
+                }
+
         }
     }
 }
