@@ -75,6 +75,7 @@ namespace SU21_Final_Project
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvAll.DataSource = dataTable;
+               
                 Connection.Close();
             }
             catch (Exception ex)
@@ -92,6 +93,7 @@ namespace SU21_Final_Project
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvGift.DataSource = dataTable;
+                
                 Connection.Close();
             }
             catch (Exception ex)
@@ -109,6 +111,7 @@ namespace SU21_Final_Project
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvClothes.DataSource = dataTable;
+                
                 Connection.Close();
             }
             catch (Exception ex)
@@ -126,12 +129,15 @@ namespace SU21_Final_Project
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvBags.DataSource = dataTable;
+                
                 Connection.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            
         }
         //**************************END Method to display table item by category**************************
 
@@ -165,6 +171,7 @@ namespace SU21_Final_Project
         //Tab selection
         private void tabItemCategory_Selected(object sender, TabControlEventArgs e)
         {
+            
             if (tabItemCategory.SelectedTab.Name == "tabAll")
             {
                 DisplayAllItems();
@@ -182,7 +189,10 @@ namespace SU21_Final_Project
 
             if (tabItemCategory.SelectedTab.Name == "tabBags")
             {
+                
                 DisplayBagsItems();
+
+             
             }
         }
 
@@ -380,13 +390,14 @@ namespace SU21_Final_Project
 
         //***********************ADD LIST*********************************************
 
+        
         //Method to pass value in DatagridviewList
         private void addCart(string strName, string strDecoration, string strColor, string strSize,
             string strQuantity, string strTotalPrice)
         {
             string[] row = { strName, strDecoration, strColor, strSize, strQuantity, strTotalPrice };
             dgvList.Rows.Add(row);
-
+            dgvList.CurrentCell.Selected = false;
         }
 
         private void btnAddToList_Click(object sender, EventArgs e)
@@ -465,7 +476,7 @@ namespace SU21_Final_Project
                 bool intQuantityTryParse = int.TryParse(strQuantity, out intQuantity);
 
                 double dblTotalPrice=dblPrice*intQuantity;
-                lblMessage.Text =dblTotalPrice.ToString();
+                //lblMessage.Text =dblTotalPrice.ToString();
                 string strItemTotalPrice = dblTotalPrice.ToString();
             
                 //Call add cart function to display selection in the cart
@@ -475,13 +486,59 @@ namespace SU21_Final_Project
         private void btnRemove_Click(object sender, EventArgs e)
         {
             
-                int selectedIndex = dgvList.CurrentCell.RowIndex;
-                if (selectedIndex > -1)
+                if (dgvList.CurrentCell.RowIndex>-1 )
                 {
-                    dgvList.Rows.RemoveAt(selectedIndex);
+                    dgvList.Rows.RemoveAt(dgvList.CurrentCell.RowIndex);
                     dgvList.Refresh();
                 }
 
+        }
+
+        private void btnDisplayAmount_Click(object sender, EventArgs e)
+        {
+            string strTotalPriceList=" e";
+            double dblTotalPriceList=0;
+
+            double totalList=0;
+            double tax = 0.0625;
+            double subTotal;
+            double amountTax;
+            double totalAmount;
+
+            if (dgvList.Rows.Count > 0)//make sure data list is not empty
+            {
+               
+                //cumulate Total Price of order from list cart
+                for (int i = 0; i < dgvList.Rows.Count; i++)
+                {
+                    strTotalPriceList = dgvList.Rows[i].Cells[5].Value.ToString();
+                    bool dblResultTryParse = double.TryParse(strTotalPriceList, out dblTotalPriceList);
+
+                    totalList = totalList + dblTotalPriceList;
+                }
+
+
+               
+
+                amountTax = totalList * tax;
+                subTotal = totalList;
+                totalAmount = totalList + amountTax;
+
+                lblSubTotal.Text = totalList.ToString("N2");
+                lblTaxAmount.Text = amountTax.ToString("N2");
+                lblTotalAmount.Text = totalAmount.ToString("N2");
+
+            }
+
+            // string strTotalPriceList = row.Cells["RetailPrice"].Value.ToString();
+            //double dblTotalPriceList;
+            // bool dblResultTryParse = double.TryParse(strTotalPriceList, out dblTotalPriceList);
+
+                        
+
+           
+
+            
         }
     }
 }

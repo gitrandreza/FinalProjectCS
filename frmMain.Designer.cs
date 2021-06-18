@@ -29,12 +29,12 @@ namespace SU21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblMessage = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,29 +58,40 @@ namespace SU21_Final_Project
             this.lblQuantityAvailable = new System.Windows.Forms.Label();
             this.lblPrice = new System.Windows.Forms.Label();
             this.gbxSelectedItem = new System.Windows.Forms.GroupBox();
+            this.btnAddToList = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cboColor = new System.Windows.Forms.ComboBox();
+            this.gbxSize = new System.Windows.Forms.GroupBox();
+            this.radLarge = new System.Windows.Forms.RadioButton();
+            this.radMedium = new System.Windows.Forms.RadioButton();
+            this.radSmall = new System.Windows.Forms.RadioButton();
+            this.gbxDecorationOption = new System.Windows.Forms.GroupBox();
+            this.radBlank = new System.Windows.Forms.RadioButton();
+            this.radPrinted = new System.Windows.Forms.RadioButton();
+            this.radEmbroidered = new System.Windows.Forms.RadioButton();
+            this.tbxQuantity = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblItemName = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.btnSignIn = new System.Windows.Forms.Button();
             this.btnAdmin = new System.Windows.Forms.Button();
             this.lblUser = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.tbxQuantity = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.gbxDecorationOption = new System.Windows.Forms.GroupBox();
-            this.radEmbroidered = new System.Windows.Forms.RadioButton();
-            this.radPrinted = new System.Windows.Forms.RadioButton();
-            this.radBlank = new System.Windows.Forms.RadioButton();
-            this.gbxSize = new System.Windows.Forms.GroupBox();
-            this.radLarge = new System.Windows.Forms.RadioButton();
-            this.radMedium = new System.Windows.Forms.RadioButton();
-            this.radSmall = new System.Windows.Forms.RadioButton();
             this.dgvList = new System.Windows.Forms.DataGridView();
-            this.btnAddToList = new System.Windows.Forms.Button();
-            this.cboColor = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.btnRemove = new System.Windows.Forms.Button();
+            this.btnDisplayAmount = new System.Windows.Forms.Button();
+            this.gbxAmount = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lblSubTotal = new System.Windows.Forms.Label();
+            this.lblDiscount = new System.Windows.Forms.Label();
+            this.lblTaxAmount = new System.Windows.Forms.Label();
+            this.lblTotalAmount = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabItemCategory.SuspendLayout();
             this.tabClothes.SuspendLayout();
@@ -96,9 +107,10 @@ namespace SU21_Final_Project
             ((System.ComponentModel.ISupportInitialize)(this.dgvAll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAll)).BeginInit();
             this.gbxSelectedItem.SuspendLayout();
-            this.gbxDecorationOption.SuspendLayout();
             this.gbxSize.SuspendLayout();
+            this.gbxDecorationOption.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
+            this.gbxAmount.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblMessage
@@ -165,10 +177,10 @@ namespace SU21_Final_Project
             this.tabItemCategory.Controls.Add(this.tabBags);
             this.tabItemCategory.Controls.Add(this.tabAll);
             this.tabItemCategory.Location = new System.Drawing.Point(0, 49);
-            this.tabItemCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabItemCategory.Margin = new System.Windows.Forms.Padding(4);
             this.tabItemCategory.Name = "tabItemCategory";
             this.tabItemCategory.SelectedIndex = 0;
-            this.tabItemCategory.Size = new System.Drawing.Size(566, 312);
+            this.tabItemCategory.Size = new System.Drawing.Size(541, 312);
             this.tabItemCategory.TabIndex = 2;
             this.tabItemCategory.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabItemCategory_Selected);
             // 
@@ -178,10 +190,10 @@ namespace SU21_Final_Project
             this.tabClothes.Controls.Add(this.pbxClothes);
             this.tabClothes.Font = new System.Drawing.Font("Arial Unicode MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabClothes.Location = new System.Drawing.Point(4, 25);
-            this.tabClothes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabClothes.Margin = new System.Windows.Forms.Padding(4);
             this.tabClothes.Name = "tabClothes";
-            this.tabClothes.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabClothes.Size = new System.Drawing.Size(558, 283);
+            this.tabClothes.Padding = new System.Windows.Forms.Padding(4);
+            this.tabClothes.Size = new System.Drawing.Size(533, 283);
             this.tabClothes.TabIndex = 0;
             this.tabClothes.Text = "         Clothes   ";
             this.tabClothes.UseVisualStyleBackColor = true;
@@ -191,18 +203,18 @@ namespace SU21_Final_Project
             this.dgvClothes.AllowUserToAddRows = false;
             this.dgvClothes.AllowUserToDeleteRows = false;
             this.dgvClothes.BackgroundColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Unicode MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvClothes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial Unicode MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClothes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvClothes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClothes.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dgvClothes.Location = new System.Drawing.Point(7, 20);
-            this.dgvClothes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvClothes.Margin = new System.Windows.Forms.Padding(4);
             this.dgvClothes.Name = "dgvClothes";
             this.dgvClothes.ReadOnly = true;
             this.dgvClothes.RowHeadersVisible = false;
@@ -216,7 +228,7 @@ namespace SU21_Final_Project
             // pbxClothes
             // 
             this.pbxClothes.Location = new System.Drawing.Point(248, 20);
-            this.pbxClothes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbxClothes.Margin = new System.Windows.Forms.Padding(4);
             this.pbxClothes.Name = "pbxClothes";
             this.pbxClothes.Size = new System.Drawing.Size(221, 200);
             this.pbxClothes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -228,9 +240,9 @@ namespace SU21_Final_Project
             this.tabGifts.Controls.Add(this.dgvGift);
             this.tabGifts.Controls.Add(this.pbxGift);
             this.tabGifts.Location = new System.Drawing.Point(4, 25);
-            this.tabGifts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabGifts.Margin = new System.Windows.Forms.Padding(4);
             this.tabGifts.Name = "tabGifts";
-            this.tabGifts.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabGifts.Padding = new System.Windows.Forms.Padding(4);
             this.tabGifts.Size = new System.Drawing.Size(558, 283);
             this.tabGifts.TabIndex = 1;
             this.tabGifts.Text = "           Gifts          ";
@@ -241,18 +253,18 @@ namespace SU21_Final_Project
             this.dgvGift.AllowUserToAddRows = false;
             this.dgvGift.AllowUserToDeleteRows = false;
             this.dgvGift.BackgroundColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvGift.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvGift.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvGift.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGift.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dgvGift.Location = new System.Drawing.Point(7, 20);
-            this.dgvGift.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvGift.Margin = new System.Windows.Forms.Padding(4);
             this.dgvGift.Name = "dgvGift";
             this.dgvGift.ReadOnly = true;
             this.dgvGift.RowHeadersVisible = false;
@@ -266,7 +278,7 @@ namespace SU21_Final_Project
             // pbxGift
             // 
             this.pbxGift.Location = new System.Drawing.Point(248, 20);
-            this.pbxGift.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbxGift.Margin = new System.Windows.Forms.Padding(4);
             this.pbxGift.Name = "pbxGift";
             this.pbxGift.Size = new System.Drawing.Size(221, 200);
             this.pbxGift.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -279,7 +291,7 @@ namespace SU21_Final_Project
             this.tabBags.Controls.Add(this.pbxBags);
             this.tabBags.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabBags.Location = new System.Drawing.Point(4, 25);
-            this.tabBags.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabBags.Margin = new System.Windows.Forms.Padding(4);
             this.tabBags.Name = "tabBags";
             this.tabBags.Size = new System.Drawing.Size(558, 283);
             this.tabBags.TabIndex = 2;
@@ -291,18 +303,18 @@ namespace SU21_Final_Project
             this.dgvBags.AllowUserToAddRows = false;
             this.dgvBags.AllowUserToDeleteRows = false;
             this.dgvBags.BackgroundColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBags.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBags.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvBags.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBags.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dgvBags.Location = new System.Drawing.Point(7, 20);
-            this.dgvBags.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvBags.Margin = new System.Windows.Forms.Padding(4);
             this.dgvBags.Name = "dgvBags";
             this.dgvBags.ReadOnly = true;
             this.dgvBags.RowHeadersVisible = false;
@@ -316,7 +328,7 @@ namespace SU21_Final_Project
             // pbxBags
             // 
             this.pbxBags.Location = new System.Drawing.Point(249, 20);
-            this.pbxBags.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbxBags.Margin = new System.Windows.Forms.Padding(4);
             this.pbxBags.Name = "pbxBags";
             this.pbxBags.Size = new System.Drawing.Size(215, 200);
             this.pbxBags.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -328,7 +340,7 @@ namespace SU21_Final_Project
             this.tabAll.Controls.Add(this.dgvAll);
             this.tabAll.Controls.Add(this.pbxAll);
             this.tabAll.Location = new System.Drawing.Point(4, 25);
-            this.tabAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabAll.Margin = new System.Windows.Forms.Padding(4);
             this.tabAll.Name = "tabAll";
             this.tabAll.Size = new System.Drawing.Size(558, 283);
             this.tabAll.TabIndex = 3;
@@ -340,18 +352,18 @@ namespace SU21_Final_Project
             this.dgvAll.AllowUserToAddRows = false;
             this.dgvAll.AllowUserToDeleteRows = false;
             this.dgvAll.BackgroundColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAll.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAll.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvAll.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAll.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dgvAll.Location = new System.Drawing.Point(11, 17);
-            this.dgvAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvAll.Margin = new System.Windows.Forms.Padding(4);
             this.dgvAll.Name = "dgvAll";
             this.dgvAll.ReadOnly = true;
             this.dgvAll.RowHeadersVisible = false;
@@ -365,7 +377,7 @@ namespace SU21_Final_Project
             // pbxAll
             // 
             this.pbxAll.Location = new System.Drawing.Point(265, 17);
-            this.pbxAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbxAll.Margin = new System.Windows.Forms.Padding(4);
             this.pbxAll.Name = "pbxAll";
             this.pbxAll.Size = new System.Drawing.Size(215, 200);
             this.pbxAll.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -405,164 +417,52 @@ namespace SU21_Final_Project
             this.gbxSelectedItem.Controls.Add(this.label4);
             this.gbxSelectedItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxSelectedItem.Location = new System.Drawing.Point(23, 404);
-            this.gbxSelectedItem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxSelectedItem.Margin = new System.Windows.Forms.Padding(4);
             this.gbxSelectedItem.Name = "gbxSelectedItem";
-            this.gbxSelectedItem.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxSelectedItem.Padding = new System.Windows.Forms.Padding(4);
             this.gbxSelectedItem.Size = new System.Drawing.Size(457, 262);
             this.gbxSelectedItem.TabIndex = 4;
             this.gbxSelectedItem.TabStop = false;
             this.gbxSelectedItem.Text = "Add features";
             // 
-            // label1
+            // btnAddToList
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(5, 365);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 18);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Item:";
+            this.btnAddToList.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddToList.Location = new System.Drawing.Point(349, 145);
+            this.btnAddToList.Name = "btnAddToList";
+            this.btnAddToList.Size = new System.Drawing.Size(87, 35);
+            this.btnAddToList.TabIndex = 28;
+            this.btnAddToList.Text = "&Add Item";
+            this.btnAddToList.UseVisualStyleBackColor = true;
+            this.btnAddToList.Click += new System.EventHandler(this.btnAddToList_Click);
             // 
-            // lblItemName
+            // label6
             // 
-            this.lblItemName.BackColor = System.Drawing.Color.Transparent;
-            this.lblItemName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblItemName.Location = new System.Drawing.Point(49, 366);
-            this.lblItemName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblItemName.Name = "lblItemName";
-            this.lblItemName.Size = new System.Drawing.Size(161, 34);
-            this.lblItemName.TabIndex = 20;
-            this.lblItemName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(268, 30);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 18);
+            this.label6.TabIndex = 32;
+            this.label6.Text = "Color:";
             // 
-            // label4
+            // cboColor
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(4, 27);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 18);
-            this.label4.TabIndex = 20;
-            this.label4.Text = "Enter Quantity:";
-            // 
-            // btnSignIn
-            // 
-            this.btnSignIn.Location = new System.Drawing.Point(725, 1);
-            this.btnSignIn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnSignIn.Name = "btnSignIn";
-            this.btnSignIn.Size = new System.Drawing.Size(100, 28);
-            this.btnSignIn.TabIndex = 22;
-            this.btnSignIn.Text = "Sign in";
-            this.btnSignIn.UseVisualStyleBackColor = true;
-            this.btnSignIn.Click += new System.EventHandler(this.btnSignIn_Click);
-            // 
-            // btnAdmin
-            // 
-            this.btnAdmin.Location = new System.Drawing.Point(596, 0);
-            this.btnAdmin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnAdmin.Name = "btnAdmin";
-            this.btnAdmin.Size = new System.Drawing.Size(100, 28);
-            this.btnAdmin.TabIndex = 23;
-            this.btnAdmin.Text = "Admin";
-            this.btnAdmin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAdmin.UseVisualStyleBackColor = true;
-            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
-            // 
-            // lblUser
-            // 
-            this.lblUser.AutoSize = true;
-            this.lblUser.BackColor = System.Drawing.Color.YellowGreen;
-            this.lblUser.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblUser.Location = new System.Drawing.Point(916, 7);
-            this.lblUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(58, 19);
-            this.lblUser.TabIndex = 24;
-            this.lblUser.Text = "GUEST";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(848, 7);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 17);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "User:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(216, 368);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 18);
-            this.label3.TabIndex = 26;
-            this.label3.Text = "Price:";
-            // 
-            // tbxQuantity
-            // 
-            this.tbxQuantity.Location = new System.Drawing.Point(131, 26);
-            this.tbxQuantity.Name = "tbxQuantity";
-            this.tbxQuantity.Size = new System.Drawing.Size(65, 22);
-            this.tbxQuantity.TabIndex = 21;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(345, 370);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 17);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "Available:";
-            // 
-            // gbxDecorationOption
-            // 
-            this.gbxDecorationOption.Controls.Add(this.radBlank);
-            this.gbxDecorationOption.Controls.Add(this.radPrinted);
-            this.gbxDecorationOption.Controls.Add(this.radEmbroidered);
-            this.gbxDecorationOption.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxDecorationOption.Location = new System.Drawing.Point(7, 73);
-            this.gbxDecorationOption.Name = "gbxDecorationOption";
-            this.gbxDecorationOption.Size = new System.Drawing.Size(138, 177);
-            this.gbxDecorationOption.TabIndex = 23;
-            this.gbxDecorationOption.TabStop = false;
-            this.gbxDecorationOption.Text = "Decoration Option";
-            // 
-            // radEmbroidered
-            // 
-            this.radEmbroidered.AutoSize = true;
-            this.radEmbroidered.Location = new System.Drawing.Point(7, 42);
-            this.radEmbroidered.Name = "radEmbroidered";
-            this.radEmbroidered.Size = new System.Drawing.Size(110, 21);
-            this.radEmbroidered.TabIndex = 27;
-            this.radEmbroidered.TabStop = true;
-            this.radEmbroidered.Text = "Embroidered";
-            this.radEmbroidered.UseVisualStyleBackColor = true;
-            // 
-            // radPrinted
-            // 
-            this.radPrinted.AutoSize = true;
-            this.radPrinted.Location = new System.Drawing.Point(7, 86);
-            this.radPrinted.Name = "radPrinted";
-            this.radPrinted.Size = new System.Drawing.Size(74, 21);
-            this.radPrinted.TabIndex = 28;
-            this.radPrinted.TabStop = true;
-            this.radPrinted.Text = "Printed";
-            this.radPrinted.UseVisualStyleBackColor = true;
-            // 
-            // radBlank
-            // 
-            this.radBlank.AutoSize = true;
-            this.radBlank.Location = new System.Drawing.Point(6, 132);
-            this.radBlank.Name = "radBlank";
-            this.radBlank.Size = new System.Drawing.Size(64, 21);
-            this.radBlank.TabIndex = 29;
-            this.radBlank.TabStop = true;
-            this.radBlank.Text = "Blank";
-            this.radBlank.UseVisualStyleBackColor = true;
+            this.cboColor.FormattingEnabled = true;
+            this.cboColor.Items.AddRange(new object[] {
+            "Blue",
+            "Red",
+            "Yellow",
+            "White",
+            "Green",
+            "Black",
+            "Grey",
+            "Pink"});
+            this.cboColor.Location = new System.Drawing.Point(324, 27);
+            this.cboColor.Name = "cboColor";
+            this.cboColor.Size = new System.Drawing.Size(121, 24);
+            this.cboColor.TabIndex = 31;
             // 
             // gbxSize
             // 
@@ -610,28 +510,179 @@ namespace SU21_Final_Project
             this.radSmall.Text = "Small";
             this.radSmall.UseVisualStyleBackColor = true;
             // 
+            // gbxDecorationOption
+            // 
+            this.gbxDecorationOption.Controls.Add(this.radBlank);
+            this.gbxDecorationOption.Controls.Add(this.radPrinted);
+            this.gbxDecorationOption.Controls.Add(this.radEmbroidered);
+            this.gbxDecorationOption.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxDecorationOption.Location = new System.Drawing.Point(7, 73);
+            this.gbxDecorationOption.Name = "gbxDecorationOption";
+            this.gbxDecorationOption.Size = new System.Drawing.Size(138, 177);
+            this.gbxDecorationOption.TabIndex = 23;
+            this.gbxDecorationOption.TabStop = false;
+            this.gbxDecorationOption.Text = "Decoration Option";
+            // 
+            // radBlank
+            // 
+            this.radBlank.AutoSize = true;
+            this.radBlank.Location = new System.Drawing.Point(6, 132);
+            this.radBlank.Name = "radBlank";
+            this.radBlank.Size = new System.Drawing.Size(64, 21);
+            this.radBlank.TabIndex = 29;
+            this.radBlank.TabStop = true;
+            this.radBlank.Text = "Blank";
+            this.radBlank.UseVisualStyleBackColor = true;
+            // 
+            // radPrinted
+            // 
+            this.radPrinted.AutoSize = true;
+            this.radPrinted.Location = new System.Drawing.Point(7, 86);
+            this.radPrinted.Name = "radPrinted";
+            this.radPrinted.Size = new System.Drawing.Size(74, 21);
+            this.radPrinted.TabIndex = 28;
+            this.radPrinted.TabStop = true;
+            this.radPrinted.Text = "Printed";
+            this.radPrinted.UseVisualStyleBackColor = true;
+            // 
+            // radEmbroidered
+            // 
+            this.radEmbroidered.AutoSize = true;
+            this.radEmbroidered.Location = new System.Drawing.Point(7, 42);
+            this.radEmbroidered.Name = "radEmbroidered";
+            this.radEmbroidered.Size = new System.Drawing.Size(110, 21);
+            this.radEmbroidered.TabIndex = 27;
+            this.radEmbroidered.TabStop = true;
+            this.radEmbroidered.Text = "Embroidered";
+            this.radEmbroidered.UseVisualStyleBackColor = true;
+            // 
+            // tbxQuantity
+            // 
+            this.tbxQuantity.Location = new System.Drawing.Point(131, 26);
+            this.tbxQuantity.Name = "tbxQuantity";
+            this.tbxQuantity.Size = new System.Drawing.Size(65, 22);
+            this.tbxQuantity.TabIndex = 21;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(4, 27);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(105, 18);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "Enter Quantity:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(5, 365);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 18);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Item:";
+            // 
+            // lblItemName
+            // 
+            this.lblItemName.BackColor = System.Drawing.Color.Transparent;
+            this.lblItemName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblItemName.Location = new System.Drawing.Point(49, 366);
+            this.lblItemName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblItemName.Name = "lblItemName";
+            this.lblItemName.Size = new System.Drawing.Size(161, 34);
+            this.lblItemName.TabIndex = 20;
+            this.lblItemName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnSignIn
+            // 
+            this.btnSignIn.Location = new System.Drawing.Point(725, 1);
+            this.btnSignIn.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSignIn.Name = "btnSignIn";
+            this.btnSignIn.Size = new System.Drawing.Size(100, 28);
+            this.btnSignIn.TabIndex = 22;
+            this.btnSignIn.Text = "Sign in";
+            this.btnSignIn.UseVisualStyleBackColor = true;
+            this.btnSignIn.Click += new System.EventHandler(this.btnSignIn_Click);
+            // 
+            // btnAdmin
+            // 
+            this.btnAdmin.Location = new System.Drawing.Point(596, 0);
+            this.btnAdmin.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAdmin.Name = "btnAdmin";
+            this.btnAdmin.Size = new System.Drawing.Size(100, 28);
+            this.btnAdmin.TabIndex = 23;
+            this.btnAdmin.Text = "Admin";
+            this.btnAdmin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAdmin.UseVisualStyleBackColor = true;
+            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.BackColor = System.Drawing.Color.YellowGreen;
+            this.lblUser.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblUser.Location = new System.Drawing.Point(916, 7);
+            this.lblUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(58, 19);
+            this.lblUser.TabIndex = 24;
+            this.lblUser.Text = "GUEST";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(848, 7);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 17);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "User:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(216, 368);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(52, 18);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "Price:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(345, 370);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 17);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "Available:";
+            // 
             // dgvList
             // 
             this.dgvList.AllowUserToAddRows = false;
             this.dgvList.AllowUserToDeleteRows = false;
             this.dgvList.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvList.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvList.DefaultCellStyle = dataGridViewCellStyle12;
             this.dgvList.Location = new System.Drawing.Point(608, 79);
             this.dgvList.Margin = new System.Windows.Forms.Padding(4);
             this.dgvList.Name = "dgvList";
@@ -642,54 +693,124 @@ namespace SU21_Final_Project
             this.dgvList.Size = new System.Drawing.Size(477, 273);
             this.dgvList.TabIndex = 27;
             // 
-            // btnAddToList
-            // 
-            this.btnAddToList.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddToList.Location = new System.Drawing.Point(349, 145);
-            this.btnAddToList.Name = "btnAddToList";
-            this.btnAddToList.Size = new System.Drawing.Size(87, 35);
-            this.btnAddToList.TabIndex = 28;
-            this.btnAddToList.Text = "&Add Item";
-            this.btnAddToList.UseVisualStyleBackColor = true;
-            this.btnAddToList.Click += new System.EventHandler(this.btnAddToList_Click);
-            // 
-            // cboColor
-            // 
-            this.cboColor.FormattingEnabled = true;
-            this.cboColor.Items.AddRange(new object[] {
-            "Blue",
-            "Red",
-            "Yellow",
-            "White",
-            "Green",
-            "Black",
-            "Grey",
-            "Pink"});
-            this.cboColor.Location = new System.Drawing.Point(324, 27);
-            this.cboColor.Name = "cboColor";
-            this.cboColor.Size = new System.Drawing.Size(121, 24);
-            this.cboColor.TabIndex = 31;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(268, 30);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 18);
-            this.label6.TabIndex = 32;
-            this.label6.Text = "Color:";
-            // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(792, 369);
+            this.btnRemove.Location = new System.Drawing.Point(799, 364);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(129, 28);
             this.btnRemove.TabIndex = 23;
-            this.btnRemove.Text = "Remove Item";
+            this.btnRemove.Text = "&Remove Item";
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
+            // btnDisplayAmount
+            // 
+            this.btnDisplayAmount.Location = new System.Drawing.Point(956, 363);
+            this.btnDisplayAmount.Name = "btnDisplayAmount";
+            this.btnDisplayAmount.Size = new System.Drawing.Size(129, 28);
+            this.btnDisplayAmount.TabIndex = 28;
+            this.btnDisplayAmount.Text = "&Display Amount";
+            this.btnDisplayAmount.UseVisualStyleBackColor = true;
+            this.btnDisplayAmount.Click += new System.EventHandler(this.btnDisplayAmount_Click);
+            // 
+            // gbxAmount
+            // 
+            this.gbxAmount.Controls.Add(this.lblTotalAmount);
+            this.gbxAmount.Controls.Add(this.lblTaxAmount);
+            this.gbxAmount.Controls.Add(this.lblDiscount);
+            this.gbxAmount.Controls.Add(this.lblSubTotal);
+            this.gbxAmount.Controls.Add(this.label10);
+            this.gbxAmount.Controls.Add(this.label9);
+            this.gbxAmount.Controls.Add(this.label8);
+            this.gbxAmount.Controls.Add(this.label7);
+            this.gbxAmount.Location = new System.Drawing.Point(789, 404);
+            this.gbxAmount.Name = "gbxAmount";
+            this.gbxAmount.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.gbxAmount.Size = new System.Drawing.Size(296, 226);
+            this.gbxAmount.TabIndex = 29;
+            this.gbxAmount.TabStop = false;
+            this.gbxAmount.Text = "Amount to Pay";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(942, 639);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(129, 28);
+            this.button1.TabIndex = 30;
+            this.button1.Text = "&Checkout";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(17, 38);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(69, 17);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Sub Total";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(17, 86);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(63, 17);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Discount";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(17, 134);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(83, 17);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Tax Amount";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(17, 182);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(92, 17);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Total Amount";
+            // 
+            // lblSubTotal
+            // 
+            this.lblSubTotal.AutoSize = true;
+            this.lblSubTotal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblSubTotal.Location = new System.Drawing.Point(149, 38);
+            this.lblSubTotal.Name = "lblSubTotal";
+            this.lblSubTotal.Size = new System.Drawing.Size(2, 19);
+            this.lblSubTotal.TabIndex = 4;
+            // 
+            // lblDiscount
+            // 
+            this.lblDiscount.AutoSize = true;
+            this.lblDiscount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblDiscount.Location = new System.Drawing.Point(149, 86);
+            this.lblDiscount.Name = "lblDiscount";
+            this.lblDiscount.Size = new System.Drawing.Size(2, 19);
+            this.lblDiscount.TabIndex = 5;
+            // 
+            // lblTaxAmount
+            // 
+            this.lblTaxAmount.AutoSize = true;
+            this.lblTaxAmount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTaxAmount.Location = new System.Drawing.Point(149, 134);
+            this.lblTaxAmount.Name = "lblTaxAmount";
+            this.lblTaxAmount.Size = new System.Drawing.Size(2, 19);
+            this.lblTaxAmount.TabIndex = 6;
+            // 
+            // lblTotalAmount
+            // 
+            this.lblTotalAmount.AutoSize = true;
+            this.lblTotalAmount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTotalAmount.Location = new System.Drawing.Point(149, 182);
+            this.lblTotalAmount.Name = "lblTotalAmount";
+            this.lblTotalAmount.Size = new System.Drawing.Size(2, 19);
+            this.lblTotalAmount.TabIndex = 7;
             // 
             // frmMain
             // 
@@ -697,6 +818,9 @@ namespace SU21_Final_Project
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1119, 679);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.gbxAmount);
+            this.Controls.Add(this.btnDisplayAmount);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.dgvList);
             this.Controls.Add(this.label5);
@@ -713,7 +837,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.tabItemCategory);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.menuStrip1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Tag = "2021.05.02";
@@ -740,11 +864,13 @@ namespace SU21_Final_Project
             ((System.ComponentModel.ISupportInitialize)(this.pbxAll)).EndInit();
             this.gbxSelectedItem.ResumeLayout(false);
             this.gbxSelectedItem.PerformLayout();
-            this.gbxDecorationOption.ResumeLayout(false);
-            this.gbxDecorationOption.PerformLayout();
             this.gbxSize.ResumeLayout(false);
             this.gbxSize.PerformLayout();
+            this.gbxDecorationOption.ResumeLayout(false);
+            this.gbxDecorationOption.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
+            this.gbxAmount.ResumeLayout(false);
+            this.gbxAmount.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -798,6 +924,17 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cboColor;
         private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Button btnDisplayAmount;
+        private System.Windows.Forms.GroupBox gbxAmount;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblTotalAmount;
+        private System.Windows.Forms.Label lblTaxAmount;
+        private System.Windows.Forms.Label lblDiscount;
+        private System.Windows.Forms.Label lblSubTotal;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
     }
 }
 
