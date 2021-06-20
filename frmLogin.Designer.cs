@@ -41,40 +41,46 @@ namespace SU21_Final_Project
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(162, 9);
+            this.label1.Location = new System.Drawing.Point(216, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.Size = new System.Drawing.Size(73, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Username";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(162, 61);
+            this.label2.Location = new System.Drawing.Point(216, 75);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
+            this.label2.Size = new System.Drawing.Size(69, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Password";
             // 
             // tbxUsername
             // 
-            this.tbxUsername.Location = new System.Drawing.Point(107, 28);
+            this.tbxUsername.Location = new System.Drawing.Point(143, 34);
+            this.tbxUsername.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbxUsername.Name = "tbxUsername";
-            this.tbxUsername.Size = new System.Drawing.Size(165, 20);
+            this.tbxUsername.Size = new System.Drawing.Size(219, 22);
             this.tbxUsername.TabIndex = 2;
             // 
             // tbxPassword
             // 
-            this.tbxPassword.Location = new System.Drawing.Point(107, 87);
+            this.tbxPassword.Location = new System.Drawing.Point(143, 107);
+            this.tbxPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbxPassword.Name = "tbxPassword";
-            this.tbxPassword.Size = new System.Drawing.Size(165, 20);
+            this.tbxPassword.Size = new System.Drawing.Size(219, 22);
             this.tbxPassword.TabIndex = 3;
+            this.tbxPassword.UseSystemPasswordChar = true;
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(153, 123);
+            this.btnLogin.Location = new System.Drawing.Point(189, 180);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(75, 23);
+            this.btnLogin.Size = new System.Drawing.Size(100, 28);
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "&Login";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -82,9 +88,10 @@ namespace SU21_Final_Project
             // 
             // btnSignUp
             // 
-            this.btnSignUp.Location = new System.Drawing.Point(153, 168);
+            this.btnSignUp.Location = new System.Drawing.Point(32, 180);
+            this.btnSignUp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSignUp.Name = "btnSignUp";
-            this.btnSignUp.Size = new System.Drawing.Size(75, 23);
+            this.btnSignUp.Size = new System.Drawing.Size(100, 28);
             this.btnSignUp.TabIndex = 5;
             this.btnSignUp.Text = "Sign &Up";
             this.btnSignUp.UseVisualStyleBackColor = true;
@@ -93,17 +100,18 @@ namespace SU21_Final_Project
             // 
             this.lblMessage.AutoSize = true;
             this.lblMessage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblMessage.Location = new System.Drawing.Point(301, 224);
+            this.lblMessage.Location = new System.Drawing.Point(226, 137);
+            this.lblMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(37, 15);
+            this.lblMessage.Size = new System.Drawing.Size(48, 19);
             this.lblMessage.TabIndex = 6;
             this.lblMessage.Text = "label3";
             // 
             // frmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(363, 246);
+            this.ClientSize = new System.Drawing.Size(484, 303);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.btnSignUp);
             this.Controls.Add(this.btnLogin);
@@ -111,6 +119,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.tbxUsername);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmLogin";
             this.Text = "Login";
             this.ResumeLayout(false);

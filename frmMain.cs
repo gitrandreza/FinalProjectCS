@@ -26,6 +26,8 @@ namespace SU21_Final_Project
 
     public partial class frmMain : Form
     {
+
+       
         //Establish connection to the database       
         SqlConnection Connection;
         SqlDataAdapter dataAdapter;
@@ -385,7 +387,8 @@ namespace SU21_Final_Project
 
         private void btnSignIn_Click(object sender, EventArgs e)
         {
-            new frmLogin().ShowDialog();
+            new frmLogin().Show();
+            this.Hide();
         }
 
         //***********************ADD LIST*********************************************

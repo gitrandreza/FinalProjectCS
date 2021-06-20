@@ -17,6 +17,8 @@ namespace SU21_Final_Project
         private SqlCommand command; //command object
         private SqlDataReader reader; //datareader object
         public frmMain fmain;
+        string strUsername;
+        string strPassword;
         public frmLogin()
         {
             InitializeComponent();
@@ -29,15 +31,17 @@ namespace SU21_Final_Project
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            strUsername = tbxUsername.Text;
+            strPassword = tbxPassword.Text;
             try
-            { //connect to database
+            { 
                
                
                 Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                 Connection.Open();
-                //check for password and username
+               
                 command = new SqlCommand("SELECT Username, Password FROM RandrezaVoharisoaM21Su2332.Users;", Connection);
 
                 //gets the results from the sql command
@@ -45,26 +49,40 @@ namespace SU21_Final_Project
 
                 while (reader.Read())
                 {
-                    //iterates through the username column to find a matching value
-                    //after it finds a matching user name it then moves to the password column for that row.
-                    if (reader["Username"].ToString() == tbxUsername.Text) //compares curent username on the current row
+                    //iterates through the user name column to find a matching value
+                    
+                    if (reader["Username"].ToString() == strUsername) 
                     {
-                        if (reader["Password"].ToString() == tbxPassword.Text ) //compares the password of the current row
+                        if (reader["Password"].ToString() == strPassword) 
                         {
-                            lblMessage.Text = Connection.State.ToString();
-                           
-                           
-                          
+                            new frmMain().Show();
+                            this.Hide();
+
                         }
                     }
+
+                    else
+                    lblMessage.Text = "Pleach verify your username and your password ";
+                    tbxPassword.Text = "";
+                    tbxPassword.Text = "";
+                    tbxPassword.Focus();
                 }
-             
-                Connection.Close();
+
+
+                if (reader != null)
+                {
+                    reader.Close(); //closes the reader
+                }
+                if (Connection != null)
+                {
+                    Connection.Close(); //closes connection to database
+                }
+              
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error :" + ex);
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
