@@ -14,7 +14,7 @@ namespace SU21_Final_Project
 {
     public partial class frmAdmin : Form
     {
-        public SqlConnection Connection;
+        SqlConnection Connection;
 
         public frmAdmin()
         {
@@ -25,14 +25,10 @@ namespace SU21_Final_Project
         {
             try
             {
-                //connect to database
+               
+                Connection.Open();
                 Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
-                //open the database
-                Connection.Open();
-                //display message
-               // lblMessage.Text = Connection.State.ToString();
-                //close the database
                 Connection.Close();
 
             }

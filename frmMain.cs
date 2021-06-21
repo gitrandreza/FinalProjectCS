@@ -213,13 +213,27 @@ namespace SU21_Final_Project
                     DataGridViewRow row = this.dgvGift.Rows[e.RowIndex];
 
                     myItems.Name = row.Cells["Description"].Value.ToString();
-                    myItems.Quantity = int.Parse(row.Cells["Quantity"].Value.ToString());
-                    myItems.Price = Convert.ToDouble(row.Cells["RetailPrice"].Value.ToString());
+                    string strQuantity = row.Cells["Quantity"].Value.ToString();
+                    int intQuantity;
+                    bool intResultTryParse = int.TryParse(strQuantity, out intQuantity);
+                    if (intResultTryParse == true)
+                    {
+                        myItems.Quantity = intQuantity;
+                    }
+
+                    string strPrice = row.Cells["RetailPrice"].Value.ToString();
+                    double dblPrice;
+                    bool dblResultTryParse = double.TryParse(strPrice, out dblPrice);
+                    if (dblResultTryParse == true)
+                    {
+                        myItems.Price = dblPrice;
+                    }
 
 
-                    lblQuantityAvailable.Text = Convert.ToString(myItems.Quantity);
-                    lblPrice.Text = Convert.ToString(myItems.Price);
-                    lblItemName.Text = Convert.ToString(myItems.Name);
+
+                    lblQuantityAvailable.Text = myItems.Quantity.ToString();
+                    lblPrice.Text = myItems.Price.ToString();
+                    lblItemName.Text =myItems.Name;
 
                 }
 
