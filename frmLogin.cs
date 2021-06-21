@@ -14,20 +14,16 @@ namespace SU21_Final_Project
     public partial class frmLogin : Form
     {
          SqlConnection Connection;
-        SqlCommand command; //command object
-         SqlDataReader reader; //datareader object
-        public frmMain fmain;
+        SqlCommand command; 
+         SqlDataReader reader; 
+        
         string strUsername;
         string strPassword;
         public frmLogin()
         {
             InitializeComponent();
         }
-        //public frmLogin(frmMain formMain)
-        //{
-        //    fmain = formMain;
-        //}
-
+      
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -62,10 +58,10 @@ namespace SU21_Final_Project
                     }
 
                     else
-                        lblMessage.Text = "Please verify  your login entry ";
+                    lblMessage.Text = "Please verify  your login entry ";
+                    tbxUsername.Text = "";
                     tbxPassword.Text = "";
-                    tbxPassword.Text = "";
-                    tbxPassword.Focus();
+                    tbxUsername.Focus();
                 }
 
 
@@ -89,6 +85,12 @@ namespace SU21_Final_Project
         private void btnSignUp_Click(object sender, EventArgs e)
         {
             new frmSignUp().Show();
+            this.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new frmResetPassword().Show();
             this.Hide();
         }
     }
