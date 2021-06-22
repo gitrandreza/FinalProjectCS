@@ -35,7 +35,7 @@ namespace SU21_Final_Project
             this.tbxPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnSignUp = new System.Windows.Forms.Button();
-            this.lblMessage = new System.Windows.Forms.Label();
+            this.lblLoginFailed = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -98,16 +98,15 @@ namespace SU21_Final_Project
             this.btnSignUp.UseVisualStyleBackColor = true;
             this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
             // 
-            // lblMessage
+            // lblLoginFailed
             // 
-            this.lblMessage.AutoSize = true;
-            this.lblMessage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblMessage.Location = new System.Drawing.Point(226, 137);
-            this.lblMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(48, 19);
-            this.lblMessage.TabIndex = 6;
-            this.lblMessage.Text = "label3";
+            this.lblLoginFailed.AutoSize = true;
+            this.lblLoginFailed.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblLoginFailed.Location = new System.Drawing.Point(143, 146);
+            this.lblLoginFailed.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLoginFailed.Name = "lblLoginFailed";
+            this.lblLoginFailed.Size = new System.Drawing.Size(2, 19);
+            this.lblLoginFailed.TabIndex = 6;
             // 
             // button1
             // 
@@ -125,7 +124,7 @@ namespace SU21_Final_Project
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 303);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.lblMessage);
+            this.Controls.Add(this.lblLoginFailed);
             this.Controls.Add(this.btnSignUp);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.tbxPassword);
@@ -148,7 +147,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.TextBox tbxPassword;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnSignUp;
-        private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Label lblLoginFailed;
     }
 }

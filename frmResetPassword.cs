@@ -23,6 +23,7 @@ namespace SU21_Final_Project
         string strIdol;
         string strEnterUsername;
         string strNewPassword;
+        bool blnMatch=false;
 
         public frmResetPassword()
         {
@@ -31,13 +32,13 @@ namespace SU21_Final_Project
 
         private void btnCheck_Click(object sender, EventArgs e)
         {
-           strDrink=tbxDrink.Text;
-            strDog=tbxDog.Text;
-             strIdol=tbxIdol.Text;
+
+            strDrink = tbxDrink.Text;
+            strDog = tbxDog.Text;
+            strIdol = tbxIdol.Text;
             strEnterUsername = tbxEnterUsername.Text;
             strNewPassword = tbxNewPassword.Text;
 
-            
             try
             {
 
@@ -60,39 +61,66 @@ namespace SU21_Final_Project
                         {
                             lblValidAnswers.Visible = true;
                             tbxNewPassword.Enabled = true;
-                            
+                            btnNewPassword.Enabled = true;
+                            blnMatch = true;
+                           
                         }
                        
                         
                     }
-                    else
 
-                        lblInvalidAnswers.Visible = true;
-                        tbxDrink.Text = "";
-                        tbxDog.Text = "";
-                        tbxIdol.Text = "";
-                        tbxEnterUsername.Text = "";
-                        tbxEnterUsername.Focus();
-                    
-                    
                 }
 
-                    if (reader != null)
-                    {
-                        reader.Close(); //closes the reader
-                    }
-                    if (Connection != null)
-                    {
-                        Connection.Close(); //closes connection to database
-                    }
+                if(blnMatch==false)
+                {               
+                    lblInvalidAnswers.Visible = true;
+                    tbxDrink.Text = "";
+                    tbxDog.Text = "";
+                    tbxIdol.Text = "";
+                    tbxEnterUsername.Text = "";
+                    tbxEnterUsername.Focus();
+                }
 
-                
+                if (reader != null)
+                {
+                    reader.Close(); 
+                }
+                if (Connection != null)
+                {
+                    Connection.Close(); 
+                }
+
+
             }
 
             catch (Exception ex)
             {
                 MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        //UPDATE AND SAVE THE NEW PASSWORD  
+        private void btnNewPassword_Click(object sender, EventArgs e)
+        {
+           
+            if (MessageBox.Show("Your password will be changed", "Confirmation", MessageBoxButtons.OKCancel) == DialogResult.OK)
+
+            {
+
+                Connection.Open();
+                strNewPassword = tbxNewPassword.Text;
+                string updateQuery = "UPDATE RandrezaVoharisoaM21Su2332.Users set Password = @Password where Username ='" + strEnterUsername + "' ";
+                SqlCommand updateCommand = new SqlCommand(updateQuery, Connection);
+                SqlParameter sqlParams = updateCommand.Parameters.AddWithValue("@Password", strNewPassword);
+                updateCommand.ExecuteNonQuery();
+                MessageBox.Show("New Password saved", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Connection.Close();
+                this.Hide();
+                new frmLogin().Show();
+
+            }
+
+          
         }
     }
 }

@@ -44,6 +44,7 @@ namespace SU21_Final_Project
             this.label12 = new System.Windows.Forms.Label();
             this.tbxEnterUsername = new System.Windows.Forms.TextBox();
             this.lblMessage = new System.Windows.Forms.Label();
+            this.btnNewPassword = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label16
@@ -138,11 +139,11 @@ namespace SU21_Final_Project
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(117, 335);
+            this.label13.Location = new System.Drawing.Point(99, 335);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(100, 17);
+            this.label13.Size = new System.Drawing.Size(138, 17);
             this.label13.TabIndex = 43;
-            this.label13.Text = "New Password";
+            this.label13.Text = "Enter New Password";
             // 
             // tbxNewPassword
             // 
@@ -177,11 +178,23 @@ namespace SU21_Final_Project
             this.lblMessage.TabIndex = 46;
             this.lblMessage.Text = "label2";
             // 
+            // btnNewPassword
+            // 
+            this.btnNewPassword.Enabled = false;
+            this.btnNewPassword.Location = new System.Drawing.Point(300, 375);
+            this.btnNewPassword.Name = "btnNewPassword";
+            this.btnNewPassword.Size = new System.Drawing.Size(75, 23);
+            this.btnNewPassword.TabIndex = 47;
+            this.btnNewPassword.Text = "&Save";
+            this.btnNewPassword.UseVisualStyleBackColor = true;
+            this.btnNewPassword.Click += new System.EventHandler(this.btnNewPassword_Click);
+            // 
             // frmResetPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(560, 376);
+            this.ClientSize = new System.Drawing.Size(601, 421);
+            this.Controls.Add(this.btnNewPassword);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.tbxEnterUsername);
@@ -222,5 +235,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox tbxEnterUsername;
         private System.Windows.Forms.Label lblMessage;
+        private System.Windows.Forms.Button btnNewPassword;
     }
 }
