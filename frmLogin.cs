@@ -11,24 +11,28 @@ using System.Data.SqlClient;
 
 namespace SU21_Final_Project
 {
+   
     public partial class frmLogin : Form
     {
-         SqlConnection Connection;
-        SqlCommand command; 
-         SqlDataReader reader; 
+        SqlConnection Connection;
+        SqlCommand command;
+        SqlDataReader reader;
         
         string strUsername;
         string strPassword;
+
         public frmLogin()
         {
             InitializeComponent();
+
         }
-      
+
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
             strUsername = tbxUsername.Text;
             strPassword = tbxPassword.Text;
+
             try
             {
 
@@ -38,7 +42,7 @@ namespace SU21_Final_Project
 
                 Connection.Open();
 
-                command = new SqlCommand("SELECT Username, Password FROM RandrezaVoharisoaM21Su2332.Users;", Connection);
+                command = new SqlCommand("SELECT UserID, Username, Password FROM RandrezaVoharisoaM21Su2332.Users;", Connection);
 
                 //gets the results from the sql command
                 reader = command.ExecuteReader();
@@ -46,24 +50,28 @@ namespace SU21_Final_Project
                 while (reader.Read())
                 {
                     //iterates through the user name column to find a matching value
+                   
 
                     if (reader["Username"].ToString() == strUsername)
                     {
                         if (reader["Password"].ToString() == strPassword)
                         {
-                            new frmMain().Show();
-                            this.Hide();
 
+                            frmMain mainForm = new frmMain();
+                            mainForm.LabelUserID = reader["UserID"].ToString();
+                            mainForm.Show();
+                            this.Hide();
                         }
                     }
 
                     else
-                    lblMessage.Text = "Please verify  your login entry ";
+                    lblLoginFailed.Text = "Please verify  your login entry ";
                     tbxUsername.Text = "";
                     tbxPassword.Text = "";
                     tbxUsername.Focus();
                 }
-
+                
+                
 
                 if (reader != null)
                 {

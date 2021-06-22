@@ -126,7 +126,7 @@ namespace SU21_Final_Project
                 strQuestionTwo = "What is your favorite type of dog?";
                 strQuestionThree = "Who is your idol?";
 
-                //Get the last PersonID to insert as FK to the User table
+                //Get the last PersonID using Max to insert as FK to the User table
                 string queryLastID = "SELECT MAX(PersonID) from RandrezaVoharisoaM21Su2332.Person";
                 SqlCommand commandLastID = new SqlCommand(queryLastID, Connection);
 

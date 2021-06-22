@@ -35,14 +35,14 @@ namespace SU21_Final_Project
             this.tbxPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnSignUp = new System.Windows.Forms.Button();
-            this.lblMessage = new System.Windows.Forms.Label();
+            this.lblLoginFailed = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(216, 11);
+            this.label1.Location = new System.Drawing.Point(216, 24);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 17);
@@ -52,7 +52,7 @@ namespace SU21_Final_Project
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(216, 75);
+            this.label2.Location = new System.Drawing.Point(216, 80);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 17);
@@ -61,7 +61,7 @@ namespace SU21_Final_Project
             // 
             // tbxUsername
             // 
-            this.tbxUsername.Location = new System.Drawing.Point(143, 34);
+            this.tbxUsername.Location = new System.Drawing.Point(143, 47);
             this.tbxUsername.Margin = new System.Windows.Forms.Padding(4);
             this.tbxUsername.Name = "tbxUsername";
             this.tbxUsername.Size = new System.Drawing.Size(219, 22);
@@ -78,7 +78,7 @@ namespace SU21_Final_Project
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(189, 237);
+            this.btnLogin.Location = new System.Drawing.Point(189, 180);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(100, 28);
@@ -89,7 +89,7 @@ namespace SU21_Final_Project
             // 
             // btnSignUp
             // 
-            this.btnSignUp.Location = new System.Drawing.Point(31, 240);
+            this.btnSignUp.Location = new System.Drawing.Point(13, 252);
             this.btnSignUp.Margin = new System.Windows.Forms.Padding(4);
             this.btnSignUp.Name = "btnSignUp";
             this.btnSignUp.Size = new System.Drawing.Size(100, 28);
@@ -98,22 +98,20 @@ namespace SU21_Final_Project
             this.btnSignUp.UseVisualStyleBackColor = true;
             this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
             // 
-            // lblMessage
+            // lblLoginFailed
             // 
-            this.lblMessage.AutoSize = true;
-            this.lblMessage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblMessage.Location = new System.Drawing.Point(226, 137);
-            this.lblMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(48, 19);
-            this.lblMessage.TabIndex = 6;
-            this.lblMessage.Text = "label3";
+            this.lblLoginFailed.AutoSize = true;
+            this.lblLoginFailed.Location = new System.Drawing.Point(143, 146);
+            this.lblLoginFailed.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLoginFailed.Name = "lblLoginFailed";
+            this.lblLoginFailed.Size = new System.Drawing.Size(0, 17);
+            this.lblLoginFailed.TabIndex = 6;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(351, 240);
+            this.button1.Location = new System.Drawing.Point(336, 252);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(136, 28);
             this.button1.TabIndex = 7;
             this.button1.Text = "&Reset Password ";
             this.button1.UseVisualStyleBackColor = true;
@@ -125,7 +123,7 @@ namespace SU21_Final_Project
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 303);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.lblMessage);
+            this.Controls.Add(this.lblLoginFailed);
             this.Controls.Add(this.btnSignUp);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.tbxPassword);
@@ -148,7 +146,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.TextBox tbxPassword;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnSignUp;
-        private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblLoginFailed;
     }
 }
