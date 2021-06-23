@@ -57,20 +57,14 @@ namespace SU21_Final_Project
             try
             {
 
-
                 Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
-
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error :" + ex);
+                MessageBox.Show(ex.Message, "Error Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
-            //strFirstName = tbxFirstName.Text;
-          
 
 
             try
@@ -78,87 +72,160 @@ namespace SU21_Final_Project
 
                 Connection.Open();
 
-                //INSERT RECORD FOR PERSON INFORMATION
-                strTitle = "Customer";
-                strFirstName = tbxFirstName.Text;
-                strLastName = tbxLastName.Text;
-                strMiddleName = tbxMiddleName.Text;
-                strAddressOne = tbxAddressOne.Text;
-                strAddressTwo = tbxAddressTwo.Text;
-                strAddressThree = tbxAddressThree.Text;
-                strPhoneOne = tbxPhoneOne.Text;
-                strPhoneTwo = tbxPhoneTwo.Text;
-                strCity = tbxCity.Text;
-                strState = tbxState.Text;
-                strZip = tbxZip.Text;
-                strEmail = tbxEmail.Text;
-                strSuffix = tbxSuffix.Text;
+                if (tbxFirstName.Text!="" && tbxLastName.Text != "" && tbxAddressOne.Text != "" && tbxPhoneOne.Text != "" && tbxCity.Text != ""
+                    && tbxState.Text != "" && tbxEmail.Text != "" && tbxCreateUsername.Text != "" && tbxCreatePassword.Text != "" && tbxAnswerOne.Text != ""
+                    && tbxAnswerTwo.Text != "" && tbxAnswerThree.Text != "")
+                {
+
+                    //if (ValidPassword(strCreatePassword) == true)
+                    //{
+
+                        //INSERT RECORD FOR PERSON INFORMATION
+                        strTitle = "Customer";
+                        strFirstName = tbxFirstName.Text;
+                        strLastName = tbxLastName.Text;
+                        strMiddleName = tbxMiddleName.Text;
+                        strAddressOne = tbxAddressOne.Text;
+                        strAddressTwo = tbxAddressTwo.Text;
+                        strAddressThree = tbxAddressThree.Text;
+                        strPhoneOne = tbxPhoneOne.Text;
+                        strPhoneTwo = tbxPhoneTwo.Text;
+                        strCity = tbxCity.Text;
+                        strState = tbxState.Text;
+                        strZip = tbxZip.Text;
+                        strEmail = tbxEmail.Text;
+                        strSuffix = tbxSuffix.Text;
 
 
-                SqlCommand commandPerson = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Person(Title,NameFirst,NameMiddle,NameLast,Suffix,Address1,Address2,Address3,City,Zipcode" +
-                    ",State,Email,PhonePrimary,PhoneSecondary,Image) VALUES(@Title,@NameFirst,@NameMiddle,@NameLast,@Suffix,@Address1,@Address2,@Address3,@City,@Zipcode" +
-                    ",@State,@Email,@PhonePrimary,@PhoneSecondary,NULL)", Connection);
-                commandPerson.Parameters.AddWithValue("@Title", strTitle);
-                commandPerson.Parameters.AddWithValue("@NameFirst", strFirstName);
-                commandPerson.Parameters.AddWithValue("@NameMiddle", strMiddleName);
-                commandPerson.Parameters.AddWithValue("@NameLast", strLastName);
-                commandPerson.Parameters.AddWithValue("@Suffix", strSuffix);
-                commandPerson.Parameters.AddWithValue("@Address1", strAddressOne);
-                commandPerson.Parameters.AddWithValue("@Address2", strAddressTwo);
-                commandPerson.Parameters.AddWithValue("@Address3", strAddressThree);
-                commandPerson.Parameters.AddWithValue("@City", strCity);
-                commandPerson.Parameters.AddWithValue("@Zipcode", strZip);
-                commandPerson.Parameters.AddWithValue("@State", strState);
-                commandPerson.Parameters.AddWithValue("@Email", strEmail);
-                commandPerson.Parameters.AddWithValue("@PhonePrimary", strPhoneOne);
-                commandPerson.Parameters.AddWithValue("@PhoneSecondary", strPhoneTwo);
+                        SqlCommand commandPerson = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Person(Title,NameFirst,NameMiddle,NameLast,Suffix,Address1,Address2,Address3,City,Zipcode" +
+                            ",State,Email,PhonePrimary,PhoneSecondary,Image) VALUES(@Title,@NameFirst,@NameMiddle,@NameLast,@Suffix,@Address1,@Address2,@Address3,@City,@Zipcode" +
+                            ",@State,@Email,@PhonePrimary,@PhoneSecondary,NULL)", Connection);
+                        commandPerson.Parameters.AddWithValue("@Title", strTitle);
+                        commandPerson.Parameters.AddWithValue("@NameFirst", strFirstName);
+                        commandPerson.Parameters.AddWithValue("@NameMiddle", strMiddleName);
+                        commandPerson.Parameters.AddWithValue("@NameLast", strLastName);
+                        commandPerson.Parameters.AddWithValue("@Suffix", strSuffix);
+                        commandPerson.Parameters.AddWithValue("@Address1", strAddressOne);
+                        commandPerson.Parameters.AddWithValue("@Address2", strAddressTwo);
+                        commandPerson.Parameters.AddWithValue("@Address3", strAddressThree);
+                        commandPerson.Parameters.AddWithValue("@City", strCity);
+                        commandPerson.Parameters.AddWithValue("@Zipcode", strZip);
+                        commandPerson.Parameters.AddWithValue("@State", strState);
+                        commandPerson.Parameters.AddWithValue("@Email", strEmail);
+                        commandPerson.Parameters.AddWithValue("@PhonePrimary", strPhoneOne);
+                        commandPerson.Parameters.AddWithValue("@PhoneSecondary", strPhoneTwo);
 
-                commandPerson.ExecuteNonQuery();
+                        commandPerson.ExecuteNonQuery();
 
-                //INSERT RECORD FOR USERS LOGON SECURITY ACCESS
-                strCreateUsername = tbxCreateUsername.Text;
-                strCreatePassword = tbxCreatePassword.Text;
-                strAnswerOne = tbxAnswerOne.Text;
-                strAnswerTwo = tbxAddressTwo.Text;
-                strAnswerThree = tbxAddressThree.Text;
-                intRoleId = 3;
-                strQuestionOne = "What is your favorite drink?";
-                strQuestionTwo = "What is your favorite type of dog?";
-                strQuestionThree = "Who is your idol?";
 
-                //Get the last PersonID using Max to insert as FK to the User table
-                string queryLastID = "SELECT MAX(PersonID) from RandrezaVoharisoaM21Su2332.Person";
-                SqlCommand commandLastID = new SqlCommand(queryLastID, Connection);
+                        //INSERT RECORD FOR USERS LOGON SECURITY ACCESS
+                        strCreateUsername = tbxCreateUsername.Text;
+                        strCreatePassword = tbxCreatePassword.Text;
+                        strAnswerOne = tbxAnswerOne.Text;
+                        strAnswerTwo = tbxAnswerTwo.Text;
+                        strAnswerThree = tbxAnswerThree.Text;
+                        intRoleId = 3;
+                        strQuestionOne = "What is your favorite drink?";
+                        strQuestionTwo = "What is your favorite type of dog?";
+                        strQuestionThree = "Who is your idol?";
 
-                //gets the results from the sql command
-                SqlDataReader reader = commandLastID.ExecuteReader();
-                reader.Read();
-                int intPersonID = reader.GetInt32(0);
-                reader.Close();
+                        //Get the last PersonID using Max to insert as FK to the User table
+                        string queryLastID = "SELECT MAX(PersonID) from RandrezaVoharisoaM21Su2332.Person";
+                        SqlCommand commandLastID = new SqlCommand(queryLastID, Connection);
 
-                lblMessage.Text = intPersonID.ToString();//just to see if it's working
-                SqlCommand commandUsers = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Users(PersonID,Username,Password,Answer1,Answer2,RoleID,ThirdQuestion,SecondQuestion,FirstQuestion,Answer3) VALUES(@PersonID,@Username,@Password,@Answer1,@Answer2,@RoleID,@ThirdQuestion,@SecondQuestion,@FirstQuestion,@Answer3)", Connection);
-                commandUsers.Parameters.AddWithValue("@PersonID", intPersonID);
-                commandUsers.Parameters.AddWithValue("@Username", strCreateUsername);
-                commandUsers.Parameters.AddWithValue("@Password", strCreatePassword);
-                commandUsers.Parameters.AddWithValue("@Answer1", strAnswerOne);
-                commandUsers.Parameters.AddWithValue("@Answer2", strAnswerTwo);
-                commandUsers.Parameters.AddWithValue("@RoleID", intRoleId);
-                commandUsers.Parameters.AddWithValue("@ThirdQuestion", strQuestionThree);
-                commandUsers.Parameters.AddWithValue("@SecondQuestion", strQuestionTwo);
-                commandUsers.Parameters.AddWithValue("@FirstQuestion", strQuestionOne);
-                commandUsers.Parameters.AddWithValue("@Answer3", strAnswerThree);
+                        //gets the results from the sql command
+                        SqlDataReader reader = commandLastID.ExecuteReader();
+                        reader.Read();
+                        int intPersonID = reader.GetInt32(0);
+                        reader.Close();
 
-                commandUsers.ExecuteNonQuery();
-                MessageBox.Show("Client Successfully added");
+                        lblMessage.Text = intPersonID.ToString();//just to see if it's working
+                        SqlCommand commandUsers = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Users(PersonID,Username,Password,Answer1,Answer2,RoleID,ThirdQuestion,SecondQuestion,FirstQuestion,Answer3) VALUES(@PersonID,@Username,@Password,@Answer1,@Answer2,@RoleID,@ThirdQuestion,@SecondQuestion,@FirstQuestion,@Answer3)", Connection);
+                        commandUsers.Parameters.AddWithValue("@PersonID", intPersonID);
+                        commandUsers.Parameters.AddWithValue("@Username", strCreateUsername);
+                        commandUsers.Parameters.AddWithValue("@Password", strCreatePassword);
+                        commandUsers.Parameters.AddWithValue("@Answer1", strAnswerOne);
+                        commandUsers.Parameters.AddWithValue("@Answer2", strAnswerTwo);
+                        commandUsers.Parameters.AddWithValue("@RoleID", intRoleId);
+                        commandUsers.Parameters.AddWithValue("@ThirdQuestion", strQuestionThree);
+                        commandUsers.Parameters.AddWithValue("@SecondQuestion", strQuestionTwo);
+                        commandUsers.Parameters.AddWithValue("@FirstQuestion", strQuestionOne);
+                        commandUsers.Parameters.AddWithValue("@Answer3", strAnswerThree);
 
-                Connection.Close();
+                        commandUsers.ExecuteNonQuery();
+                        MessageBox.Show("Client Successfully added");
+
+                        Connection.Close();
+                   // }
+                   // else
+                    //{
+                        MessageBox.Show("Password format is not valid", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //}
+                }
+                else
+                {
+                    MessageBox.Show("Please make sure to fill up the required fields with(*)", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
 
             }
             catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message, "Error Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            
         }
+        //public bool ValidPassword(string strPassword)
+        //{
+            
+        //    bool blnUpperCase = false;
+        //    bool blnLowerCase = false;
+        //    bool blnDigit = false;
+        //    bool blnLetter = false;
+        //    bool blnSpecialChar = false;
+        //    bool blnNoSpace = false;
+        //    string strSpecialChars = "~`!@#$%^&*()-_=+\\|[{]};:'\",<.>/? ";
+        //    char[] arrSpecialCh = strSpecialChars.ToCharArray();
+
+
+        //    for (int i = 0; i < strPassword.Length; i++)
+        //    {
+
+        //        if (!strPassword.Any(char.IsUpper))
+        //        {
+        //            blnUpperCase = true;
+        //        }
+        //        else if (strPassword.Any(char.IsLower))
+        //        {
+        //            blnLowerCase = true;
+        //        }
+        //        else if (strPassword.Any(char.IsDigit))
+        //        {
+        //            blnDigit = true;
+        //        }
+        //        else if (strPassword.Any(char.IsLetter))
+        //        {
+        //            blnLetter = true;
+        //        }
+        //        else if (strPassword.Contains(" "))
+        //        {
+        //            blnNoSpace = true;
+        //        }
+
+        //    }
+        //    foreach (char ch in arrSpecialCh)
+        //    {
+        //        if (strPassword.Contains(ch))
+        //            blnSpecialChar=true;
+        //    }
+
+        //    if (blnUpperCase && blnLowerCase && blnNoSpace && blnDigit && blnLetter && blnSpecialChar)
+        //    {
+        //        return true;
+        //    }
+        //    return false;
+        //}
+
     }
+
 }
