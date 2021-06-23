@@ -45,7 +45,9 @@ namespace SU21_Final_Project
         string strQuestionTwo ;
         string strQuestionThree ;
 
-        int test;
+        string test;
+
+       
 
         public frmSignUp()
         {
