@@ -45,7 +45,7 @@ namespace SU21_Final_Project
         string strQuestionTwo ;
         string strQuestionThree ;
 
-        string test3;
+       
 
        
 
@@ -79,9 +79,10 @@ namespace SU21_Final_Project
                     && tbxState.Text != "" && tbxEmail.Text != "" && tbxCreateUsername.Text != "" && tbxCreatePassword.Text != "" && tbxAnswerOne.Text != ""
                     && tbxAnswerTwo.Text != "" && tbxAnswerThree.Text != "")
                 {
+                    strCreatePassword = tbxCreatePassword.Text;
 
-                    //if (ValidPassword(strCreatePassword) == true)
-                    //{
+                    if (ValidPassword(strCreatePassword)==true)
+                    {
 
                         //INSERT RECORD FOR PERSON INFORMATION
                         strTitle = "Customer";
@@ -123,7 +124,7 @@ namespace SU21_Final_Project
 
                         //INSERT RECORD FOR USERS LOGON SECURITY ACCESS
                         strCreateUsername = tbxCreateUsername.Text;
-                        strCreatePassword = tbxCreatePassword.Text;
+                        
                         strAnswerOne = tbxAnswerOne.Text;
                         strAnswerTwo = tbxAnswerTwo.Text;
                         strAnswerThree = tbxAnswerThree.Text;
@@ -159,11 +160,11 @@ namespace SU21_Final_Project
                         MessageBox.Show("Client Successfully added");
 
                         Connection.Close();
-                   // }
-                   // else
-                    //{
+                    }
+                    else
+                    {
                         MessageBox.Show("Password format is not valid", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //}
+                    }
                 }
                 else
                 {
@@ -178,56 +179,58 @@ namespace SU21_Final_Project
 
             
         }
-        //public bool ValidPassword(string strPassword)
-        //{
-            
-        //    bool blnUpperCase = false;
-        //    bool blnLowerCase = false;
-        //    bool blnDigit = false;
-        //    bool blnLetter = false;
-        //    bool blnSpecialChar = false;
-        //    bool blnNoSpace = false;
-        //    string strSpecialChars = "~`!@#$%^&*()-_=+\\|[{]};:'\",<.>/? ";
-        //    char[] arrSpecialCh = strSpecialChars.ToCharArray();
 
+        //Check for password Validation
+        public bool ValidPassword(string strPassword)
+        {
 
-        //    for (int i = 0; i < strPassword.Length; i++)
-        //    {
+            if (strPassword.Length < 8 || strPassword.Length > 14)
+                return false;
 
-        //        if (!strPassword.Any(char.IsUpper))
-        //        {
-        //            blnUpperCase = true;
-        //        }
-        //        else if (strPassword.Any(char.IsLower))
-        //        {
-        //            blnLowerCase = true;
-        //        }
-        //        else if (strPassword.Any(char.IsDigit))
-        //        {
-        //            blnDigit = true;
-        //        }
-        //        else if (strPassword.Any(char.IsLetter))
-        //        {
-        //            blnLetter = true;
-        //        }
-        //        else if (strPassword.Contains(" "))
-        //        {
-        //            blnNoSpace = true;
-        //        }
+            else if (!strPassword.Any(char.IsUpper))
+            {
+                return false;
+            }
+            else if (!strPassword.Any(char.IsLower))
+            {
+                return false;
+            }
+            else if (!strPassword.Any(char.IsDigit))
+            {
+                return false;
+            }
 
-        //    }
-        //    foreach (char ch in arrSpecialCh)
-        //    {
-        //        if (strPassword.Contains(ch))
-        //            blnSpecialChar=true;
-        //    }
+            else if (strPassword.Contains(" "))
+            {
+                return false;
+            }
 
-        //    if (blnUpperCase && blnLowerCase && blnNoSpace && blnDigit && blnLetter && blnSpecialChar)
-        //    {
-        //        return true;
-        //    }
-        //    return false;
-        //}
+            if (!((strPassword.Contains("@")) ||
+                  (strPassword.Contains("#")) ||
+                  (strPassword.Contains("!")) ||
+                  (strPassword.Contains("~")) ||
+                  (strPassword.Contains("$")) ||
+                  (strPassword.Contains("%")) ||
+                  (strPassword.Contains("^")) ||
+                  (strPassword.Contains("&")) ||
+                  (strPassword.Contains("*")) ||
+                  (strPassword.Contains("(")) ||
+                  (strPassword.Contains(")")) ||
+                  (strPassword.Contains("-")) ||
+                  (strPassword.Contains("+")) ||
+                  (strPassword.Contains("/")) ||
+                  (strPassword.Contains(":")) ||
+                  (strPassword.Contains(".")) ||
+                  (strPassword.Contains(",")) ||
+                  (strPassword.Contains("<")) ||
+                  (strPassword.Contains(">")) ||
+                  (strPassword.Contains("?")) ||
+                  (strPassword.Contains("|"))))
+                    {
+                return false;
+            }
+            return true;
+        }
 
     }
 

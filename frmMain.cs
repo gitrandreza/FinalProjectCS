@@ -689,7 +689,6 @@ namespace SU21_Final_Project
                     readerItemID.Close();
                     
 
-
                     string strUnitPriceList = row.Cells["Unit Price"].Value.ToString();
                     string strQuantitySold = row.Cells["Quantity"].Value.ToString();
                     string strItemTotalPrice = row.Cells["Total Price"].Value.ToString();
