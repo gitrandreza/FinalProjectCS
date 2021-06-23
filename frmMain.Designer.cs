@@ -776,14 +776,14 @@ namespace SU21_Final_Project
             this.label9.TabIndex = 2;
             this.label9.Text = "Tax Amount";
             // 
-            // label8
+            // lblDiscount
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(17, 86);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(63, 17);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "Discount";
+            this.lblDiscount.AutoSize = true;
+            this.lblDiscount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblDiscount.Location = new System.Drawing.Point(149, 86);
+            this.lblDiscount.Name = "lblDiscount";
+            this.lblDiscount.Size = new System.Drawing.Size(2, 19);
+            this.lblDiscount.TabIndex = 5;
             // 
             // label7
             // 
