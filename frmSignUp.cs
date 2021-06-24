@@ -98,7 +98,15 @@ namespace SU21_Final_Project
                         strState = tbxState.Text;
                         strZip = tbxZip.Text;
                         strEmail = tbxEmail.Text;
-                        strSuffix = tbxSuffix.Text;
+
+                        if (cboSuffix.SelectedItem == null)
+                        {
+                            strSuffix = "N/A";
+                        }
+                        else
+                        {
+                            strSuffix = cboSuffix.SelectedItem.ToString();
+                        }
 
 
                         SqlCommand commandPerson = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Person(Title,NameFirst,NameMiddle,NameLast,Suffix,Address1,Address2,Address3,City,Zipcode" +
@@ -143,7 +151,7 @@ namespace SU21_Final_Project
                         int intPersonID = reader.GetInt32(0);
                         reader.Close();
 
-                        lblMessage.Text = intPersonID.ToString();//just to see if it's working
+                        
                         SqlCommand commandUsers = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Users(PersonID,Username,Password,Answer1,Answer2,RoleID,ThirdQuestion,SecondQuestion,FirstQuestion,Answer3) VALUES(@PersonID,@Username,@Password,@Answer1,@Answer2,@RoleID,@ThirdQuestion,@SecondQuestion,@FirstQuestion,@Answer3)", Connection);
                         commandUsers.Parameters.AddWithValue("@PersonID", intPersonID);
                         commandUsers.Parameters.AddWithValue("@Username", strCreateUsername);
@@ -157,9 +165,13 @@ namespace SU21_Final_Project
                         commandUsers.Parameters.AddWithValue("@Answer3", strAnswerThree);
 
                         commandUsers.ExecuteNonQuery();
-                        MessageBox.Show("Client Successfully added");
+                        MessageBox.Show("Client Successfully added", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
                         Connection.Close();
+
+                        new frmLogin().Show();
+                        this.Hide();
                     }
                     else
                     {

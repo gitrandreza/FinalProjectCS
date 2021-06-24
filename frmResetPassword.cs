@@ -18,9 +18,9 @@ namespace SU21_Final_Project
         SqlConnection Connection;
         SqlCommand command; 
         SqlDataReader reader;
-        string strDrink;
-        string strDog;
-        string strIdol;
+        string strAnswerOne;
+        string strAnswerTwo;
+        string strAnswerThree;
         string strEnterUsername;
         string strNewPassword;
         bool blnMatch=false;
@@ -30,12 +30,13 @@ namespace SU21_Final_Project
             InitializeComponent();
         }
 
+        //Check for username and security question
         private void btnCheck_Click(object sender, EventArgs e)
         {
 
-            strDrink = tbxDrink.Text;
-            strDog = tbxDog.Text;
-            strIdol = tbxIdol.Text;
+            strAnswerOne = tbxDrink.Text;
+            strAnswerTwo = tbxDog.Text;
+            strAnswerThree = tbxIdol.Text;
             strEnterUsername = tbxEnterUsername.Text;
             strNewPassword = tbxNewPassword.Text;
 
@@ -57,8 +58,9 @@ namespace SU21_Final_Project
                     //check through the user table column to find a matching value
                     if (reader["Username"].ToString() == strEnterUsername)
                     {
-                        if (reader["Answer1"].ToString() == strDrink && reader["Answer2"].ToString() == strDog && reader["Answer3"].ToString() == strIdol)
+                        if (reader["Answer1"].ToString() == strAnswerOne && reader["Answer2"].ToString() == strAnswerTwo && reader["Answer3"].ToString() == strAnswerThree)
                         {
+                            lblInvalidAnswers.Visible = false;
                             lblValidAnswers.Visible = true;
                             tbxNewPassword.Enabled = true;
                             btnNewPassword.Enabled = true;
@@ -102,25 +104,85 @@ namespace SU21_Final_Project
         //UPDATE AND SAVE THE NEW PASSWORD  
         private void btnNewPassword_Click(object sender, EventArgs e)
         {
-           
-            if (MessageBox.Show("Your password will be changed", "Confirmation", MessageBoxButtons.OKCancel) == DialogResult.OK)
 
+            strNewPassword = tbxNewPassword.Text;
+            if (ValidPassword(strNewPassword) == true)
             {
 
-                Connection.Open();
-                strNewPassword = tbxNewPassword.Text;
-                string updateQuery = "UPDATE RandrezaVoharisoaM21Su2332.Users set Password = @Password where Username ='" + strEnterUsername + "' ";
-                SqlCommand updateCommand = new SqlCommand(updateQuery, Connection);
-                SqlParameter sqlParams = updateCommand.Parameters.AddWithValue("@Password", strNewPassword);
-                updateCommand.ExecuteNonQuery();
-                MessageBox.Show("New Password saved", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Connection.Close();
-                this.Hide();
-                new frmLogin().Show();
+                if (MessageBox.Show("Are you sure you want to change your password", "Confirmation", MessageBoxButtons.OKCancel) == DialogResult.OK)
 
+                {
+
+                    Connection.Open();
+
+                    string updateQuery = "UPDATE RandrezaVoharisoaM21Su2332.Users set Password = @Password where Username ='" + strEnterUsername + "' ";
+                    SqlCommand updateCommand = new SqlCommand(updateQuery, Connection);
+                    SqlParameter sqlParams = updateCommand.Parameters.AddWithValue("@Password", strNewPassword);
+                    updateCommand.ExecuteNonQuery();
+                    MessageBox.Show("New Password saved", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    Connection.Close();
+                    this.Hide();
+                    new frmLogin().Show();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Password format is not valid", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                tbxNewPassword.Focus();
+            }
+ 
+        }
+        //Check for password Validation
+        public bool ValidPassword(string strPassword)
+        {
+
+            if (strPassword.Length < 8 || strPassword.Length > 14)
+                return false;
+
+            else if (!strPassword.Any(char.IsUpper))
+            {
+                return false;
+            }
+            else if (!strPassword.Any(char.IsLower))
+            {
+                return false;
+            }
+            else if (!strPassword.Any(char.IsDigit))
+            {
+                return false;
             }
 
-          
+            else if (strPassword.Contains(" "))
+            {
+                return false;
+            }
+
+            if (!((strPassword.Contains("@")) ||
+                  (strPassword.Contains("#")) ||
+                  (strPassword.Contains("!")) ||
+                  (strPassword.Contains("~")) ||
+                  (strPassword.Contains("$")) ||
+                  (strPassword.Contains("%")) ||
+                  (strPassword.Contains("^")) ||
+                  (strPassword.Contains("&")) ||
+                  (strPassword.Contains("*")) ||
+                  (strPassword.Contains("(")) ||
+                  (strPassword.Contains(")")) ||
+                  (strPassword.Contains("-")) ||
+                  (strPassword.Contains("+")) ||
+                  (strPassword.Contains("/")) ||
+                  (strPassword.Contains(":")) ||
+                  (strPassword.Contains(".")) ||
+                  (strPassword.Contains(",")) ||
+                  (strPassword.Contains("<")) ||
+                  (strPassword.Contains(">")) ||
+                  (strPassword.Contains("?")) ||
+                  (strPassword.Contains("|"))))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

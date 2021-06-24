@@ -17,6 +17,7 @@ namespace SU21_Final_Project
         private double price;
         private double cost;
         private string category;
+        private string description;
         public byte[] image;
 
 
@@ -25,9 +26,10 @@ namespace SU21_Final_Project
 
         }
         //Overload constructor with 4 parameters
-        public Items(string name, int quantity, double price, double cost, string category, byte[] image)
+        public Items(string name, string description, int quantity, double price, double cost, string category, byte[] image)
         {
            Name = name;
+            description = description;
            Quantity = quantity;
            Price = price;
             Cost = cost;
@@ -46,6 +48,18 @@ namespace SU21_Final_Project
             get
             {
                 return name;
+            }
+        }
+
+        public string Description
+        {
+            set
+            {
+                description = value;
+            }
+            get
+            {
+                return description;
             }
         }
         public int Quantity

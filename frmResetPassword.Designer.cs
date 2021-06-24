@@ -106,9 +106,9 @@ namespace SU21_Final_Project
             // 
             // btnCheck
             // 
-            this.btnCheck.Location = new System.Drawing.Point(300, 242);
+            this.btnCheck.Location = new System.Drawing.Point(276, 242);
             this.btnCheck.Name = "btnCheck";
-            this.btnCheck.Size = new System.Drawing.Size(75, 23);
+            this.btnCheck.Size = new System.Drawing.Size(143, 23);
             this.btnCheck.TabIndex = 39;
             this.btnCheck.Text = "&Check";
             this.btnCheck.UseVisualStyleBackColor = true;
@@ -181,11 +181,11 @@ namespace SU21_Final_Project
             // btnNewPassword
             // 
             this.btnNewPassword.Enabled = false;
-            this.btnNewPassword.Location = new System.Drawing.Point(300, 375);
+            this.btnNewPassword.Location = new System.Drawing.Point(276, 369);
             this.btnNewPassword.Name = "btnNewPassword";
-            this.btnNewPassword.Size = new System.Drawing.Size(75, 23);
+            this.btnNewPassword.Size = new System.Drawing.Size(143, 29);
             this.btnNewPassword.TabIndex = 47;
-            this.btnNewPassword.Text = "&Save";
+            this.btnNewPassword.Text = "&Save Password";
             this.btnNewPassword.UseVisualStyleBackColor = true;
             this.btnNewPassword.Click += new System.EventHandler(this.btnNewPassword_Click);
             // 

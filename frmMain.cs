@@ -32,7 +32,7 @@ namespace SU21_Final_Project
         SqlConnection Connection;
         SqlDataAdapter dataAdapter;
         DataTable dataTable;
-        frmLogin frmLogin =new frmLogin();
+        frmLogin frmLogin = new frmLogin();
 
         //Instantiate Item class
         Items myItems = new Items();
@@ -42,20 +42,25 @@ namespace SU21_Final_Project
         double dblAmountTax;
         double dblTotalAmount;
         double dblDiscount = 0;
-        string strQtyList;
-        string strTotalPriceList;
+
         int intSaleId;
-        int intUpdateQuantity;
+
+
+        int intQuantityAvailable;
+        int intQuantityNeed;
+
+
         public frmMain()
         {
             InitializeComponent();
         }
-        
-  
-        
+
+
+
         private void frmMain_Load(object sender, EventArgs e)
         {
             lblDate.Text = DateTime.Now.ToShortDateString();//Get date
+
 
             try
             {
@@ -70,6 +75,8 @@ namespace SU21_Final_Project
                 reader.Read();
                 lblNameOfUser.Text = reader["NameLast"].ToString();
                 reader.Close();
+
+
                 Connection.Close();
 
             }
@@ -78,9 +85,8 @@ namespace SU21_Final_Project
                 MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            
 
-            DisplayClothesItems();
+            DisplayAllItems();
 
         }
 
@@ -90,7 +96,7 @@ namespace SU21_Final_Project
             try
             {
                 Connection.Open();
-                dataAdapter = new SqlDataAdapter("SELECT Description, Quantity, RetailPrice  FROM RandrezaVoharisoaM21Su2332.Items", Connection);
+                dataAdapter = new SqlDataAdapter("SELECT Name, Quantity, RetailPrice ,Description FROM RandrezaVoharisoaM21Su2332.Items", Connection);
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvAll.DataSource = dataTable;
@@ -108,10 +114,10 @@ namespace SU21_Final_Project
             try
             {
                 Connection.Open();
-                dataAdapter = new SqlDataAdapter("SELECT Description, Quantity, RetailPrice  FROM RandrezaVoharisoaM21Su2332.Items WHERE CategoryID = 2 ;", Connection);
+                dataAdapter = new SqlDataAdapter("SELECT Name, Quantity, RetailPrice,Description   FROM RandrezaVoharisoaM21Su2332.Items WHERE CategoryID = 2 ;", Connection);
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
-                dgvGift.DataSource = dataTable;
+                dgvAll.DataSource = dataTable;
 
                 Connection.Close();
             }
@@ -126,10 +132,10 @@ namespace SU21_Final_Project
             try
             {
                 Connection.Open();
-                dataAdapter = new SqlDataAdapter("SELECT Description, Quantity, RetailPrice  FROM RandrezaVoharisoaM21Su2332.Items WHERE CategoryID = 1 ;", Connection);
+                dataAdapter = new SqlDataAdapter("SELECT Name, Quantity, RetailPrice,Description  FROM RandrezaVoharisoaM21Su2332.Items WHERE CategoryID = 1 ;", Connection);
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
-                dgvClothes.DataSource = dataTable;
+                dgvAll.DataSource = dataTable;
 
                 Connection.Close();
             }
@@ -144,10 +150,10 @@ namespace SU21_Final_Project
             try
             {
                 Connection.Open();
-                dataAdapter = new SqlDataAdapter("SELECT Description, Quantity, RetailPrice  FROM RandrezaVoharisoaM21Su2332.Items WHERE CategoryID = 3 ;", Connection);
+                dataAdapter = new SqlDataAdapter("SELECT Name, Quantity, RetailPrice,Description  FROM RandrezaVoharisoaM21Su2332.Items WHERE CategoryID = 3 ;", Connection);
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
-                dgvBags.DataSource = dataTable;
+                dgvAll.DataSource = dataTable;
 
                 Connection.Close();
             }
@@ -168,7 +174,7 @@ namespace SU21_Final_Project
             {
                 Connection.Open();
                 byte[] imgData;
-                SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where Description = '" + selectedItem + "'", Connection);
+                SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where Name = '" + selectedItem + "'", Connection);
                 SqlDataReader reader = cmd.ExecuteReader();
                 reader.Read();
                 long bufLength = reader.GetBytes(0, 0, null, 0, 0);
@@ -186,133 +192,34 @@ namespace SU21_Final_Project
             }
 
         }
-
-        //Tab selection
-        private void tabItemCategory_Selected(object sender, TabControlEventArgs e)
+        //SELECT by Category
+        private void cboCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            if (tabItemCategory.SelectedTab.Name == "tabAll")
+            if (cboCategory.SelectedIndex == 0)
             {
                 DisplayAllItems();
             }
 
-            if (tabItemCategory.SelectedTab.Name == "tabGifts")
+            else if (cboCategory.SelectedItem.ToString() == "Bags")
+            {
+                DisplayBagsItems();
+            }
+
+            else if (cboCategory.SelectedItem.ToString() == "Gifts")
             {
                 DisplayGiftItems();
             }
-
-            if (tabItemCategory.SelectedTab.Name == "tabClothes")
+            else if (cboCategory.SelectedItem.ToString() == "Clothes")
             {
                 DisplayClothesItems();
             }
-
-            if (tabItemCategory.SelectedTab.Name == "tabBags")
-            {
-
-                DisplayBagsItems();
-
-
-            }
         }
 
 
-
-        //*************************ITEM SELECTION****************************************
-        private void dgvGift_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                Connection.Open();
-
-                if (e.RowIndex >= 0)
-                {
-                    //instantiate object from Items class and assign value from cell
-                    DataGridViewRow row = this.dgvGift.Rows[e.RowIndex];
-
-                    myItems.Name = row.Cells["Description"].Value.ToString();
-                    string strQuantity = row.Cells["Quantity"].Value.ToString();
-                    int intQuantity;
-                    bool intResultTryParse = int.TryParse(strQuantity, out intQuantity);
-                    if (intResultTryParse == true)
-                    {
-                        myItems.Quantity = intQuantity;
-                    }
-
-                    string strPrice = row.Cells["RetailPrice"].Value.ToString();
-                    double dblPrice;
-                    bool dblResultTryParse = double.TryParse(strPrice, out dblPrice);
-                    if (dblResultTryParse == true)
-                    {
-                        myItems.Price = dblPrice;
-                    }
-
-
-
-                    lblQuantityAvailable.Text = myItems.Quantity.ToString();
-                    lblPrice.Text = myItems.Price.ToString();
-                    lblItemName.Text = myItems.Name;
-
-                }
-
-                Connection.Close();
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            DisplayImage(myItems.Name, pbxGift);
-        }
-
-        private void dgvClothes_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                Connection.Open();
-
-                if (e.RowIndex >= 0)
-                {
-                    //instantiate object from Items class and assign value from cell
-                    DataGridViewRow row = this.dgvClothes.Rows[e.RowIndex];
-
-                    myItems.Name = row.Cells["Description"].Value.ToString();
-                    string strQuantity = row.Cells["Quantity"].Value.ToString();
-                    int intQuantity;
-                    bool intResultTryParse = int.TryParse(strQuantity, out intQuantity);
-                    if (intResultTryParse == true)
-                    {
-                        myItems.Quantity = intQuantity;
-                    }
-
-                    string strPrice = row.Cells["RetailPrice"].Value.ToString();
-                    double dblPrice;
-                    bool dblResultTryParse = double.TryParse(strPrice, out dblPrice);
-                    if (dblResultTryParse == true)
-                    {
-                        myItems.Price = dblPrice;
-                    }
-
-
-                    //Display in the label
-                    lblQuantityAvailable.Text = myItems.Quantity.ToString();
-                    lblPrice.Text = myItems.Price.ToString();
-                    lblItemName.Text = myItems.Name;
-
-                }
-
-                Connection.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            DisplayImage(myItems.Name, pbxClothes);
-        }
-
+        //ITEM SELECTION 
         private void dgvAll_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
             try
             {
                 Connection.Open();
@@ -322,13 +229,15 @@ namespace SU21_Final_Project
                     //instantiate object from Items class and assign value from cell
                     DataGridViewRow row = this.dgvAll.Rows[e.RowIndex];
 
-                    myItems.Name = row.Cells["Description"].Value.ToString();
-                    string strQuantity = row.Cells["Quantity"].Value.ToString();
-                    int intQuantity;
-                    bool intResultTryParse = int.TryParse(strQuantity, out intQuantity);
+                    myItems.Name = row.Cells["Name"].Value.ToString();
+                    myItems.Description = row.Cells["Description"].Value.ToString();
+
+                    string strQuantityAvailable = row.Cells["Quantity"].Value.ToString();
+
+                    bool intResultTryParse = int.TryParse(strQuantityAvailable, out intQuantityAvailable);
                     if (intResultTryParse == true)
                     {
-                        myItems.Quantity = intQuantity;
+                        myItems.Quantity = intQuantityAvailable;
                     }
 
                     string strPrice = row.Cells["RetailPrice"].Value.ToString();
@@ -339,11 +248,11 @@ namespace SU21_Final_Project
                         myItems.Price = dblPrice;
                     }
 
-
                     //Display in the label
                     lblQuantityAvailable.Text = myItems.Quantity.ToString();
-                    lblPrice.Text = myItems.Price.ToString();
-                    lblItemName.Text = myItems.Name;
+                    lblPrice.Text = myItems.Price.ToString("C2");
+                    lblName.Text = myItems.Name;
+                    tbxDescription.Text = myItems.Description;
 
                 }
 
@@ -358,56 +267,8 @@ namespace SU21_Final_Project
             DisplayImage(myItems.Name, pbxAll);
         }
 
-        private void dgvBags_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                Connection.Open();
 
-                if (e.RowIndex >= 0)
-                {
-                    //instantiate object from Items class and assign value from cell
-                    DataGridViewRow row = this.dgvBags.Rows[e.RowIndex];
-
-                    myItems.Name = row.Cells["Description"].Value.ToString();
-                    string strQuantity = row.Cells["Quantity"].Value.ToString();
-                    int intQuantity;
-                    bool intResultTryParse = int.TryParse(strQuantity, out intQuantity);
-                    if (intResultTryParse == true)
-                    {
-                        myItems.Quantity = intQuantity;
-                    }
-
-                    string strPrice = row.Cells["RetailPrice"].Value.ToString();
-                    double dblPrice;
-                    bool dblResultTryParse = double.TryParse(strPrice, out dblPrice);
-                    if (dblResultTryParse == true)
-                    {
-                        myItems.Price = dblPrice;
-                    }
-
-
-                    //Display in the label
-                    lblQuantityAvailable.Text = myItems.Quantity.ToString();
-                    lblPrice.Text = myItems.Price.ToString();
-                    lblItemName.Text = myItems.Name;
-
-                }
-                Connection.Close();
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            DisplayImage(myItems.Name, pbxBags);
-        }
         //***************************END ITEM SELECTION********************************************
-
-
-
 
 
         private void btnAdmin_Click(object sender, EventArgs e)
@@ -416,18 +277,12 @@ namespace SU21_Final_Project
             this.Hide();
         }
 
-        private void btnSignIn_Click(object sender, EventArgs e)
-        {
-            new frmLogin().Show();
-            this.Hide();
-        }
-
         //***********************ADD LIST*********************************************
 
 
         //Method to pass value in DatagridviewList
         private void addCart(string strName, string strDecoration, string strColor, string strSize,
-            string strQuantity,string strUnitPrice, string strTotalPrice)
+            string strQuantity, string strUnitPrice, string strTotalPrice)
         {
             string[] row = { strName, strDecoration, strColor, strSize, strQuantity, strUnitPrice, strTotalPrice };
             dgvList.Rows.Add(row);
@@ -438,106 +293,116 @@ namespace SU21_Final_Project
         {
             if (tbxQuantity.Text != "")
             {
-                int intQuantity;
 
-                string strItemQuantity;
-                strItemQuantity = tbxQuantity.Text;
-               
-                bool intQuantityTryParse = int.TryParse(strItemQuantity, out intQuantity);
+                string strQuantityNeed;
+                strQuantityNeed = tbxQuantity.Text;
 
-                if (intQuantity > 0 && intQuantity < int.MaxValue)
+                bool intQuantityTryParse = int.TryParse(strQuantityNeed, out intQuantityNeed);
+
+                if (intQuantityNeed > 0 && intQuantityNeed < int.MaxValue)
                 {
-                    if (intQuantity < myItems.Quantity)
+                    if (intQuantityNeed < myItems.Quantity)
                     {
-                        //Build datagriedviewList 
-                        dgvList.ColumnCount = 7;
-                        dgvList.Columns[0].Name = "Name";
-                        dgvList.Columns[1].Name = "Type of Decoration";
-                        dgvList.Columns[2].Name = "Color";
-                        dgvList.Columns[3].Name = "Size";
-                        dgvList.Columns[4].Name = "Quantity";
-                        dgvList.Columns[5].Name = "Unit Price";
-                        dgvList.Columns[6].Name = "Total Price";
-
-                        //Get selection information from input 
-                        string strItemName = lblItemName.Text;
-
-                        string strItemDeco = "N/A";
-                        if (radEmbroidered.Checked == true)
+                        if (radEmbroidered.Checked == true || radPrinted.Checked == true || radBlank.Checked == true)
                         {
-                            strItemDeco = "Embroidered";
-                        }
-                        else if (radPrinted.Checked == true)
-                        {
-                            strItemDeco = "Printed";
-                        }
+                            if (radSmall.Checked == true || radMedium.Checked == true || radLarge.Checked == true)
+                            {
+                                //Build datagriedviewList 
+                                dgvList.ColumnCount = 7;
+                                dgvList.Columns[0].Name = "Name";
+                                dgvList.Columns[1].Name = "Type of Decoration";
+                                dgvList.Columns[2].Name = "Color";
+                                dgvList.Columns[3].Name = "Size";
+                                dgvList.Columns[4].Name = "Quantity";
+                                dgvList.Columns[5].Name = "Unit Price";
+                                dgvList.Columns[6].Name = "Total Price";
 
-                        else if (radBlank.Checked == true)
-                        {
-                            strItemDeco = "Blank";
-                        }
+                                //Get selection information from input 
 
-                        string strItemColor;
-                        if (cboColor.SelectedItem == null)
-                        {
-                            strItemColor = "N/A";
 
+                                string strItemDeco = "N/A";
+                                if (radEmbroidered.Checked == true)
+                                {
+                                    strItemDeco = "Embroidered";
+                                }
+                                else if (radPrinted.Checked == true)
+                                {
+                                    strItemDeco = "Printed";
+                                }
+
+                                else if (radBlank.Checked == true)
+                                {
+                                    strItemDeco = "Blank";
+                                }
+
+                                string strItemColor;
+                                if (cboColor.SelectedItem == null)
+                                {
+                                    strItemColor = "N/A";
+
+                                }
+                                else
+                                {
+                                    strItemColor = cboColor.SelectedItem.ToString();
+                                }
+
+
+                                string strItemSize = "N/A";
+                                if (radSmall.Checked == true)
+                                {
+                                    strItemSize = "Small";
+                                }
+                                else if (radMedium.Checked == true)
+                                {
+                                    strItemSize = "Medium";
+                                }
+
+                                else if (radLarge.Checked == true)
+                                {
+                                    strItemSize = "Large";
+                                }
+
+                                double dblTotalPrice = myItems.Price * intQuantityNeed;
+
+                                //lblMessage.Text =dblTotalPrice.ToString();
+                                string strItemTotalPrice = dblTotalPrice.ToString();
+
+                                //Call add cart function to display selection in the cart
+                                addCart(myItems.Name, strItemDeco, strItemColor, strItemSize, strQuantityNeed, myItems.Price.ToString(), strItemTotalPrice);
+
+
+
+                                //Decrease Quantity Item selected
+                                myItems.Quantity = myItems.Quantity - intQuantityNeed;
+
+                                lblQuantityAvailable.Text = myItems.Quantity.ToString();
+                                //grab current row index selected
+                                int intIndexRowSelected = dgvAll.CurrentCell.RowIndex;
+                                //Insert quantity updated to current row and Cell "Quantity" index 1
+                                dgvAll.Rows[intIndexRowSelected].Cells[1].Value = myItems.Quantity.ToString();
+
+
+                                //Reset Selection
+                                tbxQuantity.Text = "";
+                                radEmbroidered.Checked = false;
+                                radPrinted.Checked = false;
+                                radBlank.Checked = false;
+                                radLarge.Checked = false;
+                                radMedium.Checked = false;
+                                radSmall.Checked = false;
+                                cboColor.Text = "";
+                                lblQuantityAvailable.Text = "";
+                            }
+                            else
+                            {
+                                MessageBox.Show("Please choose size", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
                         else
                         {
-                            strItemColor = cboColor.SelectedItem.ToString();
+                            MessageBox.Show("Please choose decoration", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                         }
-
-
-                        string strItemSize = "N/A";
-                        if (radSmall.Checked == true)
-                        {
-                            strItemSize = "Small";
-                        }
-                        else if (radMedium.Checked == true)
-                        {
-                            strItemSize = "Medium";
-                        }
-
-                        else if (radLarge.Checked == true)
-                        {
-                            strItemSize = "Large";
-                        }
-
-                        string strPrice = lblPrice.Text;
-                        double dblPrice;
-                        bool dblPriceTryParse = double.TryParse(strPrice, out dblPrice);
-
-                        double dblTotalPrice = dblPrice * intQuantity;
-                        //lblMessage.Text =dblTotalPrice.ToString();
-                        string strItemTotalPrice = dblTotalPrice.ToString();
-
-                        //Call add cart function to display selection in the cart
-                        addCart(strItemName, strItemDeco, strItemColor, strItemSize, strItemQuantity, strPrice, strItemTotalPrice);
-
-                        //Decrease Quantity Item selected
-
-                        intUpdateQuantity = myItems.Quantity - intQuantity;
-
-                        //grab current row index selected
-                        int intIndexRowSelected;
-                        if (tabItemCategory.SelectedTab.Name == "tabAll")
-                        {
-                            intIndexRowSelected = dgvAll.CurrentCell.RowIndex;
-                            //Insert quantity updated to current row and Cell "Quantity" index 2
-                            dgvAll.Rows[intIndexRowSelected].Cells[2].Value = Convert.ToString(intUpdateQuantity);
-                        }
-                        
-
-                        //reset input
-                        tbxQuantity.Text = "";
-                        radEmbroidered.Checked = false;
-                        radPrinted.Checked = false;
-                        radBlank.Checked = false;
-                        radLarge.Checked = false;
-                        radMedium.Checked = false;
-                        radSmall.Checked = false;
-                        cboColor.Text = "";
                     }
                     else
                     {
@@ -555,7 +420,7 @@ namespace SU21_Final_Project
             }
             else
             {
-                MessageBox.Show("Please add quantity", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);               
+                MessageBox.Show("Please add quantity", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 tbxQuantity.Focus();
             }
         }
@@ -568,10 +433,17 @@ namespace SU21_Final_Project
             lblTaxAmount.Text = "";
             lblTotalAmount.Text = "";
 
-            if (dgvList.CurrentCell.RowIndex > -1)
+            foreach (DataGridViewRow row in dgvList.SelectedRows)
             {
-                dgvList.Rows.RemoveAt(dgvList.CurrentCell.RowIndex);
-                dgvList.Refresh();
+                dgvList.Rows.RemoveAt(row.Index);
+                //Increase Quantity Item selected
+                myItems.Quantity = myItems.Quantity + intQuantityNeed;
+
+                lblQuantityAvailable.Text = myItems.Quantity.ToString();
+                //grab current row index selected
+                int intIndexRowSelected = dgvAll.CurrentCell.RowIndex;
+                //Insert quantity updated to current row and Cell "Quantity" index 1
+                dgvAll.Rows[intIndexRowSelected].Cells[1].Value = myItems.Quantity.ToString();
             }
 
         }
@@ -581,8 +453,8 @@ namespace SU21_Final_Project
         {
             string strTotalPriceList;
             double dblTotalPriceList = 0;
-            double dblTotalList = 0;           
-            
+            double dblTotalList = 0;
+
 
             if (dgvList.Rows.Count > 0)//make sure data list is not empty
             {
@@ -596,9 +468,6 @@ namespace SU21_Final_Project
                     dblTotalList = dblTotalList + dblTotalPriceList;
                 }
 
-
-
-
                 dblAmountTax = dblTotalList * dblTax;
                 dblSubTotal = dblTotalList;
                 dblTotalAmount = dblTotalList + dblAmountTax;
@@ -609,15 +478,12 @@ namespace SU21_Final_Project
 
             }
 
-            // string strTotalPriceList = row.Cells["RetailPrice"].Value.ToString();
-            //double dblTotalPriceList;
-            // bool dblResultTryParse = double.TryParse(strTotalPriceList, out dblTotalPriceList);
         }
 
         //Get UserID value from database and display to the label user when login is valid
         public string LabelUserID
         {
-            
+
             get { return lblUser.Text; }
             set { lblUser.Text = value; }
         }
@@ -626,97 +492,117 @@ namespace SU21_Final_Project
         //Store sale in the Database when checked out
         private void btnCheckout_Click(object sender, EventArgs e)
         {
-            int intUserID;
-            string strUserID = lblUser.Text;
-            bool intResultTryParse = int.TryParse(strUserID, out intUserID);
-            string strDate = lblDate.Text;
-           
-            try
+            if (lblTotalAmount.Text != "")
             {
+                int intUserID;
+                string strUserID = lblUser.Text;
+                bool intResultTryParse = int.TryParse(strUserID, out intUserID);
+                string strDate = lblDate.Text;
 
-                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
-                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            try
-            {
-
-                Connection.Open();
-                //Store Sales Report
-                SqlCommand commandSalesReport = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesReport(UserID,CreationDate,SubTotal,DiscountAmount,TaxAmount,TotalAmount) " +
-                    "VALUES(@UserID,@CreationDate,@SubTotal,@DiscountAmount,@TaxAmount,@TotalAmount)", Connection);
-                commandSalesReport.Parameters.AddWithValue("@UserID", intUserID);
-                commandSalesReport.Parameters.AddWithValue("@CreationDate", strDate);
-                commandSalesReport.Parameters.AddWithValue("@SubTotal", dblSubTotal);
-                commandSalesReport.Parameters.AddWithValue("@DiscountAmount", dblDiscount);
-                commandSalesReport.Parameters.AddWithValue("@TaxAmount", dblAmountTax);
-                commandSalesReport.Parameters.AddWithValue("@TotalAmount", dblTotalAmount);
-
-                commandSalesReport.ExecuteNonQuery();
-
-               
-
-                //Get the last SaleID using Max to insert as FK to the Sales Report table
-                string querySaleID = "SELECT MAX(SaleId) from RandrezaVoharisoaM21Su2332.SalesReport";
-                SqlCommand commandSalesID = new SqlCommand(querySaleID, Connection);
-
-                //gets Sale Id from insert sale report in the table sales report
-                SqlDataReader readerSaleID = commandSalesID.ExecuteReader();
-                readerSaleID.Read();
-                intSaleId = readerSaleID.GetInt32(0);
-                readerSaleID.Close();
-
-                //Loop through the data grid view List to store sales details in database table
-                foreach (DataGridViewRow row in dgvList.Rows)
+                try
                 {
-                    //Store List in the table Sales Details
-                    SqlCommand commandSalesDetails = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesDetails(SaleID,ItemID,UnitPrice,QuantitySold,TotalPrice) " +
-                      "VALUES(@SaleID,@ItemID,@UnitPrice,@QuantitySold,@TotalPrice)", Connection);
-                    //Select item ID of each Item Name in the data grid view list
-                    string strItemID;
-                    string strNameItem = row.Cells["Name"].Value.ToString();
-                    SqlCommand commandItemID= new SqlCommand("SELECT RandrezaVoharisoaM21Su2332.Items.ItemID FROM RandrezaVoharisoaM21Su2332.Items " +
-                        "FULL JOIN RandrezaVoharisoaM21Su2332.SalesDetails " +
-                        "ON RandrezaVoharisoaM21Su2332.SalesDetails.ItemID = RandrezaVoharisoaM21Su2332.Items.ItemID WHERE Description = '" + strNameItem + "'", Connection);
-                    SqlDataReader readerItemID = commandItemID.ExecuteReader();
-                    readerItemID.Read();
-                    strItemID = readerItemID["ItemID"].ToString();
-                    readerItemID.Close();
-                    
 
-                    string strUnitPriceList = row.Cells["Unit Price"].Value.ToString();
-                    string strQuantitySold = row.Cells["Quantity"].Value.ToString();
-                    string strItemTotalPrice = row.Cells["Total Price"].Value.ToString();
-
-                    commandSalesDetails.Parameters.AddWithValue("@SaleID", intSaleId);
-                    commandSalesDetails.Parameters.AddWithValue("@ItemID", strItemID);
-                    commandSalesDetails.Parameters.AddWithValue("@UnitPrice", strUnitPriceList);
-                    commandSalesDetails.Parameters.AddWithValue("@QuantitySold", strQuantitySold);
-                    commandSalesDetails.Parameters.AddWithValue("@TotalPrice", strItemTotalPrice);
-
-                    commandSalesDetails.ExecuteNonQuery();
+                    Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                        "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
-                MessageBox.Show("Inserted Successfully ");
-                Connection.Close();
+                try
+                {
+
+                    Connection.Open();
+                    //Store Sales Report
+                    SqlCommand commandSalesReport = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesReport(UserID,CreationDate,SubTotal,DiscountAmount,TaxAmount,TotalAmount) " +
+                        "VALUES(@UserID,@CreationDate,@SubTotal,@DiscountAmount,@TaxAmount,@TotalAmount)", Connection);
+                    commandSalesReport.Parameters.AddWithValue("@UserID", intUserID);
+                    commandSalesReport.Parameters.AddWithValue("@CreationDate", strDate);
+                    commandSalesReport.Parameters.AddWithValue("@SubTotal", dblSubTotal);
+                    commandSalesReport.Parameters.AddWithValue("@DiscountAmount", dblDiscount);
+                    commandSalesReport.Parameters.AddWithValue("@TaxAmount", dblAmountTax);
+                    commandSalesReport.Parameters.AddWithValue("@TotalAmount", dblTotalAmount);
+
+                    commandSalesReport.ExecuteNonQuery();
+
+
+
+                    //Get the last SaleID using Max to insert as FK to the Sales Report table
+                    string querySaleID = "SELECT MAX(SaleId) from RandrezaVoharisoaM21Su2332.SalesReport";
+                    SqlCommand commandSalesID = new SqlCommand(querySaleID, Connection);
+
+                    //gets Sale Id from insert sale report in the table sales report
+                    SqlDataReader readerSaleID = commandSalesID.ExecuteReader();
+                    readerSaleID.Read();
+                    intSaleId = readerSaleID.GetInt32(0);
+                    readerSaleID.Close();
+
+                    //Loop through the data grid view List to store sales details in database table
+                    foreach (DataGridViewRow row in dgvList.Rows)
+                    {
+                        //Store List in the table Sales Details
+                        SqlCommand commandSalesDetails = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesDetails(SaleID,ItemID,QuantitySold) " +
+                          "VALUES(@SaleID,@ItemID,@QuantitySold)", Connection);
+                        //Select item ID of each Item Name in the data grid view list
+                        string strItemID;
+                        string strNameItem = row.Cells["Name"].Value.ToString();
+                        SqlCommand commandItemID = new SqlCommand("SELECT RandrezaVoharisoaM21Su2332.Items.ItemID FROM RandrezaVoharisoaM21Su2332.Items " +
+                            "FULL JOIN RandrezaVoharisoaM21Su2332.SalesDetails " +
+                            "ON RandrezaVoharisoaM21Su2332.SalesDetails.ItemID = RandrezaVoharisoaM21Su2332.Items.ItemID WHERE Name = '" + strNameItem + "'", Connection);
+                        SqlDataReader readerItemID = commandItemID.ExecuteReader();
+                        readerItemID.Read();
+                        strItemID = readerItemID["ItemID"].ToString();
+                        readerItemID.Close();
+
+                        string strQuantitySold = row.Cells["Quantity"].Value.ToString();
+
+                        commandSalesDetails.Parameters.AddWithValue("@SaleID", intSaleId);
+                        commandSalesDetails.Parameters.AddWithValue("@ItemID", strItemID);
+                        commandSalesDetails.Parameters.AddWithValue("@QuantitySold", strQuantitySold);
+
+
+                        commandSalesDetails.ExecuteNonQuery();
+
+                    }
+
+                    //Loop through the data grid view All column quantity to UPDATE QUANTITY in database table
+                    foreach (DataGridViewRow row in dgvAll.Rows)
+                    {
+                        
+                        string strQuantityUpdate= row.Cells["Quantity"].Value.ToString();
+                        int intQuantityDgv;
+                        bool blnConvert= int.TryParse(strQuantityUpdate, out intQuantityDgv);
+                        string strNameItem= row.Cells["Name"].Value.ToString();
+                        //UPDATE quantity in the table Items
+                        string strUpdateQuery = "UPDATE RandrezaVoharisoaM21Su2332.Items SET Quantity = @Quantity where Name= '" + strNameItem + "'";
+                        SqlCommand commandUpQuantity = new SqlCommand(strUpdateQuery, Connection);
+                       
+                        SqlParameter sqlParams = commandUpQuantity.Parameters.AddWithValue("@Quantity", intQuantityDgv);
+                        commandUpQuantity.ExecuteNonQuery();
+                        
+                    }
+
+                    Connection.Close();
+                    if (MessageBox.Show("Do you want your receipt?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        PrintReport(GenerateReport());
+
+                    }
+
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message, "Error Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
-            catch (SqlException ex)
+            else
             {
-                MessageBox.Show(ex.Message, "Error Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please  Display Amount before checking out", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-
-            //Store List in the table Sales Details
-
-
-
-            //Decrease quantity of Item in the database
         }
 
         //Display receipt in HTML
@@ -729,8 +615,6 @@ namespace SU21_Final_Project
             css.AppendLine("h1 {color: blue;}");
             css.AppendLine("h2 {color: red;}");
             css.AppendLine("</style>");
-
-       
 
             html.AppendLine("<html>");
             html.AppendLine($"<head>{css}<title>{"Imprint Store Report"}</title></head>");
@@ -775,7 +659,7 @@ namespace SU21_Final_Project
         // Write (and overwrite) to the hard drive using the same filename of "Report.html"
         private void PrintReport(StringBuilder html)
         {
-            
+
             try
             {
                 // A "using" statement will automatically close a file after opening it.               
@@ -798,15 +682,20 @@ namespace SU21_Final_Project
                 writer.WriteLine(html);
             }
         }
-        private void btnReceipt_Click(object sender, EventArgs e)
+
+        private void btnExit_Click(object sender, EventArgs e)
         {
-            PrintReport(GenerateReport());
+            if (MessageBox.Show("Do you want to exit the application", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
-        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnLogout_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            new frmLogin();
+            this.Hide();
         }
     }
-    }
+}
 

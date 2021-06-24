@@ -15,6 +15,8 @@ namespace SU21_Final_Project
     public partial class frmAdmin : Form
     {
         SqlConnection Connection;
+        string strItemName;
+
 
         public frmAdmin()
         {
@@ -23,9 +25,10 @@ namespace SU21_Final_Project
 
         private void btnInsertImage_Click(object sender, EventArgs e)
         {
+            strItemName = cboItemName.SelectedItem.ToString();
             try
             {
-               
+
                 Connection.Open();
                 Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
@@ -38,14 +41,14 @@ namespace SU21_Final_Project
             }
             try
             {
-               
+
                 //insert image
 
                 byte[] image = File.ReadAllBytes("C:\\Grocery.png");
 
                 Connection.Open();
 
-                string insertQuery = "UPDATE RandrezaVoharisoaM21Su2332.Items set Image = @Image where ItemID= 8029"; // @Image is a parameter we will fill in later
+                string insertQuery = "UPDATE RandrezaVoharisoaM21Su2332.Items set Image = @Image where Name= '" + strItemName + "'"; // @Image is a parameter we will fill in later
                 SqlCommand insertCmd = new SqlCommand(insertQuery, Connection);
                 SqlParameter sqlParams = insertCmd.Parameters.AddWithValue("@Image", image); // The parameter will be the image as a byte array
                 sqlParams.DbType = System.Data.DbType.Binary; // The type of data we are sending to the server will be a binary file
@@ -59,7 +62,7 @@ namespace SU21_Final_Project
 
                 //Display Image
                 byte[] imgData;
-                SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where Description = 'Grocery Bag'", Connection);
+                SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where Name = '" + strItemName + "'", Connection);
                 SqlDataReader reader = cmd.ExecuteReader();
                 reader.Read();
                 long bufLength = reader.GetBytes(0, 0, null, 0, 0);
@@ -67,7 +70,7 @@ namespace SU21_Final_Project
                 reader.GetBytes(0, 0, imgData, 0, (int)bufLength);
                 MemoryStream ms = new MemoryStream(imgData);
                 ms.Position = 0;
-                pictureBox1.Image = Image.FromStream(ms);
+                pbxItemPicture.Image = Image.FromStream(ms);
                 reader.Close();
 
                 Connection.Close();
@@ -77,8 +80,43 @@ namespace SU21_Final_Project
                 MessageBox.Show(ex.Message, "Error During Upload", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnUpdateItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                //Connection.Open();
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+                //Connection.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex);
+            }
+            try
+            {
+                strItemName = cboItemName.SelectedItem.ToString();
+                string strDescription = tbxUpDescrption.Text;
+                Connection.Open();
+               
+
+                string strUpdateQuery = "UPDATE RandrezaVoharisoaM21Su2332.Items SET Description = @Description where Name= '" + strItemName + "'";
+                SqlCommand updateCommande = new SqlCommand(strUpdateQuery, Connection);
+                SqlParameter sqlParams = updateCommande.Parameters.AddWithValue("@Description", strDescription);
+                updateCommande.ExecuteNonQuery();
+                tbxUpDescrption.Text = "";
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex);
+            }
+        }
     }
 
-    }
+}
         
 
