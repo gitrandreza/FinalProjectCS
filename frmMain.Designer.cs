@@ -63,7 +63,6 @@ namespace SU21_Final_Project
             this.gbxAmount = new System.Windows.Forms.GroupBox();
             this.lblTotalAmount = new System.Windows.Forms.Label();
             this.lblTaxAmount = new System.Windows.Forms.Label();
-            this.lblDiscount = new System.Windows.Forms.Label();
             this.lblSubTotal = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -91,11 +90,10 @@ namespace SU21_Final_Project
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblDate.Location = new System.Drawing.Point(381, 4);
+            this.lblDate.Location = new System.Drawing.Point(469, 9);
             this.lblDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(2, 19);
+            this.lblDate.Size = new System.Drawing.Size(0, 17);
             this.lblDate.TabIndex = 0;
             // 
             // dgvAll
@@ -113,7 +111,7 @@ namespace SU21_Final_Project
             this.dgvAll.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvAll.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAll.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.dgvAll.Location = new System.Drawing.Point(30, 93);
+            this.dgvAll.Location = new System.Drawing.Point(30, 88);
             this.dgvAll.Margin = new System.Windows.Forms.Padding(4);
             this.dgvAll.Name = "dgvAll";
             this.dgvAll.ReadOnly = true;
@@ -121,13 +119,13 @@ namespace SU21_Final_Project
             this.dgvAll.RowHeadersWidth = 51;
             this.dgvAll.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvAll.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvAll.Size = new System.Drawing.Size(143, 189);
+            this.dgvAll.Size = new System.Drawing.Size(143, 227);
             this.dgvAll.TabIndex = 6;
             this.dgvAll.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAll_CellClick);
             // 
             // pbxAll
             // 
-            this.pbxAll.Location = new System.Drawing.Point(300, 42);
+            this.pbxAll.Location = new System.Drawing.Point(298, 66);
             this.pbxAll.Margin = new System.Windows.Forms.Padding(4);
             this.pbxAll.Name = "pbxAll";
             this.pbxAll.Size = new System.Drawing.Size(215, 200);
@@ -139,7 +137,8 @@ namespace SU21_Final_Project
             // 
             this.lblQuantityAvailable.BackColor = System.Drawing.Color.Transparent;
             this.lblQuantityAvailable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblQuantityAvailable.Location = new System.Drawing.Point(566, 20);
+            this.lblQuantityAvailable.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuantityAvailable.Location = new System.Drawing.Point(584, 18);
             this.lblQuantityAvailable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblQuantityAvailable.Name = "lblQuantityAvailable";
             this.lblQuantityAvailable.Size = new System.Drawing.Size(75, 26);
@@ -152,7 +151,7 @@ namespace SU21_Final_Project
             this.lblPrice.BackColor = System.Drawing.Color.Transparent;
             this.lblPrice.Font = new System.Drawing.Font("Eras Demi ITC", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrice.ForeColor = System.Drawing.Color.Gray;
-            this.lblPrice.Location = new System.Drawing.Point(379, 335);
+            this.lblPrice.Location = new System.Drawing.Point(208, 333);
             this.lblPrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(0, 28);
@@ -180,7 +179,7 @@ namespace SU21_Final_Project
             this.gbxSelectedItem.Size = new System.Drawing.Size(760, 262);
             this.gbxSelectedItem.TabIndex = 4;
             this.gbxSelectedItem.TabStop = false;
-            this.gbxSelectedItem.Text = "Add features";
+            this.gbxSelectedItem.Text = "Choose your features";
             // 
             // label3
             // 
@@ -337,9 +336,11 @@ namespace SU21_Final_Project
             // 
             // tbxQuantity
             // 
+            this.tbxQuantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbxQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxQuantity.Location = new System.Drawing.Point(389, 22);
             this.tbxQuantity.Name = "tbxQuantity";
-            this.tbxQuantity.Size = new System.Drawing.Size(65, 22);
+            this.tbxQuantity.Size = new System.Drawing.Size(75, 22);
             this.tbxQuantity.TabIndex = 21;
             // 
             // label4
@@ -357,21 +358,21 @@ namespace SU21_Final_Project
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(460, 23);
+            this.label5.Location = new System.Drawing.Point(508, 22);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(94, 17);
+            this.label5.Size = new System.Drawing.Size(69, 17);
             this.label5.TabIndex = 22;
-            this.label5.Text = "Max Quantity:";
+            this.label5.Text = "Available:";
             // 
             // btnAdmin
             // 
             this.btnAdmin.Enabled = false;
-            this.btnAdmin.Location = new System.Drawing.Point(13, 4);
+            this.btnAdmin.Location = new System.Drawing.Point(1019, 38);
             this.btnAdmin.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdmin.Name = "btnAdmin";
             this.btnAdmin.Size = new System.Drawing.Size(129, 28);
             this.btnAdmin.TabIndex = 23;
-            this.btnAdmin.Text = "Admin";
+            this.btnAdmin.Text = "&Admin Only";
             this.btnAdmin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAdmin.UseVisualStyleBackColor = true;
             this.btnAdmin.Visible = false;
@@ -381,17 +382,16 @@ namespace SU21_Final_Project
             // 
             this.lblUser.AutoSize = true;
             this.lblUser.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblUser.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblUser.Location = new System.Drawing.Point(652, 2);
+            this.lblUser.Location = new System.Drawing.Point(740, 9);
             this.lblUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(2, 19);
+            this.lblUser.Size = new System.Drawing.Size(0, 17);
             this.lblUser.TabIndex = 24;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(583, 2);
+            this.label2.Location = new System.Drawing.Point(671, 9);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 17);
@@ -420,7 +420,7 @@ namespace SU21_Final_Project
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvList.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvList.Location = new System.Drawing.Point(688, 74);
+            this.dgvList.Location = new System.Drawing.Point(688, 92);
             this.dgvList.Margin = new System.Windows.Forms.Padding(4);
             this.dgvList.Name = "dgvList";
             this.dgvList.ReadOnly = true;
@@ -432,7 +432,8 @@ namespace SU21_Final_Project
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(750, 267);
+            this.btnRemove.Enabled = false;
+            this.btnRemove.Location = new System.Drawing.Point(688, 285);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(129, 28);
             this.btnRemove.TabIndex = 23;
@@ -442,11 +443,12 @@ namespace SU21_Final_Project
             // 
             // btnDisplayAmount
             // 
-            this.btnDisplayAmount.Location = new System.Drawing.Point(966, 267);
+            this.btnDisplayAmount.Enabled = false;
+            this.btnDisplayAmount.Location = new System.Drawing.Point(946, 285);
             this.btnDisplayAmount.Name = "btnDisplayAmount";
-            this.btnDisplayAmount.Size = new System.Drawing.Size(129, 28);
+            this.btnDisplayAmount.Size = new System.Drawing.Size(149, 28);
             this.btnDisplayAmount.TabIndex = 28;
-            this.btnDisplayAmount.Text = "&Display Amount";
+            this.btnDisplayAmount.Text = "&Ready to Checkout";
             this.btnDisplayAmount.UseVisualStyleBackColor = true;
             this.btnDisplayAmount.Click += new System.EventHandler(this.btnDisplayAmount_Click);
             // 
@@ -454,7 +456,6 @@ namespace SU21_Final_Project
             // 
             this.gbxAmount.Controls.Add(this.lblTotalAmount);
             this.gbxAmount.Controls.Add(this.lblTaxAmount);
-            this.gbxAmount.Controls.Add(this.lblDiscount);
             this.gbxAmount.Controls.Add(this.lblSubTotal);
             this.gbxAmount.Controls.Add(this.label10);
             this.gbxAmount.Controls.Add(this.label9);
@@ -471,36 +472,30 @@ namespace SU21_Final_Project
             // 
             this.lblTotalAmount.AutoSize = true;
             this.lblTotalAmount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTotalAmount.Font = new System.Drawing.Font("Eras Medium ITC", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalAmount.Location = new System.Drawing.Point(149, 182);
             this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(2, 19);
+            this.lblTotalAmount.Size = new System.Drawing.Size(2, 21);
             this.lblTotalAmount.TabIndex = 7;
             // 
             // lblTaxAmount
             // 
             this.lblTaxAmount.AutoSize = true;
             this.lblTaxAmount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTaxAmount.Font = new System.Drawing.Font("Eras Medium ITC", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTaxAmount.Location = new System.Drawing.Point(149, 134);
             this.lblTaxAmount.Name = "lblTaxAmount";
-            this.lblTaxAmount.Size = new System.Drawing.Size(2, 19);
+            this.lblTaxAmount.Size = new System.Drawing.Size(2, 21);
             this.lblTaxAmount.TabIndex = 6;
-            // 
-            // lblDiscount
-            // 
-            this.lblDiscount.AutoSize = true;
-            this.lblDiscount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblDiscount.Location = new System.Drawing.Point(149, 86);
-            this.lblDiscount.Name = "lblDiscount";
-            this.lblDiscount.Size = new System.Drawing.Size(2, 19);
-            this.lblDiscount.TabIndex = 5;
             // 
             // lblSubTotal
             // 
             this.lblSubTotal.AutoSize = true;
             this.lblSubTotal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblSubTotal.Location = new System.Drawing.Point(149, 38);
+            this.lblSubTotal.Font = new System.Drawing.Font("Eras Medium ITC", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubTotal.Location = new System.Drawing.Point(149, 84);
             this.lblSubTotal.Name = "lblSubTotal";
-            this.lblSubTotal.Size = new System.Drawing.Size(2, 19);
+            this.lblSubTotal.Size = new System.Drawing.Size(2, 21);
             this.lblSubTotal.TabIndex = 4;
             // 
             // label10
@@ -524,7 +519,7 @@ namespace SU21_Final_Project
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(17, 38);
+            this.label7.Location = new System.Drawing.Point(17, 84);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 17);
             this.label7.TabIndex = 0;
@@ -553,7 +548,7 @@ namespace SU21_Final_Project
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(742, 2);
+            this.label11.Location = new System.Drawing.Point(830, 8);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(49, 17);
@@ -564,17 +559,16 @@ namespace SU21_Final_Project
             // 
             this.lblNameOfUser.AutoSize = true;
             this.lblNameOfUser.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblNameOfUser.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblNameOfUser.Location = new System.Drawing.Point(792, 2);
+            this.lblNameOfUser.Location = new System.Drawing.Point(880, 8);
             this.lblNameOfUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameOfUser.Name = "lblNameOfUser";
-            this.lblNameOfUser.Size = new System.Drawing.Size(2, 19);
+            this.lblNameOfUser.Size = new System.Drawing.Size(0, 17);
             this.lblNameOfUser.TabIndex = 32;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(338, 2);
+            this.label12.Location = new System.Drawing.Point(426, 9);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(42, 17);
@@ -590,7 +584,7 @@ namespace SU21_Final_Project
             "Clothes",
             "Bags",
             "Gifts"});
-            this.cboCategory.Location = new System.Drawing.Point(44, 289);
+            this.cboCategory.Location = new System.Drawing.Point(44, 654);
             this.cboCategory.Name = "cboCategory";
             this.cboCategory.Size = new System.Drawing.Size(113, 24);
             this.cboCategory.TabIndex = 33;
@@ -602,23 +596,23 @@ namespace SU21_Final_Project
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(36, 61);
+            this.label1.Location = new System.Drawing.Point(26, 57);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 18);
+            this.label1.Size = new System.Drawing.Size(205, 18);
             this.label1.TabIndex = 36;
-            this.label1.Text = "Select Product: ";
+            this.label1.Text = "Select Item to customize: ";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(685, 52);
+            this.label8.Location = new System.Drawing.Point(685, 67);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(82, 18);
+            this.label8.Size = new System.Drawing.Size(128, 18);
             this.label8.TabIndex = 37;
-            this.label8.Text = "Item List: ";
+            this.label8.Text = "Your Order List:";
             // 
             // lblName
             // 
@@ -626,7 +620,7 @@ namespace SU21_Final_Project
             this.lblName.BackColor = System.Drawing.Color.Transparent;
             this.lblName.Font = new System.Drawing.Font("Eras Demi ITC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lblName.Location = new System.Drawing.Point(277, 307);
+            this.lblName.Location = new System.Drawing.Point(25, 334);
             this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(0, 23);
@@ -651,6 +645,7 @@ namespace SU21_Final_Project
             this.btnReset.TabIndex = 40;
             this.btnReset.Text = "&Reset";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // frmMain
             // 
@@ -672,6 +667,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.lblNameOfUser);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnCheckout);
+            this.Controls.Add(this.lblPrice);
             this.Controls.Add(this.gbxAmount);
             this.Controls.Add(this.btnDisplayAmount);
             this.Controls.Add(this.btnRemove);
@@ -679,9 +675,9 @@ namespace SU21_Final_Project
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblUser);
             this.Controls.Add(this.btnAdmin);
-            this.Controls.Add(this.lblPrice);
             this.Controls.Add(this.gbxSelectedItem);
             this.Controls.Add(this.lblDate);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -733,7 +729,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnCheckout;
         private System.Windows.Forms.Label lblTotalAmount;
         private System.Windows.Forms.Label lblTaxAmount;
-        private System.Windows.Forms.Label lblDiscount;
         private System.Windows.Forms.Label lblSubTotal;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;

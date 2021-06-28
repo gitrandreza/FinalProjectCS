@@ -212,6 +212,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.tbxDrink);
             this.Name = "frmResetPassword";
             this.Padding = new System.Windows.Forms.Padding(20);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmResetPassword";
             this.ResumeLayout(false);
             this.PerformLayout();

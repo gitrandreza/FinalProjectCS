@@ -72,9 +72,9 @@ namespace SU21_Final_Project
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cboSuffix = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.cboSuffix = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -467,6 +467,18 @@ namespace SU21_Final_Project
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Information";
             // 
+            // cboSuffix
+            // 
+            this.cboSuffix.FormattingEnabled = true;
+            this.cboSuffix.Items.AddRange(new object[] {
+            "Mrs",
+            "Mr",
+            "Ms"});
+            this.cboSuffix.Location = new System.Drawing.Point(133, 162);
+            this.cboSuffix.Name = "cboSuffix";
+            this.cboSuffix.Size = new System.Drawing.Size(78, 24);
+            this.cboSuffix.TabIndex = 39;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label14);
@@ -492,18 +504,6 @@ namespace SU21_Final_Project
             this.label24.Size = new System.Drawing.Size(144, 20);
             this.label24.TabIndex = 46;
             this.label24.Text = "(*)Required Fields";
-            // 
-            // cboSuffix
-            // 
-            this.cboSuffix.FormattingEnabled = true;
-            this.cboSuffix.Items.AddRange(new object[] {
-            "Mrs",
-            "Mr",
-            "Ms"});
-            this.cboSuffix.Location = new System.Drawing.Point(133, 162);
-            this.cboSuffix.Name = "cboSuffix";
-            this.cboSuffix.Size = new System.Drawing.Size(78, 24);
-            this.cboSuffix.TabIndex = 39;
             // 
             // groupBox3
             // 
@@ -533,6 +533,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.label20);
             this.Controls.Add(this.btnSave);
             this.Name = "frmSignUp";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmSignUp";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

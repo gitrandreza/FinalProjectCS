@@ -40,7 +40,7 @@ namespace SU21_Final_Project
             // btnInsertImage
             // 
             this.btnInsertImage.Location = new System.Drawing.Point(32, 198);
-            this.btnInsertImage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnInsertImage.Margin = new System.Windows.Forms.Padding(4);
             this.btnInsertImage.Name = "btnInsertImage";
             this.btnInsertImage.Size = new System.Drawing.Size(100, 28);
             this.btnInsertImage.TabIndex = 0;
@@ -51,7 +51,7 @@ namespace SU21_Final_Project
             // pbxItemPicture
             // 
             this.pbxItemPicture.Location = new System.Drawing.Point(740, 36);
-            this.pbxItemPicture.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbxItemPicture.Margin = new System.Windows.Forms.Padding(4);
             this.pbxItemPicture.Name = "pbxItemPicture";
             this.pbxItemPicture.Size = new System.Drawing.Size(269, 352);
             this.pbxItemPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -146,8 +146,9 @@ namespace SU21_Final_Project
             this.Controls.Add(this.btnUpdateItem);
             this.Controls.Add(this.pbxItemPicture);
             this.Controls.Add(this.btnInsertImage);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmAdmin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin";
             ((System.ComponentModel.ISupportInitialize)(this.pbxItemPicture)).EndInit();
             this.ResumeLayout(false);

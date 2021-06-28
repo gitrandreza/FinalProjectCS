@@ -30,7 +30,7 @@ namespace SU21_Final_Project
 
        
             
-
+        //Connect to database and check for username and password
         private void btnLogin_Click(object sender, EventArgs e)
         {
             strUsername = tbxUsername.Text;
@@ -103,6 +103,11 @@ namespace SU21_Final_Project
         {
             new frmResetPassword().Show();
             this.Hide();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

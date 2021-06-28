@@ -289,6 +289,7 @@ namespace SU21_Final_Project
             dgvList.CurrentCell.Selected = false;
         }
 
+        //Add select Item to List
         private void btnAddToList_Click(object sender, EventArgs e)
         {
             if (tbxQuantity.Text != "")
@@ -307,92 +308,101 @@ namespace SU21_Final_Project
                         {
                             if (radSmall.Checked == true || radMedium.Checked == true || radLarge.Checked == true)
                             {
-                                //Build datagriedviewList 
-                                dgvList.ColumnCount = 7;
-                                dgvList.Columns[0].Name = "Name";
-                                dgvList.Columns[1].Name = "Type of Decoration";
-                                dgvList.Columns[2].Name = "Color";
-                                dgvList.Columns[3].Name = "Size";
-                                dgvList.Columns[4].Name = "Quantity";
-                                dgvList.Columns[5].Name = "Unit Price";
-                                dgvList.Columns[6].Name = "Total Price";
-
-                                //Get selection information from input 
-
-
-                                string strItemDeco = "N/A";
-                                if (radEmbroidered.Checked == true)
+                                if (cboColor.SelectedItem!= null)
                                 {
-                                    strItemDeco = "Embroidered";
-                                }
-                                else if (radPrinted.Checked == true)
-                                {
-                                    strItemDeco = "Printed";
-                                }
+                                    //Build datagriedviewList 
+                                    dgvList.ColumnCount = 7;
+                                    dgvList.Columns[0].Name = "Name";
+                                    dgvList.Columns[1].Name = "Type of Decoration";
+                                    dgvList.Columns[2].Name = "Color";
+                                    dgvList.Columns[3].Name = "Size";
+                                    dgvList.Columns[4].Name = "Quantity";
+                                    dgvList.Columns[5].Name = "Unit Price";
+                                    dgvList.Columns[6].Name = "Total Price";
 
-                                else if (radBlank.Checked == true)
-                                {
-                                    strItemDeco = "Blank";
-                                }
+                                    //Get selection information from input 
 
-                                string strItemColor;
-                                if (cboColor.SelectedItem == null)
-                                {
-                                    strItemColor = "N/A";
 
+                                    string strItemDeco = "N/A";
+                                    if (radEmbroidered.Checked == true)
+                                    {
+                                        strItemDeco = "Embroidered";
+                                    }
+                                    else if (radPrinted.Checked == true)
+                                    {
+                                        strItemDeco = "Printed";
+                                    }
+
+                                    else if (radBlank.Checked == true)
+                                    {
+                                        strItemDeco = "Blank";
+                                    }
+
+                                    string strItemColor;
+                                    if (cboColor.SelectedItem == null)
+                                    {
+                                        strItemColor = "N/A";
+
+                                    }
+                                    else
+                                    {
+                                        strItemColor = cboColor.SelectedItem.ToString();
+                                    }
+
+
+                                    string strItemSize = "N/A";
+                                    if (radSmall.Checked == true)
+                                    {
+                                        strItemSize = "Small";
+                                    }
+                                    else if (radMedium.Checked == true)
+                                    {
+                                        strItemSize = "Medium";
+                                    }
+
+                                    else if (radLarge.Checked == true)
+                                    {
+                                        strItemSize = "Large";
+                                    }
+
+                                    double dblTotalPrice = myItems.Price * intQuantityNeed;
+
+                                    //lblMessage.Text =dblTotalPrice.ToString();
+                                    string strItemTotalPrice = dblTotalPrice.ToString();
+
+                                    //Call add cart function to display selection in the cart
+                                    addCart(myItems.Name, strItemDeco, strItemColor, strItemSize, strQuantityNeed, myItems.Price.ToString(), strItemTotalPrice);
+
+
+
+                                    //Decrease Quantity Item selected
+                                    myItems.Quantity = myItems.Quantity - intQuantityNeed;
+
+                                    lblQuantityAvailable.Text = myItems.Quantity.ToString();
+                                    //grab current row index selected
+                                    int intIndexRowSelected = dgvAll.CurrentCell.RowIndex;
+                                    //Insert quantity updated to current row and Cell "Quantity" index 1
+                                    dgvAll.Rows[intIndexRowSelected].Cells[1].Value = myItems.Quantity.ToString();
+
+
+                                    //Reset Selection
+                                    tbxQuantity.Text = "";
+                                    radEmbroidered.Checked = false;
+                                    radPrinted.Checked = false;
+                                    radBlank.Checked = false;
+                                    radLarge.Checked = false;
+                                    radMedium.Checked = false;
+                                    radSmall.Checked = false;
+                                    cboColor.Text = "";
+                                    lblQuantityAvailable.Text = "";
+                                    tbxDescription.Text = "";
                                 }
                                 else
                                 {
-                                    strItemColor = cboColor.SelectedItem.ToString();
+                                    MessageBox.Show("Please choose Color", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
-
-
-                                string strItemSize = "N/A";
-                                if (radSmall.Checked == true)
-                                {
-                                    strItemSize = "Small";
-                                }
-                                else if (radMedium.Checked == true)
-                                {
-                                    strItemSize = "Medium";
-                                }
-
-                                else if (radLarge.Checked == true)
-                                {
-                                    strItemSize = "Large";
-                                }
-
-                                double dblTotalPrice = myItems.Price * intQuantityNeed;
-
-                                //lblMessage.Text =dblTotalPrice.ToString();
-                                string strItemTotalPrice = dblTotalPrice.ToString();
-
-                                //Call add cart function to display selection in the cart
-                                addCart(myItems.Name, strItemDeco, strItemColor, strItemSize, strQuantityNeed, myItems.Price.ToString(), strItemTotalPrice);
-
-
-
-                                //Decrease Quantity Item selected
-                                myItems.Quantity = myItems.Quantity - intQuantityNeed;
-
-                                lblQuantityAvailable.Text = myItems.Quantity.ToString();
-                                //grab current row index selected
-                                int intIndexRowSelected = dgvAll.CurrentCell.RowIndex;
-                                //Insert quantity updated to current row and Cell "Quantity" index 1
-                                dgvAll.Rows[intIndexRowSelected].Cells[1].Value = myItems.Quantity.ToString();
-
-
-                                //Reset Selection
-                                tbxQuantity.Text = "";
-                                radEmbroidered.Checked = false;
-                                radPrinted.Checked = false;
-                                radBlank.Checked = false;
-                                radLarge.Checked = false;
-                                radMedium.Checked = false;
-                                radSmall.Checked = false;
-                                cboColor.Text = "";
-                                lblQuantityAvailable.Text = "";
                             }
+
                             else
                             {
                                 MessageBox.Show("Please choose size", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -423,6 +433,8 @@ namespace SU21_Final_Project
                 MessageBox.Show("Please add quantity", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 tbxQuantity.Focus();
             }
+            btnDisplayAmount.Enabled = true;
+            btnRemove.Enabled = true;
         }
 
         //Remove Item from list
@@ -436,7 +448,7 @@ namespace SU21_Final_Project
             foreach (DataGridViewRow row in dgvList.SelectedRows)
             {
                 dgvList.Rows.RemoveAt(row.Index);
-                //Increase Quantity Item selected
+                //Increase Quantity Available
                 myItems.Quantity = myItems.Quantity + intQuantityNeed;
 
                 lblQuantityAvailable.Text = myItems.Quantity.ToString();
@@ -477,7 +489,7 @@ namespace SU21_Final_Project
                 lblTotalAmount.Text = dblTotalAmount.ToString("C2");
 
             }
-
+           
         }
 
         //Get UserID value from database and display to the label user when login is valid
@@ -516,14 +528,11 @@ namespace SU21_Final_Project
 
                     Connection.Open();
                     //Store Sales Report
-                    SqlCommand commandSalesReport = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesReport(UserID,CreationDate,SubTotal,DiscountAmount,TaxAmount,TotalAmount) " +
-                        "VALUES(@UserID,@CreationDate,@SubTotal,@DiscountAmount,@TaxAmount,@TotalAmount)", Connection);
+                    SqlCommand commandSalesReport = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesReport(UserID,CreationDate) " +
+                        "VALUES(@UserID,@CreationDate)", Connection);
                     commandSalesReport.Parameters.AddWithValue("@UserID", intUserID);
                     commandSalesReport.Parameters.AddWithValue("@CreationDate", strDate);
-                    commandSalesReport.Parameters.AddWithValue("@SubTotal", dblSubTotal);
-                    commandSalesReport.Parameters.AddWithValue("@DiscountAmount", dblDiscount);
-                    commandSalesReport.Parameters.AddWithValue("@TaxAmount", dblAmountTax);
-                    commandSalesReport.Parameters.AddWithValue("@TotalAmount", dblTotalAmount);
+                   
 
                     commandSalesReport.ExecuteNonQuery();
 
@@ -543,8 +552,8 @@ namespace SU21_Final_Project
                     foreach (DataGridViewRow row in dgvList.Rows)
                     {
                         //Store List in the table Sales Details
-                        SqlCommand commandSalesDetails = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesDetails(SaleID,ItemID,QuantitySold) " +
-                          "VALUES(@SaleID,@ItemID,@QuantitySold)", Connection);
+                        SqlCommand commandSalesDetails = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesDetails(SaleID,ItemID,QuantitySold,Decoration,Size,Color) " +
+                          "VALUES(@SaleID,@ItemID,@QuantitySold,@Decoration,@Size,@Color)", Connection);
                         //Select item ID of each Item Name in the data grid view list
                         string strItemID;
                         string strNameItem = row.Cells["Name"].Value.ToString();
@@ -557,10 +566,18 @@ namespace SU21_Final_Project
                         readerItemID.Close();
 
                         string strQuantitySold = row.Cells["Quantity"].Value.ToString();
+                        string strDecoration = row.Cells["Type of Decoration"].Value.ToString();
+                        string strSize = row.Cells["Size"].Value.ToString();
+                        string strColor = row.Cells["Color"].Value.ToString();
 
                         commandSalesDetails.Parameters.AddWithValue("@SaleID", intSaleId);
                         commandSalesDetails.Parameters.AddWithValue("@ItemID", strItemID);
                         commandSalesDetails.Parameters.AddWithValue("@QuantitySold", strQuantitySold);
+                        commandSalesDetails.Parameters.AddWithValue("@Decoration", strDecoration);
+                        commandSalesDetails.Parameters.AddWithValue("@Size", strSize);
+                        commandSalesDetails.Parameters.AddWithValue("@Color", strColor);
+                        
+
 
 
                         commandSalesDetails.ExecuteNonQuery();
@@ -610,9 +627,9 @@ namespace SU21_Final_Project
         {
             StringBuilder html = new StringBuilder();
             StringBuilder css = new StringBuilder();
-            css.AppendLine("<style>");
+            css.AppendLine("<style>");            
             css.AppendLine("td {padding: 5px; text-align:center; font-weight: bold; text-align: center;}");
-            css.AppendLine("h1 {color: blue;}");
+            css.AppendLine("h1 {color: blue;}");           
             css.AppendLine("h2 {color: red;}");
             css.AppendLine("</style>");
 
@@ -627,22 +644,25 @@ namespace SU21_Final_Project
             html.Append($"<h5>{"Sale ID: "}{intSaleId.ToString()}</h5>");
 
             html.AppendLine("<table>");
-            html.AppendLine("<tr><td>Item</td><td>Quantity</td><td>Price</td><td>Total Price</td></tr>");
-            html.AppendLine("<tr><td colspan=5><hr /></td></tr>");
+            html.AppendLine("<tr><td>Name</td><td>Decoration</td><td>Size</td><td>Color</td><td>Quantity</td><td>Price</td><td>Total Price</td></tr>");
+            html.AppendLine("<tr><td colspan=8><hr /></td></tr>");
 
             //Loop through the datagriview List to display user Order in the receipt
             foreach (DataGridViewRow row in dgvList.Rows)
             {
                 html.Append("<tr>");
                 html.Append($"<td>{row.Cells["Name"].Value}</td>");
+                html.Append($"<td>{row.Cells["Type of Decoration"].Value}</td>");
+                html.Append($"<td>{row.Cells["Size"].Value}</td>");
+                html.Append($"<td>{row.Cells["Color"].Value}</td>");
                 html.Append($"<td>{row.Cells["Quantity"].Value}</td>");
                 html.Append($"<td>{row.Cells["Unit Price"].Value}</td>");
                 html.Append($"<td>{row.Cells["Total Price"].Value}</td>");
                 html.Append("</tr>");
-                html.AppendLine("<tr><td colspan=5><hr /></td></tr>");
+                html.AppendLine("<tr><td colspan=8><hr /></td></tr>");
             }
 
-            html.Append("<tr><td colspan=5><hr></hd></td></tr>");
+            html.Append("<tr><td colspan=8><hr></hd></td></tr>");
             html.Append("<table>");
 
             html.AppendLine($"<h5>{"Subtotal: "}{dblSubTotal.ToString("C2")}</h5>");
@@ -683,6 +703,7 @@ namespace SU21_Final_Project
             }
         }
 
+        //Close Application
         private void btnExit_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Do you want to exit the application", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -690,11 +711,35 @@ namespace SU21_Final_Project
                 Application.Exit();
             }
         }
-
+        //Back to login form
         private void btnLogout_Click(object sender, EventArgs e)
         {
             new frmLogin();
             this.Hide();
+        }
+
+        //Reset Selection
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            Reset();
+        }
+
+        public void Reset()
+        {
+            dgvList.Rows.Clear();
+
+
+            
+            lblName.Text = "";
+            lblPrice.Text = "";
+            pbxAll.Image = null;
+            lblSubTotal.Text = "";
+            lblTaxAmount.Text = "";
+            lblTotalAmount.Text = "";
+            btnRemove.Enabled = false;
+            btnDisplayAmount.Enabled = false;
+           
+            
         }
     }
 }
