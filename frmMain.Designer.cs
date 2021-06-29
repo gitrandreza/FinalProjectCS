@@ -29,9 +29,9 @@ namespace SU21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblDate = new System.Windows.Forms.Label();
             this.dgvAll = new System.Windows.Forms.DataGridView();
             this.pbxAll = new System.Windows.Forms.PictureBox();
@@ -71,13 +71,13 @@ namespace SU21_Final_Project
             this.btnExit = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.lblNameOfUser = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.cboCategory = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAll)).BeginInit();
             this.gbxSelectedItem.SuspendLayout();
@@ -85,12 +85,15 @@ namespace SU21_Final_Project
             this.gbxDecorationOption.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             this.gbxAmount.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(469, 9);
+            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblDate.Location = new System.Drawing.Point(346, 13);
             this.lblDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(0, 17);
@@ -101,14 +104,14 @@ namespace SU21_Final_Project
             this.dgvAll.AllowUserToAddRows = false;
             this.dgvAll.AllowUserToDeleteRows = false;
             this.dgvAll.BackgroundColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAll.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAll.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvAll.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAll.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dgvAll.Location = new System.Drawing.Point(30, 88);
@@ -136,7 +139,6 @@ namespace SU21_Final_Project
             // lblQuantityAvailable
             // 
             this.lblQuantityAvailable.BackColor = System.Drawing.Color.Transparent;
-            this.lblQuantityAvailable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblQuantityAvailable.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblQuantityAvailable.Location = new System.Drawing.Point(584, 18);
             this.lblQuantityAvailable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -151,7 +153,7 @@ namespace SU21_Final_Project
             this.lblPrice.BackColor = System.Drawing.Color.Transparent;
             this.lblPrice.Font = new System.Drawing.Font("Eras Demi ITC", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrice.ForeColor = System.Drawing.Color.Gray;
-            this.lblPrice.Location = new System.Drawing.Point(208, 333);
+            this.lblPrice.Location = new System.Drawing.Point(276, 330);
             this.lblPrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(0, 28);
@@ -160,6 +162,7 @@ namespace SU21_Final_Project
             // 
             // gbxSelectedItem
             // 
+            this.gbxSelectedItem.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.gbxSelectedItem.Controls.Add(this.label3);
             this.gbxSelectedItem.Controls.Add(this.tbxDescription);
             this.gbxSelectedItem.Controls.Add(this.btnAddToList);
@@ -205,13 +208,15 @@ namespace SU21_Final_Project
             // 
             // btnAddToList
             // 
-            this.btnAddToList.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddToList.BackColor = System.Drawing.Color.DimGray;
+            this.btnAddToList.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddToList.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnAddToList.Location = new System.Drawing.Point(605, 227);
             this.btnAddToList.Name = "btnAddToList";
             this.btnAddToList.Size = new System.Drawing.Size(129, 28);
             this.btnAddToList.TabIndex = 28;
             this.btnAddToList.Text = "&Add Item";
-            this.btnAddToList.UseVisualStyleBackColor = true;
+            this.btnAddToList.UseVisualStyleBackColor = false;
             this.btnAddToList.Click += new System.EventHandler(this.btnAddToList_Click);
             // 
             // label6
@@ -366,7 +371,10 @@ namespace SU21_Final_Project
             // 
             // btnAdmin
             // 
+            this.btnAdmin.BackColor = System.Drawing.Color.DimGray;
             this.btnAdmin.Enabled = false;
+            this.btnAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdmin.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnAdmin.Location = new System.Drawing.Point(1019, 38);
             this.btnAdmin.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdmin.Name = "btnAdmin";
@@ -374,7 +382,7 @@ namespace SU21_Final_Project
             this.btnAdmin.TabIndex = 23;
             this.btnAdmin.Text = "&Admin Only";
             this.btnAdmin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAdmin.UseVisualStyleBackColor = true;
+            this.btnAdmin.UseVisualStyleBackColor = false;
             this.btnAdmin.Visible = false;
             this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
             // 
@@ -382,7 +390,8 @@ namespace SU21_Final_Project
             // 
             this.lblUser.AutoSize = true;
             this.lblUser.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblUser.Location = new System.Drawing.Point(740, 9);
+            this.lblUser.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblUser.Location = new System.Drawing.Point(601, 11);
             this.lblUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(0, 17);
@@ -391,10 +400,12 @@ namespace SU21_Final_Project
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(671, 9);
+            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label2.Location = new System.Drawing.Point(517, 12);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 17);
+            this.label2.Size = new System.Drawing.Size(71, 16);
             this.label2.TabIndex = 25;
             this.label2.Text = "User ID#:";
             // 
@@ -403,23 +414,23 @@ namespace SU21_Final_Project
             this.dgvList.AllowUserToAddRows = false;
             this.dgvList.AllowUserToDeleteRows = false;
             this.dgvList.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvList.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvList.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvList.Location = new System.Drawing.Point(688, 92);
             this.dgvList.Margin = new System.Windows.Forms.Padding(4);
             this.dgvList.Name = "dgvList";
@@ -432,34 +443,43 @@ namespace SU21_Final_Project
             // 
             // btnRemove
             // 
+            this.btnRemove.BackColor = System.Drawing.Color.DimGray;
             this.btnRemove.Enabled = false;
+            this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemove.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnRemove.Location = new System.Drawing.Point(688, 285);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(129, 28);
             this.btnRemove.TabIndex = 23;
             this.btnRemove.Text = "&Remove Item";
-            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.UseVisualStyleBackColor = false;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnDisplayAmount
             // 
+            this.btnDisplayAmount.BackColor = System.Drawing.Color.DimGray;
             this.btnDisplayAmount.Enabled = false;
+            this.btnDisplayAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDisplayAmount.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnDisplayAmount.Location = new System.Drawing.Point(946, 285);
             this.btnDisplayAmount.Name = "btnDisplayAmount";
             this.btnDisplayAmount.Size = new System.Drawing.Size(149, 28);
             this.btnDisplayAmount.TabIndex = 28;
-            this.btnDisplayAmount.Text = "&Ready to Checkout";
-            this.btnDisplayAmount.UseVisualStyleBackColor = true;
+            this.btnDisplayAmount.Text = "&DisplayTotal";
+            this.btnDisplayAmount.UseVisualStyleBackColor = false;
             this.btnDisplayAmount.Click += new System.EventHandler(this.btnDisplayAmount_Click);
             // 
             // gbxAmount
             // 
+            this.gbxAmount.BackColor = System.Drawing.Color.RosyBrown;
             this.gbxAmount.Controls.Add(this.lblTotalAmount);
             this.gbxAmount.Controls.Add(this.lblTaxAmount);
             this.gbxAmount.Controls.Add(this.lblSubTotal);
             this.gbxAmount.Controls.Add(this.label10);
             this.gbxAmount.Controls.Add(this.label9);
             this.gbxAmount.Controls.Add(this.label7);
+            this.gbxAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxAmount.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.gbxAmount.Location = new System.Drawing.Point(797, 366);
             this.gbxAmount.Name = "gbxAmount";
             this.gbxAmount.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -471,31 +491,31 @@ namespace SU21_Final_Project
             // lblTotalAmount
             // 
             this.lblTotalAmount.AutoSize = true;
-            this.lblTotalAmount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblTotalAmount.Font = new System.Drawing.Font("Eras Medium ITC", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalAmount.Font = new System.Drawing.Font("Eras Demi ITC", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalAmount.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblTotalAmount.Location = new System.Drawing.Point(149, 182);
             this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(2, 21);
+            this.lblTotalAmount.Size = new System.Drawing.Size(0, 19);
             this.lblTotalAmount.TabIndex = 7;
             // 
             // lblTaxAmount
             // 
             this.lblTaxAmount.AutoSize = true;
-            this.lblTaxAmount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblTaxAmount.Font = new System.Drawing.Font("Eras Medium ITC", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTaxAmount.Font = new System.Drawing.Font("Eras Demi ITC", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTaxAmount.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblTaxAmount.Location = new System.Drawing.Point(149, 134);
             this.lblTaxAmount.Name = "lblTaxAmount";
-            this.lblTaxAmount.Size = new System.Drawing.Size(2, 21);
+            this.lblTaxAmount.Size = new System.Drawing.Size(0, 19);
             this.lblTaxAmount.TabIndex = 6;
             // 
             // lblSubTotal
             // 
             this.lblSubTotal.AutoSize = true;
-            this.lblSubTotal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblSubTotal.Font = new System.Drawing.Font("Eras Medium ITC", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubTotal.Font = new System.Drawing.Font("Eras Demi ITC", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubTotal.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblSubTotal.Location = new System.Drawing.Point(149, 84);
             this.lblSubTotal.Name = "lblSubTotal";
-            this.lblSubTotal.Size = new System.Drawing.Size(2, 21);
+            this.lblSubTotal.Size = new System.Drawing.Size(0, 19);
             this.lblSubTotal.TabIndex = 4;
             // 
             // label10
@@ -503,7 +523,7 @@ namespace SU21_Final_Project
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(17, 182);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(92, 17);
+            this.label10.Size = new System.Drawing.Size(104, 17);
             this.label10.TabIndex = 3;
             this.label10.Text = "Total Amount";
             // 
@@ -512,7 +532,7 @@ namespace SU21_Final_Project
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(17, 134);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(83, 17);
+            this.label9.Size = new System.Drawing.Size(93, 17);
             this.label9.TabIndex = 2;
             this.label9.Text = "Tax Amount";
             // 
@@ -521,37 +541,45 @@ namespace SU21_Final_Project
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(17, 84);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 17);
+            this.label7.Size = new System.Drawing.Size(78, 17);
             this.label7.TabIndex = 0;
             this.label7.Text = "Sub Total";
             // 
             // btnCheckout
             // 
+            this.btnCheckout.BackColor = System.Drawing.Color.DimGray;
+            this.btnCheckout.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheckout.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnCheckout.Location = new System.Drawing.Point(888, 654);
             this.btnCheckout.Name = "btnCheckout";
             this.btnCheckout.Size = new System.Drawing.Size(129, 28);
             this.btnCheckout.TabIndex = 30;
             this.btnCheckout.Text = "&Checkout";
-            this.btnCheckout.UseVisualStyleBackColor = true;
+            this.btnCheckout.UseVisualStyleBackColor = false;
             this.btnCheckout.Click += new System.EventHandler(this.btnCheckout_Click);
             // 
             // btnExit
             // 
+            this.btnExit.BackColor = System.Drawing.Color.DimGray;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.PaleVioletRed;
             this.btnExit.Location = new System.Drawing.Point(486, 654);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(129, 28);
             this.btnExit.TabIndex = 31;
             this.btnExit.Text = "E&xit";
-            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(830, 8);
+            this.label11.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label11.Location = new System.Drawing.Point(699, 12);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(49, 17);
+            this.label11.Size = new System.Drawing.Size(51, 16);
             this.label11.TabIndex = 33;
             this.label11.Text = "Name:";
             // 
@@ -559,21 +587,13 @@ namespace SU21_Final_Project
             // 
             this.lblNameOfUser.AutoSize = true;
             this.lblNameOfUser.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblNameOfUser.Location = new System.Drawing.Point(880, 8);
+            this.lblNameOfUser.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNameOfUser.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblNameOfUser.Location = new System.Drawing.Point(757, 12);
             this.lblNameOfUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameOfUser.Name = "lblNameOfUser";
-            this.lblNameOfUser.Size = new System.Drawing.Size(0, 17);
+            this.lblNameOfUser.Size = new System.Drawing.Size(0, 16);
             this.lblNameOfUser.TabIndex = 32;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(426, 9);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(42, 17);
-            this.label12.TabIndex = 34;
-            this.label12.Text = "Date:";
             // 
             // cboCategory
             // 
@@ -629,23 +649,42 @@ namespace SU21_Final_Project
             // 
             // btnLogout
             // 
+            this.btnLogout.BackColor = System.Drawing.Color.DimGray;
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnLogout.Location = new System.Drawing.Point(1020, 4);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(129, 28);
             this.btnLogout.TabIndex = 39;
             this.btnLogout.Text = "&Log out";
-            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnReset
             // 
+            this.btnReset.BackColor = System.Drawing.Color.DimGray;
+            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnReset.Location = new System.Drawing.Point(281, 654);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(129, 28);
             this.btnReset.TabIndex = 40;
             this.btnReset.Text = "&Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.lblDate);
+            this.panel1.Controls.Add(this.lblUser);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.lblNameOfUser);
+            this.panel1.Location = new System.Drawing.Point(8, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1004, 42);
+            this.panel1.TabIndex = 41;
             // 
             // frmMain
             // 
@@ -653,30 +692,25 @@ namespace SU21_Final_Project
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1161, 694);
+            this.ClientSize = new System.Drawing.Size(1149, 694);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.lblName);
+            this.Controls.Add(this.lblPrice);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cboCategory);
             this.Controls.Add(this.pbxAll);
             this.Controls.Add(this.dgvAll);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.lblNameOfUser);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnCheckout);
-            this.Controls.Add(this.lblPrice);
             this.Controls.Add(this.gbxAmount);
             this.Controls.Add(this.btnDisplayAmount);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.dgvList);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.lblUser);
             this.Controls.Add(this.btnAdmin);
             this.Controls.Add(this.gbxSelectedItem);
-            this.Controls.Add(this.lblDate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMain";
@@ -695,6 +729,8 @@ namespace SU21_Final_Project
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.gbxAmount.ResumeLayout(false);
             this.gbxAmount.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -738,7 +774,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label label11;
         public System.Windows.Forms.Label lblNameOfUser;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cboCategory;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
@@ -747,6 +782,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

@@ -29,7 +29,7 @@ namespace SU21_Final_Project
         public Items(string name, string description, int quantity, double price, double cost, string category, byte[] image)
         {
            Name = name;
-            description = description;
+            Description = description;
            Quantity = quantity;
            Price = price;
             Cost = cost;

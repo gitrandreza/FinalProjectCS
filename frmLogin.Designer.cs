@@ -36,7 +36,7 @@ namespace SU21_Final_Project
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnSignUp = new System.Windows.Forms.Button();
             this.lblLoginFailed = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnResetPassword = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -122,19 +122,19 @@ namespace SU21_Final_Project
             this.lblLoginFailed.Size = new System.Drawing.Size(0, 17);
             this.lblLoginFailed.TabIndex = 6;
             // 
-            // button1
+            // btnResetPassword
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(372, 271);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 26);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "&Reset Password ";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnResetPassword.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnResetPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetPassword.ForeColor = System.Drawing.Color.White;
+            this.btnResetPassword.Location = new System.Drawing.Point(372, 271);
+            this.btnResetPassword.Name = "btnResetPassword";
+            this.btnResetPassword.Size = new System.Drawing.Size(105, 26);
+            this.btnResetPassword.TabIndex = 7;
+            this.btnResetPassword.Text = "&Reset Password ";
+            this.btnResetPassword.UseVisualStyleBackColor = false;
+            this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
             // 
             // btnExit
             // 
@@ -154,10 +154,11 @@ namespace SU21_Final_Project
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(489, 309);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnResetPassword);
             this.Controls.Add(this.lblLoginFailed);
             this.Controls.Add(this.btnSignUp);
             this.Controls.Add(this.btnLogin);
@@ -183,7 +184,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.TextBox tbxPassword;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnSignUp;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnResetPassword;
         private System.Windows.Forms.Label lblLoginFailed;
         private System.Windows.Forms.Button btnExit;
     }

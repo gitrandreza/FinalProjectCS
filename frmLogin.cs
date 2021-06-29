@@ -93,21 +93,26 @@ namespace SU21_Final_Project
             }
         }
 
+        //Sign up Form
         private void btnSignUp_Click(object sender, EventArgs e)
         {
             new frmSignUp().Show();
             this.Hide();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            new frmResetPassword().Show();
-            this.Hide();
-        }
 
+        //Exit Application
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+
+        //Reset password form
+        private void btnResetPassword_Click(object sender, EventArgs e)
+        {
+            new frmResetPassword().Show();
+            this.Hide();
         }
     }
 }
