@@ -34,7 +34,7 @@ namespace SU21_Final_Project
         string strEmail ;
 
 
-        int intPersonID ;
+        
         string strCreateUsername ;
         string strCreatePassword ;
         string strAnswerOne ;
@@ -146,10 +146,10 @@ namespace SU21_Final_Project
                         SqlCommand commandLastID = new SqlCommand(queryLastID, Connection);
 
                         //gets the results from the sql command
-                        SqlDataReader reader = commandLastID.ExecuteReader();
-                        reader.Read();
-                        int intPersonID = reader.GetInt32(0);
-                        reader.Close();
+                        SqlDataReader sr = commandLastID.ExecuteReader();
+                        sr.Read();
+                        int intPersonID = sr.GetInt32(0);
+                        sr.Close();
 
                         
                         SqlCommand commandUsers = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Users(PersonID,Username,Password,Answer1,Answer2,RoleID,ThirdQuestion,SecondQuestion,FirstQuestion,Answer3) VALUES(@PersonID,@Username,@Password,@Answer1,@Answer2,@RoleID,@ThirdQuestion,@SecondQuestion,@FirstQuestion,@Answer3)", Connection);
@@ -244,6 +244,12 @@ namespace SU21_Final_Project
             return true;
         }
 
+        //Return to login form
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            new frmLogin().Show();
+            this.Hide();
+        }
     }
 
 }

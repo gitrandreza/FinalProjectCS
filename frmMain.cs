@@ -302,7 +302,7 @@ namespace SU21_Final_Project
 
                 if (intQuantityNeed > 0 && intQuantityNeed < int.MaxValue)
                 {
-                    if (intQuantityNeed < myItems.Quantity)
+                    if (intQuantityNeed <= myItems.Quantity)
                     {
                         if (radEmbroidered.Checked == true || radPrinted.Checked == true || radBlank.Checked == true)
                         {
@@ -374,16 +374,21 @@ namespace SU21_Final_Project
                                     addCart(myItems.Name, strItemDeco, strItemColor, strItemSize, strQuantityNeed, myItems.Price.ToString(), strItemTotalPrice);
 
 
+                                    if (myItems.Quantity > 0)
+                                    {
+                                        //Decrease Quantity Item selected
+                                        myItems.Quantity = myItems.Quantity - intQuantityNeed;
 
-                                    //Decrease Quantity Item selected
-                                    myItems.Quantity = myItems.Quantity - intQuantityNeed;
-
-                                    lblQuantityAvailable.Text = myItems.Quantity.ToString();
-                                    //grab current row index selected
-                                    int intIndexRowSelected = dgvAll.CurrentCell.RowIndex;
-                                    //Insert quantity updated to current row and Cell "Quantity" index 1
-                                    dgvAll.Rows[intIndexRowSelected].Cells[1].Value = myItems.Quantity.ToString();
-
+                                        lblQuantityAvailable.Text = myItems.Quantity.ToString();
+                                        //grab current row index selected
+                                        int intIndexRowSelected = dgvAll.CurrentCell.RowIndex;
+                                        //Insert quantity updated to current row and Cell "Quantity" index 1
+                                        dgvAll.Rows[intIndexRowSelected].Cells[1].Value = myItems.Quantity.ToString();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Sorry, this item is out of stock!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
 
                                     //Reset Selection
                                     tbxQuantity.Text = "";
@@ -433,8 +438,7 @@ namespace SU21_Final_Project
                 MessageBox.Show("Please add quantity", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 tbxQuantity.Focus();
             }
-            btnDisplayAmount.Enabled = true;
-            btnRemove.Enabled = true;
+            
         }
 
         //Remove Item from list
@@ -620,6 +624,7 @@ namespace SU21_Final_Project
                 MessageBox.Show("Please  Display Amount before checking out", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
+            Reset();
         }
 
         //Display receipt in HTML
@@ -683,9 +688,9 @@ namespace SU21_Final_Project
             try
             {
                 // A "using" statement will automatically close a file after opening it.               
-                using (StreamWriter writer = new StreamWriter("Report.html"))
+                using (StreamWriter sw = new StreamWriter("Report.html"))
                 {
-                    writer.WriteLine(html);
+                   sw.WriteLine(html);
                 }
                 System.Diagnostics.Process.Start(@"Report.html"); //Open the report in the default web browser
             }
@@ -697,9 +702,9 @@ namespace SU21_Final_Project
 
             //unique filename  use for a date and time with part of a name
             DateTime today = DateTime.Now;
-            using (StreamWriter writer = new StreamWriter($"{today.ToString("yyyy-MM-dd-HHmmss")} - Report.html"))
+            using (StreamWriter sw = new StreamWriter($"{today.ToString("yyyy-MM-dd-HHmmss")} - Report.html"))
             {
-                writer.WriteLine(html);
+                sw.WriteLine(html);
             }
         }
 
@@ -711,12 +716,7 @@ namespace SU21_Final_Project
                 Application.Exit();
             }
         }
-        //Back to login form
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-            new frmLogin();
-            this.Hide();
-        }
+        
 
         //Reset Selection
         private void btnReset_Click(object sender, EventArgs e)
@@ -726,10 +726,7 @@ namespace SU21_Final_Project
 
         public void Reset()
         {
-            dgvList.Rows.Clear();
-
-
-            
+            dgvList.Rows.Clear();            
             lblName.Text = "";
             lblPrice.Text = "";
             pbxAll.Image = null;
@@ -740,6 +737,13 @@ namespace SU21_Final_Project
             btnDisplayAmount.Enabled = false;
            
             
+        }
+        //Back to login form
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            new frmLogin().Show();
+            this.Hide();
+            Reset();
         }
     }
 }
