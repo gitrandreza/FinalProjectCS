@@ -28,6 +28,8 @@ namespace SU21_Final_Project
         public frmResetPassword()
         {
             InitializeComponent();
+
+          
         }
 
         //Check for username and security question
@@ -104,7 +106,6 @@ namespace SU21_Final_Project
         //UPDATE AND SAVE THE NEW PASSWORD  
         private void btnNewPassword_Click(object sender, EventArgs e)
         {
-
             strNewPassword = tbxNewPassword.Text;
             if (ValidPassword(strNewPassword) == true)
             {
@@ -131,8 +132,8 @@ namespace SU21_Final_Project
                 MessageBox.Show("Password format is not valid", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 tbxNewPassword.Focus();
             }
- 
         }
+      
         //Check for password Validation
         public bool ValidPassword(string strPassword)
         {
@@ -183,6 +184,13 @@ namespace SU21_Final_Project
                 return false;
             }
             return true;
+        }
+
+        //Return to login form
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            new frmLogin().Show();
+            this.Hide();
         }
     }
 }

@@ -71,14 +71,15 @@ namespace SU21_Final_Project
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbxInformation = new System.Windows.Forms.GroupBox();
             this.cboSuffix = new System.Windows.Forms.ComboBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.gbxSecurityQuestion = new System.Windows.Forms.GroupBox();
+            this.gbxCreateLogin = new System.Windows.Forms.GroupBox();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.gbxInformation.SuspendLayout();
+            this.gbxSecurityQuestion.SuspendLayout();
+            this.gbxCreateLogin.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbxLastName
@@ -332,12 +333,16 @@ namespace SU21_Final_Project
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(335, 580);
+            this.btnSave.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnSave.Location = new System.Drawing.Point(327, 580);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 31);
             this.btnSave.TabIndex = 32;
             this.btnSave.Text = "&Save";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label17
@@ -429,43 +434,45 @@ namespace SU21_Final_Project
             this.label23.TabIndex = 43;
             this.label23.Text = "Must contais one special character and no space";
             // 
-            // groupBox1
+            // gbxInformation
             // 
-            this.groupBox1.Controls.Add(this.cboSuffix);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.tbxLastName);
-            this.groupBox1.Controls.Add(this.tbxFirstName);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label19);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.tbxEmail);
-            this.groupBox1.Controls.Add(this.tbxMiddleName);
-            this.groupBox1.Controls.Add(this.label18);
-            this.groupBox1.Controls.Add(this.tbxPhoneTwo);
-            this.groupBox1.Controls.Add(this.tbxDateOfBirth);
-            this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.tbxPhoneOne);
-            this.groupBox1.Controls.Add(this.tbxCity);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.tbxAddressOne);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.tbxState);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.tbxAddressTwo);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.tbxAddressThree);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.tbxZip);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(2, 55);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(795, 286);
-            this.groupBox1.TabIndex = 44;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Information";
+            this.gbxInformation.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.gbxInformation.Controls.Add(this.cboSuffix);
+            this.gbxInformation.Controls.Add(this.label24);
+            this.gbxInformation.Controls.Add(this.label1);
+            this.gbxInformation.Controls.Add(this.tbxLastName);
+            this.gbxInformation.Controls.Add(this.tbxFirstName);
+            this.gbxInformation.Controls.Add(this.label2);
+            this.gbxInformation.Controls.Add(this.label3);
+            this.gbxInformation.Controls.Add(this.label19);
+            this.gbxInformation.Controls.Add(this.label4);
+            this.gbxInformation.Controls.Add(this.tbxEmail);
+            this.gbxInformation.Controls.Add(this.tbxMiddleName);
+            this.gbxInformation.Controls.Add(this.label18);
+            this.gbxInformation.Controls.Add(this.tbxPhoneTwo);
+            this.gbxInformation.Controls.Add(this.tbxDateOfBirth);
+            this.gbxInformation.Controls.Add(this.label17);
+            this.gbxInformation.Controls.Add(this.label5);
+            this.gbxInformation.Controls.Add(this.tbxPhoneOne);
+            this.gbxInformation.Controls.Add(this.tbxCity);
+            this.gbxInformation.Controls.Add(this.label6);
+            this.gbxInformation.Controls.Add(this.tbxAddressOne);
+            this.gbxInformation.Controls.Add(this.label7);
+            this.gbxInformation.Controls.Add(this.tbxState);
+            this.gbxInformation.Controls.Add(this.label8);
+            this.gbxInformation.Controls.Add(this.tbxAddressTwo);
+            this.gbxInformation.Controls.Add(this.label9);
+            this.gbxInformation.Controls.Add(this.tbxAddressThree);
+            this.gbxInformation.Controls.Add(this.label10);
+            this.gbxInformation.Controls.Add(this.tbxZip);
+            this.gbxInformation.Controls.Add(this.label11);
+            this.gbxInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxInformation.Location = new System.Drawing.Point(2, 55);
+            this.gbxInformation.Name = "gbxInformation";
+            this.gbxInformation.Size = new System.Drawing.Size(795, 286);
+            this.gbxInformation.TabIndex = 44;
+            this.gbxInformation.TabStop = false;
+            this.gbxInformation.Text = "Information";
             // 
             // cboSuffix
             // 
@@ -479,69 +486,86 @@ namespace SU21_Final_Project
             this.cboSuffix.Size = new System.Drawing.Size(78, 24);
             this.cboSuffix.TabIndex = 39;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.tbxAnswerOne);
-            this.groupBox2.Controls.Add(this.tbxAnswerTwo);
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.tbxAnswerThree);
-            this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Location = new System.Drawing.Point(385, 374);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(416, 187);
-            this.groupBox2.TabIndex = 45;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Security Question";
-            // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label24.Location = new System.Drawing.Point(476, 584);
+            this.label24.Location = new System.Drawing.Point(667, 18);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(144, 20);
+            this.label24.Size = new System.Drawing.Size(122, 17);
             this.label24.TabIndex = 46;
             this.label24.Text = "(*)Required Fields";
             // 
-            // groupBox3
+            // gbxSecurityQuestion
             // 
-            this.groupBox3.Controls.Add(this.tbxCreateUsername);
-            this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.tbxCreatePassword);
-            this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Controls.Add(this.label23);
-            this.groupBox3.Controls.Add(this.label21);
-            this.groupBox3.Controls.Add(this.label22);
-            this.groupBox3.Location = new System.Drawing.Point(17, 374);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(362, 187);
-            this.groupBox3.TabIndex = 47;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Create Login Access";
+            this.gbxSecurityQuestion.BackColor = System.Drawing.Color.MistyRose;
+            this.gbxSecurityQuestion.Controls.Add(this.label14);
+            this.gbxSecurityQuestion.Controls.Add(this.tbxAnswerOne);
+            this.gbxSecurityQuestion.Controls.Add(this.tbxAnswerTwo);
+            this.gbxSecurityQuestion.Controls.Add(this.label15);
+            this.gbxSecurityQuestion.Controls.Add(this.tbxAnswerThree);
+            this.gbxSecurityQuestion.Controls.Add(this.label16);
+            this.gbxSecurityQuestion.Location = new System.Drawing.Point(385, 374);
+            this.gbxSecurityQuestion.Name = "gbxSecurityQuestion";
+            this.gbxSecurityQuestion.Size = new System.Drawing.Size(416, 187);
+            this.gbxSecurityQuestion.TabIndex = 45;
+            this.gbxSecurityQuestion.TabStop = false;
+            this.gbxSecurityQuestion.Text = "Security Question";
+            // 
+            // gbxCreateLogin
+            // 
+            this.gbxCreateLogin.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.gbxCreateLogin.Controls.Add(this.tbxCreateUsername);
+            this.gbxCreateLogin.Controls.Add(this.label12);
+            this.gbxCreateLogin.Controls.Add(this.tbxCreatePassword);
+            this.gbxCreateLogin.Controls.Add(this.label13);
+            this.gbxCreateLogin.Controls.Add(this.label23);
+            this.gbxCreateLogin.Controls.Add(this.label21);
+            this.gbxCreateLogin.Controls.Add(this.label22);
+            this.gbxCreateLogin.Location = new System.Drawing.Point(17, 374);
+            this.gbxCreateLogin.Name = "gbxCreateLogin";
+            this.gbxCreateLogin.Size = new System.Drawing.Size(362, 187);
+            this.gbxCreateLogin.TabIndex = 47;
+            this.gbxCreateLogin.TabStop = false;
+            this.gbxCreateLogin.Text = "Create Login Access";
+            // 
+            // btnBack
+            // 
+            this.btnBack.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnBack.Location = new System.Drawing.Point(17, 580);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(110, 31);
+            this.btnBack.TabIndex = 48;
+            this.btnBack.Text = "&Back";
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // frmSignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(813, 623);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.label24);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.gbxCreateLogin);
+            this.Controls.Add(this.gbxSecurityQuestion);
+            this.Controls.Add(this.gbxInformation);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.btnSave);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmSignUp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmSignUp";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.gbxInformation.ResumeLayout(false);
+            this.gbxInformation.PerformLayout();
+            this.gbxSecurityQuestion.ResumeLayout(false);
+            this.gbxSecurityQuestion.PerformLayout();
+            this.gbxCreateLogin.ResumeLayout(false);
+            this.gbxCreateLogin.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -591,10 +615,11 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gbxInformation;
+        private System.Windows.Forms.GroupBox gbxSecurityQuestion;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.ComboBox cboSuffix;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox gbxCreateLogin;
+        private System.Windows.Forms.Button btnBack;
     }
 }
