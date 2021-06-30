@@ -41,7 +41,11 @@ namespace SU21_Final_Project
         double dblSubTotal;
         double dblAmountTax;
         double dblTotalAmount;
-        double dblDiscount = 0;
+        double dblDiscountOne = 0.1;
+        double dblDiscountTwo = 0.2;
+        double dblDiscountThree = 0.3;
+        double dblDiscount;
+
 
         int intSaleId;
 
@@ -292,152 +296,170 @@ namespace SU21_Final_Project
         //Add select Item to List
         private void btnAddToList_Click(object sender, EventArgs e)
         {
-            if (tbxQuantity.Text != "")
+            if (lblName.Text != "")
             {
-
-                string strQuantityNeed;
-                strQuantityNeed = tbxQuantity.Text;
-
-                bool intQuantityTryParse = int.TryParse(strQuantityNeed, out intQuantityNeed);
-
-                if (intQuantityNeed > 0 && intQuantityNeed < int.MaxValue)
+                if (tbxQuantity.Text != "")
                 {
-                    if (intQuantityNeed <= myItems.Quantity)
+
+                    string strQuantityNeed;
+                    strQuantityNeed = tbxQuantity.Text;
+
+                    bool intQuantityTryParse = int.TryParse(strQuantityNeed, out intQuantityNeed);
+
+                    if (intQuantityNeed > 0 && intQuantityNeed < int.MaxValue)
                     {
-                        if (radEmbroidered.Checked == true || radPrinted.Checked == true || radBlank.Checked == true)
+                        if (intQuantityNeed <= myItems.Quantity)
                         {
-                            if (radSmall.Checked == true || radMedium.Checked == true || radLarge.Checked == true)
+                            if (radEmbroidered.Checked == true || radPrinted.Checked == true || radBlank.Checked == true)
                             {
-                                if (cboColor.SelectedItem!= null)
+                                if (radSmall.Checked == true || radMedium.Checked == true || radLarge.Checked == true)
                                 {
-                                    //Build datagriedviewList 
-                                    dgvList.ColumnCount = 7;
-                                    dgvList.Columns[0].Name = "Name";
-                                    dgvList.Columns[1].Name = "Type of Decoration";
-                                    dgvList.Columns[2].Name = "Color";
-                                    dgvList.Columns[3].Name = "Size";
-                                    dgvList.Columns[4].Name = "Quantity";
-                                    dgvList.Columns[5].Name = "Unit Price";
-                                    dgvList.Columns[6].Name = "Total Price";
-
-                                    //Get selection information from input 
-
-
-                                    string strItemDeco = "N/A";
-                                    if (radEmbroidered.Checked == true)
+                                    if (cboColor.SelectedItem != null)
                                     {
-                                        strItemDeco = "Embroidered";
-                                    }
-                                    else if (radPrinted.Checked == true)
-                                    {
-                                        strItemDeco = "Printed";
-                                    }
+                                        //Build datagriedviewList 
+                                        dgvList.ColumnCount = 7;
+                                        dgvList.Columns[0].Name = "Name";
+                                        dgvList.Columns[1].Name = "Type of Decoration";
+                                        dgvList.Columns[2].Name = "Color";
+                                        dgvList.Columns[3].Name = "Size";
+                                        dgvList.Columns[4].Name = "Quantity";
+                                        dgvList.Columns[5].Name = "Unit Price";
+                                        dgvList.Columns[6].Name = "Total Price";
 
-                                    else if (radBlank.Checked == true)
-                                    {
-                                        strItemDeco = "Blank";
-                                    }
 
-                                    string strItemColor;
-                                    if (cboColor.SelectedItem == null)
-                                    {
-                                        strItemColor = "N/A";
 
+                                        //Get selection information from input 
+
+
+                                        string strItemDeco = "N/A";
+                                        if (radEmbroidered.Checked == true)
+                                        {
+                                            strItemDeco = "Embroidered";
+                                        }
+                                        else if (radPrinted.Checked == true)
+                                        {
+                                            strItemDeco = "Printed";
+                                        }
+
+                                        else if (radBlank.Checked == true)
+                                        {
+                                            strItemDeco = "Blank";
+                                        }
+
+                                        string strItemColor;
+                                        if (cboColor.SelectedItem == null)
+                                        {
+                                            strItemColor = "N/A";
+
+                                        }
+                                        else
+                                        {
+                                            strItemColor = cboColor.SelectedItem.ToString();
+                                        }
+
+
+                                        string strItemSize = "N/A";
+                                        if (radSmall.Checked == true)
+                                        {
+                                            strItemSize = "Small";
+                                        }
+                                        else if (radMedium.Checked == true)
+                                        {
+                                            strItemSize = "Medium";
+                                        }
+
+                                        else if (radLarge.Checked == true)
+                                        {
+                                            strItemSize = "Large";
+                                        }
+
+                                        double dblTotalPrice = myItems.Price * intQuantityNeed;
+
+
+
+                                        //lblMessage.Text =dblTotalPrice.ToString();
+                                        string strItemTotalPrice = dblTotalPrice.ToString();
+
+                                        //Call add cart function to display selection in the cart
+                                        addCart(myItems.Name, strItemDeco, strItemColor, strItemSize, strQuantityNeed, myItems.Price.ToString(), strItemTotalPrice);
+
+
+                                        if (myItems.Quantity > 0)
+                                        {
+                                            //Decrease Quantity Item selected
+                                            myItems.Quantity = myItems.Quantity - intQuantityNeed;
+
+                                            lblQuantityAvailable.Text = myItems.Quantity.ToString();
+                                            //grab current row index selected
+                                            int intIndexRowSelected = dgvAll.CurrentCell.RowIndex;
+                                            //Insert quantity updated to current row and Cell "Quantity" index 1
+                                            dgvAll.Rows[intIndexRowSelected].Cells[1].Value = myItems.Quantity.ToString();
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Sorry, this item is out of stock!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        }
+
+                                        //Reset Selection
+                                        tbxQuantity.Text = "";
+                                        radEmbroidered.Checked = false;
+                                        radPrinted.Checked = false;
+                                        radBlank.Checked = false;
+                                        radLarge.Checked = false;
+                                        radMedium.Checked = false;
+                                        radSmall.Checked = false;
+                                        cboColor.Text = "";
+                                        lblQuantityAvailable.Text = "";
+                                        tbxDescription.Text = "";
                                     }
                                     else
                                     {
-                                        strItemColor = cboColor.SelectedItem.ToString();
+                                        MessageBox.Show("Please choose Color", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     }
-
-
-                                    string strItemSize = "N/A";
-                                    if (radSmall.Checked == true)
-                                    {
-                                        strItemSize = "Small";
-                                    }
-                                    else if (radMedium.Checked == true)
-                                    {
-                                        strItemSize = "Medium";
-                                    }
-
-                                    else if (radLarge.Checked == true)
-                                    {
-                                        strItemSize = "Large";
-                                    }
-
-                                    double dblTotalPrice = myItems.Price * intQuantityNeed;
-
-                                    //lblMessage.Text =dblTotalPrice.ToString();
-                                    string strItemTotalPrice = dblTotalPrice.ToString();
-
-                                    //Call add cart function to display selection in the cart
-                                    addCart(myItems.Name, strItemDeco, strItemColor, strItemSize, strQuantityNeed, myItems.Price.ToString(), strItemTotalPrice);
-
-
-                                    if (myItems.Quantity > 0)
-                                    {
-                                        //Decrease Quantity Item selected
-                                        myItems.Quantity = myItems.Quantity - intQuantityNeed;
-
-                                        lblQuantityAvailable.Text = myItems.Quantity.ToString();
-                                        //grab current row index selected
-                                        int intIndexRowSelected = dgvAll.CurrentCell.RowIndex;
-                                        //Insert quantity updated to current row and Cell "Quantity" index 1
-                                        dgvAll.Rows[intIndexRowSelected].Cells[1].Value = myItems.Quantity.ToString();
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Sorry, this item is out of stock!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    }
-
-                                    //Reset Selection
-                                    tbxQuantity.Text = "";
-                                    radEmbroidered.Checked = false;
-                                    radPrinted.Checked = false;
-                                    radBlank.Checked = false;
-                                    radLarge.Checked = false;
-                                    radMedium.Checked = false;
-                                    radSmall.Checked = false;
-                                    cboColor.Text = "";
-                                    lblQuantityAvailable.Text = "";
-                                    tbxDescription.Text = "";
                                 }
+
                                 else
                                 {
-                                    MessageBox.Show("Please choose Color", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    MessageBox.Show("Please choose size", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                             }
-
                             else
                             {
-                                MessageBox.Show("Please choose size", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Please choose decoration", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Please choose decoration", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                            MessageBox.Show("Quantity Unavailable", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            tbxQuantity.Text = "";
+                            tbxQuantity.Focus();
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Quantity Unavailable", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Please enter positive number only", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         tbxQuantity.Text = "";
                         tbxQuantity.Focus();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Please enter positive number only", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    tbxQuantity.Text = "";
+                    MessageBox.Show("Please add quantity", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     tbxQuantity.Focus();
                 }
             }
             else
             {
-                MessageBox.Show("Please add quantity", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                tbxQuantity.Focus();
+                MessageBox.Show("Please select your product", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            if(dgvList.Rows.Count > 0)
+            {
+                btnRemove.Enabled = true;
+                btnDisplayAmount.Enabled = true;
+            }
+
+            
             
         }
 
@@ -471,6 +493,11 @@ namespace SU21_Final_Project
             double dblTotalPriceList = 0;
             double dblTotalList = 0;
 
+            string strQuantityTotal;
+            int intQuantityTotal=0;
+            
+
+            btnCheckout.Enabled = true;
 
             if (dgvList.Rows.Count > 0)//make sure data list is not empty
             {
@@ -484,12 +511,47 @@ namespace SU21_Final_Project
                     dblTotalList = dblTotalList + dblTotalPriceList;
                 }
 
+                //Cumulate quantity total for discount
+                for (int i = 0; i < dgvList.Rows.Count; i++)
+                {
+                    strQuantityTotal = dgvList.Rows[i].Cells[4].Value.ToString();
+                    bool intResultTryParse = int.TryParse(strQuantityTotal, out intQuantityTotal);
+
+                    intQuantityTotal += intQuantityTotal;
+                }
+
+                //Discount Condition
+                if (intQuantityTotal > 10 && intQuantityTotal <= 50)
+                {
+                    
+                    lblDiscountOne.BackColor = Color.OrangeRed;
+                    dblDiscount = dblTotalList * dblDiscountOne;
+                    dblTotalList = dblTotalList - dblDiscount;
+                }
+              else if (intQuantityTotal >50 && intQuantityTotal <= 100)
+                {
+
+                    lblDiscountTwo.BackColor = Color.OrangeRed;
+                    dblDiscount = dblTotalList * dblDiscountTwo;
+                    dblTotalList = dblTotalList - dblDiscount;
+                }
+                else if (intQuantityTotal > 100)
+                {
+
+                    lblDiscountThree.BackColor = Color.OrangeRed;
+                    dblDiscount = dblTotalList * dblDiscountThree;
+                    dblTotalList = dblTotalList - dblDiscount;
+                }
+
                 dblAmountTax = dblTotalList * dblTax;
                 dblSubTotal = dblTotalList;
                 dblTotalAmount = dblTotalList + dblAmountTax;
 
+                
+                lblDiscount.Text = dblDiscount.ToString("C2");
                 lblSubTotal.Text = dblTotalList.ToString("C2");
                 lblTaxAmount.Text = dblAmountTax.ToString("C2");
+
                 lblTotalAmount.Text = dblTotalAmount.ToString("C2");
 
             }
@@ -543,14 +605,14 @@ namespace SU21_Final_Project
 
 
                     //Get the last SaleID using Max to insert as FK to the Sales Report table
-                    string querySaleID = "SELECT MAX(SaleId) from RandrezaVoharisoaM21Su2332.SalesReport";
-                    SqlCommand commandSalesID = new SqlCommand(querySaleID, Connection);
+                    string strQuerySaleID = "SELECT MAX(SaleId) from RandrezaVoharisoaM21Su2332.SalesReport";
+                    SqlCommand commandSalesID = new SqlCommand(strQuerySaleID, Connection);
 
                     //gets Sale Id from insert sale report in the table sales report
-                    SqlDataReader readerSaleID = commandSalesID.ExecuteReader();
-                    readerSaleID.Read();
-                    intSaleId = readerSaleID.GetInt32(0);
-                    readerSaleID.Close();
+                    SqlDataReader srSaleID = commandSalesID.ExecuteReader();
+                    srSaleID.Read();
+                    intSaleId = srSaleID.GetInt32(0);
+                    srSaleID.Close();
 
                     //Loop through the data grid view List to store sales details in database table
                     foreach (DataGridViewRow row in dgvList.Rows)
@@ -564,10 +626,10 @@ namespace SU21_Final_Project
                         SqlCommand commandItemID = new SqlCommand("SELECT RandrezaVoharisoaM21Su2332.Items.ItemID FROM RandrezaVoharisoaM21Su2332.Items " +
                             "FULL JOIN RandrezaVoharisoaM21Su2332.SalesDetails " +
                             "ON RandrezaVoharisoaM21Su2332.SalesDetails.ItemID = RandrezaVoharisoaM21Su2332.Items.ItemID WHERE Name = '" + strNameItem + "'", Connection);
-                        SqlDataReader readerItemID = commandItemID.ExecuteReader();
-                        readerItemID.Read();
-                        strItemID = readerItemID["ItemID"].ToString();
-                        readerItemID.Close();
+                        SqlDataReader srItemID = commandItemID.ExecuteReader();
+                        srItemID.Read();
+                        strItemID = srItemID["ItemID"].ToString();
+                       srItemID.Close();
 
                         string strQuantitySold = row.Cells["Quantity"].Value.ToString();
                         string strDecoration = row.Cells["Type of Decoration"].Value.ToString();
@@ -670,6 +732,7 @@ namespace SU21_Final_Project
             html.Append("<tr><td colspan=8><hr></hd></td></tr>");
             html.Append("<table>");
 
+            html.AppendLine($"<h5>{"Discount: "}{dblDiscount.ToString("C2")}</h5>");
             html.AppendLine($"<h5>{"Subtotal: "}{dblSubTotal.ToString("C2")}</h5>");
             html.AppendLine($"<h5>{"Tax Sale: "}{dblAmountTax.ToString("C2")}</h5>");
             html.AppendLine($"<h5>{"Total Amount: "}{dblTotalAmount.ToString("C2")}</h5>");
@@ -735,8 +798,10 @@ namespace SU21_Final_Project
             lblTotalAmount.Text = "";
             btnRemove.Enabled = false;
             btnDisplayAmount.Enabled = false;
-           
-            
+            lblDiscountOne.BackColor = Color.Silver;
+            lblDiscountTwo.BackColor = Color.Silver;
+            lblDiscountThree.BackColor = Color.Silver;
+            lblDiscount.Text = "";
         }
         //Back to login form
         private void btnLogout_Click(object sender, EventArgs e)
