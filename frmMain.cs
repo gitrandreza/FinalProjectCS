@@ -438,6 +438,11 @@ namespace SU21_Final_Project
                 MessageBox.Show("Please add quantity", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 tbxQuantity.Focus();
             }
+            if(dgvList.Rows.Count > 0)
+            {
+                btnRemove.Enabled = true;
+                btnDisplayAmount.Enabled = true;
+            }
             
         }
 
@@ -471,6 +476,7 @@ namespace SU21_Final_Project
             double dblTotalPriceList = 0;
             double dblTotalList = 0;
 
+            btnCheckout.Enabled = true;
 
             if (dgvList.Rows.Count > 0)//make sure data list is not empty
             {

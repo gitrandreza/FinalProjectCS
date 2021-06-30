@@ -585,6 +585,7 @@ namespace SU21_Final_Project
             // btnCheckout
             // 
             this.btnCheckout.BackColor = System.Drawing.Color.DimGray;
+            this.btnCheckout.Enabled = false;
             this.btnCheckout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCheckout.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckout.ForeColor = System.Drawing.SystemColors.ActiveCaption;
