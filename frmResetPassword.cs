@@ -21,6 +21,8 @@ namespace SU21_Final_Project
         string strAnswerOne;
         string strAnswerTwo;
         string strAnswerThree;
+        
+        
         string strEnterUsername;
         string strNewPassword;
         bool blnMatch=false;
@@ -41,6 +43,7 @@ namespace SU21_Final_Project
             strAnswerThree = tbxIdol.Text;
             strEnterUsername = tbxEnterUsername.Text;
             strNewPassword = tbxNewPassword.Text;
+            
 
             try
             {
@@ -57,13 +60,15 @@ namespace SU21_Final_Project
 
                     //gets the results from the sql command
                     reader = command.ExecuteReader();
-
+                    
                     while (reader.Read())
                     {
                         //check through the user table column to find a matching value
                         if (reader["Username"].ToString() == strEnterUsername)
                         {
-                            if (reader["Answer1"].ToString() == strAnswerOne && reader["Answer2"].ToString() == strAnswerTwo && reader["Answer3"].ToString() == strAnswerThree)
+                            if ( reader["Answer1"].ToString().Equals(strAnswerOne, StringComparison.CurrentCultureIgnoreCase)
+                                && reader["Answer2"].ToString().Equals(strAnswerTwo, StringComparison.CurrentCultureIgnoreCase)
+                                && reader["Answer3"].ToString().Equals(strAnswerThree, StringComparison.CurrentCultureIgnoreCase))
                             {
                                 lblInvalidAnswers.Visible = false;
                                 lblValidAnswers.Visible = true;

@@ -67,7 +67,7 @@ namespace SU21_Final_Project
             this.tbxIdol.Location = new System.Drawing.Point(270, 240);
             this.tbxIdol.Name = "tbxIdol";
             this.tbxIdol.Size = new System.Drawing.Size(165, 22);
-            this.tbxIdol.TabIndex = 36;
+            this.tbxIdol.TabIndex = 3;
             // 
             // label15
             // 
@@ -84,7 +84,7 @@ namespace SU21_Final_Project
             this.tbxDog.Location = new System.Drawing.Point(270, 192);
             this.tbxDog.Name = "tbxDog";
             this.tbxDog.Size = new System.Drawing.Size(165, 22);
-            this.tbxDog.TabIndex = 34;
+            this.tbxDog.TabIndex = 2;
             // 
             // label14
             // 
@@ -101,7 +101,7 @@ namespace SU21_Final_Project
             this.tbxDrink.Location = new System.Drawing.Point(270, 145);
             this.tbxDrink.Name = "tbxDrink";
             this.tbxDrink.Size = new System.Drawing.Size(165, 22);
-            this.tbxDrink.TabIndex = 44;
+            this.tbxDrink.TabIndex = 1;
             // 
             // label1
             // 
@@ -169,7 +169,7 @@ namespace SU21_Final_Project
             this.tbxNewPassword.Location = new System.Drawing.Point(262, 380);
             this.tbxNewPassword.Name = "tbxNewPassword";
             this.tbxNewPassword.Size = new System.Drawing.Size(165, 22);
-            this.tbxNewPassword.TabIndex = 42;
+            this.tbxNewPassword.TabIndex = 4;
             // 
             // label12
             // 
@@ -186,7 +186,7 @@ namespace SU21_Final_Project
             this.tbxEnterUsername.Location = new System.Drawing.Point(270, 60);
             this.tbxEnterUsername.Name = "tbxEnterUsername";
             this.tbxEnterUsername.Size = new System.Drawing.Size(165, 22);
-            this.tbxEnterUsername.TabIndex = 32;
+            this.tbxEnterUsername.TabIndex = 0;
             // 
             // btnNewPassword
             // 
