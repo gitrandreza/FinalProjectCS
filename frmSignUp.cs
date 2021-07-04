@@ -259,6 +259,8 @@ namespace SU21_Final_Project
             new frmLogin().Show();
             this.Hide();
         }
+
+        
     }
 
 }

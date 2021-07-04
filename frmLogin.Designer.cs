@@ -38,6 +38,8 @@ namespace SU21_Final_Project
             this.lblLoginFailed = new System.Windows.Forms.Label();
             this.btnResetPassword = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.pbxLogo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -150,6 +152,15 @@ namespace SU21_Final_Project
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // pbxLogo
+            // 
+            this.pbxLogo.Location = new System.Drawing.Point(324, 136);
+            this.pbxLogo.Name = "pbxLogo";
+            this.pbxLogo.Size = new System.Drawing.Size(153, 112);
+            this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxLogo.TabIndex = 9;
+            this.pbxLogo.TabStop = false;
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -157,6 +168,7 @@ namespace SU21_Final_Project
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(489, 309);
+            this.Controls.Add(this.pbxLogo);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnResetPassword);
             this.Controls.Add(this.lblLoginFailed);
@@ -172,6 +184,7 @@ namespace SU21_Final_Project
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,5 +201,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnResetPassword;
         private System.Windows.Forms.Label lblLoginFailed;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.PictureBox pbxLogo;
     }
 }
