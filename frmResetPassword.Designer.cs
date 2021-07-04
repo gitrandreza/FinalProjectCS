@@ -289,9 +289,9 @@ namespace SU21_Final_Project
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label3.Location = new System.Drawing.Point(26, 3);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(134, 43);
+            this.label3.Size = new System.Drawing.Size(146, 43);
             this.label3.TabIndex = 55;
-            this.label3.Text = "mprint Store";
+            this.label3.Text = "mprint ";
             // 
             // label4
             // 
@@ -333,7 +333,6 @@ namespace SU21_Final_Project
             this.Controls.Add(this.label14);
             this.Controls.Add(this.tbxDrink);
             this.Controls.Add(this.panel1);
-            this.Enabled = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmResetPassword";
             this.Padding = new System.Windows.Forms.Padding(20);

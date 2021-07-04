@@ -159,9 +159,9 @@ namespace SU21_Final_Project
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label3.Location = new System.Drawing.Point(30, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(134, 43);
+            this.label3.Size = new System.Drawing.Size(144, 43);
             this.label3.TabIndex = 9;
-            this.label3.Text = "mprint Store";
+            this.label3.Text = "mprint";
             // 
             // label4
             // 
