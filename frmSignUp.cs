@@ -74,17 +74,12 @@ namespace SU21_Final_Project
             {
 
                 Connection.Open();
-                if (tbxFirstName.Text != "" && tbxLastName.Text != "" && tbxAddressOne.Text != "" && tbxPhoneOne.Text != "" && tbxCity.Text != ""
+                if (tbxFirstName.Text != "" && tbxLastName.Text != "" && tbxAddressOne.Text != "" && tbxPhoneOne.Text != "" && tbxCity.Text != "" && tbxZip.Text != ""
                     && cboState.Text != "" && tbxEmail.Text != "" && tbxCreateUsername.Text != "" && tbxCreatePassword.Text != "" && tbxAnswerOne.Text != ""
                     && tbxAnswerTwo.Text != "" && tbxAnswerThree.Text != "")
                 {
 
 
-
-                    if (tbxFirstName.Text != "" && tbxLastName.Text != "" && tbxAddressOne.Text != "" && tbxPhoneOne.Text != "" && tbxCity.Text != ""
-                        && cboState.Text != "" && tbxEmail.Text != "" && tbxCreateUsername.Text != "" && tbxCreatePassword.Text != "" && tbxAnswerOne.Text != ""
-                        && tbxAnswerTwo.Text != "" && tbxAnswerThree.Text != "")
-                    {
                         strCreatePassword = tbxCreatePassword.Text;
 
                         if (ValidPassword(strCreatePassword) == true)
@@ -103,6 +98,7 @@ namespace SU21_Final_Project
                             strCity = tbxCity.Text;
                             strState=cboState.SelectedItem.ToString();
                             strEmail = tbxEmail.Text;
+                            strZip = tbxZip.Text;
 
                             if (cboSuffix.SelectedItem == null)
                             {
@@ -182,11 +178,7 @@ namespace SU21_Final_Project
                         {
                             MessageBox.Show("Password format is not valid", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Please make sure to fill up the required fields with(*)", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                  
                 }
                 else
                 {
