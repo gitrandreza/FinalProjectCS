@@ -466,24 +466,29 @@ namespace SU21_Final_Project
         //Remove Item from list
         private void btnRemove_Click(object sender, EventArgs e)
         {
-
-            lblSubTotal.Text = "";
-            lblTaxAmount.Text = "";
-            lblTotalAmount.Text = "";
-
-            foreach (DataGridViewRow row in dgvList.SelectedRows)
+            if (dgvList.SelectedRows.Count > 0)
             {
-                dgvList.Rows.RemoveAt(row.Index);
-                //Increase Quantity Available
-                myItems.Quantity = myItems.Quantity + intQuantityNeed;
+                lblSubTotal.Text = "";
+                lblTaxAmount.Text = "";
+                lblTotalAmount.Text = "";
 
-                lblQuantityAvailable.Text = myItems.Quantity.ToString();
-                //grab current row index selected
-                int intIndexRowSelected = dgvAll.CurrentCell.RowIndex;
-                //Insert quantity updated to current row and Cell "Quantity" index 1
-                dgvAll.Rows[intIndexRowSelected].Cells[1].Value = myItems.Quantity.ToString();
+                foreach (DataGridViewRow row in dgvList.SelectedRows)
+                {
+                    dgvList.Rows.RemoveAt(row.Index);
+                    //Increase Quantity Available
+                    myItems.Quantity = myItems.Quantity + intQuantityNeed;
+
+                    lblQuantityAvailable.Text = myItems.Quantity.ToString();
+                    //grab current row index selected
+                    int intIndexRowSelected = dgvAll.CurrentCell.RowIndex;
+                    //Insert quantity updated to current row and Cell "Quantity" index 1
+                    dgvAll.Rows[intIndexRowSelected].Cells[1].Value = myItems.Quantity.ToString();
+                }
             }
-
+            else
+            {
+                MessageBox.Show("Please select the product you want to remove", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         //Display detail Amount detail and total to pay from the list of order
@@ -520,25 +525,28 @@ namespace SU21_Final_Project
                     intQuantityTotal += intQuantityTotal;
                 }
 
-                //Discount Condition
+                //Discount and delivery condition based on quantities
                 if (intQuantityTotal > 10 && intQuantityTotal <= 50)
                 {
                     
                     lblDiscountOne.BackColor = Color.OrangeRed;
+                    lblDeliveryOne.BackColor = Color.OrangeRed;
                     dblDiscount = dblTotalList * dblDiscountOne;
                     dblTotalList = dblTotalList - dblDiscount;
                 }
-              else if (intQuantityTotal >50 && intQuantityTotal <= 100)
+              else if (intQuantityTotal >50 && intQuantityTotal < 100)
                 {
 
                     lblDiscountTwo.BackColor = Color.OrangeRed;
+                    lblDeliveryTwo.BackColor = Color.OrangeRed;
                     dblDiscount = dblTotalList * dblDiscountTwo;
                     dblTotalList = dblTotalList - dblDiscount;
                 }
-                else if (intQuantityTotal > 100)
+                else if (intQuantityTotal >= 100)
                 {
 
                     lblDiscountThree.BackColor = Color.OrangeRed;
+                    lblDeliveryThree.BackColor = Color.OrangeRed;
                     dblDiscount = dblTotalList * dblDiscountThree;
                     dblTotalList = dblTotalList - dblDiscount;
                 }
@@ -646,6 +654,8 @@ namespace SU21_Final_Project
 
 
 
+
+
                         commandSalesDetails.ExecuteNonQuery();
 
                     }
@@ -714,7 +724,7 @@ namespace SU21_Final_Project
             html.AppendLine("<tr><td>Name</td><td>Decoration</td><td>Size</td><td>Color</td><td>Quantity</td><td>Price</td><td>Total Price</td></tr>");
             html.AppendLine("<tr><td colspan=8><hr /></td></tr>");
 
-            //Loop through the datagriview List to display user Order in the receipt
+            //Loop through the data grid view List to display user Order in the receipt
             foreach (DataGridViewRow row in dgvList.Rows)
             {
                 html.Append("<tr>");
@@ -736,7 +746,21 @@ namespace SU21_Final_Project
             html.AppendLine($"<h5>{"Subtotal: "}{dblSubTotal.ToString("C2")}</h5>");
             html.AppendLine($"<h5>{"Tax Sale: "}{dblAmountTax.ToString("C2")}</h5>");
             html.AppendLine($"<h5>{"Total Amount: "}{dblTotalAmount.ToString("C2")}</h5>");
+            html.AppendLine($"<h5>{"Estimated Delivery: "}{dblTotalAmount.ToString("C2")}</h5>");
 
+            if (lblDeliveryTwo.BackColor == Color.OrangeRed)
+            {
+                html.AppendLine($"<h5>{"Estimated Delivery: 48h "}</h5>");
+            }
+            else if (lblDeliveryOne.BackColor == Color.OrangeRed)
+            {
+                html.AppendLine($"<h5>{"Estimated Delivery: 24h "}</h5>");
+            }
+            else if (lblDeliveryThree.BackColor == Color.OrangeRed)
+            {
+                html.AppendLine($"<h5>{"Estimated Delivery: 72h "}</h5>");
+            }
+            
             html.Append($"<h2>{"Company: Imprint Store  "}</h2>");
 
             html.Append("</body></html>");//close body
@@ -801,7 +825,29 @@ namespace SU21_Final_Project
             lblDiscountOne.BackColor = Color.Silver;
             lblDiscountTwo.BackColor = Color.Silver;
             lblDiscountThree.BackColor = Color.Silver;
+
             lblDiscount.Text = "";
+
+            lblDeliveryOne.BackColor = Color.Silver;
+            lblDeliveryTwo.BackColor = Color.Silver;
+            lblDeliveryThree.BackColor = Color.Silver;
+
+            //Reset Item browser
+            try
+            {
+                Connection.Open();
+                dataAdapter = new SqlDataAdapter("SELECT Name, Quantity, RetailPrice ,Description FROM RandrezaVoharisoaM21Su2332.Items", Connection);
+                dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                dgvAll.DataSource = dataTable;
+
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
         //Back to login form
         private void btnLogout_Click(object sender, EventArgs e)

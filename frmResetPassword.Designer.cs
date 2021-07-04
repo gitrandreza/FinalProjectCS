@@ -49,6 +49,8 @@ namespace SU21_Final_Project
             this.label22 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnBack = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbxConfirmPassword = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -133,11 +135,11 @@ namespace SU21_Final_Project
             // 
             this.lblValidAnswers.AutoSize = true;
             this.lblValidAnswers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.lblValidAnswers.Location = new System.Drawing.Point(239, 347);
+            this.lblValidAnswers.Location = new System.Drawing.Point(210, 349);
             this.lblValidAnswers.Name = "lblValidAnswers";
-            this.lblValidAnswers.Size = new System.Drawing.Size(213, 17);
+            this.lblValidAnswers.Size = new System.Drawing.Size(253, 17);
             this.lblValidAnswers.TabIndex = 40;
-            this.lblValidAnswers.Text = "Please enter your new password";
+            this.lblValidAnswers.Text = "Please enter your new password below";
             this.lblValidAnswers.Visible = false;
             // 
             // lblInvalidAnswers
@@ -156,7 +158,7 @@ namespace SU21_Final_Project
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(134, 385);
+            this.label13.Location = new System.Drawing.Point(23, 393);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(112, 17);
             this.label13.TabIndex = 43;
@@ -166,10 +168,11 @@ namespace SU21_Final_Project
             // 
             this.tbxNewPassword.BackColor = System.Drawing.Color.White;
             this.tbxNewPassword.Enabled = false;
-            this.tbxNewPassword.Location = new System.Drawing.Point(262, 380);
+            this.tbxNewPassword.Location = new System.Drawing.Point(167, 388);
             this.tbxNewPassword.Name = "tbxNewPassword";
             this.tbxNewPassword.Size = new System.Drawing.Size(165, 22);
             this.tbxNewPassword.TabIndex = 4;
+            this.tbxNewPassword.UseSystemPasswordChar = true;
             // 
             // label12
             // 
@@ -194,7 +197,7 @@ namespace SU21_Final_Project
             this.btnNewPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewPassword.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnNewPassword.Location = new System.Drawing.Point(277, 460);
+            this.btnNewPassword.Location = new System.Drawing.Point(270, 489);
             this.btnNewPassword.Name = "btnNewPassword";
             this.btnNewPassword.Size = new System.Drawing.Size(136, 30);
             this.btnNewPassword.TabIndex = 47;
@@ -207,18 +210,18 @@ namespace SU21_Final_Project
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.Blue;
-            this.label23.Location = new System.Drawing.Point(217, 441);
+            this.label23.Location = new System.Drawing.Point(339, 414);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(235, 13);
+            this.label23.Size = new System.Drawing.Size(236, 13);
             this.label23.TabIndex = 50;
-            this.label23.Text = "Must contais one special character and no space";
+            this.label23.Text = "Must contain one special character and no space";
             // 
             // label21
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ForeColor = System.Drawing.Color.Blue;
-            this.label21.Location = new System.Drawing.Point(250, 407);
+            this.label21.Location = new System.Drawing.Point(339, 381);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(185, 13);
             this.label21.TabIndex = 48;
@@ -229,7 +232,7 @@ namespace SU21_Final_Project
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.Blue;
-            this.label22.Location = new System.Drawing.Point(214, 424);
+            this.label22.Location = new System.Drawing.Point(339, 397);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(274, 13);
             this.label22.TabIndex = 49;
@@ -250,7 +253,7 @@ namespace SU21_Final_Project
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnBack.Location = new System.Drawing.Point(23, 460);
+            this.btnBack.Location = new System.Drawing.Point(23, 489);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(102, 30);
             this.btnBack.TabIndex = 52;
@@ -258,11 +261,32 @@ namespace SU21_Final_Project
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(23, 434);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(137, 17);
+            this.label2.TabIndex = 54;
+            this.label2.Text = "Confirm Password";
+            // 
+            // tbxConfirmPassword
+            // 
+            this.tbxConfirmPassword.BackColor = System.Drawing.Color.White;
+            this.tbxConfirmPassword.Location = new System.Drawing.Point(167, 431);
+            this.tbxConfirmPassword.Name = "tbxConfirmPassword";
+            this.tbxConfirmPassword.Size = new System.Drawing.Size(165, 22);
+            this.tbxConfirmPassword.TabIndex = 5;
+            this.tbxConfirmPassword.UseSystemPasswordChar = true;
+            // 
             // frmResetPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(602, 504);
+            this.ClientSize = new System.Drawing.Size(613, 551);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.tbxConfirmPassword);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label21);
@@ -282,6 +306,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.label14);
             this.Controls.Add(this.tbxDrink);
             this.Controls.Add(this.panel1);
+            this.Enabled = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmResetPassword";
             this.Padding = new System.Windows.Forms.Padding(20);
@@ -315,5 +340,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tbxConfirmPassword;
     }
 }

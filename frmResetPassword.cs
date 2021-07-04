@@ -25,6 +25,7 @@ namespace SU21_Final_Project
         
         string strEnterUsername;
         string strNewPassword;
+        string strConfirmPassword;
         bool blnMatch=false;
 
         public frmResetPassword()
@@ -73,6 +74,7 @@ namespace SU21_Final_Project
                                 lblInvalidAnswers.Visible = false;
                                 lblValidAnswers.Visible = true;
                                 tbxNewPassword.Enabled = true;
+                                tbxConfirmPassword.Enabled = true;
                                 btnNewPassword.Enabled = true;
                                 blnMatch = true;
 
@@ -120,8 +122,12 @@ namespace SU21_Final_Project
         private void btnNewPassword_Click(object sender, EventArgs e)
         {
             strNewPassword = tbxNewPassword.Text;
+            strConfirmPassword = tbxConfirmPassword.Text;
+
             if (ValidPassword(strNewPassword) == true)
             {
+                if (strNewPassword == strConfirmPassword)
+                {
 
                 if (MessageBox.Show("Are you sure you want to change your password", "Confirmation", MessageBoxButtons.OKCancel) == DialogResult.OK)
 
@@ -138,6 +144,12 @@ namespace SU21_Final_Project
                     Connection.Close();
                     this.Hide();
                     new frmLogin().Show();
+                }
+            }
+                else
+                {
+                    MessageBox.Show("Please check password ", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    tbxNewPassword.Focus();
                 }
             }
             else
