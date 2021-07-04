@@ -51,6 +51,8 @@ namespace SU21_Final_Project
             this.btnBack = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.tbxConfirmPassword = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -280,11 +282,36 @@ namespace SU21_Final_Project
             this.tbxConfirmPassword.TabIndex = 5;
             this.tbxConfirmPassword.UseSystemPasswordChar = true;
             // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.label3.Font = new System.Drawing.Font("Segoe Script", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label3.Location = new System.Drawing.Point(26, 3);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(134, 43);
+            this.label3.TabIndex = 55;
+            this.label3.Text = "mprint Store";
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.Cyan;
+            this.label4.Font = new System.Drawing.Font("Microsoft Uighur", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label4.Location = new System.Drawing.Point(4, 3);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 43);
+            this.label4.TabIndex = 56;
+            this.label4.Text = "i";
+            // 
             // frmResetPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(613, 551);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbxConfirmPassword);
             this.Controls.Add(this.btnBack);
@@ -342,5 +369,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbxConfirmPassword;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

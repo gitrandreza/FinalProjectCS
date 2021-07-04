@@ -71,12 +71,14 @@ namespace SU21_Final_Project
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.gbxInformation = new System.Windows.Forms.GroupBox();
+            this.cboState = new System.Windows.Forms.ComboBox();
             this.cboSuffix = new System.Windows.Forms.ComboBox();
             this.label24 = new System.Windows.Forms.Label();
             this.gbxSecurityQuestion = new System.Windows.Forms.GroupBox();
             this.gbxCreateLogin = new System.Windows.Forms.GroupBox();
             this.btnBack = new System.Windows.Forms.Button();
-            this.cboState = new System.Windows.Forms.ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.gbxInformation.SuspendLayout();
             this.gbxSecurityQuestion.SuspendLayout();
             this.gbxCreateLogin.SuspendLayout();
@@ -478,6 +480,74 @@ namespace SU21_Final_Project
             this.gbxInformation.TabStop = false;
             this.gbxInformation.Text = "Information";
             // 
+            // cboState
+            // 
+            this.cboState.FormattingEnabled = true;
+            this.cboState.Items.AddRange(new object[] {
+            "AK",
+            "AS",
+            "AZ",
+            "AR",
+            "CA",
+            "CO",
+            "CT",
+            "DE",
+            "DC",
+            "FM",
+            "FL",
+            "GA",
+            "GU",
+            "HI",
+            "ID",
+            "IL",
+            "IN",
+            "IA",
+            "KS",
+            "KY",
+            "LA",
+            "ME",
+            "MH",
+            "MD",
+            "MA",
+            "MI",
+            "MN",
+            "MS",
+            "MO",
+            "MT",
+            "NE",
+            "NV",
+            "NH",
+            "NJ",
+            "NM",
+            "NY",
+            "NC",
+            "ND",
+            "MP",
+            "OH",
+            "OK",
+            "OR",
+            "PW",
+            "PA",
+            "PR",
+            "RI",
+            "SC",
+            "SD",
+            "TN",
+            "TX",
+            "UT",
+            "VT",
+            "VI",
+            "VA",
+            "WA",
+            "WV",
+            "WI",
+            "WY"});
+            this.cboState.Location = new System.Drawing.Point(584, 240);
+            this.cboState.MaxLength = 3;
+            this.cboState.Name = "cboState";
+            this.cboState.Size = new System.Drawing.Size(63, 24);
+            this.cboState.TabIndex = 12;
+            // 
             // cboSuffix
             // 
             this.cboSuffix.FormattingEnabled = true;
@@ -548,73 +618,28 @@ namespace SU21_Final_Project
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // cboState
+            // label25
             // 
-            this.cboState.FormattingEnabled = true;
-            this.cboState.Items.AddRange(new object[] {
-            "AK",
-            "AS",
-            "AZ",
-            "AR",
-            "CA",
-            "CO",
-            "CT",
-            "DE",
-            "DC",
-            "FM",
-            "FL",
-            "GA",
-            "GU",
-            "HI",
-            "ID",
-            "IL",
-            "IN",
-            "IA",
-            "KS",
-            "KY",
-            "LA",
-            "ME",
-            "MH",
-            "MD",
-            "MA",
-            "MI",
-            "MN",
-            "MS",
-            "MO",
-            "MT",
-            "NE",
-            "NV",
-            "NH",
-            "NJ",
-            "NM",
-            "NY",
-            "NC",
-            "ND",
-            "MP",
-            "OH",
-            "OK",
-            "OR",
-            "PW",
-            "PA",
-            "PR",
-            "RI",
-            "SC",
-            "SD",
-            "TN",
-            "TX",
-            "UT",
-            "VT",
-            "VI",
-            "VA",
-            "WA",
-            "WV",
-            "WI",
-            "WY"});
-            this.cboState.Location = new System.Drawing.Point(584, 240);
-            this.cboState.MaxLength = 3;
-            this.cboState.Name = "cboState";
-            this.cboState.Size = new System.Drawing.Size(63, 24);
-            this.cboState.TabIndex = 12;
+            this.label25.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.label25.Font = new System.Drawing.Font("Segoe Script", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label25.Location = new System.Drawing.Point(27, 9);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(134, 43);
+            this.label25.TabIndex = 49;
+            this.label25.Text = "mprint Store";
+            // 
+            // label26
+            // 
+            this.label26.BackColor = System.Drawing.Color.Cyan;
+            this.label26.Font = new System.Drawing.Font("Microsoft Uighur", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label26.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label26.Location = new System.Drawing.Point(5, 9);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(29, 43);
+            this.label26.TabIndex = 50;
+            this.label26.Text = "i";
             // 
             // frmSignUp
             // 
@@ -622,6 +647,8 @@ namespace SU21_Final_Project
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(813, 623);
+            this.Controls.Add(this.label25);
+            this.Controls.Add(this.label26);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.gbxCreateLogin);
             this.Controls.Add(this.gbxSecurityQuestion);
@@ -693,5 +720,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.GroupBox gbxCreateLogin;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.ComboBox cboState;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
     }
 }

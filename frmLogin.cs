@@ -25,7 +25,6 @@ namespace SU21_Final_Project
         public frmLogin()
         {
             InitializeComponent();
-          
 
         }
 

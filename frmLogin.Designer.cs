@@ -38,8 +38,8 @@ namespace SU21_Final_Project
             this.lblLoginFailed = new System.Windows.Forms.Label();
             this.btnResetPassword = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.pbxLogo = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -47,7 +47,7 @@ namespace SU21_Final_Project
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(46, 50);
+            this.label1.Location = new System.Drawing.Point(46, 68);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(86, 17);
@@ -68,7 +68,7 @@ namespace SU21_Final_Project
             // 
             // tbxUsername
             // 
-            this.tbxUsername.Location = new System.Drawing.Point(146, 47);
+            this.tbxUsername.Location = new System.Drawing.Point(146, 65);
             this.tbxUsername.Margin = new System.Windows.Forms.Padding(4);
             this.tbxUsername.Name = "tbxUsername";
             this.tbxUsername.Size = new System.Drawing.Size(219, 22);
@@ -152,14 +152,28 @@ namespace SU21_Final_Project
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // pbxLogo
+            // label3
             // 
-            this.pbxLogo.Location = new System.Drawing.Point(324, 136);
-            this.pbxLogo.Name = "pbxLogo";
-            this.pbxLogo.Size = new System.Drawing.Size(153, 112);
-            this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxLogo.TabIndex = 9;
-            this.pbxLogo.TabStop = false;
+            this.label3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.label3.Font = new System.Drawing.Font("Segoe Script", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label3.Location = new System.Drawing.Point(30, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(134, 43);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "mprint Store";
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.Cyan;
+            this.label4.Font = new System.Drawing.Font("Microsoft Uighur", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label4.Location = new System.Drawing.Point(8, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 43);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "i";
             // 
             // frmLogin
             // 
@@ -168,7 +182,6 @@ namespace SU21_Final_Project
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(489, 309);
-            this.Controls.Add(this.pbxLogo);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnResetPassword);
             this.Controls.Add(this.lblLoginFailed);
@@ -178,13 +191,14 @@ namespace SU21_Final_Project
             this.Controls.Add(this.tbxUsername);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label4);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
-            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,6 +215,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnResetPassword;
         private System.Windows.Forms.Label lblLoginFailed;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.PictureBox pbxLogo;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
