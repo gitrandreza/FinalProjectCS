@@ -43,7 +43,6 @@ namespace SU21_Final_Project
             this.label7 = new System.Windows.Forms.Label();
             this.tbxAddressOne = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.tbxState = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tbxAddressTwo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -77,6 +76,7 @@ namespace SU21_Final_Project
             this.gbxSecurityQuestion = new System.Windows.Forms.GroupBox();
             this.gbxCreateLogin = new System.Windows.Forms.GroupBox();
             this.btnBack = new System.Windows.Forms.Button();
+            this.cboState = new System.Windows.Forms.ComboBox();
             this.gbxInformation.SuspendLayout();
             this.gbxSecurityQuestion.SuspendLayout();
             this.gbxCreateLogin.SuspendLayout();
@@ -85,16 +85,18 @@ namespace SU21_Final_Project
             // tbxLastName
             // 
             this.tbxLastName.Location = new System.Drawing.Point(133, 124);
+            this.tbxLastName.MaxLength = 20;
             this.tbxLastName.Name = "tbxLastName";
             this.tbxLastName.Size = new System.Drawing.Size(165, 22);
-            this.tbxLastName.TabIndex = 0;
+            this.tbxLastName.TabIndex = 2;
             // 
             // tbxFirstName
             // 
             this.tbxFirstName.Location = new System.Drawing.Point(133, 42);
+            this.tbxFirstName.MaxLength = 20;
             this.tbxFirstName.Name = "tbxFirstName";
             this.tbxFirstName.Size = new System.Drawing.Size(165, 22);
-            this.tbxFirstName.TabIndex = 1;
+            this.tbxFirstName.TabIndex = 0;
             // 
             // label1
             // 
@@ -135,16 +137,17 @@ namespace SU21_Final_Project
             // tbxMiddleName
             // 
             this.tbxMiddleName.Location = new System.Drawing.Point(133, 84);
+            this.tbxMiddleName.MaxLength = 20;
             this.tbxMiddleName.Name = "tbxMiddleName";
             this.tbxMiddleName.Size = new System.Drawing.Size(165, 22);
-            this.tbxMiddleName.TabIndex = 6;
+            this.tbxMiddleName.TabIndex = 1;
             // 
             // tbxDateOfBirth
             // 
             this.tbxDateOfBirth.Location = new System.Drawing.Point(133, 202);
             this.tbxDateOfBirth.Name = "tbxDateOfBirth";
             this.tbxDateOfBirth.Size = new System.Drawing.Size(165, 22);
-            this.tbxDateOfBirth.TabIndex = 8;
+            this.tbxDateOfBirth.TabIndex = 4;
             // 
             // label5
             // 
@@ -158,7 +161,7 @@ namespace SU21_Final_Project
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(356, 248);
+            this.label6.Location = new System.Drawing.Point(352, 246);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(36, 17);
             this.label6.TabIndex = 11;
@@ -166,10 +169,11 @@ namespace SU21_Final_Project
             // 
             // tbxCity
             // 
-            this.tbxCity.Location = new System.Drawing.Point(394, 248);
+            this.tbxCity.Location = new System.Drawing.Point(391, 244);
+            this.tbxCity.MaxLength = 30;
             this.tbxCity.Name = "tbxCity";
             this.tbxCity.Size = new System.Drawing.Size(144, 22);
-            this.tbxCity.TabIndex = 10;
+            this.tbxCity.TabIndex = 11;
             // 
             // label7
             // 
@@ -183,25 +187,19 @@ namespace SU21_Final_Project
             // tbxAddressOne
             // 
             this.tbxAddressOne.Location = new System.Drawing.Point(478, 42);
+            this.tbxAddressOne.MaxLength = 30;
             this.tbxAddressOne.Name = "tbxAddressOne";
             this.tbxAddressOne.Size = new System.Drawing.Size(232, 22);
-            this.tbxAddressOne.TabIndex = 12;
+            this.tbxAddressOne.TabIndex = 6;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(544, 246);
+            this.label8.Location = new System.Drawing.Point(535, 246);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 17);
             this.label8.TabIndex = 15;
             this.label8.Text = "*State";
-            // 
-            // tbxState
-            // 
-            this.tbxState.Location = new System.Drawing.Point(596, 245);
-            this.tbxState.Name = "tbxState";
-            this.tbxState.Size = new System.Drawing.Size(38, 22);
-            this.tbxState.TabIndex = 14;
             // 
             // label9
             // 
@@ -215,9 +213,10 @@ namespace SU21_Final_Project
             // tbxAddressTwo
             // 
             this.tbxAddressTwo.Location = new System.Drawing.Point(478, 79);
+            this.tbxAddressTwo.MaxLength = 30;
             this.tbxAddressTwo.Name = "tbxAddressTwo";
             this.tbxAddressTwo.Size = new System.Drawing.Size(232, 22);
-            this.tbxAddressTwo.TabIndex = 16;
+            this.tbxAddressTwo.TabIndex = 7;
             // 
             // label10
             // 
@@ -231,9 +230,10 @@ namespace SU21_Final_Project
             // tbxAddressThree
             // 
             this.tbxAddressThree.Location = new System.Drawing.Point(478, 121);
+            this.tbxAddressThree.MaxLength = 30;
             this.tbxAddressThree.Name = "tbxAddressThree";
             this.tbxAddressThree.Size = new System.Drawing.Size(232, 22);
-            this.tbxAddressThree.TabIndex = 18;
+            this.tbxAddressThree.TabIndex = 8;
             // 
             // label11
             // 
@@ -246,7 +246,8 @@ namespace SU21_Final_Project
             // 
             // tbxZip
             // 
-            this.tbxZip.Location = new System.Drawing.Point(685, 244);
+            this.tbxZip.Location = new System.Drawing.Point(690, 246);
+            this.tbxZip.MaxLength = 13;
             this.tbxZip.Name = "tbxZip";
             this.tbxZip.Size = new System.Drawing.Size(94, 22);
             this.tbxZip.TabIndex = 20;
@@ -357,9 +358,10 @@ namespace SU21_Final_Project
             // tbxPhoneOne
             // 
             this.tbxPhoneOne.Location = new System.Drawing.Point(478, 159);
+            this.tbxPhoneOne.MaxLength = 20;
             this.tbxPhoneOne.Name = "tbxPhoneOne";
             this.tbxPhoneOne.Size = new System.Drawing.Size(158, 22);
-            this.tbxPhoneOne.TabIndex = 33;
+            this.tbxPhoneOne.TabIndex = 9;
             // 
             // label18
             // 
@@ -373,9 +375,10 @@ namespace SU21_Final_Project
             // tbxPhoneTwo
             // 
             this.tbxPhoneTwo.Location = new System.Drawing.Point(478, 202);
+            this.tbxPhoneTwo.MaxLength = 20;
             this.tbxPhoneTwo.Name = "tbxPhoneTwo";
             this.tbxPhoneTwo.Size = new System.Drawing.Size(158, 22);
-            this.tbxPhoneTwo.TabIndex = 35;
+            this.tbxPhoneTwo.TabIndex = 10;
             // 
             // label19
             // 
@@ -389,9 +392,10 @@ namespace SU21_Final_Project
             // tbxEmail
             // 
             this.tbxEmail.Location = new System.Drawing.Point(133, 245);
+            this.tbxEmail.MaxLength = 40;
             this.tbxEmail.Name = "tbxEmail";
             this.tbxEmail.Size = new System.Drawing.Size(165, 22);
-            this.tbxEmail.TabIndex = 37;
+            this.tbxEmail.TabIndex = 5;
             // 
             // label20
             // 
@@ -437,6 +441,7 @@ namespace SU21_Final_Project
             // gbxInformation
             // 
             this.gbxInformation.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.gbxInformation.Controls.Add(this.cboState);
             this.gbxInformation.Controls.Add(this.cboSuffix);
             this.gbxInformation.Controls.Add(this.label24);
             this.gbxInformation.Controls.Add(this.label1);
@@ -458,7 +463,6 @@ namespace SU21_Final_Project
             this.gbxInformation.Controls.Add(this.label6);
             this.gbxInformation.Controls.Add(this.tbxAddressOne);
             this.gbxInformation.Controls.Add(this.label7);
-            this.gbxInformation.Controls.Add(this.tbxState);
             this.gbxInformation.Controls.Add(this.label8);
             this.gbxInformation.Controls.Add(this.tbxAddressTwo);
             this.gbxInformation.Controls.Add(this.label9);
@@ -484,7 +488,7 @@ namespace SU21_Final_Project
             this.cboSuffix.Location = new System.Drawing.Point(133, 162);
             this.cboSuffix.Name = "cboSuffix";
             this.cboSuffix.Size = new System.Drawing.Size(78, 24);
-            this.cboSuffix.TabIndex = 39;
+            this.cboSuffix.TabIndex = 3;
             // 
             // label24
             // 
@@ -544,6 +548,74 @@ namespace SU21_Final_Project
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // cboState
+            // 
+            this.cboState.FormattingEnabled = true;
+            this.cboState.Items.AddRange(new object[] {
+            "AK",
+            "AS",
+            "AZ",
+            "AR",
+            "CA",
+            "CO",
+            "CT",
+            "DE",
+            "DC",
+            "FM",
+            "FL",
+            "GA",
+            "GU",
+            "HI",
+            "ID",
+            "IL",
+            "IN",
+            "IA",
+            "KS",
+            "KY",
+            "LA",
+            "ME",
+            "MH",
+            "MD",
+            "MA",
+            "MI",
+            "MN",
+            "MS",
+            "MO",
+            "MT",
+            "NE",
+            "NV",
+            "NH",
+            "NJ",
+            "NM",
+            "NY",
+            "NC",
+            "ND",
+            "MP",
+            "OH",
+            "OK",
+            "OR",
+            "PW",
+            "PA",
+            "PR",
+            "RI",
+            "SC",
+            "SD",
+            "TN",
+            "TX",
+            "UT",
+            "VT",
+            "VI",
+            "VA",
+            "WA",
+            "WV",
+            "WI",
+            "WY"});
+            this.cboState.Location = new System.Drawing.Point(584, 240);
+            this.cboState.MaxLength = 3;
+            this.cboState.Name = "cboState";
+            this.cboState.Size = new System.Drawing.Size(63, 24);
+            this.cboState.TabIndex = 12;
+            // 
             // frmSignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -587,7 +659,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox tbxAddressOne;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox tbxState;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox tbxAddressTwo;
         private System.Windows.Forms.Label label10;
@@ -621,5 +692,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.ComboBox cboSuffix;
         private System.Windows.Forms.GroupBox gbxCreateLogin;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.ComboBox cboState;
     }
 }
