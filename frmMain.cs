@@ -448,6 +448,17 @@ namespace SU21_Final_Project
                     MessageBox.Show("Please add quantity", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     tbxQuantity.Focus();
                 }
+                lblDiscountOne.BackColor = Color.Silver;
+                lblDiscountTwo.BackColor = Color.Silver;
+                lblDiscountThree.BackColor = Color.Silver;
+
+                lblDiscount.Text = "";
+                dblDiscount = 0;
+                lblTotalAmount.Text = "";
+
+                lblDeliveryOne.BackColor = Color.Silver;
+                lblDeliveryTwo.BackColor = Color.Silver;
+                lblDeliveryThree.BackColor = Color.Silver;
             }
             else
             {
@@ -484,6 +495,17 @@ namespace SU21_Final_Project
                     //Insert quantity updated to current row and Cell "Quantity" index 1
                     dgvAll.Rows[intIndexRowSelected].Cells[1].Value = myItems.Quantity.ToString();
                 }
+                lblDiscountOne.BackColor = Color.Silver;
+                lblDiscountTwo.BackColor = Color.Silver;
+                lblDiscountThree.BackColor = Color.Silver;
+
+                lblDiscount.Text = "";
+                dblDiscount = 0;
+                lblTotalAmount.Text = "";
+
+                lblDeliveryOne.BackColor = Color.Silver;
+                lblDeliveryTwo.BackColor = Color.Silver;
+                lblDeliveryThree.BackColor = Color.Silver;
             }
             else
             {
@@ -500,7 +522,7 @@ namespace SU21_Final_Project
 
             string strQuantityTotal;
             int intQuantityTotal=0;
-            
+            int intQuantityTotalList = 0;
 
             btnCheckout.Enabled = true;
 
@@ -520,9 +542,9 @@ namespace SU21_Final_Project
                 for (int i = 0; i < dgvList.Rows.Count; i++)
                 {
                     strQuantityTotal = dgvList.Rows[i].Cells[4].Value.ToString();
-                    bool intResultTryParse = int.TryParse(strQuantityTotal, out intQuantityTotal);
+                    bool intResultTryParse = int.TryParse(strQuantityTotal, out intQuantityTotalList);
 
-                    intQuantityTotal += intQuantityTotal;
+                    intQuantityTotal = intQuantityTotal + intQuantityTotalList;
                 }
 
                 //Discount and delivery condition based on quantities
@@ -683,7 +705,7 @@ namespace SU21_Final_Project
                         PrintReport(GenerateReport());
 
                     }
-
+                    Reset();
                 }
                 catch (SqlException ex)
                 {
@@ -696,7 +718,7 @@ namespace SU21_Final_Project
                 MessageBox.Show("Please  Display Amount before checking out", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-            Reset();
+           
         }
 
         //Display receipt in HTML
@@ -827,6 +849,8 @@ namespace SU21_Final_Project
             lblDiscountThree.BackColor = Color.Silver;
 
             lblDiscount.Text = "";
+            dblDiscount = 0;
+            lblTotalAmount.Text = "";
 
             lblDeliveryOne.BackColor = Color.Silver;
             lblDeliveryTwo.BackColor = Color.Silver;
