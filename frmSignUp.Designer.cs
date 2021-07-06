@@ -285,6 +285,7 @@ namespace SU21_Final_Project
             this.tbxCreatePassword.Name = "tbxCreatePassword";
             this.tbxCreatePassword.Size = new System.Drawing.Size(165, 22);
             this.tbxCreatePassword.TabIndex = 24;
+            this.tbxCreatePassword.UseSystemPasswordChar = true;
             // 
             // label14
             // 
@@ -655,7 +656,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.gbxInformation);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.btnSave);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
             this.Name = "frmSignUp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmSignUp";

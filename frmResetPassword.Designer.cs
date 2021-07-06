@@ -333,7 +333,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.label14);
             this.Controls.Add(this.tbxDrink);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
             this.Name = "frmResetPassword";
             this.Padding = new System.Windows.Forms.Padding(20);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
