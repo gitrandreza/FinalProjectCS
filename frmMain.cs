@@ -768,7 +768,7 @@ namespace SU21_Final_Project
             html.AppendLine($"<h5>{"Subtotal: "}{dblSubTotal.ToString("C2")}</h5>");
             html.AppendLine($"<h5>{"Tax Sale: "}{dblAmountTax.ToString("C2")}</h5>");
             html.AppendLine($"<h5>{"Total Amount: "}{dblTotalAmount.ToString("C2")}</h5>");
-            html.AppendLine($"<h5>{"Estimated Delivery: "}{dblTotalAmount.ToString("C2")}</h5>");
+          
 
             if (lblDeliveryTwo.BackColor == Color.OrangeRed)
             {
@@ -847,6 +847,16 @@ namespace SU21_Final_Project
             lblDiscountOne.BackColor = Color.Silver;
             lblDiscountTwo.BackColor = Color.Silver;
             lblDiscountThree.BackColor = Color.Silver;
+            radEmbroidered.Checked = false;
+            radPrinted.Checked = false;
+            radBlank.Checked = false;
+            radMedium.Checked = false;
+            radLarge.Checked = false;
+            radSmall.Checked = false;
+            cboColor.Text = "";
+            lblQuantityAvailable.Text = "";
+            tbxDescription.Text = "";
+            tbxQuantity.Text = "";
 
             lblDiscount.Text = "";
             dblDiscount = 0;
