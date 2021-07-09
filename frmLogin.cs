@@ -105,7 +105,10 @@ namespace SU21_Final_Project
         //Exit Application
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            if (MessageBox.Show("Do you want to exit the application", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
 
@@ -114,6 +117,20 @@ namespace SU21_Final_Project
         {
             new frmResetPassword().Show();
             this.Hide();
+        }
+
+        //Handling Form Closing Event
+        private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            switch (e.CloseReason)
+            {
+                case CloseReason.UserClosing:
+                    if (MessageBox.Show("Are you sure you want to exit?", "Exit Application",  MessageBoxButtons.YesNo,  MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                    }
+                    break;
+            }
         }
     }
 }

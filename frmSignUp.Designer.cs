@@ -659,7 +659,8 @@ namespace SU21_Final_Project
             this.MaximizeBox = false;
             this.Name = "frmSignUp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmSignUp";
+            this.Text = "Sign Up";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSignUp_FormClosing);
             this.gbxInformation.ResumeLayout(false);
             this.gbxInformation.PerformLayout();
             this.gbxSecurityQuestion.ResumeLayout(false);

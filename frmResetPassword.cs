@@ -217,5 +217,23 @@ namespace SU21_Final_Project
             new frmLogin().Show();
             this.Hide();
         }
+
+        //Handling Form Closing event
+        private void frmResetPassword_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            switch (e.CloseReason)
+            {
+                case CloseReason.UserClosing:
+                    if (MessageBox.Show("Are you sure you want to exit?", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                    }
+                    else
+                    {
+                        Application.Exit();
+                    }
+                    break;
+            }
+        }
     }
 }

@@ -17,6 +17,8 @@ namespace SU21_Final_Project
 
 
         SqlConnection Connection;
+        
+        
 
         string strTitle;
         string strFirstName ;
@@ -44,7 +46,7 @@ namespace SU21_Final_Project
         string strQuestionOne;
         string strQuestionTwo ;
         string strQuestionThree ;
-
+        bool blnDuplicateUsername;
        
 
        
@@ -56,7 +58,7 @@ namespace SU21_Final_Project
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
+            strCreateUsername = tbxCreateUsername.Text;
             try
             {
 
@@ -78,8 +80,35 @@ namespace SU21_Final_Project
                     && cboState.Text != "" && tbxEmail.Text != "" && tbxCreateUsername.Text != "" && tbxCreatePassword.Text != "" && tbxAnswerOne.Text != ""
                     && tbxAnswerTwo.Text != "" && tbxAnswerThree.Text != "")
                 {
+                    SqlCommand commandCheckUsername = new SqlCommand("SELECT Username FROM RandrezaVoharisoaM21Su2332.Users;", Connection);
 
+                    //gets the results from the sql command
+                   SqlDataReader reader = commandCheckUsername.ExecuteReader();
 
+                    while (reader.Read())
+                    {
+                        //check through the user table column to find a matching value
+                        if (reader["Username"].ToString() == strCreateUsername)
+                        {
+                            MessageBox.Show("Username is existed", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            blnDuplicateUsername=true;                           
+                            tbxCreateUsername.Text="";
+                            tbxCreateUsername.Focus();
+                            break;
+                        }
+                        else
+                        {
+                            blnDuplicateUsername = false;
+                            
+                        }
+
+                    }
+
+                  
+
+                    if (blnDuplicateUsername == false)
+                    {
+                        reader.Close();
                         strCreatePassword = tbxCreatePassword.Text;
 
                         if (ValidPassword(strCreatePassword) == true)
@@ -96,7 +125,7 @@ namespace SU21_Final_Project
                             strPhoneOne = tbxPhoneOne.Text;
                             strPhoneTwo = tbxPhoneTwo.Text;
                             strCity = tbxCity.Text;
-                            strState=cboState.SelectedItem.ToString();
+                            strState = cboState.SelectedItem.ToString();
                             strEmail = tbxEmail.Text;
                             strZip = tbxZip.Text;
 
@@ -132,7 +161,7 @@ namespace SU21_Final_Project
 
 
                             //INSERT RECORD FOR USERS LOGON SECURITY ACCESS
-                            strCreateUsername = tbxCreateUsername.Text;
+                            
 
                             strAnswerOne = tbxAnswerOne.Text;
                             strAnswerTwo = tbxAnswerTwo.Text;
@@ -178,6 +207,7 @@ namespace SU21_Final_Project
                         {
                             MessageBox.Show("Password format is not valid", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
+                    }
                   
                 }
                 else
@@ -252,7 +282,23 @@ namespace SU21_Final_Project
             this.Hide();
         }
 
-        
+        //Handling Form Closing event
+        private void frmSignUp_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            switch (e.CloseReason)
+            {
+                case CloseReason.UserClosing:
+                    if (MessageBox.Show("Are you sure you want to exit?", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                    }
+                    else
+                    {
+                        Application.Exit();
+                    }
+                    break;
+            }
+        }
     }
 
 }
