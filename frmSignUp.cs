@@ -299,6 +299,28 @@ namespace SU21_Final_Project
                     break;
             }
         }
+
+        //Accept digit only for zip
+        private void tbxZip_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+        (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+        }
+
+        //Accept digit only for Phone
+        private void tbxPhoneOne_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+        (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+        }
     }
 
 }

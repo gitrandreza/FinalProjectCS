@@ -156,9 +156,9 @@ namespace SU21_Final_Project
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(30, 206);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(92, 17);
+            this.label5.Size = new System.Drawing.Size(87, 17);
             this.label5.TabIndex = 9;
-            this.label5.Text = "*Date of Birth";
+            this.label5.Text = "Date of Birth";
             // 
             // label6
             // 
@@ -249,10 +249,11 @@ namespace SU21_Final_Project
             // tbxZip
             // 
             this.tbxZip.Location = new System.Drawing.Point(690, 246);
-            this.tbxZip.MaxLength = 13;
+            this.tbxZip.MaxLength = 5;
             this.tbxZip.Name = "tbxZip";
             this.tbxZip.Size = new System.Drawing.Size(94, 22);
             this.tbxZip.TabIndex = 20;
+            this.tbxZip.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxZip_KeyPress);
             // 
             // label12
             // 
@@ -365,6 +366,7 @@ namespace SU21_Final_Project
             this.tbxPhoneOne.Name = "tbxPhoneOne";
             this.tbxPhoneOne.Size = new System.Drawing.Size(158, 22);
             this.tbxPhoneOne.TabIndex = 9;
+            this.tbxPhoneOne.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxPhoneOne_KeyPress);
             // 
             // label18
             // 
@@ -483,6 +485,7 @@ namespace SU21_Final_Project
             // 
             // cboState
             // 
+            this.cboState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboState.FormattingEnabled = true;
             this.cboState.Items.AddRange(new object[] {
             "AK",
@@ -551,6 +554,7 @@ namespace SU21_Final_Project
             // 
             // cboSuffix
             // 
+            this.cboSuffix.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSuffix.FormattingEnabled = true;
             this.cboSuffix.Items.AddRange(new object[] {
             "Mrs",
