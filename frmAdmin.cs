@@ -195,6 +195,38 @@ namespace SU21_Final_Project
             //strItemRemove=dgvAllProducts.SelectedRows
 
         }
+
+
+
+        public void DisplayAllItems()
+        {
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                dataAdapter = new SqlDataAdapter("SELECT Name, Quantity, RetailPrice ,Description FROM RandrezaVoharisoaM21Su2332.Items", Connection);
+                dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                dgvAllProducts.DataSource = dataTable;
+
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void tabManagerFeatures_Selected(object sender, TabControlEventArgs e)
+        {
+            if (tabManagerFeatures.SelectedTab.Name=="tabInventory")
+            {
+                DisplayAllItems();              
+            }
+        }
     }
 
 }
