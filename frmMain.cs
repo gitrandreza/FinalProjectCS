@@ -53,6 +53,7 @@ namespace SU21_Final_Project
         int intQuantityAvailable;
         int intQuantityNeed;
 
+        
 
         public frmMain()
         {
@@ -277,8 +278,50 @@ namespace SU21_Final_Project
 
         private void btnAdmin_Click(object sender, EventArgs e)
         {
-            new frmAdmin().Show();
-            this.Hide();
+            SqlCommand scRoleID;
+            SqlDataReader srRoleID;
+            string strUserNumberID = lblUser.Text;
+            try
+            {
+
+
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                //gets Role Id from based on UserID
+                scRoleID = new SqlCommand("SELECT RandrezaVoharisoaM21Su2332.Users.RoleID from RandrezaVoharisoaM21Su2332.Users where UserID='"+ strUserNumberID + "';", Connection);
+
+               srRoleID = scRoleID.ExecuteReader();
+
+                srRoleID.Read();
+                int intRoleId = srRoleID.GetInt32(0);
+                srRoleID.Close();
+                //Check role of user id to open the Employee view or Manager View
+                if (intRoleId == 2)
+                {
+                    new frmEmployee().Show();
+                    this.Hide();
+                }
+                else if(intRoleId==1)
+                {
+                    new frmAdmin().Show();
+                    this.Hide();
+                }
+
+                else
+                {
+                    MessageBox.Show("Access denied. Admnistrator use only ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                
+              
+                    Connection.Close(); //closes connection to database
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         //***********************ADD LIST*********************************************
@@ -603,7 +646,7 @@ namespace SU21_Final_Project
             if (lblTotalAmount.Text != "")
             {
                 int intUserID;
-                string strUserID = lblUser.Text;
+               string strUserID = lblUser.Text;
                 bool intResultTryParse = int.TryParse(strUserID, out intUserID);
                 string strDate = lblDate.Text;
 

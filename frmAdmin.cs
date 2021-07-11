@@ -14,7 +14,10 @@ namespace SU21_Final_Project
 {
     public partial class frmAdmin : Form
     {
+        //Establish connection to the database       
         SqlConnection Connection;
+        SqlDataAdapter dataAdapter;
+        DataTable dataTable;
         string strItemName;
 
 
@@ -22,6 +25,10 @@ namespace SU21_Final_Project
         {
             InitializeComponent();
         }
+
+
+
+        
 
         private void btnInsertImage_Click(object sender, EventArgs e)
         {
@@ -113,6 +120,38 @@ namespace SU21_Final_Project
             catch (Exception ex)
             {
                 MessageBox.Show("Error :" + ex);
+            }
+        }
+
+
+
+        public void DisplayAllItems()
+        {
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                dataAdapter = new SqlDataAdapter("SELECT Name, Quantity, RetailPrice ,Description FROM RandrezaVoharisoaM21Su2332.Items", Connection);
+                dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                dgvAllProducts.DataSource = dataTable;
+
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void tabManagerFeatures_Selected(object sender, TabControlEventArgs e)
+        {
+            if (tabManagerFeatures.SelectedTab.Name=="tabInventory")
+            {
+                DisplayAllItems();              
             }
         }
     }
