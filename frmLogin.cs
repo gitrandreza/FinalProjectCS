@@ -54,8 +54,6 @@ namespace SU21_Final_Project
                 while (reader.Read())
                 {
                     //iterates through the user name column to find a matching value
-                   
-
                     if (reader["Username"].ToString() == strUsername)
                     {
                         if (reader["Password"].ToString() == strPassword)

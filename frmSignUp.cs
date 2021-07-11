@@ -140,7 +140,8 @@ namespace SU21_Final_Project
 
 
                             SqlCommand commandPerson = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Person(Title,NameFirst,NameMiddle,NameLast,Suffix,Address1,Address2,Address3,City,Zipcode" +
-                                ",State,Email,PhonePrimary,PhoneSecondary,Image) VALUES(@Title,@NameFirst,@NameMiddle,@NameLast,@Suffix,@Address1,@Address2,@Address3,@City,@Zipcode" +
+                                ",State,Email,PhonePrimary,PhoneSecondary,Image) " +
+                                "VALUES(@Title,@NameFirst,@NameMiddle,@NameLast,@Suffix,@Address1,@Address2,@Address3,@City,@Zipcode" +
                                 ",@State,@Email,@PhonePrimary,@PhoneSecondary,NULL)", Connection);
                             commandPerson.Parameters.AddWithValue("@Title", strTitle);
                             commandPerson.Parameters.AddWithValue("@NameFirst", strFirstName);

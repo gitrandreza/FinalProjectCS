@@ -14,14 +14,26 @@ namespace SU21_Final_Project
 {
     public partial class frmAdmin : Form
     {
+        //Establish connection to the database       
         SqlConnection Connection;
+        SqlDataAdapter dataAdapter;
+        DataTable dataTable;
         string strItemName;
 
 
         public frmAdmin()
         {
             InitializeComponent();
+
+            if (tabManagerFeatures.SelectedTab.Name == "tabInventory")
+            {
+                DisplayAllItems();
+            }
         }
+
+
+
+        
 
         private void btnInsertImage_Click(object sender, EventArgs e)
         {
@@ -101,7 +113,6 @@ namespace SU21_Final_Project
                 strItemName = cboItemName.SelectedItem.ToString();
                 string strDescription = tbxUpDescrption.Text;
                 Connection.Open();
-               
 
                 string strUpdateQuery = "UPDATE RandrezaVoharisoaM21Su2332.Items SET Description = @Description where Name= '" + strItemName + "'";
                 SqlCommand updateCommande = new SqlCommand(strUpdateQuery, Connection);
@@ -114,6 +125,75 @@ namespace SU21_Final_Project
             {
                 MessageBox.Show("Error :" + ex);
             }
+        }
+
+
+
+        public void DisplayAllItems()
+        {
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                dataAdapter = new SqlDataAdapter("SELECT Name, Quantity,Cost, RetailPrice ,Description,CategoryID,SupplierID FROM RandrezaVoharisoaM21Su2332.Items", Connection);
+                dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                dgvAllProducts.DataSource = dataTable;
+
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void DisplayEmployee()
+        {
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                dataAdapter = new SqlDataAdapter("SELECT Name, Quantity,Cost, RetailPrice ,Description,CategoryID,SupplierID FROM RandrezaVoharisoaM21Su2332.Items", Connection);
+                dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                dgvAllProducts.DataSource = dataTable;
+
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void tabManagerFeatures_Selected(object sender, TabControlEventArgs e)
+        {
+            if (tabManagerFeatures.SelectedTab.Name=="tabInventory")
+            {
+                DisplayAllItems();              
+            }
+        }
+
+        //Open Add Item form
+        private void btnAddItems_Click(object sender, EventArgs e)
+        {
+            new frmAddItems().Show();
+            this.Hide();
+        }
+
+
+        private void btnRemoveItem_Click(object sender, EventArgs e)
+        {
+            string strItemRemove;
+            //strItemRemove=dgvAllProducts.SelectedRows
+
         }
     }
 
