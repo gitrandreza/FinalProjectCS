@@ -43,23 +43,10 @@ namespace SU21_Final_Project
             this.lblTagCategory = new System.Windows.Forms.Label();
             this.tbxDescription = new System.Windows.Forms.TextBox();
             this.tbxQuantity = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.tbxPhoneTwo = new System.Windows.Forms.TextBox();
             this.tbxRetailPrice = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
             this.lblTagRetailPrice = new System.Windows.Forms.Label();
-            this.tbxPhoneOne = new System.Windows.Forms.TextBox();
-            this.tbxCity = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.tbxAddressOne = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.tbxAddressTwo = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.tbxAddressThree = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.tbxZip = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.gbxItemInformation.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,23 +66,10 @@ namespace SU21_Final_Project
             this.gbxItemInformation.Controls.Add(this.lblTagCategory);
             this.gbxItemInformation.Controls.Add(this.tbxDescription);
             this.gbxItemInformation.Controls.Add(this.tbxQuantity);
-            this.gbxItemInformation.Controls.Add(this.label18);
-            this.gbxItemInformation.Controls.Add(this.tbxPhoneTwo);
             this.gbxItemInformation.Controls.Add(this.tbxRetailPrice);
-            this.gbxItemInformation.Controls.Add(this.label17);
             this.gbxItemInformation.Controls.Add(this.lblTagRetailPrice);
-            this.gbxItemInformation.Controls.Add(this.tbxPhoneOne);
-            this.gbxItemInformation.Controls.Add(this.tbxCity);
             this.gbxItemInformation.Controls.Add(this.label6);
-            this.gbxItemInformation.Controls.Add(this.tbxAddressOne);
-            this.gbxItemInformation.Controls.Add(this.label7);
             this.gbxItemInformation.Controls.Add(this.label8);
-            this.gbxItemInformation.Controls.Add(this.tbxAddressTwo);
-            this.gbxItemInformation.Controls.Add(this.label9);
-            this.gbxItemInformation.Controls.Add(this.tbxAddressThree);
-            this.gbxItemInformation.Controls.Add(this.label10);
-            this.gbxItemInformation.Controls.Add(this.tbxZip);
-            this.gbxItemInformation.Controls.Add(this.label11);
             this.gbxItemInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxItemInformation.Location = new System.Drawing.Point(2, 31);
             this.gbxItemInformation.Name = "gbxItemInformation";
@@ -229,38 +203,12 @@ namespace SU21_Final_Project
             this.tbxQuantity.Size = new System.Drawing.Size(78, 22);
             this.tbxQuantity.TabIndex = 1;
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(402, 205);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(61, 17);
-            this.label18.TabIndex = 36;
-            this.label18.Text = "Phone 2";
-            // 
-            // tbxPhoneTwo
-            // 
-            this.tbxPhoneTwo.Location = new System.Drawing.Point(478, 202);
-            this.tbxPhoneTwo.MaxLength = 20;
-            this.tbxPhoneTwo.Name = "tbxPhoneTwo";
-            this.tbxPhoneTwo.Size = new System.Drawing.Size(158, 22);
-            this.tbxPhoneTwo.TabIndex = 10;
-            // 
             // tbxRetailPrice
             // 
             this.tbxRetailPrice.Location = new System.Drawing.Point(133, 202);
             this.tbxRetailPrice.Name = "tbxRetailPrice";
             this.tbxRetailPrice.Size = new System.Drawing.Size(114, 22);
             this.tbxRetailPrice.TabIndex = 4;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(397, 162);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(66, 17);
-            this.label17.TabIndex = 34;
-            this.label17.Text = "*Phone 1";
             // 
             // lblTagRetailPrice
             // 
@@ -271,22 +219,6 @@ namespace SU21_Final_Project
             this.lblTagRetailPrice.TabIndex = 9;
             this.lblTagRetailPrice.Text = "Retail Price";
             // 
-            // tbxPhoneOne
-            // 
-            this.tbxPhoneOne.Location = new System.Drawing.Point(478, 159);
-            this.tbxPhoneOne.MaxLength = 20;
-            this.tbxPhoneOne.Name = "tbxPhoneOne";
-            this.tbxPhoneOne.Size = new System.Drawing.Size(158, 22);
-            this.tbxPhoneOne.TabIndex = 9;
-            // 
-            // tbxCity
-            // 
-            this.tbxCity.Location = new System.Drawing.Point(391, 244);
-            this.tbxCity.MaxLength = 30;
-            this.tbxCity.Name = "tbxCity";
-            this.tbxCity.Size = new System.Drawing.Size(144, 22);
-            this.tbxCity.TabIndex = 11;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -295,23 +227,6 @@ namespace SU21_Final_Project
             this.label6.Size = new System.Drawing.Size(36, 17);
             this.label6.TabIndex = 11;
             this.label6.Text = "*City";
-            // 
-            // tbxAddressOne
-            // 
-            this.tbxAddressOne.Location = new System.Drawing.Point(478, 42);
-            this.tbxAddressOne.MaxLength = 30;
-            this.tbxAddressOne.Name = "tbxAddressOne";
-            this.tbxAddressOne.Size = new System.Drawing.Size(232, 22);
-            this.tbxAddressOne.TabIndex = 6;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(386, 42);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(77, 17);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "*Address 1";
             // 
             // label8
             // 
@@ -328,6 +243,7 @@ namespace SU21_Final_Project
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 400);
             this.Controls.Add(this.gbxItemInformation);
+            this.MaximizeBox = false;
             this.Name = "frmAddItems";
             this.Text = "Add Items";
             this.gbxItemInformation.ResumeLayout(false);
@@ -351,16 +267,9 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblTagCategory;
         private System.Windows.Forms.TextBox tbxDescription;
         private System.Windows.Forms.TextBox tbxQuantity;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox tbxPhoneTwo;
         private System.Windows.Forms.TextBox tbxRetailPrice;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label lblTagRetailPrice;
-        private System.Windows.Forms.TextBox tbxPhoneOne;
-        private System.Windows.Forms.TextBox tbxCity;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox tbxAddressOne;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnSaveItems;
     }

@@ -421,10 +421,10 @@ namespace SU21_Final_Project
 
 
                                         //lblMessage.Text =dblTotalPrice.ToString();
-                                        string strItemTotalPrice = dblTotalPrice.ToString();
+                                        string strItemTotalPrice = dblTotalPrice.ToString("C2");
 
                                         //Call add cart function to display selection in the cart
-                                        addCart(myItems.Name, strItemDeco, strItemColor, strItemSize, strQuantityNeed, myItems.Price.ToString(), strItemTotalPrice);
+                                        addCart(myItems.Name, strItemDeco, strItemColor, strItemSize, strQuantityNeed, myItems.Price.ToString("C2"), strItemTotalPrice);
 
 
                                         if (myItems.Quantity > 0)
@@ -798,8 +798,8 @@ namespace SU21_Final_Project
                 html.Append($"<td>{row.Cells["Size"].Value}</td>");
                 html.Append($"<td>{row.Cells["Color"].Value}</td>");
                 html.Append($"<td>{row.Cells["Quantity"].Value}</td>");
-                html.Append($"<td>{row.Cells["Unit Price"].Value}</td>");
-                html.Append($"<td>{row.Cells["Total Price"].Value}</td>");
+                html.Append($"<td>${row.Cells["Unit Price"].Value}</td>");
+                html.Append($"<td>${row.Cells["Total Price"].Value}</td>");
                 html.Append("</tr>");
                 html.AppendLine("<tr><td colspan=8><hr /></td></tr>");
             }
