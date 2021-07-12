@@ -37,7 +37,7 @@ namespace SU21_Final_Project
 
         private void btnInsertImage_Click(object sender, EventArgs e)
         {
-            strItemName = cboItemName.SelectedItem.ToString();
+            //strItemName = cboItemName.SelectedItem.ToString();
             try
             {
 
@@ -93,40 +93,6 @@ namespace SU21_Final_Project
             }
         }
 
-        private void btnUpdateItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-
-                //Connection.Open();
-                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
-                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
-                //Connection.Close();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error :" + ex);
-            }
-            try
-            {
-                strItemName = cboItemName.SelectedItem.ToString();
-                string strDescription = tbxUpDescrption.Text;
-                Connection.Open();
-
-                string strUpdateQuery = "UPDATE RandrezaVoharisoaM21Su2332.Items SET Description = @Description where Name= '" + strItemName + "'";
-                SqlCommand updateCommande = new SqlCommand(strUpdateQuery, Connection);
-                SqlParameter sqlParams = updateCommande.Parameters.AddWithValue("@Description", strDescription);
-                updateCommande.ExecuteNonQuery();
-                tbxUpDescrption.Text = "";
-                Connection.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error :" + ex);
-            }
-        }
-
 
 
         public void DisplayAllItems()
@@ -173,6 +139,7 @@ namespace SU21_Final_Project
             }
         }
 
+        //Display inventory
         private void tabManagerFeatures_Selected(object sender, TabControlEventArgs e)
         {
             if (tabManagerFeatures.SelectedTab.Name == "tabInventory")
@@ -189,18 +156,96 @@ namespace SU21_Final_Project
         }
 
 
+        //Remove selected Item from Data grid and Database
         private void btnRemoveItem_Click(object sender, EventArgs e)
         {
-            //string strItemRemove;
-            //strItemRemove=dgvAllProducts.SelectedRows
+            
+            if (dgvAllProducts.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Do you want to remove this item?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    foreach (DataGridViewRow row in dgvAllProducts.SelectedRows)
+                    {                       
+                        //grab current row index selected
+                        int intIndexRowSelected = dgvAllProducts.CurrentCell.RowIndex;
+                        //grab item name to use in order to delete in the database
+                        strItemName= dgvAllProducts.Rows[intIndexRowSelected].Cells[0].Value.ToString();
+                        dgvAllProducts.Rows.RemoveAt(row.Index);
+
+                    }
+                    try
+                    {
+                        //connect to database
+                        Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                            "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                        Connection.Open();
+
+                        string strDeleteQuery = "DELETE FROM RandrezaVoharisoaM21Su2332.Items where Name= '" + strItemName + "'";
+                        SqlCommand deleteCommande = new SqlCommand(strDeleteQuery, Connection);
+                        
+                        deleteCommande.ExecuteNonQuery();
+                       
+                        Connection.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error :" + ex);
+                    }
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Please select the product you want to remove", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
 
-    
 
 
+        private void btnUpdateItem_Click_1(object sender, EventArgs e)
+        {
+       
+            try
+            {
+                //Connection.Open();
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
-        
+                strItemName = cboItemName.SelectedItem.ToString();
+                string strDescription = tbxUpDescrption.Text;
+                Connection.Open();
+
+                string strUpdateQuery = "UPDATE RandrezaVoharisoaM21Su2332.Items SET Description = @Description where Name= '" + strItemName + "'";
+                SqlCommand updateCommande = new SqlCommand(strUpdateQuery, Connection);
+                SqlParameter sqlParams = updateCommande.Parameters.AddWithValue("@Description", strDescription);
+                updateCommande.ExecuteNonQuery();
+                tbxUpDescrption.Text = "";
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex);
+            }
+        }
+
+        private void frmAdmin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            switch (e.CloseReason)
+            {
+                case CloseReason.UserClosing:
+                    if (MessageBox.Show("Are you sure you want to exit the program?", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                    }
+                    else
+                    {
+                        Application.Exit();
+                    }
+                    break;
+            }
+        }
     }
 
 }
