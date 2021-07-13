@@ -108,6 +108,7 @@ namespace SU21_Final_Project
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvAllProducts.DataSource = dataTable;
+                
 
                 Connection.Close();
             }
@@ -206,30 +207,55 @@ namespace SU21_Final_Project
 
         private void btnUpdateItem_Click_1(object sender, EventArgs e)
         {
+            if (dgvAllProducts.SelectedRows.Count > 0)
+            {
+               
+                    gbxUpdateField.Enabled = true;
+                
+            }
+            else
+            {
+                MessageBox.Show("Please select the product you want to update", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+           
+        }
+
        
+
+        private void btnSaveUpdate_Click(object sender, EventArgs e)
+        {
             try
             {
                 //Connection.Open();
                 Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
-                strItemName = cboItemName.SelectedItem.ToString();
-                string strDescription = tbxUpDescrption.Text;
+                strItemName = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[0].Value.ToString();
+                string strName = tbxName.Text;
+
+                string strQuantity = tbxQuantity.Text;
+                int intQuantity;
+                bool blnConvert = int.TryParse(strQuantity, out  intQuantity);
+
+                
+
                 Connection.Open();
 
-                string strUpdateQuery = "UPDATE RandrezaVoharisoaM21Su2332.Items SET Description = @Description where Name= '" + strItemName + "'";
+                string strUpdateQuery = "UPDATE RandrezaVoharisoaM21Su2332.Items SET Name = @Name, Quantity = @Quantity where Name= '" + strItemName + "'";
                 SqlCommand updateCommande = new SqlCommand(strUpdateQuery, Connection);
-                SqlParameter sqlParams = updateCommande.Parameters.AddWithValue("@Description", strDescription);
+                SqlParameter sqlpmName = updateCommande.Parameters.AddWithValue("@Name", strName);
+                SqlParameter sqlpmQuantity = updateCommande.Parameters.AddWithValue("@Quantity", intQuantity);
                 updateCommande.ExecuteNonQuery();
-                tbxUpDescrption.Text = "";
+                btnSaveUpdate.Enabled = true;
                 Connection.Close();
+
+                DisplayAllItems();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error :" + ex);
             }
         }
-
         private void frmAdmin_FormClosing(object sender, FormClosingEventArgs e)
         {
             switch (e.CloseReason)
@@ -245,6 +271,45 @@ namespace SU21_Final_Project
                     }
                     break;
             }
+        }
+
+        //Enable textbox for updating checked fields
+        private void cbxName_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxName.Checked == true)
+            {
+                tbxName.Enabled = true;
+            }
+            else
+            {
+                tbxName.Enabled = false;
+            }
+
+        }
+
+        private void cbxQuantity_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxQuantity.Checked == true)
+            {
+                tbxQuantity.Enabled = true;
+            }
+            else
+            {
+                tbxQuantity.Enabled = false;
+            }
+        }
+
+        private void dgvAllProducts_SelectionChanged(object sender, EventArgs e)
+        {
+            gbxUpdateField.Enabled = false;
+            ResetUpdateFields();
+        }
+
+        public void ResetUpdateFields()
+        {
+            cbxName.Checked = false;tbxName.Text = "";
+            cbxQuantity.Checked = false; tbxQuantity.Text = "";
+            cbxCost.Checked = false; tbxCost.Text = "";
         }
     }
 

@@ -34,7 +34,7 @@ namespace SU21_Final_Project
             this.cboSupplier = new System.Windows.Forms.ComboBox();
             this.cboCategory = new System.Windows.Forms.ComboBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.lblTagItemName = new System.Windows.Forms.Label();
+            this.lblItemName = new System.Windows.Forms.Label();
             this.tbxItemCost = new System.Windows.Forms.TextBox();
             this.tbxItemName = new System.Windows.Forms.TextBox();
             this.lblTagCost = new System.Windows.Forms.Label();
@@ -57,7 +57,7 @@ namespace SU21_Final_Project
             this.gbxItemInformation.Controls.Add(this.cboSupplier);
             this.gbxItemInformation.Controls.Add(this.cboCategory);
             this.gbxItemInformation.Controls.Add(this.label24);
-            this.gbxItemInformation.Controls.Add(this.lblTagItemName);
+            this.gbxItemInformation.Controls.Add(this.lblItemName);
             this.gbxItemInformation.Controls.Add(this.tbxItemCost);
             this.gbxItemInformation.Controls.Add(this.tbxItemName);
             this.gbxItemInformation.Controls.Add(this.lblTagCost);
@@ -126,14 +126,14 @@ namespace SU21_Final_Project
             this.label24.TabIndex = 46;
             this.label24.Text = "(*)Required Fields";
             // 
-            // lblTagItemName
+            // lblItemName
             // 
-            this.lblTagItemName.AutoSize = true;
-            this.lblTagItemName.Location = new System.Drawing.Point(41, 46);
-            this.lblTagItemName.Name = "lblTagItemName";
-            this.lblTagItemName.Size = new System.Drawing.Size(75, 17);
-            this.lblTagItemName.TabIndex = 2;
-            this.lblTagItemName.Text = "Item Name";
+            this.lblItemName.AutoSize = true;
+            this.lblItemName.Location = new System.Drawing.Point(41, 46);
+            this.lblItemName.Name = "lblItemName";
+            this.lblItemName.Size = new System.Drawing.Size(75, 17);
+            this.lblItemName.TabIndex = 2;
+            this.lblItemName.Text = "Item Name";
             // 
             // tbxItemCost
             // 
@@ -145,7 +145,7 @@ namespace SU21_Final_Project
             // 
             // tbxItemName
             // 
-            this.tbxItemName.Location = new System.Drawing.Point(133, 42);
+            this.tbxItemName.Location = new System.Drawing.Point(133, 44);
             this.tbxItemName.MaxLength = 20;
             this.tbxItemName.Name = "tbxItemName";
             this.tbxItemName.Size = new System.Drawing.Size(165, 22);
@@ -258,7 +258,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.ComboBox cboSupplier;
         private System.Windows.Forms.ComboBox cboCategory;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label lblTagItemName;
+        private System.Windows.Forms.Label lblItemName;
         private System.Windows.Forms.TextBox tbxItemCost;
         private System.Windows.Forms.TextBox tbxItemName;
         private System.Windows.Forms.Label lblTagCost;
