@@ -18,8 +18,8 @@ namespace SU21_Final_Project
         SqlConnection Connection;
         SqlDataAdapter dataAdapter;
         DataTable dataTable;
-        string strItemName;
-
+        string strItemID;
+        
 
         public frmAdmin()
         {
@@ -60,7 +60,7 @@ namespace SU21_Final_Project
 
                 Connection.Open();
 
-                string insertQuery = "UPDATE RandrezaVoharisoaM21Su2332.Items set Image = @Image where Name= '" + strItemName + "'"; // @Image is a parameter we will fill in later
+                string insertQuery = "UPDATE RandrezaVoharisoaM21Su2332.Items set Image = @Image where ItemID= '" + strItemID + "'"; // @Image is a parameter we will fill in later
                 SqlCommand insertCmd = new SqlCommand(insertQuery, Connection);
                 SqlParameter sqlParams = insertCmd.Parameters.AddWithValue("@Image", image); // The parameter will be the image as a byte array
                 sqlParams.DbType = System.Data.DbType.Binary; // The type of data we are sending to the server will be a binary file
@@ -74,7 +74,7 @@ namespace SU21_Final_Project
 
                 //Display Image
                 byte[] imgData;
-                SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where Name = '" + strItemName + "'", Connection);
+                SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where ItemID = '" + strItemID + "'", Connection);
                 SqlDataReader reader = cmd.ExecuteReader();
                 reader.Read();
                 long bufLength = reader.GetBytes(0, 0, null, 0, 0);
@@ -104,7 +104,7 @@ namespace SU21_Final_Project
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                 Connection.Open();
-                dataAdapter = new SqlDataAdapter("SELECT Name, Quantity,Cost, RetailPrice ,Description,CategoryID,SupplierID FROM RandrezaVoharisoaM21Su2332.Items", Connection);
+                dataAdapter = new SqlDataAdapter("SELECT ItemID, Name, Quantity,Cost, RetailPrice ,Description,CategoryID,SupplierID FROM RandrezaVoharisoaM21Su2332.Items", Connection);
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvAllProducts.DataSource = dataTable;
@@ -118,27 +118,6 @@ namespace SU21_Final_Project
             }
         }
 
-        public void DisplayEmployee()
-        {
-            try
-            {
-                //connect to database
-                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
-                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
-
-                Connection.Open();
-                dataAdapter = new SqlDataAdapter("SELECT Name, Quantity,Cost, RetailPrice ,Description,CategoryID,SupplierID FROM RandrezaVoharisoaM21Su2332.Items", Connection);
-                dataTable = new DataTable();
-                dataAdapter.Fill(dataTable);
-                dgvAllProducts.DataSource = dataTable;
-
-                Connection.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         //Display inventory
         private void tabManagerFeatures_Selected(object sender, TabControlEventArgs e)
@@ -170,7 +149,7 @@ namespace SU21_Final_Project
                         //grab current row index selected
                         int intIndexRowSelected = dgvAllProducts.CurrentCell.RowIndex;
                         //grab item name to use in order to delete in the database
-                        strItemName= dgvAllProducts.Rows[intIndexRowSelected].Cells[0].Value.ToString();
+                        strItemID= dgvAllProducts.Rows[intIndexRowSelected].Cells[0].Value.ToString();
                         dgvAllProducts.Rows.RemoveAt(row.Index);
 
                     }
@@ -182,7 +161,7 @@ namespace SU21_Final_Project
 
                         Connection.Open();
 
-                        string strDeleteQuery = "DELETE FROM RandrezaVoharisoaM21Su2332.Items where Name= '" + strItemName + "'";
+                        string strDeleteQuery = "DELETE FROM RandrezaVoharisoaM21Su2332.Items where ItemID= '" + strItemID + "'";
                         SqlCommand deleteCommande = new SqlCommand(strDeleteQuery, Connection);
                         
                         deleteCommande.ExecuteNonQuery();
@@ -207,54 +186,199 @@ namespace SU21_Final_Project
 
         private void btnUpdateItem_Click_1(object sender, EventArgs e)
         {
+            string itemNameSelected=  dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[1].Value.ToString();
+
             if (dgvAllProducts.SelectedRows.Count > 0)
             {
-               
+                if (MessageBox.Show("Do you want to edit '"+ itemNameSelected + "'?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
                     gbxUpdateField.Enabled = true;
-                
+
+                }
+                else
+                {
+                    MessageBox.Show("Please select the product you want to edit", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
             {
                 MessageBox.Show("Please select the product you want to update", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-           
+            
         }
 
-       
+
 
         private void btnSaveUpdate_Click(object sender, EventArgs e)
         {
+          
+                string strName;
+
+                string strQuantity;
+                int intQuantity;
+                bool blnQuantityConvert;
+
+                string strCost;
+                double dblCost;
+                bool blnCostConvert;
+
+                string strRetailPrice;
+                double dblRetailPrice;
+                bool blnRetailPriceConvert;
+
+                string strDescription;
+
+                string strCategory;
+                int intCategory;
+                bool intCategoryTryParse;
+
+
+                string strSupplierID;
+                int intSupplierID;
+                bool intSupplierTryParse;
             try
             {
                 //Connection.Open();
                 Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+                //Get the Name of the selected Item 
+                strItemID = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[0].Value.ToString();
 
-                strItemName = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[0].Value.ToString();
-                string strName = tbxName.Text;
+                if (tbxName.Text == "")
+                {
+                    strName = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[1].Value.ToString();
+                }
+                else
+                {
+                    strName = tbxName.Text;
+                }
 
-                string strQuantity = tbxQuantity.Text;
-                int intQuantity;
-                bool blnConvert = int.TryParse(strQuantity, out  intQuantity);
+                if (tbxQuantity.Text == "")
+                {
+                    strQuantity = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[2].Value.ToString();
+                    blnQuantityConvert = int.TryParse(strQuantity, out intQuantity);
+                }
+                else
+                {
 
-                
+                    strQuantity = tbxQuantity.Text;
+                    blnQuantityConvert = int.TryParse(strQuantity, out intQuantity);
+                }
 
-                Connection.Open();
+                if (tbxCost.Text == "")
+                {
+                    strCost = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[3].Value.ToString();
+                    blnCostConvert = double.TryParse(strCost, out dblCost);
+                }
+                else
+                {
+                    strCost = tbxCost.Text;
+                    blnCostConvert = double.TryParse(strCost, out dblCost);
+                }
 
-                string strUpdateQuery = "UPDATE RandrezaVoharisoaM21Su2332.Items SET Name = @Name, Quantity = @Quantity where Name= '" + strItemName + "'";
-                SqlCommand updateCommande = new SqlCommand(strUpdateQuery, Connection);
-                SqlParameter sqlpmName = updateCommande.Parameters.AddWithValue("@Name", strName);
-                SqlParameter sqlpmQuantity = updateCommande.Parameters.AddWithValue("@Quantity", intQuantity);
-                updateCommande.ExecuteNonQuery();
-                btnSaveUpdate.Enabled = true;
-                Connection.Close();
 
-                DisplayAllItems();
+                if (tbxRetailPrice.Text == "")
+                {
+                    strRetailPrice = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[4].Value.ToString();
+                    blnRetailPriceConvert = double.TryParse(strRetailPrice, out dblRetailPrice);
+                }
+                else
+                {
+                    strRetailPrice = tbxRetailPrice.Text;
+                    blnRetailPriceConvert = double.TryParse(strRetailPrice, out dblRetailPrice);
+                }
+
+                if (tbxDescription.Text == "")
+                {
+                    strDescription = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[5].Value.ToString();
+                }
+                else
+                {
+                    strDescription = tbxDescription.Text;
+                }
+
+
+
+
+                if (cboCategory.Text == "")
+                {
+                    strCategory = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[6].Value.ToString();
+                    intCategoryTryParse = int.TryParse(strCategory, out intCategory);
+
+                }
+                else
+                {
+                    strCategory = cboCategory.SelectedItem.ToString();
+                    intCategoryTryParse = int.TryParse(strCategory, out intCategory);
+                }
+
+                if (cboSupplierID.Text == "")
+                {
+
+                    strSupplierID = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[7].Value.ToString();
+                    intSupplierTryParse = int.TryParse(strSupplierID, out intSupplierID);
+
+                }
+                else
+                {
+                    strSupplierID = cboSupplierID.SelectedItem.ToString();
+                    intSupplierTryParse = int.TryParse(strSupplierID, out intSupplierID);
+                }
+                if (intQuantity > 0 && intQuantity < int.MaxValue )
+                {
+                    if (dblCost > 0 && dblCost < double.MaxValue)
+                    {
+                        if (dblRetailPrice > 0 && dblRetailPrice < double.MaxValue)
+                        {
+                            Connection.Open();
+
+                            string strUpdateQuery = "UPDATE RandrezaVoharisoaM21Su2332.Items SET Name = @Name, Quantity = @Quantity, Cost = @Cost, RetailPrice = @RetailPrice, Description = @Description, CategoryID = @CategoryID, SupplierID = @SupplierID" +
+                                " where ItemID= '" + strItemID + "'";
+                            SqlCommand updateCommande = new SqlCommand(strUpdateQuery, Connection);
+                            SqlParameter sqlpmName = updateCommande.Parameters.AddWithValue("@Name", strName);
+                            SqlParameter sqlpmQuantity = updateCommande.Parameters.AddWithValue("@Quantity", intQuantity);
+                            SqlParameter sqlpmCost = updateCommande.Parameters.AddWithValue("@Cost", dblCost);
+                            SqlParameter sqlpmRetailPrice = updateCommande.Parameters.AddWithValue("@RetailPrice", dblRetailPrice);
+                            SqlParameter sqlpmDescription = updateCommande.Parameters.AddWithValue("@Description", strDescription);
+                            SqlParameter sqlpmCategory = updateCommande.Parameters.AddWithValue("@CategoryID", intCategory);
+                            SqlParameter sqlpmSupplier = updateCommande.Parameters.AddWithValue("@SupplierID", intSupplierID);
+                            updateCommande.ExecuteNonQuery();
+                            btnSaveUpdate.Enabled = true;
+                            Connection.Close();
+
+                            MessageBox.Show("The selected item has been updated successfully?", "Exit Application", MessageBoxButtons.OK);
+
+                            DisplayAllItems();
+
+                        }
+
+                        else
+                        {
+                            MessageBox.Show("Please enter positive value only for Retail Price", "Invalid Format", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            tbxRetailPrice.Text = "";
+                            tbxRetailPrice.Focus();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter positive value only for Cost", "Invalid Format", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        tbxCost.Text = "";
+                        tbxCost.Focus();
+                    }
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Please enter positive number only for Quantity", "Invalid Format", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    tbxQuantity.Text = "";
+                    tbxQuantity.Focus();
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error :" + ex);
             }
+           
         }
         private void frmAdmin_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -273,7 +397,7 @@ namespace SU21_Final_Project
             }
         }
 
-        //Enable textbox for updating checked fields
+        //Enable textbox for updating when checkbox checked
         private void cbxName_CheckedChanged(object sender, EventArgs e)
         {
             if (cbxName.Checked == true)
@@ -299,17 +423,84 @@ namespace SU21_Final_Project
             }
         }
 
-        private void dgvAllProducts_SelectionChanged(object sender, EventArgs e)
+        private void cbxCost_CheckedChanged(object sender, EventArgs e)
         {
-            gbxUpdateField.Enabled = false;
-            ResetUpdateFields();
+            if (cbxCost.Checked == true)
+            {
+                tbxCost.Enabled = true;
+            }
+            else
+            {
+                tbxCost.Enabled = false;
+            }
+        }
+
+
+        private void cbxRetailPrice_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxRetailPrice.Checked == true)
+            {
+                tbxRetailPrice.Enabled = true;
+            }
+            else
+            {
+                tbxRetailPrice.Enabled = false;
+            }
+        }
+
+        private void cbxDescription_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxDescription.Checked == true)
+            {
+                tbxDescription.Enabled = true;
+            }
+            else
+            {
+                tbxDescription.Enabled = false;
+            }
+        }
+
+        private void cbxCategoryID_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxCategoryID.Checked == true)
+            {
+                cboCategory.Enabled = true;
+            }
+            else
+            {
+                cboCategory.Enabled = false;
+            }
+        }
+
+        private void cbxSupplierID_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxSupplierID.Checked == true)
+            {
+                cboSupplierID.Enabled = true;
+            }
+            else
+            {
+                cboSupplierID.Enabled = false;
+            }
         }
 
         public void ResetUpdateFields()
         {
-            cbxName.Checked = false;tbxName.Text = "";
+            cbxName.Checked = false; tbxName.Text = "";
             cbxQuantity.Checked = false; tbxQuantity.Text = "";
             cbxCost.Checked = false; tbxCost.Text = "";
+            cbxRetailPrice.Checked = false; tbxRetailPrice.Text = "";
+            cbxDescription.Checked = false; tbxDescription.Text = "";
+             cboCategory.Text = "";
+            cbxCategoryID.Checked = false;
+             cboSupplierID.Text = "";
+            cbxSupplierID.Checked = false;
+
+        }
+        private void dgvAllProducts_SelectionChanged(object sender, EventArgs e)
+        {
+            gbxUpdateField.Enabled = false;
+            ResetUpdateFields();
         }
     }
 

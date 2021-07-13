@@ -42,16 +42,6 @@ namespace SU21_Final_Project
                 Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
-            try
-            {
-
                 Connection.Open();
                 if (tbxItemName.Text != "" && tbxQuantity.Text != "" && tbxItemCost.Text != "" && tbxRetailPrice.Text != "" 
                     && cboCategory.Text != "" && tbxDescription.Text != "" && cboSupplier.Text != "")
@@ -105,8 +95,14 @@ namespace SU21_Final_Project
                         string strSupplierID = cboSupplier.SelectedItem.ToString();
                         bool intSupplierTryParse = int.TryParse(strSupplierID, out intSupplierID);
 
+                        if (intQuantityPurchased > 0 && intQuantityPurchased < int.MaxValue)
+                        {
+                            if (dblItemCost > 0 && dblItemCost < double.MaxValue)
+                            {
+                                if (dblRetailPrice > 0 && dblRetailPrice < double.MaxValue)
+                                {
 
-                            SqlCommand commandItem = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Items(Name,Quantity,Cost,Image,CategoryID,RetailPrice,Description,SupplierID)" +
+                                    SqlCommand commandItem = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Items(Name,Quantity,Cost,Image,CategoryID,RetailPrice,Description,SupplierID)" +
                                 "VALUES(@Name,@Quantity,@Cost,NULL,@CategoryID,@RetailPrice,@Description,@SupplierID)", Connection);
                             commandItem.Parameters.AddWithValue("@Name", strItemName);
                             commandItem.Parameters.AddWithValue("@Quantity", intQuantityPurchased);
@@ -125,7 +121,30 @@ namespace SU21_Final_Project
 
                             new frmAdmin().Show();
                             this.Hide();
-                       
+
+                                }
+
+                                else
+                                {
+                                    MessageBox.Show("Please enter positive value only for Retail Price", "Invalid Format", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    tbxRetailPrice.Text = "";
+                                    tbxRetailPrice.Focus();
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Please enter positive value only for Cost", "Invalid Format", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                tbxItemCost.Text = "";
+                                tbxItemCost.Focus();
+                            }
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please enter positive number only for Quantity", "Invalid Format", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            tbxQuantity.Text = "";
+                            tbxQuantity.Focus();
+                        }
                     }
 
                 }

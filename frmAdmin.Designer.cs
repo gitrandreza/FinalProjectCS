@@ -33,6 +33,9 @@ namespace SU21_Final_Project
             this.dgvEmployee = new System.Windows.Forms.DataGridView();
             this.tabInventory = new System.Windows.Forms.TabPage();
             this.gbxUpdateField = new System.Windows.Forms.GroupBox();
+            this.cbxDescription = new System.Windows.Forms.CheckBox();
+            this.cbxRetailPrice = new System.Windows.Forms.CheckBox();
+            this.tbxRetailPrice = new System.Windows.Forms.TextBox();
             this.cbxCost = new System.Windows.Forms.CheckBox();
             this.cbxQuantity = new System.Windows.Forms.CheckBox();
             this.tbxCost = new System.Windows.Forms.TextBox();
@@ -49,10 +52,11 @@ namespace SU21_Final_Project
             this.pbxItemPicture = new System.Windows.Forms.PictureBox();
             this.btnInsertImage = new System.Windows.Forms.Button();
             this.tabManagerFeatures = new System.Windows.Forms.TabControl();
-            this.cbxRetailPrice = new System.Windows.Forms.CheckBox();
-            this.tbxRetailPrice = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbxDescription = new System.Windows.Forms.TextBox();
+            this.cbxSupplierID = new System.Windows.Forms.CheckBox();
+            this.cbxCategoryID = new System.Windows.Forms.CheckBox();
+            this.cboSupplierID = new System.Windows.Forms.ComboBox();
+            this.cboCategory = new System.Windows.Forms.ComboBox();
             this.tabEmployee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
             this.tabInventory.SuspendLayout();
@@ -104,8 +108,12 @@ namespace SU21_Final_Project
             // 
             // gbxUpdateField
             // 
-            this.gbxUpdateField.Controls.Add(this.checkBox1);
-            this.gbxUpdateField.Controls.Add(this.textBox1);
+            this.gbxUpdateField.Controls.Add(this.cboCategory);
+            this.gbxUpdateField.Controls.Add(this.cboSupplierID);
+            this.gbxUpdateField.Controls.Add(this.cbxCategoryID);
+            this.gbxUpdateField.Controls.Add(this.cbxSupplierID);
+            this.gbxUpdateField.Controls.Add(this.tbxDescription);
+            this.gbxUpdateField.Controls.Add(this.cbxDescription);
             this.gbxUpdateField.Controls.Add(this.cbxRetailPrice);
             this.gbxUpdateField.Controls.Add(this.tbxRetailPrice);
             this.gbxUpdateField.Controls.Add(this.cbxCost);
@@ -118,10 +126,40 @@ namespace SU21_Final_Project
             this.gbxUpdateField.Enabled = false;
             this.gbxUpdateField.Location = new System.Drawing.Point(8, 257);
             this.gbxUpdateField.Name = "gbxUpdateField";
-            this.gbxUpdateField.Size = new System.Drawing.Size(810, 249);
+            this.gbxUpdateField.Size = new System.Drawing.Size(797, 249);
             this.gbxUpdateField.TabIndex = 13;
             this.gbxUpdateField.TabStop = false;
             this.gbxUpdateField.Text = "Update Fields";
+            // 
+            // cbxDescription
+            // 
+            this.cbxDescription.AutoSize = true;
+            this.cbxDescription.Location = new System.Drawing.Point(307, 37);
+            this.cbxDescription.Name = "cbxDescription";
+            this.cbxDescription.Size = new System.Drawing.Size(101, 21);
+            this.cbxDescription.TabIndex = 23;
+            this.cbxDescription.Text = "Description";
+            this.cbxDescription.UseVisualStyleBackColor = true;
+            this.cbxDescription.CheckedChanged += new System.EventHandler(this.cbxDescription_CheckedChanged);
+            // 
+            // cbxRetailPrice
+            // 
+            this.cbxRetailPrice.AutoSize = true;
+            this.cbxRetailPrice.Location = new System.Drawing.Point(10, 152);
+            this.cbxRetailPrice.Name = "cbxRetailPrice";
+            this.cbxRetailPrice.Size = new System.Drawing.Size(102, 21);
+            this.cbxRetailPrice.TabIndex = 21;
+            this.cbxRetailPrice.Text = "Retail Price";
+            this.cbxRetailPrice.UseVisualStyleBackColor = true;
+            this.cbxRetailPrice.CheckedChanged += new System.EventHandler(this.cbxRetailPrice_CheckedChanged);
+            // 
+            // tbxRetailPrice
+            // 
+            this.tbxRetailPrice.Enabled = false;
+            this.tbxRetailPrice.Location = new System.Drawing.Point(112, 152);
+            this.tbxRetailPrice.Name = "tbxRetailPrice";
+            this.tbxRetailPrice.Size = new System.Drawing.Size(142, 22);
+            this.tbxRetailPrice.TabIndex = 20;
             // 
             // cbxCost
             // 
@@ -132,6 +170,7 @@ namespace SU21_Final_Project
             this.cbxCost.TabIndex = 19;
             this.cbxCost.Text = "Cost";
             this.cbxCost.UseVisualStyleBackColor = true;
+            this.cbxCost.CheckedChanged += new System.EventHandler(this.cbxCost_CheckedChanged);
             // 
             // cbxQuantity
             // 
@@ -173,9 +212,9 @@ namespace SU21_Final_Project
             // 
             // btnSaveUpdate
             // 
-            this.btnSaveUpdate.Location = new System.Drawing.Point(666, 199);
+            this.btnSaveUpdate.Location = new System.Drawing.Point(338, 205);
             this.btnSaveUpdate.Name = "btnSaveUpdate";
-            this.btnSaveUpdate.Size = new System.Drawing.Size(110, 39);
+            this.btnSaveUpdate.Size = new System.Drawing.Size(103, 34);
             this.btnSaveUpdate.TabIndex = 16;
             this.btnSaveUpdate.Text = "&Save Change";
             this.btnSaveUpdate.UseVisualStyleBackColor = true;
@@ -331,41 +370,66 @@ namespace SU21_Final_Project
             this.tabManagerFeatures.TabIndex = 0;
             this.tabManagerFeatures.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabManagerFeatures_Selected);
             // 
-            // cbxRetailPrice
+            // tbxDescription
             // 
-            this.cbxRetailPrice.AutoSize = true;
-            this.cbxRetailPrice.Location = new System.Drawing.Point(10, 152);
-            this.cbxRetailPrice.Name = "cbxRetailPrice";
-            this.cbxRetailPrice.Size = new System.Drawing.Size(102, 21);
-            this.cbxRetailPrice.TabIndex = 21;
-            this.cbxRetailPrice.Text = "Retail Price";
-            this.cbxRetailPrice.UseVisualStyleBackColor = true;
+            this.tbxDescription.Enabled = false;
+            this.tbxDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxDescription.Location = new System.Drawing.Point(409, 35);
+            this.tbxDescription.Multiline = true;
+            this.tbxDescription.Name = "tbxDescription";
+            this.tbxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbxDescription.Size = new System.Drawing.Size(236, 92);
+            this.tbxDescription.TabIndex = 34;
             // 
-            // tbxRetailPrice
+            // cbxSupplierID
             // 
-            this.tbxRetailPrice.Enabled = false;
-            this.tbxRetailPrice.Location = new System.Drawing.Point(112, 152);
-            this.tbxRetailPrice.Name = "tbxRetailPrice";
-            this.tbxRetailPrice.Size = new System.Drawing.Size(142, 22);
-            this.tbxRetailPrice.TabIndex = 20;
+            this.cbxSupplierID.AutoSize = true;
+            this.cbxSupplierID.Location = new System.Drawing.Point(561, 153);
+            this.cbxSupplierID.Name = "cbxSupplierID";
+            this.cbxSupplierID.Size = new System.Drawing.Size(90, 21);
+            this.cbxSupplierID.TabIndex = 35;
+            this.cbxSupplierID.Text = "Supplier#";
+            this.cbxSupplierID.UseVisualStyleBackColor = true;
+            this.cbxSupplierID.CheckedChanged += new System.EventHandler(this.cbxSupplierID_CheckedChanged);
             // 
-            // checkBox1
+            // cbxCategoryID
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(401, 37);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(102, 21);
-            this.checkBox1.TabIndex = 23;
-            this.checkBox1.Text = "Retail Price";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cbxCategoryID.AutoSize = true;
+            this.cbxCategoryID.Location = new System.Drawing.Point(307, 152);
+            this.cbxCategoryID.Name = "cbxCategoryID";
+            this.cbxCategoryID.Size = new System.Drawing.Size(95, 21);
+            this.cbxCategoryID.TabIndex = 36;
+            this.cbxCategoryID.Text = "Category#";
+            this.cbxCategoryID.UseVisualStyleBackColor = true;
+            this.cbxCategoryID.CheckedChanged += new System.EventHandler(this.cbxCategoryID_CheckedChanged);
             // 
-            // textBox1
+            // cboSupplierID
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(346, 64);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(142, 22);
-            this.textBox1.TabIndex = 22;
+            this.cboSupplierID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSupplierID.Enabled = false;
+            this.cboSupplierID.FormattingEnabled = true;
+            this.cboSupplierID.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.cboSupplierID.Location = new System.Drawing.Point(657, 149);
+            this.cboSupplierID.Name = "cboSupplierID";
+            this.cboSupplierID.Size = new System.Drawing.Size(80, 24);
+            this.cboSupplierID.TabIndex = 37;
+            // 
+            // cboCategory
+            // 
+            this.cboCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCategory.Enabled = false;
+            this.cboCategory.FormattingEnabled = true;
+            this.cboCategory.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.cboCategory.Location = new System.Drawing.Point(408, 149);
+            this.cboCategory.Name = "cboCategory";
+            this.cboCategory.Size = new System.Drawing.Size(101, 24);
+            this.cboCategory.TabIndex = 38;
             // 
             // frmAdmin
             // 
@@ -414,9 +478,13 @@ namespace SU21_Final_Project
         private System.Windows.Forms.CheckBox cbxQuantity;
         private System.Windows.Forms.TextBox tbxCost;
         private System.Windows.Forms.TextBox tbxQuantity;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.CheckBox cbxDescription;
         private System.Windows.Forms.CheckBox cbxRetailPrice;
         private System.Windows.Forms.TextBox tbxRetailPrice;
+        private System.Windows.Forms.ComboBox cboCategory;
+        private System.Windows.Forms.ComboBox cboSupplierID;
+        private System.Windows.Forms.CheckBox cbxCategoryID;
+        private System.Windows.Forms.CheckBox cbxSupplierID;
+        private System.Windows.Forms.TextBox tbxDescription;
     }
 }
