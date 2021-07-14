@@ -18,8 +18,24 @@ namespace SU21_Final_Project
         SqlConnection Connection;
         SqlDataAdapter dataAdapter;
         DataTable dataTable;
-        string strItemID;
+       
         
+        
+
+        string strItemID;
+
+       
+        string strNameFirst;
+        string strNameLast;
+        string strAddress;
+        string strCity;
+        string strZip;
+        string strState;
+        string strPhone;
+        string strEmail;
+         string strEmployeeID;
+        string strEmployeeSalary;
+        string strEmployeeHiredDate;
 
         public frmAdmin()
         {
@@ -29,70 +45,13 @@ namespace SU21_Final_Project
             {
                 DisplayAllItems();
             }
+            
         }
 
 
+        
 
-
-
-        private void btnInsertImage_Click(object sender, EventArgs e)
-        {
-            //strItemName = cboItemName.SelectedItem.ToString();
-            try
-            {
-
-                Connection.Open();
-                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
-                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
-                Connection.Close();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error :" + ex);
-            }
-            try
-            {
-
-                //insert image
-
-                byte[] image = File.ReadAllBytes("C:\\Grocery.png");
-
-                Connection.Open();
-
-                string insertQuery = "UPDATE RandrezaVoharisoaM21Su2332.Items set Image = @Image where ItemID= '" + strItemID + "'"; // @Image is a parameter we will fill in later
-                SqlCommand insertCmd = new SqlCommand(insertQuery, Connection);
-                SqlParameter sqlParams = insertCmd.Parameters.AddWithValue("@Image", image); // The parameter will be the image as a byte array
-                sqlParams.DbType = System.Data.DbType.Binary; // The type of data we are sending to the server will be a binary file
-                insertCmd.ExecuteNonQuery();
-
-                MessageBox.Show("File was successfully added to the database.", "File Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                //SqlDataAdapter dataAdapter = new SqlDataAdapter(new SqlCommand("SELECT Image FROM RandrezaVoharisoaM21Su2332.Items WHERE CategoryId = 2", Connection));
-                //DataSet dataSet = new DataSet();
-                //dataAdapter.Fill(dataSet);
-
-                //Display Image
-                byte[] imgData;
-                SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where ItemID = '" + strItemID + "'", Connection);
-                SqlDataReader reader = cmd.ExecuteReader();
-                reader.Read();
-                long bufLength = reader.GetBytes(0, 0, null, 0, 0);
-                imgData = new byte[bufLength];
-                reader.GetBytes(0, 0, imgData, 0, (int)bufLength);
-                MemoryStream ms = new MemoryStream(imgData);
-                ms.Position = 0;
-                pbxItemPicture.Image = Image.FromStream(ms);
-                reader.Close();
-
-                Connection.Close();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error During Upload", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
+       
 
 
         public void DisplayAllItems()
@@ -126,6 +85,111 @@ namespace SU21_Final_Project
             {
                 DisplayAllItems();              
             }
+
+            else if (tabManagerFeatures.SelectedTab.Name == "tabEmployee")
+            {
+                DisplayEmployee();
+            }
+        }
+
+        public void DisplayEmployee()
+        {
+            SqlCommand commandPerson;
+            SqlDataReader readerPerson;
+
+            SqlCommand commandEmployee;
+            SqlDataReader readerEmployee;
+
+            //Build data grid view Employee 
+            dgvEmployee.ColumnCount = 8;
+            dgvEmployee.Columns[0].Name = "First Name";
+            dgvEmployee.Columns[1].Name = "Last Name";
+            dgvEmployee.Columns[2].Name = "Address";
+            dgvEmployee.Columns[3].Name = "City";
+            dgvEmployee.Columns[4].Name = "State";
+            dgvEmployee.Columns[5].Name = "Zip";
+            dgvEmployee.Columns[6].Name = "Phone";
+            dgvEmployee.Columns[7].Name = "email";
+
+
+            //grab fields from database
+
+            try
+            {
+
+
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+
+              
+
+                //--get first name last name address from Person Table based on RoleID from table Users
+                commandPerson = new SqlCommand("SELECT RandrezaVoharisoaM21Su2332.Person.NameFirst, RandrezaVoharisoaM21Su2332.Person.NameLast,RandrezaVoharisoaM21Su2332.Person.Address1,RandrezaVoharisoaM21Su2332.Person.City,RandrezaVoharisoaM21Su2332.Person.State, RandrezaVoharisoaM21Su2332.Person.Zipcode,RandrezaVoharisoaM21Su2332.Person.PhonePrimary, RandrezaVoharisoaM21Su2332.Person.Email  FROM RandrezaVoharisoaM21Su2332.Person FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.PersonID = RandrezaVoharisoaM21Su2332.Person.PersonID WHERE RoleID = 1 OR RoleID = 2; ", Connection);
+                //gets the results from the sql command Person table
+                readerPerson = commandPerson.ExecuteReader();
+
+                while (readerPerson.Read())
+                {
+
+                    //iterates through the employee id  column to find a matching value
+                    strNameFirst = readerPerson["NameFirst"].ToString();
+                    strNameLast = readerPerson["NameLast"].ToString();
+                    strAddress = readerPerson["Address1"].ToString(); 
+                    strCity = readerPerson["City"].ToString(); 
+                     strZip = readerPerson["Zipcode"].ToString(); 
+                   strState = readerPerson["State"].ToString(); 
+                     strPhone = readerPerson["PhonePrimary"].ToString(); 
+                    strEmail = readerPerson["Email"].ToString(); 
+                   
+                    string[] row1 = {strNameFirst, strNameLast, strAddress, strCity , strState, strZip , strPhone, strEmail };
+                    dgvEmployee.Rows.Add(row1);
+                                 
+                }
+
+                //while(readePersonTable.Read())
+                //{
+                //    strNameFirst = readePersonTable["NameFirst"].ToString();
+                //    strNameLast = readePersonTable["NameLast"].ToString();
+
+                //    string[] row2 = { strNameFirst, strNameLast };
+                //    dgvEmployee.Rows.Add(row2);
+                //}
+
+
+                if (readerPerson != null)
+                {
+                    readerPerson.Close(); //closes the reader
+                }
+
+                //else if (readePersonTable != null)
+                //{
+                //    readePersonTable.Close();
+                //}
+
+                //--get Salary,Date of hire from Employee Table based on RoleID from Table Users
+                commandEmployee = new SqlCommand("SELECT RandrezaVoharisoaM21Su2332.Employees.Salary,RandrezaVoharisoaM21Su2332.Employees.HiredDate,RandrezaVoharisoaM21Su2332.Employees.EmployeeID " +
+                    "FROM RandrezaVoharisoaM21Su2332.Employees FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.UserID = RandrezaVoharisoaM21Su2332.Employees.UserID WHERE RandrezaVoharisoaM21Su2332.Users.RoleID = 1 OR RoleID = 2; ", Connection);
+                //gets the results from the sql command Employee table
+                readerEmployee = commandEmployee.ExecuteReader();
+
+                //strEmployeeID = reader["EmployeeID"].ToString();
+                //strEmployeeSalary = reader["Salary"].ToString();
+                //strEmployeeHiredDate = reader["HiredDate"].ToString();
+
+                if (Connection != null)
+                {
+                    Connection.Close(); //closes connection to database
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         //Open Add Item form
@@ -502,6 +566,66 @@ namespace SU21_Final_Project
             gbxUpdateField.Enabled = false;
             ResetUpdateFields();
         }
+
+        //-----------------------------------------
+        private void btnInsertImage_Click(object sender, EventArgs e)
+        {
+            //strItemName = cboItemName.SelectedItem.ToString();
+            try
+            {
+
+                Connection.Open();
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+                Connection.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex);
+            }
+            try
+            {
+
+                //insert image
+
+                byte[] image = File.ReadAllBytes("C:\\Grocery.png");
+
+                Connection.Open();
+
+                string insertQuery = "UPDATE RandrezaVoharisoaM21Su2332.Items set Image = @Image where ItemID= '" + strItemID + "'"; // @Image is a parameter we will fill in later
+                SqlCommand insertCmd = new SqlCommand(insertQuery, Connection);
+                SqlParameter sqlParams = insertCmd.Parameters.AddWithValue("@Image", image); // The parameter will be the image as a byte array
+                sqlParams.DbType = System.Data.DbType.Binary; // The type of data we are sending to the server will be a binary file
+                insertCmd.ExecuteNonQuery();
+
+                MessageBox.Show("File was successfully added to the database.", "File Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                //SqlDataAdapter dataAdapter = new SqlDataAdapter(new SqlCommand("SELECT Image FROM RandrezaVoharisoaM21Su2332.Items WHERE CategoryId = 2", Connection));
+                //DataSet dataSet = new DataSet();
+                //dataAdapter.Fill(dataSet);
+
+                //Display Image
+                byte[] imgData;
+                SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where ItemID = '" + strItemID + "'", Connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                long bufLength = reader.GetBytes(0, 0, null, 0, 0);
+                imgData = new byte[bufLength];
+                reader.GetBytes(0, 0, imgData, 0, (int)bufLength);
+                MemoryStream ms = new MemoryStream(imgData);
+                ms.Position = 0;
+                pbxItemPicture.Image = Image.FromStream(ms);
+                reader.Close();
+
+                Connection.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error During Upload", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 
 }

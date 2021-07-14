@@ -33,6 +33,11 @@ namespace SU21_Final_Project
             this.dgvEmployee = new System.Windows.Forms.DataGridView();
             this.tabInventory = new System.Windows.Forms.TabPage();
             this.gbxUpdateField = new System.Windows.Forms.GroupBox();
+            this.cboCategory = new System.Windows.Forms.ComboBox();
+            this.cboSupplierID = new System.Windows.Forms.ComboBox();
+            this.cbxCategoryID = new System.Windows.Forms.CheckBox();
+            this.cbxSupplierID = new System.Windows.Forms.CheckBox();
+            this.tbxDescription = new System.Windows.Forms.TextBox();
             this.cbxDescription = new System.Windows.Forms.CheckBox();
             this.cbxRetailPrice = new System.Windows.Forms.CheckBox();
             this.tbxRetailPrice = new System.Windows.Forms.TextBox();
@@ -52,11 +57,9 @@ namespace SU21_Final_Project
             this.pbxItemPicture = new System.Windows.Forms.PictureBox();
             this.btnInsertImage = new System.Windows.Forms.Button();
             this.tabManagerFeatures = new System.Windows.Forms.TabControl();
-            this.tbxDescription = new System.Windows.Forms.TextBox();
-            this.cbxSupplierID = new System.Windows.Forms.CheckBox();
-            this.cbxCategoryID = new System.Windows.Forms.CheckBox();
-            this.cboSupplierID = new System.Windows.Forms.ComboBox();
-            this.cboCategory = new System.Windows.Forms.ComboBox();
+            this.btnRemoveEmployee = new System.Windows.Forms.Button();
+            this.btnAddEmployee = new System.Windows.Forms.Button();
+            this.btnEditEmployee = new System.Windows.Forms.Button();
             this.tabEmployee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
             this.tabInventory.SuspendLayout();
@@ -68,6 +71,9 @@ namespace SU21_Final_Project
             // 
             // tabEmployee
             // 
+            this.tabEmployee.Controls.Add(this.btnRemoveEmployee);
+            this.tabEmployee.Controls.Add(this.btnAddEmployee);
+            this.tabEmployee.Controls.Add(this.btnEditEmployee);
             this.tabEmployee.Controls.Add(this.dgvEmployee);
             this.tabEmployee.Location = new System.Drawing.Point(4, 25);
             this.tabEmployee.Name = "tabEmployee";
@@ -84,7 +90,7 @@ namespace SU21_Final_Project
             this.dgvEmployee.Name = "dgvEmployee";
             this.dgvEmployee.RowHeadersWidth = 51;
             this.dgvEmployee.RowTemplate.Height = 24;
-            this.dgvEmployee.Size = new System.Drawing.Size(852, 263);
+            this.dgvEmployee.Size = new System.Drawing.Size(1043, 263);
             this.dgvEmployee.TabIndex = 0;
             // 
             // tabInventory
@@ -130,6 +136,67 @@ namespace SU21_Final_Project
             this.gbxUpdateField.TabIndex = 13;
             this.gbxUpdateField.TabStop = false;
             this.gbxUpdateField.Text = "Update Fields";
+            // 
+            // cboCategory
+            // 
+            this.cboCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCategory.Enabled = false;
+            this.cboCategory.FormattingEnabled = true;
+            this.cboCategory.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.cboCategory.Location = new System.Drawing.Point(408, 149);
+            this.cboCategory.Name = "cboCategory";
+            this.cboCategory.Size = new System.Drawing.Size(101, 24);
+            this.cboCategory.TabIndex = 38;
+            // 
+            // cboSupplierID
+            // 
+            this.cboSupplierID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSupplierID.Enabled = false;
+            this.cboSupplierID.FormattingEnabled = true;
+            this.cboSupplierID.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.cboSupplierID.Location = new System.Drawing.Point(657, 149);
+            this.cboSupplierID.Name = "cboSupplierID";
+            this.cboSupplierID.Size = new System.Drawing.Size(80, 24);
+            this.cboSupplierID.TabIndex = 37;
+            // 
+            // cbxCategoryID
+            // 
+            this.cbxCategoryID.AutoSize = true;
+            this.cbxCategoryID.Location = new System.Drawing.Point(307, 152);
+            this.cbxCategoryID.Name = "cbxCategoryID";
+            this.cbxCategoryID.Size = new System.Drawing.Size(95, 21);
+            this.cbxCategoryID.TabIndex = 36;
+            this.cbxCategoryID.Text = "Category#";
+            this.cbxCategoryID.UseVisualStyleBackColor = true;
+            this.cbxCategoryID.CheckedChanged += new System.EventHandler(this.cbxCategoryID_CheckedChanged);
+            // 
+            // cbxSupplierID
+            // 
+            this.cbxSupplierID.AutoSize = true;
+            this.cbxSupplierID.Location = new System.Drawing.Point(561, 153);
+            this.cbxSupplierID.Name = "cbxSupplierID";
+            this.cbxSupplierID.Size = new System.Drawing.Size(90, 21);
+            this.cbxSupplierID.TabIndex = 35;
+            this.cbxSupplierID.Text = "Supplier#";
+            this.cbxSupplierID.UseVisualStyleBackColor = true;
+            this.cbxSupplierID.CheckedChanged += new System.EventHandler(this.cbxSupplierID_CheckedChanged);
+            // 
+            // tbxDescription
+            // 
+            this.tbxDescription.Enabled = false;
+            this.tbxDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxDescription.Location = new System.Drawing.Point(409, 35);
+            this.tbxDescription.Multiline = true;
+            this.tbxDescription.Name = "tbxDescription";
+            this.tbxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbxDescription.Size = new System.Drawing.Size(236, 92);
+            this.tbxDescription.TabIndex = 34;
             // 
             // cbxDescription
             // 
@@ -370,66 +437,33 @@ namespace SU21_Final_Project
             this.tabManagerFeatures.TabIndex = 0;
             this.tabManagerFeatures.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabManagerFeatures_Selected);
             // 
-            // tbxDescription
+            // btnRemoveEmployee
             // 
-            this.tbxDescription.Enabled = false;
-            this.tbxDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxDescription.Location = new System.Drawing.Point(409, 35);
-            this.tbxDescription.Multiline = true;
-            this.tbxDescription.Name = "tbxDescription";
-            this.tbxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbxDescription.Size = new System.Drawing.Size(236, 92);
-            this.tbxDescription.TabIndex = 34;
+            this.btnRemoveEmployee.Location = new System.Drawing.Point(203, 455);
+            this.btnRemoveEmployee.Name = "btnRemoveEmployee";
+            this.btnRemoveEmployee.Size = new System.Drawing.Size(137, 33);
+            this.btnRemoveEmployee.TabIndex = 15;
+            this.btnRemoveEmployee.Text = "&Remove Employee";
+            this.btnRemoveEmployee.UseVisualStyleBackColor = true;
             // 
-            // cbxSupplierID
+            // btnAddEmployee
             // 
-            this.cbxSupplierID.AutoSize = true;
-            this.cbxSupplierID.Location = new System.Drawing.Point(561, 153);
-            this.cbxSupplierID.Name = "cbxSupplierID";
-            this.cbxSupplierID.Size = new System.Drawing.Size(90, 21);
-            this.cbxSupplierID.TabIndex = 35;
-            this.cbxSupplierID.Text = "Supplier#";
-            this.cbxSupplierID.UseVisualStyleBackColor = true;
-            this.cbxSupplierID.CheckedChanged += new System.EventHandler(this.cbxSupplierID_CheckedChanged);
+            this.btnAddEmployee.Location = new System.Drawing.Point(30, 455);
+            this.btnAddEmployee.Name = "btnAddEmployee";
+            this.btnAddEmployee.Size = new System.Drawing.Size(137, 33);
+            this.btnAddEmployee.TabIndex = 14;
+            this.btnAddEmployee.Text = "&Add Employee";
+            this.btnAddEmployee.UseVisualStyleBackColor = true;
             // 
-            // cbxCategoryID
+            // btnEditEmployee
             // 
-            this.cbxCategoryID.AutoSize = true;
-            this.cbxCategoryID.Location = new System.Drawing.Point(307, 152);
-            this.cbxCategoryID.Name = "cbxCategoryID";
-            this.cbxCategoryID.Size = new System.Drawing.Size(95, 21);
-            this.cbxCategoryID.TabIndex = 36;
-            this.cbxCategoryID.Text = "Category#";
-            this.cbxCategoryID.UseVisualStyleBackColor = true;
-            this.cbxCategoryID.CheckedChanged += new System.EventHandler(this.cbxCategoryID_CheckedChanged);
-            // 
-            // cboSupplierID
-            // 
-            this.cboSupplierID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboSupplierID.Enabled = false;
-            this.cboSupplierID.FormattingEnabled = true;
-            this.cboSupplierID.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3"});
-            this.cboSupplierID.Location = new System.Drawing.Point(657, 149);
-            this.cboSupplierID.Name = "cboSupplierID";
-            this.cboSupplierID.Size = new System.Drawing.Size(80, 24);
-            this.cboSupplierID.TabIndex = 37;
-            // 
-            // cboCategory
-            // 
-            this.cboCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCategory.Enabled = false;
-            this.cboCategory.FormattingEnabled = true;
-            this.cboCategory.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3"});
-            this.cboCategory.Location = new System.Drawing.Point(408, 149);
-            this.cboCategory.Name = "cboCategory";
-            this.cboCategory.Size = new System.Drawing.Size(101, 24);
-            this.cboCategory.TabIndex = 38;
+            this.btnEditEmployee.Location = new System.Drawing.Point(373, 455);
+            this.btnEditEmployee.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEditEmployee.Name = "btnEditEmployee";
+            this.btnEditEmployee.Size = new System.Drawing.Size(137, 33);
+            this.btnEditEmployee.TabIndex = 13;
+            this.btnEditEmployee.Text = "&Edit ";
+            this.btnEditEmployee.UseVisualStyleBackColor = true;
             // 
             // frmAdmin
             // 
@@ -486,5 +520,8 @@ namespace SU21_Final_Project
         private System.Windows.Forms.CheckBox cbxCategoryID;
         private System.Windows.Forms.CheckBox cbxSupplierID;
         private System.Windows.Forms.TextBox tbxDescription;
+        private System.Windows.Forms.Button btnRemoveEmployee;
+        private System.Windows.Forms.Button btnAddEmployee;
+        private System.Windows.Forms.Button btnEditEmployee;
     }
 }
