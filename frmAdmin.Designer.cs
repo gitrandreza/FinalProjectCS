@@ -63,6 +63,7 @@ namespace SU21_Final_Project
             this.lblDate = new System.Windows.Forms.Label();
             this.tabCustomer = new System.Windows.Forms.TabPage();
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.tabEmployee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
             this.tabInventory.SuspendLayout();
@@ -468,7 +469,7 @@ namespace SU21_Final_Project
             this.tabManagerFeatures.Controls.Add(this.tabInventory);
             this.tabManagerFeatures.Controls.Add(this.tabEmployee);
             this.tabManagerFeatures.Controls.Add(this.tabCustomer);
-            this.tabManagerFeatures.Location = new System.Drawing.Point(12, 12);
+            this.tabManagerFeatures.Location = new System.Drawing.Point(12, 52);
             this.tabManagerFeatures.Name = "tabManagerFeatures";
             this.tabManagerFeatures.SelectedIndex = 0;
             this.tabManagerFeatures.Size = new System.Drawing.Size(1090, 490);
@@ -503,11 +504,22 @@ namespace SU21_Final_Project
             this.dgvCustomer.Size = new System.Drawing.Size(1057, 263);
             this.dgvCustomer.TabIndex = 1;
             // 
+            // btnLogout
+            // 
+            this.btnLogout.Location = new System.Drawing.Point(856, 12);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(113, 34);
+            this.btnLogout.TabIndex = 15;
+            this.btnLogout.Text = "Log out";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1113, 554);
+            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.tabManagerFeatures);
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -569,5 +581,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.TabPage tabCustomer;
         private System.Windows.Forms.DataGridView dgvCustomer;
+        private System.Windows.Forms.Button btnLogout;
     }
 }

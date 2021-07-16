@@ -32,7 +32,6 @@ namespace SU21_Final_Project
             this.gbxInformation = new System.Windows.Forms.GroupBox();
             this.lblRoleLabel = new System.Windows.Forms.Label();
             this.cboRole = new System.Windows.Forms.ComboBox();
-            this.lblPhoneFormatInfo = new System.Windows.Forms.Label();
             this.cboState = new System.Windows.Forms.ComboBox();
             this.cboSuffix = new System.Windows.Forms.ComboBox();
             this.lblInfosOneLabel = new System.Windows.Forms.Label();
@@ -46,9 +45,7 @@ namespace SU21_Final_Project
             this.tbxEmail = new System.Windows.Forms.TextBox();
             this.tbxMiddleName = new System.Windows.Forms.TextBox();
             this.lblHiredDateLabel = new System.Windows.Forms.Label();
-            this.tbxHiredDate = new System.Windows.Forms.TextBox();
             this.lblPhoneLabel = new System.Windows.Forms.Label();
-            this.tbxPhoneOne = new System.Windows.Forms.TextBox();
             this.tbxCity = new System.Windows.Forms.TextBox();
             this.lblCityLabel = new System.Windows.Forms.Label();
             this.tbxAddressOne = new System.Windows.Forms.TextBox();
@@ -59,33 +56,19 @@ namespace SU21_Final_Project
             this.tbxZip = new System.Windows.Forms.TextBox();
             this.lblZipLabel = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
-            this.gbxCreateLogin = new System.Windows.Forms.GroupBox();
-            this.tbxCreateUsername = new System.Windows.Forms.TextBox();
-            this.lblCreateUsernameLabel = new System.Windows.Forms.Label();
-            this.tbxCreatePassword = new System.Windows.Forms.TextBox();
-            this.lblCreatePasswordLabel = new System.Windows.Forms.Label();
-            this.lblPasswordRulesThree = new System.Windows.Forms.Label();
-            this.lblPasswordRulesOne = new System.Windows.Forms.Label();
-            this.lblPasswordRulesTwo = new System.Windows.Forms.Label();
-            this.gbxSecurityQuestion = new System.Windows.Forms.GroupBox();
-            this.lblQuestionOneLabel = new System.Windows.Forms.Label();
-            this.tbxAnswerOne = new System.Windows.Forms.TextBox();
-            this.tbxAnswerTwo = new System.Windows.Forms.TextBox();
-            this.lblQuestionTwoLabel = new System.Windows.Forms.Label();
-            this.tbxAnswerThree = new System.Windows.Forms.TextBox();
-            this.lblQuestionThreeLabel = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
+            this.mskPhone = new System.Windows.Forms.MaskedTextBox();
+            this.mskHiredDate = new System.Windows.Forms.MaskedTextBox();
             this.gbxInformation.SuspendLayout();
-            this.gbxCreateLogin.SuspendLayout();
-            this.gbxSecurityQuestion.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbxInformation
             // 
             this.gbxInformation.BackColor = System.Drawing.SystemColors.Control;
+            this.gbxInformation.Controls.Add(this.mskHiredDate);
+            this.gbxInformation.Controls.Add(this.mskPhone);
             this.gbxInformation.Controls.Add(this.lblRoleLabel);
             this.gbxInformation.Controls.Add(this.cboRole);
-            this.gbxInformation.Controls.Add(this.lblPhoneFormatInfo);
             this.gbxInformation.Controls.Add(this.cboState);
             this.gbxInformation.Controls.Add(this.cboSuffix);
             this.gbxInformation.Controls.Add(this.lblInfosOneLabel);
@@ -99,9 +82,7 @@ namespace SU21_Final_Project
             this.gbxInformation.Controls.Add(this.tbxEmail);
             this.gbxInformation.Controls.Add(this.tbxMiddleName);
             this.gbxInformation.Controls.Add(this.lblHiredDateLabel);
-            this.gbxInformation.Controls.Add(this.tbxHiredDate);
             this.gbxInformation.Controls.Add(this.lblPhoneLabel);
-            this.gbxInformation.Controls.Add(this.tbxPhoneOne);
             this.gbxInformation.Controls.Add(this.tbxCity);
             this.gbxInformation.Controls.Add(this.lblCityLabel);
             this.gbxInformation.Controls.Add(this.tbxAddressOne);
@@ -139,17 +120,6 @@ namespace SU21_Final_Project
             this.cboRole.Name = "cboRole";
             this.cboRole.Size = new System.Drawing.Size(78, 24);
             this.cboRole.TabIndex = 50;
-            // 
-            // lblPhoneFormatInfo
-            // 
-            this.lblPhoneFormatInfo.AutoSize = true;
-            this.lblPhoneFormatInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhoneFormatInfo.ForeColor = System.Drawing.Color.Black;
-            this.lblPhoneFormatInfo.Location = new System.Drawing.Point(674, 143);
-            this.lblPhoneFormatInfo.Name = "lblPhoneFormatInfo";
-            this.lblPhoneFormatInfo.Size = new System.Drawing.Size(92, 17);
-            this.lblPhoneFormatInfo.TabIndex = 47;
-            this.lblPhoneFormatInfo.Text = "(xxx-xxx-xxxx )";
             // 
             // cboState
             // 
@@ -330,14 +300,6 @@ namespace SU21_Final_Project
             this.lblHiredDateLabel.TabIndex = 36;
             this.lblHiredDateLabel.Text = "Hired Date ";
             // 
-            // tbxHiredDate
-            // 
-            this.tbxHiredDate.Location = new System.Drawing.Point(501, 186);
-            this.tbxHiredDate.MaxLength = 10;
-            this.tbxHiredDate.Name = "tbxHiredDate";
-            this.tbxHiredDate.Size = new System.Drawing.Size(158, 22);
-            this.tbxHiredDate.TabIndex = 10;
-            // 
             // lblPhoneLabel
             // 
             this.lblPhoneLabel.AutoSize = true;
@@ -346,14 +308,6 @@ namespace SU21_Final_Project
             this.lblPhoneLabel.Size = new System.Drawing.Size(58, 17);
             this.lblPhoneLabel.TabIndex = 34;
             this.lblPhoneLabel.Text = "*Phone ";
-            // 
-            // tbxPhoneOne
-            // 
-            this.tbxPhoneOne.Location = new System.Drawing.Point(501, 143);
-            this.tbxPhoneOne.MaxLength = 12;
-            this.tbxPhoneOne.Name = "tbxPhoneOne";
-            this.tbxPhoneOne.Size = new System.Drawing.Size(158, 22);
-            this.tbxPhoneOne.TabIndex = 9;
             // 
             // tbxCity
             // 
@@ -417,7 +371,7 @@ namespace SU21_Final_Project
             // 
             // tbxZip
             // 
-            this.tbxZip.Location = new System.Drawing.Point(550, 248);
+            this.tbxZip.Location = new System.Drawing.Point(550, 250);
             this.tbxZip.MaxLength = 5;
             this.tbxZip.Name = "tbxZip";
             this.tbxZip.Size = new System.Drawing.Size(94, 22);
@@ -426,7 +380,7 @@ namespace SU21_Final_Project
             // lblZipLabel
             // 
             this.lblZipLabel.AutoSize = true;
-            this.lblZipLabel.Location = new System.Drawing.Point(511, 248);
+            this.lblZipLabel.Location = new System.Drawing.Point(511, 250);
             this.lblZipLabel.Name = "lblZipLabel";
             this.lblZipLabel.Size = new System.Drawing.Size(33, 17);
             this.lblZipLabel.TabIndex = 21;
@@ -438,159 +392,13 @@ namespace SU21_Final_Project
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnBack.Location = new System.Drawing.Point(24, 541);
+            this.btnBack.Location = new System.Drawing.Point(152, 317);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(110, 31);
             this.btnBack.TabIndex = 49;
             this.btnBack.Text = "&Back";
             this.btnBack.UseVisualStyleBackColor = false;
-            // 
-            // gbxCreateLogin
-            // 
-            this.gbxCreateLogin.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.gbxCreateLogin.Controls.Add(this.tbxCreateUsername);
-            this.gbxCreateLogin.Controls.Add(this.lblCreateUsernameLabel);
-            this.gbxCreateLogin.Controls.Add(this.tbxCreatePassword);
-            this.gbxCreateLogin.Controls.Add(this.lblCreatePasswordLabel);
-            this.gbxCreateLogin.Controls.Add(this.lblPasswordRulesThree);
-            this.gbxCreateLogin.Controls.Add(this.lblPasswordRulesOne);
-            this.gbxCreateLogin.Controls.Add(this.lblPasswordRulesTwo);
-            this.gbxCreateLogin.Location = new System.Drawing.Point(9, 317);
-            this.gbxCreateLogin.Name = "gbxCreateLogin";
-            this.gbxCreateLogin.Size = new System.Drawing.Size(382, 205);
-            this.gbxCreateLogin.TabIndex = 51;
-            this.gbxCreateLogin.TabStop = false;
-            this.gbxCreateLogin.Text = "Create Login Access";
-            // 
-            // tbxCreateUsername
-            // 
-            this.tbxCreateUsername.Location = new System.Drawing.Point(143, 51);
-            this.tbxCreateUsername.Name = "tbxCreateUsername";
-            this.tbxCreateUsername.Size = new System.Drawing.Size(165, 22);
-            this.tbxCreateUsername.TabIndex = 14;
-            // 
-            // lblCreateUsernameLabel
-            // 
-            this.lblCreateUsernameLabel.AutoSize = true;
-            this.lblCreateUsernameLabel.Location = new System.Drawing.Point(2, 51);
-            this.lblCreateUsernameLabel.Name = "lblCreateUsernameLabel";
-            this.lblCreateUsernameLabel.Size = new System.Drawing.Size(124, 17);
-            this.lblCreateUsernameLabel.TabIndex = 23;
-            this.lblCreateUsernameLabel.Text = "*Create Username";
-            // 
-            // tbxCreatePassword
-            // 
-            this.tbxCreatePassword.Location = new System.Drawing.Point(143, 99);
-            this.tbxCreatePassword.Name = "tbxCreatePassword";
-            this.tbxCreatePassword.Size = new System.Drawing.Size(165, 22);
-            this.tbxCreatePassword.TabIndex = 15;
-            this.tbxCreatePassword.UseSystemPasswordChar = true;
-            // 
-            // lblCreatePasswordLabel
-            // 
-            this.lblCreatePasswordLabel.AutoSize = true;
-            this.lblCreatePasswordLabel.Location = new System.Drawing.Point(6, 102);
-            this.lblCreatePasswordLabel.Name = "lblCreatePasswordLabel";
-            this.lblCreatePasswordLabel.Size = new System.Drawing.Size(120, 17);
-            this.lblCreatePasswordLabel.TabIndex = 25;
-            this.lblCreatePasswordLabel.Text = "*Create Password";
-            // 
-            // lblPasswordRulesThree
-            // 
-            this.lblPasswordRulesThree.AutoSize = true;
-            this.lblPasswordRulesThree.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPasswordRulesThree.ForeColor = System.Drawing.Color.Blue;
-            this.lblPasswordRulesThree.Location = new System.Drawing.Point(2, 171);
-            this.lblPasswordRulesThree.Name = "lblPasswordRulesThree";
-            this.lblPasswordRulesThree.Size = new System.Drawing.Size(325, 17);
-            this.lblPasswordRulesThree.TabIndex = 43;
-            this.lblPasswordRulesThree.Text = "Must contains one special character and no space";
-            // 
-            // lblPasswordRulesOne
-            // 
-            this.lblPasswordRulesOne.AutoSize = true;
-            this.lblPasswordRulesOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPasswordRulesOne.ForeColor = System.Drawing.Color.Blue;
-            this.lblPasswordRulesOne.Location = new System.Drawing.Point(4, 137);
-            this.lblPasswordRulesOne.Name = "lblPasswordRulesOne";
-            this.lblPasswordRulesOne.Size = new System.Drawing.Size(246, 17);
-            this.lblPasswordRulesOne.TabIndex = 41;
-            this.lblPasswordRulesOne.Text = "Must be between 8 and 20 characters";
-            // 
-            // lblPasswordRulesTwo
-            // 
-            this.lblPasswordRulesTwo.AutoSize = true;
-            this.lblPasswordRulesTwo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPasswordRulesTwo.ForeColor = System.Drawing.Color.Blue;
-            this.lblPasswordRulesTwo.Location = new System.Drawing.Point(3, 154);
-            this.lblPasswordRulesTwo.Name = "lblPasswordRulesTwo";
-            this.lblPasswordRulesTwo.Size = new System.Drawing.Size(376, 17);
-            this.lblPasswordRulesTwo.TabIndex = 42;
-            this.lblPasswordRulesTwo.Text = "Must contains one digit, one upper case or one lower case";
-            // 
-            // gbxSecurityQuestion
-            // 
-            this.gbxSecurityQuestion.BackColor = System.Drawing.Color.Gray;
-            this.gbxSecurityQuestion.Controls.Add(this.lblQuestionOneLabel);
-            this.gbxSecurityQuestion.Controls.Add(this.tbxAnswerOne);
-            this.gbxSecurityQuestion.Controls.Add(this.tbxAnswerTwo);
-            this.gbxSecurityQuestion.Controls.Add(this.lblQuestionTwoLabel);
-            this.gbxSecurityQuestion.Controls.Add(this.tbxAnswerThree);
-            this.gbxSecurityQuestion.Controls.Add(this.lblQuestionThreeLabel);
-            this.gbxSecurityQuestion.Location = new System.Drawing.Point(392, 317);
-            this.gbxSecurityQuestion.Name = "gbxSecurityQuestion";
-            this.gbxSecurityQuestion.Size = new System.Drawing.Size(412, 205);
-            this.gbxSecurityQuestion.TabIndex = 50;
-            this.gbxSecurityQuestion.TabStop = false;
-            this.gbxSecurityQuestion.Text = "Security Question";
-            // 
-            // lblQuestionOneLabel
-            // 
-            this.lblQuestionOneLabel.AutoSize = true;
-            this.lblQuestionOneLabel.Location = new System.Drawing.Point(45, 35);
-            this.lblQuestionOneLabel.Name = "lblQuestionOneLabel";
-            this.lblQuestionOneLabel.Size = new System.Drawing.Size(186, 17);
-            this.lblQuestionOneLabel.TabIndex = 27;
-            this.lblQuestionOneLabel.Text = "*What is your favorite drink?";
-            // 
-            // tbxAnswerOne
-            // 
-            this.tbxAnswerOne.Location = new System.Drawing.Point(242, 32);
-            this.tbxAnswerOne.Name = "tbxAnswerOne";
-            this.tbxAnswerOne.Size = new System.Drawing.Size(165, 22);
-            this.tbxAnswerOne.TabIndex = 16;
-            // 
-            // tbxAnswerTwo
-            // 
-            this.tbxAnswerTwo.Location = new System.Drawing.Point(242, 79);
-            this.tbxAnswerTwo.Name = "tbxAnswerTwo";
-            this.tbxAnswerTwo.Size = new System.Drawing.Size(165, 22);
-            this.tbxAnswerTwo.TabIndex = 17;
-            // 
-            // lblQuestionTwoLabel
-            // 
-            this.lblQuestionTwoLabel.AutoSize = true;
-            this.lblQuestionTwoLabel.Location = new System.Drawing.Point(5, 79);
-            this.lblQuestionTwoLabel.Name = "lblQuestionTwoLabel";
-            this.lblQuestionTwoLabel.Size = new System.Drawing.Size(226, 17);
-            this.lblQuestionTwoLabel.TabIndex = 29;
-            this.lblQuestionTwoLabel.Text = "*What is your favorite type of dog?";
-            // 
-            // tbxAnswerThree
-            // 
-            this.tbxAnswerThree.Location = new System.Drawing.Point(242, 127);
-            this.tbxAnswerThree.Name = "tbxAnswerThree";
-            this.tbxAnswerThree.Size = new System.Drawing.Size(165, 22);
-            this.tbxAnswerThree.TabIndex = 17;
-            // 
-            // lblQuestionThreeLabel
-            // 
-            this.lblQuestionThreeLabel.AutoSize = true;
-            this.lblQuestionThreeLabel.Location = new System.Drawing.Point(109, 127);
-            this.lblQuestionThreeLabel.Name = "lblQuestionThreeLabel";
-            this.lblQuestionThreeLabel.Size = new System.Drawing.Size(122, 17);
-            this.lblQuestionThreeLabel.TabIndex = 31;
-            this.lblQuestionThreeLabel.Text = "*Who is your idol?";
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click_1);
             // 
             // btnSave
             // 
@@ -598,7 +406,7 @@ namespace SU21_Final_Project
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSave.Location = new System.Drawing.Point(355, 541);
+            this.btnSave.Location = new System.Drawing.Point(483, 317);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 31);
             this.btnSave.TabIndex = 48;
@@ -606,24 +414,35 @@ namespace SU21_Final_Project
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // mskPhone
+            // 
+            this.mskPhone.Location = new System.Drawing.Point(501, 146);
+            this.mskPhone.Mask = "000-000-0000";
+            this.mskPhone.Name = "mskPhone";
+            this.mskPhone.Size = new System.Drawing.Size(89, 22);
+            this.mskPhone.TabIndex = 52;
+            // 
+            // mskHiredDate
+            // 
+            this.mskHiredDate.Location = new System.Drawing.Point(501, 184);
+            this.mskHiredDate.Mask = "00/00/0000";
+            this.mskHiredDate.Name = "mskHiredDate";
+            this.mskHiredDate.Size = new System.Drawing.Size(100, 22);
+            this.mskHiredDate.TabIndex = 53;
+            this.mskHiredDate.ValidatingType = typeof(System.DateTime);
+            // 
             // frmAddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(811, 579);
+            this.ClientSize = new System.Drawing.Size(811, 359);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.gbxCreateLogin);
-            this.Controls.Add(this.gbxSecurityQuestion);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.gbxInformation);
             this.Name = "frmAddEmployee";
             this.Text = "AddEmployee";
             this.gbxInformation.ResumeLayout(false);
             this.gbxInformation.PerformLayout();
-            this.gbxCreateLogin.ResumeLayout(false);
-            this.gbxCreateLogin.PerformLayout();
-            this.gbxSecurityQuestion.ResumeLayout(false);
-            this.gbxSecurityQuestion.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -631,7 +450,6 @@ namespace SU21_Final_Project
         #endregion
 
         private System.Windows.Forms.GroupBox gbxInformation;
-        private System.Windows.Forms.Label lblPhoneFormatInfo;
         private System.Windows.Forms.ComboBox cboState;
         private System.Windows.Forms.ComboBox cboSuffix;
         private System.Windows.Forms.Label lblInfosOneLabel;
@@ -645,9 +463,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.TextBox tbxEmail;
         private System.Windows.Forms.TextBox tbxMiddleName;
         private System.Windows.Forms.Label lblHiredDateLabel;
-        private System.Windows.Forms.TextBox tbxHiredDate;
         private System.Windows.Forms.Label lblPhoneLabel;
-        private System.Windows.Forms.TextBox tbxPhoneOne;
         private System.Windows.Forms.TextBox tbxCity;
         private System.Windows.Forms.Label lblCityLabel;
         private System.Windows.Forms.TextBox tbxAddressOne;
@@ -658,23 +474,10 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblZipLabel;
         private System.Windows.Forms.TextBox tbxSalary;
         private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.GroupBox gbxCreateLogin;
-        private System.Windows.Forms.TextBox tbxCreateUsername;
-        private System.Windows.Forms.Label lblCreateUsernameLabel;
-        private System.Windows.Forms.TextBox tbxCreatePassword;
-        private System.Windows.Forms.Label lblCreatePasswordLabel;
-        private System.Windows.Forms.Label lblPasswordRulesThree;
-        private System.Windows.Forms.Label lblPasswordRulesOne;
-        private System.Windows.Forms.Label lblPasswordRulesTwo;
-        private System.Windows.Forms.GroupBox gbxSecurityQuestion;
-        private System.Windows.Forms.Label lblQuestionOneLabel;
-        private System.Windows.Forms.TextBox tbxAnswerOne;
-        private System.Windows.Forms.TextBox tbxAnswerTwo;
-        private System.Windows.Forms.Label lblQuestionTwoLabel;
-        private System.Windows.Forms.TextBox tbxAnswerThree;
-        private System.Windows.Forms.Label lblQuestionThreeLabel;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblRoleLabel;
         private System.Windows.Forms.ComboBox cboRole;
+        private System.Windows.Forms.MaskedTextBox mskPhone;
+        private System.Windows.Forms.MaskedTextBox mskHiredDate;
     }
 }

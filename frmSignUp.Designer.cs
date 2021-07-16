@@ -59,9 +59,7 @@ namespace SU21_Final_Project
             this.tbxAnswerThree = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.lblPhoneLabel = new System.Windows.Forms.Label();
-            this.tbxPhoneOne = new System.Windows.Forms.TextBox();
             this.lblPhoneTwoLabel = new System.Windows.Forms.Label();
-            this.tbxPhoneTwo = new System.Windows.Forms.TextBox();
             this.lblEmailLabel = new System.Windows.Forms.Label();
             this.tbxEmail = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -77,7 +75,8 @@ namespace SU21_Final_Project
             this.btnBack = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.lblPhoneFormatInfo = new System.Windows.Forms.Label();
+            this.mskPhone1 = new System.Windows.Forms.MaskedTextBox();
+            this.mskPhone2 = new System.Windows.Forms.MaskedTextBox();
             this.gbxInformation.SuspendLayout();
             this.gbxSecurityQuestion.SuspendLayout();
             this.gbxCreateLogin.SuspendLayout();
@@ -345,14 +344,6 @@ namespace SU21_Final_Project
             this.lblPhoneLabel.TabIndex = 34;
             this.lblPhoneLabel.Text = "*Phone 1";
             // 
-            // tbxPhoneOne
-            // 
-            this.tbxPhoneOne.Location = new System.Drawing.Point(133, 246);
-            this.tbxPhoneOne.MaxLength = 12;
-            this.tbxPhoneOne.Name = "tbxPhoneOne";
-            this.tbxPhoneOne.Size = new System.Drawing.Size(158, 22);
-            this.tbxPhoneOne.TabIndex = 9;
-            // 
             // lblPhoneTwoLabel
             // 
             this.lblPhoneTwoLabel.AutoSize = true;
@@ -361,15 +352,6 @@ namespace SU21_Final_Project
             this.lblPhoneTwoLabel.Size = new System.Drawing.Size(61, 17);
             this.lblPhoneTwoLabel.TabIndex = 36;
             this.lblPhoneTwoLabel.Text = "Phone 2";
-            // 
-            // tbxPhoneTwo
-            // 
-            this.tbxPhoneTwo.Location = new System.Drawing.Point(511, 46);
-            this.tbxPhoneTwo.MaxLength = 10;
-            this.tbxPhoneTwo.Name = "tbxPhoneTwo";
-            this.tbxPhoneTwo.Size = new System.Drawing.Size(158, 22);
-            this.tbxPhoneTwo.TabIndex = 10;
-            this.tbxPhoneTwo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxPhoneTwo_KeyPress);
             // 
             // lblEmailLabel
             // 
@@ -432,7 +414,8 @@ namespace SU21_Final_Project
             // gbxInformation
             // 
             this.gbxInformation.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.gbxInformation.Controls.Add(this.lblPhoneFormatInfo);
+            this.gbxInformation.Controls.Add(this.mskPhone2);
+            this.gbxInformation.Controls.Add(this.mskPhone1);
             this.gbxInformation.Controls.Add(this.cboState);
             this.gbxInformation.Controls.Add(this.cboSuffix);
             this.gbxInformation.Controls.Add(this.lblInfosOneLabel);
@@ -446,9 +429,7 @@ namespace SU21_Final_Project
             this.gbxInformation.Controls.Add(this.tbxEmail);
             this.gbxInformation.Controls.Add(this.tbxMiddleName);
             this.gbxInformation.Controls.Add(this.lblPhoneTwoLabel);
-            this.gbxInformation.Controls.Add(this.tbxPhoneTwo);
             this.gbxInformation.Controls.Add(this.lblPhoneLabel);
-            this.gbxInformation.Controls.Add(this.tbxPhoneOne);
             this.gbxInformation.Controls.Add(this.tbxCity);
             this.gbxInformation.Controls.Add(this.lblCityLabel);
             this.gbxInformation.Controls.Add(this.tbxAddressOne);
@@ -632,16 +613,21 @@ namespace SU21_Final_Project
             this.label26.TabIndex = 50;
             this.label26.Text = "i";
             // 
-            // lblPhoneFormatInfo
+            // mskPhone1
             // 
-            this.lblPhoneFormatInfo.AutoSize = true;
-            this.lblPhoneFormatInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhoneFormatInfo.ForeColor = System.Drawing.Color.Black;
-            this.lblPhoneFormatInfo.Location = new System.Drawing.Point(297, 248);
-            this.lblPhoneFormatInfo.Name = "lblPhoneFormatInfo";
-            this.lblPhoneFormatInfo.Size = new System.Drawing.Size(92, 17);
-            this.lblPhoneFormatInfo.TabIndex = 47;
-            this.lblPhoneFormatInfo.Text = "(xxx-xxx-xxxx )";
+            this.mskPhone1.Location = new System.Drawing.Point(133, 247);
+            this.mskPhone1.Mask = "000-000-0000";
+            this.mskPhone1.Name = "mskPhone1";
+            this.mskPhone1.Size = new System.Drawing.Size(100, 22);
+            this.mskPhone1.TabIndex = 47;
+            // 
+            // mskPhone2
+            // 
+            this.mskPhone2.Location = new System.Drawing.Point(511, 46);
+            this.mskPhone2.Mask = "000-000-0000";
+            this.mskPhone2.Name = "mskPhone2";
+            this.mskPhone2.Size = new System.Drawing.Size(100, 22);
+            this.mskPhone2.TabIndex = 48;
             // 
             // frmSignUp
             // 
@@ -705,9 +691,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.TextBox tbxAnswerThree;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblPhoneLabel;
-        private System.Windows.Forms.TextBox tbxPhoneOne;
         private System.Windows.Forms.Label lblPhoneTwoLabel;
-        private System.Windows.Forms.TextBox tbxPhoneTwo;
         private System.Windows.Forms.Label lblEmailLabel;
         private System.Windows.Forms.TextBox tbxEmail;
         private System.Windows.Forms.Label label20;
@@ -723,6 +707,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.ComboBox cboState;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label lblPhoneFormatInfo;
+        private System.Windows.Forms.MaskedTextBox mskPhone2;
+        private System.Windows.Forms.MaskedTextBox mskPhone1;
     }
 }

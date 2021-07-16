@@ -76,7 +76,7 @@ namespace SU21_Final_Project
             {
 
                 Connection.Open();
-                if (tbxFirstName.Text != "" && tbxLastName.Text != "" && tbxAddressOne.Text != "" && tbxPhoneOne.Text != "" && tbxCity.Text != "" && tbxZip.Text != ""
+                if (tbxFirstName.Text != "" && tbxLastName.Text != "" && tbxAddressOne.Text != "" && mskPhone1.Text != "" && tbxCity.Text != "" && tbxZip.Text != ""
                     && cboState.Text != "" && tbxEmail.Text != "" && tbxCreateUsername.Text != "" && tbxCreatePassword.Text != "" && tbxAnswerOne.Text != ""
                     && tbxAnswerTwo.Text != "" && tbxAnswerThree.Text != "")
                 {
@@ -110,7 +110,7 @@ namespace SU21_Final_Project
                     {
                         reader.Close();
                         strCreatePassword = tbxCreatePassword.Text;
-                        strPhoneOne = tbxPhoneOne.Text;
+                        strPhoneOne = mskPhone1.Text;
                         strEmail = tbxEmail.Text;
                         strZip = tbxZip.Text;
                         strAddressOne = tbxAddressOne.Text;
@@ -120,8 +120,7 @@ namespace SU21_Final_Project
                             if (ValidZip(strZip) == true)
                             {
 
-                                if (ValidPhone(strPhoneOne) == true)
-                                {
+                              
                                     if (ValidEmail(strEmail) == true)
                                     {
 
@@ -141,7 +140,7 @@ namespace SU21_Final_Project
                                                 strAddressTwo = tbxAddressTwo.Text;
                                                 strAddressThree = tbxAddressThree.Text;
 
-                                                strPhoneTwo = tbxPhoneTwo.Text;
+                                                strPhoneTwo = mskPhone2.Text;
                                                 strCity = tbxCity.Text;
                                                 strState = cboState.SelectedItem.ToString();
 
@@ -238,12 +237,7 @@ namespace SU21_Final_Project
                                         MessageBox.Show("Email format is not valid", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         tbxEmail.Focus();
                                     }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Phone format is not valid", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    tbxPhoneOne.Focus();
-                                }
+                          
                             }
                             else
                             {
@@ -322,23 +316,7 @@ namespace SU21_Final_Project
             return true;
         }
 
-        public bool ValidPhone(string strPhone)
-        {
-
-            if (strPhone.Length != 12)
-                return false;
-
-            else if (strPhone.Any(char.IsLetter))
-            {
-                return false;
-            }
-
-            if (!strPhone.Contains("-"))
-            {
-                return false;
-            }
-            return true;
-        }
+       
 
         public bool ValidAddress(string strAddress)
         {

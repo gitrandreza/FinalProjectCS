@@ -45,8 +45,8 @@ namespace SU21_Final_Project
         double dblDiscountTwo = 0.2;
         double dblDiscountThree = 0.3;
         double dblDiscount;
-
-
+        double dblTotalList;
+        int intQuantityTotal;
         int intSaleId;
 
 
@@ -240,19 +240,22 @@ namespace SU21_Final_Project
                     string strQuantityAvailable = row.Cells["Quantity"].Value.ToString();
 
                     bool intResultTryParse = int.TryParse(strQuantityAvailable, out intQuantityAvailable);
-                    if (intResultTryParse == true)
+                    if (intResultTryParse == false)
                     {
-                        myItems.Quantity = intQuantityAvailable;
+                        MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                       
                     }
+
+                    myItems.Quantity = intQuantityAvailable;
 
                     string strPrice = row.Cells["RetailPrice"].Value.ToString();
                     double dblPrice;
                     bool dblResultTryParse = double.TryParse(strPrice, out dblPrice);
-                    if (dblResultTryParse == true)
+                    if (dblResultTryParse == false)
                     {
-                        myItems.Price = dblPrice;
+                        MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
+                    myItems.Price = dblPrice;
                     //Display in the label
                     lblQuantityAvailable.Text = myItems.Quantity.ToString();
                     lblPrice.Text = myItems.Price.ToString("C2");
@@ -297,6 +300,7 @@ namespace SU21_Final_Project
                 srRoleID.Read();
                 int intRoleId = srRoleID.GetInt32(0);
                 srRoleID.Close();
+
                 //Check role of user id to open the Employee view or Manager View
                 if (intRoleId == 2)
                 {
@@ -421,10 +425,10 @@ namespace SU21_Final_Project
 
 
                                         //lblMessage.Text =dblTotalPrice.ToString();
-                                        string strItemTotalPrice = dblTotalPrice.ToString("C2");
+                                        string strItemTotalPrice = dblTotalPrice.ToString();
 
                                         //Call add cart function to display selection in the cart
-                                        addCart(myItems.Name, strItemDeco, strItemColor, strItemSize, strQuantityNeed, myItems.Price.ToString("C2"), strItemTotalPrice);
+                                        addCart(myItems.Name, strItemDeco, strItemColor, strItemSize, strQuantityNeed, myItems.Price.ToString(), strItemTotalPrice);
 
 
                                         if (myItems.Quantity > 0)
@@ -560,12 +564,12 @@ namespace SU21_Final_Project
         private void btnDisplayAmount_Click(object sender, EventArgs e)
         {
             string strTotalPriceList;
-            double dblTotalPriceList = 0;
-            double dblTotalList = 0;
+            double dblTotalPriceList;
+
 
             string strQuantityTotal;
-            int intQuantityTotal=0;
-            int intQuantityTotalList = 0;
+            int intQuantityTotalList;
+
 
             btnCheckout.Enabled = true;
 
@@ -576,7 +580,15 @@ namespace SU21_Final_Project
                 for (int i = 0; i < dgvList.Rows.Count; i++)
                 {
                     strTotalPriceList = dgvList.Rows[i].Cells[6].Value.ToString();
+
                     bool dblResultTryParse = double.TryParse(strTotalPriceList, out dblTotalPriceList);
+
+                    if (dblResultTryParse == false)
+                    {
+                        MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+
 
                     dblTotalList = dblTotalList + dblTotalPriceList;
                 }
@@ -585,6 +597,7 @@ namespace SU21_Final_Project
                 for (int i = 0; i < dgvList.Rows.Count; i++)
                 {
                     strQuantityTotal = dgvList.Rows[i].Cells[4].Value.ToString();
+                    
                     bool intResultTryParse = int.TryParse(strQuantityTotal, out intQuantityTotalList);
 
                     intQuantityTotal = intQuantityTotal + intQuantityTotalList;

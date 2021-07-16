@@ -602,18 +602,22 @@ namespace SU21_Final_Project
                 sw.WriteLine(html);
             }
         }
+
+
         private void frmAdmin_FormClosing(object sender, FormClosingEventArgs e)
         {
             switch (e.CloseReason)
             {
                 case CloseReason.UserClosing:
-                    if (MessageBox.Show("Are you sure you want to exit the program?", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    if (MessageBox.Show("Are you sure you want to log out?", "Close Form", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                     {
                         e.Cancel = true;
                     }
                     else
                     {
-                        Application.Exit();
+                        
+                        new frmLogin().Show();
+                        this.Hide();
                     }
                     break;
             }
@@ -850,6 +854,12 @@ namespace SU21_Final_Project
 
         
     }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            new frmLogin().Show();
+            this.Hide();
+        }
     }
 
 }

@@ -30,7 +30,6 @@ namespace SU21_Final_Project
         string strState;
         string strZip;
         string strEmail;
-        string strPosition;
         string strRole;
         string strSalary;
         string strHiredDate;
@@ -38,13 +37,9 @@ namespace SU21_Final_Project
 
         string strCreateUsername;
         string strCreatePassword;
-        string strAnswerOne;
-        string strAnswerTwo;
-        string strAnswerThree;
       
-        string strQuestionOne;
-        string strQuestionTwo;
-        string strQuestionThree;
+      
+       
         bool blnDuplicateUsername;
         public frmAddEmployee()
         {
@@ -53,7 +48,7 @@ namespace SU21_Final_Project
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            strCreateUsername = tbxCreateUsername.Text;
+           
             try
             {
 
@@ -71,9 +66,8 @@ namespace SU21_Final_Project
             {
 
                 Connection.Open();
-                if (tbxFirstName.Text != "" && tbxLastName.Text != "" && tbxAddressOne.Text != "" && tbxPhoneOne.Text != "" && tbxCity.Text != "" && tbxZip.Text != ""
-                    && cboState.Text != "" && tbxEmail.Text != "" && tbxCreateUsername.Text != "" && tbxCreatePassword.Text != "" && tbxAnswerOne.Text != ""
-                    && tbxAnswerTwo.Text != "" && tbxAnswerThree.Text != ""&& cboRole.Text != "")
+                if (tbxFirstName.Text != "" && tbxLastName.Text != "" && tbxAddressOne.Text != "" && mskPhone.Text != "" && tbxCity.Text != "" && tbxZip.Text != ""
+                    && cboState.Text != "" && tbxEmail.Text != ""  && cboRole.Text != "")
                 {
                     SqlCommand commandCheckUsername = new SqlCommand("SELECT Username FROM RandrezaVoharisoaM21Su2332.Users;", Connection);
 
@@ -87,8 +81,7 @@ namespace SU21_Final_Project
                         {
                             MessageBox.Show("Username is already taken", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             blnDuplicateUsername = true;
-                            tbxCreateUsername.Text = "";
-                            tbxCreateUsername.Focus();
+                            
                             break;
                         }
                         else
@@ -104,8 +97,9 @@ namespace SU21_Final_Project
                     if (blnDuplicateUsername == false)
                     {
                         reader.Close();
-                        strCreatePassword = tbxCreatePassword.Text;
-                        strPhoneOne = tbxPhoneOne.Text;
+                        
+                        
+                        strPhoneOne = mskPhone.Text;
                         strEmail = tbxEmail.Text;
                         strZip = tbxZip.Text;
                         strAddressOne = tbxAddressOne.Text;
@@ -115,16 +109,10 @@ namespace SU21_Final_Project
                             if (ValidZip(strZip) == true)
                             {
 
-                                if (ValidPhone(strPhoneOne) == true)
-                                {
                                     if (ValidEmail(strEmail) == true)
                                     {
 
-                                        if (ValidUsername(strCreateUsername) == true)
-                                        {
-
-                                            if (ValidPassword(strCreatePassword) == true)
-                                            {
+                                        
 
 
                                                 //INSERT RECORD FOR PERSON INFORMATION
@@ -136,7 +124,7 @@ namespace SU21_Final_Project
                                                
                                                 strSalary = tbxSalary.Text;
 
-                                                strHiredDate = tbxHiredDate.Text;
+                                                strHiredDate = mskHiredDate.Text;
                                                 strCity = tbxCity.Text;
                                                 strState = cboState.SelectedItem.ToString();
                                                 
@@ -179,14 +167,14 @@ namespace SU21_Final_Project
 
                                                 //INSERT RECORD FOR USERS LOGON SECURITY ACCESS
 
-
-                                                strAnswerOne = tbxAnswerOne.Text;
-                                                strAnswerTwo = tbxAnswerTwo.Text;
-                                                strAnswerThree = tbxAnswerThree.Text;
+                                                string strQuestionThree = "N/A";
+                                                string strQuestionTwo = "N/A";
+                                                string strQuestionOne = "N/A";
+                                                string strAnswerOne = "N/A";
+                                                string strAnswerTwo = "N/A"; ;
+                                                string strAnswerThree = "N/A"; ;
                                                 
-                                                strQuestionOne = "What is your favorite drink?";
-                                                strQuestionTwo = "What is your favorite type of dog?";
-                                                strQuestionThree = "Who is your idol?";
+                                              
 
                                                 //Get the last PersonID using Max to insert as FK to the User table
                                                 string queryLastID = "SELECT MAX(PersonID) from RandrezaVoharisoaM21Su2332.Person";
@@ -198,6 +186,11 @@ namespace SU21_Final_Project
                                                 int intPersonID = sr.GetInt32(0);
                                                 sr.Close();
 
+                                        //generate Username and Password
+                                        string strModidfiedLastName = strLastName.Substring(0,strLastName.Length-2);
+                                        strCreateUsername = strModidfiedLastName + intPersonID.ToString();
+
+                                        strCreatePassword = intRoleID.ToString() + intPersonID.ToString();
 
                                                 SqlCommand commandUsers = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Users(PersonID,Username,Password,Answer1,Answer2,RoleID,ThirdQuestion,SecondQuestion,FirstQuestion,Answer3) VALUES(@PersonID,@Username,@Password,@Answer1,@Answer2,@RoleID,@ThirdQuestion,@SecondQuestion,@FirstQuestion,@Answer3)", Connection);
                                                 commandUsers.Parameters.AddWithValue("@PersonID", intPersonID);
@@ -237,30 +230,14 @@ namespace SU21_Final_Project
 
                                                 new frmAdmin().Show();
                                                 this.Hide();
-                                            }
-                                            else
-                                            {
-                                                MessageBox.Show("Password format is not valid", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                                tbxCreatePassword.Focus();
-                                            }
-                                        }
-                                        else
-                                        {
-                                            MessageBox.Show("Username format is not valid, must more than 4 characters", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                            tbxCreateUsername.Focus();
-                                        }
+                                           
                                     }
                                     else
                                     {
                                         MessageBox.Show("Email format is not valid", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         tbxEmail.Focus();
                                     }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Phone format is not valid", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    tbxPhoneOne.Focus();
-                                }
+                               
                             }
                             else
                             {
@@ -289,72 +266,8 @@ namespace SU21_Final_Project
 
 
         }
-        //Check for password Validation
-        public bool ValidPassword(string strPassword)
-        {
+        
 
-            if (strPassword.Length < 8 && strPassword.Length > 20)
-                return false;
-
-            else if (!strPassword.Any(char.IsLetter))
-            {
-                return false;
-            }
-
-            else if (!strPassword.Any(char.IsDigit))
-            {
-                return false;
-            }
-
-            else if (strPassword.Contains(" "))
-            {
-                return false;
-            }
-
-            if (!((strPassword.Contains("@")) ||
-                  (strPassword.Contains("#")) ||
-                  (strPassword.Contains("!")) ||
-                  (strPassword.Contains("~")) ||
-                  (strPassword.Contains("$")) ||
-                  (strPassword.Contains("%")) ||
-                  (strPassword.Contains("^")) ||
-                  (strPassword.Contains("&")) ||
-                  (strPassword.Contains("*")) ||
-                  (strPassword.Contains("(")) ||
-                  (strPassword.Contains(")")) ||
-                  (strPassword.Contains("-")) ||
-                  (strPassword.Contains("+")) ||
-                  (strPassword.Contains("/")) ||
-                  (strPassword.Contains(":")) ||
-                  (strPassword.Contains(".")) ||
-                  (strPassword.Contains(",")) ||
-                  (strPassword.Contains("<")) ||
-                  (strPassword.Contains(">")) ||
-                  (strPassword.Contains("?")) ||
-                  (strPassword.Contains("|"))))
-            {
-                return false;
-            }
-            return true;
-        }
-
-        public bool ValidPhone(string strPhone)
-        {
-
-            if (strPhone.Length != 12)
-                return false;
-
-            else if (strPhone.Any(char.IsLetter))
-            {
-                return false;
-            }
-
-            if (!strPhone.Contains("-"))
-            {
-                return false;
-            }
-            return true;
-        }
 
         public bool ValidAddress(string strAddress)
         {
@@ -384,30 +297,8 @@ namespace SU21_Final_Project
             return true;
         }
 
-        public bool ValidDateOfBirth(string strPhone)
-        {
 
-            if (strPhone.Length != 10)
-            {
-                return false;
-            }
-            else if (strPhone.Any(char.IsLetter))
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        public bool ValidUsername(string strUsername)
-        {
-
-            if (strUsername.Length < 4)
-            {
-                return false;
-            }
-            return true;
-        }
+      
 
         public bool ValidEmail(string strValidEmail)
         {
@@ -459,7 +350,7 @@ namespace SU21_Final_Project
             }
         }
 
-        //Accept digit only for zip
+        //Accept dIGIT OR LETTER ONLY KEYPRESS
         private void tbxZip_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
@@ -470,29 +361,10 @@ namespace SU21_Final_Project
 
         }
 
-        //Accept digit only for Phone
-        private void tbxPhoneOne_KeyPress(object sender, KeyPressEventArgs e)
-        {
 
-        }
+ 
 
-        private void tbxDateOfBirth_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-      (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-        }
 
-        private void tbxPhoneTwo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-    (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-        }
 
         private void tbxFirstName_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -529,5 +401,9 @@ namespace SU21_Final_Project
             }
         }
 
+        private void btnBack_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }
