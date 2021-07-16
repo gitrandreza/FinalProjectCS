@@ -60,6 +60,9 @@ namespace SU21_Final_Project
             this.pbxItemPicture = new System.Windows.Forms.PictureBox();
             this.btnInsertImage = new System.Windows.Forms.Button();
             this.tabManagerFeatures = new System.Windows.Forms.TabControl();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.tabCustomer = new System.Windows.Forms.TabPage();
+            this.dgvCustomer = new System.Windows.Forms.DataGridView();
             this.tabEmployee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
             this.tabInventory.SuspendLayout();
@@ -67,6 +70,8 @@ namespace SU21_Final_Project
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxItemPicture)).BeginInit();
             this.tabManagerFeatures.SuspendLayout();
+            this.tabCustomer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.SuspendLayout();
             // 
             // tabEmployee
@@ -78,32 +83,34 @@ namespace SU21_Final_Project
             this.tabEmployee.Location = new System.Drawing.Point(4, 25);
             this.tabEmployee.Name = "tabEmployee";
             this.tabEmployee.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEmployee.Size = new System.Drawing.Size(1046, 523);
+            this.tabEmployee.Size = new System.Drawing.Size(1082, 461);
             this.tabEmployee.TabIndex = 1;
             this.tabEmployee.Text = "Employee";
             this.tabEmployee.UseVisualStyleBackColor = true;
             // 
             // btnRemoveEmployee
             // 
-            this.btnRemoveEmployee.Location = new System.Drawing.Point(203, 455);
+            this.btnRemoveEmployee.Location = new System.Drawing.Point(429, 303);
             this.btnRemoveEmployee.Name = "btnRemoveEmployee";
             this.btnRemoveEmployee.Size = new System.Drawing.Size(137, 33);
             this.btnRemoveEmployee.TabIndex = 15;
             this.btnRemoveEmployee.Text = "&Remove Employee";
             this.btnRemoveEmployee.UseVisualStyleBackColor = true;
+            this.btnRemoveEmployee.Click += new System.EventHandler(this.btnRemoveEmployee_Click);
             // 
             // btnAddEmployee
             // 
-            this.btnAddEmployee.Location = new System.Drawing.Point(30, 455);
+            this.btnAddEmployee.Location = new System.Drawing.Point(256, 303);
             this.btnAddEmployee.Name = "btnAddEmployee";
             this.btnAddEmployee.Size = new System.Drawing.Size(137, 33);
             this.btnAddEmployee.TabIndex = 14;
             this.btnAddEmployee.Text = "&Add Employee";
             this.btnAddEmployee.UseVisualStyleBackColor = true;
+            this.btnAddEmployee.Click += new System.EventHandler(this.btnAddEmployee_Click);
             // 
             // btnEditEmployee
             // 
-            this.btnEditEmployee.Location = new System.Drawing.Point(373, 455);
+            this.btnEditEmployee.Location = new System.Drawing.Point(599, 303);
             this.btnEditEmployee.Margin = new System.Windows.Forms.Padding(4);
             this.btnEditEmployee.Name = "btnEditEmployee";
             this.btnEditEmployee.Size = new System.Drawing.Size(137, 33);
@@ -118,7 +125,7 @@ namespace SU21_Final_Project
             this.dgvEmployee.Name = "dgvEmployee";
             this.dgvEmployee.RowHeadersWidth = 51;
             this.dgvEmployee.RowTemplate.Height = 24;
-            this.dgvEmployee.Size = new System.Drawing.Size(1043, 263);
+            this.dgvEmployee.Size = new System.Drawing.Size(1057, 263);
             this.dgvEmployee.TabIndex = 0;
             // 
             // tabInventory
@@ -135,7 +142,7 @@ namespace SU21_Final_Project
             this.tabInventory.Location = new System.Drawing.Point(4, 25);
             this.tabInventory.Name = "tabInventory";
             this.tabInventory.Padding = new System.Windows.Forms.Padding(3);
-            this.tabInventory.Size = new System.Drawing.Size(1046, 493);
+            this.tabInventory.Size = new System.Drawing.Size(1082, 461);
             this.tabInventory.TabIndex = 0;
             this.tabInventory.Text = "Inventory Control";
             this.tabInventory.UseVisualStyleBackColor = true;
@@ -338,10 +345,11 @@ namespace SU21_Final_Project
             this.btnAddItems.Location = new System.Drawing.Point(20, 188);
             this.btnAddItems.Name = "btnAddItems";
             this.btnAddItems.Size = new System.Drawing.Size(121, 37);
-            this.btnAddItems.TabIndex = 11;
+            this.btnAddItems.TabIndex = 3;
             this.btnAddItems.Text = "Add New Items";
             this.btnAddItems.UseVisualStyleBackColor = true;
             this.btnAddItems.Click += new System.EventHandler(this.btnAddItems_Click);
+            this.btnAddItems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnAddItems_KeyDown);
             // 
             // dgvAllProducts
             // 
@@ -353,7 +361,7 @@ namespace SU21_Final_Project
             this.dgvAllProducts.RowTemplate.Height = 24;
             this.dgvAllProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAllProducts.Size = new System.Drawing.Size(1009, 176);
-            this.dgvAllProducts.TabIndex = 10;
+            this.dgvAllProducts.TabIndex = 1;
             this.dgvAllProducts.SelectionChanged += new System.EventHandler(this.dgvAllProducts_SelectionChanged);
             // 
             // cboItemName
@@ -433,6 +441,7 @@ namespace SU21_Final_Project
             this.btnUpdateItem.Text = "&Update Item ";
             this.btnUpdateItem.UseVisualStyleBackColor = true;
             this.btnUpdateItem.Click += new System.EventHandler(this.btnUpdateItem_Click_1);
+            this.btnUpdateItem.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnUpdateItem_KeyDown);
             // 
             // pbxItemPicture
             // 
@@ -446,7 +455,7 @@ namespace SU21_Final_Project
             // 
             // btnInsertImage
             // 
-            this.btnInsertImage.Location = new System.Drawing.Point(886, 183);
+            this.btnInsertImage.Location = new System.Drawing.Point(886, 189);
             this.btnInsertImage.Margin = new System.Windows.Forms.Padding(4);
             this.btnInsertImage.Name = "btnInsertImage";
             this.btnInsertImage.Size = new System.Drawing.Size(131, 37);
@@ -458,18 +467,48 @@ namespace SU21_Final_Project
             // 
             this.tabManagerFeatures.Controls.Add(this.tabInventory);
             this.tabManagerFeatures.Controls.Add(this.tabEmployee);
-            this.tabManagerFeatures.Location = new System.Drawing.Point(0, 30);
+            this.tabManagerFeatures.Controls.Add(this.tabCustomer);
+            this.tabManagerFeatures.Location = new System.Drawing.Point(12, 12);
             this.tabManagerFeatures.Name = "tabManagerFeatures";
             this.tabManagerFeatures.SelectedIndex = 0;
-            this.tabManagerFeatures.Size = new System.Drawing.Size(1054, 522);
+            this.tabManagerFeatures.Size = new System.Drawing.Size(1090, 490);
             this.tabManagerFeatures.TabIndex = 0;
             this.tabManagerFeatures.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabManagerFeatures_Selected);
+            // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.Location = new System.Drawing.Point(350, 9);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(0, 17);
+            this.lblDate.TabIndex = 14;
+            // 
+            // tabCustomer
+            // 
+            this.tabCustomer.Controls.Add(this.dgvCustomer);
+            this.tabCustomer.Location = new System.Drawing.Point(4, 25);
+            this.tabCustomer.Name = "tabCustomer";
+            this.tabCustomer.Size = new System.Drawing.Size(1082, 461);
+            this.tabCustomer.TabIndex = 2;
+            this.tabCustomer.Text = "Customer";
+            this.tabCustomer.UseVisualStyleBackColor = true;
+            // 
+            // dgvCustomer
+            // 
+            this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCustomer.Location = new System.Drawing.Point(12, 12);
+            this.dgvCustomer.Name = "dgvCustomer";
+            this.dgvCustomer.RowHeadersWidth = 51;
+            this.dgvCustomer.RowTemplate.Height = 24;
+            this.dgvCustomer.Size = new System.Drawing.Size(1057, 263);
+            this.dgvCustomer.TabIndex = 1;
             // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1064, 554);
+            this.ClientSize = new System.Drawing.Size(1113, 554);
+            this.Controls.Add(this.lblDate);
             this.Controls.Add(this.tabManagerFeatures);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
@@ -477,6 +516,7 @@ namespace SU21_Final_Project
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrator (Manager)";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAdmin_FormClosing);
+            this.Load += new System.EventHandler(this.frmAdmin_Load);
             this.tabEmployee.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).EndInit();
             this.tabInventory.ResumeLayout(false);
@@ -486,7 +526,10 @@ namespace SU21_Final_Project
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllProducts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxItemPicture)).EndInit();
             this.tabManagerFeatures.ResumeLayout(false);
+            this.tabCustomer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -523,5 +566,8 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnRemoveEmployee;
         private System.Windows.Forms.Button btnAddEmployee;
         private System.Windows.Forms.Button btnEditEmployee;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.TabPage tabCustomer;
+        private System.Windows.Forms.DataGridView dgvCustomer;
     }
 }

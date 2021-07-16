@@ -12,46 +12,41 @@ using System.Text.RegularExpressions;
 
 namespace SU21_Final_Project
 {
-    public partial class frmSignUp : Form
+    public partial class frmAddEmployee : Form
     {
-
-
         SqlConnection Connection;
-        
-        
 
         string strTitle;
-        string strFirstName ;
-        string strLastName ;
-        string strMiddleName="";
-        string strSuffix ;
+        string strFirstName;
+        string strLastName;
+        string strMiddleName = "";
+        string strSuffix;
         string strAddressOne;
-        string strAddressTwo="" ;
-        string strAddressThree="" ;
-        string strPhoneOne ;
-        string strPhoneTwo="" ;
-        string strCity ;
-        string strState ;
-        string strZip ;
-        string strEmail ;
+        string strAddressTwo = "";
+        string strAddressThree = "";
+        string strPhoneOne;
+        string strPhoneTwo = "";
+        string strCity;
+        string strState;
+        string strZip;
+        string strEmail;
+        string strPosition;
+        string strRole;
+        string strSalary;
+        string strHiredDate;
 
 
-        
-        string strCreateUsername ;
-        string strCreatePassword ;
-        string strAnswerOne ;
-        string strAnswerTwo ;
-        string strAnswerThree ;
-        int intRoleId ;
+        string strCreateUsername;
+        string strCreatePassword;
+        string strAnswerOne;
+        string strAnswerTwo;
+        string strAnswerThree;
+      
         string strQuestionOne;
-        string strQuestionTwo ;
-        string strQuestionThree ;
+        string strQuestionTwo;
+        string strQuestionThree;
         bool blnDuplicateUsername;
-       
-
-       
-
-        public frmSignUp()
+        public frmAddEmployee()
         {
             InitializeComponent();
         }
@@ -78,12 +73,12 @@ namespace SU21_Final_Project
                 Connection.Open();
                 if (tbxFirstName.Text != "" && tbxLastName.Text != "" && tbxAddressOne.Text != "" && tbxPhoneOne.Text != "" && tbxCity.Text != "" && tbxZip.Text != ""
                     && cboState.Text != "" && tbxEmail.Text != "" && tbxCreateUsername.Text != "" && tbxCreatePassword.Text != "" && tbxAnswerOne.Text != ""
-                    && tbxAnswerTwo.Text != "" && tbxAnswerThree.Text != "")
+                    && tbxAnswerTwo.Text != "" && tbxAnswerThree.Text != ""&& cboRole.Text != "")
                 {
                     SqlCommand commandCheckUsername = new SqlCommand("SELECT Username FROM RandrezaVoharisoaM21Su2332.Users;", Connection);
 
                     //gets the results from the sql command
-                   SqlDataReader reader = commandCheckUsername.ExecuteReader();
+                    SqlDataReader reader = commandCheckUsername.ExecuteReader();
 
                     while (reader.Read())
                     {
@@ -91,15 +86,15 @@ namespace SU21_Final_Project
                         if (reader["Username"].ToString() == strCreateUsername)
                         {
                             MessageBox.Show("Username is already taken", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            blnDuplicateUsername=true;                           
-                            tbxCreateUsername.Text="";
+                            blnDuplicateUsername = true;
+                            tbxCreateUsername.Text = "";
                             tbxCreateUsername.Focus();
                             break;
                         }
                         else
                         {
                             blnDuplicateUsername = false;
-                            
+
                         }
 
                     }
@@ -133,18 +128,21 @@ namespace SU21_Final_Project
 
 
                                                 //INSERT RECORD FOR PERSON INFORMATION
-                                                strTitle = "Customer";
+                                                strTitle = "Employee";
                                                 strFirstName = tbxFirstName.Text;
                                                 strLastName = tbxLastName.Text;
                                                 strMiddleName = tbxMiddleName.Text;
                                                 strAddressOne = tbxAddressOne.Text;
-                                                strAddressTwo = tbxAddressTwo.Text;
-                                                strAddressThree = tbxAddressThree.Text;
+                                               
+                                                strSalary = tbxSalary.Text;
 
-                                                strPhoneTwo = tbxPhoneTwo.Text;
+                                                strHiredDate = tbxHiredDate.Text;
                                                 strCity = tbxCity.Text;
                                                 strState = cboState.SelectedItem.ToString();
-
+                                                
+                                                strRole= cboRole.SelectedItem.ToString();
+                                                int intRoleID;
+                                                bool blnTryParse =  int.TryParse(strRole, out intRoleID);
 
 
                                                 if (cboSuffix.SelectedItem == null)
@@ -185,7 +183,7 @@ namespace SU21_Final_Project
                                                 strAnswerOne = tbxAnswerOne.Text;
                                                 strAnswerTwo = tbxAnswerTwo.Text;
                                                 strAnswerThree = tbxAnswerThree.Text;
-                                                intRoleId = 3;
+                                                
                                                 strQuestionOne = "What is your favorite drink?";
                                                 strQuestionTwo = "What is your favorite type of dog?";
                                                 strQuestionThree = "Who is your idol?";
@@ -207,18 +205,37 @@ namespace SU21_Final_Project
                                                 commandUsers.Parameters.AddWithValue("@Password", strCreatePassword);
                                                 commandUsers.Parameters.AddWithValue("@Answer1", strAnswerOne);
                                                 commandUsers.Parameters.AddWithValue("@Answer2", strAnswerTwo);
-                                                commandUsers.Parameters.AddWithValue("@RoleID", intRoleId);
+                                                commandUsers.Parameters.AddWithValue("@RoleID", intRoleID);
                                                 commandUsers.Parameters.AddWithValue("@ThirdQuestion", strQuestionThree);
                                                 commandUsers.Parameters.AddWithValue("@SecondQuestion", strQuestionTwo);
                                                 commandUsers.Parameters.AddWithValue("@FirstQuestion", strQuestionOne);
                                                 commandUsers.Parameters.AddWithValue("@Answer3", strAnswerThree);
 
                                                 commandUsers.ExecuteNonQuery();
-                                                MessageBox.Show("Client Successfully added", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                               
+
+                                                //Get the last UserID using Max to insert as FK to the Employee table
+                                                string queryLastUserID = "SELECT MAX(UserID) from RandrezaVoharisoaM21Su2332.Users";
+                                                SqlCommand command = new SqlCommand(queryLastUserID, Connection);
+
+                                                //gets the results from the sql command
+                                                SqlDataReader readerUserID = command.ExecuteReader();
+                                                readerUserID.Read();
+                                                int intUserID = readerUserID.GetInt32(0);
+                                                readerUserID.Close();
+
+                                                SqlCommand commandEmployee = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Employees(UserID,Salary,HiredDate) VALUES(@UserID,@Salary,@HiredDate)", Connection);
+                                                commandEmployee.Parameters.AddWithValue("@UserID", intUserID);
+                                                commandEmployee.Parameters.AddWithValue("@Salary", strSalary);
+                                                commandEmployee.Parameters.AddWithValue("@HiredDate", strHiredDate);
+
+
+                                                commandEmployee.ExecuteNonQuery();
+                                                MessageBox.Show("Employee Successfully added", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                                                 Connection.Close();
 
-                                                new frmLogin().Show();
+                                                new frmAdmin().Show();
                                                 this.Hide();
                                             }
                                             else
@@ -258,7 +275,7 @@ namespace SU21_Final_Project
                         }
                     }
 
-                   
+
                 }
                 else
                 {
@@ -270,9 +287,8 @@ namespace SU21_Final_Project
                 MessageBox.Show(ex.Message, "Error Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            
-        }
 
+        }
         //Check for password Validation
         public bool ValidPassword(string strPassword)
         {
@@ -284,7 +300,7 @@ namespace SU21_Final_Project
             {
                 return false;
             }
-          
+
             else if (!strPassword.Any(char.IsDigit))
             {
                 return false;
@@ -316,7 +332,7 @@ namespace SU21_Final_Project
                   (strPassword.Contains(">")) ||
                   (strPassword.Contains("?")) ||
                   (strPassword.Contains("|"))))
-                    {
+            {
                 return false;
             }
             return true;
@@ -343,7 +359,7 @@ namespace SU21_Final_Project
         public bool ValidAddress(string strAddress)
         {
 
-            if (strAddress.Length < 4 )
+            if (strAddress.Length < 4)
                 return false;
 
             else if (!strAddress.Any(char.IsLetter))
@@ -361,13 +377,27 @@ namespace SU21_Final_Project
         public bool ValidZip(string strValidZip)
         {
 
-            if (strValidZip.Length !=5)
+            if (strValidZip.Length != 5)
             {
                 return false;
             }
             return true;
         }
 
+        public bool ValidDateOfBirth(string strPhone)
+        {
+
+            if (strPhone.Length != 10)
+            {
+                return false;
+            }
+            else if (strPhone.Any(char.IsLetter))
+            {
+                return false;
+            }
+
+            return true;
+        }
 
         public bool ValidUsername(string strUsername)
         {
@@ -406,7 +436,7 @@ namespace SU21_Final_Project
         //Return to login form
         private void btnBack_Click(object sender, EventArgs e)
         {
-            new frmLogin().Show();
+            new frmAdmin().Show();
             this.Hide();
         }
 
@@ -422,7 +452,7 @@ namespace SU21_Final_Project
                     }
                     else
                     {
-                        new frmLogin().Show();
+                        new frmAdmin().Show();
                         this.Hide();
                     }
                     break;
@@ -498,6 +528,6 @@ namespace SU21_Final_Project
                 btnSave.PerformClick();
             }
         }
-    }
 
+    }
 }

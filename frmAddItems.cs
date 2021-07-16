@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace SU21_Final_Project
 {
@@ -18,7 +19,9 @@ namespace SU21_Final_Project
 
 
         string strItemName;
-        
+
+        string strDate= DateTime.Now.ToShortDateString();//Get date
+
         int intQuantityPurchased;
         double dblItemCost;
         int intCategory;
@@ -116,8 +119,13 @@ namespace SU21_Final_Project
                             commandItem.ExecuteNonQuery();
                             MessageBox.Show("New Item added", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                                    if (MessageBox.Show("Do you want Invoice?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                    {
+                                        PrintInvoice(GenerateInvoice(strItemName, intQuantityPurchased, dblItemCost));
 
-                            Connection.Close();
+                                    }
+
+                                    Connection.Close();
 
                             new frmAdmin().Show();
                             this.Hide();
@@ -159,6 +167,106 @@ namespace SU21_Final_Project
             }
 
 
+        }
+
+        private StringBuilder GenerateInvoice(string strItemName, int intItemQuantity, double dblCost)
+        {
+            double dblTax = 0.0825;
+            double dblTotalCost = dblCost * intItemQuantity;
+            double dblTaxValue = dblTotalCost * dblTax;
+            double dblTotalPay = dblTotalCost + dblTaxValue;
+
+            StringBuilder html = new StringBuilder();
+            StringBuilder css = new StringBuilder();
+
+            css.AppendLine("<style>");
+            css.AppendLine("td {padding: 5px; text-align:center; font-weight: bold; text-align: center;}");
+            css.AppendLine("h1 {color: blue;}");
+            css.AppendLine("h2 {color: red;}");
+            css.AppendLine("</style>");
+
+            html.AppendLine("<html>");
+            html.AppendLine($"<head>{css}<title>{"Invoice"}</title></head>");
+            html.AppendLine("<body>");
+
+            html.AppendLine($"<h1>{" Purchase Detail"}</h1>");
+
+            html.Append($"<h5>{"Date: "}{strDate}</h5>");
+            //html.Append($"<h5>{"Customer Name: "}{lblNameOfUser.Text}</h5>");
+            //html.Append($"<h5>{"Sale ID: "}{intSaleId.ToString()}</h5>");
+
+            html.AppendLine("<table>");
+            html.AppendLine("<tr><td>Name</td><td>Quantity</td><td>Cost</td><td>TotalCost</td>");
+            html.AppendLine("<tr><td colspan=4><hr /></td></tr>");
+
+            html.Append("<tr>");
+            html.Append($"<td>{strItemName}</td>");
+            html.Append($"<td>{intItemQuantity.ToString()}</td>");
+            html.Append($"<td>{dblCost.ToString("C2")}</td>");
+            html.Append($"<td>{dblTotalCost.ToString("C2")}</td>");
+            html.Append("</tr>");
+            html.AppendLine("<tr><td colspan=4><hr /></td></tr>");
+
+
+
+
+            html.Append("<tr><td colspan=4><hr></hd></td></tr>");
+            html.Append("<table>");
+
+
+            html.AppendLine($"<h5>{"Subtotal: "}{dblTotalCost.ToString("C2")}</h5>");
+            html.AppendLine($"<h5>{"Tax Sale(8.25%): "}{dblTaxValue.ToString("C2")}</h5>");
+            html.AppendLine($"<h5>{"Total Amount: "}{dblTotalPay.ToString("C2")}</h5>");
+
+
+
+
+            html.Append($"<h2>{"Company: Supplier  "}</h2>");
+
+            html.Append("</body></html>");//close body
+
+            return html;
+        }
+
+        // Write (and overwrite) to the hard drive using the same filename of "Report.html"
+        private void PrintInvoice(StringBuilder html)
+        {
+
+            try
+            {
+                // A "using" statement will automatically close a file after opening it.               
+                using (StreamWriter sw = new StreamWriter("Report.html"))
+                {
+                    sw.WriteLine(html);
+                }
+                System.Diagnostics.Process.Start(@"Report.html"); //Open the report in the default web browser
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("You currently do not have write permissions for this feature.",
+                    "Error with System Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            //unique filename  use for a date and time with part of a name
+            DateTime today = DateTime.Now;
+            using (StreamWriter sw = new StreamWriter($"{today.ToString("yyyy-MM-dd-HHmmss")} - Report.html"))
+            {
+                sw.WriteLine(html);
+            }
+        }
+
+        private void btnSaveItems_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSaveItems.PerformClick();
+            }
+        }
+
+        private void frmAddItems_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            new frmAddItems().Show();
+            this.Hide();
         }
     }
     

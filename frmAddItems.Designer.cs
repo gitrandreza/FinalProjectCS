@@ -71,20 +71,21 @@ namespace SU21_Final_Project
             this.gbxItemInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxItemInformation.Location = new System.Drawing.Point(2, 31);
             this.gbxItemInformation.Name = "gbxItemInformation";
-            this.gbxItemInformation.Size = new System.Drawing.Size(795, 325);
+            this.gbxItemInformation.Size = new System.Drawing.Size(529, 325);
             this.gbxItemInformation.TabIndex = 45;
             this.gbxItemInformation.TabStop = false;
             this.gbxItemInformation.Text = "Item Information";
             // 
             // btnSaveItems
             // 
-            this.btnSaveItems.Location = new System.Drawing.Point(522, 289);
+            this.btnSaveItems.Location = new System.Drawing.Point(265, 285);
             this.btnSaveItems.Name = "btnSaveItems";
             this.btnSaveItems.Size = new System.Drawing.Size(101, 28);
             this.btnSaveItems.TabIndex = 43;
             this.btnSaveItems.Text = "Save Item";
             this.btnSaveItems.UseVisualStyleBackColor = true;
             this.btnSaveItems.Click += new System.EventHandler(this.btnSaveItems_Click);
+            this.btnSaveItems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnSaveItems_KeyDown);
             // 
             // cboSupplier
             // 
@@ -228,11 +229,12 @@ namespace SU21_Final_Project
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 400);
+            this.ClientSize = new System.Drawing.Size(543, 400);
             this.Controls.Add(this.gbxItemInformation);
             this.MaximizeBox = false;
             this.Name = "frmAddItems";
             this.Text = "Add Items";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAddItems_FormClosing);
             this.gbxItemInformation.ResumeLayout(false);
             this.gbxItemInformation.PerformLayout();
             this.ResumeLayout(false);
