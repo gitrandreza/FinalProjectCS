@@ -30,6 +30,9 @@ namespace SU21_Final_Project
         private void InitializeComponent()
         {
             this.tabEmployee = new System.Windows.Forms.TabPage();
+            this.btnRemoveEmployee = new System.Windows.Forms.Button();
+            this.btnAddEmployee = new System.Windows.Forms.Button();
+            this.btnEditEmployee = new System.Windows.Forms.Button();
             this.dgvEmployee = new System.Windows.Forms.DataGridView();
             this.tabInventory = new System.Windows.Forms.TabPage();
             this.gbxUpdateField = new System.Windows.Forms.GroupBox();
@@ -57,9 +60,6 @@ namespace SU21_Final_Project
             this.pbxItemPicture = new System.Windows.Forms.PictureBox();
             this.btnInsertImage = new System.Windows.Forms.Button();
             this.tabManagerFeatures = new System.Windows.Forms.TabControl();
-            this.btnRemoveEmployee = new System.Windows.Forms.Button();
-            this.btnAddEmployee = new System.Windows.Forms.Button();
-            this.btnEditEmployee = new System.Windows.Forms.Button();
             this.tabEmployee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
             this.tabInventory.SuspendLayout();
@@ -78,10 +78,38 @@ namespace SU21_Final_Project
             this.tabEmployee.Location = new System.Drawing.Point(4, 25);
             this.tabEmployee.Name = "tabEmployee";
             this.tabEmployee.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEmployee.Size = new System.Drawing.Size(1057, 513);
+            this.tabEmployee.Size = new System.Drawing.Size(1046, 523);
             this.tabEmployee.TabIndex = 1;
             this.tabEmployee.Text = "Employee";
             this.tabEmployee.UseVisualStyleBackColor = true;
+            // 
+            // btnRemoveEmployee
+            // 
+            this.btnRemoveEmployee.Location = new System.Drawing.Point(203, 455);
+            this.btnRemoveEmployee.Name = "btnRemoveEmployee";
+            this.btnRemoveEmployee.Size = new System.Drawing.Size(137, 33);
+            this.btnRemoveEmployee.TabIndex = 15;
+            this.btnRemoveEmployee.Text = "&Remove Employee";
+            this.btnRemoveEmployee.UseVisualStyleBackColor = true;
+            // 
+            // btnAddEmployee
+            // 
+            this.btnAddEmployee.Location = new System.Drawing.Point(30, 455);
+            this.btnAddEmployee.Name = "btnAddEmployee";
+            this.btnAddEmployee.Size = new System.Drawing.Size(137, 33);
+            this.btnAddEmployee.TabIndex = 14;
+            this.btnAddEmployee.Text = "&Add Employee";
+            this.btnAddEmployee.UseVisualStyleBackColor = true;
+            // 
+            // btnEditEmployee
+            // 
+            this.btnEditEmployee.Location = new System.Drawing.Point(373, 455);
+            this.btnEditEmployee.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEditEmployee.Name = "btnEditEmployee";
+            this.btnEditEmployee.Size = new System.Drawing.Size(137, 33);
+            this.btnEditEmployee.TabIndex = 13;
+            this.btnEditEmployee.Text = "&Edit ";
+            this.btnEditEmployee.UseVisualStyleBackColor = true;
             // 
             // dgvEmployee
             // 
@@ -107,7 +135,7 @@ namespace SU21_Final_Project
             this.tabInventory.Location = new System.Drawing.Point(4, 25);
             this.tabInventory.Name = "tabInventory";
             this.tabInventory.Padding = new System.Windows.Forms.Padding(3);
-            this.tabInventory.Size = new System.Drawing.Size(1057, 513);
+            this.tabInventory.Size = new System.Drawing.Size(1046, 493);
             this.tabInventory.TabIndex = 0;
             this.tabInventory.Text = "Inventory Control";
             this.tabInventory.UseVisualStyleBackColor = true;
@@ -130,9 +158,9 @@ namespace SU21_Final_Project
             this.gbxUpdateField.Controls.Add(this.btnSaveUpdate);
             this.gbxUpdateField.Controls.Add(this.tbxName);
             this.gbxUpdateField.Enabled = false;
-            this.gbxUpdateField.Location = new System.Drawing.Point(8, 257);
+            this.gbxUpdateField.Location = new System.Drawing.Point(20, 249);
             this.gbxUpdateField.Name = "gbxUpdateField";
-            this.gbxUpdateField.Size = new System.Drawing.Size(797, 249);
+            this.gbxUpdateField.Size = new System.Drawing.Size(797, 203);
             this.gbxUpdateField.TabIndex = 13;
             this.gbxUpdateField.TabStop = false;
             this.gbxUpdateField.Text = "Update Fields";
@@ -242,11 +270,11 @@ namespace SU21_Final_Project
             // cbxQuantity
             // 
             this.cbxQuantity.AutoSize = true;
-            this.cbxQuantity.Location = new System.Drawing.Point(10, 77);
+            this.cbxQuantity.Location = new System.Drawing.Point(10, 76);
             this.cbxQuantity.Name = "cbxQuantity";
-            this.cbxQuantity.Size = new System.Drawing.Size(83, 21);
+            this.cbxQuantity.Size = new System.Drawing.Size(112, 21);
             this.cbxQuantity.TabIndex = 19;
-            this.cbxQuantity.Text = "Quantity";
+            this.cbxQuantity.Text = "Add Quantity";
             this.cbxQuantity.UseVisualStyleBackColor = true;
             this.cbxQuantity.CheckedChanged += new System.EventHandler(this.cbxQuantity_CheckedChanged);
             // 
@@ -261,9 +289,9 @@ namespace SU21_Final_Project
             // tbxQuantity
             // 
             this.tbxQuantity.Enabled = false;
-            this.tbxQuantity.Location = new System.Drawing.Point(111, 77);
+            this.tbxQuantity.Location = new System.Drawing.Point(142, 74);
             this.tbxQuantity.Name = "tbxQuantity";
-            this.tbxQuantity.Size = new System.Drawing.Size(58, 22);
+            this.tbxQuantity.Size = new System.Drawing.Size(111, 22);
             this.tbxQuantity.TabIndex = 18;
             // 
             // cbxName
@@ -279,7 +307,7 @@ namespace SU21_Final_Project
             // 
             // btnSaveUpdate
             // 
-            this.btnSaveUpdate.Location = new System.Drawing.Point(338, 205);
+            this.btnSaveUpdate.Location = new System.Drawing.Point(657, 64);
             this.btnSaveUpdate.Name = "btnSaveUpdate";
             this.btnSaveUpdate.Size = new System.Drawing.Size(103, 34);
             this.btnSaveUpdate.TabIndex = 16;
@@ -297,9 +325,9 @@ namespace SU21_Final_Project
             // 
             // btnRemoveItem
             // 
-            this.btnRemoveItem.Location = new System.Drawing.Point(224, 203);
+            this.btnRemoveItem.Location = new System.Drawing.Point(723, 183);
             this.btnRemoveItem.Name = "btnRemoveItem";
-            this.btnRemoveItem.Size = new System.Drawing.Size(108, 37);
+            this.btnRemoveItem.Size = new System.Drawing.Size(121, 47);
             this.btnRemoveItem.TabIndex = 12;
             this.btnRemoveItem.Text = "Remove Item";
             this.btnRemoveItem.UseVisualStyleBackColor = true;
@@ -307,11 +335,11 @@ namespace SU21_Final_Project
             // 
             // btnAddItems
             // 
-            this.btnAddItems.Location = new System.Drawing.Point(8, 199);
+            this.btnAddItems.Location = new System.Drawing.Point(20, 188);
             this.btnAddItems.Name = "btnAddItems";
-            this.btnAddItems.Size = new System.Drawing.Size(108, 37);
+            this.btnAddItems.Size = new System.Drawing.Size(121, 37);
             this.btnAddItems.TabIndex = 11;
-            this.btnAddItems.Text = "Add Items";
+            this.btnAddItems.Text = "Add New Items";
             this.btnAddItems.UseVisualStyleBackColor = true;
             this.btnAddItems.Click += new System.EventHandler(this.btnAddItems_Click);
             // 
@@ -324,7 +352,7 @@ namespace SU21_Final_Project
             this.dgvAllProducts.RowHeadersWidth = 51;
             this.dgvAllProducts.RowTemplate.Height = 24;
             this.dgvAllProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAllProducts.Size = new System.Drawing.Size(1043, 176);
+            this.dgvAllProducts.Size = new System.Drawing.Size(1009, 176);
             this.dgvAllProducts.TabIndex = 10;
             this.dgvAllProducts.SelectionChanged += new System.EventHandler(this.dgvAllProducts_SelectionChanged);
             // 
@@ -383,32 +411,32 @@ namespace SU21_Final_Project
             "Robe",
             "Stress ball",
             "Grocery Bag"});
-            this.cboItemName.Location = new System.Drawing.Point(908, 472);
+            this.cboItemName.Location = new System.Drawing.Point(880, 489);
             this.cboItemName.Name = "cboItemName";
             this.cboItemName.Size = new System.Drawing.Size(121, 24);
             this.cboItemName.TabIndex = 9;
             // 
             // tbxUpDescrption
             // 
-            this.tbxUpDescrption.Location = new System.Drawing.Point(912, 421);
+            this.tbxUpDescrption.Location = new System.Drawing.Point(880, 454);
             this.tbxUpDescrption.Name = "tbxUpDescrption";
             this.tbxUpDescrption.Size = new System.Drawing.Size(117, 22);
             this.tbxUpDescrption.TabIndex = 8;
             // 
             // btnUpdateItem
             // 
-            this.btnUpdateItem.Location = new System.Drawing.Point(430, 203);
+            this.btnUpdateItem.Location = new System.Drawing.Point(379, 188);
             this.btnUpdateItem.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdateItem.Name = "btnUpdateItem";
             this.btnUpdateItem.Size = new System.Drawing.Size(150, 37);
             this.btnUpdateItem.TabIndex = 7;
-            this.btnUpdateItem.Text = "&Update ";
+            this.btnUpdateItem.Text = "&Update Item ";
             this.btnUpdateItem.UseVisualStyleBackColor = true;
             this.btnUpdateItem.Click += new System.EventHandler(this.btnUpdateItem_Click_1);
             // 
             // pbxItemPicture
             // 
-            this.pbxItemPicture.Location = new System.Drawing.Point(877, 189);
+            this.pbxItemPicture.Location = new System.Drawing.Point(844, 257);
             this.pbxItemPicture.Margin = new System.Windows.Forms.Padding(4);
             this.pbxItemPicture.Name = "pbxItemPicture";
             this.pbxItemPicture.Size = new System.Drawing.Size(173, 195);
@@ -418,7 +446,7 @@ namespace SU21_Final_Project
             // 
             // btnInsertImage
             // 
-            this.btnInsertImage.Location = new System.Drawing.Point(674, 203);
+            this.btnInsertImage.Location = new System.Drawing.Point(886, 183);
             this.btnInsertImage.Margin = new System.Windows.Forms.Padding(4);
             this.btnInsertImage.Name = "btnInsertImage";
             this.btnInsertImage.Size = new System.Drawing.Size(131, 37);
@@ -430,46 +458,18 @@ namespace SU21_Final_Project
             // 
             this.tabManagerFeatures.Controls.Add(this.tabInventory);
             this.tabManagerFeatures.Controls.Add(this.tabEmployee);
-            this.tabManagerFeatures.Location = new System.Drawing.Point(0, 0);
+            this.tabManagerFeatures.Location = new System.Drawing.Point(0, 30);
             this.tabManagerFeatures.Name = "tabManagerFeatures";
             this.tabManagerFeatures.SelectedIndex = 0;
-            this.tabManagerFeatures.Size = new System.Drawing.Size(1065, 542);
+            this.tabManagerFeatures.Size = new System.Drawing.Size(1054, 522);
             this.tabManagerFeatures.TabIndex = 0;
             this.tabManagerFeatures.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabManagerFeatures_Selected);
-            // 
-            // btnRemoveEmployee
-            // 
-            this.btnRemoveEmployee.Location = new System.Drawing.Point(203, 455);
-            this.btnRemoveEmployee.Name = "btnRemoveEmployee";
-            this.btnRemoveEmployee.Size = new System.Drawing.Size(137, 33);
-            this.btnRemoveEmployee.TabIndex = 15;
-            this.btnRemoveEmployee.Text = "&Remove Employee";
-            this.btnRemoveEmployee.UseVisualStyleBackColor = true;
-            // 
-            // btnAddEmployee
-            // 
-            this.btnAddEmployee.Location = new System.Drawing.Point(30, 455);
-            this.btnAddEmployee.Name = "btnAddEmployee";
-            this.btnAddEmployee.Size = new System.Drawing.Size(137, 33);
-            this.btnAddEmployee.TabIndex = 14;
-            this.btnAddEmployee.Text = "&Add Employee";
-            this.btnAddEmployee.UseVisualStyleBackColor = true;
-            // 
-            // btnEditEmployee
-            // 
-            this.btnEditEmployee.Location = new System.Drawing.Point(373, 455);
-            this.btnEditEmployee.Margin = new System.Windows.Forms.Padding(4);
-            this.btnEditEmployee.Name = "btnEditEmployee";
-            this.btnEditEmployee.Size = new System.Drawing.Size(137, 33);
-            this.btnEditEmployee.TabIndex = 13;
-            this.btnEditEmployee.Text = "&Edit ";
-            this.btnEditEmployee.UseVisualStyleBackColor = true;
             // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 543);
+            this.ClientSize = new System.Drawing.Size(1064, 554);
             this.Controls.Add(this.tabManagerFeatures);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;

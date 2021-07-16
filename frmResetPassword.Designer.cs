@@ -29,42 +29,42 @@ namespace SU21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
-            this.label16 = new System.Windows.Forms.Label();
+            this.lblQuestionThree = new System.Windows.Forms.Label();
             this.tbxIdol = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.lblQuestionTwo = new System.Windows.Forms.Label();
             this.tbxDog = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
+            this.lblQuestionOne = new System.Windows.Forms.Label();
             this.tbxDrink = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblMessageText = new System.Windows.Forms.Label();
             this.btnCheck = new System.Windows.Forms.Button();
             this.lblValidAnswers = new System.Windows.Forms.Label();
             this.lblInvalidAnswers = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lblNewPassword = new System.Windows.Forms.Label();
             this.tbxNewPassword = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
+            this.lblUsernameLabel = new System.Windows.Forms.Label();
             this.tbxEnterUsername = new System.Windows.Forms.TextBox();
             this.btnNewPassword = new System.Windows.Forms.Button();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
+            this.lblPasswordRules3 = new System.Windows.Forms.Label();
+            this.lblPasswordRules1 = new System.Windows.Forms.Label();
+            this.lblPasswordRules2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnBack = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblConfirmPassword = new System.Windows.Forms.Label();
             this.tbxConfirmPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label16
+            // lblQuestionThree
             // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(124, 240);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(122, 17);
-            this.label16.TabIndex = 37;
-            this.label16.Text = "*Who is your idol?";
+            this.lblQuestionThree.AutoSize = true;
+            this.lblQuestionThree.BackColor = System.Drawing.Color.White;
+            this.lblQuestionThree.Location = new System.Drawing.Point(124, 240);
+            this.lblQuestionThree.Name = "lblQuestionThree";
+            this.lblQuestionThree.Size = new System.Drawing.Size(122, 17);
+            this.lblQuestionThree.TabIndex = 37;
+            this.lblQuestionThree.Text = "*Who is your idol?";
             // 
             // tbxIdol
             // 
@@ -73,15 +73,15 @@ namespace SU21_Final_Project
             this.tbxIdol.Size = new System.Drawing.Size(165, 22);
             this.tbxIdol.TabIndex = 3;
             // 
-            // label15
+            // lblQuestionTwo
             // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(20, 192);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(226, 17);
-            this.label15.TabIndex = 35;
-            this.label15.Text = "*What is your favorite type of dog?";
+            this.lblQuestionTwo.AutoSize = true;
+            this.lblQuestionTwo.BackColor = System.Drawing.Color.White;
+            this.lblQuestionTwo.Location = new System.Drawing.Point(20, 192);
+            this.lblQuestionTwo.Name = "lblQuestionTwo";
+            this.lblQuestionTwo.Size = new System.Drawing.Size(226, 17);
+            this.lblQuestionTwo.TabIndex = 35;
+            this.lblQuestionTwo.Text = "*What is your favorite type of dog?";
             // 
             // tbxDog
             // 
@@ -90,15 +90,15 @@ namespace SU21_Final_Project
             this.tbxDog.Size = new System.Drawing.Size(165, 22);
             this.tbxDog.TabIndex = 2;
             // 
-            // label14
+            // lblQuestionOne
             // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(60, 148);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(186, 17);
-            this.label14.TabIndex = 33;
-            this.label14.Text = "*What is your favorite drink?";
+            this.lblQuestionOne.AutoSize = true;
+            this.lblQuestionOne.BackColor = System.Drawing.Color.White;
+            this.lblQuestionOne.Location = new System.Drawing.Point(60, 148);
+            this.lblQuestionOne.Name = "lblQuestionOne";
+            this.lblQuestionOne.Size = new System.Drawing.Size(186, 17);
+            this.lblQuestionOne.TabIndex = 33;
+            this.lblQuestionOne.Text = "*What is your favorite drink?";
             // 
             // tbxDrink
             // 
@@ -107,17 +107,17 @@ namespace SU21_Final_Project
             this.tbxDrink.Size = new System.Drawing.Size(165, 22);
             this.tbxDrink.TabIndex = 1;
             // 
-            // label1
+            // lblMessageText
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(115, 115);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(457, 17);
-            this.label1.TabIndex = 38;
-            this.label1.Text = "Please answer the 3 questions below to verify you information";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblMessageText.AutoSize = true;
+            this.lblMessageText.BackColor = System.Drawing.Color.White;
+            this.lblMessageText.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMessageText.Location = new System.Drawing.Point(115, 115);
+            this.lblMessageText.Name = "lblMessageText";
+            this.lblMessageText.Size = new System.Drawing.Size(457, 17);
+            this.lblMessageText.TabIndex = 38;
+            this.lblMessageText.Text = "Please answer the 3 questions below to verify you information";
+            this.lblMessageText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnCheck
             // 
@@ -128,15 +128,16 @@ namespace SU21_Final_Project
             this.btnCheck.Location = new System.Drawing.Point(278, 178);
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.Size = new System.Drawing.Size(143, 30);
-            this.btnCheck.TabIndex = 39;
+            this.btnCheck.TabIndex = 4;
             this.btnCheck.Text = "&Check";
             this.btnCheck.UseVisualStyleBackColor = false;
             this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
+            this.btnCheck.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnCheck_KeyDown);
             // 
             // lblValidAnswers
             // 
             this.lblValidAnswers.AutoSize = true;
-            this.lblValidAnswers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.lblValidAnswers.ForeColor = System.Drawing.Color.ForestGreen;
             this.lblValidAnswers.Location = new System.Drawing.Point(210, 349);
             this.lblValidAnswers.Name = "lblValidAnswers";
             this.lblValidAnswers.Size = new System.Drawing.Size(253, 17);
@@ -156,35 +157,35 @@ namespace SU21_Final_Project
             this.lblInvalidAnswers.Text = "Sorry, one or more of your answers don\'t match.Please try again.";
             this.lblInvalidAnswers.Visible = false;
             // 
-            // label13
+            // lblNewPassword
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(23, 393);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(112, 17);
-            this.label13.TabIndex = 43;
-            this.label13.Text = "New Password";
+            this.lblNewPassword.AutoSize = true;
+            this.lblNewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewPassword.Location = new System.Drawing.Point(31, 364);
+            this.lblNewPassword.Name = "lblNewPassword";
+            this.lblNewPassword.Size = new System.Drawing.Size(112, 17);
+            this.lblNewPassword.TabIndex = 43;
+            this.lblNewPassword.Text = "New Password";
             // 
             // tbxNewPassword
             // 
             this.tbxNewPassword.BackColor = System.Drawing.Color.White;
             this.tbxNewPassword.Enabled = false;
-            this.tbxNewPassword.Location = new System.Drawing.Point(167, 388);
+            this.tbxNewPassword.Location = new System.Drawing.Point(14, 384);
             this.tbxNewPassword.Name = "tbxNewPassword";
             this.tbxNewPassword.Size = new System.Drawing.Size(165, 22);
-            this.tbxNewPassword.TabIndex = 4;
+            this.tbxNewPassword.TabIndex = 5;
             this.tbxNewPassword.UseSystemPasswordChar = true;
             // 
-            // label12
+            // lblUsernameLabel
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(122, 60);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(125, 17);
-            this.label12.TabIndex = 45;
-            this.label12.Text = "Enter Username";
+            this.lblUsernameLabel.AutoSize = true;
+            this.lblUsernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsernameLabel.Location = new System.Drawing.Point(122, 60);
+            this.lblUsernameLabel.Name = "lblUsernameLabel";
+            this.lblUsernameLabel.Size = new System.Drawing.Size(125, 17);
+            this.lblUsernameLabel.TabIndex = 45;
+            this.lblUsernameLabel.Text = "Enter Username";
             // 
             // tbxEnterUsername
             // 
@@ -199,46 +200,47 @@ namespace SU21_Final_Project
             this.btnNewPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewPassword.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnNewPassword.Location = new System.Drawing.Point(270, 489);
+            this.btnNewPassword.Location = new System.Drawing.Point(340, 515);
             this.btnNewPassword.Name = "btnNewPassword";
             this.btnNewPassword.Size = new System.Drawing.Size(136, 30);
-            this.btnNewPassword.TabIndex = 47;
+            this.btnNewPassword.TabIndex = 7;
             this.btnNewPassword.Text = "&Save Password";
             this.btnNewPassword.UseVisualStyleBackColor = false;
             this.btnNewPassword.Click += new System.EventHandler(this.btnNewPassword_Click);
+            this.btnNewPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnNewPassword_KeyDown);
             // 
-            // label23
+            // lblPasswordRules3
             // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.Color.Blue;
-            this.label23.Location = new System.Drawing.Point(339, 414);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(236, 13);
-            this.label23.TabIndex = 50;
-            this.label23.Text = "Must contain one special character and no space";
+            this.lblPasswordRules3.AutoSize = true;
+            this.lblPasswordRules3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPasswordRules3.ForeColor = System.Drawing.Color.Blue;
+            this.lblPasswordRules3.Location = new System.Drawing.Point(217, 432);
+            this.lblPasswordRules3.Name = "lblPasswordRules3";
+            this.lblPasswordRules3.Size = new System.Drawing.Size(318, 17);
+            this.lblPasswordRules3.TabIndex = 50;
+            this.lblPasswordRules3.Text = "Must contain one special character and no space";
             // 
-            // label21
+            // lblPasswordRules1
             // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.Blue;
-            this.label21.Location = new System.Drawing.Point(339, 381);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(185, 13);
-            this.label21.TabIndex = 48;
-            this.label21.Text = "Must be between 8 and 14 characters";
+            this.lblPasswordRules1.AutoSize = true;
+            this.lblPasswordRules1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPasswordRules1.ForeColor = System.Drawing.Color.Blue;
+            this.lblPasswordRules1.Location = new System.Drawing.Point(217, 398);
+            this.lblPasswordRules1.Name = "lblPasswordRules1";
+            this.lblPasswordRules1.Size = new System.Drawing.Size(246, 17);
+            this.lblPasswordRules1.TabIndex = 48;
+            this.lblPasswordRules1.Text = "Must be between 8 and 20 characters";
             // 
-            // label22
+            // lblPasswordRules2
             // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.Blue;
-            this.label22.Location = new System.Drawing.Point(339, 397);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(274, 13);
-            this.label22.TabIndex = 49;
-            this.label22.Text = "Must contains one digit, one upper case , one lower case";
+            this.lblPasswordRules2.AutoSize = true;
+            this.lblPasswordRules2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPasswordRules2.ForeColor = System.Drawing.Color.Blue;
+            this.lblPasswordRules2.Location = new System.Drawing.Point(217, 415);
+            this.lblPasswordRules2.Name = "lblPasswordRules2";
+            this.lblPasswordRules2.Size = new System.Drawing.Size(376, 17);
+            this.lblPasswordRules2.TabIndex = 49;
+            this.lblPasswordRules2.Text = "Must contains one digit, one upper case or one lower case";
             // 
             // panel1
             // 
@@ -255,31 +257,32 @@ namespace SU21_Final_Project
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnBack.Location = new System.Drawing.Point(23, 489);
+            this.btnBack.Location = new System.Drawing.Point(93, 515);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(102, 30);
-            this.btnBack.TabIndex = 52;
+            this.btnBack.TabIndex = 8;
             this.btnBack.Text = "&Back";
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            this.btnBack.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnBack_KeyDown);
             // 
-            // label2
+            // lblConfirmPassword
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(23, 434);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(137, 17);
-            this.label2.TabIndex = 54;
-            this.label2.Text = "Confirm Password";
+            this.lblConfirmPassword.AutoSize = true;
+            this.lblConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConfirmPassword.Location = new System.Drawing.Point(23, 439);
+            this.lblConfirmPassword.Name = "lblConfirmPassword";
+            this.lblConfirmPassword.Size = new System.Drawing.Size(137, 17);
+            this.lblConfirmPassword.TabIndex = 54;
+            this.lblConfirmPassword.Text = "Confirm Password";
             // 
             // tbxConfirmPassword
             // 
             this.tbxConfirmPassword.BackColor = System.Drawing.Color.White;
-            this.tbxConfirmPassword.Location = new System.Drawing.Point(167, 431);
+            this.tbxConfirmPassword.Location = new System.Drawing.Point(14, 459);
             this.tbxConfirmPassword.Name = "tbxConfirmPassword";
             this.tbxConfirmPassword.Size = new System.Drawing.Size(165, 22);
-            this.tbxConfirmPassword.TabIndex = 5;
+            this.tbxConfirmPassword.TabIndex = 6;
             this.tbxConfirmPassword.UseSystemPasswordChar = true;
             // 
             // label3
@@ -312,25 +315,25 @@ namespace SU21_Final_Project
             this.ClientSize = new System.Drawing.Size(613, 551);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblConfirmPassword);
             this.Controls.Add(this.tbxConfirmPassword);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.label23);
-            this.Controls.Add(this.label21);
-            this.Controls.Add(this.label22);
+            this.Controls.Add(this.lblPasswordRules3);
+            this.Controls.Add(this.lblPasswordRules1);
+            this.Controls.Add(this.lblPasswordRules2);
             this.Controls.Add(this.btnNewPassword);
-            this.Controls.Add(this.label12);
+            this.Controls.Add(this.lblUsernameLabel);
             this.Controls.Add(this.tbxEnterUsername);
-            this.Controls.Add(this.label13);
+            this.Controls.Add(this.lblNewPassword);
             this.Controls.Add(this.tbxNewPassword);
             this.Controls.Add(this.lblInvalidAnswers);
             this.Controls.Add(this.lblValidAnswers);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label16);
+            this.Controls.Add(this.lblMessageText);
+            this.Controls.Add(this.lblQuestionThree);
             this.Controls.Add(this.tbxIdol);
-            this.Controls.Add(this.label15);
+            this.Controls.Add(this.lblQuestionTwo);
             this.Controls.Add(this.tbxDog);
-            this.Controls.Add(this.label14);
+            this.Controls.Add(this.lblQuestionOne);
             this.Controls.Add(this.tbxDrink);
             this.Controls.Add(this.panel1);
             this.MaximizeBox = false;
@@ -347,27 +350,27 @@ namespace SU21_Final_Project
 
         #endregion
 
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lblQuestionThree;
         private System.Windows.Forms.TextBox tbxIdol;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lblQuestionTwo;
         private System.Windows.Forms.TextBox tbxDog;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lblQuestionOne;
         private System.Windows.Forms.TextBox tbxDrink;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblMessageText;
         private System.Windows.Forms.Button btnCheck;
         private System.Windows.Forms.Label lblValidAnswers;
         private System.Windows.Forms.Label lblInvalidAnswers;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblNewPassword;
         private System.Windows.Forms.TextBox tbxNewPassword;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblUsernameLabel;
         private System.Windows.Forms.TextBox tbxEnterUsername;
         private System.Windows.Forms.Button btnNewPassword;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label lblPasswordRules3;
+        private System.Windows.Forms.Label lblPasswordRules1;
+        private System.Windows.Forms.Label lblPasswordRules2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblConfirmPassword;
         private System.Windows.Forms.TextBox tbxConfirmPassword;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;

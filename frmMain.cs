@@ -863,10 +863,7 @@ namespace SU21_Final_Project
         //Close Application
         private void btnExit_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Do you want to exit the application", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
+           
         }
         
 
@@ -929,9 +926,12 @@ namespace SU21_Final_Project
         //Back to login form
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            new frmLogin().Show();
-            this.Hide();
-            Reset();
+            if (MessageBox.Show("Do you want to log out?", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                new frmLogin().Show();
+                this.Hide();
+                Reset();
+            }
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -945,11 +945,65 @@ namespace SU21_Final_Project
                     }
                     else
                     {
-                        Application.Exit();
+                        new frmLogin().Show();
+                        this.Hide();
+                        Reset();
                     }
                     break;
             }
         }
+
+        //---------------------------------Key press Enter for buttons-------------------------------------
+
+        private void btnAdmin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnAdmin.PerformClick();
+            }
+        }
+
+        private void btnLogout_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogout.PerformClick();
+            }
+        }
+
+        private void btnRemove_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnRemove.PerformClick();
+            }
+        }
+
+        private void btnAddToList_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnAddToList.PerformClick();
+            }
+        }
+
+        private void btnCheckout_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnCheckout.PerformClick();
+            }
+        }
+
+        private void btnReset_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnReset.PerformClick();
+            }
+        }
+
+       
     }
 }
 

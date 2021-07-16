@@ -65,7 +65,7 @@ namespace SU21_Final_Project
                     while (reader.Read())
                     {
                         //check through the user table column to find a matching value
-                        if (reader["Username"].ToString() == strEnterUsername)
+                        if (reader["Username"].ToString().Equals(strEnterUsername, StringComparison.CurrentCultureIgnoreCase))
                         {
                             if ( reader["Answer1"].ToString().Equals(strAnswerOne, StringComparison.CurrentCultureIgnoreCase)
                                 && reader["Answer2"].ToString().Equals(strAnswerTwo, StringComparison.CurrentCultureIgnoreCase)
@@ -163,17 +163,14 @@ namespace SU21_Final_Project
         public bool ValidPassword(string strPassword)
         {
 
-            if (strPassword.Length < 8 || strPassword.Length > 14)
+            if (strPassword.Length < 8 || strPassword.Length > 20)
                 return false;
 
-            else if (!strPassword.Any(char.IsUpper))
+            else if (!strPassword.Any(char.IsLetter))
             {
                 return false;
             }
-            else if (!strPassword.Any(char.IsLower))
-            {
-                return false;
-            }
+
             else if (!strPassword.Any(char.IsDigit))
             {
                 return false;
@@ -224,15 +221,41 @@ namespace SU21_Final_Project
             switch (e.CloseReason)
             {
                 case CloseReason.UserClosing:
-                    if (MessageBox.Show("Are you sure you want to exit?", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    if (MessageBox.Show("Are you sure you want to close this form?", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                     {
                         e.Cancel = true;
                     }
                     else
                     {
-                        Application.Exit();
+                        new frmLogin().Show();
+                        this.Hide();
                     }
                     break;
+            }
+        }
+
+        //------------------Key press Enter-----------------------------------------
+        private void btnCheck_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnCheck.PerformClick();
+            }
+        }
+
+        private void btnBack_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnBack.PerformClick();
+            }
+        }
+
+        private void btnNewPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnNewPassword.PerformClick();
             }
         }
     }

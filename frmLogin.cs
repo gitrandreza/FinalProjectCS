@@ -54,7 +54,7 @@ namespace SU21_Final_Project
                 while (reader.Read())
                 {
                     //iterates through the user name column to find a matching value
-                    if (reader["Username"].ToString() == strUsername)
+                    if (reader["Username"].ToString().Equals(strUsername, StringComparison.CurrentCultureIgnoreCase))
                     {
                         if (reader["Password"].ToString() == strPassword)
                         {
@@ -127,7 +127,45 @@ namespace SU21_Final_Project
                     {
                         e.Cancel = true;
                     }
+                    else
+                    {
+                        Application.Exit();
+                    }
                     break;
+            }
+        }
+
+
+        //---------------------------------------Perform Click using Entry Key for each buttons--------------------------
+        private void btnLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin.PerformClick();
+            }
+        }
+
+        private void btnSignUp_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSignUp.PerformClick();
+            }
+        }
+
+        private void btnExit_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnExit.PerformClick();
+            }
+        }
+
+        private void btnResetPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnResetPassword.PerformClick();
             }
         }
     }

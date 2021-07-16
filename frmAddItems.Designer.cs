@@ -33,7 +33,6 @@ namespace SU21_Final_Project
             this.btnSaveItems = new System.Windows.Forms.Button();
             this.cboSupplier = new System.Windows.Forms.ComboBox();
             this.cboCategory = new System.Windows.Forms.ComboBox();
-            this.label24 = new System.Windows.Forms.Label();
             this.lblItemName = new System.Windows.Forms.Label();
             this.tbxItemCost = new System.Windows.Forms.TextBox();
             this.tbxItemName = new System.Windows.Forms.TextBox();
@@ -56,7 +55,6 @@ namespace SU21_Final_Project
             this.gbxItemInformation.Controls.Add(this.btnSaveItems);
             this.gbxItemInformation.Controls.Add(this.cboSupplier);
             this.gbxItemInformation.Controls.Add(this.cboCategory);
-            this.gbxItemInformation.Controls.Add(this.label24);
             this.gbxItemInformation.Controls.Add(this.lblItemName);
             this.gbxItemInformation.Controls.Add(this.tbxItemCost);
             this.gbxItemInformation.Controls.Add(this.tbxItemName);
@@ -114,17 +112,6 @@ namespace SU21_Final_Project
             this.cboCategory.Name = "cboCategory";
             this.cboCategory.Size = new System.Drawing.Size(78, 24);
             this.cboCategory.TabIndex = 3;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label24.Location = new System.Drawing.Point(667, 18);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(122, 17);
-            this.label24.TabIndex = 46;
-            this.label24.Text = "(*)Required Fields";
             // 
             // lblItemName
             // 
@@ -257,7 +244,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.GroupBox gbxItemInformation;
         private System.Windows.Forms.ComboBox cboSupplier;
         private System.Windows.Forms.ComboBox cboCategory;
-        private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label lblItemName;
         private System.Windows.Forms.TextBox tbxItemCost;
         private System.Windows.Forms.TextBox tbxItemName;

@@ -37,6 +37,9 @@ namespace SU21_Final_Project
         string strEmployeeSalary;
         string strEmployeeHiredDate;
 
+        string strSelected;
+        string strName;
+
         public frmAdmin()
         {
             InitializeComponent();
@@ -47,12 +50,6 @@ namespace SU21_Final_Project
             }
             
         }
-
-
-        
-
-       
-
 
         public void DisplayAllItems()
         {
@@ -275,12 +272,21 @@ namespace SU21_Final_Project
 
         private void btnSaveUpdate_Click(object sender, EventArgs e)
         {
-          
-                string strName;
 
-                string strQuantity;
-                int intQuantity;
+
+            string strName;
+
+            string strSelectedQuantity;
+            strSelectedQuantity = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[2].Value.ToString();
+            int intSelectedQuantity;
+            bool blnResultTryParse = int.TryParse(strSelectedQuantity, out intSelectedQuantity);
+
+            string strAddQuantity;
+                int intAddQuantity=0;
                 bool blnQuantityConvert;
+            bool blnInvoice;
+
+            int intUpdateQuantity;
 
                 string strCost;
                 double dblCost;
@@ -319,14 +325,18 @@ namespace SU21_Final_Project
 
                 if (tbxQuantity.Text == "")
                 {
-                    strQuantity = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[2].Value.ToString();
-                    blnQuantityConvert = int.TryParse(strQuantity, out intQuantity);
+                   
+                    intUpdateQuantity = intSelectedQuantity;
+                    blnInvoice = false;
                 }
                 else
                 {
 
-                    strQuantity = tbxQuantity.Text;
-                    blnQuantityConvert = int.TryParse(strQuantity, out intQuantity);
+                    strAddQuantity = tbxQuantity.Text;
+                    blnQuantityConvert = int.TryParse(strAddQuantity, out intAddQuantity);
+                   
+                    intUpdateQuantity = intSelectedQuantity + intAddQuantity;
+                    blnInvoice = true;
                 }
 
                 if (tbxCost.Text == "")
@@ -345,6 +355,7 @@ namespace SU21_Final_Project
                 {
                     strRetailPrice = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[4].Value.ToString();
                     blnRetailPriceConvert = double.TryParse(strRetailPrice, out dblRetailPrice);
+                    
                 }
                 else
                 {
@@ -388,7 +399,7 @@ namespace SU21_Final_Project
                     strSupplierID = cboSupplierID.SelectedItem.ToString();
                     intSupplierTryParse = int.TryParse(strSupplierID, out intSupplierID);
                 }
-                if (intQuantity > 0 && intQuantity < int.MaxValue )
+                if (intSelectedQuantity > 0 && intSelectedQuantity < int.MaxValue )
                 {
                     if (dblCost > 0 && dblCost < double.MaxValue)
                     {
@@ -400,7 +411,7 @@ namespace SU21_Final_Project
                                 " where ItemID= '" + strItemID + "'";
                             SqlCommand updateCommande = new SqlCommand(strUpdateQuery, Connection);
                             SqlParameter sqlpmName = updateCommande.Parameters.AddWithValue("@Name", strName);
-                            SqlParameter sqlpmQuantity = updateCommande.Parameters.AddWithValue("@Quantity", intQuantity);
+                            SqlParameter sqlpmQuantity = updateCommande.Parameters.AddWithValue("@Quantity", intUpdateQuantity);
                             SqlParameter sqlpmCost = updateCommande.Parameters.AddWithValue("@Cost", dblCost);
                             SqlParameter sqlpmRetailPrice = updateCommande.Parameters.AddWithValue("@RetailPrice", dblRetailPrice);
                             SqlParameter sqlpmDescription = updateCommande.Parameters.AddWithValue("@Description", strDescription);
@@ -437,12 +448,107 @@ namespace SU21_Final_Project
                     tbxQuantity.Text = "";
                     tbxQuantity.Focus();
                 }
+
+                if (blnInvoice == true)
+                {
+                    if (MessageBox.Show("Do you want Invoice?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        PrintInvoice(GenerateInvoice(strName, intAddQuantity, dblCost));
+
+                    }
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error :" + ex);
             }
            
+        }
+
+        private StringBuilder GenerateInvoice(string strItemName,int intItemQuantity, double dblCost)
+        {
+            double dblTax = 0.0825;
+            double dblTotalCost = dblCost * intItemQuantity;
+            double dblTaxValue = dblTotalCost * dblTax;
+            double dblTotalPay = dblTotalCost + dblTaxValue;
+
+            StringBuilder html = new StringBuilder();
+            StringBuilder css = new StringBuilder();
+
+            css.AppendLine("<style>");
+            css.AppendLine("td {padding: 5px; text-align:center; font-weight: bold; text-align: center;}");
+            css.AppendLine("h1 {color: blue;}");
+            css.AppendLine("h2 {color: red;}");
+            css.AppendLine("</style>");
+
+            html.AppendLine("<html>");
+            html.AppendLine($"<head>{css}<title>{"Invoice"}</title></head>");
+            html.AppendLine("<body>");
+
+            html.AppendLine($"<h1>{" Purchase Detail"}</h1>");
+
+            //html.Append($"<h5>{"Date: "}{lblDate.Text}</h5>");
+            //html.Append($"<h5>{"Customer Name: "}{lblNameOfUser.Text}</h5>");
+            //html.Append($"<h5>{"Sale ID: "}{intSaleId.ToString()}</h5>");
+
+            html.AppendLine("<table>");
+            html.AppendLine("<tr><td>Name</td><td>Quantity</td><td>Cost</td><td>TotalCost</td>");
+            html.AppendLine("<tr><td colspan=4><hr /></td></tr>");
+
+            html.Append("<tr>");
+            html.Append($"<td>{strItemName}</td>");
+            html.Append($"<td>{intItemQuantity.ToString()}</td>");
+            html.Append($"<td>{dblCost.ToString("C2")}</td>");
+            html.Append($"<td>{dblTotalCost.ToString("C2")}</td>");
+            html.Append("</tr>");
+            html.AppendLine("<tr><td colspan=4><hr /></td></tr>");
+
+
+
+
+            html.Append("<tr><td colspan=4><hr></hd></td></tr>");
+            html.Append("<table>");
+
+            
+            html.AppendLine($"<h5>{"Subtotal: "}{dblTotalCost.ToString("C2")}</h5>");
+            html.AppendLine($"<h5>{"Tax Sale(8.25%): "}{dblTaxValue.ToString("C2")}</h5>");
+            html.AppendLine($"<h5>{"Total Amount: "}{dblTotalPay.ToString("C2")}</h5>");
+
+
+            
+
+            html.Append($"<h2>{"Company: Supplier  "}</h2>");
+
+            html.Append("</body></html>");//close body
+
+            return html;
+        }
+
+        // Write (and overwrite) to the hard drive using the same filename of "Report.html"
+        private void PrintInvoice(StringBuilder html)
+        {
+
+            try
+            {
+                // A "using" statement will automatically close a file after opening it.               
+                using (StreamWriter sw = new StreamWriter("Report.html"))
+                {
+                    sw.WriteLine(html);
+                }
+                System.Diagnostics.Process.Start(@"Report.html"); //Open the report in the default web browser
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("You currently do not have write permissions for this feature.",
+                    "Error with System Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            //unique filename  use for a date and time with part of a name
+            DateTime today = DateTime.Now;
+            using (StreamWriter sw = new StreamWriter($"{today.ToString("yyyy-MM-dd-HHmmss")} - Report.html"))
+            {
+                sw.WriteLine(html);
+            }
         }
         private void frmAdmin_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -626,6 +732,42 @@ namespace SU21_Final_Project
             }
         }
 
+        private void btnReLoad_Click(object sender, EventArgs e)
+        {
+            string strItemToReload = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[1].Value.ToString();
+            int intReloadQuantity;
+            string strReloadQuantity = tbxReload.Text;
+
+            if (dgvAllProducts.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Do you want to reload '" + strItemToReload + "'?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    tbxReload.Enabled = true;
+
+
+                }
+                else
+                {
+                    MessageBox.Show("Please select the product you want to edit", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select the product you want to update", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
+
+        private void tbxReload_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+    (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        
     }
 
 }
