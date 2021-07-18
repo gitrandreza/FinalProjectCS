@@ -386,7 +386,7 @@ namespace SU21_Final_Project
 
                     }
                 }
-                if (intSelectedQuantity > 0 && intSelectedQuantity < int.MaxValue)
+                if (intSelectedQuantity >= 0 && intSelectedQuantity < int.MaxValue)
                 {
                     if (dblCost > 0 && dblCost < double.MaxValue)
                     {
@@ -408,7 +408,7 @@ namespace SU21_Final_Project
                             btnSaveUpdate.Enabled = true;
                             Connection.Close();
 
-                            MessageBox.Show("The selected item has been updated successfully?", "Exit Application", MessageBoxButtons.OK);
+                            MessageBox.Show("The selected item has been updated successfully?", "Message", MessageBoxButtons.OK);
 
                             DisplayAllItems();
                             ResetUpdateFields();
@@ -818,9 +818,9 @@ namespace SU21_Final_Project
 
             if (dgvEmployee.SelectedRows.Count > 0)
             {
-                if (MessageBox.Show("Do you want to edit Employee '"+strFirstName+"' '" + strLastName + "'?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Do you want to edit Employee '"+strFirstName+" " + strLastName + "'?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    gbxEmployeeEdit.Enabled = true;
+                    gbxEdit.Enabled = true;
 
                 }
                 else
@@ -850,7 +850,7 @@ namespace SU21_Final_Project
                 //Connection.Open();
                 Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
-               
+               strPersonID = dgvEmployee.Rows[dgvEmployee.CurrentCell.RowIndex].Cells[0].Value.ToString();
 
                 if (tbxFirstName.Text == "")
                 {
@@ -945,27 +945,27 @@ namespace SU21_Final_Project
 
                 Connection.Open();
                
-                    string strQuery = "UPDATE RandrezaVoharisoaM21Su2332.Person SET NameFirst = @NameFirst,NameLast = @NameLast,Address1 = @Address,City = @City, Zipcode = @Zip, Email= @Email, PhonePrimary = @Phone" +
+                    string strQuery = "UPDATE RandrezaVoharisoaM21Su2332.Person SET NameFirst = @NameFirst,NameLast = @NameLast,Address1 = @Address,City = @City,State=@State, Zipcode = @Zip, Email= @Email, PhonePrimary = @Phone" +
                     " where PersonID= '" + strPersonID + "'";
                     SqlCommand editCommande = new SqlCommand(strQuery, Connection);
-                    SqlParameter sqlpmFirstName = editCommande.Parameters.AddWithValue("@NameFirst", strNameFirst);
-                    SqlParameter sqlpmLastName = editCommande.Parameters.AddWithValue("@NameLast", strNameLast);
-                    SqlParameter sqlpmAddress = editCommande.Parameters.AddWithValue("@Address", strAddress);
-                    SqlParameter sqlpmCity = editCommande.Parameters.AddWithValue("@City", strCity);
-                    SqlParameter sqlpmState = editCommande.Parameters.AddWithValue("@State", strStateEdit);
-                    SqlParameter sqlpmZip = editCommande.Parameters.AddWithValue("@Zip", strZip);
-                    SqlParameter sqlpmEmail = editCommande.Parameters.AddWithValue("@Email", strEmail);
-                    SqlParameter sqlpmPhone = editCommande.Parameters.AddWithValue("@Phone", strPhoneEdit);
+                SqlParameter sqlpmNameFirst = editCommande.Parameters.AddWithValue("@NameFirst", strNameFirst);
+                SqlParameter sqlpmNameLast = editCommande.Parameters.AddWithValue("@NameLast", strNameLast);
+                SqlParameter sqlpmAddress = editCommande.Parameters.AddWithValue("@Address", strAddress);
+                SqlParameter sqlpmCity = editCommande.Parameters.AddWithValue("@City", strCity);
+                SqlParameter sqlpmState = editCommande.Parameters.AddWithValue("@State", strStateEdit);
+                SqlParameter sqlpmZip = editCommande.Parameters.AddWithValue("@Zip", strZip);
+                SqlParameter sqlpmEmail = editCommande.Parameters.AddWithValue("@Email", strEmail);
+                SqlParameter sqlpmPhone = editCommande.Parameters.AddWithValue("@Phone", strPhoneEdit);
                     editCommande.ExecuteNonQuery();
 
 
 
                     Connection.Close();
 
-                    MessageBox.Show("The selected employee has been updated successfully?", "Exit Application", MessageBoxButtons.OK);
+                    MessageBox.Show("The selected employee has been updated successfully?", "Message", MessageBoxButtons.OK);
 
                     DisplayEmployees();
-                    //ResetEditFields();
+                    ResetEditFields();
               
             }
             catch (Exception ex)
@@ -1028,17 +1028,6 @@ namespace SU21_Final_Project
             }
         }
 
-        private void cbxState_CheckedChanged_1(object sender, EventArgs e)
-        {
-            if (cbxState.Checked == true)
-            {
-                cboStates.Enabled = true;
-            }
-            else
-            {
-                cboStates.Enabled = false;
-            }
-        }
 
         private void cbxZip_CheckedChanged(object sender, EventArgs e)
         {
@@ -1063,34 +1052,23 @@ namespace SU21_Final_Project
                 tbxEmail.Enabled = false;
             }
         }
-        private void cbxPhone_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbxPhone.Checked == true)
-            {
-                mskPhones.Enabled = true;
-            }
-            else
-            {
-                mskPhones.Enabled = false;
-            }
-        }
+    
         public void ResetEditFields()
         {
             cbxFirstName.Checked = false; tbxFirstName.Text = "";
             cbxLastName.Checked = false; tbxLastName.Text = "";
             cbxAddress.Checked = false; tbxAddress.Text = "";
             cbxZip.Checked = false; tbxZip.Text = "";
-            mskPhones.Text = "";
-            cbxPhone.Checked = false;
-            cbxState.Checked = false;
-            cboStates.Text = "";
+            cbxCity.Checked = false; tbxCity.Text = "";
+            cbxEditPhone.Enabled = false; mskPhones.Text = "";
+            cbxStates.Enabled = false; cboStates.Text = "";
             cbxEmail.Checked = false; tbxEmail.Text = "";
 
         }
 
         private void dgvEmployee_SelectionChanged_1(object sender, EventArgs e)
         {
-            gbxEmployeeEdit.Enabled = false;
+            gbxEdit.Enabled = false;
             ResetEditFields();
         }
 
@@ -1144,6 +1122,30 @@ namespace SU21_Final_Project
             catch (Exception ex)
             {
                 throw;
+            }
+        }
+
+        private void cbxEditPhone_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxEditPhone.Checked == true)
+            {
+                mskPhones.Enabled = true;
+            }
+            else
+            {
+                mskPhones.Enabled = false;
+            }
+        }
+
+        private void cbxStates_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (cbxStates.Checked == true)
+            {
+                cboStates.Enabled = true;
+            }
+            else
+            {
+                cboStates.Enabled = false;
             }
         }
     }
