@@ -661,6 +661,10 @@ namespace SU21_Final_Project
                 int intUserID;
                string strUserID = lblUser.Text;
                 bool intResultTryParse = int.TryParse(strUserID, out intUserID);
+                if(intResultTryParse==false)
+                {
+                    MessageBox.Show("You did not enter a value to convert","Conversion Issue",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 string strDate = lblDate.Text;
 
                 try
@@ -680,11 +684,12 @@ namespace SU21_Final_Project
 
                     Connection.Open();
                     //Store Sales Report
-                    SqlCommand commandSalesReport = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesReport(UserID,CreationDate) " +
-                        "VALUES(@UserID,@CreationDate)", Connection);
+                    SqlCommand commandSalesReport = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesReport(UserID,CreationDate, TotalSale) " +
+                        "VALUES(@UserID,@CreationDate,@TotalSale)", Connection);
                     commandSalesReport.Parameters.AddWithValue("@UserID", intUserID);
                     commandSalesReport.Parameters.AddWithValue("@CreationDate", strDate);
-                   
+                    commandSalesReport.Parameters.AddWithValue("@TotalSale", dblTotalAmount.ToString());
+
 
                     commandSalesReport.ExecuteNonQuery();
 

@@ -18,8 +18,8 @@ namespace SU21_Final_Project
         SqlConnection Connection;
         SqlDataAdapter dataAdapter;
         DataTable dataTable;
-
-
+        SqlDataReader reader;
+        SqlCommand command;
 
 
         string strItemID;
@@ -39,6 +39,7 @@ namespace SU21_Final_Project
             if (tabManagerFeatures.SelectedTab.Name == "tabInventory")
             {
                 DisplayAllItems();
+                DisplayLowQuantityItems();
             }
 
         }
@@ -57,6 +58,7 @@ namespace SU21_Final_Project
                 dataAdapter.Fill(dataTable);
                 dgvAllProducts.DataSource = dataTable;
 
+      
 
                 Connection.Close();
             }
@@ -127,6 +129,10 @@ namespace SU21_Final_Project
             if (tabManagerFeatures.SelectedTab.Name == "tabCustomer")
             {
                 DisplayCustomers();
+            }
+            if (tabManagerFeatures.SelectedTab.Name == "tabSalesReport")
+            {
+                DisplaySalesReport();
             }
         }
 
@@ -699,6 +705,7 @@ namespace SU21_Final_Project
 
         private void dgvEmployee_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            string strPersonId;
             try
             {
                 //connect to database
@@ -710,11 +717,11 @@ namespace SU21_Final_Project
                 {
                     //instantiate object from Items class and assign value from cell
                     DataGridViewRow row = this.dgvEmployee.Rows[e.RowIndex];
-                    strPersonID = row.Cells["PersonID"].Value.ToString();
+                    strPersonId = row.Cells["PersonId"].Value.ToString();
 
 
                     //get salary, hired date and Position from Employees Table
-                    string strQuery = "SELECT RandrezaVoharisoaM21Su2332.Employees.Salary,RandrezaVoharisoaM21Su2332.Employees.HiredDate, RandrezaVoharisoaM21Su2332.Employees.Position,RandrezaVoharisoaM21Su2332.Employees.UserID FROM RandrezaVoharisoaM21Su2332.Employees FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.UserID= RandrezaVoharisoaM21Su2332.Employees.UserID WHERE RandrezaVoharisoaM21Su2332.Users.PersonID='" + strPersonID + "'";
+                    string strQuery = "SELECT RandrezaVoharisoaM21Su2332.Employees.Salary,RandrezaVoharisoaM21Su2332.Employees.HiredDate, RandrezaVoharisoaM21Su2332.Employees.Position,RandrezaVoharisoaM21Su2332.Employees.UserID FROM RandrezaVoharisoaM21Su2332.Employees FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.UserID= RandrezaVoharisoaM21Su2332.Employees.UserID WHERE RandrezaVoharisoaM21Su2332.Users.PersonID='" + strPersonId + "'";
                     SqlCommand command = new SqlCommand(strQuery, Connection);
 
                     //gets the results from the sql command
@@ -844,7 +851,7 @@ namespace SU21_Final_Project
             string strZip;
             string strStateEdit;
             string strPhoneEdit;
-
+            string strPersonID;
             try
             {
                 //Connection.Open();
@@ -1146,6 +1153,86 @@ namespace SU21_Final_Project
             else
             {
                 cboStates.Enabled = false;
+            }
+        }
+
+        public void DisplayLowQuantityItems()
+        {
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                dataAdapter = new SqlDataAdapter("SELECT Name, Quantity FROM RandrezaVoharisoaM21Su2332.Items where Quantity <50;", Connection);
+                dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                dgvLowItem.DataSource = dataTable;
+
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void DisplaySalesReport()
+        {
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                dataAdapter = new SqlDataAdapter("SELECT * FROM RandrezaVoharisoaM21Su2332.SalesReport;", Connection);
+                dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                dgvSalesReport.DataSource = dataTable;
+
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void DisplaySalesDetail(string strSaleID)
+        {
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                string strQuery = "SELECT * FROM RandrezaVoharisoaM21Su2332.SalesDetails where SaleID='" + strSaleID + "' ;";
+                dataAdapter = new SqlDataAdapter(strQuery, Connection);
+                dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                dgvSalesDetails.DataSource = dataTable;
+
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void dgvSalesReport_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string strSaleId;
+            if (e.RowIndex >= 0)
+            {
+                //instantiate object from Items class and assign value from cell
+                DataGridViewRow row = this.dgvSalesReport.Rows[e.RowIndex];
+                strSaleId = row.Cells["SaleId"].Value.ToString();
+
+                DisplaySalesDetail(strSaleId);
+
             }
         }
     }

@@ -31,6 +31,8 @@ namespace SU21_Final_Project
         {
             this.tabEmployee = new System.Windows.Forms.TabPage();
             this.gbxEdit = new System.Windows.Forms.GroupBox();
+            this.cbxStates = new System.Windows.Forms.CheckBox();
+            this.cbxEditPhone = new System.Windows.Forms.CheckBox();
             this.btnSaveEdit = new System.Windows.Forms.Button();
             this.tbxAddress = new System.Windows.Forms.TextBox();
             this.mskPhones = new System.Windows.Forms.MaskedTextBox();
@@ -77,11 +79,7 @@ namespace SU21_Final_Project
             this.btnRemoveItem = new System.Windows.Forms.Button();
             this.btnAddItems = new System.Windows.Forms.Button();
             this.dgvAllProducts = new System.Windows.Forms.DataGridView();
-            this.cboItemName = new System.Windows.Forms.ComboBox();
-            this.tbxUpDescrption = new System.Windows.Forms.TextBox();
             this.btnUpdateItem = new System.Windows.Forms.Button();
-            this.pbxItemPicture = new System.Windows.Forms.PictureBox();
-            this.btnInsertImage = new System.Windows.Forms.Button();
             this.tabManagerFeatures = new System.Windows.Forms.TabControl();
             this.tabCustomer = new System.Windows.Forms.TabPage();
             this.btnRemoveCustomer = new System.Windows.Forms.Button();
@@ -90,8 +88,13 @@ namespace SU21_Final_Project
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
             this.lblDate = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.cbxEditPhone = new System.Windows.Forms.CheckBox();
-            this.cbxStates = new System.Windows.Forms.CheckBox();
+            this.lblLowItemLabel = new System.Windows.Forms.Label();
+            this.dgvLowItem = new System.Windows.Forms.DataGridView();
+            this.tabSalesReport = new System.Windows.Forms.TabPage();
+            this.dgvSalesReport = new System.Windows.Forms.DataGridView();
+            this.dgvSalesDetails = new System.Windows.Forms.DataGridView();
+            this.lblSalesReportLabel = new System.Windows.Forms.Label();
+            this.lblSalesDetailLabel = new System.Windows.Forms.Label();
             this.tabEmployee.SuspendLayout();
             this.gbxEdit.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -99,10 +102,13 @@ namespace SU21_Final_Project
             this.tabInventory.SuspendLayout();
             this.gbxUpdateField.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllProducts)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxItemPicture)).BeginInit();
             this.tabManagerFeatures.SuspendLayout();
             this.tabCustomer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLowItem)).BeginInit();
+            this.tabSalesReport.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSalesReport)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSalesDetails)).BeginInit();
             this.SuspendLayout();
             // 
             // tabEmployee
@@ -147,6 +153,28 @@ namespace SU21_Final_Project
             this.gbxEdit.TabIndex = 57;
             this.gbxEdit.TabStop = false;
             this.gbxEdit.Text = "Edit Fields";
+            // 
+            // cbxStates
+            // 
+            this.cbxStates.AutoSize = true;
+            this.cbxStates.Location = new System.Drawing.Point(385, 102);
+            this.cbxStates.Name = "cbxStates";
+            this.cbxStates.Size = new System.Drawing.Size(70, 21);
+            this.cbxStates.TabIndex = 57;
+            this.cbxStates.Text = "States";
+            this.cbxStates.UseVisualStyleBackColor = true;
+            this.cbxStates.CheckedChanged += new System.EventHandler(this.cbxStates_CheckedChanged_1);
+            // 
+            // cbxEditPhone
+            // 
+            this.cbxEditPhone.AutoSize = true;
+            this.cbxEditPhone.Location = new System.Drawing.Point(385, 66);
+            this.cbxEditPhone.Name = "cbxEditPhone";
+            this.cbxEditPhone.Size = new System.Drawing.Size(79, 21);
+            this.cbxEditPhone.TabIndex = 56;
+            this.cbxEditPhone.Text = "Phone#";
+            this.cbxEditPhone.UseVisualStyleBackColor = true;
+            this.cbxEditPhone.CheckedChanged += new System.EventHandler(this.cbxEditPhone_CheckedChanged);
             // 
             // btnSaveEdit
             // 
@@ -473,15 +501,13 @@ namespace SU21_Final_Project
             // 
             // tabInventory
             // 
+            this.tabInventory.Controls.Add(this.dgvLowItem);
+            this.tabInventory.Controls.Add(this.lblLowItemLabel);
             this.tabInventory.Controls.Add(this.gbxUpdateField);
             this.tabInventory.Controls.Add(this.btnRemoveItem);
             this.tabInventory.Controls.Add(this.btnAddItems);
             this.tabInventory.Controls.Add(this.dgvAllProducts);
-            this.tabInventory.Controls.Add(this.cboItemName);
-            this.tabInventory.Controls.Add(this.tbxUpDescrption);
             this.tabInventory.Controls.Add(this.btnUpdateItem);
-            this.tabInventory.Controls.Add(this.pbxItemPicture);
-            this.tabInventory.Controls.Add(this.btnInsertImage);
             this.tabInventory.Location = new System.Drawing.Point(4, 25);
             this.tabInventory.Name = "tabInventory";
             this.tabInventory.Padding = new System.Windows.Forms.Padding(3);
@@ -675,9 +701,9 @@ namespace SU21_Final_Project
             // 
             // btnRemoveItem
             // 
-            this.btnRemoveItem.Location = new System.Drawing.Point(723, 183);
+            this.btnRemoveItem.Location = new System.Drawing.Point(567, 188);
             this.btnRemoveItem.Name = "btnRemoveItem";
-            this.btnRemoveItem.Size = new System.Drawing.Size(121, 47);
+            this.btnRemoveItem.Size = new System.Drawing.Size(122, 38);
             this.btnRemoveItem.TabIndex = 12;
             this.btnRemoveItem.Text = "Remove Item";
             this.btnRemoveItem.UseVisualStyleBackColor = true;
@@ -685,7 +711,7 @@ namespace SU21_Final_Project
             // 
             // btnAddItems
             // 
-            this.btnAddItems.Location = new System.Drawing.Point(20, 188);
+            this.btnAddItems.Location = new System.Drawing.Point(73, 188);
             this.btnAddItems.Name = "btnAddItems";
             this.btnAddItems.Size = new System.Drawing.Size(121, 37);
             this.btnAddItems.TabIndex = 3;
@@ -707,76 +733,9 @@ namespace SU21_Final_Project
             this.dgvAllProducts.TabIndex = 1;
             this.dgvAllProducts.SelectionChanged += new System.EventHandler(this.dgvAllProducts_SelectionChanged);
             // 
-            // cboItemName
-            // 
-            this.cboItemName.AutoCompleteCustomSource.AddRange(new string[] {
-            "T-Shirt",
-            "Mugs",
-            "Bagpack",
-            "Sweats",
-            "Jacket",
-            "Polos",
-            "Caps",
-            "Casual Shirt",
-            "Face Mask",
-            "Hand Sanitizer",
-            "Pens",
-            "Iphone Wallet",
-            "Bottle Opener",
-            "Duffle",
-            "Tote",
-            "Cooler Bag",
-            "Hooded",
-            "Lip Balm",
-            "Antibacterial Wipes",
-            "Leeds Insulated",
-            "Blanket",
-            "Towel",
-            "Robe",
-            "Stress ball",
-            "Grocery Bag"});
-            this.cboItemName.FormattingEnabled = true;
-            this.cboItemName.Items.AddRange(new object[] {
-            "T-Shirt",
-            "Mugs",
-            "Bagpack",
-            "Sweats",
-            "Jacket",
-            "Polos",
-            "Caps",
-            "Casual Shirt",
-            "Face Mask",
-            "Hand Sanitizer",
-            "Pens",
-            "Iphone Wallet",
-            "Bottle Opener",
-            "Duffle",
-            "Tote",
-            "Cooler Bag",
-            "Hooded",
-            "Lip Balm",
-            "Antibacterial Wipes",
-            "Leeds Insulated",
-            "Blanket",
-            "Towel",
-            "Robe",
-            "Stress ball",
-            "Grocery Bag"});
-            this.cboItemName.Location = new System.Drawing.Point(880, 489);
-            this.cboItemName.Name = "cboItemName";
-            this.cboItemName.Size = new System.Drawing.Size(121, 24);
-            this.cboItemName.TabIndex = 9;
-            // 
-            // tbxUpDescrption
-            // 
-            this.tbxUpDescrption.Location = new System.Drawing.Point(880, 454);
-            this.tbxUpDescrption.Name = "tbxUpDescrption";
-            this.tbxUpDescrption.Size = new System.Drawing.Size(117, 22);
-            this.tbxUpDescrption.TabIndex = 8;
-            // 
             // btnUpdateItem
             // 
-            this.btnUpdateItem.Location = new System.Drawing.Point(379, 188);
+            this.btnUpdateItem.Location = new System.Drawing.Point(299, 189);
             this.btnUpdateItem.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdateItem.Name = "btnUpdateItem";
             this.btnUpdateItem.Size = new System.Drawing.Size(150, 37);
@@ -786,31 +745,12 @@ namespace SU21_Final_Project
             this.btnUpdateItem.Click += new System.EventHandler(this.btnUpdateItem_Click_1);
             this.btnUpdateItem.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnUpdateItem_KeyDown);
             // 
-            // pbxItemPicture
-            // 
-            this.pbxItemPicture.Location = new System.Drawing.Point(844, 257);
-            this.pbxItemPicture.Margin = new System.Windows.Forms.Padding(4);
-            this.pbxItemPicture.Name = "pbxItemPicture";
-            this.pbxItemPicture.Size = new System.Drawing.Size(173, 195);
-            this.pbxItemPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbxItemPicture.TabIndex = 6;
-            this.pbxItemPicture.TabStop = false;
-            // 
-            // btnInsertImage
-            // 
-            this.btnInsertImage.Location = new System.Drawing.Point(886, 189);
-            this.btnInsertImage.Margin = new System.Windows.Forms.Padding(4);
-            this.btnInsertImage.Name = "btnInsertImage";
-            this.btnInsertImage.Size = new System.Drawing.Size(131, 37);
-            this.btnInsertImage.TabIndex = 5;
-            this.btnInsertImage.Text = "&Insert Item Image";
-            this.btnInsertImage.UseVisualStyleBackColor = true;
-            // 
             // tabManagerFeatures
             // 
             this.tabManagerFeatures.Controls.Add(this.tabInventory);
             this.tabManagerFeatures.Controls.Add(this.tabEmployee);
             this.tabManagerFeatures.Controls.Add(this.tabCustomer);
+            this.tabManagerFeatures.Controls.Add(this.tabSalesReport);
             this.tabManagerFeatures.Location = new System.Drawing.Point(12, 52);
             this.tabManagerFeatures.Name = "tabManagerFeatures";
             this.tabManagerFeatures.SelectedIndex = 0;
@@ -887,27 +827,81 @@ namespace SU21_Final_Project
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
-            // cbxEditPhone
+            // lblLowItemLabel
             // 
-            this.cbxEditPhone.AutoSize = true;
-            this.cbxEditPhone.Location = new System.Drawing.Point(385, 66);
-            this.cbxEditPhone.Name = "cbxEditPhone";
-            this.cbxEditPhone.Size = new System.Drawing.Size(79, 21);
-            this.cbxEditPhone.TabIndex = 56;
-            this.cbxEditPhone.Text = "Phone#";
-            this.cbxEditPhone.UseVisualStyleBackColor = true;
-            this.cbxEditPhone.CheckedChanged += new System.EventHandler(this.cbxEditPhone_CheckedChanged);
+            this.lblLowItemLabel.AutoSize = true;
+            this.lblLowItemLabel.Location = new System.Drawing.Point(820, 233);
+            this.lblLowItemLabel.Name = "lblLowItemLabel";
+            this.lblLowItemLabel.Size = new System.Drawing.Size(133, 17);
+            this.lblLowItemLabel.TabIndex = 40;
+            this.lblLowItemLabel.Text = "Restock Item below:";
             // 
-            // cbxStates
+            // dgvLowItem
             // 
-            this.cbxStates.AutoSize = true;
-            this.cbxStates.Location = new System.Drawing.Point(385, 102);
-            this.cbxStates.Name = "cbxStates";
-            this.cbxStates.Size = new System.Drawing.Size(70, 21);
-            this.cbxStates.TabIndex = 57;
-            this.cbxStates.Text = "States";
-            this.cbxStates.UseVisualStyleBackColor = true;
-            this.cbxStates.CheckedChanged += new System.EventHandler(this.cbxStates_CheckedChanged_1);
+            this.dgvLowItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLowItem.Location = new System.Drawing.Point(823, 253);
+            this.dgvLowItem.Name = "dgvLowItem";
+            this.dgvLowItem.ReadOnly = true;
+            this.dgvLowItem.RowHeadersWidth = 51;
+            this.dgvLowItem.RowTemplate.Height = 24;
+            this.dgvLowItem.Size = new System.Drawing.Size(257, 199);
+            this.dgvLowItem.TabIndex = 41;
+            // 
+            // tabSalesReport
+            // 
+            this.tabSalesReport.Controls.Add(this.lblSalesDetailLabel);
+            this.tabSalesReport.Controls.Add(this.lblSalesReportLabel);
+            this.tabSalesReport.Controls.Add(this.dgvSalesDetails);
+            this.tabSalesReport.Controls.Add(this.dgvSalesReport);
+            this.tabSalesReport.Location = new System.Drawing.Point(4, 25);
+            this.tabSalesReport.Name = "tabSalesReport";
+            this.tabSalesReport.Size = new System.Drawing.Size(1097, 522);
+            this.tabSalesReport.TabIndex = 3;
+            this.tabSalesReport.Text = "Sales Report";
+            this.tabSalesReport.UseVisualStyleBackColor = true;
+            // 
+            // dgvSalesReport
+            // 
+            this.dgvSalesReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSalesReport.Location = new System.Drawing.Point(13, 43);
+            this.dgvSalesReport.Name = "dgvSalesReport";
+            this.dgvSalesReport.ReadOnly = true;
+            this.dgvSalesReport.RowHeadersWidth = 51;
+            this.dgvSalesReport.RowTemplate.Height = 24;
+            this.dgvSalesReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSalesReport.Size = new System.Drawing.Size(401, 191);
+            this.dgvSalesReport.TabIndex = 0;
+            this.dgvSalesReport.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSalesReport_CellClick);
+            // 
+            // dgvSalesDetails
+            // 
+            this.dgvSalesDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSalesDetails.Location = new System.Drawing.Point(475, 43);
+            this.dgvSalesDetails.Name = "dgvSalesDetails";
+            this.dgvSalesDetails.ReadOnly = true;
+            this.dgvSalesDetails.RowHeadersWidth = 51;
+            this.dgvSalesDetails.RowTemplate.Height = 24;
+            this.dgvSalesDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSalesDetails.Size = new System.Drawing.Size(593, 198);
+            this.dgvSalesDetails.TabIndex = 1;
+            // 
+            // lblSalesReportLabel
+            // 
+            this.lblSalesReportLabel.AutoSize = true;
+            this.lblSalesReportLabel.Location = new System.Drawing.Point(10, 23);
+            this.lblSalesReportLabel.Name = "lblSalesReportLabel";
+            this.lblSalesReportLabel.Size = new System.Drawing.Size(240, 17);
+            this.lblSalesReportLabel.TabIndex = 2;
+            this.lblSalesReportLabel.Text = "Sales Report (Select Row for details)";
+            // 
+            // lblSalesDetailLabel
+            // 
+            this.lblSalesDetailLabel.AutoSize = true;
+            this.lblSalesDetailLabel.Location = new System.Drawing.Point(472, 23);
+            this.lblSalesDetailLabel.Name = "lblSalesDetailLabel";
+            this.lblSalesDetailLabel.Size = new System.Drawing.Size(137, 17);
+            this.lblSalesDetailLabel.TabIndex = 3;
+            this.lblSalesDetailLabel.Text = "Sales Report Details";
             // 
             // frmAdmin
             // 
@@ -935,10 +929,14 @@ namespace SU21_Final_Project
             this.gbxUpdateField.ResumeLayout(false);
             this.gbxUpdateField.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllProducts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxItemPicture)).EndInit();
             this.tabManagerFeatures.ResumeLayout(false);
             this.tabCustomer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLowItem)).EndInit();
+            this.tabSalesReport.ResumeLayout(false);
+            this.tabSalesReport.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSalesReport)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSalesDetails)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -949,11 +947,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.TabPage tabEmployee;
         private System.Windows.Forms.TabPage tabInventory;
         private System.Windows.Forms.DataGridView dgvAllProducts;
-        private System.Windows.Forms.ComboBox cboItemName;
-        private System.Windows.Forms.TextBox tbxUpDescrption;
         private System.Windows.Forms.Button btnUpdateItem;
-        private System.Windows.Forms.PictureBox pbxItemPicture;
-        private System.Windows.Forms.Button btnInsertImage;
         private System.Windows.Forms.TabControl tabManagerFeatures;
         private System.Windows.Forms.Button btnAddItems;
         private System.Windows.Forms.Button btnRemoveItem;
@@ -1009,5 +1003,12 @@ namespace SU21_Final_Project
         private System.Windows.Forms.GroupBox gbxEdit;
         private System.Windows.Forms.CheckBox cbxStates;
         private System.Windows.Forms.CheckBox cbxEditPhone;
+        private System.Windows.Forms.Label lblLowItemLabel;
+        private System.Windows.Forms.DataGridView dgvLowItem;
+        private System.Windows.Forms.TabPage tabSalesReport;
+        private System.Windows.Forms.Label lblSalesDetailLabel;
+        private System.Windows.Forms.Label lblSalesReportLabel;
+        private System.Windows.Forms.DataGridView dgvSalesDetails;
+        private System.Windows.Forms.DataGridView dgvSalesReport;
     }
 }
