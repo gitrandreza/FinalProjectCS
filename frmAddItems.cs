@@ -106,11 +106,17 @@ namespace SU21_Final_Project
                                 {
 
                                     SqlCommand commandItem = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Items(Name,Quantity,Cost,Image,CategoryID,RetailPrice,Description,SupplierID)" +
-                                "VALUES(@Name,@Quantity,@Cost,NULL,@CategoryID,@RetailPrice,@Description,@SupplierID)", Connection);
+                                "VALUES(@Name,@Quantity,@Cost,@Image,@CategoryID,@RetailPrice,@Description,@SupplierID)", Connection);
                             commandItem.Parameters.AddWithValue("@Name", strItemName);
                             commandItem.Parameters.AddWithValue("@Quantity", intQuantityPurchased);
                             commandItem.Parameters.AddWithValue("@Cost", dblItemCost);
-                            commandItem.Parameters.AddWithValue("@CategoryID", intCategory);
+
+                                    byte[] image = File.ReadAllBytes("C:\\defaultPic.png");
+
+                                    SqlParameter sqlParams = commandItem.Parameters.AddWithValue("@Image", image); // The parameter will be the image as a byte array
+                                    sqlParams.DbType = System.Data.DbType.Binary; // The type of data we are sending to the server will be a binary file
+
+                                    commandItem.Parameters.AddWithValue("@CategoryID", intCategory);
                             commandItem.Parameters.AddWithValue("@RetailPrice", dblRetailPrice);
                             commandItem.Parameters.AddWithValue("@Description", strDescription);
                             commandItem.Parameters.AddWithValue("@SupplierID", intSupplierID);
@@ -267,6 +273,64 @@ namespace SU21_Final_Project
         {
             new frmAddItems().Show();
             this.Hide();
+        }
+
+        private void btnInsertImage_Click(object sender, EventArgs e)
+        {
+            ////strItemName = cboItemName.SelectedItem.ToString();
+            //try
+            //{
+
+            //    Connection.Open();
+            //    Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+            //        "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+            //    Connection.Close();
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error :" + ex);
+            //}
+            //try
+            //{
+
+            //    //insert image
+
+            //    byte[] image = File.ReadAllBytes("C:\\defaultPic.png");
+
+            //    Connection.Open();
+
+            //    string insertQuery = "UPDATE RandrezaVoharisoaM21Su2332.Items set Image = @Image where ItemID= '" + strItemID + "'"; // @Image is a parameter we will fill in later
+            //    SqlCommand insertCmd = new SqlCommand(insertQuery, Connection);
+            //    SqlParameter sqlParams = insertCmd.Parameters.AddWithValue("@Image", image); // The parameter will be the image as a byte array
+            //    sqlParams.DbType = System.Data.DbType.Binary; // The type of data we are sending to the server will be a binary file
+            //    insertCmd.ExecuteNonQuery();
+
+            //    MessageBox.Show("File was successfully added to the database.", "File Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //    //SqlDataAdapter dataAdapter = new SqlDataAdapter(new SqlCommand("SELECT Image FROM RandrezaVoharisoaM21Su2332.Items WHERE CategoryId = 2", Connection));
+            //    //DataSet dataSet = new DataSet();
+            //    //dataAdapter.Fill(dataSet);
+
+            //    //Display Image
+            //    byte[] imgData;
+            //    SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where ItemID = '" + strItemID + "'", Connection);
+            //    SqlDataReader reader = cmd.ExecuteReader();
+            //    reader.Read();
+            //    long bufLength = reader.GetBytes(0, 0, null, 0, 0);
+            //    imgData = new byte[bufLength];
+            //    reader.GetBytes(0, 0, imgData, 0, (int)bufLength);
+            //    MemoryStream ms = new MemoryStream(imgData);
+            //    ms.Position = 0;
+            //    pbxItemPicture.Image = Image.FromStream(ms);
+            //    reader.Close();
+
+            //    Connection.Close();
+            //}
+            //catch (SqlException ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Error During Upload", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
     }
     

@@ -46,12 +46,14 @@ namespace SU21_Final_Project
             this.lblTagRetailPrice = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.btnInsertImage = new System.Windows.Forms.Button();
             this.gbxItemInformation.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbxItemInformation
             // 
             this.gbxItemInformation.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.gbxItemInformation.Controls.Add(this.btnInsertImage);
             this.gbxItemInformation.Controls.Add(this.btnSaveItems);
             this.gbxItemInformation.Controls.Add(this.cboSupplier);
             this.gbxItemInformation.Controls.Add(this.cboCategory);
@@ -71,7 +73,7 @@ namespace SU21_Final_Project
             this.gbxItemInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxItemInformation.Location = new System.Drawing.Point(2, 31);
             this.gbxItemInformation.Name = "gbxItemInformation";
-            this.gbxItemInformation.Size = new System.Drawing.Size(529, 325);
+            this.gbxItemInformation.Size = new System.Drawing.Size(824, 325);
             this.gbxItemInformation.TabIndex = 45;
             this.gbxItemInformation.TabStop = false;
             this.gbxItemInformation.Text = "Item Information";
@@ -225,11 +227,22 @@ namespace SU21_Final_Project
             this.label8.TabIndex = 15;
             this.label8.Text = "Supplier";
             // 
+            // btnInsertImage
+            // 
+            this.btnInsertImage.Location = new System.Drawing.Point(605, 26);
+            this.btnInsertImage.Margin = new System.Windows.Forms.Padding(4);
+            this.btnInsertImage.Name = "btnInsertImage";
+            this.btnInsertImage.Size = new System.Drawing.Size(131, 37);
+            this.btnInsertImage.TabIndex = 46;
+            this.btnInsertImage.Text = "&Insert Item Image";
+            this.btnInsertImage.UseVisualStyleBackColor = true;
+            this.btnInsertImage.Click += new System.EventHandler(this.btnInsertImage_Click);
+            // 
             // frmAddItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(543, 400);
+            this.ClientSize = new System.Drawing.Size(839, 372);
             this.Controls.Add(this.gbxItemInformation);
             this.MaximizeBox = false;
             this.Name = "frmAddItems";
@@ -260,5 +273,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnSaveItems;
+        private System.Windows.Forms.Button btnInsertImage;
     }
 }

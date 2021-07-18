@@ -30,6 +30,30 @@ namespace SU21_Final_Project
         private void InitializeComponent()
         {
             this.tabEmployee = new System.Windows.Forms.TabPage();
+            this.gbxEmployeeEdit = new System.Windows.Forms.GroupBox();
+            this.cboStates = new System.Windows.Forms.ComboBox();
+            this.cbxPhone = new System.Windows.Forms.CheckBox();
+            this.cbxEmail = new System.Windows.Forms.CheckBox();
+            this.tbxEmail = new System.Windows.Forms.TextBox();
+            this.cbxZip = new System.Windows.Forms.CheckBox();
+            this.tbxZip = new System.Windows.Forms.TextBox();
+            this.cbxCity = new System.Windows.Forms.CheckBox();
+            this.tbxCity = new System.Windows.Forms.TextBox();
+            this.cbxState = new System.Windows.Forms.CheckBox();
+            this.cbxAddress = new System.Windows.Forms.CheckBox();
+            this.tbxAddress = new System.Windows.Forms.TextBox();
+            this.cbxLastName = new System.Windows.Forms.CheckBox();
+            this.tbxLastName = new System.Windows.Forms.TextBox();
+            this.cbxFirstName = new System.Windows.Forms.CheckBox();
+            this.btnSaveEdit = new System.Windows.Forms.Button();
+            this.tbxFirstName = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblHiredDate = new System.Windows.Forms.Label();
+            this.lblSalary = new System.Windows.Forms.Label();
+            this.lblPosition = new System.Windows.Forms.Label();
+            this.lblSalaryLabel = new System.Windows.Forms.Label();
+            this.lblPositionLabel = new System.Windows.Forms.Label();
+            this.lblHiredDateLabel = new System.Windows.Forms.Label();
             this.btnRemoveEmployee = new System.Windows.Forms.Button();
             this.btnAddEmployee = new System.Windows.Forms.Button();
             this.btnEditEmployee = new System.Windows.Forms.Button();
@@ -60,11 +84,14 @@ namespace SU21_Final_Project
             this.pbxItemPicture = new System.Windows.Forms.PictureBox();
             this.btnInsertImage = new System.Windows.Forms.Button();
             this.tabManagerFeatures = new System.Windows.Forms.TabControl();
-            this.lblDate = new System.Windows.Forms.Label();
             this.tabCustomer = new System.Windows.Forms.TabPage();
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
+            this.lblDate = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.mskPhones = new System.Windows.Forms.MaskedTextBox();
             this.tabEmployee.SuspendLayout();
+            this.gbxEmployeeEdit.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
             this.tabInventory.SuspendLayout();
             this.gbxUpdateField.SuspendLayout();
@@ -77,6 +104,8 @@ namespace SU21_Final_Project
             // 
             // tabEmployee
             // 
+            this.tabEmployee.Controls.Add(this.gbxEmployeeEdit);
+            this.tabEmployee.Controls.Add(this.groupBox1);
             this.tabEmployee.Controls.Add(this.btnRemoveEmployee);
             this.tabEmployee.Controls.Add(this.btnAddEmployee);
             this.tabEmployee.Controls.Add(this.btnEditEmployee);
@@ -84,14 +113,331 @@ namespace SU21_Final_Project
             this.tabEmployee.Location = new System.Drawing.Point(4, 25);
             this.tabEmployee.Name = "tabEmployee";
             this.tabEmployee.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEmployee.Size = new System.Drawing.Size(1082, 461);
+            this.tabEmployee.Size = new System.Drawing.Size(1115, 522);
             this.tabEmployee.TabIndex = 1;
             this.tabEmployee.Text = "Employee";
             this.tabEmployee.UseVisualStyleBackColor = true;
             // 
+            // gbxEmployeeEdit
+            // 
+            this.gbxEmployeeEdit.Controls.Add(this.mskPhones);
+            this.gbxEmployeeEdit.Controls.Add(this.cboStates);
+            this.gbxEmployeeEdit.Controls.Add(this.cbxPhone);
+            this.gbxEmployeeEdit.Controls.Add(this.cbxEmail);
+            this.gbxEmployeeEdit.Controls.Add(this.tbxEmail);
+            this.gbxEmployeeEdit.Controls.Add(this.cbxZip);
+            this.gbxEmployeeEdit.Controls.Add(this.tbxZip);
+            this.gbxEmployeeEdit.Controls.Add(this.cbxCity);
+            this.gbxEmployeeEdit.Controls.Add(this.tbxCity);
+            this.gbxEmployeeEdit.Controls.Add(this.cbxState);
+            this.gbxEmployeeEdit.Controls.Add(this.cbxAddress);
+            this.gbxEmployeeEdit.Controls.Add(this.tbxAddress);
+            this.gbxEmployeeEdit.Controls.Add(this.cbxLastName);
+            this.gbxEmployeeEdit.Controls.Add(this.tbxLastName);
+            this.gbxEmployeeEdit.Controls.Add(this.cbxFirstName);
+            this.gbxEmployeeEdit.Controls.Add(this.btnSaveEdit);
+            this.gbxEmployeeEdit.Controls.Add(this.tbxFirstName);
+            this.gbxEmployeeEdit.Enabled = false;
+            this.gbxEmployeeEdit.Location = new System.Drawing.Point(19, 299);
+            this.gbxEmployeeEdit.Name = "gbxEmployeeEdit";
+            this.gbxEmployeeEdit.Size = new System.Drawing.Size(695, 217);
+            this.gbxEmployeeEdit.TabIndex = 17;
+            this.gbxEmployeeEdit.TabStop = false;
+            this.gbxEmployeeEdit.Text = "Edit Fields";
+            // 
+            // cboStates
+            // 
+            this.cboStates.FormattingEnabled = true;
+            this.cboStates.Items.AddRange(new object[] {
+            "AK",
+            "AS",
+            "AZ",
+            "AR",
+            "CA",
+            "CO",
+            "CT",
+            "DE",
+            "DC",
+            "FM",
+            "FL",
+            "GA",
+            "GU",
+            "HI",
+            "ID",
+            "IL",
+            "IN",
+            "IA",
+            "KS",
+            "KY",
+            "LA",
+            "ME",
+            "MH",
+            "MD",
+            "MA",
+            "MI",
+            "MN",
+            "MS",
+            "MO",
+            "MT",
+            "NE",
+            "NV",
+            "NH",
+            "NJ",
+            "NM",
+            "NY",
+            "NC",
+            "ND",
+            "MP",
+            "OH",
+            "OK",
+            "OR",
+            "PW",
+            "PA",
+            "PR",
+            "RI",
+            "SC",
+            "SD",
+            "TN",
+            "TX",
+            "UT",
+            "VT",
+            "VI",
+            "VA",
+            "WA",
+            "WV",
+            "WI",
+            "WY"});
+            this.cboStates.Location = new System.Drawing.Point(78, 178);
+            this.cboStates.Name = "cboStates";
+            this.cboStates.Size = new System.Drawing.Size(89, 24);
+            this.cboStates.TabIndex = 54;
+            // 
+            // cbxPhone
+            // 
+            this.cbxPhone.AutoSize = true;
+            this.cbxPhone.Location = new System.Drawing.Point(379, 65);
+            this.cbxPhone.Name = "cbxPhone";
+            this.cbxPhone.Size = new System.Drawing.Size(71, 21);
+            this.cbxPhone.TabIndex = 53;
+            this.cbxPhone.Text = "Phone";
+            this.cbxPhone.UseVisualStyleBackColor = true;
+            this.cbxPhone.CheckedChanged += new System.EventHandler(this.cbxPhone_CheckedChanged);
+            // 
+            // cbxEmail
+            // 
+            this.cbxEmail.AutoSize = true;
+            this.cbxEmail.Location = new System.Drawing.Point(379, 28);
+            this.cbxEmail.Name = "cbxEmail";
+            this.cbxEmail.Size = new System.Drawing.Size(64, 21);
+            this.cbxEmail.TabIndex = 52;
+            this.cbxEmail.Text = "Email";
+            this.cbxEmail.UseVisualStyleBackColor = true;
+            this.cbxEmail.CheckedChanged += new System.EventHandler(this.cbxEmail_CheckedChanged);
+            // 
+            // tbxEmail
+            // 
+            this.tbxEmail.Enabled = false;
+            this.tbxEmail.Location = new System.Drawing.Point(476, 28);
+            this.tbxEmail.Name = "tbxEmail";
+            this.tbxEmail.Size = new System.Drawing.Size(145, 22);
+            this.tbxEmail.TabIndex = 51;
+            // 
+            // cbxZip
+            // 
+            this.cbxZip.AutoSize = true;
+            this.cbxZip.Location = new System.Drawing.Point(191, 180);
+            this.cbxZip.Name = "cbxZip";
+            this.cbxZip.Size = new System.Drawing.Size(50, 21);
+            this.cbxZip.TabIndex = 50;
+            this.cbxZip.Text = "Zip";
+            this.cbxZip.UseVisualStyleBackColor = true;
+            this.cbxZip.CheckedChanged += new System.EventHandler(this.cbxZip_CheckedChanged);
+            // 
+            // tbxZip
+            // 
+            this.tbxZip.Enabled = false;
+            this.tbxZip.Location = new System.Drawing.Point(247, 178);
+            this.tbxZip.MaxLength = 5;
+            this.tbxZip.Name = "tbxZip";
+            this.tbxZip.Size = new System.Drawing.Size(97, 22);
+            this.tbxZip.TabIndex = 49;
+            this.tbxZip.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxZip_KeyPress);
+            // 
+            // cbxCity
+            // 
+            this.cbxCity.AutoSize = true;
+            this.cbxCity.Location = new System.Drawing.Point(10, 135);
+            this.cbxCity.Name = "cbxCity";
+            this.cbxCity.Size = new System.Drawing.Size(53, 21);
+            this.cbxCity.TabIndex = 48;
+            this.cbxCity.Text = "City";
+            this.cbxCity.UseVisualStyleBackColor = true;
+            this.cbxCity.CheckedChanged += new System.EventHandler(this.cbxCity_CheckedChanged);
+            // 
+            // tbxCity
+            // 
+            this.tbxCity.Enabled = false;
+            this.tbxCity.Location = new System.Drawing.Point(132, 135);
+            this.tbxCity.MaxLength = 30;
+            this.tbxCity.Name = "tbxCity";
+            this.tbxCity.Size = new System.Drawing.Size(181, 22);
+            this.tbxCity.TabIndex = 47;
+            // 
+            // cbxState
+            // 
+            this.cbxState.AutoSize = true;
+            this.cbxState.Location = new System.Drawing.Point(9, 180);
+            this.cbxState.Name = "cbxState";
+            this.cbxState.Size = new System.Drawing.Size(63, 21);
+            this.cbxState.TabIndex = 45;
+            this.cbxState.Text = "State";
+            this.cbxState.UseVisualStyleBackColor = true;
+            this.cbxState.CheckedChanged += new System.EventHandler(this.cbxState_CheckedChanged_1);
+            // 
+            // cbxAddress
+            // 
+            this.cbxAddress.AutoSize = true;
+            this.cbxAddress.Location = new System.Drawing.Point(10, 100);
+            this.cbxAddress.Name = "cbxAddress";
+            this.cbxAddress.Size = new System.Drawing.Size(82, 21);
+            this.cbxAddress.TabIndex = 44;
+            this.cbxAddress.Text = "Address";
+            this.cbxAddress.UseVisualStyleBackColor = true;
+            this.cbxAddress.CheckedChanged += new System.EventHandler(this.cbxAddress_CheckedChanged_1);
+            // 
+            // tbxAddress
+            // 
+            this.tbxAddress.Enabled = false;
+            this.tbxAddress.Location = new System.Drawing.Point(132, 100);
+            this.tbxAddress.MaxLength = 50;
+            this.tbxAddress.Name = "tbxAddress";
+            this.tbxAddress.Size = new System.Drawing.Size(181, 22);
+            this.tbxAddress.TabIndex = 43;
+            // 
+            // cbxLastName
+            // 
+            this.cbxLastName.AutoSize = true;
+            this.cbxLastName.Location = new System.Drawing.Point(11, 65);
+            this.cbxLastName.Name = "cbxLastName";
+            this.cbxLastName.Size = new System.Drawing.Size(98, 21);
+            this.cbxLastName.TabIndex = 40;
+            this.cbxLastName.Text = "Last Name";
+            this.cbxLastName.UseVisualStyleBackColor = true;
+            this.cbxLastName.CheckedChanged += new System.EventHandler(this.cbxLastName_CheckedChanged_1);
+            // 
+            // tbxLastName
+            // 
+            this.tbxLastName.Enabled = false;
+            this.tbxLastName.Location = new System.Drawing.Point(134, 65);
+            this.tbxLastName.MaxLength = 30;
+            this.tbxLastName.Name = "tbxLastName";
+            this.tbxLastName.Size = new System.Drawing.Size(181, 22);
+            this.tbxLastName.TabIndex = 39;
+            this.tbxLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxLastName_KeyPress);
+            // 
+            // cbxFirstName
+            // 
+            this.cbxFirstName.AutoSize = true;
+            this.cbxFirstName.Location = new System.Drawing.Point(10, 28);
+            this.cbxFirstName.Name = "cbxFirstName";
+            this.cbxFirstName.Size = new System.Drawing.Size(98, 21);
+            this.cbxFirstName.TabIndex = 17;
+            this.cbxFirstName.Text = "First Name";
+            this.cbxFirstName.UseVisualStyleBackColor = true;
+            this.cbxFirstName.CheckedChanged += new System.EventHandler(this.cbxFirstName_CheckedChanged_1);
+            // 
+            // btnSaveEdit
+            // 
+            this.btnSaveEdit.Location = new System.Drawing.Point(426, 156);
+            this.btnSaveEdit.Name = "btnSaveEdit";
+            this.btnSaveEdit.Size = new System.Drawing.Size(103, 34);
+            this.btnSaveEdit.TabIndex = 16;
+            this.btnSaveEdit.Text = "&Save Edit";
+            this.btnSaveEdit.UseVisualStyleBackColor = true;
+            this.btnSaveEdit.Click += new System.EventHandler(this.btnSaveEdit_Click);
+            // 
+            // tbxFirstName
+            // 
+            this.tbxFirstName.Enabled = false;
+            this.tbxFirstName.Location = new System.Drawing.Point(132, 28);
+            this.tbxFirstName.MaxLength = 30;
+            this.tbxFirstName.Name = "tbxFirstName";
+            this.tbxFirstName.Size = new System.Drawing.Size(183, 22);
+            this.tbxFirstName.TabIndex = 15;
+            this.tbxFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxFirstName_KeyPress);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lblHiredDate);
+            this.groupBox1.Controls.Add(this.lblSalary);
+            this.groupBox1.Controls.Add(this.lblPosition);
+            this.groupBox1.Controls.Add(this.lblSalaryLabel);
+            this.groupBox1.Controls.Add(this.lblPositionLabel);
+            this.groupBox1.Controls.Add(this.lblHiredDateLabel);
+            this.groupBox1.Location = new System.Drawing.Point(737, 22);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(305, 223);
+            this.groupBox1.TabIndex = 16;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Employee Additional Information";
+            // 
+            // lblHiredDate
+            // 
+            this.lblHiredDate.AutoSize = true;
+            this.lblHiredDate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblHiredDate.Location = new System.Drawing.Point(171, 26);
+            this.lblHiredDate.Name = "lblHiredDate";
+            this.lblHiredDate.Size = new System.Drawing.Size(2, 19);
+            this.lblHiredDate.TabIndex = 5;
+            // 
+            // lblSalary
+            // 
+            this.lblSalary.AutoSize = true;
+            this.lblSalary.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblSalary.Location = new System.Drawing.Point(171, 86);
+            this.lblSalary.Name = "lblSalary";
+            this.lblSalary.Size = new System.Drawing.Size(2, 19);
+            this.lblSalary.TabIndex = 4;
+            // 
+            // lblPosition
+            // 
+            this.lblPosition.AutoSize = true;
+            this.lblPosition.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblPosition.Location = new System.Drawing.Point(171, 150);
+            this.lblPosition.Name = "lblPosition";
+            this.lblPosition.Size = new System.Drawing.Size(2, 19);
+            this.lblPosition.TabIndex = 3;
+            // 
+            // lblSalaryLabel
+            // 
+            this.lblSalaryLabel.AutoSize = true;
+            this.lblSalaryLabel.Location = new System.Drawing.Point(33, 86);
+            this.lblSalaryLabel.Name = "lblSalaryLabel";
+            this.lblSalaryLabel.Size = new System.Drawing.Size(48, 17);
+            this.lblSalaryLabel.TabIndex = 2;
+            this.lblSalaryLabel.Text = "Salary";
+            // 
+            // lblPositionLabel
+            // 
+            this.lblPositionLabel.AutoSize = true;
+            this.lblPositionLabel.Location = new System.Drawing.Point(33, 150);
+            this.lblPositionLabel.Name = "lblPositionLabel";
+            this.lblPositionLabel.Size = new System.Drawing.Size(62, 17);
+            this.lblPositionLabel.TabIndex = 1;
+            this.lblPositionLabel.Text = "Position:";
+            // 
+            // lblHiredDateLabel
+            // 
+            this.lblHiredDateLabel.AutoSize = true;
+            this.lblHiredDateLabel.Location = new System.Drawing.Point(33, 26);
+            this.lblHiredDateLabel.Name = "lblHiredDateLabel";
+            this.lblHiredDateLabel.Size = new System.Drawing.Size(80, 17);
+            this.lblHiredDateLabel.TabIndex = 0;
+            this.lblHiredDateLabel.Text = "Hired Date:";
+            // 
             // btnRemoveEmployee
             // 
-            this.btnRemoveEmployee.Location = new System.Drawing.Point(429, 303);
+            this.btnRemoveEmployee.Location = new System.Drawing.Point(309, 260);
             this.btnRemoveEmployee.Name = "btnRemoveEmployee";
             this.btnRemoveEmployee.Size = new System.Drawing.Size(137, 33);
             this.btnRemoveEmployee.TabIndex = 15;
@@ -101,7 +447,7 @@ namespace SU21_Final_Project
             // 
             // btnAddEmployee
             // 
-            this.btnAddEmployee.Location = new System.Drawing.Point(256, 303);
+            this.btnAddEmployee.Location = new System.Drawing.Point(136, 260);
             this.btnAddEmployee.Name = "btnAddEmployee";
             this.btnAddEmployee.Size = new System.Drawing.Size(137, 33);
             this.btnAddEmployee.TabIndex = 14;
@@ -111,23 +457,28 @@ namespace SU21_Final_Project
             // 
             // btnEditEmployee
             // 
-            this.btnEditEmployee.Location = new System.Drawing.Point(599, 303);
+            this.btnEditEmployee.Location = new System.Drawing.Point(479, 260);
             this.btnEditEmployee.Margin = new System.Windows.Forms.Padding(4);
             this.btnEditEmployee.Name = "btnEditEmployee";
             this.btnEditEmployee.Size = new System.Drawing.Size(137, 33);
             this.btnEditEmployee.TabIndex = 13;
             this.btnEditEmployee.Text = "&Edit ";
             this.btnEditEmployee.UseVisualStyleBackColor = true;
+            this.btnEditEmployee.Click += new System.EventHandler(this.btnEditEmployee_Click);
             // 
             // dgvEmployee
             // 
             this.dgvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmployee.Location = new System.Drawing.Point(8, 22);
             this.dgvEmployee.Name = "dgvEmployee";
+            this.dgvEmployee.ReadOnly = true;
             this.dgvEmployee.RowHeadersWidth = 51;
             this.dgvEmployee.RowTemplate.Height = 24;
-            this.dgvEmployee.Size = new System.Drawing.Size(1057, 263);
+            this.dgvEmployee.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvEmployee.Size = new System.Drawing.Size(706, 223);
             this.dgvEmployee.TabIndex = 0;
+            this.dgvEmployee.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmployee_CellClick);
+            this.dgvEmployee.SelectionChanged += new System.EventHandler(this.dgvEmployee_SelectionChanged_1);
             // 
             // tabInventory
             // 
@@ -143,7 +494,7 @@ namespace SU21_Final_Project
             this.tabInventory.Location = new System.Drawing.Point(4, 25);
             this.tabInventory.Name = "tabInventory";
             this.tabInventory.Padding = new System.Windows.Forms.Padding(3);
-            this.tabInventory.Size = new System.Drawing.Size(1082, 461);
+            this.tabInventory.Size = new System.Drawing.Size(1115, 522);
             this.tabInventory.TabIndex = 0;
             this.tabInventory.Text = "Inventory Control";
             this.tabInventory.UseVisualStyleBackColor = true;
@@ -472,24 +823,16 @@ namespace SU21_Final_Project
             this.tabManagerFeatures.Location = new System.Drawing.Point(12, 52);
             this.tabManagerFeatures.Name = "tabManagerFeatures";
             this.tabManagerFeatures.SelectedIndex = 0;
-            this.tabManagerFeatures.Size = new System.Drawing.Size(1090, 490);
+            this.tabManagerFeatures.Size = new System.Drawing.Size(1123, 551);
             this.tabManagerFeatures.TabIndex = 0;
             this.tabManagerFeatures.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabManagerFeatures_Selected);
-            // 
-            // lblDate
-            // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(350, 9);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(0, 17);
-            this.lblDate.TabIndex = 14;
             // 
             // tabCustomer
             // 
             this.tabCustomer.Controls.Add(this.dgvCustomer);
             this.tabCustomer.Location = new System.Drawing.Point(4, 25);
             this.tabCustomer.Name = "tabCustomer";
-            this.tabCustomer.Size = new System.Drawing.Size(1082, 461);
+            this.tabCustomer.Size = new System.Drawing.Size(1115, 522);
             this.tabCustomer.TabIndex = 2;
             this.tabCustomer.Text = "Customer";
             this.tabCustomer.UseVisualStyleBackColor = true;
@@ -499,10 +842,19 @@ namespace SU21_Final_Project
             this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCustomer.Location = new System.Drawing.Point(12, 12);
             this.dgvCustomer.Name = "dgvCustomer";
+            this.dgvCustomer.ReadOnly = true;
             this.dgvCustomer.RowHeadersWidth = 51;
             this.dgvCustomer.RowTemplate.Height = 24;
             this.dgvCustomer.Size = new System.Drawing.Size(1057, 263);
             this.dgvCustomer.TabIndex = 1;
+            // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.Location = new System.Drawing.Point(350, 9);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(0, 17);
+            this.lblDate.TabIndex = 14;
             // 
             // btnLogout
             // 
@@ -514,11 +866,19 @@ namespace SU21_Final_Project
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // mskPhones
+            // 
+            this.mskPhones.Location = new System.Drawing.Point(476, 65);
+            this.mskPhones.Mask = "000-000-0000";
+            this.mskPhones.Name = "mskPhones";
+            this.mskPhones.Size = new System.Drawing.Size(100, 22);
+            this.mskPhones.TabIndex = 55;
+            // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1113, 554);
+            this.ClientSize = new System.Drawing.Size(1147, 615);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.tabManagerFeatures);
@@ -530,6 +890,10 @@ namespace SU21_Final_Project
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAdmin_FormClosing);
             this.Load += new System.EventHandler(this.frmAdmin_Load);
             this.tabEmployee.ResumeLayout(false);
+            this.gbxEmployeeEdit.ResumeLayout(false);
+            this.gbxEmployeeEdit.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).EndInit();
             this.tabInventory.ResumeLayout(false);
             this.tabInventory.PerformLayout();
@@ -582,5 +946,30 @@ namespace SU21_Final_Project
         private System.Windows.Forms.TabPage tabCustomer;
         private System.Windows.Forms.DataGridView dgvCustomer;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblHiredDate;
+        private System.Windows.Forms.Label lblSalary;
+        private System.Windows.Forms.Label lblPosition;
+        private System.Windows.Forms.Label lblSalaryLabel;
+        private System.Windows.Forms.Label lblPositionLabel;
+        private System.Windows.Forms.Label lblHiredDateLabel;
+        private System.Windows.Forms.GroupBox gbxEmployeeEdit;
+        private System.Windows.Forms.CheckBox cbxLastName;
+        private System.Windows.Forms.TextBox tbxLastName;
+        private System.Windows.Forms.CheckBox cbxFirstName;
+        private System.Windows.Forms.Button btnSaveEdit;
+        private System.Windows.Forms.TextBox tbxFirstName;
+        private System.Windows.Forms.CheckBox cbxZip;
+        private System.Windows.Forms.TextBox tbxZip;
+        private System.Windows.Forms.CheckBox cbxCity;
+        private System.Windows.Forms.TextBox tbxCity;
+        private System.Windows.Forms.CheckBox cbxState;
+        private System.Windows.Forms.CheckBox cbxAddress;
+        private System.Windows.Forms.TextBox tbxAddress;
+        private System.Windows.Forms.CheckBox cbxPhone;
+        private System.Windows.Forms.CheckBox cbxEmail;
+        private System.Windows.Forms.TextBox tbxEmail;
+        private System.Windows.Forms.ComboBox cboStates;
+        private System.Windows.Forms.MaskedTextBox mskPhones;
     }
 }

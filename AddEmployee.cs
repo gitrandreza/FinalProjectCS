@@ -31,6 +31,7 @@ namespace SU21_Final_Project
         string strZip;
         string strEmail;
         string strRole;
+        string strPosition;
         string strSalary;
         string strHiredDate;
 
@@ -67,7 +68,7 @@ namespace SU21_Final_Project
 
                 Connection.Open();
                 if (tbxFirstName.Text != "" && tbxLastName.Text != "" && tbxAddressOne.Text != "" && mskPhone.Text != "" && tbxCity.Text != "" && tbxZip.Text != ""
-                    && cboState.Text != "" && tbxEmail.Text != ""  && cboRole.Text != "")
+                    && cboState.Text != "" && tbxEmail.Text != ""  && cboRole.Text != "" && cboPosition.Text != "" && tbxSalary.Text != "" && mskHiredDate.Text != "")
                 {
                     SqlCommand commandCheckUsername = new SqlCommand("SELECT Username FROM RandrezaVoharisoaM21Su2332.Users;", Connection);
 
@@ -112,9 +113,6 @@ namespace SU21_Final_Project
                                     if (ValidEmail(strEmail) == true)
                                     {
 
-                                        
-
-
                                                 //INSERT RECORD FOR PERSON INFORMATION
                                                 strTitle = "Employee";
                                                 strFirstName = tbxFirstName.Text;
@@ -131,9 +129,15 @@ namespace SU21_Final_Project
                                                 strRole= cboRole.SelectedItem.ToString();
                                                 int intRoleID;
                                                 bool blnTryParse =  int.TryParse(strRole, out intRoleID);
+                                                if (blnTryParse == false)
+                                                {
+                                                    MessageBox.Show("You did not enter a value I can convert to an Integer", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                }
 
+                                                strPosition = cboPosition.SelectedItem.ToString();
+                                   
 
-                                                if (cboSuffix.SelectedItem == null)
+                                    if (cboSuffix.SelectedItem == null)
                                                 {
                                                     strSuffix = "N/A";
                                                 }
@@ -217,10 +221,12 @@ namespace SU21_Final_Project
                                                 int intUserID = readerUserID.GetInt32(0);
                                                 readerUserID.Close();
 
-                                                SqlCommand commandEmployee = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Employees(UserID,Salary,HiredDate) VALUES(@UserID,@Salary,@HiredDate)", Connection);
+                                                SqlCommand commandEmployee = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Employees(UserID,Salary,HiredDate,Position) VALUES(@UserID,@Salary,@HiredDate,@Position)", Connection);
                                                 commandEmployee.Parameters.AddWithValue("@UserID", intUserID);
                                                 commandEmployee.Parameters.AddWithValue("@Salary", strSalary);
                                                 commandEmployee.Parameters.AddWithValue("@HiredDate", strHiredDate);
+                                                commandEmployee.Parameters.AddWithValue("@Position", strPosition);
+
 
 
                                                 commandEmployee.ExecuteNonQuery();

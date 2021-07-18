@@ -30,6 +30,8 @@ namespace SU21_Final_Project
         private void InitializeComponent()
         {
             this.gbxInformation = new System.Windows.Forms.GroupBox();
+            this.mskHiredDate = new System.Windows.Forms.MaskedTextBox();
+            this.mskPhone = new System.Windows.Forms.MaskedTextBox();
             this.lblRoleLabel = new System.Windows.Forms.Label();
             this.cboRole = new System.Windows.Forms.ComboBox();
             this.cboState = new System.Windows.Forms.ComboBox();
@@ -57,14 +59,16 @@ namespace SU21_Final_Project
             this.lblZipLabel = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.mskPhone = new System.Windows.Forms.MaskedTextBox();
-            this.mskHiredDate = new System.Windows.Forms.MaskedTextBox();
+            this.lblPositionLabel = new System.Windows.Forms.Label();
+            this.cboPosition = new System.Windows.Forms.ComboBox();
             this.gbxInformation.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbxInformation
             // 
             this.gbxInformation.BackColor = System.Drawing.SystemColors.Control;
+            this.gbxInformation.Controls.Add(this.lblPositionLabel);
+            this.gbxInformation.Controls.Add(this.cboPosition);
             this.gbxInformation.Controls.Add(this.mskHiredDate);
             this.gbxInformation.Controls.Add(this.mskPhone);
             this.gbxInformation.Controls.Add(this.lblRoleLabel);
@@ -99,6 +103,23 @@ namespace SU21_Final_Project
             this.gbxInformation.TabIndex = 45;
             this.gbxInformation.TabStop = false;
             this.gbxInformation.Text = "Information";
+            // 
+            // mskHiredDate
+            // 
+            this.mskHiredDate.Location = new System.Drawing.Point(501, 184);
+            this.mskHiredDate.Mask = "00/00/0000";
+            this.mskHiredDate.Name = "mskHiredDate";
+            this.mskHiredDate.Size = new System.Drawing.Size(100, 22);
+            this.mskHiredDate.TabIndex = 53;
+            this.mskHiredDate.ValidatingType = typeof(System.DateTime);
+            // 
+            // mskPhone
+            // 
+            this.mskPhone.Location = new System.Drawing.Point(501, 146);
+            this.mskPhone.Mask = "000-000-0000";
+            this.mskPhone.Name = "mskPhone";
+            this.mskPhone.Size = new System.Drawing.Size(89, 22);
+            this.mskPhone.TabIndex = 52;
             // 
             // lblRoleLabel
             // 
@@ -296,9 +317,9 @@ namespace SU21_Final_Project
             this.lblHiredDateLabel.AutoSize = true;
             this.lblHiredDateLabel.Location = new System.Drawing.Point(414, 189);
             this.lblHiredDateLabel.Name = "lblHiredDateLabel";
-            this.lblHiredDateLabel.Size = new System.Drawing.Size(80, 17);
+            this.lblHiredDateLabel.Size = new System.Drawing.Size(85, 17);
             this.lblHiredDateLabel.TabIndex = 36;
-            this.lblHiredDateLabel.Text = "Hired Date ";
+            this.lblHiredDateLabel.Text = "*Hired Date ";
             // 
             // lblPhoneLabel
             // 
@@ -365,9 +386,9 @@ namespace SU21_Final_Project
             this.lblSalaryLabel.AutoSize = true;
             this.lblSalaryLabel.Location = new System.Drawing.Point(427, 108);
             this.lblSalaryLabel.Name = "lblSalaryLabel";
-            this.lblSalaryLabel.Size = new System.Drawing.Size(48, 17);
+            this.lblSalaryLabel.Size = new System.Drawing.Size(53, 17);
             this.lblSalaryLabel.TabIndex = 19;
-            this.lblSalaryLabel.Text = "Salary";
+            this.lblSalaryLabel.Text = "*Salary";
             // 
             // tbxZip
             // 
@@ -414,22 +435,27 @@ namespace SU21_Final_Project
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // mskPhone
+            // lblPositionLabel
             // 
-            this.mskPhone.Location = new System.Drawing.Point(501, 146);
-            this.mskPhone.Mask = "000-000-0000";
-            this.mskPhone.Name = "mskPhone";
-            this.mskPhone.Size = new System.Drawing.Size(89, 22);
-            this.mskPhone.TabIndex = 52;
+            this.lblPositionLabel.AutoSize = true;
+            this.lblPositionLabel.Location = new System.Drawing.Point(621, 70);
+            this.lblPositionLabel.Name = "lblPositionLabel";
+            this.lblPositionLabel.Size = new System.Drawing.Size(63, 17);
+            this.lblPositionLabel.TabIndex = 55;
+            this.lblPositionLabel.Text = "*Position";
             // 
-            // mskHiredDate
+            // cboPosition
             // 
-            this.mskHiredDate.Location = new System.Drawing.Point(501, 184);
-            this.mskHiredDate.Mask = "00/00/0000";
-            this.mskHiredDate.Name = "mskHiredDate";
-            this.mskHiredDate.Size = new System.Drawing.Size(100, 22);
-            this.mskHiredDate.TabIndex = 53;
-            this.mskHiredDate.ValidatingType = typeof(System.DateTime);
+            this.cboPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPosition.FormattingEnabled = true;
+            this.cboPosition.Items.AddRange(new object[] {
+            "Manager",
+            "Clerk",
+            "Technician"});
+            this.cboPosition.Location = new System.Drawing.Point(685, 66);
+            this.cboPosition.Name = "cboPosition";
+            this.cboPosition.Size = new System.Drawing.Size(78, 24);
+            this.cboPosition.TabIndex = 54;
             // 
             // frmAddEmployee
             // 
@@ -479,5 +505,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.ComboBox cboRole;
         private System.Windows.Forms.MaskedTextBox mskPhone;
         private System.Windows.Forms.MaskedTextBox mskHiredDate;
+        private System.Windows.Forms.Label lblPositionLabel;
+        private System.Windows.Forms.ComboBox cboPosition;
     }
 }

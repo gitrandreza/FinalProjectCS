@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
-
+using System.Text.RegularExpressions;
 namespace SU21_Final_Project
 {
     public partial class frmAdmin : Form
@@ -18,27 +18,14 @@ namespace SU21_Final_Project
         SqlConnection Connection;
         SqlDataAdapter dataAdapter;
         DataTable dataTable;
-       
-        
-        
+
+
+
 
         string strItemID;
+        string strPersonID;
+        string strUserID;
 
-       
-        string strNameFirst;
-        string strNameLast;
-        string strAddress;
-        string strCity;
-        string strZip;
-        string strState;
-        string strPhone;
-        string strEmail;
-         string strEmployeeID;
-        string strEmployeeSalary;
-        string strEmployeeHiredDate;
-
-        string strSelected;
-        string strName;
 
 
         private void frmAdmin_Load(object sender, EventArgs e)
@@ -53,7 +40,7 @@ namespace SU21_Final_Project
             {
                 DisplayAllItems();
             }
-            
+
         }
 
         public void DisplayAllItems()
@@ -69,7 +56,7 @@ namespace SU21_Final_Project
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvAllProducts.DataSource = dataTable;
-                
+
 
                 Connection.Close();
             }
@@ -79,167 +66,71 @@ namespace SU21_Final_Project
             }
         }
 
+        public void DisplayEmployees()
+        {
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                dataAdapter = new SqlDataAdapter("SELECT RandrezaVoharisoaM21Su2332.Person.PersonID, RandrezaVoharisoaM21Su2332.Person.NameFirst, RandrezaVoharisoaM21Su2332.Person.NameLast,RandrezaVoharisoaM21Su2332.Person.Address1,RandrezaVoharisoaM21Su2332.Person.City,RandrezaVoharisoaM21Su2332.Person.State, RandrezaVoharisoaM21Su2332.Person.Zipcode,RandrezaVoharisoaM21Su2332.Person.Email, RandrezaVoharisoaM21Su2332.Person.PhonePrimary  FROM RandrezaVoharisoaM21Su2332.Person FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.PersonID = RandrezaVoharisoaM21Su2332.Person.PersonID WHERE RoleID = 1 OR RoleID = 2; ", Connection);
+                dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                dgvEmployee.DataSource = dataTable;
+
+
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void DisplayCustomers()
+        {
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                dataAdapter = new SqlDataAdapter("SELECT RandrezaVoharisoaM21Su2332.Person.NameFirst, RandrezaVoharisoaM21Su2332.Person.NameLast,RandrezaVoharisoaM21Su2332.Person.Address1,RandrezaVoharisoaM21Su2332.Person.City,RandrezaVoharisoaM21Su2332.Person.State, RandrezaVoharisoaM21Su2332.Person.Zipcode,RandrezaVoharisoaM21Su2332.Person.PhonePrimary, RandrezaVoharisoaM21Su2332.Person.Email  FROM RandrezaVoharisoaM21Su2332.Person FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.PersonID = RandrezaVoharisoaM21Su2332.Person.PersonID WHERE RoleID = 3; ", Connection);
+                dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                dgvCustomer.DataSource = dataTable;
+
+
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         //Display inventory
         private void tabManagerFeatures_Selected(object sender, TabControlEventArgs e)
         {
             if (tabManagerFeatures.SelectedTab.Name == "tabInventory")
             {
-                DisplayAllItems();              
+                DisplayAllItems();
             }
 
-            else if (tabManagerFeatures.SelectedTab.Name == "tabEmployee")
+            if (tabManagerFeatures.SelectedTab.Name == "tabEmployee")
             {
-                DisplayEmployee();
+                DisplayEmployees();
             }
-            else if (tabManagerFeatures.SelectedTab.Name == "tabCustomer")
+            if (tabManagerFeatures.SelectedTab.Name == "tabCustomer")
             {
-                DisplayCustomer();
+                DisplayCustomers();
             }
         }
 
-        public void DisplayEmployee()
-        {
-            SqlCommand commandPerson;
-            SqlDataReader readerPerson;
-
-            SqlCommand commandEmployee;
-            SqlDataReader readerEmployee;
-
-            //Build data grid view Employee 
-            dgvEmployee.ColumnCount = 8;
-            dgvEmployee.Columns[0].Name = "First Name";
-            dgvEmployee.Columns[1].Name = "Last Name";
-            dgvEmployee.Columns[2].Name = "Address";
-            dgvEmployee.Columns[3].Name = "City";
-            dgvEmployee.Columns[4].Name = "State";
-            dgvEmployee.Columns[5].Name = "Zip";
-            dgvEmployee.Columns[6].Name = "Phone";
-            dgvEmployee.Columns[7].Name = "email";
-
-
-            //grab fields from database
-            try
-            {
-
-
-                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
-                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
-
-                Connection.Open();
-
-                //--get first name last name address from Person Table based on RoleID from table Users
-                commandPerson = new SqlCommand("SELECT RandrezaVoharisoaM21Su2332.Person.NameFirst, RandrezaVoharisoaM21Su2332.Person.NameLast,RandrezaVoharisoaM21Su2332.Person.Address1,RandrezaVoharisoaM21Su2332.Person.City,RandrezaVoharisoaM21Su2332.Person.State, RandrezaVoharisoaM21Su2332.Person.Zipcode,RandrezaVoharisoaM21Su2332.Person.PhonePrimary, RandrezaVoharisoaM21Su2332.Person.Email  FROM RandrezaVoharisoaM21Su2332.Person FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.PersonID = RandrezaVoharisoaM21Su2332.Person.PersonID WHERE RoleID = 1 OR RoleID = 2; ", Connection);
-                //gets the results from the sql command Person table
-                readerPerson = commandPerson.ExecuteReader();
-
-                while (readerPerson.Read())
-                {
-
-                    //iterates through the employee id  column to find a matching value
-                    strNameFirst = readerPerson["NameFirst"].ToString();
-                    strNameLast = readerPerson["NameLast"].ToString();
-                    strAddress = readerPerson["Address1"].ToString(); 
-                    strCity = readerPerson["City"].ToString(); 
-                     strZip = readerPerson["Zipcode"].ToString(); 
-                   strState = readerPerson["State"].ToString(); 
-                     strPhone = readerPerson["PhonePrimary"].ToString(); 
-                    strEmail = readerPerson["Email"].ToString(); 
-                   
-                    string[] row1 = {strNameFirst, strNameLast, strAddress, strCity , strState, strZip , strPhone, strEmail };
-                    dgvEmployee.Rows.Add(row1);
-                                 
-                }
-
-                if (readerPerson != null)
-                {
-                    readerPerson.Close(); 
-                }
-
-                if (Connection != null)
-                {
-                    Connection.Close(); 
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        public void DisplayCustomer()
-        {
-            SqlCommand commandPerson;
-            SqlDataReader readerPerson;
-
-            //Build data grid view Customer 
-            dgvCustomer.ColumnCount = 8;
-            dgvCustomer.Columns[0].Name = "First Name";
-            dgvCustomer.Columns[1].Name = "Last Name";
-            dgvCustomer.Columns[2].Name = "Address";
-            dgvCustomer.Columns[3].Name = "City";
-            dgvCustomer.Columns[4].Name = "State";
-            dgvCustomer.Columns[5].Name = "Zip";
-            dgvCustomer.Columns[6].Name = "Phone";
-            dgvCustomer.Columns[7].Name = "email";
-
-            //grab fields from database
-
-            try
-            {
-
-
-                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
-                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
-
-                Connection.Open();
-
-
-                //--get first name last name address from Person Table based on RoleID from table Users
-                commandPerson = new SqlCommand("SELECT RandrezaVoharisoaM21Su2332.Person.NameFirst, RandrezaVoharisoaM21Su2332.Person.NameLast,RandrezaVoharisoaM21Su2332.Person.Address1,RandrezaVoharisoaM21Su2332.Person.City,RandrezaVoharisoaM21Su2332.Person.State, RandrezaVoharisoaM21Su2332.Person.Zipcode,RandrezaVoharisoaM21Su2332.Person.PhonePrimary, RandrezaVoharisoaM21Su2332.Person.Email  FROM RandrezaVoharisoaM21Su2332.Person FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.PersonID = RandrezaVoharisoaM21Su2332.Person.PersonID WHERE RoleID = 3; ", Connection);
-                //gets the results from the sql command Person table
-                readerPerson = commandPerson.ExecuteReader();
-
-                while (readerPerson.Read())
-                {
-
-                    strNameFirst = readerPerson["NameFirst"].ToString();
-                    strNameLast = readerPerson["NameLast"].ToString();
-                    strAddress = readerPerson["Address1"].ToString();
-                    strCity = readerPerson["City"].ToString();
-                    strZip = readerPerson["Zipcode"].ToString();
-                    strState = readerPerson["State"].ToString();
-                    strPhone = readerPerson["PhonePrimary"].ToString();
-                    strEmail = readerPerson["Email"].ToString();
-
-                    string[] row1 = { strNameFirst, strNameLast, strAddress, strCity, strState, strZip, strPhone, strEmail };
-                    dgvCustomer.Rows.Add(row1);
-
-                }
-
-                if (readerPerson != null)
-                {
-                    readerPerson.Close(); //closes the reader
-                }
-
-              
-
-                if (Connection != null)
-                {
-                    Connection.Close(); //closes connection to database
-                }
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
+       
         //Open Add Item form
         private void btnAddItems_Click(object sender, EventArgs e)
         {
@@ -251,17 +142,17 @@ namespace SU21_Final_Project
         //Remove selected Item from Data grid and Database
         private void btnRemoveItem_Click(object sender, EventArgs e)
         {
-            
+
             if (dgvAllProducts.SelectedRows.Count > 0)
             {
                 if (MessageBox.Show("Do you want to remove this item?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     foreach (DataGridViewRow row in dgvAllProducts.SelectedRows)
-                    {                       
+                    {
                         //grab current row index selected
                         int intIndexRowSelected = dgvAllProducts.CurrentCell.RowIndex;
                         //grab item name to use in order to delete in the database
-                        strItemID= dgvAllProducts.Rows[intIndexRowSelected].Cells[0].Value.ToString();
+                        strItemID = dgvAllProducts.Rows[intIndexRowSelected].Cells[0].Value.ToString();
                         dgvAllProducts.Rows.RemoveAt(row.Index);
 
                     }
@@ -275,9 +166,9 @@ namespace SU21_Final_Project
 
                         string strDeleteQuery = "DELETE FROM RandrezaVoharisoaM21Su2332.Items where ItemID= '" + strItemID + "'";
                         SqlCommand deleteCommande = new SqlCommand(strDeleteQuery, Connection);
-                        
+
                         deleteCommande.ExecuteNonQuery();
-                       
+
                         Connection.Close();
                     }
                     catch (Exception ex)
@@ -298,11 +189,11 @@ namespace SU21_Final_Project
         //Update Selected Item
         private void btnUpdateItem_Click_1(object sender, EventArgs e)
         {
-            string itemNameSelected=  dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[1].Value.ToString();
+            string strItemNameSelected = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[1].Value.ToString();
 
             if (dgvAllProducts.SelectedRows.Count > 0)
             {
-                if (MessageBox.Show("Do you want to edit '"+ itemNameSelected + "'?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Do you want to edit '" + strItemNameSelected + "'?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     gbxUpdateField.Enabled = true;
 
@@ -316,7 +207,7 @@ namespace SU21_Final_Project
             {
                 MessageBox.Show("Please select the product you want to update", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            
+
         }
 
 
@@ -375,7 +266,7 @@ namespace SU21_Final_Project
 
                 if (tbxQuantity.Text == "")
                 {
-                   
+
                     intUpdateQuantity = intSelectedQuantity;
                     blnInvoice = false;
                 }
@@ -384,7 +275,12 @@ namespace SU21_Final_Project
 
                     strAddQuantity = tbxQuantity.Text;
                     blnQuantityConvert = int.TryParse(strAddQuantity, out intAddQuantity);
-                   
+                    if (blnQuantityConvert == false)
+                    {
+                        MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+
                     intUpdateQuantity = intSelectedQuantity + intAddQuantity;
                     blnInvoice = true;
                 }
@@ -393,11 +289,21 @@ namespace SU21_Final_Project
                 {
                     strCost = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[3].Value.ToString();
                     blnCostConvert = double.TryParse(strCost, out dblCost);
+                    if (blnCostConvert == false)
+                    {
+                        MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
                 }
                 else
                 {
                     strCost = tbxCost.Text;
                     blnCostConvert = double.TryParse(strCost, out dblCost);
+                    if (blnCostConvert == false)
+                    {
+                        MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
                 }
 
 
@@ -405,12 +311,22 @@ namespace SU21_Final_Project
                 {
                     strRetailPrice = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[4].Value.ToString();
                     blnRetailPriceConvert = double.TryParse(strRetailPrice, out dblRetailPrice);
-                    
+                    if (blnRetailPriceConvert == false)
+                    {
+                        MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+
                 }
                 else
                 {
                     strRetailPrice = tbxRetailPrice.Text;
                     blnRetailPriceConvert = double.TryParse(strRetailPrice, out dblRetailPrice);
+                    if (blnRetailPriceConvert == false)
+                    {
+                        MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
                 }
 
                 if (tbxDescription.Text == "")
@@ -429,12 +345,23 @@ namespace SU21_Final_Project
                 {
                     strCategory = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[6].Value.ToString();
                     intCategoryTryParse = int.TryParse(strCategory, out intCategory);
+                    if (intCategoryTryParse == false)
+                    {
+                        MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
 
                 }
                 else
                 {
                     strCategory = cboCategory.SelectedItem.ToString();
                     intCategoryTryParse = int.TryParse(strCategory, out intCategory);
+                    if (intCategoryTryParse == false)
+                    {
+                        MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+
                 }
 
                 if (cboSupplierID.Text == "")
@@ -442,14 +369,24 @@ namespace SU21_Final_Project
 
                     strSupplierID = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[7].Value.ToString();
                     intSupplierTryParse = int.TryParse(strSupplierID, out intSupplierID);
+                    if (intSupplierTryParse == false)
+                    {
+                        MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
 
                 }
                 else
                 {
                     strSupplierID = cboSupplierID.SelectedItem.ToString();
                     intSupplierTryParse = int.TryParse(strSupplierID, out intSupplierID);
+                    if (intSupplierTryParse == false)
+                    {
+                        MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
                 }
-                if (intSelectedQuantity > 0 && intSelectedQuantity < int.MaxValue )
+                if (intSelectedQuantity > 0 && intSelectedQuantity < int.MaxValue)
                 {
                     if (dblCost > 0 && dblCost < double.MaxValue)
                     {
@@ -474,6 +411,7 @@ namespace SU21_Final_Project
                             MessageBox.Show("The selected item has been updated successfully?", "Exit Application", MessageBoxButtons.OK);
 
                             DisplayAllItems();
+                            ResetUpdateFields();
 
                         }
 
@@ -490,7 +428,7 @@ namespace SU21_Final_Project
                         tbxCost.Text = "";
                         tbxCost.Focus();
                     }
-                    
+
                 }
                 else
                 {
@@ -512,12 +450,12 @@ namespace SU21_Final_Project
             {
                 MessageBox.Show("Error :" + ex);
             }
-           
+
         }
 
 
         //Function for creating Invoice after adding Item
-        private StringBuilder GenerateInvoice(string strItemName,int intItemQuantity, double dblCost)
+        private StringBuilder GenerateInvoice(string strItemName, int intItemQuantity, double dblCost)
         {
             double dblTax = 0.0825;
             double dblTotalCost = dblCost * intItemQuantity;
@@ -556,18 +494,14 @@ namespace SU21_Final_Project
             html.AppendLine("<tr><td colspan=4><hr /></td></tr>");
 
 
-
-
             html.Append("<tr><td colspan=4><hr></hd></td></tr>");
             html.Append("<table>");
 
-            
+
             html.AppendLine($"<h5>{"Subtotal: "}{dblTotalCost.ToString("C2")}</h5>");
             html.AppendLine($"<h5>{"Tax Sale(8.25%): "}{dblTaxValue.ToString("C2")}</h5>");
             html.AppendLine($"<h5>{"Total Amount: "}{dblTotalPay.ToString("C2")}</h5>");
 
-
-            
 
             html.Append($"<h2>{"Company: Supplier  "}</h2>");
 
@@ -615,7 +549,7 @@ namespace SU21_Final_Project
                     }
                     else
                     {
-                        
+
                         new frmLogin().Show();
                         this.Hide();
                     }
@@ -717,9 +651,9 @@ namespace SU21_Final_Project
             cbxCost.Checked = false; tbxCost.Text = "";
             cbxRetailPrice.Checked = false; tbxRetailPrice.Text = "";
             cbxDescription.Checked = false; tbxDescription.Text = "";
-             cboCategory.Text = "";
+            cboCategory.Text = "";
             cbxCategoryID.Checked = false;
-             cboSupplierID.Text = "";
+            cboSupplierID.Text = "";
             cbxSupplierID.Checked = false;
 
         }
@@ -729,64 +663,6 @@ namespace SU21_Final_Project
             ResetUpdateFields();
         }
 
-        //-----------------------------------------
-        private void btnInsertImage_Click(object sender, EventArgs e)
-        {
-            //strItemName = cboItemName.SelectedItem.ToString();
-            try
-            {
-
-                Connection.Open();
-                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
-                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
-                Connection.Close();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error :" + ex);
-            }
-            try
-            {
-
-                //insert image
-
-                byte[] image = File.ReadAllBytes("C:\\Grocery.png");
-
-                Connection.Open();
-
-                string insertQuery = "UPDATE RandrezaVoharisoaM21Su2332.Items set Image = @Image where ItemID= '" + strItemID + "'"; // @Image is a parameter we will fill in later
-                SqlCommand insertCmd = new SqlCommand(insertQuery, Connection);
-                SqlParameter sqlParams = insertCmd.Parameters.AddWithValue("@Image", image); // The parameter will be the image as a byte array
-                sqlParams.DbType = System.Data.DbType.Binary; // The type of data we are sending to the server will be a binary file
-                insertCmd.ExecuteNonQuery();
-
-                MessageBox.Show("File was successfully added to the database.", "File Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                //SqlDataAdapter dataAdapter = new SqlDataAdapter(new SqlCommand("SELECT Image FROM RandrezaVoharisoaM21Su2332.Items WHERE CategoryId = 2", Connection));
-                //DataSet dataSet = new DataSet();
-                //dataAdapter.Fill(dataSet);
-
-                //Display Image
-                byte[] imgData;
-                SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where ItemID = '" + strItemID + "'", Connection);
-                SqlDataReader reader = cmd.ExecuteReader();
-                reader.Read();
-                long bufLength = reader.GetBytes(0, 0, null, 0, 0);
-                imgData = new byte[bufLength];
-                reader.GetBytes(0, 0, imgData, 0, (int)bufLength);
-                MemoryStream ms = new MemoryStream(imgData);
-                ms.Position = 0;
-                pbxItemPicture.Image = Image.FromStream(ms);
-                reader.Close();
-
-                Connection.Close();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error During Upload", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         private void btnAddItems_KeyDown(object sender, KeyEventArgs e)
         {
@@ -804,17 +680,83 @@ namespace SU21_Final_Project
             }
         }
 
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            new frmLogin().Show();
+            this.Hide();
+        }
+
+
+
+        //-------------------------------------Employee--------------------------------
+
         private void btnAddEmployee_Click(object sender, EventArgs e)
         {
             new frmAddEmployee().Show();
+            this.Hide();
+        }
+
+        private void dgvEmployee_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+                Connection.Open();
+
+                if (e.RowIndex >= 0)
+                {
+                    //instantiate object from Items class and assign value from cell
+                    DataGridViewRow row = this.dgvEmployee.Rows[e.RowIndex];
+                    strPersonID = row.Cells["PersonID"].Value.ToString();
+
+
+                    //get salary, hired date and Position from Employees Table
+                    string strQuery = "SELECT RandrezaVoharisoaM21Su2332.Employees.Salary,RandrezaVoharisoaM21Su2332.Employees.HiredDate, RandrezaVoharisoaM21Su2332.Employees.Position,RandrezaVoharisoaM21Su2332.Employees.UserID FROM RandrezaVoharisoaM21Su2332.Employees FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.UserID= RandrezaVoharisoaM21Su2332.Employees.UserID WHERE RandrezaVoharisoaM21Su2332.Users.PersonID='" + strPersonID + "'";
+                    SqlCommand command = new SqlCommand(strQuery, Connection);
+
+                    //gets the results from the sql command
+                    SqlDataReader reader = command.ExecuteReader();
+                    reader.Read();
+
+                    decimal decSalary = reader.GetDecimal(0);
+                    var HiredDate = reader.GetDateTime(1);
+                    lblSalary.Text = decSalary.ToString("C2");
+                    lblPosition.Text = reader["Position"].ToString();
+                    lblHiredDate.Text = HiredDate.ToString("d");
+
+                    int intUserId = reader.GetInt32(3);//use to acces User table
+                    strUserID = intUserId.ToString();
+
+                    if (reader != null)
+                    {
+                        reader.Close();
+                    }
+
+                }
+
+                if (Connection != null)
+                {
+                    Connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
+        //Remove Employee from database tables( Employees, Users, Person)
         private void btnRemoveEmployee_Click(object sender, EventArgs e)
         {
+
+
             if (dgvEmployee.SelectedRows.Count > 0)
             {
-                if (MessageBox.Show("Do you want to remove this item?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Do you want to remove this Employee?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     foreach (DataGridViewRow row in dgvEmployee.SelectedRows)
                     {
@@ -833,10 +775,22 @@ namespace SU21_Final_Project
 
                         Connection.Open();
 
-                        string strDeleteQuery = "DELETE FROM RandrezaVoharisoaM21Su2332.Items where ItemID= '" + strItemID + "'";
-                        SqlCommand deleteCommande = new SqlCommand(strDeleteQuery, Connection);
 
-                        deleteCommande.ExecuteNonQuery();
+                        string strDeleteQueryEmployee = "DELETE FROM RandrezaVoharisoaM21Su2332.Employees where UserID= '" + strUserID + "'";
+                        SqlCommand deleteCommandeEmployee = new SqlCommand(strDeleteQueryEmployee, Connection);
+
+                        deleteCommandeEmployee.ExecuteNonQuery();
+
+                        string strDeleteQueryUser = "DELETE FROM RandrezaVoharisoaM21Su2332.Users where PersonID= '" + strPersonID + "'";
+                        SqlCommand deleteCommandeUser = new SqlCommand(strDeleteQueryUser, Connection);
+
+                        deleteCommandeUser.ExecuteNonQuery();
+
+                        string strDeleteQueryPerson = "DELETE FROM RandrezaVoharisoaM21Su2332.Person where PersonID= '" + strPersonID + "'";
+                        SqlCommand deleteCommandePerson = new SqlCommand(strDeleteQueryPerson, Connection);
+
+                        deleteCommandePerson.ExecuteNonQuery();
+
 
                         Connection.Close();
                     }
@@ -852,13 +806,345 @@ namespace SU21_Final_Project
                 MessageBox.Show("Please select the product you want to remove", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-        
-    }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        }
+
+        //Edit Employee Informatiom
+        private void btnEditEmployee_Click(object sender, EventArgs e)
         {
-            new frmLogin().Show();
-            this.Hide();
+            string strFirstName= dgvEmployee.Rows[dgvEmployee.CurrentCell.RowIndex].Cells[1].Value.ToString();
+            string strLastName = dgvEmployee.Rows[dgvEmployee.CurrentCell.RowIndex].Cells[2].Value.ToString();
+
+
+            if (dgvEmployee.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Do you want to edit Employee '"+strFirstName+"' '" + strLastName + "'?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    gbxEmployeeEdit.Enabled = true;
+
+                }
+                else
+                {
+                    MessageBox.Show("Please select the Employee you want to edit", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please make a selection", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnSaveEdit_Click(object sender, EventArgs e)
+        {
+            string strNameFirst;
+            string strNameLast;
+            string strAddress;
+            string strCity;
+            string strEmail;
+            string strZip;
+            string strStateEdit;
+            string strPhoneEdit;
+
+            try
+            {
+                //Connection.Open();
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+               
+
+                if (tbxFirstName.Text == "")
+                {
+                    strNameFirst = dgvEmployee.Rows[dgvEmployee.CurrentCell.RowIndex].Cells[1].Value.ToString();
+                }
+                else
+                {
+                    strNameFirst = tbxFirstName.Text;
+                }
+
+                if (tbxLastName.Text == "")
+                {
+                    strNameLast = dgvEmployee.Rows[dgvEmployee.CurrentCell.RowIndex].Cells[2].Value.ToString();
+
+                }
+                else
+                {
+                    strNameLast = tbxLastName.Text;
+                }
+
+
+                if (tbxAddress.Text == "")
+                {
+                    strAddress = dgvEmployee.Rows[dgvEmployee.CurrentCell.RowIndex].Cells[3].Value.ToString();
+                }
+                else
+                {
+                    strAddress = tbxAddress.Text;
+                }
+
+                if (tbxCity.Text == "")
+                {
+                    strCity = dgvEmployee.Rows[dgvEmployee.CurrentCell.RowIndex].Cells[4].Value.ToString();
+                }
+                else
+                {
+                    strCity = tbxCity.Text;
+                }
+
+
+                if (cboStates.Text == "")
+                {
+                    strStateEdit = dgvEmployee.Rows[dgvEmployee.CurrentCell.RowIndex].Cells[5].Value.ToString();
+
+                }
+                else
+                {
+                    strStateEdit = cboStates.SelectedItem.ToString();
+
+                }
+
+        
+
+                if (tbxZip.Text == "")
+                {
+                    strZip = dgvEmployee.Rows[dgvEmployee.CurrentCell.RowIndex].Cells[6].Value.ToString();
+                }
+                else
+                {
+                    strZip = tbxZip.Text;
+                }
+
+                if (tbxEmail.Text == "")
+                {
+                    strEmail = dgvEmployee.Rows[dgvEmployee.CurrentCell.RowIndex].Cells[7].Value.ToString();
+                }
+                else
+                {
+                    
+                    strEmail = tbxEmail.Text;
+                    //if (ValidEmail(strEmail)==false)
+                    //{
+                    //    strEmail = dgvEmployee.Rows[dgvEmployee.CurrentCell.RowIndex].Cells[7].Value.ToString();
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("Sorry, Email format is not valid", "Invalid Email", MessageBoxButtons.OK);
+                    //    tbxEmail.Text = "";
+                    //    tbxEmail.Focus();
+                    //}
+                }
+
+                if (mskPhones.Text == "")
+                {
+                    strPhoneEdit = dgvEmployee.Rows[dgvEmployee.CurrentCell.RowIndex].Cells[8].Value.ToString();
+                    
+                }
+                else
+                {
+                    strPhoneEdit = mskPhones.Text;
+                }
+
+                Connection.Open();
+               
+                    string strQuery = "UPDATE RandrezaVoharisoaM21Su2332.Person SET NameFirst = @NameFirst,NameLast = @NameLast,Address1 = @Address,City = @City, Zipcode = @Zip, Email= @Email, PhonePrimary = @Phone" +
+                    " where PersonID= '" + strPersonID + "'";
+                    SqlCommand editCommande = new SqlCommand(strQuery, Connection);
+                    SqlParameter sqlpmFirstName = editCommande.Parameters.AddWithValue("@NameFirst", strNameFirst);
+                    SqlParameter sqlpmLastName = editCommande.Parameters.AddWithValue("@NameLast", strNameLast);
+                    SqlParameter sqlpmAddress = editCommande.Parameters.AddWithValue("@Address", strAddress);
+                    SqlParameter sqlpmCity = editCommande.Parameters.AddWithValue("@City", strCity);
+                    SqlParameter sqlpmState = editCommande.Parameters.AddWithValue("@State", strStateEdit);
+                    SqlParameter sqlpmZip = editCommande.Parameters.AddWithValue("@Zip", strZip);
+                    SqlParameter sqlpmEmail = editCommande.Parameters.AddWithValue("@Email", strEmail);
+                    SqlParameter sqlpmPhone = editCommande.Parameters.AddWithValue("@Phone", strPhoneEdit);
+                    editCommande.ExecuteNonQuery();
+
+
+
+                    Connection.Close();
+
+                    MessageBox.Show("The selected employee has been updated successfully?", "Exit Application", MessageBoxButtons.OK);
+
+                    DisplayEmployees();
+                    //ResetEditFields();
+              
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex);
+            }
+
+        }
+
+
+    //Enable textbox for updating when checkbox checked
+   
+
+ 
+        private void cbxFirstName_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (cbxFirstName.Checked == true)
+            {
+                tbxFirstName.Enabled = true;
+            }
+            else
+            {
+                tbxFirstName.Enabled = false;
+            }
+        }
+
+        private void cbxLastName_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (cbxLastName.Checked == true)
+            {
+                tbxLastName.Enabled = true;
+            }
+            else
+            {
+                tbxLastName.Enabled = false;
+            }
+        }
+
+        private void cbxAddress_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (cbxAddress.Checked == true)
+            {
+                tbxAddress.Enabled = true;
+            }
+            else
+            {
+                tbxAddress.Enabled = false;
+            }
+        }
+
+        private void cbxCity_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxCity.Checked == true)
+            {
+                tbxCity.Enabled = true;
+            }
+            else
+            {
+                tbxCity.Enabled = false;
+            }
+        }
+
+        private void cbxState_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (cbxState.Checked == true)
+            {
+                cboStates.Enabled = true;
+            }
+            else
+            {
+                cboStates.Enabled = false;
+            }
+        }
+
+        private void cbxZip_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxZip.Checked == true)
+            {
+               tbxZip.Enabled = true;
+            }
+            else
+            {
+                tbxZip.Enabled = false;
+            }
+        }
+
+        private void cbxEmail_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxEmail.Checked == true)
+            {
+                tbxEmail.Enabled = true;
+            }
+            else
+            {
+                tbxEmail.Enabled = false;
+            }
+        }
+        private void cbxPhone_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxPhone.Checked == true)
+            {
+                mskPhones.Enabled = true;
+            }
+            else
+            {
+                mskPhones.Enabled = false;
+            }
+        }
+        public void ResetEditFields()
+        {
+            cbxFirstName.Checked = false; tbxFirstName.Text = "";
+            cbxLastName.Checked = false; tbxLastName.Text = "";
+            cbxAddress.Checked = false; tbxAddress.Text = "";
+            cbxZip.Checked = false; tbxZip.Text = "";
+            mskPhones.Text = "";
+            cbxPhone.Checked = false;
+            cbxState.Checked = false;
+            cboStates.Text = "";
+            cbxEmail.Checked = false; tbxEmail.Text = "";
+
+        }
+
+        private void dgvEmployee_SelectionChanged_1(object sender, EventArgs e)
+        {
+            gbxEmployeeEdit.Enabled = false;
+            ResetEditFields();
+        }
+
+        private void tbxFirstName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) &&
+    (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbxLastName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) &&
+    (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbxZip_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+      (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        public bool ValidEmail(string strValidEmail)
+        {
+
+            try
+            {
+                Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.
+                 [0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
+                RegexOptions.CultureInvariant | RegexOptions.Singleline);
+                bool isValidEmail = regex.IsMatch(strValidEmail);
+                if (!isValidEmail)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
     }
 
