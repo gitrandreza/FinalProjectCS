@@ -60,6 +60,8 @@ namespace SU21_Final_Project
             this.btnEditEmployee = new System.Windows.Forms.Button();
             this.dgvEmployee = new System.Windows.Forms.DataGridView();
             this.tabInventory = new System.Windows.Forms.TabPage();
+            this.dgvLowItem = new System.Windows.Forms.DataGridView();
+            this.lblLowItemLabel = new System.Windows.Forms.Label();
             this.gbxUpdateField = new System.Windows.Forms.GroupBox();
             this.cboCategory = new System.Windows.Forms.ComboBox();
             this.cboSupplierID = new System.Windows.Forms.ComboBox();
@@ -86,29 +88,27 @@ namespace SU21_Final_Project
             this.btnEditCustomer = new System.Windows.Forms.Button();
             this.btnAddCustomer = new System.Windows.Forms.Button();
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
+            this.tabSalesReport = new System.Windows.Forms.TabPage();
+            this.lblSalesDetailLabel = new System.Windows.Forms.Label();
+            this.lblSalesReportLabel = new System.Windows.Forms.Label();
+            this.dgvSalesDetails = new System.Windows.Forms.DataGridView();
+            this.dgvSalesReport = new System.Windows.Forms.DataGridView();
             this.lblDate = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.lblLowItemLabel = new System.Windows.Forms.Label();
-            this.dgvLowItem = new System.Windows.Forms.DataGridView();
-            this.tabSalesReport = new System.Windows.Forms.TabPage();
-            this.dgvSalesReport = new System.Windows.Forms.DataGridView();
-            this.dgvSalesDetails = new System.Windows.Forms.DataGridView();
-            this.lblSalesReportLabel = new System.Windows.Forms.Label();
-            this.lblSalesDetailLabel = new System.Windows.Forms.Label();
             this.tabEmployee.SuspendLayout();
             this.gbxEdit.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
             this.tabInventory.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLowItem)).BeginInit();
             this.gbxUpdateField.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllProducts)).BeginInit();
             this.tabManagerFeatures.SuspendLayout();
             this.tabCustomer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLowItem)).BeginInit();
             this.tabSalesReport.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSalesReport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesDetails)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSalesReport)).BeginInit();
             this.SuspendLayout();
             // 
             // tabEmployee
@@ -516,6 +516,26 @@ namespace SU21_Final_Project
             this.tabInventory.Text = "Inventory Control";
             this.tabInventory.UseVisualStyleBackColor = true;
             // 
+            // dgvLowItem
+            // 
+            this.dgvLowItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLowItem.Location = new System.Drawing.Point(823, 253);
+            this.dgvLowItem.Name = "dgvLowItem";
+            this.dgvLowItem.ReadOnly = true;
+            this.dgvLowItem.RowHeadersWidth = 51;
+            this.dgvLowItem.RowTemplate.Height = 24;
+            this.dgvLowItem.Size = new System.Drawing.Size(257, 199);
+            this.dgvLowItem.TabIndex = 41;
+            // 
+            // lblLowItemLabel
+            // 
+            this.lblLowItemLabel.AutoSize = true;
+            this.lblLowItemLabel.Location = new System.Drawing.Point(820, 233);
+            this.lblLowItemLabel.Name = "lblLowItemLabel";
+            this.lblLowItemLabel.Size = new System.Drawing.Size(133, 17);
+            this.lblLowItemLabel.TabIndex = 40;
+            this.lblLowItemLabel.Text = "Restock Item below:";
+            // 
             // gbxUpdateField
             // 
             this.gbxUpdateField.Controls.Add(this.cboCategory);
@@ -806,8 +826,64 @@ namespace SU21_Final_Project
             this.dgvCustomer.ReadOnly = true;
             this.dgvCustomer.RowHeadersWidth = 51;
             this.dgvCustomer.RowTemplate.Height = 24;
-            this.dgvCustomer.Size = new System.Drawing.Size(1057, 263);
+            this.dgvCustomer.Size = new System.Drawing.Size(1064, 263);
             this.dgvCustomer.TabIndex = 1;
+            // 
+            // tabSalesReport
+            // 
+            this.tabSalesReport.Controls.Add(this.lblSalesDetailLabel);
+            this.tabSalesReport.Controls.Add(this.lblSalesReportLabel);
+            this.tabSalesReport.Controls.Add(this.dgvSalesDetails);
+            this.tabSalesReport.Controls.Add(this.dgvSalesReport);
+            this.tabSalesReport.Location = new System.Drawing.Point(4, 25);
+            this.tabSalesReport.Name = "tabSalesReport";
+            this.tabSalesReport.Size = new System.Drawing.Size(1097, 522);
+            this.tabSalesReport.TabIndex = 3;
+            this.tabSalesReport.Text = "Sales Report";
+            this.tabSalesReport.UseVisualStyleBackColor = true;
+            // 
+            // lblSalesDetailLabel
+            // 
+            this.lblSalesDetailLabel.AutoSize = true;
+            this.lblSalesDetailLabel.Location = new System.Drawing.Point(472, 23);
+            this.lblSalesDetailLabel.Name = "lblSalesDetailLabel";
+            this.lblSalesDetailLabel.Size = new System.Drawing.Size(137, 17);
+            this.lblSalesDetailLabel.TabIndex = 3;
+            this.lblSalesDetailLabel.Text = "Sales Report Details";
+            // 
+            // lblSalesReportLabel
+            // 
+            this.lblSalesReportLabel.AutoSize = true;
+            this.lblSalesReportLabel.Location = new System.Drawing.Point(10, 23);
+            this.lblSalesReportLabel.Name = "lblSalesReportLabel";
+            this.lblSalesReportLabel.Size = new System.Drawing.Size(240, 17);
+            this.lblSalesReportLabel.TabIndex = 2;
+            this.lblSalesReportLabel.Text = "Sales Report (Select Row for details)";
+            // 
+            // dgvSalesDetails
+            // 
+            this.dgvSalesDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSalesDetails.Location = new System.Drawing.Point(475, 43);
+            this.dgvSalesDetails.Name = "dgvSalesDetails";
+            this.dgvSalesDetails.ReadOnly = true;
+            this.dgvSalesDetails.RowHeadersWidth = 51;
+            this.dgvSalesDetails.RowTemplate.Height = 24;
+            this.dgvSalesDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSalesDetails.Size = new System.Drawing.Size(593, 198);
+            this.dgvSalesDetails.TabIndex = 1;
+            // 
+            // dgvSalesReport
+            // 
+            this.dgvSalesReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSalesReport.Location = new System.Drawing.Point(13, 43);
+            this.dgvSalesReport.Name = "dgvSalesReport";
+            this.dgvSalesReport.ReadOnly = true;
+            this.dgvSalesReport.RowHeadersWidth = 51;
+            this.dgvSalesReport.RowTemplate.Height = 24;
+            this.dgvSalesReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSalesReport.Size = new System.Drawing.Size(401, 191);
+            this.dgvSalesReport.TabIndex = 0;
+            this.dgvSalesReport.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSalesReport_CellClick);
             // 
             // lblDate
             // 
@@ -826,82 +902,6 @@ namespace SU21_Final_Project
             this.btnLogout.Text = "Log out";
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            // 
-            // lblLowItemLabel
-            // 
-            this.lblLowItemLabel.AutoSize = true;
-            this.lblLowItemLabel.Location = new System.Drawing.Point(820, 233);
-            this.lblLowItemLabel.Name = "lblLowItemLabel";
-            this.lblLowItemLabel.Size = new System.Drawing.Size(133, 17);
-            this.lblLowItemLabel.TabIndex = 40;
-            this.lblLowItemLabel.Text = "Restock Item below:";
-            // 
-            // dgvLowItem
-            // 
-            this.dgvLowItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLowItem.Location = new System.Drawing.Point(823, 253);
-            this.dgvLowItem.Name = "dgvLowItem";
-            this.dgvLowItem.ReadOnly = true;
-            this.dgvLowItem.RowHeadersWidth = 51;
-            this.dgvLowItem.RowTemplate.Height = 24;
-            this.dgvLowItem.Size = new System.Drawing.Size(257, 199);
-            this.dgvLowItem.TabIndex = 41;
-            // 
-            // tabSalesReport
-            // 
-            this.tabSalesReport.Controls.Add(this.lblSalesDetailLabel);
-            this.tabSalesReport.Controls.Add(this.lblSalesReportLabel);
-            this.tabSalesReport.Controls.Add(this.dgvSalesDetails);
-            this.tabSalesReport.Controls.Add(this.dgvSalesReport);
-            this.tabSalesReport.Location = new System.Drawing.Point(4, 25);
-            this.tabSalesReport.Name = "tabSalesReport";
-            this.tabSalesReport.Size = new System.Drawing.Size(1097, 522);
-            this.tabSalesReport.TabIndex = 3;
-            this.tabSalesReport.Text = "Sales Report";
-            this.tabSalesReport.UseVisualStyleBackColor = true;
-            // 
-            // dgvSalesReport
-            // 
-            this.dgvSalesReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSalesReport.Location = new System.Drawing.Point(13, 43);
-            this.dgvSalesReport.Name = "dgvSalesReport";
-            this.dgvSalesReport.ReadOnly = true;
-            this.dgvSalesReport.RowHeadersWidth = 51;
-            this.dgvSalesReport.RowTemplate.Height = 24;
-            this.dgvSalesReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSalesReport.Size = new System.Drawing.Size(401, 191);
-            this.dgvSalesReport.TabIndex = 0;
-            this.dgvSalesReport.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSalesReport_CellClick);
-            // 
-            // dgvSalesDetails
-            // 
-            this.dgvSalesDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSalesDetails.Location = new System.Drawing.Point(475, 43);
-            this.dgvSalesDetails.Name = "dgvSalesDetails";
-            this.dgvSalesDetails.ReadOnly = true;
-            this.dgvSalesDetails.RowHeadersWidth = 51;
-            this.dgvSalesDetails.RowTemplate.Height = 24;
-            this.dgvSalesDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSalesDetails.Size = new System.Drawing.Size(593, 198);
-            this.dgvSalesDetails.TabIndex = 1;
-            // 
-            // lblSalesReportLabel
-            // 
-            this.lblSalesReportLabel.AutoSize = true;
-            this.lblSalesReportLabel.Location = new System.Drawing.Point(10, 23);
-            this.lblSalesReportLabel.Name = "lblSalesReportLabel";
-            this.lblSalesReportLabel.Size = new System.Drawing.Size(240, 17);
-            this.lblSalesReportLabel.TabIndex = 2;
-            this.lblSalesReportLabel.Text = "Sales Report (Select Row for details)";
-            // 
-            // lblSalesDetailLabel
-            // 
-            this.lblSalesDetailLabel.AutoSize = true;
-            this.lblSalesDetailLabel.Location = new System.Drawing.Point(472, 23);
-            this.lblSalesDetailLabel.Name = "lblSalesDetailLabel";
-            this.lblSalesDetailLabel.Size = new System.Drawing.Size(137, 17);
-            this.lblSalesDetailLabel.TabIndex = 3;
-            this.lblSalesDetailLabel.Text = "Sales Report Details";
             // 
             // frmAdmin
             // 
@@ -926,17 +926,17 @@ namespace SU21_Final_Project
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).EndInit();
             this.tabInventory.ResumeLayout(false);
             this.tabInventory.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLowItem)).EndInit();
             this.gbxUpdateField.ResumeLayout(false);
             this.gbxUpdateField.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllProducts)).EndInit();
             this.tabManagerFeatures.ResumeLayout(false);
             this.tabCustomer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLowItem)).EndInit();
             this.tabSalesReport.ResumeLayout(false);
             this.tabSalesReport.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSalesReport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesDetails)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSalesReport)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

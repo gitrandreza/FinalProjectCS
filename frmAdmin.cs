@@ -516,14 +516,15 @@ namespace SU21_Final_Project
             return html;
         }
 
-        // Write (and overwrite) to the hard drive using the same filename of "Report.html"
+       
         private void PrintInvoice(StringBuilder html)
         {
-
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string filepath = path + "\\Report.html";
             try
             {
                 // A "using" statement will automatically close a file after opening it.               
-                using (StreamWriter sw = new StreamWriter("Report.html"))
+                using (StreamWriter sw = new StreamWriter(filepath))
                 {
                     sw.WriteLine(html);
                 }

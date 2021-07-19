@@ -59,7 +59,6 @@ namespace SU21_Final_Project
             this.lblDiscountThree = new System.Windows.Forms.Label();
             this.lblDiscountTwo = new System.Windows.Forms.Label();
             this.lblDiscountOne = new System.Windows.Forms.Label();
-            this.cboCategory = new System.Windows.Forms.ComboBox();
             this.btnAdmin = new System.Windows.Forms.Button();
             this.lblUser = new System.Windows.Forms.Label();
             this.lblUserIDLabel = new System.Windows.Forms.Label();
@@ -458,23 +457,6 @@ namespace SU21_Final_Project
             this.lblDiscountOne.Size = new System.Drawing.Size(112, 25);
             this.lblDiscountOne.TabIndex = 35;
             this.lblDiscountOne.Text = "+10=10%";
-            // 
-            // cboCategory
-            // 
-            this.cboCategory.Enabled = false;
-            this.cboCategory.FormattingEnabled = true;
-            this.cboCategory.Items.AddRange(new object[] {
-            "All ",
-            "Clothes",
-            "Bags",
-            "Gifts"});
-            this.cboCategory.Location = new System.Drawing.Point(180, 88);
-            this.cboCategory.Name = "cboCategory";
-            this.cboCategory.Size = new System.Drawing.Size(113, 24);
-            this.cboCategory.TabIndex = 33;
-            this.cboCategory.Text = "All ";
-            this.cboCategory.Visible = false;
-            this.cboCategory.SelectedIndexChanged += new System.EventHandler(this.cboCategory_SelectedIndexChanged);
             // 
             // btnAdmin
             // 
@@ -900,7 +882,6 @@ namespace SU21_Final_Project
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.lblDiscountTwo);
-            this.Controls.Add(this.cboCategory);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblDiscountOne);
             this.Controls.Add(this.btnCheckout);
@@ -977,7 +958,6 @@ namespace SU21_Final_Project
         public System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label lblNameLabel;
         public System.Windows.Forms.Label lblNameOfUser;
-        private System.Windows.Forms.ComboBox cboCategory;
         private System.Windows.Forms.Label lblSelectItemLabel;
         private System.Windows.Forms.Label lblDescriptionLabel;
         private System.Windows.Forms.TextBox tbxDescription;

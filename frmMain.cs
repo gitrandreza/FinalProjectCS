@@ -114,61 +114,6 @@ namespace SU21_Final_Project
             }
         }
 
-        public void DisplayGiftItems()
-        {
-            try
-            {
-                Connection.Open();
-                dataAdapter = new SqlDataAdapter("SELECT Name, Quantity, RetailPrice,Description   FROM RandrezaVoharisoaM21Su2332.Items WHERE CategoryID = 2 ;", Connection);
-                dataTable = new DataTable();
-                dataAdapter.Fill(dataTable);
-                dgvAll.DataSource = dataTable;
-
-                Connection.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        public void DisplayClothesItems()
-        {
-            try
-            {
-                Connection.Open();
-                dataAdapter = new SqlDataAdapter("SELECT Name, Quantity, RetailPrice,Description  FROM RandrezaVoharisoaM21Su2332.Items WHERE CategoryID = 1 ;", Connection);
-                dataTable = new DataTable();
-                dataAdapter.Fill(dataTable);
-                dgvAll.DataSource = dataTable;
-
-                Connection.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        public void DisplayBagsItems()
-        {
-            try
-            {
-                Connection.Open();
-                dataAdapter = new SqlDataAdapter("SELECT Name, Quantity, RetailPrice,Description  FROM RandrezaVoharisoaM21Su2332.Items WHERE CategoryID = 3 ;", Connection);
-                dataTable = new DataTable();
-                dataAdapter.Fill(dataTable);
-                dgvAll.DataSource = dataTable;
-
-                Connection.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
-        }
         //**************************END Method to display table item by category**************************
 
 
@@ -196,28 +141,6 @@ namespace SU21_Final_Project
                 MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-        }
-        //SELECT by Category
-        private void cboCategory_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cboCategory.SelectedIndex == 0)
-            {
-                DisplayAllItems();
-            }
-
-            else if (cboCategory.SelectedItem.ToString() == "Bags")
-            {
-                DisplayBagsItems();
-            }
-
-            else if (cboCategory.SelectedItem.ToString() == "Gifts")
-            {
-                DisplayGiftItems();
-            }
-            else if (cboCategory.SelectedItem.ToString() == "Clothes")
-            {
-                DisplayClothesItems();
-            }
         }
 
 
@@ -355,7 +278,7 @@ namespace SU21_Final_Project
 
                     if (intQuantityNeed > 0 && intQuantityNeed < int.MaxValue)
                     {
-                        if (intQuantityNeed <= myItems.Quantity)
+                        if (intQuantityNeed > myItems.Quantity)
                         {
                             if (radEmbroidered.Checked == true || radPrinted.Checked == true || radBlank.Checked == true)
                             {
@@ -851,18 +774,21 @@ namespace SU21_Final_Project
             return html;
         }
 
-        // Write (and overwrite) to the hard drive using the same filename of "Report.html"
+        // Print the HTML report on the desktop
         private void PrintReport(StringBuilder html)
         {
-
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string filepath = path + "\\Report.html";
+           
             try
             {
                 // A "using" statement will automatically close a file after opening it.               
-                using (StreamWriter sw = new StreamWriter("Report.html"))
+                using (StreamWriter sw = new StreamWriter(filepath))
                 {
                    sw.WriteLine(html);
                 }
-                System.Diagnostics.Process.Start(@"Report.html"); //Open the report in the default web browser
+                System.Diagnostics.Process.Start(@"Report.html");
+                
             }
             catch (Exception)
             {
