@@ -61,6 +61,9 @@ namespace SU21_Final_Project
 
                             frmMain mainForm = new frmMain();
                             mainForm.LabelUserID = reader["UserID"].ToString();
+
+                           
+
                             mainForm.Show();
                             this.Hide();
                         }

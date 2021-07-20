@@ -487,10 +487,13 @@ namespace SU21_Final_Project
             // 
             // dgvEmployee
             // 
+            this.dgvEmployee.AllowUserToAddRows = false;
+            this.dgvEmployee.AllowUserToDeleteRows = false;
             this.dgvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmployee.Location = new System.Drawing.Point(8, 22);
             this.dgvEmployee.Name = "dgvEmployee";
             this.dgvEmployee.ReadOnly = true;
+            this.dgvEmployee.RowHeadersVisible = false;
             this.dgvEmployee.RowHeadersWidth = 51;
             this.dgvEmployee.RowTemplate.Height = 24;
             this.dgvEmployee.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -518,10 +521,13 @@ namespace SU21_Final_Project
             // 
             // dgvLowItem
             // 
+            this.dgvLowItem.AllowUserToAddRows = false;
+            this.dgvLowItem.AllowUserToDeleteRows = false;
             this.dgvLowItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLowItem.Location = new System.Drawing.Point(823, 253);
             this.dgvLowItem.Name = "dgvLowItem";
             this.dgvLowItem.ReadOnly = true;
+            this.dgvLowItem.RowHeadersVisible = false;
             this.dgvLowItem.RowHeadersWidth = 51;
             this.dgvLowItem.RowTemplate.Height = 24;
             this.dgvLowItem.Size = new System.Drawing.Size(257, 199);
@@ -742,14 +748,17 @@ namespace SU21_Final_Project
             // 
             // dgvAllProducts
             // 
+            this.dgvAllProducts.AllowUserToAddRows = false;
+            this.dgvAllProducts.AllowUserToDeleteRows = false;
             this.dgvAllProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAllProducts.Location = new System.Drawing.Point(8, 6);
             this.dgvAllProducts.Name = "dgvAllProducts";
             this.dgvAllProducts.ReadOnly = true;
+            this.dgvAllProducts.RowHeadersVisible = false;
             this.dgvAllProducts.RowHeadersWidth = 51;
             this.dgvAllProducts.RowTemplate.Height = 24;
             this.dgvAllProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAllProducts.Size = new System.Drawing.Size(1009, 176);
+            this.dgvAllProducts.Size = new System.Drawing.Size(1072, 176);
             this.dgvAllProducts.TabIndex = 1;
             this.dgvAllProducts.SelectionChanged += new System.EventHandler(this.dgvAllProducts_SelectionChanged);
             // 
@@ -820,10 +829,13 @@ namespace SU21_Final_Project
             // 
             // dgvCustomer
             // 
+            this.dgvCustomer.AllowUserToAddRows = false;
+            this.dgvCustomer.AllowUserToDeleteRows = false;
             this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCustomer.Location = new System.Drawing.Point(12, 12);
             this.dgvCustomer.Name = "dgvCustomer";
             this.dgvCustomer.ReadOnly = true;
+            this.dgvCustomer.RowHeadersVisible = false;
             this.dgvCustomer.RowHeadersWidth = 51;
             this.dgvCustomer.RowTemplate.Height = 24;
             this.dgvCustomer.Size = new System.Drawing.Size(1064, 263);
@@ -862,10 +874,13 @@ namespace SU21_Final_Project
             // 
             // dgvSalesDetails
             // 
+            this.dgvSalesDetails.AllowUserToAddRows = false;
+            this.dgvSalesDetails.AllowUserToDeleteRows = false;
             this.dgvSalesDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSalesDetails.Location = new System.Drawing.Point(475, 43);
             this.dgvSalesDetails.Name = "dgvSalesDetails";
             this.dgvSalesDetails.ReadOnly = true;
+            this.dgvSalesDetails.RowHeadersVisible = false;
             this.dgvSalesDetails.RowHeadersWidth = 51;
             this.dgvSalesDetails.RowTemplate.Height = 24;
             this.dgvSalesDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -874,10 +889,13 @@ namespace SU21_Final_Project
             // 
             // dgvSalesReport
             // 
+            this.dgvSalesReport.AllowUserToAddRows = false;
+            this.dgvSalesReport.AllowUserToDeleteRows = false;
             this.dgvSalesReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSalesReport.Location = new System.Drawing.Point(13, 43);
             this.dgvSalesReport.Name = "dgvSalesReport";
             this.dgvSalesReport.ReadOnly = true;
+            this.dgvSalesReport.RowHeadersVisible = false;
             this.dgvSalesReport.RowHeadersWidth = 51;
             this.dgvSalesReport.RowTemplate.Height = 24;
             this.dgvSalesReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;

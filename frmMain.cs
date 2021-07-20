@@ -53,7 +53,7 @@ namespace SU21_Final_Project
         int intQuantityAvailable;
         int intQuantityNeed;
 
-        
+        public static string strUserNumberID;
 
         public frmMain()
         {
@@ -92,6 +92,8 @@ namespace SU21_Final_Project
 
 
             DisplayAllItems();
+
+           
 
         }
 
@@ -206,7 +208,7 @@ namespace SU21_Final_Project
         {
             SqlCommand scRoleID;
             SqlDataReader srRoleID;
-            string strUserNumberID = lblUser.Text;
+            strUserNumberID = lblUser.Text;
             try
             {
 
@@ -249,6 +251,8 @@ namespace SU21_Final_Project
             {
                 MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+
         }
 
         //***********************ADD LIST*********************************************
@@ -278,7 +282,7 @@ namespace SU21_Final_Project
 
                     if (intQuantityNeed > 0 && intQuantityNeed < int.MaxValue)
                     {
-                        if (intQuantityNeed > myItems.Quantity)
+                        if (intQuantityNeed <= myItems.Quantity)
                         {
                             if (radEmbroidered.Checked == true || radPrinted.Checked == true || radBlank.Checked == true)
                             {
@@ -349,9 +353,11 @@ namespace SU21_Final_Project
 
                                         //lblMessage.Text =dblTotalPrice.ToString();
                                         string strItemTotalPrice = dblTotalPrice.ToString();
+                                        
+                                        string strItemPrice = myItems.Price.ToString("C2");
 
                                         //Call add cart function to display selection in the cart
-                                        addCart(myItems.Name, strItemDeco, strItemColor, strItemSize, strQuantityNeed, myItems.Price.ToString(), strItemTotalPrice);
+                                        addCart(myItems.Name, strItemDeco, strItemColor, strItemSize, strQuantityNeed, strItemPrice, strItemTotalPrice);
 
 
                                         if (myItems.Quantity > 0)
@@ -476,6 +482,8 @@ namespace SU21_Final_Project
                 lblDeliveryOne.BackColor = Color.Silver;
                 lblDeliveryTwo.BackColor = Color.Silver;
                 lblDeliveryThree.BackColor = Color.Silver;
+
+                DisplayAllItems();
             }
             else
             {
@@ -522,6 +530,12 @@ namespace SU21_Final_Project
                     strQuantityTotal = dgvList.Rows[i].Cells[4].Value.ToString();
                     
                     bool intResultTryParse = int.TryParse(strQuantityTotal, out intQuantityTotalList);
+
+                    if (intResultTryParse == false)
+                    {
+                        MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
 
                     intQuantityTotal = intQuantityTotal + intQuantityTotalList;
                 }
@@ -673,6 +687,10 @@ namespace SU21_Final_Project
                         string strQuantityUpdate= row.Cells["Quantity"].Value.ToString();
                         int intQuantityDgv;
                         bool blnConvert= int.TryParse(strQuantityUpdate, out intQuantityDgv);
+                        if (blnConvert == false)
+                        {
+                            MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                         string strNameItem= row.Cells["Name"].Value.ToString();
                         //UPDATE quantity in the table Items
                         string strUpdateQuery = "UPDATE RandrezaVoharisoaM21Su2332.Items SET Quantity = @Quantity where Name= '" + strNameItem + "'";
@@ -778,7 +796,7 @@ namespace SU21_Final_Project
         private void PrintReport(StringBuilder html)
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string filepath = path + "\\Report.html";
+            string filepath = path + "\\ReportCustomerView.html";
            
             try
             {
@@ -787,7 +805,7 @@ namespace SU21_Final_Project
                 {
                    sw.WriteLine(html);
                 }
-                System.Diagnostics.Process.Start(@"Report.html");
+                System.Diagnostics.Process.Start(@"ReportCustomerView.html");
                 
             }
             catch (Exception)
@@ -798,7 +816,7 @@ namespace SU21_Final_Project
 
             //unique filename  use for a date and time with part of a name
             DateTime today = DateTime.Now;
-            using (StreamWriter sw = new StreamWriter($"{today.ToString("yyyy-MM-dd-HHmmss")} - Report.html"))
+            using (StreamWriter sw = new StreamWriter($"{today.ToString("yyyy-MM-dd-HHmmss")} - ReportCustomerView.html"))
             {
                 sw.WriteLine(html);
             }
@@ -844,7 +862,7 @@ namespace SU21_Final_Project
 
             lblDiscount.Text = "";
             dblDiscount = 0;
-            lblTotalAmount.Text = "";
+           
 
             lblDeliveryOne.BackColor = Color.Silver;
             lblDeliveryTwo.BackColor = Color.Silver;
