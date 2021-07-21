@@ -929,16 +929,7 @@ namespace SU21_Final_Project
                 {
                     
                     strEmail = tbxEmail.Text;
-                    //if (ValidEmail(strEmail)==false)
-                    //{
-                    //    strEmail = dgvEmployee.Rows[dgvEmployee.CurrentCell.RowIndex].Cells[7].Value.ToString();
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show("Sorry, Email format is not valid", "Invalid Email", MessageBoxButtons.OK);
-                    //    tbxEmail.Text = "";
-                    //    tbxEmail.Focus();
-                    //}
+          
                 }
 
                 if (mskPhones.Text == "")
@@ -1236,6 +1227,77 @@ namespace SU21_Final_Project
 
             }
         }
+
+        private void btnCreateCoupon_Click(object sender, EventArgs e)
+        {
+            string strCouponDescription = cboCouponDescription.Text;
+            string strIndex = "0";
+            //string strstartDate = dtpStartCoupon.Value.ToString("MM/dd/yyyy");
+            //string strEndDate = dtpEndCoupon.Value.ToString("MM/dd/yyyy");
+            string strCouponID;
+
+            try
+            {
+
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                if (cboCouponDescription.Text != "" && dtpStartCoupon.Text != "" && dtpEndCoupon.Text != "")
+                {
+
+
+                    if (cboCouponDescription.SelectedIndex == 0)
+                    {
+                        strIndex = "1";
+                        
+                    }
+                    else if (cboCouponDescription.SelectedIndex == 1)
+                    {
+                        strIndex = "2";
+                        
+                    }
+
+                    else if (cboCouponDescription.SelectedIndex == 2)
+                    {
+                        strIndex = "3";
+                        
+                    }
+
+
+                    SqlCommand commandPerson = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Coupon(Description,CreationDate,Expiration,DiscountIndex) VALUES (@Description,@StartDate,@EndDate,@Index)", Connection);
+                    commandPerson.Parameters.AddWithValue("@Description", strCouponDescription);
+                    commandPerson.Parameters.AddWithValue("@StartDate", dtpStartCoupon.Value.Date);
+                    commandPerson.Parameters.AddWithValue("@EndDate", dtpEndCoupon.Value.Date);
+                    commandPerson.Parameters.AddWithValue("@Index", strIndex);
+
+                    commandPerson.ExecuteNonQuery();
+
+                    //Get the CouponID 
+                    string queryLastID = "SELECT MAX(CouponID) from RandrezaVoharisoaM21Su2332.Coupon";
+                    SqlCommand commandLastID = new SqlCommand(queryLastID, Connection);
+
+                    //gets the results from the sql command
+                    SqlDataReader sr = commandLastID.ExecuteReader();
+                    sr.Read();
+                    strCouponID = sr.GetInt32(0).ToString();
+                    sr.Close();
+
+                    MessageBox.Show("Coupon number:" + strCouponID + " added", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Connection.Close();
+
+                }
+                else
+                {
+                    MessageBox.Show("Please make sure to fill up the required fields with(*)", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+    
     }
 
 }

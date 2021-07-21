@@ -67,6 +67,7 @@ namespace SU21_Final_Project
                             mainForm.Show();
                             this.Hide();
                         }
+                        
                     }
 
                     else

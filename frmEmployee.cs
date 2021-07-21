@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
-
+using System.Text.RegularExpressions;
 
 namespace SU21_Final_Project
 {
@@ -20,7 +20,8 @@ namespace SU21_Final_Project
         SqlConnection Connection;
         SqlDataAdapter dataAdapter;
         DataTable dataTable;
-
+        SqlCommand command;
+        SqlDataReader reader;
 
         string strItemSelectedName;
         string strQuantityAvailable;
@@ -44,10 +45,12 @@ namespace SU21_Final_Project
         double dblDiscountOne = 0.1;
         double dblDiscountTwo = 0.2;
         double dblDiscountThree = 0.3;
+        double dblDiscountReturning = 0.1;
 
         int intSaleId;
 
-
+        string strCustomerID;
+        bool blnReturningCustomer = false;
 
         private void frmEmployee_Load(object sender, EventArgs e)
         {
@@ -371,8 +374,7 @@ namespace SU21_Final_Project
         //Display Amount in the list without discount
         private void btnDisplayPrice_Click(object sender, EventArgs e)
         {
-            //string x= dgvItemList.Rows[0].Cells[6].Value.ToString();
-            //tbxCoupon.Text=x;
+            
             string strTotalPriceList;
             double dblTotalPriceList;
 
@@ -402,6 +404,7 @@ namespace SU21_Final_Project
 
                     dblTotalList = dblTotalList + dblTotalPriceList;
                 }
+                tbxTotalPrice.Text = dblTotalList.ToString("C2");
 
                 //Cumulate quantity total for discount
                 for (int i = 0; i < dgvItemList.Rows.Count; i++)
@@ -416,6 +419,8 @@ namespace SU21_Final_Project
 
                     intQuantityTotal = intQuantityTotal + intQuantityTotalList;
                 }
+
+                
 
                 //delivery condition based on quantities
                 if (intQuantityTotal > 10 && intQuantityTotal <= 50)
@@ -438,23 +443,29 @@ namespace SU21_Final_Project
                 {
                     radNoDiscount.Checked = true;
                     CalculateAmount(dblDiscount);
+                    tbxDelivery.Text = "2h";
                 }
                 
 
             }
+            if(blnReturningCustomer==true)
+            {
+                radReturningDiscount.Checked = true;
+            }
+            
         }
 
         void CalculateAmount(double dblDiscountApply )
         {
             
-           
+            
             dblDiscount = dblTotalList * dblDiscountApply;
-            dblSubTotal = dblTotalList;
+            dblSubTotal = dblTotalList- dblDiscount;
             dblAmountTax = dblTotalList * dblTax;
-            dblTotalAmount = dblTotalList + dblAmountTax;
+            dblTotalAmount = dblSubTotal + dblAmountTax;
 
             tbxDiscountCustomer.Text = dblDiscount.ToString("C2");
-            tbxSubTotalCustomer.Text = dblTotalList.ToString("C2");
+            tbxSubTotalCustomer.Text = dblSubTotal.ToString("C2");
             tbxTaxCustomer.Text = dblAmountTax.ToString("C2");
             tbxTotalToPay.Text = dblTotalAmount.ToString("C2");
 
@@ -486,7 +497,7 @@ namespace SU21_Final_Project
         //No discount apply
         private void radNoDiscount_CheckedChanged(object sender, EventArgs e)
         {
-            CalculateAmount(dblDiscount);
+            CalculateAmount(0);
         }
       
         private void btnPlaceOrder_Click(object sender, EventArgs e)
@@ -570,10 +581,6 @@ namespace SU21_Final_Project
                         commandSalesDetails.Parameters.AddWithValue("@Color", strColor);
 
 
-
-
-
-
                         commandSalesDetails.ExecuteNonQuery();
 
                     }
@@ -601,7 +608,7 @@ namespace SU21_Final_Project
                     }
 
                     Connection.Close();
-                    if (MessageBox.Show("Do you want your receipt?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (MessageBox.Show("Do you want to print your Invoice?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         PrintReportEmployeeView(GenerateReportEmployeeView());
 
@@ -639,7 +646,7 @@ namespace SU21_Final_Project
             html.AppendLine($"<h1>{"Sales Invoice"}</h1>");
 
             html.Append($"<h5>{"Date: "}{lblDate.Text}</h5>");
-            html.Append($"<h5>{"Customer Name: "}{lblNameEmployee.Text}</h5>");
+            html.Append($"<h5>{"Employee Name: "}{lblNameEmployee.Text}</h5>");
            html.Append($"<h5>{"Sale ID: "}{intSaleId.ToString()}</h5>");
 
             html.AppendLine("<table>");
@@ -682,7 +689,7 @@ namespace SU21_Final_Project
         private void PrintReportEmployeeView(StringBuilder html)
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string filepath = path + "\\Report.html";
+            string filepath = path + "\\Invoice.html";
 
             try
             {
@@ -702,7 +709,7 @@ namespace SU21_Final_Project
 
             //unique filename  use for a date and time with part of a name
             DateTime today = DateTime.Now;
-            using (StreamWriter sw = new StreamWriter($"{today.ToString("yyyy-MM-dd-HHmmss")} - Report.html"))
+            using (StreamWriter sw = new StreamWriter($"{today.ToString("yyyy-MM-dd-HHmmss")} - Invoice.html"))
             {
                 sw.WriteLine(html);
             }
@@ -749,8 +756,255 @@ namespace SU21_Final_Project
            
 
         }
+        //Print Invoice
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            
+        }
 
-       
+        //Enable features if checked
+        private void radYes_CheckedChanged(object sender, EventArgs e)
+        {
+            tbxIDSearch.Enabled = true;
+            lblIDLabel.Enabled = true;
+            btnSearchCustomerID.Enabled = true;
+            dgvCustomerInfo.Enabled = true;
+            radNo.Checked = false;
+        }
+
+        private void btnSearchCustomerID_Click(object sender, EventArgs e)
+        {
+            strCustomerID = tbxIDSearch.Text;
+            if (tbxIDSearch.Text!="")
+            {
+                DisplayCustomerInfo(strCustomerID);
+            }
+            else
+            {
+                MessageBox.Show("Please enter an ID number", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                tbxIDSearch.Focus();
+            }
+           
+        }
+
+        //function to display customer from search ID
+        public void DisplayCustomerInfo(string strIDCustomer)
+        {
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                string strQuery = "SELECT * FROM RandrezaVoharisoaM21Su2332.Person where PersonID='" + strIDCustomer + "' ;";
+                dataAdapter = new SqlDataAdapter(strQuery, Connection);
+                dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                dgvCustomerInfo.DataSource = dataTable;
+
+                blnReturningCustomer = true;
+
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Cannot find this ID ", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbxIDSearch.Text = "";
+                tbxIDSearch.Focus();
+            }
+        }
+
+        //Digit only 
+        private void tbxIDSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+      (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbxZipCustomer_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+      (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+
+        //Enable features to Enter customer information
+        private void radNo_CheckedChanged(object sender, EventArgs e)
+        {
+            gbxAddCustomer.Enabled = true;
+            radYes.Checked = false;
+
+
+        }
+        public bool ValidAddress(string strAddress)
+        {
+
+            if (strAddress.Length < 4)
+                return false;
+
+            else if (!strAddress.Any(char.IsLetter))
+            {
+                return false;
+            }
+
+            else if (!strAddress.Any(char.IsDigit))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool ValidEmail(string strValidEmail)
+        {
+
+            try
+            {
+                Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.
+                 [0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
+                RegexOptions.CultureInvariant | RegexOptions.Singleline);
+                bool isValidEmail = regex.IsMatch(strValidEmail);
+                if (!isValidEmail)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+        //If checked then apply Returning Customer Discount
+        private void radReturningDiscount_CheckedChanged(object sender, EventArgs e)
+        {
+            CalculateAmount(dblDiscountReturning);
+        }
+
+        private void btnAddCustomer_Click(object sender, EventArgs e)
+        {
+            string strFirstName = tbxFirstNameCustomer.Text;
+            string strLastName = tbxLastNameCustomer.Text;
+            string strAddress = tbxAddressCustomer.Text;
+            string strPhone = mskPhoneCustomer.Text;
+            string strCity = tbxCustomerCity.Text;
+            string strState = cboStatesCustomer.Text;
+            string strZip = tbxZipCustomer.Text;
+            string strEmail = tbxEmailCustomer.Text;
+            string strTitle = "Customer";
+            int intRoleId = 3;
+
+            try
+            {
+
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                if (tbxFirstNameCustomer.Text != "" && tbxLastNameCustomer.Text != "" && tbxAddressCustomer.Text != "" && mskPhoneCustomer.Text != "" && tbxCustomerCity.Text != "" && cboStatesCustomer.Text != ""
+                    && tbxZipCustomer.Text != "" && tbxEmailCustomer.Text != "")
+                {
+
+
+                    if (ValidAddress(strAddress) == true)
+                    {
+
+                        if (ValidEmail(strEmail) == true)
+                        {
+
+
+                            SqlCommand commandPerson = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Person(Title,NameFirst,NameLast,Address1,City,Zipcode,State,Email,PhonePrimary) VALUES (@Title,@NameFirst,@NameLast,@Address,@City,@Zipcode,@State,@Email,@Phone)", Connection);
+                            commandPerson.Parameters.AddWithValue("@Title", strTitle);
+                            commandPerson.Parameters.AddWithValue("@NameFirst", strFirstName);
+                            commandPerson.Parameters.AddWithValue("@NameLast", strLastName);
+                            commandPerson.Parameters.AddWithValue("@Address", strAddress);
+                            commandPerson.Parameters.AddWithValue("@City", strCity);
+                            commandPerson.Parameters.AddWithValue("@Zipcode", strZip);
+                            commandPerson.Parameters.AddWithValue("@State", strState);
+                            commandPerson.Parameters.AddWithValue("@Email", strEmail);
+                            commandPerson.Parameters.AddWithValue("@Phone", strPhone);
+                            commandPerson.ExecuteNonQuery();
+
+                            //INSERT RECORD FOR USERS LOGON SECURITY ACCESS
+                            string strAnswerOne = "Not Available";
+                            string strAnswerTwo = "Not Available";
+                            string strAnswerThree = "Not Available";
+                            intRoleId = 3;
+                            string strQuestionOne = "Not Available";
+                            string strQuestionTwo = "Not Available";
+                            string strQuestionThree = "Not Available";
+
+
+
+                            //Get the last PersonID using Max to insert as FK to the User table
+                            string queryLastID = "SELECT MAX(PersonID) from RandrezaVoharisoaM21Su2332.Person";
+                            SqlCommand commandLastID = new SqlCommand(queryLastID, Connection);
+
+                            //gets the results from the sql command
+                            SqlDataReader sr = commandLastID.ExecuteReader();
+                            sr.Read();
+                            int intPersonID = sr.GetInt32(0);
+                            sr.Close();
+                            //generate Username and Password
+                            string strModidfiedLastName = strLastName.Substring(0, strLastName.Length - 2);
+                            string strCreateUsername = strModidfiedLastName + intPersonID.ToString();
+
+                            string strCreatePassword = intRoleId.ToString() + intPersonID.ToString();
+
+                            SqlCommand commandUsers = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Users(PersonID,Username,Password,Answer1,Answer2,RoleID,ThirdQuestion,SecondQuestion,FirstQuestion,Answer3) VALUES(@PersonID,@Username,@Password,@Answer1,@Answer2,@RoleID,@ThirdQuestion,@SecondQuestion,@FirstQuestion,@Answer3)", Connection);
+                            commandUsers.Parameters.AddWithValue("@PersonID", intPersonID);
+                            commandUsers.Parameters.AddWithValue("@Username", strCreateUsername);
+                            commandUsers.Parameters.AddWithValue("@Password", strCreatePassword);
+                            commandUsers.Parameters.AddWithValue("@Answer1", strAnswerOne);
+                            commandUsers.Parameters.AddWithValue("@Answer2", strAnswerTwo);
+                            commandUsers.Parameters.AddWithValue("@RoleID", intRoleId);
+                            commandUsers.Parameters.AddWithValue("@ThirdQuestion", strQuestionThree);
+                            commandUsers.Parameters.AddWithValue("@SecondQuestion", strQuestionTwo);
+                            commandUsers.Parameters.AddWithValue("@FirstQuestion", strQuestionOne);
+                            commandUsers.Parameters.AddWithValue("@Answer3", strAnswerThree);
+
+                            commandUsers.ExecuteNonQuery();
+                            MessageBox.Show("Client Successfully added", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            Connection.Close();
+
+
+                        }
+
+                        else
+                        {
+                            MessageBox.Show("Email format is not valid", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            tbxEmailCustomer.Focus();
+                        }
+
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Address format is not valid", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        tbxAddressCustomer.Focus();
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Please make sure to fill up the required fields with(*)", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
 

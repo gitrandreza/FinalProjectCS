@@ -89,6 +89,14 @@ namespace SU21_Final_Project
             this.btnAddCustomer = new System.Windows.Forms.Button();
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
             this.tabSalesReport = new System.Windows.Forms.TabPage();
+            this.gbxCreateCoupon = new System.Windows.Forms.GroupBox();
+            this.btnCreateCoupon = new System.Windows.Forms.Button();
+            this.dtpEndCoupon = new System.Windows.Forms.DateTimePicker();
+            this.lblEndCouponLabel = new System.Windows.Forms.Label();
+            this.dtpStartCoupon = new System.Windows.Forms.DateTimePicker();
+            this.lblStartDateLabel = new System.Windows.Forms.Label();
+            this.cboCouponDescription = new System.Windows.Forms.ComboBox();
+            this.lblCouponLabel = new System.Windows.Forms.Label();
             this.lblSalesDetailLabel = new System.Windows.Forms.Label();
             this.lblSalesReportLabel = new System.Windows.Forms.Label();
             this.dgvSalesDetails = new System.Windows.Forms.DataGridView();
@@ -107,6 +115,7 @@ namespace SU21_Final_Project
             this.tabCustomer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.tabSalesReport.SuspendLayout();
+            this.gbxCreateCoupon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesReport)).BeginInit();
             this.SuspendLayout();
@@ -124,7 +133,7 @@ namespace SU21_Final_Project
             this.tabEmployee.Padding = new System.Windows.Forms.Padding(3);
             this.tabEmployee.Size = new System.Drawing.Size(1097, 522);
             this.tabEmployee.TabIndex = 1;
-            this.tabEmployee.Text = "Employee";
+            this.tabEmployee.Text = "Employee Management";
             this.tabEmployee.UseVisualStyleBackColor = true;
             // 
             // gbxEdit
@@ -797,7 +806,7 @@ namespace SU21_Final_Project
             this.tabCustomer.Name = "tabCustomer";
             this.tabCustomer.Size = new System.Drawing.Size(1097, 522);
             this.tabCustomer.TabIndex = 2;
-            this.tabCustomer.Text = "Customer";
+            this.tabCustomer.Text = "Customer Management";
             this.tabCustomer.UseVisualStyleBackColor = true;
             // 
             // btnRemoveCustomer
@@ -843,6 +852,7 @@ namespace SU21_Final_Project
             // 
             // tabSalesReport
             // 
+            this.tabSalesReport.Controls.Add(this.gbxCreateCoupon);
             this.tabSalesReport.Controls.Add(this.lblSalesDetailLabel);
             this.tabSalesReport.Controls.Add(this.lblSalesReportLabel);
             this.tabSalesReport.Controls.Add(this.dgvSalesDetails);
@@ -851,8 +861,91 @@ namespace SU21_Final_Project
             this.tabSalesReport.Name = "tabSalesReport";
             this.tabSalesReport.Size = new System.Drawing.Size(1097, 522);
             this.tabSalesReport.TabIndex = 3;
-            this.tabSalesReport.Text = "Sales Report";
+            this.tabSalesReport.Text = "Sales Management";
             this.tabSalesReport.UseVisualStyleBackColor = true;
+            // 
+            // gbxCreateCoupon
+            // 
+            this.gbxCreateCoupon.Controls.Add(this.btnCreateCoupon);
+            this.gbxCreateCoupon.Controls.Add(this.dtpEndCoupon);
+            this.gbxCreateCoupon.Controls.Add(this.lblEndCouponLabel);
+            this.gbxCreateCoupon.Controls.Add(this.dtpStartCoupon);
+            this.gbxCreateCoupon.Controls.Add(this.lblStartDateLabel);
+            this.gbxCreateCoupon.Controls.Add(this.cboCouponDescription);
+            this.gbxCreateCoupon.Controls.Add(this.lblCouponLabel);
+            this.gbxCreateCoupon.Location = new System.Drawing.Point(609, 300);
+            this.gbxCreateCoupon.Name = "gbxCreateCoupon";
+            this.gbxCreateCoupon.Size = new System.Drawing.Size(459, 210);
+            this.gbxCreateCoupon.TabIndex = 4;
+            this.gbxCreateCoupon.TabStop = false;
+            this.gbxCreateCoupon.Text = "Create Coupon";
+            // 
+            // btnCreateCoupon
+            // 
+            this.btnCreateCoupon.Location = new System.Drawing.Point(188, 146);
+            this.btnCreateCoupon.Name = "btnCreateCoupon";
+            this.btnCreateCoupon.Size = new System.Drawing.Size(113, 31);
+            this.btnCreateCoupon.TabIndex = 6;
+            this.btnCreateCoupon.Text = "Create Coupon";
+            this.btnCreateCoupon.UseVisualStyleBackColor = true;
+            this.btnCreateCoupon.Click += new System.EventHandler(this.btnCreateCoupon_Click);
+            // 
+            // dtpEndCoupon
+            // 
+            this.dtpEndCoupon.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpEndCoupon.Location = new System.Drawing.Point(126, 118);
+            this.dtpEndCoupon.MinDate = new System.DateTime(2021, 7, 21, 0, 0, 0, 0);
+            this.dtpEndCoupon.Name = "dtpEndCoupon";
+            this.dtpEndCoupon.Size = new System.Drawing.Size(200, 22);
+            this.dtpEndCoupon.TabIndex = 5;
+            // 
+            // lblEndCouponLabel
+            // 
+            this.lblEndCouponLabel.AutoSize = true;
+            this.lblEndCouponLabel.Location = new System.Drawing.Point(16, 123);
+            this.lblEndCouponLabel.Name = "lblEndCouponLabel";
+            this.lblEndCouponLabel.Size = new System.Drawing.Size(104, 17);
+            this.lblEndCouponLabel.TabIndex = 4;
+            this.lblEndCouponLabel.Text = "Expiration Date";
+            // 
+            // dtpStartCoupon
+            // 
+            this.dtpStartCoupon.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpStartCoupon.Location = new System.Drawing.Point(126, 77);
+            this.dtpStartCoupon.MinDate = new System.DateTime(2021, 7, 21, 0, 0, 0, 0);
+            this.dtpStartCoupon.Name = "dtpStartCoupon";
+            this.dtpStartCoupon.Size = new System.Drawing.Size(200, 22);
+            this.dtpStartCoupon.TabIndex = 3;
+            // 
+            // lblStartDateLabel
+            // 
+            this.lblStartDateLabel.AutoSize = true;
+            this.lblStartDateLabel.Location = new System.Drawing.Point(48, 82);
+            this.lblStartDateLabel.Name = "lblStartDateLabel";
+            this.lblStartDateLabel.Size = new System.Drawing.Size(72, 17);
+            this.lblStartDateLabel.TabIndex = 2;
+            this.lblStartDateLabel.Text = "Start Date";
+            // 
+            // cboCouponDescription
+            // 
+            this.cboCouponDescription.FormattingEnabled = true;
+            this.cboCouponDescription.Items.AddRange(new object[] {
+            "25% Off (1) ",
+            "$100 Off ($500minimum purchase) (2)",
+            "500$ Off ($2000minimum purchase) (3)"});
+            this.cboCouponDescription.Location = new System.Drawing.Point(159, 41);
+            this.cboCouponDescription.Name = "cboCouponDescription";
+            this.cboCouponDescription.Size = new System.Drawing.Size(167, 24);
+            this.cboCouponDescription.TabIndex = 1;
+            // 
+            // lblCouponLabel
+            // 
+            this.lblCouponLabel.AutoSize = true;
+            this.lblCouponLabel.Location = new System.Drawing.Point(21, 44);
+            this.lblCouponLabel.Name = "lblCouponLabel";
+            this.lblCouponLabel.Size = new System.Drawing.Size(132, 17);
+            this.lblCouponLabel.TabIndex = 0;
+            this.lblCouponLabel.Text = "Coupon Description";
             // 
             // lblSalesDetailLabel
             // 
@@ -899,7 +992,7 @@ namespace SU21_Final_Project
             this.dgvSalesReport.RowHeadersWidth = 51;
             this.dgvSalesReport.RowTemplate.Height = 24;
             this.dgvSalesReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSalesReport.Size = new System.Drawing.Size(401, 191);
+            this.dgvSalesReport.Size = new System.Drawing.Size(401, 198);
             this.dgvSalesReport.TabIndex = 0;
             this.dgvSalesReport.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSalesReport_CellClick);
             // 
@@ -953,6 +1046,8 @@ namespace SU21_Final_Project
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
             this.tabSalesReport.ResumeLayout(false);
             this.tabSalesReport.PerformLayout();
+            this.gbxCreateCoupon.ResumeLayout(false);
+            this.gbxCreateCoupon.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesDetails)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesReport)).EndInit();
             this.ResumeLayout(false);
@@ -1028,5 +1123,13 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblSalesReportLabel;
         private System.Windows.Forms.DataGridView dgvSalesDetails;
         private System.Windows.Forms.DataGridView dgvSalesReport;
+        private System.Windows.Forms.GroupBox gbxCreateCoupon;
+        private System.Windows.Forms.Button btnCreateCoupon;
+        private System.Windows.Forms.DateTimePicker dtpEndCoupon;
+        private System.Windows.Forms.Label lblEndCouponLabel;
+        private System.Windows.Forms.DateTimePicker dtpStartCoupon;
+        private System.Windows.Forms.Label lblStartDateLabel;
+        private System.Windows.Forms.ComboBox cboCouponDescription;
+        private System.Windows.Forms.Label lblCouponLabel;
     }
 }

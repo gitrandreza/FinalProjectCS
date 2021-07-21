@@ -279,6 +279,10 @@ namespace SU21_Final_Project
                     strQuantityNeed = tbxQuantity.Text;
 
                     bool intQuantityTryParse = int.TryParse(strQuantityNeed, out intQuantityNeed);
+                    if (intQuantityTryParse == false)
+                    {
+                        MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
                     if (intQuantityNeed > 0 && intQuantityNeed < int.MaxValue)
                     {
@@ -568,13 +572,12 @@ namespace SU21_Final_Project
 
                 dblAmountTax = dblTotalList * dblTax;
                 dblSubTotal = dblTotalList;
-                dblTotalAmount = dblTotalList + dblAmountTax;
+                dblTotalAmount = dblSubTotal + dblAmountTax;
 
                 
                 lblDiscount.Text = dblDiscount.ToString("C2");
                 lblSubTotal.Text = dblTotalList.ToString("C2");
                 lblTaxAmount.Text = dblAmountTax.ToString("C2");
-
                 lblTotalAmount.Text = dblTotalAmount.ToString("C2");
 
             }
@@ -627,10 +630,7 @@ namespace SU21_Final_Project
                     commandSalesReport.Parameters.AddWithValue("@CreationDate", strDate);
                     commandSalesReport.Parameters.AddWithValue("@TotalSale", dblTotalAmount.ToString());
 
-
                     commandSalesReport.ExecuteNonQuery();
-
-
 
                     //Get the last SaleID using Max to insert as FK to the Sales Report table
                     string strQuerySaleID = "SELECT MAX(SaleId) from RandrezaVoharisoaM21Su2332.SalesReport";
@@ -670,11 +670,6 @@ namespace SU21_Final_Project
                         commandSalesDetails.Parameters.AddWithValue("@Decoration", strDecoration);
                         commandSalesDetails.Parameters.AddWithValue("@Size", strSize);
                         commandSalesDetails.Parameters.AddWithValue("@Color", strColor);
-                        
-
-
-
-
 
                         commandSalesDetails.ExecuteNonQuery();
 
@@ -702,7 +697,7 @@ namespace SU21_Final_Project
                     }
 
                     Connection.Close();
-                    if (MessageBox.Show("Do you want your receipt?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (MessageBox.Show("Do you want to print your Invoice?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         PrintReport(GenerateReport());
 
@@ -784,6 +779,10 @@ namespace SU21_Final_Project
             {
                 html.AppendLine($"<h5>{"Estimated Delivery: 72h "}</h5>");
             }
+            else
+            {
+                html.AppendLine($"<h5>{"Estimated Delivery: 2h "}</h5>");
+            }
             
             html.Append($"<h2>{"Company: Imprint Store  "}</h2>");
 
@@ -796,7 +795,7 @@ namespace SU21_Final_Project
         private void PrintReport(StringBuilder html)
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string filepath = path + "\\ReportCustomerView.html";
+            string filepath = path + "\\CustomerInvoice.html";
            
             try
             {
@@ -805,7 +804,7 @@ namespace SU21_Final_Project
                 {
                    sw.WriteLine(html);
                 }
-                System.Diagnostics.Process.Start(@"ReportCustomerView.html");
+                System.Diagnostics.Process.Start(filepath);
                 
             }
             catch (Exception)
@@ -816,7 +815,7 @@ namespace SU21_Final_Project
 
             //unique filename  use for a date and time with part of a name
             DateTime today = DateTime.Now;
-            using (StreamWriter sw = new StreamWriter($"{today.ToString("yyyy-MM-dd-HHmmss")} - ReportCustomerView.html"))
+            using (StreamWriter sw = new StreamWriter($"{today.ToString("yyyy-MM-dd-HHmmss")} - CustomerInvoice.html"))
             {
                 sw.WriteLine(html);
             }
