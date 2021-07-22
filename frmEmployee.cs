@@ -23,6 +23,8 @@ namespace SU21_Final_Project
         SqlCommand command;
         SqlDataReader reader;
 
+        string strGetDate = DateTime.Now.ToShortDateString();//Get date
+
         string strItemSelectedName;
         string strQuantityAvailable;
         int intQuantityAvailable;
@@ -30,32 +32,34 @@ namespace SU21_Final_Project
         string strPrice;
         double dblPrice;
         double dblPriceItemSelected;
+       
 
         string strQuantityNeeded;
         int intQuantityNeeded;
-        double dblTotalList;
-        int intQuantityTotal;
 
-        double dblAmountTax ;
-         
-        double dblSubTotal;
-             double dblTotalAmount;
-        double dblTax = 0.0825;
-        double dblDiscount = 0;
+        
+       
         double dblDiscountOne = 0.1;
         double dblDiscountTwo = 0.2;
         double dblDiscountThree = 0.3;
         double dblDiscountReturning = 0.1;
+        double dblDiscountCouponOne = 0.25;
+        double dblDiscountCouponTwo = 100;
+        double dblDiscountCouponThree = 500;
+
 
         int intSaleId;
 
         string strCustomerID;
         bool blnReturningCustomer = false;
+        bool blnExpirationCoupon = false;
 
+        string strDiscountIndex;
         private void frmEmployee_Load(object sender, EventArgs e)
         {
-            lblDate.Text = DateTime.Now.ToShortDateString();//Get date
-         
+            
+            lblDate.Text = strGetDate;
+
             lblUserEmployee.Text = frmMain.strUserNumberID;
             try
             {
@@ -374,13 +378,27 @@ namespace SU21_Final_Project
         //Display Amount in the list without discount
         private void btnDisplayPrice_Click(object sender, EventArgs e)
         {
-            
+            CalculateAmount(0, 0);
+
+        }
+
+        //Function to calculate amount in the list
+        void CalculateAmount(double dblDiscountPercentage, double dblDiscountOff)
+        {
+            int intQuantityTotal = 0;
+            double dblTotalList=0;
+            double dblAmountTax;
+            double dblDiscount = 0;
+            double dblSubTotal=0;
+            double dblTotalAmount=0;
+            double dblTax = 0.0825;
+
             string strTotalPriceList;
-            double dblTotalPriceList;
+            double dblTotalPriceList=0;
 
 
             string strQuantityTotal;
-            int intQuantityTotalList;
+            int intQuantityTotalList=0;
 
 
             btnPlaceOrder.Enabled = true;
@@ -420,47 +438,12 @@ namespace SU21_Final_Project
                     intQuantityTotal = intQuantityTotal + intQuantityTotalList;
                 }
 
-                
-
-                //delivery condition based on quantities
-                if (intQuantityTotal > 10 && intQuantityTotal <= 50)
-                {
-                    radQuantityDiscount.Checked = true;
-                    tbxDelivery.Text = "24h";
-                }
-                else if (intQuantityTotal > 50 && intQuantityTotal < 100)
-                {
-                    radQuantityDiscount.Checked = true;
-                    tbxDelivery.Text = "48h";
-                }
-                else if (intQuantityTotal >= 100)
-                {
-                    radQuantityDiscount.Checked = true;
-                    tbxDelivery.Text = "72h";
-                }
-
-                else
-                {
-                    radNoDiscount.Checked = true;
-                    CalculateAmount(dblDiscount);
-                    tbxDelivery.Text = "2h";
-                }
-                
 
             }
-            if(blnReturningCustomer==true)
-            {
-                radReturningDiscount.Checked = true;
-            }
-            
-        }
 
-        void CalculateAmount(double dblDiscountApply )
-        {
-            
-            
-            dblDiscount = dblTotalList * dblDiscountApply;
-            dblSubTotal = dblTotalList- dblDiscount;
+
+            dblDiscount = dblTotalList * dblDiscountPercentage;
+            dblSubTotal = dblTotalList- dblDiscount-dblDiscountOff;
             dblAmountTax = dblTotalList * dblTax;
             dblTotalAmount = dblSubTotal + dblAmountTax;
 
@@ -468,44 +451,16 @@ namespace SU21_Final_Project
             tbxSubTotalCustomer.Text = dblSubTotal.ToString("C2");
             tbxTaxCustomer.Text = dblAmountTax.ToString("C2");
             tbxTotalToPay.Text = dblTotalAmount.ToString("C2");
-
+            tbxQuantityTotal.Text = intQuantityTotal.ToString();
         }
 
-        //Apply discount based 
-        private void radQuantityDiscount_CheckedChanged(object sender, EventArgs e)
-        {
-            //Discount and delivery condition based on quantities
-            if (intQuantityTotal > 10 && intQuantityTotal <= 50)
-            {
-
-                CalculateAmount(dblDiscountOne);
-                lblDisplayDiscountQuantity.Text = "10% Discount";
-            }
-            else if (intQuantityTotal > 50 && intQuantityTotal < 100)
-            {
-
-                CalculateAmount(dblDiscountTwo);
-                lblDisplayDiscountQuantity.Text = "20% Discount";
-            }
-            else if (intQuantityTotal >= 100)
-            {
-                CalculateAmount(dblDiscountThree);
-                lblDisplayDiscountQuantity.Text = "30% Discount";
-            }
-        }
-
-        //No discount apply
-        private void radNoDiscount_CheckedChanged(object sender, EventArgs e)
-        {
-            CalculateAmount(0);
-        }
       
         private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
             if (tbxTotalToPay.Text != "")
             {
                 int intUserID;
-                string strUserID = "2069";
+                string strUserID = lblUserEmployee.Text;
                 bool intResultTryParse = int.TryParse(strUserID, out intUserID);
                 if (intResultTryParse == false)
                 {
@@ -534,7 +489,9 @@ namespace SU21_Final_Project
                         "VALUES(@UserID,@CreationDate,@TotalSale)", Connection);
                     commandSalesReport.Parameters.AddWithValue("@UserID", intUserID);
                     commandSalesReport.Parameters.AddWithValue("@CreationDate", strDate);
-                    commandSalesReport.Parameters.AddWithValue("@TotalSale", dblTotalAmount.ToString());
+                  
+
+                    commandSalesReport.Parameters.AddWithValue("@TotalSale", tbxTotalToPay.Text);
 
 
                     commandSalesReport.ExecuteNonQuery();
@@ -671,10 +628,10 @@ namespace SU21_Final_Project
             html.Append("<tr><td colspan=8><hr></hd></td></tr>");
             html.Append("<table>");
 
-            html.AppendLine($"<h5>{"Discount: "}{dblDiscount.ToString("C2")}</h5>");
-            html.AppendLine($"<h5>{"Subtotal: "}{dblSubTotal.ToString("C2")}</h5>");
-            html.AppendLine($"<h5>{"Tax Sale: "}{dblAmountTax.ToString("C2")}</h5>");
-            html.AppendLine($"<h5>{"Total Amount: "}{dblTotalAmount.ToString("C2")}</h5>");
+            html.AppendLine($"<h5>{"Discount: "}{tbxDiscountCustomer.Text}</h5>");
+            html.AppendLine($"<h5>{"Subtotal: "}{tbxSubTotalCustomer.Text}</h5>");
+            html.AppendLine($"<h5>{"Tax Sale: "}{tbxTaxCustomer.Text}</h5>");
+            html.AppendLine($"<h5>{"Total Amount: "}{tbxTotalToPay.Text}</h5>");
 
                 html.AppendLine($"<h5>{"Estimated Delivery: "}{tbxDelivery.Text}</h5>");
 
@@ -747,7 +704,7 @@ namespace SU21_Final_Project
             tbxQuantityNeeded.Text = "";
 
             tbxDiscountCustomer.Text = "";
-            dblDiscount = 0;
+            
             tbxDelivery.Text = "";
 
             radNoDiscount.Checked = true;
@@ -759,17 +716,42 @@ namespace SU21_Final_Project
         //Print Invoice
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            
+
+            PrintReportEmployeeView(GenerateReportEmployeeView());
         }
 
         //Enable features if checked
         private void radYes_CheckedChanged(object sender, EventArgs e)
         {
-            tbxIDSearch.Enabled = true;
-            lblIDLabel.Enabled = true;
-            btnSearchCustomerID.Enabled = true;
-            dgvCustomerInfo.Enabled = true;
-            radNo.Checked = false;
+            if (radYes.Checked == true)
+            {
+                tbxIDSearch.Enabled = true;
+                lblIDLabel.Enabled = true;
+                btnSearchCustomerID.Enabled = true;
+                btnAddCustomer.Enabled = false;
+               
+
+                tbxFirstNameCustomer.ReadOnly = true;               
+                tbxLastNameCustomer.ReadOnly = true;
+                tbxEmailCustomer.ReadOnly = true;
+                tbxAddressCustomer.ReadOnly = true;
+                tbxCustomerCity.ReadOnly = true;
+                tbxZipCustomer.ReadOnly = true;              
+                mskPhoneCustomer.ReadOnly = true;
+
+                tbxCustomerState.Visible = true;
+                cboStatesCustomer.Visible = false;
+                tbxCustomerState.ReadOnly = true;
+            }
+            else
+            {
+                tbxIDSearch.Enabled = false;
+                lblIDLabel.Enabled = false;
+                btnSearchCustomerID.Enabled = false;
+                tbxCustomerState.Visible = false;
+                cboStatesCustomer.Visible = true;
+
+            }
         }
 
         private void btnSearchCustomerID_Click(object sender, EventArgs e)
@@ -788,8 +770,9 @@ namespace SU21_Final_Project
         }
 
         //function to display customer from search ID
-        public void DisplayCustomerInfo(string strIDCustomer)
+        public void DisplayCustomerInfo(string strIdCustomer)
         {
+           
             try
             {
                 //connect to database
@@ -797,15 +780,40 @@ namespace SU21_Final_Project
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                 Connection.Open();
-                string strQuery = "SELECT * FROM RandrezaVoharisoaM21Su2332.Person where PersonID='" + strIDCustomer + "' ;";
-                dataAdapter = new SqlDataAdapter(strQuery, Connection);
-                dataTable = new DataTable();
-                dataAdapter.Fill(dataTable);
-                dgvCustomerInfo.DataSource = dataTable;
+                string strQuery = "SELECT * FROM RandrezaVoharisoaM21Su2332.Person where PersonID='" + strIdCustomer + "' ;";
+                SqlCommand command = new SqlCommand(strQuery, Connection);
 
-                blnReturningCustomer = true;
+                //gets the results from the sql command
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
 
-                Connection.Close();
+
+                tbxFirstNameCustomer.Text = reader["NameFirst"].ToString();
+                tbxLastNameCustomer.Text = reader["NameLast"].ToString();
+                tbxEmailCustomer.Text = reader["Email"].ToString();
+                tbxAddressCustomer.Text = reader["Address1"].ToString();
+                tbxCustomerCity.Text = reader["City"].ToString();
+                tbxZipCustomer.Text= reader["Zipcode"].ToString();              
+                tbxCustomerState.Text = reader["State"].ToString();
+                mskPhoneCustomer.Text= reader["PhonePrimary"].ToString();
+
+                
+
+
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+
+
+
+                if (Connection != null)
+                {
+                    Connection.Close();
+                }
+
+
+            
             }
             catch (Exception ex)
             {
@@ -838,9 +846,31 @@ namespace SU21_Final_Project
         //Enable features to Enter customer information
         private void radNo_CheckedChanged(object sender, EventArgs e)
         {
-            gbxAddCustomer.Enabled = true;
-            radYes.Checked = false;
+            if(radNo.Checked==true)
+            {
+                
+                tbxFirstNameCustomer.ReadOnly = false;
+                tbxLastNameCustomer.ReadOnly = false;
+                tbxEmailCustomer.ReadOnly = false;
+                tbxAddressCustomer.ReadOnly = false;
+                tbxCustomerCity.ReadOnly = false;
+                tbxZipCustomer.ReadOnly = false;
+                mskPhoneCustomer.ReadOnly = false;
+                btnAddCustomer.Enabled = true;
+                tbxCustomerState.Visible = false;
+                cboStatesCustomer.Visible = true;
+                tbxCustomerState.ReadOnly = false;
 
+                tbxFirstNameCustomer.Text = "";
+                tbxLastNameCustomer.Text = "";
+                tbxEmailCustomer.Text = "";
+                tbxAddressCustomer.Text = "";
+                tbxCustomerCity.Text = "";
+                tbxZipCustomer.Text = "";
+                tbxCustomerState.Text = "";
+                mskPhoneCustomer.Text = "";
+            }
+           
 
         }
         public bool ValidAddress(string strAddress)
@@ -869,27 +899,20 @@ namespace SU21_Final_Project
                 Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.
                  [0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
                 RegexOptions.CultureInvariant | RegexOptions.Singleline);
-                bool isValidEmail = regex.IsMatch(strValidEmail);
-                if (!isValidEmail)
+                bool blnValidEmail = regex.IsMatch(strValidEmail);
+                if (!blnValidEmail)
                 {
                     return false;
                 }
-                else
-                {
-                    return true;
-                }
+              
+                return true;
             }
             catch (Exception ex)
             {
                 throw;
             }
         }
-        //If checked then apply Returning Customer Discount
-        private void radReturningDiscount_CheckedChanged(object sender, EventArgs e)
-        {
-            CalculateAmount(dblDiscountReturning);
-        }
-
+   
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
             string strFirstName = tbxFirstNameCustomer.Text;
@@ -1003,6 +1026,207 @@ namespace SU21_Final_Project
             catch (Exception ex)
             {
                 MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void SearchValidCoupon()
+        {
+            string strSearchCoupon = tbxCoupon.Text;
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                string strQuery = "SELECT CouponID, Description, Expiration,DiscountIndex FROM RandrezaVoharisoaM21Su2332.Coupon where CouponID='" + strSearchCoupon + "' and Expiration > '" + strGetDate + "' ;";
+                SqlCommand command = new SqlCommand(strQuery, Connection);
+
+                //gets the results from the sql command
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+
+                
+                var Expiration = reader.GetDateTime(2);              
+                lblCouponDescription.Text = reader["Description"].ToString();
+                lblExpiration.Text =Expiration.ToString("d");
+
+                int intCouponId = reader.GetInt32(0);
+                strDiscountIndex= reader["DiscountIndex"].ToString();
+
+               
+
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+               
+                
+
+                if (Connection != null)
+            {
+                Connection.Close();
+            }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Cannot find coupon ", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbxCoupon.Text = "";
+                tbxCoupon.Focus();
+            }
+        }
+
+        //Check and apply coupon if existed
+        private void btnCheckCoupon_Click(object sender, EventArgs e)
+        {
+            if(tbxCoupon.Text!="")
+            {
+                SearchValidCoupon();
+            }
+            else
+            {
+                MessageBox.Show("Enter Coupon Number please", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
+
+        }
+
+        private void btnApplyDiscount_Click(object sender, EventArgs e)
+        {
+            string strTotalListForCoupon = tbxTotalPrice.Text.Substring(1);
+
+            double dblTotalListForCoupon;
+            
+            if (!double.TryParse(strTotalListForCoupon, out dblTotalListForCoupon))
+            {
+                MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            
+            if(radCoupon.Checked==true )
+            {
+                
+                if(strDiscountIndex == "1")
+                {
+                    CalculateAmount(dblDiscountCouponOne,0);
+                }
+                if (strDiscountIndex == "2" )
+                {
+                    if(dblTotalListForCoupon > 500 && dblTotalListForCoupon < 2000)
+                    {
+                        CalculateAmount(0, dblDiscountCouponTwo);
+                        tbxDiscountCustomer.Text = "$100";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Available only for a total purchase $500 and plus", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+                if (strDiscountIndex == "3" )
+                {
+                    if(dblTotalListForCoupon > 2000)
+                    {
+                        CalculateAmount(0, dblDiscountCouponThree);
+                        tbxDiscountCustomer.Text = "$500";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Available only for a total purchase $2000 and plus", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+
+            }
+
+            if(radReturningDiscount.Checked==true)
+            {
+                CalculateAmount(dblDiscountReturning,0);
+            }
+
+            if(radQuantityDiscount.Checked == true)
+            {
+                //Discount and delivery condition based on quantities
+                string strQuantityTotal = tbxQuantityTotal.Text;
+
+               int intQuantityTotalDelivery;
+
+                if (!int.TryParse(strQuantityTotal, out intQuantityTotalDelivery))
+                {
+                    MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+
+                if (intQuantityTotalDelivery > 10 && intQuantityTotalDelivery <= 50)
+                {
+
+                    CalculateAmount(dblDiscountOne,0);
+                    lblDisplayDiscountQuantity.Text = "10% Discount";
+                }
+                else if (intQuantityTotalDelivery > 50 && intQuantityTotalDelivery < 100)
+                {
+
+                    CalculateAmount(dblDiscountTwo,0);
+                    lblDisplayDiscountQuantity.Text = "20% Discount";
+                }
+                else if (intQuantityTotalDelivery >= 100)
+                {
+                    CalculateAmount(dblDiscountThree,0);
+                    lblDisplayDiscountQuantity.Text = "30% Discount";
+                }
+            }
+            if(radNoDiscount.Checked==true)
+            {
+                CalculateAmount(0,0);
+            }
+
+        }
+
+        //Handling form closing
+        private void frmEmployee_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            switch (e.CloseReason)
+            {
+                case CloseReason.UserClosing:
+                    if (MessageBox.Show("Are you sure you want to log out?", "Close Form", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                    }
+                    else
+                    {
+
+                        new frmLogin().Show();
+                        this.Hide();
+                    }
+                    break;
+            }
+        }
+
+        private void radCoupon_CheckedChanged(object sender, EventArgs e)
+        {
+            if(radCoupon.Checked==true)
+            {
+                tbxCoupon.Enabled = true;
+                lblExpiration.Enabled = true;
+                lblExpirationLabel.Enabled = true;
+                lblCouponDescription.Enabled = true;
+                lblCouponDescription.Enabled = true;
+                btnCheckCoupon.Enabled = true;
+            }
+            else
+            {
+                tbxCoupon.Text = "";
+                lblCouponDescription.Text = "";
+                lblExpiration.Text = "";
+
+                tbxCoupon.Enabled =false;
+                lblExpiration.Enabled = false;
+                lblExpirationLabel.Enabled = false;
+                lblCouponDescription.Enabled = false;
+                lblCouponDescription.Enabled = false;
+                btnCheckCoupon.Enabled = false;
             }
         }
     }

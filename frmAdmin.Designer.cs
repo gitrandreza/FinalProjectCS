@@ -893,16 +893,16 @@ namespace SU21_Final_Project
             // dtpEndCoupon
             // 
             this.dtpEndCoupon.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpEndCoupon.Location = new System.Drawing.Point(126, 118);
+            this.dtpEndCoupon.Location = new System.Drawing.Point(159, 118);
             this.dtpEndCoupon.MinDate = new System.DateTime(2021, 7, 21, 0, 0, 0, 0);
             this.dtpEndCoupon.Name = "dtpEndCoupon";
-            this.dtpEndCoupon.Size = new System.Drawing.Size(200, 22);
+            this.dtpEndCoupon.Size = new System.Drawing.Size(167, 22);
             this.dtpEndCoupon.TabIndex = 5;
             // 
             // lblEndCouponLabel
             // 
             this.lblEndCouponLabel.AutoSize = true;
-            this.lblEndCouponLabel.Location = new System.Drawing.Point(16, 123);
+            this.lblEndCouponLabel.Location = new System.Drawing.Point(48, 118);
             this.lblEndCouponLabel.Name = "lblEndCouponLabel";
             this.lblEndCouponLabel.Size = new System.Drawing.Size(104, 17);
             this.lblEndCouponLabel.TabIndex = 4;
@@ -911,16 +911,16 @@ namespace SU21_Final_Project
             // dtpStartCoupon
             // 
             this.dtpStartCoupon.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpStartCoupon.Location = new System.Drawing.Point(126, 77);
+            this.dtpStartCoupon.Location = new System.Drawing.Point(159, 77);
             this.dtpStartCoupon.MinDate = new System.DateTime(2021, 7, 21, 0, 0, 0, 0);
             this.dtpStartCoupon.Name = "dtpStartCoupon";
-            this.dtpStartCoupon.Size = new System.Drawing.Size(200, 22);
+            this.dtpStartCoupon.Size = new System.Drawing.Size(167, 22);
             this.dtpStartCoupon.TabIndex = 3;
             // 
             // lblStartDateLabel
             // 
             this.lblStartDateLabel.AutoSize = true;
-            this.lblStartDateLabel.Location = new System.Drawing.Point(48, 82);
+            this.lblStartDateLabel.Location = new System.Drawing.Point(80, 82);
             this.lblStartDateLabel.Name = "lblStartDateLabel";
             this.lblStartDateLabel.Size = new System.Drawing.Size(72, 17);
             this.lblStartDateLabel.TabIndex = 2;

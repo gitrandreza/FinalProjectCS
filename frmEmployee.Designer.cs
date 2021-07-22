@@ -59,6 +59,11 @@ namespace SU21_Final_Project
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnPlaceOrder = new System.Windows.Forms.Button();
             this.gboDiscountChoice = new System.Windows.Forms.GroupBox();
+            this.btnApplyDiscount = new System.Windows.Forms.Button();
+            this.lblExpiration = new System.Windows.Forms.Label();
+            this.lblCouponDescription = new System.Windows.Forms.Label();
+            this.lblExpirationLabel = new System.Windows.Forms.Label();
+            this.lblCouponDescriptionLabel = new System.Windows.Forms.Label();
             this.radNoDiscount = new System.Windows.Forms.RadioButton();
             this.lblDisplayDiscountReturn = new System.Windows.Forms.Label();
             this.lblDisplayDiscountQuantity = new System.Windows.Forms.Label();
@@ -75,6 +80,8 @@ namespace SU21_Final_Project
             this.gbxReturning = new System.Windows.Forms.GroupBox();
             this.btnSearchCustomerID = new System.Windows.Forms.Button();
             this.gbxAddCustomer = new System.Windows.Forms.GroupBox();
+            this.tbxCustomerCity = new System.Windows.Forms.TextBox();
+            this.lblCityLabel = new System.Windows.Forms.Label();
             this.cboStatesCustomer = new System.Windows.Forms.ComboBox();
             this.tbxZipCustomer = new System.Windows.Forms.TextBox();
             this.mskPhoneCustomer = new System.Windows.Forms.MaskedTextBox();
@@ -90,7 +97,6 @@ namespace SU21_Final_Project
             this.lblEmailLabel = new System.Windows.Forms.Label();
             this.lblLastNameLabel = new System.Windows.Forms.Label();
             this.lblFirstNameLabel = new System.Windows.Forms.Label();
-            this.dgvCustomerInfo = new System.Windows.Forms.DataGridView();
             this.lblIDLabel = new System.Windows.Forms.Label();
             this.tbxIDSearch = new System.Windows.Forms.TextBox();
             this.radNo = new System.Windows.Forms.RadioButton();
@@ -122,48 +128,48 @@ namespace SU21_Final_Project
             this.lblDate = new System.Windows.Forms.Label();
             this.lblUserEmployee = new System.Windows.Forms.Label();
             this.lblNameEmployee = new System.Windows.Forms.Label();
-            this.tbxCustomerCity = new System.Windows.Forms.TextBox();
-            this.lblCityLabel = new System.Windows.Forms.Label();
+            this.tbxQuantityTotal = new System.Windows.Forms.TextBox();
+            this.tbxCustomerState = new System.Windows.Forms.TextBox();
+            this.gboEmployeeInformation = new System.Windows.Forms.GroupBox();
+            this.dgvCustomerList = new System.Windows.Forms.DataGridView();
+            this.btnDisplayCustomerList = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.lblPositionLabel = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnViewCouponList = new System.Windows.Forms.Button();
+            this.dgvCouponList = new System.Windows.Forms.DataGridView();
+            this.dgvCustomerPurchase = new System.Windows.Forms.DataGridView();
+            this.lblCustomerSaleReport = new System.Windows.Forms.Label();
             this.tabInformation.SuspendLayout();
             this.tabPOS.SuspendLayout();
             this.gboDiscountChoice.SuspendLayout();
             this.gbxReturning.SuspendLayout();
             this.gbxAddCustomer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerInfo)).BeginInit();
             this.gbxSize.SuspendLayout();
             this.gbxDecoration.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxItemPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeViewItem)).BeginInit();
             this.tabControl1.SuspendLayout();
+            this.gboEmployeeInformation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCouponList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerPurchase)).BeginInit();
             this.SuspendLayout();
             // 
             // tabInformation
             // 
-            this.tabInformation.Controls.Add(this.label2);
-            this.tabInformation.Controls.Add(this.lblTagEmployeeSalary);
-            this.tabInformation.Controls.Add(this.lblEmployeePhone);
-            this.tabInformation.Controls.Add(this.lblTagEmployeePhone);
-            this.tabInformation.Controls.Add(this.lblEmployeeZip);
-            this.tabInformation.Controls.Add(this.lblTagEmployeeZip);
-            this.tabInformation.Controls.Add(this.lblEmployeeState);
-            this.tabInformation.Controls.Add(this.lblTagEmployeeState);
-            this.tabInformation.Controls.Add(this.label1);
-            this.tabInformation.Controls.Add(this.lblTagEmployeeCity);
-            this.tabInformation.Controls.Add(this.lblEmployeeAddress);
-            this.tabInformation.Controls.Add(this.lblTagAddress);
-            this.tabInformation.Controls.Add(this.lblHiredDate);
-            this.tabInformation.Controls.Add(this.lblTagHiredDate);
-            this.tabInformation.Controls.Add(this.lblEmployeeLastName);
-            this.tabInformation.Controls.Add(this.lblTagEmployeeLastName);
-            this.tabInformation.Controls.Add(this.lblEmployeeFirstName);
-            this.tabInformation.Controls.Add(this.lblTagEmployeeFirstName);
-            this.tabInformation.Controls.Add(this.lblTagEmployeeID);
-            this.tabInformation.Controls.Add(this.lblEmployeeID);
+            this.tabInformation.Controls.Add(this.lblCustomerSaleReport);
+            this.tabInformation.Controls.Add(this.dgvCustomerPurchase);
+            this.tabInformation.Controls.Add(this.dgvCouponList);
+            this.tabInformation.Controls.Add(this.btnViewCouponList);
+            this.tabInformation.Controls.Add(this.btnDisplayCustomerList);
+            this.tabInformation.Controls.Add(this.dgvCustomerList);
+            this.tabInformation.Controls.Add(this.gboEmployeeInformation);
             this.tabInformation.Location = new System.Drawing.Point(4, 25);
             this.tabInformation.Name = "tabInformation";
             this.tabInformation.Padding = new System.Windows.Forms.Padding(3);
-            this.tabInformation.Size = new System.Drawing.Size(1087, 666);
+            this.tabInformation.Size = new System.Drawing.Size(1087, 714);
             this.tabInformation.TabIndex = 0;
             this.tabInformation.Text = "Additional Information";
             this.tabInformation.UseVisualStyleBackColor = true;
@@ -172,7 +178,7 @@ namespace SU21_Final_Project
             // 
             this.label2.AutoSize = true;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label2.Location = new System.Drawing.Point(115, 358);
+            this.label2.Location = new System.Drawing.Point(360, 178);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(2, 19);
             this.label2.TabIndex = 19;
@@ -180,7 +186,7 @@ namespace SU21_Final_Project
             // lblTagEmployeeSalary
             // 
             this.lblTagEmployeeSalary.AutoSize = true;
-            this.lblTagEmployeeSalary.Location = new System.Drawing.Point(56, 358);
+            this.lblTagEmployeeSalary.Location = new System.Drawing.Point(301, 178);
             this.lblTagEmployeeSalary.Name = "lblTagEmployeeSalary";
             this.lblTagEmployeeSalary.Size = new System.Drawing.Size(48, 17);
             this.lblTagEmployeeSalary.TabIndex = 18;
@@ -190,7 +196,7 @@ namespace SU21_Final_Project
             // 
             this.lblEmployeePhone.AutoSize = true;
             this.lblEmployeePhone.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblEmployeePhone.Location = new System.Drawing.Point(115, 174);
+            this.lblEmployeePhone.Location = new System.Drawing.Point(114, 167);
             this.lblEmployeePhone.Name = "lblEmployeePhone";
             this.lblEmployeePhone.Size = new System.Drawing.Size(2, 19);
             this.lblEmployeePhone.TabIndex = 17;
@@ -198,7 +204,7 @@ namespace SU21_Final_Project
             // lblTagEmployeePhone
             // 
             this.lblTagEmployeePhone.AutoSize = true;
-            this.lblTagEmployeePhone.Location = new System.Drawing.Point(55, 174);
+            this.lblTagEmployeePhone.Location = new System.Drawing.Point(54, 167);
             this.lblTagEmployeePhone.Name = "lblTagEmployeePhone";
             this.lblTagEmployeePhone.Size = new System.Drawing.Size(49, 17);
             this.lblTagEmployeePhone.TabIndex = 16;
@@ -208,7 +214,7 @@ namespace SU21_Final_Project
             // 
             this.lblEmployeeZip.AutoSize = true;
             this.lblEmployeeZip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblEmployeeZip.Location = new System.Drawing.Point(456, 278);
+            this.lblEmployeeZip.Location = new System.Drawing.Point(476, 86);
             this.lblEmployeeZip.Name = "lblEmployeeZip";
             this.lblEmployeeZip.Size = new System.Drawing.Size(2, 19);
             this.lblEmployeeZip.TabIndex = 15;
@@ -216,7 +222,7 @@ namespace SU21_Final_Project
             // lblTagEmployeeZip
             // 
             this.lblTagEmployeeZip.AutoSize = true;
-            this.lblTagEmployeeZip.Location = new System.Drawing.Point(406, 266);
+            this.lblTagEmployeeZip.Location = new System.Drawing.Point(438, 84);
             this.lblTagEmployeeZip.Name = "lblTagEmployeeZip";
             this.lblTagEmployeeZip.Size = new System.Drawing.Size(28, 17);
             this.lblTagEmployeeZip.TabIndex = 14;
@@ -226,7 +232,7 @@ namespace SU21_Final_Project
             // 
             this.lblEmployeeState.AutoSize = true;
             this.lblEmployeeState.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblEmployeeState.Location = new System.Drawing.Point(354, 266);
+            this.lblEmployeeState.Location = new System.Drawing.Point(358, 85);
             this.lblEmployeeState.Name = "lblEmployeeState";
             this.lblEmployeeState.Size = new System.Drawing.Size(2, 19);
             this.lblEmployeeState.TabIndex = 13;
@@ -234,7 +240,7 @@ namespace SU21_Final_Project
             // lblTagEmployeeState
             // 
             this.lblTagEmployeeState.AutoSize = true;
-            this.lblTagEmployeeState.Location = new System.Drawing.Point(304, 266);
+            this.lblTagEmployeeState.Location = new System.Drawing.Point(308, 85);
             this.lblTagEmployeeState.Name = "lblTagEmployeeState";
             this.lblTagEmployeeState.Size = new System.Drawing.Size(41, 17);
             this.lblTagEmployeeState.TabIndex = 12;
@@ -244,7 +250,7 @@ namespace SU21_Final_Project
             // 
             this.label1.AutoSize = true;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Location = new System.Drawing.Point(115, 266);
+            this.label1.Location = new System.Drawing.Point(360, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(2, 19);
             this.label1.TabIndex = 11;
@@ -252,7 +258,7 @@ namespace SU21_Final_Project
             // lblTagEmployeeCity
             // 
             this.lblTagEmployeeCity.AutoSize = true;
-            this.lblTagEmployeeCity.Location = new System.Drawing.Point(73, 266);
+            this.lblTagEmployeeCity.Location = new System.Drawing.Point(318, 38);
             this.lblTagEmployeeCity.Name = "lblTagEmployeeCity";
             this.lblTagEmployeeCity.Size = new System.Drawing.Size(31, 17);
             this.lblTagEmployeeCity.TabIndex = 10;
@@ -262,7 +268,7 @@ namespace SU21_Final_Project
             // 
             this.lblEmployeeAddress.AutoSize = true;
             this.lblEmployeeAddress.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblEmployeeAddress.Location = new System.Drawing.Point(115, 220);
+            this.lblEmployeeAddress.Location = new System.Drawing.Point(114, 213);
             this.lblEmployeeAddress.Name = "lblEmployeeAddress";
             this.lblEmployeeAddress.Size = new System.Drawing.Size(2, 19);
             this.lblEmployeeAddress.TabIndex = 9;
@@ -270,7 +276,7 @@ namespace SU21_Final_Project
             // lblTagAddress
             // 
             this.lblTagAddress.AutoSize = true;
-            this.lblTagAddress.Location = new System.Drawing.Point(44, 220);
+            this.lblTagAddress.Location = new System.Drawing.Point(43, 213);
             this.lblTagAddress.Name = "lblTagAddress";
             this.lblTagAddress.Size = new System.Drawing.Size(60, 17);
             this.lblTagAddress.TabIndex = 8;
@@ -280,7 +286,7 @@ namespace SU21_Final_Project
             // 
             this.lblHiredDate.AutoSize = true;
             this.lblHiredDate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblHiredDate.Location = new System.Drawing.Point(115, 312);
+            this.lblHiredDate.Location = new System.Drawing.Point(360, 132);
             this.lblHiredDate.Name = "lblHiredDate";
             this.lblHiredDate.Size = new System.Drawing.Size(2, 19);
             this.lblHiredDate.TabIndex = 7;
@@ -288,7 +294,7 @@ namespace SU21_Final_Project
             // lblTagHiredDate
             // 
             this.lblTagHiredDate.AutoSize = true;
-            this.lblTagHiredDate.Location = new System.Drawing.Point(13, 312);
+            this.lblTagHiredDate.Location = new System.Drawing.Point(258, 132);
             this.lblTagHiredDate.Name = "lblTagHiredDate";
             this.lblTagHiredDate.Size = new System.Drawing.Size(91, 17);
             this.lblTagHiredDate.TabIndex = 6;
@@ -298,7 +304,7 @@ namespace SU21_Final_Project
             // 
             this.lblEmployeeLastName.AutoSize = true;
             this.lblEmployeeLastName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblEmployeeLastName.Location = new System.Drawing.Point(115, 128);
+            this.lblEmployeeLastName.Location = new System.Drawing.Point(114, 130);
             this.lblEmployeeLastName.Name = "lblEmployeeLastName";
             this.lblEmployeeLastName.Size = new System.Drawing.Size(2, 19);
             this.lblEmployeeLastName.TabIndex = 5;
@@ -306,7 +312,7 @@ namespace SU21_Final_Project
             // lblTagEmployeeLastName
             // 
             this.lblTagEmployeeLastName.AutoSize = true;
-            this.lblTagEmployeeLastName.Location = new System.Drawing.Point(28, 128);
+            this.lblTagEmployeeLastName.Location = new System.Drawing.Point(27, 130);
             this.lblTagEmployeeLastName.Name = "lblTagEmployeeLastName";
             this.lblTagEmployeeLastName.Size = new System.Drawing.Size(76, 17);
             this.lblTagEmployeeLastName.TabIndex = 4;
@@ -316,7 +322,7 @@ namespace SU21_Final_Project
             // 
             this.lblEmployeeFirstName.AutoSize = true;
             this.lblEmployeeFirstName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblEmployeeFirstName.Location = new System.Drawing.Point(115, 82);
+            this.lblEmployeeFirstName.Location = new System.Drawing.Point(114, 84);
             this.lblEmployeeFirstName.Name = "lblEmployeeFirstName";
             this.lblEmployeeFirstName.Size = new System.Drawing.Size(2, 19);
             this.lblEmployeeFirstName.TabIndex = 3;
@@ -324,7 +330,7 @@ namespace SU21_Final_Project
             // lblTagEmployeeFirstName
             // 
             this.lblTagEmployeeFirstName.AutoSize = true;
-            this.lblTagEmployeeFirstName.Location = new System.Drawing.Point(28, 82);
+            this.lblTagEmployeeFirstName.Location = new System.Drawing.Point(27, 84);
             this.lblTagEmployeeFirstName.Name = "lblTagEmployeeFirstName";
             this.lblTagEmployeeFirstName.Size = new System.Drawing.Size(76, 17);
             this.lblTagEmployeeFirstName.TabIndex = 2;
@@ -333,7 +339,7 @@ namespace SU21_Final_Project
             // lblTagEmployeeID
             // 
             this.lblTagEmployeeID.AutoSize = true;
-            this.lblTagEmployeeID.Location = new System.Drawing.Point(17, 36);
+            this.lblTagEmployeeID.Location = new System.Drawing.Point(16, 38);
             this.lblTagEmployeeID.Name = "lblTagEmployeeID";
             this.lblTagEmployeeID.Size = new System.Drawing.Size(87, 17);
             this.lblTagEmployeeID.TabIndex = 1;
@@ -343,7 +349,7 @@ namespace SU21_Final_Project
             // 
             this.lblEmployeeID.AutoSize = true;
             this.lblEmployeeID.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblEmployeeID.Location = new System.Drawing.Point(115, 36);
+            this.lblEmployeeID.Location = new System.Drawing.Point(114, 38);
             this.lblEmployeeID.Name = "lblEmployeeID";
             this.lblEmployeeID.Size = new System.Drawing.Size(2, 19);
             this.lblEmployeeID.TabIndex = 0;
@@ -384,27 +390,27 @@ namespace SU21_Final_Project
             this.tabPOS.Location = new System.Drawing.Point(4, 25);
             this.tabPOS.Name = "tabPOS";
             this.tabPOS.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPOS.Size = new System.Drawing.Size(1087, 666);
+            this.tabPOS.Size = new System.Drawing.Size(1087, 714);
             this.tabPOS.TabIndex = 1;
             this.tabPOS.Text = "Point of Sale";
             this.tabPOS.UseVisualStyleBackColor = true;
             // 
             // tbxTotalPrice
             // 
-            this.tbxTotalPrice.Location = new System.Drawing.Point(376, 509);
+            this.tbxTotalPrice.Location = new System.Drawing.Point(641, 537);
             this.tbxTotalPrice.Name = "tbxTotalPrice";
             this.tbxTotalPrice.ReadOnly = true;
-            this.tbxTotalPrice.Size = new System.Drawing.Size(107, 22);
+            this.tbxTotalPrice.Size = new System.Drawing.Size(87, 22);
             this.tbxTotalPrice.TabIndex = 28;
             // 
             // lblTotalPriceLabel
             // 
             this.lblTotalPriceLabel.AutoSize = true;
-            this.lblTotalPriceLabel.Location = new System.Drawing.Point(298, 512);
+            this.lblTotalPriceLabel.Location = new System.Drawing.Point(555, 540);
             this.lblTotalPriceLabel.Name = "lblTotalPriceLabel";
-            this.lblTotalPriceLabel.Size = new System.Drawing.Size(44, 17);
+            this.lblTotalPriceLabel.Size = new System.Drawing.Size(80, 17);
             this.lblTotalPriceLabel.TabIndex = 27;
-            this.lblTotalPriceLabel.Text = "Total:";
+            this.lblTotalPriceLabel.Text = "Total Price:";
             // 
             // label4
             // 
@@ -417,16 +423,16 @@ namespace SU21_Final_Project
             // 
             // tbxDelivery
             // 
-            this.tbxDelivery.Location = new System.Drawing.Point(578, 635);
+            this.tbxDelivery.Location = new System.Drawing.Point(641, 685);
             this.tbxDelivery.Name = "tbxDelivery";
             this.tbxDelivery.ReadOnly = true;
-            this.tbxDelivery.Size = new System.Drawing.Size(107, 22);
+            this.tbxDelivery.Size = new System.Drawing.Size(87, 22);
             this.tbxDelivery.TabIndex = 26;
             // 
             // lblDeliveryLabel
             // 
             this.lblDeliveryLabel.AutoSize = true;
-            this.lblDeliveryLabel.Location = new System.Drawing.Point(506, 638);
+            this.lblDeliveryLabel.Location = new System.Drawing.Point(572, 688);
             this.lblDeliveryLabel.Name = "lblDeliveryLabel";
             this.lblDeliveryLabel.Size = new System.Drawing.Size(63, 17);
             this.lblDeliveryLabel.TabIndex = 25;
@@ -434,7 +440,7 @@ namespace SU21_Final_Project
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(924, 628);
+            this.btnPrint.Location = new System.Drawing.Point(949, 661);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(107, 29);
             this.btnPrint.TabIndex = 24;
@@ -445,7 +451,7 @@ namespace SU21_Final_Project
             // btnPlaceOrder
             // 
             this.btnPlaceOrder.Enabled = false;
-            this.btnPlaceOrder.Location = new System.Drawing.Point(745, 628);
+            this.btnPlaceOrder.Location = new System.Drawing.Point(949, 574);
             this.btnPlaceOrder.Name = "btnPlaceOrder";
             this.btnPlaceOrder.Size = new System.Drawing.Size(107, 29);
             this.btnPlaceOrder.TabIndex = 17;
@@ -455,6 +461,12 @@ namespace SU21_Final_Project
             // 
             // gboDiscountChoice
             // 
+            this.gboDiscountChoice.Controls.Add(this.btnApplyDiscount);
+            this.gboDiscountChoice.Controls.Add(this.tbxQuantityTotal);
+            this.gboDiscountChoice.Controls.Add(this.lblExpiration);
+            this.gboDiscountChoice.Controls.Add(this.lblCouponDescription);
+            this.gboDiscountChoice.Controls.Add(this.lblExpirationLabel);
+            this.gboDiscountChoice.Controls.Add(this.lblCouponDescriptionLabel);
             this.gboDiscountChoice.Controls.Add(this.radNoDiscount);
             this.gboDiscountChoice.Controls.Add(this.lblDisplayDiscountReturn);
             this.gboDiscountChoice.Controls.Add(this.lblDisplayDiscountQuantity);
@@ -465,28 +477,77 @@ namespace SU21_Final_Project
             this.gboDiscountChoice.Controls.Add(this.radQuantityDiscount);
             this.gboDiscountChoice.Location = new System.Drawing.Point(9, 482);
             this.gboDiscountChoice.Name = "gboDiscountChoice";
-            this.gboDiscountChoice.Size = new System.Drawing.Size(264, 175);
+            this.gboDiscountChoice.Size = new System.Drawing.Size(477, 256);
             this.gboDiscountChoice.TabIndex = 23;
             this.gboDiscountChoice.TabStop = false;
             this.gboDiscountChoice.Text = "Choose Discount";
             // 
+            // btnApplyDiscount
+            // 
+            this.btnApplyDiscount.Location = new System.Drawing.Point(335, 193);
+            this.btnApplyDiscount.Name = "btnApplyDiscount";
+            this.btnApplyDiscount.Size = new System.Drawing.Size(127, 30);
+            this.btnApplyDiscount.TabIndex = 35;
+            this.btnApplyDiscount.Text = "&Apply Discount";
+            this.btnApplyDiscount.UseVisualStyleBackColor = true;
+            this.btnApplyDiscount.Click += new System.EventHandler(this.btnApplyDiscount_Click);
+            // 
+            // lblExpiration
+            // 
+            this.lblExpiration.AutoSize = true;
+            this.lblExpiration.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblExpiration.Enabled = false;
+            this.lblExpiration.Location = new System.Drawing.Point(373, 28);
+            this.lblExpiration.Name = "lblExpiration";
+            this.lblExpiration.Size = new System.Drawing.Size(2, 19);
+            this.lblExpiration.TabIndex = 34;
+            // 
+            // lblCouponDescription
+            // 
+            this.lblCouponDescription.AutoSize = true;
+            this.lblCouponDescription.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblCouponDescription.Enabled = false;
+            this.lblCouponDescription.Location = new System.Drawing.Point(89, 63);
+            this.lblCouponDescription.Name = "lblCouponDescription";
+            this.lblCouponDescription.Size = new System.Drawing.Size(2, 19);
+            this.lblCouponDescription.TabIndex = 33;
+            // 
+            // lblExpirationLabel
+            // 
+            this.lblExpirationLabel.AutoSize = true;
+            this.lblExpirationLabel.Enabled = false;
+            this.lblExpirationLabel.Location = new System.Drawing.Point(262, 28);
+            this.lblExpirationLabel.Name = "lblExpirationLabel";
+            this.lblExpirationLabel.Size = new System.Drawing.Size(104, 17);
+            this.lblExpirationLabel.TabIndex = 32;
+            this.lblExpirationLabel.Text = "Expiration Date";
+            // 
+            // lblCouponDescriptionLabel
+            // 
+            this.lblCouponDescriptionLabel.AutoSize = true;
+            this.lblCouponDescriptionLabel.Enabled = false;
+            this.lblCouponDescriptionLabel.Location = new System.Drawing.Point(3, 63);
+            this.lblCouponDescriptionLabel.Name = "lblCouponDescriptionLabel";
+            this.lblCouponDescriptionLabel.Size = new System.Drawing.Size(83, 17);
+            this.lblCouponDescriptionLabel.TabIndex = 31;
+            this.lblCouponDescriptionLabel.Text = "Description:";
+            // 
             // radNoDiscount
             // 
             this.radNoDiscount.AutoSize = true;
-            this.radNoDiscount.Location = new System.Drawing.Point(6, 145);
+            this.radNoDiscount.Location = new System.Drawing.Point(6, 173);
             this.radNoDiscount.Name = "radNoDiscount";
             this.radNoDiscount.Size = new System.Drawing.Size(106, 21);
             this.radNoDiscount.TabIndex = 29;
             this.radNoDiscount.TabStop = true;
             this.radNoDiscount.Text = "No Discount";
             this.radNoDiscount.UseVisualStyleBackColor = true;
-            this.radNoDiscount.CheckedChanged += new System.EventHandler(this.radNoDiscount_CheckedChanged);
             // 
             // lblDisplayDiscountReturn
             // 
             this.lblDisplayDiscountReturn.AutoSize = true;
             this.lblDisplayDiscountReturn.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblDisplayDiscountReturn.Location = new System.Drawing.Point(151, 109);
+            this.lblDisplayDiscountReturn.Location = new System.Drawing.Point(170, 137);
             this.lblDisplayDiscountReturn.Name = "lblDisplayDiscountReturn";
             this.lblDisplayDiscountReturn.Size = new System.Drawing.Size(2, 19);
             this.lblDisplayDiscountReturn.TabIndex = 28;
@@ -495,35 +556,37 @@ namespace SU21_Final_Project
             // 
             this.lblDisplayDiscountQuantity.AutoSize = true;
             this.lblDisplayDiscountQuantity.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblDisplayDiscountQuantity.Location = new System.Drawing.Point(151, 74);
+            this.lblDisplayDiscountQuantity.Location = new System.Drawing.Point(287, 102);
             this.lblDisplayDiscountQuantity.Name = "lblDisplayDiscountQuantity";
             this.lblDisplayDiscountQuantity.Size = new System.Drawing.Size(2, 19);
             this.lblDisplayDiscountQuantity.TabIndex = 27;
             // 
             // btnCheckCoupon
             // 
-            this.btnCheckCoupon.Location = new System.Drawing.Point(181, 28);
+            this.btnCheckCoupon.Enabled = false;
+            this.btnCheckCoupon.Location = new System.Drawing.Point(181, 21);
             this.btnCheckCoupon.Name = "btnCheckCoupon";
             this.btnCheckCoupon.Size = new System.Drawing.Size(75, 30);
             this.btnCheckCoupon.TabIndex = 15;
             this.btnCheckCoupon.Text = "&Check";
             this.btnCheckCoupon.UseVisualStyleBackColor = true;
+            this.btnCheckCoupon.Click += new System.EventHandler(this.btnCheckCoupon_Click);
             // 
             // radReturningDiscount
             // 
             this.radReturningDiscount.AutoSize = true;
-            this.radReturningDiscount.Location = new System.Drawing.Point(6, 107);
+            this.radReturningDiscount.Location = new System.Drawing.Point(6, 135);
             this.radReturningDiscount.Name = "radReturningDiscount";
             this.radReturningDiscount.Size = new System.Drawing.Size(136, 21);
             this.radReturningDiscount.TabIndex = 5;
             this.radReturningDiscount.TabStop = true;
             this.radReturningDiscount.Text = "Customer Return";
             this.radReturningDiscount.UseVisualStyleBackColor = true;
-            this.radReturningDiscount.CheckedChanged += new System.EventHandler(this.radReturningDiscount_CheckedChanged);
             // 
             // tbxCoupon
             // 
-            this.tbxCoupon.Location = new System.Drawing.Point(87, 30);
+            this.tbxCoupon.Enabled = false;
+            this.tbxCoupon.Location = new System.Drawing.Point(87, 25);
             this.tbxCoupon.Name = "tbxCoupon";
             this.tbxCoupon.Size = new System.Drawing.Size(85, 22);
             this.tbxCoupon.TabIndex = 16;
@@ -531,38 +594,38 @@ namespace SU21_Final_Project
             // radCoupon
             // 
             this.radCoupon.AutoSize = true;
-            this.radCoupon.Location = new System.Drawing.Point(6, 28);
+            this.radCoupon.Location = new System.Drawing.Point(6, 23);
             this.radCoupon.Name = "radCoupon";
             this.radCoupon.Size = new System.Drawing.Size(78, 21);
             this.radCoupon.TabIndex = 3;
             this.radCoupon.TabStop = true;
             this.radCoupon.Text = "Coupon";
             this.radCoupon.UseVisualStyleBackColor = true;
+            this.radCoupon.CheckedChanged += new System.EventHandler(this.radCoupon_CheckedChanged);
             // 
             // radQuantityDiscount
             // 
             this.radQuantityDiscount.AutoSize = true;
-            this.radQuantityDiscount.Location = new System.Drawing.Point(6, 70);
+            this.radQuantityDiscount.Location = new System.Drawing.Point(6, 98);
             this.radQuantityDiscount.Name = "radQuantityDiscount";
             this.radQuantityDiscount.Size = new System.Drawing.Size(141, 21);
             this.radQuantityDiscount.TabIndex = 4;
             this.radQuantityDiscount.TabStop = true;
             this.radQuantityDiscount.Text = "Apply on Quantity";
             this.radQuantityDiscount.UseVisualStyleBackColor = true;
-            this.radQuantityDiscount.CheckedChanged += new System.EventHandler(this.radQuantityDiscount_CheckedChanged);
             // 
             // tbxTotalToPay
             // 
-            this.tbxTotalToPay.Location = new System.Drawing.Point(376, 630);
+            this.tbxTotalToPay.Location = new System.Drawing.Point(641, 658);
             this.tbxTotalToPay.Name = "tbxTotalToPay";
             this.tbxTotalToPay.ReadOnly = true;
-            this.tbxTotalToPay.Size = new System.Drawing.Size(107, 22);
+            this.tbxTotalToPay.Size = new System.Drawing.Size(87, 22);
             this.tbxTotalToPay.TabIndex = 22;
             // 
             // lblTotalToPayCustomer
             // 
             this.lblTotalToPayCustomer.AutoSize = true;
-            this.lblTotalToPayCustomer.Location = new System.Drawing.Point(278, 631);
+            this.lblTotalToPayCustomer.Location = new System.Drawing.Point(547, 661);
             this.lblTotalToPayCustomer.Name = "lblTotalToPayCustomer";
             this.lblTotalToPayCustomer.Size = new System.Drawing.Size(88, 17);
             this.lblTotalToPayCustomer.TabIndex = 21;
@@ -570,10 +633,10 @@ namespace SU21_Final_Project
             // 
             // tbxTaxCustomer
             // 
-            this.tbxTaxCustomer.Location = new System.Drawing.Point(376, 599);
+            this.tbxTaxCustomer.Location = new System.Drawing.Point(641, 627);
             this.tbxTaxCustomer.Name = "tbxTaxCustomer";
             this.tbxTaxCustomer.ReadOnly = true;
-            this.tbxTaxCustomer.Size = new System.Drawing.Size(107, 22);
+            this.tbxTaxCustomer.Size = new System.Drawing.Size(87, 22);
             this.tbxTaxCustomer.TabIndex = 20;
             // 
             // label3
@@ -587,24 +650,23 @@ namespace SU21_Final_Project
             // 
             // tbxSubTotalCustomer
             // 
-            this.tbxSubTotalCustomer.Location = new System.Drawing.Point(376, 568);
+            this.tbxSubTotalCustomer.Location = new System.Drawing.Point(641, 596);
             this.tbxSubTotalCustomer.Name = "tbxSubTotalCustomer";
             this.tbxSubTotalCustomer.ReadOnly = true;
-            this.tbxSubTotalCustomer.Size = new System.Drawing.Size(107, 22);
+            this.tbxSubTotalCustomer.Size = new System.Drawing.Size(87, 22);
             this.tbxSubTotalCustomer.TabIndex = 19;
             // 
             // gbxReturning
             // 
             this.gbxReturning.Controls.Add(this.btnSearchCustomerID);
             this.gbxReturning.Controls.Add(this.gbxAddCustomer);
-            this.gbxReturning.Controls.Add(this.dgvCustomerInfo);
             this.gbxReturning.Controls.Add(this.lblIDLabel);
             this.gbxReturning.Controls.Add(this.tbxIDSearch);
             this.gbxReturning.Controls.Add(this.radNo);
             this.gbxReturning.Controls.Add(this.radYes);
-            this.gbxReturning.Location = new System.Drawing.Point(492, 278);
+            this.gbxReturning.Location = new System.Drawing.Point(493, 269);
             this.gbxReturning.Name = "gbxReturning";
-            this.gbxReturning.Size = new System.Drawing.Size(587, 344);
+            this.gbxReturning.Size = new System.Drawing.Size(587, 251);
             this.gbxReturning.TabIndex = 12;
             this.gbxReturning.TabStop = false;
             this.gbxReturning.Text = "Returning Customer?";
@@ -622,6 +684,7 @@ namespace SU21_Final_Project
             // 
             // gbxAddCustomer
             // 
+            this.gbxAddCustomer.Controls.Add(this.tbxCustomerState);
             this.gbxAddCustomer.Controls.Add(this.tbxCustomerCity);
             this.gbxAddCustomer.Controls.Add(this.lblCityLabel);
             this.gbxAddCustomer.Controls.Add(this.cboStatesCustomer);
@@ -639,13 +702,28 @@ namespace SU21_Final_Project
             this.gbxAddCustomer.Controls.Add(this.lblEmailLabel);
             this.gbxAddCustomer.Controls.Add(this.lblLastNameLabel);
             this.gbxAddCustomer.Controls.Add(this.lblFirstNameLabel);
-            this.gbxAddCustomer.Enabled = false;
-            this.gbxAddCustomer.Location = new System.Drawing.Point(6, 170);
+            this.gbxAddCustomer.Location = new System.Drawing.Point(6, 70);
             this.gbxAddCustomer.Name = "gbxAddCustomer";
             this.gbxAddCustomer.Size = new System.Drawing.Size(575, 168);
             this.gbxAddCustomer.TabIndex = 17;
             this.gbxAddCustomer.TabStop = false;
-            this.gbxAddCustomer.Text = "Enter Customer Information";
+            this.gbxAddCustomer.Text = "Customer Information";
+            // 
+            // tbxCustomerCity
+            // 
+            this.tbxCustomerCity.Location = new System.Drawing.Point(358, 59);
+            this.tbxCustomerCity.Name = "tbxCustomerCity";
+            this.tbxCustomerCity.Size = new System.Drawing.Size(211, 22);
+            this.tbxCustomerCity.TabIndex = 16;
+            // 
+            // lblCityLabel
+            // 
+            this.lblCityLabel.AutoSize = true;
+            this.lblCityLabel.Location = new System.Drawing.Point(281, 64);
+            this.lblCityLabel.Name = "lblCityLabel";
+            this.lblCityLabel.Size = new System.Drawing.Size(31, 17);
+            this.lblCityLabel.TabIndex = 15;
+            this.lblCityLabel.Text = "City";
             // 
             // cboStatesCustomer
             // 
@@ -716,7 +794,8 @@ namespace SU21_Final_Project
             // 
             // tbxZipCustomer
             // 
-            this.tbxZipCustomer.Location = new System.Drawing.Point(494, 93);
+            this.tbxZipCustomer.Location = new System.Drawing.Point(357, 130);
+            this.tbxZipCustomer.MaxLength = 5;
             this.tbxZipCustomer.Name = "tbxZipCustomer";
             this.tbxZipCustomer.Size = new System.Drawing.Size(72, 22);
             this.tbxZipCustomer.TabIndex = 13;
@@ -760,7 +839,7 @@ namespace SU21_Final_Project
             // 
             // btnAddCustomer
             // 
-            this.btnAddCustomer.Location = new System.Drawing.Point(494, 132);
+            this.btnAddCustomer.Location = new System.Drawing.Point(480, 125);
             this.btnAddCustomer.Name = "btnAddCustomer";
             this.btnAddCustomer.Size = new System.Drawing.Size(75, 30);
             this.btnAddCustomer.TabIndex = 7;
@@ -780,7 +859,7 @@ namespace SU21_Final_Project
             // lblZipLabel
             // 
             this.lblZipLabel.AutoSize = true;
-            this.lblZipLabel.Location = new System.Drawing.Point(456, 95);
+            this.lblZipLabel.Location = new System.Drawing.Point(319, 132);
             this.lblZipLabel.Name = "lblZipLabel";
             this.lblZipLabel.Size = new System.Drawing.Size(32, 17);
             this.lblZipLabel.TabIndex = 5;
@@ -789,7 +868,7 @@ namespace SU21_Final_Project
             // lblStateLabel
             // 
             this.lblStateLabel.AutoSize = true;
-            this.lblStateLabel.Location = new System.Drawing.Point(281, 98);
+            this.lblStateLabel.Location = new System.Drawing.Point(296, 98);
             this.lblStateLabel.Name = "lblStateLabel";
             this.lblStateLabel.Size = new System.Drawing.Size(45, 17);
             this.lblStateLabel.TabIndex = 4;
@@ -830,22 +909,6 @@ namespace SU21_Final_Project
             this.lblFirstNameLabel.Size = new System.Drawing.Size(76, 17);
             this.lblFirstNameLabel.TabIndex = 0;
             this.lblFirstNameLabel.Text = "First Name";
-            // 
-            // dgvCustomerInfo
-            // 
-            this.dgvCustomerInfo.AllowUserToAddRows = false;
-            this.dgvCustomerInfo.AllowUserToDeleteRows = false;
-            this.dgvCustomerInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCustomerInfo.Enabled = false;
-            this.dgvCustomerInfo.Location = new System.Drawing.Point(6, 69);
-            this.dgvCustomerInfo.Name = "dgvCustomerInfo";
-            this.dgvCustomerInfo.ReadOnly = true;
-            this.dgvCustomerInfo.RowHeadersVisible = false;
-            this.dgvCustomerInfo.RowHeadersWidth = 51;
-            this.dgvCustomerInfo.RowTemplate.Height = 24;
-            this.dgvCustomerInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCustomerInfo.Size = new System.Drawing.Size(575, 95);
-            this.dgvCustomerInfo.TabIndex = 16;
             // 
             // lblIDLabel
             // 
@@ -892,16 +955,16 @@ namespace SU21_Final_Project
             // 
             // tbxDiscountCustomer
             // 
-            this.tbxDiscountCustomer.Location = new System.Drawing.Point(376, 537);
+            this.tbxDiscountCustomer.Location = new System.Drawing.Point(641, 567);
             this.tbxDiscountCustomer.Name = "tbxDiscountCustomer";
             this.tbxDiscountCustomer.ReadOnly = true;
-            this.tbxDiscountCustomer.Size = new System.Drawing.Size(107, 22);
+            this.tbxDiscountCustomer.Size = new System.Drawing.Size(87, 22);
             this.tbxDiscountCustomer.TabIndex = 18;
             // 
             // lblTaxLabel
             // 
             this.lblTaxLabel.AutoSize = true;
-            this.lblTaxLabel.Location = new System.Drawing.Point(278, 600);
+            this.lblTaxLabel.Location = new System.Drawing.Point(546, 630);
             this.lblTaxLabel.Name = "lblTaxLabel";
             this.lblTaxLabel.Size = new System.Drawing.Size(89, 17);
             this.lblTaxLabel.TabIndex = 17;
@@ -919,7 +982,7 @@ namespace SU21_Final_Project
             // lblSubTotalCustomer
             // 
             this.lblSubTotalCustomer.AutoSize = true;
-            this.lblSubTotalCustomer.Location = new System.Drawing.Point(300, 571);
+            this.lblSubTotalCustomer.Location = new System.Drawing.Point(566, 601);
             this.lblSubTotalCustomer.Name = "lblSubTotalCustomer";
             this.lblSubTotalCustomer.Size = new System.Drawing.Size(69, 17);
             this.lblSubTotalCustomer.TabIndex = 16;
@@ -937,7 +1000,7 @@ namespace SU21_Final_Project
             // lblDiscountLabel
             // 
             this.lblDiscountLabel.AutoSize = true;
-            this.lblDiscountLabel.Location = new System.Drawing.Point(298, 540);
+            this.lblDiscountLabel.Location = new System.Drawing.Point(568, 572);
             this.lblDiscountLabel.Name = "lblDiscountLabel";
             this.lblDiscountLabel.Size = new System.Drawing.Size(67, 17);
             this.lblDiscountLabel.TabIndex = 15;
@@ -955,11 +1018,11 @@ namespace SU21_Final_Project
             // btnDisplayPrice
             // 
             this.btnDisplayPrice.Enabled = false;
-            this.btnDisplayPrice.Location = new System.Drawing.Point(369, 443);
+            this.btnDisplayPrice.Location = new System.Drawing.Point(368, 443);
             this.btnDisplayPrice.Name = "btnDisplayPrice";
-            this.btnDisplayPrice.Size = new System.Drawing.Size(117, 43);
+            this.btnDisplayPrice.Size = new System.Drawing.Size(118, 33);
             this.btnDisplayPrice.TabIndex = 8;
-            this.btnDisplayPrice.Text = "Display Total";
+            this.btnDisplayPrice.Text = "&Display Total";
             this.btnDisplayPrice.UseVisualStyleBackColor = true;
             this.btnDisplayPrice.Click += new System.EventHandler(this.btnDisplayPrice_Click);
             // 
@@ -1146,7 +1209,7 @@ namespace SU21_Final_Project
             this.tabControl1.Location = new System.Drawing.Point(0, 40);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1095, 695);
+            this.tabControl1.Size = new System.Drawing.Size(1095, 743);
             this.tabControl1.TabIndex = 0;
             // 
             // lblDate
@@ -1176,33 +1239,160 @@ namespace SU21_Final_Project
             this.lblNameEmployee.Size = new System.Drawing.Size(2, 19);
             this.lblNameEmployee.TabIndex = 29;
             // 
-            // tbxCustomerCity
+            // tbxQuantityTotal
             // 
-            this.tbxCustomerCity.Location = new System.Drawing.Point(358, 59);
-            this.tbxCustomerCity.Name = "tbxCustomerCity";
-            this.tbxCustomerCity.Size = new System.Drawing.Size(211, 22);
-            this.tbxCustomerCity.TabIndex = 16;
+            this.tbxQuantityTotal.Location = new System.Drawing.Point(153, 99);
+            this.tbxQuantityTotal.Name = "tbxQuantityTotal";
+            this.tbxQuantityTotal.ReadOnly = true;
+            this.tbxQuantityTotal.Size = new System.Drawing.Size(55, 22);
+            this.tbxQuantityTotal.TabIndex = 29;
             // 
-            // lblCityLabel
+            // tbxCustomerState
             // 
-            this.lblCityLabel.AutoSize = true;
-            this.lblCityLabel.Location = new System.Drawing.Point(281, 64);
-            this.lblCityLabel.Name = "lblCityLabel";
-            this.lblCityLabel.Size = new System.Drawing.Size(31, 17);
-            this.lblCityLabel.TabIndex = 15;
-            this.lblCityLabel.Text = "City";
+            this.tbxCustomerState.Location = new System.Drawing.Point(480, 92);
+            this.tbxCustomerState.Name = "tbxCustomerState";
+            this.tbxCustomerState.Size = new System.Drawing.Size(61, 22);
+            this.tbxCustomerState.TabIndex = 17;
+            this.tbxCustomerState.Visible = false;
+            // 
+            // gboEmployeeInformation
+            // 
+            this.gboEmployeeInformation.Controls.Add(this.lblPositionLabel);
+            this.gboEmployeeInformation.Controls.Add(this.label6);
+            this.gboEmployeeInformation.Controls.Add(this.button1);
+            this.gboEmployeeInformation.Controls.Add(this.lblTagEmployeeID);
+            this.gboEmployeeInformation.Controls.Add(this.label2);
+            this.gboEmployeeInformation.Controls.Add(this.lblEmployeeID);
+            this.gboEmployeeInformation.Controls.Add(this.lblTagEmployeeSalary);
+            this.gboEmployeeInformation.Controls.Add(this.lblTagEmployeeFirstName);
+            this.gboEmployeeInformation.Controls.Add(this.lblEmployeePhone);
+            this.gboEmployeeInformation.Controls.Add(this.lblEmployeeFirstName);
+            this.gboEmployeeInformation.Controls.Add(this.lblTagEmployeePhone);
+            this.gboEmployeeInformation.Controls.Add(this.lblTagEmployeeLastName);
+            this.gboEmployeeInformation.Controls.Add(this.lblEmployeeZip);
+            this.gboEmployeeInformation.Controls.Add(this.lblEmployeeLastName);
+            this.gboEmployeeInformation.Controls.Add(this.lblTagEmployeeZip);
+            this.gboEmployeeInformation.Controls.Add(this.lblTagHiredDate);
+            this.gboEmployeeInformation.Controls.Add(this.lblEmployeeState);
+            this.gboEmployeeInformation.Controls.Add(this.lblHiredDate);
+            this.gboEmployeeInformation.Controls.Add(this.lblTagEmployeeState);
+            this.gboEmployeeInformation.Controls.Add(this.lblTagAddress);
+            this.gboEmployeeInformation.Controls.Add(this.label1);
+            this.gboEmployeeInformation.Controls.Add(this.lblEmployeeAddress);
+            this.gboEmployeeInformation.Controls.Add(this.lblTagEmployeeCity);
+            this.gboEmployeeInformation.Location = new System.Drawing.Point(6, 17);
+            this.gboEmployeeInformation.Name = "gboEmployeeInformation";
+            this.gboEmployeeInformation.Size = new System.Drawing.Size(602, 263);
+            this.gboEmployeeInformation.TabIndex = 20;
+            this.gboEmployeeInformation.TabStop = false;
+            this.gboEmployeeInformation.Text = "My Information";
+            // 
+            // dgvCustomerList
+            // 
+            this.dgvCustomerList.AllowUserToAddRows = false;
+            this.dgvCustomerList.AllowUserToDeleteRows = false;
+            this.dgvCustomerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCustomerList.Location = new System.Drawing.Point(6, 322);
+            this.dgvCustomerList.Name = "dgvCustomerList";
+            this.dgvCustomerList.RowHeadersWidth = 51;
+            this.dgvCustomerList.RowTemplate.Height = 24;
+            this.dgvCustomerList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCustomerList.Size = new System.Drawing.Size(1076, 176);
+            this.dgvCustomerList.TabIndex = 20;
+            // 
+            // btnDisplayCustomerList
+            // 
+            this.btnDisplayCustomerList.Location = new System.Drawing.Point(6, 286);
+            this.btnDisplayCustomerList.Name = "btnDisplayCustomerList";
+            this.btnDisplayCustomerList.Size = new System.Drawing.Size(138, 30);
+            this.btnDisplayCustomerList.TabIndex = 21;
+            this.btnDisplayCustomerList.Text = "View Customers List";
+            this.btnDisplayCustomerList.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(477, 213);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 30);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "&Edit";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // lblPositionLabel
+            // 
+            this.lblPositionLabel.AutoSize = true;
+            this.lblPositionLabel.Location = new System.Drawing.Point(289, 220);
+            this.lblPositionLabel.Name = "lblPositionLabel";
+            this.lblPositionLabel.Size = new System.Drawing.Size(58, 17);
+            this.lblPositionLabel.TabIndex = 21;
+            this.lblPositionLabel.Text = "Position";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label6.Location = new System.Drawing.Point(360, 220);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(2, 19);
+            this.label6.TabIndex = 22;
+            // 
+            // btnViewCouponList
+            // 
+            this.btnViewCouponList.Location = new System.Drawing.Point(798, 6);
+            this.btnViewCouponList.Name = "btnViewCouponList";
+            this.btnViewCouponList.Size = new System.Drawing.Size(138, 30);
+            this.btnViewCouponList.TabIndex = 22;
+            this.btnViewCouponList.Text = "View Coupon List";
+            this.btnViewCouponList.UseVisualStyleBackColor = true;
+            // 
+            // dgvCouponList
+            // 
+            this.dgvCouponList.AllowUserToAddRows = false;
+            this.dgvCouponList.AllowUserToDeleteRows = false;
+            this.dgvCouponList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCouponList.Location = new System.Drawing.Point(627, 42);
+            this.dgvCouponList.Name = "dgvCouponList";
+            this.dgvCouponList.RowHeadersWidth = 51;
+            this.dgvCouponList.RowTemplate.Height = 24;
+            this.dgvCouponList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCouponList.Size = new System.Drawing.Size(437, 238);
+            this.dgvCouponList.TabIndex = 23;
+            // 
+            // dgvCustomerPurchase
+            // 
+            this.dgvCustomerPurchase.AllowUserToAddRows = false;
+            this.dgvCustomerPurchase.AllowUserToDeleteRows = false;
+            this.dgvCustomerPurchase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCustomerPurchase.Location = new System.Drawing.Point(6, 531);
+            this.dgvCustomerPurchase.Name = "dgvCustomerPurchase";
+            this.dgvCustomerPurchase.RowHeadersWidth = 51;
+            this.dgvCustomerPurchase.RowTemplate.Height = 24;
+            this.dgvCustomerPurchase.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCustomerPurchase.Size = new System.Drawing.Size(1076, 162);
+            this.dgvCustomerPurchase.TabIndex = 24;
+            // 
+            // lblCustomerSaleReport
+            // 
+            this.lblCustomerSaleReport.AutoSize = true;
+            this.lblCustomerSaleReport.Location = new System.Drawing.Point(8, 511);
+            this.lblCustomerSaleReport.Name = "lblCustomerSaleReport";
+            this.lblCustomerSaleReport.Size = new System.Drawing.Size(180, 17);
+            this.lblCustomerSaleReport.TabIndex = 25;
+            this.lblCustomerSaleReport.Text = "Customer Purchase History";
             // 
             // frmEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1095, 737);
+            this.ClientSize = new System.Drawing.Size(1095, 782);
             this.Controls.Add(this.lblNameEmployee);
             this.Controls.Add(this.lblUserEmployee);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.tabControl1);
+            this.MaximizeBox = false;
             this.Name = "frmEmployee";
             this.Text = "Administrator(Employee)";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmEmployee_FormClosing);
             this.Load += new System.EventHandler(this.frmEmployee_Load);
             this.tabInformation.ResumeLayout(false);
             this.tabInformation.PerformLayout();
@@ -1214,7 +1404,6 @@ namespace SU21_Final_Project
             this.gbxReturning.PerformLayout();
             this.gbxAddCustomer.ResumeLayout(false);
             this.gbxAddCustomer.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerInfo)).EndInit();
             this.gbxSize.ResumeLayout(false);
             this.gbxSize.PerformLayout();
             this.gbxDecoration.ResumeLayout(false);
@@ -1223,6 +1412,11 @@ namespace SU21_Final_Project
             ((System.ComponentModel.ISupportInitialize)(this.pbxItemPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeViewItem)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            this.gboEmployeeInformation.ResumeLayout(false);
+            this.gboEmployeeInformation.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCouponList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerPurchase)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1286,7 +1480,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblEmailLabel;
         private System.Windows.Forms.Label lblLastNameLabel;
         private System.Windows.Forms.Label lblFirstNameLabel;
-        private System.Windows.Forms.DataGridView dgvCustomerInfo;
         private System.Windows.Forms.Label lblIDLabel;
         private System.Windows.Forms.TextBox tbxIDSearch;
         private System.Windows.Forms.RadioButton radNo;
@@ -1325,5 +1518,22 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblTotalPriceLabel;
         private System.Windows.Forms.TextBox tbxCustomerCity;
         private System.Windows.Forms.Label lblCityLabel;
+        private System.Windows.Forms.Label lblExpiration;
+        private System.Windows.Forms.Label lblCouponDescription;
+        private System.Windows.Forms.Label lblExpirationLabel;
+        private System.Windows.Forms.Label lblCouponDescriptionLabel;
+        private System.Windows.Forms.Button btnApplyDiscount;
+        private System.Windows.Forms.TextBox tbxQuantityTotal;
+        private System.Windows.Forms.TextBox tbxCustomerState;
+        private System.Windows.Forms.Label lblCustomerSaleReport;
+        private System.Windows.Forms.DataGridView dgvCustomerPurchase;
+        private System.Windows.Forms.DataGridView dgvCouponList;
+        private System.Windows.Forms.Button btnViewCouponList;
+        private System.Windows.Forms.Button btnDisplayCustomerList;
+        private System.Windows.Forms.DataGridView dgvCustomerList;
+        private System.Windows.Forms.GroupBox gboEmployeeInformation;
+        private System.Windows.Forms.Label lblPositionLabel;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button1;
     }
 }
