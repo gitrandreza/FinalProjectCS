@@ -85,7 +85,7 @@ namespace SU21_Final_Project
             this.tabManagerFeatures = new System.Windows.Forms.TabControl();
             this.tabCustomer = new System.Windows.Forms.TabPage();
             this.btnRemoveCustomer = new System.Windows.Forms.Button();
-            this.btnEditCustomer = new System.Windows.Forms.Button();
+            this.btnUpdateCustomer = new System.Windows.Forms.Button();
             this.btnAddCustomer = new System.Windows.Forms.Button();
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
             this.tabSalesReport = new System.Windows.Forms.TabPage();
@@ -103,6 +103,26 @@ namespace SU21_Final_Project
             this.dgvSalesReport = new System.Windows.Forms.DataGridView();
             this.lblDate = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.gbxAddNewCustomer = new System.Windows.Forms.GroupBox();
+            this.tbxCustomerCity = new System.Windows.Forms.TextBox();
+            this.lblCityLabel = new System.Windows.Forms.Label();
+            this.cboStatesCustomer = new System.Windows.Forms.ComboBox();
+            this.tbxZipCustomer = new System.Windows.Forms.TextBox();
+            this.mskPhoneCustomer = new System.Windows.Forms.MaskedTextBox();
+            this.tbxAddressCustomer = new System.Windows.Forms.TextBox();
+            this.tbxEmailCustomer = new System.Windows.Forms.TextBox();
+            this.tbxLastNameCustomer = new System.Windows.Forms.TextBox();
+            this.tbxFirstNameCustomer = new System.Windows.Forms.TextBox();
+            this.btnAddNewCustomer = new System.Windows.Forms.Button();
+            this.lblPhoneLabel = new System.Windows.Forms.Label();
+            this.lblZipLabel = new System.Windows.Forms.Label();
+            this.lblStateLabel = new System.Windows.Forms.Label();
+            this.lblAddressLabel = new System.Windows.Forms.Label();
+            this.lblEmailLabel = new System.Windows.Forms.Label();
+            this.lblLastNameLabel = new System.Windows.Forms.Label();
+            this.lblFirstNameLabel = new System.Windows.Forms.Label();
+            this.btnEditCustomer = new System.Windows.Forms.Button();
             this.tabEmployee.SuspendLayout();
             this.gbxEdit.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -118,6 +138,7 @@ namespace SU21_Final_Project
             this.gbxCreateCoupon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesReport)).BeginInit();
+            this.gbxAddNewCustomer.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabEmployee
@@ -131,7 +152,7 @@ namespace SU21_Final_Project
             this.tabEmployee.Location = new System.Drawing.Point(4, 25);
             this.tabEmployee.Name = "tabEmployee";
             this.tabEmployee.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEmployee.Size = new System.Drawing.Size(1097, 522);
+            this.tabEmployee.Size = new System.Drawing.Size(1097, 538);
             this.tabEmployee.TabIndex = 1;
             this.tabEmployee.Text = "Employee Management";
             this.tabEmployee.UseVisualStyleBackColor = true;
@@ -237,6 +258,7 @@ namespace SU21_Final_Project
             // 
             // cboStates
             // 
+            this.cboStates.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboStates.Enabled = false;
             this.cboStates.FormattingEnabled = true;
             this.cboStates.Items.AddRange(new object[] {
@@ -402,7 +424,7 @@ namespace SU21_Final_Project
             this.groupBox1.Controls.Add(this.lblSalaryLabel);
             this.groupBox1.Controls.Add(this.lblPositionLabel);
             this.groupBox1.Controls.Add(this.lblHiredDateLabel);
-            this.groupBox1.Location = new System.Drawing.Point(737, 22);
+            this.groupBox1.Location = new System.Drawing.Point(768, 293);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(305, 223);
             this.groupBox1.TabIndex = 16;
@@ -506,13 +528,14 @@ namespace SU21_Final_Project
             this.dgvEmployee.RowHeadersWidth = 51;
             this.dgvEmployee.RowTemplate.Height = 24;
             this.dgvEmployee.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEmployee.Size = new System.Drawing.Size(706, 223);
+            this.dgvEmployee.Size = new System.Drawing.Size(1065, 223);
             this.dgvEmployee.TabIndex = 0;
             this.dgvEmployee.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmployee_CellClick);
             this.dgvEmployee.SelectionChanged += new System.EventHandler(this.dgvEmployee_SelectionChanged_1);
             // 
             // tabInventory
             // 
+            this.tabInventory.Controls.Add(this.btnRefresh);
             this.tabInventory.Controls.Add(this.dgvLowItem);
             this.tabInventory.Controls.Add(this.lblLowItemLabel);
             this.tabInventory.Controls.Add(this.gbxUpdateField);
@@ -792,19 +815,20 @@ namespace SU21_Final_Project
             this.tabManagerFeatures.Location = new System.Drawing.Point(12, 52);
             this.tabManagerFeatures.Name = "tabManagerFeatures";
             this.tabManagerFeatures.SelectedIndex = 0;
-            this.tabManagerFeatures.Size = new System.Drawing.Size(1105, 551);
+            this.tabManagerFeatures.Size = new System.Drawing.Size(1105, 567);
             this.tabManagerFeatures.TabIndex = 0;
             this.tabManagerFeatures.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabManagerFeatures_Selected);
             // 
             // tabCustomer
             // 
+            this.tabCustomer.Controls.Add(this.gbxAddNewCustomer);
             this.tabCustomer.Controls.Add(this.btnRemoveCustomer);
-            this.tabCustomer.Controls.Add(this.btnEditCustomer);
+            this.tabCustomer.Controls.Add(this.btnUpdateCustomer);
             this.tabCustomer.Controls.Add(this.btnAddCustomer);
             this.tabCustomer.Controls.Add(this.dgvCustomer);
             this.tabCustomer.Location = new System.Drawing.Point(4, 25);
             this.tabCustomer.Name = "tabCustomer";
-            this.tabCustomer.Size = new System.Drawing.Size(1097, 522);
+            this.tabCustomer.Size = new System.Drawing.Size(1097, 538);
             this.tabCustomer.TabIndex = 2;
             this.tabCustomer.Text = "Customer Management";
             this.tabCustomer.UseVisualStyleBackColor = true;
@@ -813,28 +837,31 @@ namespace SU21_Final_Project
             // 
             this.btnRemoveCustomer.Location = new System.Drawing.Point(751, 287);
             this.btnRemoveCustomer.Name = "btnRemoveCustomer";
-            this.btnRemoveCustomer.Size = new System.Drawing.Size(114, 56);
+            this.btnRemoveCustomer.Size = new System.Drawing.Size(114, 29);
             this.btnRemoveCustomer.TabIndex = 4;
             this.btnRemoveCustomer.Text = "Remove Customer";
             this.btnRemoveCustomer.UseVisualStyleBackColor = true;
+            this.btnRemoveCustomer.Click += new System.EventHandler(this.btnRemoveCustomer_Click);
             // 
-            // btnEditCustomer
+            // btnUpdateCustomer
             // 
-            this.btnEditCustomer.Location = new System.Drawing.Point(468, 287);
-            this.btnEditCustomer.Name = "btnEditCustomer";
-            this.btnEditCustomer.Size = new System.Drawing.Size(128, 56);
-            this.btnEditCustomer.TabIndex = 3;
-            this.btnEditCustomer.Text = "Update Customer";
-            this.btnEditCustomer.UseVisualStyleBackColor = true;
+            this.btnUpdateCustomer.Location = new System.Drawing.Point(468, 287);
+            this.btnUpdateCustomer.Name = "btnUpdateCustomer";
+            this.btnUpdateCustomer.Size = new System.Drawing.Size(128, 29);
+            this.btnUpdateCustomer.TabIndex = 3;
+            this.btnUpdateCustomer.Text = "Update Customer";
+            this.btnUpdateCustomer.UseVisualStyleBackColor = true;
+            this.btnUpdateCustomer.Click += new System.EventHandler(this.btnUpdateCustomer_Click);
             // 
             // btnAddCustomer
             // 
             this.btnAddCustomer.Location = new System.Drawing.Point(131, 287);
             this.btnAddCustomer.Name = "btnAddCustomer";
-            this.btnAddCustomer.Size = new System.Drawing.Size(113, 56);
+            this.btnAddCustomer.Size = new System.Drawing.Size(113, 29);
             this.btnAddCustomer.TabIndex = 2;
             this.btnAddCustomer.Text = "Add New Customer";
             this.btnAddCustomer.UseVisualStyleBackColor = true;
+            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
             // 
             // dgvCustomer
             // 
@@ -847,6 +874,7 @@ namespace SU21_Final_Project
             this.dgvCustomer.RowHeadersVisible = false;
             this.dgvCustomer.RowHeadersWidth = 51;
             this.dgvCustomer.RowTemplate.Height = 24;
+            this.dgvCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCustomer.Size = new System.Drawing.Size(1064, 263);
             this.dgvCustomer.TabIndex = 1;
             // 
@@ -859,7 +887,7 @@ namespace SU21_Final_Project
             this.tabSalesReport.Controls.Add(this.dgvSalesReport);
             this.tabSalesReport.Location = new System.Drawing.Point(4, 25);
             this.tabSalesReport.Name = "tabSalesReport";
-            this.tabSalesReport.Size = new System.Drawing.Size(1097, 522);
+            this.tabSalesReport.Size = new System.Drawing.Size(1097, 538);
             this.tabSalesReport.TabIndex = 3;
             this.tabSalesReport.Text = "Sales Management";
             this.tabSalesReport.UseVisualStyleBackColor = true;
@@ -893,16 +921,16 @@ namespace SU21_Final_Project
             // dtpEndCoupon
             // 
             this.dtpEndCoupon.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpEndCoupon.Location = new System.Drawing.Point(126, 118);
+            this.dtpEndCoupon.Location = new System.Drawing.Point(159, 118);
             this.dtpEndCoupon.MinDate = new System.DateTime(2021, 7, 21, 0, 0, 0, 0);
             this.dtpEndCoupon.Name = "dtpEndCoupon";
-            this.dtpEndCoupon.Size = new System.Drawing.Size(200, 22);
+            this.dtpEndCoupon.Size = new System.Drawing.Size(167, 22);
             this.dtpEndCoupon.TabIndex = 5;
             // 
             // lblEndCouponLabel
             // 
             this.lblEndCouponLabel.AutoSize = true;
-            this.lblEndCouponLabel.Location = new System.Drawing.Point(16, 123);
+            this.lblEndCouponLabel.Location = new System.Drawing.Point(48, 118);
             this.lblEndCouponLabel.Name = "lblEndCouponLabel";
             this.lblEndCouponLabel.Size = new System.Drawing.Size(104, 17);
             this.lblEndCouponLabel.TabIndex = 4;
@@ -911,16 +939,16 @@ namespace SU21_Final_Project
             // dtpStartCoupon
             // 
             this.dtpStartCoupon.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpStartCoupon.Location = new System.Drawing.Point(126, 77);
+            this.dtpStartCoupon.Location = new System.Drawing.Point(159, 77);
             this.dtpStartCoupon.MinDate = new System.DateTime(2021, 7, 21, 0, 0, 0, 0);
             this.dtpStartCoupon.Name = "dtpStartCoupon";
-            this.dtpStartCoupon.Size = new System.Drawing.Size(200, 22);
+            this.dtpStartCoupon.Size = new System.Drawing.Size(167, 22);
             this.dtpStartCoupon.TabIndex = 3;
             // 
             // lblStartDateLabel
             // 
             this.lblStartDateLabel.AutoSize = true;
-            this.lblStartDateLabel.Location = new System.Drawing.Point(48, 82);
+            this.lblStartDateLabel.Location = new System.Drawing.Point(80, 82);
             this.lblStartDateLabel.Name = "lblStartDateLabel";
             this.lblStartDateLabel.Size = new System.Drawing.Size(72, 17);
             this.lblStartDateLabel.TabIndex = 2;
@@ -1014,11 +1042,260 @@ namespace SU21_Final_Project
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(496, 470);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.TabIndex = 42;
+            this.btnRefresh.Text = "&Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // gbxAddNewCustomer
+            // 
+            this.gbxAddNewCustomer.Controls.Add(this.btnEditCustomer);
+            this.gbxAddNewCustomer.Controls.Add(this.tbxCustomerCity);
+            this.gbxAddNewCustomer.Controls.Add(this.lblCityLabel);
+            this.gbxAddNewCustomer.Controls.Add(this.cboStatesCustomer);
+            this.gbxAddNewCustomer.Controls.Add(this.tbxZipCustomer);
+            this.gbxAddNewCustomer.Controls.Add(this.mskPhoneCustomer);
+            this.gbxAddNewCustomer.Controls.Add(this.tbxAddressCustomer);
+            this.gbxAddNewCustomer.Controls.Add(this.tbxEmailCustomer);
+            this.gbxAddNewCustomer.Controls.Add(this.tbxLastNameCustomer);
+            this.gbxAddNewCustomer.Controls.Add(this.tbxFirstNameCustomer);
+            this.gbxAddNewCustomer.Controls.Add(this.btnAddNewCustomer);
+            this.gbxAddNewCustomer.Controls.Add(this.lblPhoneLabel);
+            this.gbxAddNewCustomer.Controls.Add(this.lblZipLabel);
+            this.gbxAddNewCustomer.Controls.Add(this.lblStateLabel);
+            this.gbxAddNewCustomer.Controls.Add(this.lblAddressLabel);
+            this.gbxAddNewCustomer.Controls.Add(this.lblEmailLabel);
+            this.gbxAddNewCustomer.Controls.Add(this.lblLastNameLabel);
+            this.gbxAddNewCustomer.Controls.Add(this.lblFirstNameLabel);
+            this.gbxAddNewCustomer.Enabled = false;
+            this.gbxAddNewCustomer.Location = new System.Drawing.Point(131, 347);
+            this.gbxAddNewCustomer.Name = "gbxAddNewCustomer";
+            this.gbxAddNewCustomer.Size = new System.Drawing.Size(691, 168);
+            this.gbxAddNewCustomer.TabIndex = 18;
+            this.gbxAddNewCustomer.TabStop = false;
+            this.gbxAddNewCustomer.Text = "Customer Information";
+            // 
+            // tbxCustomerCity
+            // 
+            this.tbxCustomerCity.Location = new System.Drawing.Point(358, 59);
+            this.tbxCustomerCity.Name = "tbxCustomerCity";
+            this.tbxCustomerCity.Size = new System.Drawing.Size(211, 22);
+            this.tbxCustomerCity.TabIndex = 16;
+            // 
+            // lblCityLabel
+            // 
+            this.lblCityLabel.AutoSize = true;
+            this.lblCityLabel.Location = new System.Drawing.Point(316, 62);
+            this.lblCityLabel.Name = "lblCityLabel";
+            this.lblCityLabel.Size = new System.Drawing.Size(31, 17);
+            this.lblCityLabel.TabIndex = 15;
+            this.lblCityLabel.Text = "City";
+            // 
+            // cboStatesCustomer
+            // 
+            this.cboStatesCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboStatesCustomer.FormattingEnabled = true;
+            this.cboStatesCustomer.Items.AddRange(new object[] {
+            "AK",
+            "AS",
+            "AZ",
+            "AR",
+            "CA",
+            "CO",
+            "CT",
+            "DE",
+            "DC",
+            "FM",
+            "FL",
+            "GA",
+            "GU",
+            "HI",
+            "ID",
+            "IL",
+            "IN",
+            "IA",
+            "KS",
+            "KY",
+            "LA",
+            "ME",
+            "MH",
+            "MD",
+            "MA",
+            "MI",
+            "MN",
+            "MS",
+            "MO",
+            "MT",
+            "NE",
+            "NV",
+            "NH",
+            "NJ",
+            "NM",
+            "NY",
+            "NC",
+            "ND",
+            "MP",
+            "OH",
+            "OK",
+            "OR",
+            "PW",
+            "PA",
+            "PR",
+            "RI",
+            "SC",
+            "SD",
+            "TN",
+            "TX",
+            "UT",
+            "VT",
+            "VI",
+            "VA",
+            "WA",
+            "WV",
+            "WI",
+            "WY"});
+            this.cboStatesCustomer.Location = new System.Drawing.Point(358, 92);
+            this.cboStatesCustomer.Name = "cboStatesCustomer";
+            this.cboStatesCustomer.Size = new System.Drawing.Size(87, 24);
+            this.cboStatesCustomer.TabIndex = 14;
+            // 
+            // tbxZipCustomer
+            // 
+            this.tbxZipCustomer.Location = new System.Drawing.Point(357, 130);
+            this.tbxZipCustomer.MaxLength = 5;
+            this.tbxZipCustomer.Name = "tbxZipCustomer";
+            this.tbxZipCustomer.Size = new System.Drawing.Size(72, 22);
+            this.tbxZipCustomer.TabIndex = 13;
+            // 
+            // mskPhoneCustomer
+            // 
+            this.mskPhoneCustomer.Location = new System.Drawing.Point(115, 140);
+            this.mskPhoneCustomer.Mask = "000-000-0000";
+            this.mskPhoneCustomer.Name = "mskPhoneCustomer";
+            this.mskPhoneCustomer.Size = new System.Drawing.Size(100, 22);
+            this.mskPhoneCustomer.TabIndex = 12;
+            // 
+            // tbxAddressCustomer
+            // 
+            this.tbxAddressCustomer.Location = new System.Drawing.Point(358, 29);
+            this.tbxAddressCustomer.Name = "tbxAddressCustomer";
+            this.tbxAddressCustomer.Size = new System.Drawing.Size(211, 22);
+            this.tbxAddressCustomer.TabIndex = 11;
+            // 
+            // tbxEmailCustomer
+            // 
+            this.tbxEmailCustomer.Location = new System.Drawing.Point(115, 107);
+            this.tbxEmailCustomer.Name = "tbxEmailCustomer";
+            this.tbxEmailCustomer.Size = new System.Drawing.Size(139, 22);
+            this.tbxEmailCustomer.TabIndex = 10;
+            // 
+            // tbxLastNameCustomer
+            // 
+            this.tbxLastNameCustomer.Location = new System.Drawing.Point(115, 69);
+            this.tbxLastNameCustomer.Name = "tbxLastNameCustomer";
+            this.tbxLastNameCustomer.Size = new System.Drawing.Size(139, 22);
+            this.tbxLastNameCustomer.TabIndex = 9;
+            // 
+            // tbxFirstNameCustomer
+            // 
+            this.tbxFirstNameCustomer.Location = new System.Drawing.Point(115, 31);
+            this.tbxFirstNameCustomer.Name = "tbxFirstNameCustomer";
+            this.tbxFirstNameCustomer.Size = new System.Drawing.Size(139, 22);
+            this.tbxFirstNameCustomer.TabIndex = 8;
+            // 
+            // btnAddNewCustomer
+            // 
+            this.btnAddNewCustomer.Location = new System.Drawing.Point(594, 123);
+            this.btnAddNewCustomer.Name = "btnAddNewCustomer";
+            this.btnAddNewCustomer.Size = new System.Drawing.Size(80, 30);
+            this.btnAddNewCustomer.TabIndex = 7;
+            this.btnAddNewCustomer.Text = "&Add";
+            this.btnAddNewCustomer.UseVisualStyleBackColor = true;
+            this.btnAddNewCustomer.Click += new System.EventHandler(this.btnAddNewCustomer_Click);
+            // 
+            // lblPhoneLabel
+            // 
+            this.lblPhoneLabel.AutoSize = true;
+            this.lblPhoneLabel.Location = new System.Drawing.Point(47, 145);
+            this.lblPhoneLabel.Name = "lblPhoneLabel";
+            this.lblPhoneLabel.Size = new System.Drawing.Size(53, 17);
+            this.lblPhoneLabel.TabIndex = 6;
+            this.lblPhoneLabel.Text = "Phone:";
+            // 
+            // lblZipLabel
+            // 
+            this.lblZipLabel.AutoSize = true;
+            this.lblZipLabel.Location = new System.Drawing.Point(315, 130);
+            this.lblZipLabel.Name = "lblZipLabel";
+            this.lblZipLabel.Size = new System.Drawing.Size(32, 17);
+            this.lblZipLabel.TabIndex = 5;
+            this.lblZipLabel.Text = "Zip:";
+            // 
+            // lblStateLabel
+            // 
+            this.lblStateLabel.AutoSize = true;
+            this.lblStateLabel.Location = new System.Drawing.Point(302, 96);
+            this.lblStateLabel.Name = "lblStateLabel";
+            this.lblStateLabel.Size = new System.Drawing.Size(45, 17);
+            this.lblStateLabel.TabIndex = 4;
+            this.lblStateLabel.Text = "State:";
+            // 
+            // lblAddressLabel
+            // 
+            this.lblAddressLabel.AutoSize = true;
+            this.lblAddressLabel.Location = new System.Drawing.Point(287, 32);
+            this.lblAddressLabel.Name = "lblAddressLabel";
+            this.lblAddressLabel.Size = new System.Drawing.Size(60, 17);
+            this.lblAddressLabel.TabIndex = 3;
+            this.lblAddressLabel.Text = "Address";
+            // 
+            // lblEmailLabel
+            // 
+            this.lblEmailLabel.AutoSize = true;
+            this.lblEmailLabel.Location = new System.Drawing.Point(55, 113);
+            this.lblEmailLabel.Name = "lblEmailLabel";
+            this.lblEmailLabel.Size = new System.Drawing.Size(42, 17);
+            this.lblEmailLabel.TabIndex = 2;
+            this.lblEmailLabel.Text = "Email";
+            // 
+            // lblLastNameLabel
+            // 
+            this.lblLastNameLabel.AutoSize = true;
+            this.lblLastNameLabel.Location = new System.Drawing.Point(26, 72);
+            this.lblLastNameLabel.Name = "lblLastNameLabel";
+            this.lblLastNameLabel.Size = new System.Drawing.Size(76, 17);
+            this.lblLastNameLabel.TabIndex = 1;
+            this.lblLastNameLabel.Text = "Last Name";
+            // 
+            // lblFirstNameLabel
+            // 
+            this.lblFirstNameLabel.AutoSize = true;
+            this.lblFirstNameLabel.Location = new System.Drawing.Point(27, 34);
+            this.lblFirstNameLabel.Name = "lblFirstNameLabel";
+            this.lblFirstNameLabel.Size = new System.Drawing.Size(76, 17);
+            this.lblFirstNameLabel.TabIndex = 0;
+            this.lblFirstNameLabel.Text = "First Name";
+            // 
+            // btnEditCustomer
+            // 
+            this.btnEditCustomer.Location = new System.Drawing.Point(582, 25);
+            this.btnEditCustomer.Name = "btnEditCustomer";
+            this.btnEditCustomer.Size = new System.Drawing.Size(103, 34);
+            this.btnEditCustomer.TabIndex = 17;
+            this.btnEditCustomer.Text = "&Save Edit";
+            this.btnEditCustomer.UseVisualStyleBackColor = true;
+            this.btnEditCustomer.Click += new System.EventHandler(this.btnEditCustomer_Click);
+            // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1132, 615);
+            this.ClientSize = new System.Drawing.Size(1132, 620);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.tabManagerFeatures);
@@ -1050,6 +1327,8 @@ namespace SU21_Final_Project
             this.gbxCreateCoupon.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesDetails)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesReport)).EndInit();
+            this.gbxAddNewCustomer.ResumeLayout(false);
+            this.gbxAddNewCustomer.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1111,7 +1390,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.ComboBox cboStates;
         private System.Windows.Forms.MaskedTextBox mskPhones;
         private System.Windows.Forms.Button btnRemoveCustomer;
-        private System.Windows.Forms.Button btnEditCustomer;
+        private System.Windows.Forms.Button btnUpdateCustomer;
         private System.Windows.Forms.Button btnAddCustomer;
         private System.Windows.Forms.GroupBox gbxEdit;
         private System.Windows.Forms.CheckBox cbxStates;
@@ -1131,5 +1410,25 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblStartDateLabel;
         private System.Windows.Forms.ComboBox cboCouponDescription;
         private System.Windows.Forms.Label lblCouponLabel;
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.GroupBox gbxAddNewCustomer;
+        private System.Windows.Forms.TextBox tbxCustomerCity;
+        private System.Windows.Forms.Label lblCityLabel;
+        private System.Windows.Forms.ComboBox cboStatesCustomer;
+        private System.Windows.Forms.TextBox tbxZipCustomer;
+        private System.Windows.Forms.MaskedTextBox mskPhoneCustomer;
+        private System.Windows.Forms.TextBox tbxAddressCustomer;
+        private System.Windows.Forms.TextBox tbxEmailCustomer;
+        private System.Windows.Forms.TextBox tbxLastNameCustomer;
+        private System.Windows.Forms.TextBox tbxFirstNameCustomer;
+        private System.Windows.Forms.Button btnAddNewCustomer;
+        private System.Windows.Forms.Label lblPhoneLabel;
+        private System.Windows.Forms.Label lblZipLabel;
+        private System.Windows.Forms.Label lblStateLabel;
+        private System.Windows.Forms.Label lblAddressLabel;
+        private System.Windows.Forms.Label lblEmailLabel;
+        private System.Windows.Forms.Label lblLastNameLabel;
+        private System.Windows.Forms.Label lblFirstNameLabel;
+        private System.Windows.Forms.Button btnEditCustomer;
     }
 }

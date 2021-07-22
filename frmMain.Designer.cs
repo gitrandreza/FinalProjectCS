@@ -29,9 +29,9 @@ namespace SU21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblDate = new System.Windows.Forms.Label();
             this.dgvAll = new System.Windows.Forms.DataGridView();
             this.pbxAll = new System.Windows.Forms.PictureBox();
@@ -89,6 +89,8 @@ namespace SU21_Final_Project
             this.lblDeliveryThree = new System.Windows.Forms.Label();
             this.lblDeliveryTwo = new System.Windows.Forms.Label();
             this.lblDeliveryOne = new System.Windows.Forms.Label();
+            this.lblTotalList = new System.Windows.Forms.Label();
+            this.lblTotalListLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAll)).BeginInit();
             this.gbxSelectedItem.SuspendLayout();
@@ -115,14 +117,14 @@ namespace SU21_Final_Project
             this.dgvAll.AllowUserToAddRows = false;
             this.dgvAll.AllowUserToDeleteRows = false;
             this.dgvAll.BackgroundColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAll.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAll.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvAll.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAll.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dgvAll.Location = new System.Drawing.Point(30, 88);
@@ -504,23 +506,23 @@ namespace SU21_Final_Project
             this.dgvList.AllowUserToAddRows = false;
             this.dgvList.AllowUserToDeleteRows = false;
             this.dgvList.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvList.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvList.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvList.Location = new System.Drawing.Point(643, 92);
             this.dgvList.Margin = new System.Windows.Forms.Padding(4);
             this.dgvList.Name = "dgvList";
@@ -565,6 +567,8 @@ namespace SU21_Final_Project
             // gbxAmount
             // 
             this.gbxAmount.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.gbxAmount.Controls.Add(this.lblTotalList);
+            this.gbxAmount.Controls.Add(this.lblTotalListLabel);
             this.gbxAmount.Controls.Add(this.lblDiscount);
             this.gbxAmount.Controls.Add(this.lblDiscountLabel);
             this.gbxAmount.Controls.Add(this.lblTotalAmount);
@@ -589,7 +593,7 @@ namespace SU21_Final_Project
             this.lblDiscount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblDiscount.Font = new System.Drawing.Font("Eras Medium ITC", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDiscount.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblDiscount.Location = new System.Drawing.Point(210, 35);
+            this.lblDiscount.Location = new System.Drawing.Point(222, 60);
             this.lblDiscount.Name = "lblDiscount";
             this.lblDiscount.Size = new System.Drawing.Size(2, 21);
             this.lblDiscount.TabIndex = 43;
@@ -599,7 +603,7 @@ namespace SU21_Final_Project
             this.lblDiscountLabel.AutoSize = true;
             this.lblDiscountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDiscountLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblDiscountLabel.Location = new System.Drawing.Point(15, 36);
+            this.lblDiscountLabel.Location = new System.Drawing.Point(27, 61);
             this.lblDiscountLabel.Name = "lblDiscountLabel";
             this.lblDiscountLabel.Size = new System.Drawing.Size(71, 17);
             this.lblDiscountLabel.TabIndex = 42;
@@ -611,7 +615,7 @@ namespace SU21_Final_Project
             this.lblTotalAmount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblTotalAmount.Font = new System.Drawing.Font("Eras Medium ITC", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalAmount.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblTotalAmount.Location = new System.Drawing.Point(210, 158);
+            this.lblTotalAmount.Location = new System.Drawing.Point(222, 183);
             this.lblTotalAmount.Name = "lblTotalAmount";
             this.lblTotalAmount.Size = new System.Drawing.Size(2, 21);
             this.lblTotalAmount.TabIndex = 7;
@@ -622,7 +626,7 @@ namespace SU21_Final_Project
             this.lblTaxAmount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblTaxAmount.Font = new System.Drawing.Font("Eras Medium ITC", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTaxAmount.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblTaxAmount.Location = new System.Drawing.Point(210, 117);
+            this.lblTaxAmount.Location = new System.Drawing.Point(222, 142);
             this.lblTaxAmount.Name = "lblTaxAmount";
             this.lblTaxAmount.Size = new System.Drawing.Size(2, 21);
             this.lblTaxAmount.TabIndex = 6;
@@ -633,7 +637,7 @@ namespace SU21_Final_Project
             this.lblSubTotal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblSubTotal.Font = new System.Drawing.Font("Eras Medium ITC", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubTotal.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblSubTotal.Location = new System.Drawing.Point(210, 78);
+            this.lblSubTotal.Location = new System.Drawing.Point(222, 103);
             this.lblSubTotal.Name = "lblSubTotal";
             this.lblSubTotal.Size = new System.Drawing.Size(2, 21);
             this.lblSubTotal.TabIndex = 4;
@@ -643,7 +647,7 @@ namespace SU21_Final_Project
             this.lblTotalAmountLabel.AutoSize = true;
             this.lblTotalAmountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalAmountLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblTotalAmountLabel.Location = new System.Drawing.Point(15, 161);
+            this.lblTotalAmountLabel.Location = new System.Drawing.Point(27, 186);
             this.lblTotalAmountLabel.Name = "lblTotalAmountLabel";
             this.lblTotalAmountLabel.Size = new System.Drawing.Size(92, 17);
             this.lblTotalAmountLabel.TabIndex = 3;
@@ -654,7 +658,7 @@ namespace SU21_Final_Project
             this.lblSubTotalLabel.AutoSize = true;
             this.lblSubTotalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubTotalLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblSubTotalLabel.Location = new System.Drawing.Point(15, 76);
+            this.lblSubTotalLabel.Location = new System.Drawing.Point(27, 101);
             this.lblSubTotalLabel.Name = "lblSubTotalLabel";
             this.lblSubTotalLabel.Size = new System.Drawing.Size(69, 17);
             this.lblSubTotalLabel.TabIndex = 0;
@@ -665,7 +669,7 @@ namespace SU21_Final_Project
             this.lblTaxLabel.AutoSize = true;
             this.lblTaxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTaxLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblTaxLabel.Location = new System.Drawing.Point(15, 118);
+            this.lblTaxLabel.Location = new System.Drawing.Point(27, 143);
             this.lblTaxLabel.Name = "lblTaxLabel";
             this.lblTaxLabel.Size = new System.Drawing.Size(39, 17);
             this.lblTaxLabel.TabIndex = 2;
@@ -866,6 +870,28 @@ namespace SU21_Final_Project
             this.lblDeliveryOne.TabIndex = 43;
             this.lblDeliveryOne.Text = "24h";
             // 
+            // lblTotalList
+            // 
+            this.lblTotalList.AutoSize = true;
+            this.lblTotalList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTotalList.Font = new System.Drawing.Font("Eras Medium ITC", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalList.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblTotalList.Location = new System.Drawing.Point(221, 24);
+            this.lblTotalList.Name = "lblTotalList";
+            this.lblTotalList.Size = new System.Drawing.Size(2, 21);
+            this.lblTotalList.TabIndex = 45;
+            // 
+            // lblTotalListLabel
+            // 
+            this.lblTotalListLabel.AutoSize = true;
+            this.lblTotalListLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalListLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblTotalListLabel.Location = new System.Drawing.Point(26, 25);
+            this.lblTotalListLabel.Name = "lblTotalListLabel";
+            this.lblTotalListLabel.Size = new System.Drawing.Size(84, 17);
+            this.lblTotalListLabel.TabIndex = 44;
+            this.lblTotalListLabel.Text = "Total Price :";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -979,6 +1005,8 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblForMoreLabel;
         private System.Windows.Forms.Label lblLogo2;
         private System.Windows.Forms.Label lblLogo1;
+        private System.Windows.Forms.Label lblTotalList;
+        private System.Windows.Forms.Label lblTotalListLabel;
     }
 }
 

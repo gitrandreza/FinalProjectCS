@@ -23,6 +23,8 @@ namespace SU21_Final_Project
         SqlCommand command;
         SqlDataReader reader;
 
+        string strGetDate = DateTime.Now.ToShortDateString();//Get date
+
         string strItemSelectedName;
         string strQuantityAvailable;
         int intQuantityAvailable;
@@ -30,32 +32,36 @@ namespace SU21_Final_Project
         string strPrice;
         double dblPrice;
         double dblPriceItemSelected;
+       
 
         string strQuantityNeeded;
         int intQuantityNeeded;
-        double dblTotalList;
-        int intQuantityTotal;
 
-        double dblAmountTax ;
-         
-        double dblSubTotal;
-             double dblTotalAmount;
-        double dblTax = 0.0825;
-        double dblDiscount = 0;
+        
+       
         double dblDiscountOne = 0.1;
         double dblDiscountTwo = 0.2;
         double dblDiscountThree = 0.3;
         double dblDiscountReturning = 0.1;
+        double dblDiscountCouponOne = 0.25;
+        double dblDiscountCouponTwo = 100;
+        double dblDiscountCouponThree = 500;
+
 
         int intSaleId;
 
         string strCustomerID;
         bool blnReturningCustomer = false;
+        bool blnExpirationCoupon = false;
 
+        string strDiscountIndex;
+
+       
         private void frmEmployee_Load(object sender, EventArgs e)
         {
-            lblDate.Text = DateTime.Now.ToShortDateString();//Get date
-         
+            
+            lblDate.Text = strGetDate;
+
             lblUserEmployee.Text = frmMain.strUserNumberID;
             try
             {
@@ -374,13 +380,27 @@ namespace SU21_Final_Project
         //Display Amount in the list without discount
         private void btnDisplayPrice_Click(object sender, EventArgs e)
         {
-            
+            CalculateAmount(0, 0);
+
+        }
+
+        //Function to calculate amount in the list
+        void CalculateAmount(double dblDiscountPercentage, double dblDiscountOff)
+        {
+            int intQuantityTotal = 0;
+            double dblTotalList=0;
+            double dblAmountTax;
+            double dblDiscount = 0;
+            double dblSubTotal=0;
+            double dblTotalAmount=0;
+            double dblTax = 0.0825;
+
             string strTotalPriceList;
-            double dblTotalPriceList;
+            double dblTotalPriceList=0;
 
 
             string strQuantityTotal;
-            int intQuantityTotalList;
+            int intQuantityTotalList=0;
 
 
             btnPlaceOrder.Enabled = true;
@@ -420,47 +440,12 @@ namespace SU21_Final_Project
                     intQuantityTotal = intQuantityTotal + intQuantityTotalList;
                 }
 
-                
-
-                //delivery condition based on quantities
-                if (intQuantityTotal > 10 && intQuantityTotal <= 50)
-                {
-                    radQuantityDiscount.Checked = true;
-                    tbxDelivery.Text = "24h";
-                }
-                else if (intQuantityTotal > 50 && intQuantityTotal < 100)
-                {
-                    radQuantityDiscount.Checked = true;
-                    tbxDelivery.Text = "48h";
-                }
-                else if (intQuantityTotal >= 100)
-                {
-                    radQuantityDiscount.Checked = true;
-                    tbxDelivery.Text = "72h";
-                }
-
-                else
-                {
-                    radNoDiscount.Checked = true;
-                    CalculateAmount(dblDiscount);
-                    tbxDelivery.Text = "2h";
-                }
-                
 
             }
-            if(blnReturningCustomer==true)
-            {
-                radReturningDiscount.Checked = true;
-            }
-            
-        }
 
-        void CalculateAmount(double dblDiscountApply )
-        {
-            
-            
-            dblDiscount = dblTotalList * dblDiscountApply;
-            dblSubTotal = dblTotalList- dblDiscount;
+
+            dblDiscount = dblTotalList * dblDiscountPercentage;
+            dblSubTotal = dblTotalList- dblDiscount-dblDiscountOff;
             dblAmountTax = dblTotalList * dblTax;
             dblTotalAmount = dblSubTotal + dblAmountTax;
 
@@ -468,44 +453,16 @@ namespace SU21_Final_Project
             tbxSubTotalCustomer.Text = dblSubTotal.ToString("C2");
             tbxTaxCustomer.Text = dblAmountTax.ToString("C2");
             tbxTotalToPay.Text = dblTotalAmount.ToString("C2");
-
+            tbxQuantityTotal.Text = intQuantityTotal.ToString();
         }
 
-        //Apply discount based 
-        private void radQuantityDiscount_CheckedChanged(object sender, EventArgs e)
-        {
-            //Discount and delivery condition based on quantities
-            if (intQuantityTotal > 10 && intQuantityTotal <= 50)
-            {
-
-                CalculateAmount(dblDiscountOne);
-                lblDisplayDiscountQuantity.Text = "10% Discount";
-            }
-            else if (intQuantityTotal > 50 && intQuantityTotal < 100)
-            {
-
-                CalculateAmount(dblDiscountTwo);
-                lblDisplayDiscountQuantity.Text = "20% Discount";
-            }
-            else if (intQuantityTotal >= 100)
-            {
-                CalculateAmount(dblDiscountThree);
-                lblDisplayDiscountQuantity.Text = "30% Discount";
-            }
-        }
-
-        //No discount apply
-        private void radNoDiscount_CheckedChanged(object sender, EventArgs e)
-        {
-            CalculateAmount(0);
-        }
       
         private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
             if (tbxTotalToPay.Text != "")
             {
                 int intUserID;
-                string strUserID = "2069";
+                string strUserID = lblUserEmployee.Text;
                 bool intResultTryParse = int.TryParse(strUserID, out intUserID);
                 if (intResultTryParse == false)
                 {
@@ -534,7 +491,9 @@ namespace SU21_Final_Project
                         "VALUES(@UserID,@CreationDate,@TotalSale)", Connection);
                     commandSalesReport.Parameters.AddWithValue("@UserID", intUserID);
                     commandSalesReport.Parameters.AddWithValue("@CreationDate", strDate);
-                    commandSalesReport.Parameters.AddWithValue("@TotalSale", dblTotalAmount.ToString());
+                  
+
+                    commandSalesReport.Parameters.AddWithValue("@TotalSale", tbxTotalToPay.Text);
 
 
                     commandSalesReport.ExecuteNonQuery();
@@ -671,10 +630,10 @@ namespace SU21_Final_Project
             html.Append("<tr><td colspan=8><hr></hd></td></tr>");
             html.Append("<table>");
 
-            html.AppendLine($"<h5>{"Discount: "}{dblDiscount.ToString("C2")}</h5>");
-            html.AppendLine($"<h5>{"Subtotal: "}{dblSubTotal.ToString("C2")}</h5>");
-            html.AppendLine($"<h5>{"Tax Sale: "}{dblAmountTax.ToString("C2")}</h5>");
-            html.AppendLine($"<h5>{"Total Amount: "}{dblTotalAmount.ToString("C2")}</h5>");
+            html.AppendLine($"<h5>{"Discount: "}{tbxDiscountCustomer.Text}</h5>");
+            html.AppendLine($"<h5>{"Subtotal: "}{tbxSubTotalCustomer.Text}</h5>");
+            html.AppendLine($"<h5>{"Tax Sale: "}{tbxTaxCustomer.Text}</h5>");
+            html.AppendLine($"<h5>{"Total Amount: "}{tbxTotalToPay.Text}</h5>");
 
                 html.AppendLine($"<h5>{"Estimated Delivery: "}{tbxDelivery.Text}</h5>");
 
@@ -747,7 +706,7 @@ namespace SU21_Final_Project
             tbxQuantityNeeded.Text = "";
 
             tbxDiscountCustomer.Text = "";
-            dblDiscount = 0;
+            
             tbxDelivery.Text = "";
 
             radNoDiscount.Checked = true;
@@ -759,17 +718,42 @@ namespace SU21_Final_Project
         //Print Invoice
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            
+
+            PrintReportEmployeeView(GenerateReportEmployeeView());
         }
 
         //Enable features if checked
         private void radYes_CheckedChanged(object sender, EventArgs e)
         {
-            tbxIDSearch.Enabled = true;
-            lblIDLabel.Enabled = true;
-            btnSearchCustomerID.Enabled = true;
-            dgvCustomerInfo.Enabled = true;
-            radNo.Checked = false;
+            if (radYes.Checked == true)
+            {
+                tbxIDSearch.Enabled = true;
+                lblIDLabel.Enabled = true;
+                btnSearchCustomerID.Enabled = true;
+                btnAddCustomer.Enabled = false;
+               
+
+                tbxFirstNameCustomer.ReadOnly = true;               
+                tbxLastNameCustomer.ReadOnly = true;
+                tbxEmailCustomer.ReadOnly = true;
+                tbxAddressCustomer.ReadOnly = true;
+                tbxCustomerCity.ReadOnly = true;
+                tbxZipCustomer.ReadOnly = true;              
+                mskPhoneCustomer.ReadOnly = true;
+
+                tbxCustomerState.Visible = true;
+                cboStatesCustomer.Visible = false;
+                tbxCustomerState.ReadOnly = true;
+            }
+            else
+            {
+                tbxIDSearch.Enabled = false;
+                lblIDLabel.Enabled = false;
+                btnSearchCustomerID.Enabled = false;
+                tbxCustomerState.Visible = false;
+                cboStatesCustomer.Visible = true;
+
+            }
         }
 
         private void btnSearchCustomerID_Click(object sender, EventArgs e)
@@ -788,8 +772,9 @@ namespace SU21_Final_Project
         }
 
         //function to display customer from search ID
-        public void DisplayCustomerInfo(string strIDCustomer)
+        public void DisplayCustomerInfo(string strIdCustomer)
         {
+           
             try
             {
                 //connect to database
@@ -797,15 +782,40 @@ namespace SU21_Final_Project
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                 Connection.Open();
-                string strQuery = "SELECT * FROM RandrezaVoharisoaM21Su2332.Person where PersonID='" + strIDCustomer + "' ;";
-                dataAdapter = new SqlDataAdapter(strQuery, Connection);
-                dataTable = new DataTable();
-                dataAdapter.Fill(dataTable);
-                dgvCustomerInfo.DataSource = dataTable;
+                string strQuery = "SELECT * FROM RandrezaVoharisoaM21Su2332.Person where PersonID='" + strIdCustomer + "' ;";
+                SqlCommand command = new SqlCommand(strQuery, Connection);
 
-                blnReturningCustomer = true;
+                //gets the results from the sql command
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
 
-                Connection.Close();
+
+                tbxFirstNameCustomer.Text = reader["NameFirst"].ToString();
+                tbxLastNameCustomer.Text = reader["NameLast"].ToString();
+                tbxEmailCustomer.Text = reader["Email"].ToString();
+                tbxAddressCustomer.Text = reader["Address1"].ToString();
+                tbxCustomerCity.Text = reader["City"].ToString();
+                tbxZipCustomer.Text= reader["Zipcode"].ToString();              
+                tbxCustomerState.Text = reader["State"].ToString();
+                mskPhoneCustomer.Text= reader["PhonePrimary"].ToString();
+
+                
+
+
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+
+
+
+                if (Connection != null)
+                {
+                    Connection.Close();
+                }
+
+
+            
             }
             catch (Exception ex)
             {
@@ -838,9 +848,31 @@ namespace SU21_Final_Project
         //Enable features to Enter customer information
         private void radNo_CheckedChanged(object sender, EventArgs e)
         {
-            gbxAddCustomer.Enabled = true;
-            radYes.Checked = false;
+            if(radNo.Checked==true)
+            {
+                
+                tbxFirstNameCustomer.ReadOnly = false;
+                tbxLastNameCustomer.ReadOnly = false;
+                tbxEmailCustomer.ReadOnly = false;
+                tbxAddressCustomer.ReadOnly = false;
+                tbxCustomerCity.ReadOnly = false;
+                tbxZipCustomer.ReadOnly = false;
+                mskPhoneCustomer.ReadOnly = false;
+                btnAddCustomer.Enabled = true;
+                tbxCustomerState.Visible = false;
+                cboStatesCustomer.Visible = true;
+                tbxCustomerState.ReadOnly = false;
 
+                tbxFirstNameCustomer.Text = "";
+                tbxLastNameCustomer.Text = "";
+                tbxEmailCustomer.Text = "";
+                tbxAddressCustomer.Text = "";
+                tbxCustomerCity.Text = "";
+                tbxZipCustomer.Text = "";
+                tbxCustomerState.Text = "";
+                mskPhoneCustomer.Text = "";
+            }
+           
 
         }
         public bool ValidAddress(string strAddress)
@@ -869,25 +901,26 @@ namespace SU21_Final_Project
                 Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.
                  [0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
                 RegexOptions.CultureInvariant | RegexOptions.Singleline);
-                bool isValidEmail = regex.IsMatch(strValidEmail);
-                if (!isValidEmail)
+                bool blnValidEmail = regex.IsMatch(strValidEmail);
+                if (!blnValidEmail)
                 {
                     return false;
                 }
-                else
-                {
-                    return true;
-                }
+              
+                return true;
             }
             catch (Exception ex)
             {
                 throw;
             }
         }
-        //If checked then apply Returning Customer Discount
-        private void radReturningDiscount_CheckedChanged(object sender, EventArgs e)
+        public bool ValidPhone()
         {
-            CalculateAmount(dblDiscountReturning);
+            if ( mskPhoneCustomer.Text.Length<12 && mskPhoneCustomer.Text.Contains(" "))
+            {
+                return false;
+            }
+            return true;
         }
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
@@ -920,62 +953,69 @@ namespace SU21_Final_Project
 
                         if (ValidEmail(strEmail) == true)
                         {
+                            if(ValidPhone()==true)
+                            {
+                                SqlCommand commandPerson = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Person(Title,NameFirst,NameLast,Address1,City,Zipcode,State,Email,PhonePrimary) VALUES (@Title,@NameFirst,@NameLast,@Address,@City,@Zipcode,@State,@Email,@Phone)", Connection);
+                                commandPerson.Parameters.AddWithValue("@Title", strTitle);
+                                commandPerson.Parameters.AddWithValue("@NameFirst", strFirstName);
+                                commandPerson.Parameters.AddWithValue("@NameLast", strLastName);
+                                commandPerson.Parameters.AddWithValue("@Address", strAddress);
+                                commandPerson.Parameters.AddWithValue("@City", strCity);
+                                commandPerson.Parameters.AddWithValue("@Zipcode", strZip);
+                                commandPerson.Parameters.AddWithValue("@State", strState);
+                                commandPerson.Parameters.AddWithValue("@Email", strEmail);
+                                commandPerson.Parameters.AddWithValue("@Phone", strPhone);
+                                commandPerson.ExecuteNonQuery();
+
+                                //INSERT RECORD FOR USERS LOGON SECURITY ACCESS
+                                string strAnswerOne = "Not Available";
+                                string strAnswerTwo = "Not Available";
+                                string strAnswerThree = "Not Available";
+                                intRoleId = 3;
+                                string strQuestionOne = "Not Available";
+                                string strQuestionTwo = "Not Available";
+                                string strQuestionThree = "Not Available";
 
 
-                            SqlCommand commandPerson = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Person(Title,NameFirst,NameLast,Address1,City,Zipcode,State,Email,PhonePrimary) VALUES (@Title,@NameFirst,@NameLast,@Address,@City,@Zipcode,@State,@Email,@Phone)", Connection);
-                            commandPerson.Parameters.AddWithValue("@Title", strTitle);
-                            commandPerson.Parameters.AddWithValue("@NameFirst", strFirstName);
-                            commandPerson.Parameters.AddWithValue("@NameLast", strLastName);
-                            commandPerson.Parameters.AddWithValue("@Address", strAddress);
-                            commandPerson.Parameters.AddWithValue("@City", strCity);
-                            commandPerson.Parameters.AddWithValue("@Zipcode", strZip);
-                            commandPerson.Parameters.AddWithValue("@State", strState);
-                            commandPerson.Parameters.AddWithValue("@Email", strEmail);
-                            commandPerson.Parameters.AddWithValue("@Phone", strPhone);
-                            commandPerson.ExecuteNonQuery();
 
-                            //INSERT RECORD FOR USERS LOGON SECURITY ACCESS
-                            string strAnswerOne = "Not Available";
-                            string strAnswerTwo = "Not Available";
-                            string strAnswerThree = "Not Available";
-                            intRoleId = 3;
-                            string strQuestionOne = "Not Available";
-                            string strQuestionTwo = "Not Available";
-                            string strQuestionThree = "Not Available";
+                                //Get the last PersonID using Max to insert as FK to the User table
+                                string queryLastID = "SELECT MAX(PersonID) from RandrezaVoharisoaM21Su2332.Person";
+                                SqlCommand commandLastID = new SqlCommand(queryLastID, Connection);
 
+                                //gets the results from the sql command
+                                SqlDataReader sr = commandLastID.ExecuteReader();
+                                sr.Read();
+                                int intPersonID = sr.GetInt32(0);
+                                sr.Close();
+                                //generate Username and Password
+                                string strModidfiedLastName = strLastName.Substring(0, strLastName.Length - 2);
+                                string strCreateUsername = strModidfiedLastName + intPersonID.ToString();
 
+                                string strCreatePassword = intRoleId.ToString() + intPersonID.ToString();
 
-                            //Get the last PersonID using Max to insert as FK to the User table
-                            string queryLastID = "SELECT MAX(PersonID) from RandrezaVoharisoaM21Su2332.Person";
-                            SqlCommand commandLastID = new SqlCommand(queryLastID, Connection);
+                                SqlCommand commandUsers = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Users(PersonID,Username,Password,Answer1,Answer2,RoleID,ThirdQuestion,SecondQuestion,FirstQuestion,Answer3) VALUES(@PersonID,@Username,@Password,@Answer1,@Answer2,@RoleID,@ThirdQuestion,@SecondQuestion,@FirstQuestion,@Answer3)", Connection);
+                                commandUsers.Parameters.AddWithValue("@PersonID", intPersonID);
+                                commandUsers.Parameters.AddWithValue("@Username", strCreateUsername);
+                                commandUsers.Parameters.AddWithValue("@Password", strCreatePassword);
+                                commandUsers.Parameters.AddWithValue("@Answer1", strAnswerOne);
+                                commandUsers.Parameters.AddWithValue("@Answer2", strAnswerTwo);
+                                commandUsers.Parameters.AddWithValue("@RoleID", intRoleId);
+                                commandUsers.Parameters.AddWithValue("@ThirdQuestion", strQuestionThree);
+                                commandUsers.Parameters.AddWithValue("@SecondQuestion", strQuestionTwo);
+                                commandUsers.Parameters.AddWithValue("@FirstQuestion", strQuestionOne);
+                                commandUsers.Parameters.AddWithValue("@Answer3", strAnswerThree);
 
-                            //gets the results from the sql command
-                            SqlDataReader sr = commandLastID.ExecuteReader();
-                            sr.Read();
-                            int intPersonID = sr.GetInt32(0);
-                            sr.Close();
-                            //generate Username and Password
-                            string strModidfiedLastName = strLastName.Substring(0, strLastName.Length - 2);
-                            string strCreateUsername = strModidfiedLastName + intPersonID.ToString();
+                                commandUsers.ExecuteNonQuery();
+                                MessageBox.Show("Client Successfully added", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            string strCreatePassword = intRoleId.ToString() + intPersonID.ToString();
+                                Connection.Close();
+                            }
 
-                            SqlCommand commandUsers = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Users(PersonID,Username,Password,Answer1,Answer2,RoleID,ThirdQuestion,SecondQuestion,FirstQuestion,Answer3) VALUES(@PersonID,@Username,@Password,@Answer1,@Answer2,@RoleID,@ThirdQuestion,@SecondQuestion,@FirstQuestion,@Answer3)", Connection);
-                            commandUsers.Parameters.AddWithValue("@PersonID", intPersonID);
-                            commandUsers.Parameters.AddWithValue("@Username", strCreateUsername);
-                            commandUsers.Parameters.AddWithValue("@Password", strCreatePassword);
-                            commandUsers.Parameters.AddWithValue("@Answer1", strAnswerOne);
-                            commandUsers.Parameters.AddWithValue("@Answer2", strAnswerTwo);
-                            commandUsers.Parameters.AddWithValue("@RoleID", intRoleId);
-                            commandUsers.Parameters.AddWithValue("@ThirdQuestion", strQuestionThree);
-                            commandUsers.Parameters.AddWithValue("@SecondQuestion", strQuestionTwo);
-                            commandUsers.Parameters.AddWithValue("@FirstQuestion", strQuestionOne);
-                            commandUsers.Parameters.AddWithValue("@Answer3", strAnswerThree);
-
-                            commandUsers.ExecuteNonQuery();
-                            MessageBox.Show("Client Successfully added", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            Connection.Close();
+                            else
+                            {
+                                MessageBox.Show("Phone is not valid", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                mskPhoneCustomer.Focus();
+                            }
 
 
                         }
@@ -1003,6 +1043,555 @@ namespace SU21_Final_Project
             catch (Exception ex)
             {
                 MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void SearchValidCoupon()
+        {
+            string strSearchCoupon = tbxCoupon.Text;
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                string strQuery = "SELECT CouponID, Description, Expiration,DiscountIndex FROM RandrezaVoharisoaM21Su2332.Coupon where CouponID='" + strSearchCoupon + "' and Expiration > '" + strGetDate + "' ;";
+                SqlCommand command = new SqlCommand(strQuery, Connection);
+
+                //gets the results from the sql command
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+
+                
+                var Expiration = reader.GetDateTime(2);              
+                lblCouponDescription.Text = reader["Description"].ToString();
+                lblExpiration.Text =Expiration.ToString("d");
+
+                int intCouponId = reader.GetInt32(0);
+                strDiscountIndex= reader["DiscountIndex"].ToString();
+
+               
+
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+               
+                
+
+                if (Connection != null)
+            {
+                Connection.Close();
+            }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Cannot find coupon ", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbxCoupon.Text = "";
+                tbxCoupon.Focus();
+            }
+        }
+
+        //Check and apply coupon if existed
+        private void btnCheckCoupon_Click(object sender, EventArgs e)
+        {
+            if(tbxCoupon.Text!="")
+            {
+                SearchValidCoupon();
+            }
+            else
+            {
+                MessageBox.Show("Enter Coupon Number please", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
+
+        }
+
+        private void btnApplyDiscount_Click(object sender, EventArgs e)
+        {
+            string strTotalListForCoupon = tbxTotalPrice.Text.Substring(1);
+
+            double dblTotalListForCoupon;
+            
+            if (!double.TryParse(strTotalListForCoupon, out dblTotalListForCoupon))
+            {
+                MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            
+            if(radCoupon.Checked==true )
+            {
+                
+                if(strDiscountIndex == "1")
+                {
+                    CalculateAmount(dblDiscountCouponOne,0);
+                }
+                if (strDiscountIndex == "2" )
+                {
+                    if(dblTotalListForCoupon > 500 && dblTotalListForCoupon < 2000)
+                    {
+                        CalculateAmount(0, dblDiscountCouponTwo);
+                        tbxDiscountCustomer.Text = "$100";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Available only for a total purchase $500 and plus", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+                if (strDiscountIndex == "3" )
+                {
+                    if(dblTotalListForCoupon > 2000)
+                    {
+                        CalculateAmount(0, dblDiscountCouponThree);
+                        tbxDiscountCustomer.Text = "$500";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Available only for a total purchase $2000 and plus", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+
+            }
+
+            if(radReturningDiscount.Checked==true)
+            {
+                CalculateAmount(dblDiscountReturning,0);
+            }
+
+            if(radQuantityDiscount.Checked == true)
+            {
+                //Discount and delivery condition based on quantities
+                string strQuantityTotal = tbxQuantityTotal.Text;
+
+               int intQuantityTotalDelivery;
+
+                if (!int.TryParse(strQuantityTotal, out intQuantityTotalDelivery))
+                {
+                    MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+
+                if (intQuantityTotalDelivery > 10 && intQuantityTotalDelivery <= 50)
+                {
+
+                    CalculateAmount(dblDiscountOne,0);
+                    lblDisplayDiscountQuantity.Text = "10% Discount";
+                }
+                else if (intQuantityTotalDelivery > 50 && intQuantityTotalDelivery < 100)
+                {
+
+                    CalculateAmount(dblDiscountTwo,0);
+                    lblDisplayDiscountQuantity.Text = "20% Discount";
+                }
+                else if (intQuantityTotalDelivery >= 100)
+                {
+                    CalculateAmount(dblDiscountThree,0);
+                    lblDisplayDiscountQuantity.Text = "30% Discount";
+                }
+            }
+            if(radNoDiscount.Checked==true)
+            {
+                CalculateAmount(0,0);
+            }
+
+        }
+
+        //Handling form closing
+        private void frmEmployee_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            switch (e.CloseReason)
+            {
+                case CloseReason.UserClosing:
+                    if (MessageBox.Show("Are you sure you want to log out?", "Close Form", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                    }
+                    else
+                    {
+
+                        new frmLogin().Show();
+                        this.Hide();
+                    }
+                    break;
+            }
+        }
+
+        private void radCoupon_CheckedChanged(object sender, EventArgs e)
+        {
+            if(radCoupon.Checked==true)
+            {
+                tbxCoupon.Enabled = true;
+                lblExpiration.Enabled = true;
+                lblExpirationLabel.Enabled = true;
+                lblCouponDescription.Enabled = true;
+                lblCouponDescription.Enabled = true;
+                btnCheckCoupon.Enabled = true;
+            }
+            else
+            {
+                tbxCoupon.Text = "";
+                lblCouponDescription.Text = "";
+                lblExpiration.Text = "";
+
+                tbxCoupon.Enabled =false;
+                lblExpiration.Enabled = false;
+                lblExpirationLabel.Enabled = false;
+                lblCouponDescription.Enabled = false;
+                lblCouponDescription.Enabled = false;
+                btnCheckCoupon.Enabled = false;
+            }
+        }
+
+        //function to display customer from search ID
+        public void DisplayEmployeeInfo(string strIdEmployee)
+        {
+
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                string strQueryPerson = "SELECT RandrezaVoharisoaM21Su2332.Person.PersonID, RandrezaVoharisoaM21Su2332.Person.NameFirst,RandrezaVoharisoaM21Su2332.Person.NameLast,RandrezaVoharisoaM21Su2332.Person.Email," +
+                    "RandrezaVoharisoaM21Su2332.Person.Address1,RandrezaVoharisoaM21Su2332.Person.City,RandrezaVoharisoaM21Su2332.Person.State,RandrezaVoharisoaM21Su2332.Person.Zipcode,RandrezaVoharisoaM21Su2332.Person.PhonePrimary FROM RandrezaVoharisoaM21Su2332.Person FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.PersonID = RandrezaVoharisoaM21Su2332.Person.PersonID WHERE UserID = '" + strIdEmployee + "' ; ";
+                SqlCommand commandPerson = new SqlCommand(strQueryPerson, Connection);
+
+                //gets the results from the sql command
+                SqlDataReader reader = commandPerson.ExecuteReader();
+
+
+                reader.Read();
+
+                lblEmployeeID.Text = reader["PersonID"].ToString();
+                lblEmployeeFirstName.Text = reader["NameFirst"].ToString();
+                lblEmployeeFirstName.Text = reader["NameFirst"].ToString();
+                lblEmployeeLastName.Text = reader["NameLast"].ToString();
+                tbxEmployeeEmail.Text = reader["Email"].ToString();
+                lblEmployeeAddress.Text = reader["Address1"].ToString();
+                lblEmployeeCity.Text = reader["City"].ToString();
+                lblEmployeeZip.Text = reader["Zipcode"].ToString();
+                lblEmployeeState.Text = reader["State"].ToString();
+                mskEmployeePhone.Text = reader["PhonePrimary"].ToString();
+
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+
+                string strQueryEmployee = "SELECT RandrezaVoharisoaM21Su2332.Employees.Salary,RandrezaVoharisoaM21Su2332.Employees.HiredDate,RandrezaVoharisoaM21Su2332.Employees.Position FROM RandrezaVoharisoaM21Su2332.Employees FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.UserID = RandrezaVoharisoaM21Su2332.Employees.UserID WHERE RandrezaVoharisoaM21Su2332.Users.UserID = '" + strIdEmployee + "' ; ";
+                SqlCommand commandEmployee = new SqlCommand(strQueryEmployee, Connection);
+
+                //gets the results from the sql command
+                SqlDataReader readerEmployee = commandEmployee.ExecuteReader();
+
+                readerEmployee.Read();
+
+                decimal decSalary = readerEmployee.GetDecimal(0);
+                var HiredDate = readerEmployee.GetDateTime(1);
+                lblEmployeePosition.Text = readerEmployee["Position"].ToString();
+                lblHiredDate.Text = HiredDate.ToString("d");
+                lblEmployeeSalary.Text = decSalary.ToString("C2");
+
+
+
+
+                if (readerEmployee != null)
+                {
+                    readerEmployee.Close();
+                }
+
+                if (Connection != null)
+                {
+                    Connection.Close();
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Message: "+ ex , "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbxIDSearch.Text = "";
+                tbxIDSearch.Focus();
+            }
+        }
+
+        private void tabEmployeeView_Selected(object sender, TabControlEventArgs e)
+        {
+
+            string strEmployeeUserID = lblUserEmployee.Text;
+            if (tabEmployeeView.SelectedTab.Name == "tabInformation")
+            {
+                DisplayEmployeeInfo(strEmployeeUserID);
+            }
+        }
+
+        private void cbxEmployeePhone_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cbxEmployeePhone.Checked==true)
+            {
+               
+                mskEmployeePhone.ReadOnly = false;
+                btnSaveEmployeeEdit.Enabled = true;
+
+            }
+            else
+            {
+               
+                mskEmployeePhone.ReadOnly = true;
+                btnSaveEmployeeEdit.Enabled = false;
+            }
+        }
+
+        private void cbxEmployeeEmail_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxEmployeeEmail.Checked == true)
+            {
+                
+                tbxEmployeeEmail.ReadOnly = false;
+                btnSaveEmployeeEdit.Enabled = true;
+
+            }
+            else
+            {
+               
+                tbxEmployeeEmail.ReadOnly = true;
+                btnSaveEmployeeEdit.Enabled = false;
+            }
+        }
+
+        private void btnSaveEmployeeEdit_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if(mskEmployeePhone.Text!="")
+                {
+                    if (tbxEmployeeEmail.Text != ""&& ValidEmail(tbxEmployeeEmail.Text) )
+                    {
+
+                        //Connection.Open();
+                        Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                            "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+                        string strPersonID = lblEmployeeID.Text;
+
+                        Connection.Open();
+
+                        string strQuery = "UPDATE RandrezaVoharisoaM21Su2332.Person SET PhonePrimary = @Phone, Email = @Email where PersonID= '" + strPersonID + "'";
+                        SqlCommand editCommande = new SqlCommand(strQuery, Connection);
+                        SqlParameter sqlpmPhone = editCommande.Parameters.AddWithValue("@Phone", mskEmployeePhone.Text);
+                        SqlParameter sqlpmEmail = editCommande.Parameters.AddWithValue("@Email", tbxEmployeeEmail.Text);
+                        editCommande.ExecuteNonQuery();
+
+
+
+                        Connection.Close();
+
+                        MessageBox.Show("The selected employee has been updated successfully?", "Message", MessageBoxButtons.OK);
+                       
+                        cbxEmployeePhone.Checked = false;
+                        cbxEmployeeEmail.Checked = false;
+                        btnSaveEmployeeEdit.Enabled = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please check Email", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                       tbxEmployeeEmail.Focus();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please enter a phone number", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    mskEmployeePhone.Focus();
+                }
+
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Message", MessageBoxButtons.OK);
+            }
+           
+            
+        }
+
+        private void btnViewCouponList_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+                Connection.Open();
+                dataAdapter = new SqlDataAdapter("SELECT * FROM RandrezaVoharisoaM21Su2332.Coupon", Connection);
+                dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                dgvCouponList.DataSource = dataTable;
+
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnDisplayCustomerList_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                dataAdapter = new SqlDataAdapter("SELECT RandrezaVoharisoaM21Su2332.Person.PersonID  as [Person ID], RandrezaVoharisoaM21Su2332.Person.NameFirst  as [First Name], RandrezaVoharisoaM21Su2332.Person.NameLast as [Last Name],RandrezaVoharisoaM21Su2332.Person.Address1  as [Address],RandrezaVoharisoaM21Su2332.Person.City,RandrezaVoharisoaM21Su2332.Person.State, RandrezaVoharisoaM21Su2332.Person.Zipcode,RandrezaVoharisoaM21Su2332.Person.PhonePrimary as [Phone] , RandrezaVoharisoaM21Su2332.Person.Email  FROM RandrezaVoharisoaM21Su2332.Person FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.PersonID = RandrezaVoharisoaM21Su2332.Person.PersonID WHERE RoleID = 3; ", Connection);
+                dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                dgvCustomerList.DataSource = dataTable;
+
+
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvCustomerList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string strUserIDSelectedCustomer="";
+            string strPersonIDSelectedCustomer = "";
+
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+
+                if (e.RowIndex >= 0)
+            {
+                //Get PersonID
+                DataGridViewRow row = this.dgvCustomerList.Rows[e.RowIndex];
+                strPersonIDSelectedCustomer = row.Cells["Person ID"].Value.ToString();
+
+
+                //get UserID from UserTable based on PersonID
+                string strQuery = "SELECT RandrezaVoharisoaM21Su2332.Users.UserID FROM RandrezaVoharisoaM21Su2332.Users  WHERE RandrezaVoharisoaM21Su2332.Users.PersonID='" + strPersonIDSelectedCustomer + "'";
+                SqlCommand command = new SqlCommand(strQuery, Connection);
+
+                //gets the results from the sql command
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+
+                int intUserId = reader.GetInt32(0);//use to acces User table
+                strUserIDSelectedCustomer = intUserId.ToString();
+
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+
+            }
+
+
+
+                dataAdapter = new SqlDataAdapter("SELECT * FROM RandrezaVoharisoaM21Su2332.SalesReport where UserID = '" + strUserIDSelectedCustomer + "'", Connection);
+                dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                dgvCustomerPurchase.DataSource = dataTable;
+
+                if (Connection != null)
+                {
+                    Connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvCustomerPurchase_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string strSaleId;
+            if (e.RowIndex >= 0)
+            {
+                //instantiate object from Items class and assign value from cell
+                DataGridViewRow row = this.dgvCustomerPurchase.Rows[e.RowIndex];
+                strSaleId = row.Cells["SaleId"].Value.ToString();
+
+                DisplaySalesDetail(strSaleId);
+
+            }
+        }
+
+        public void DisplaySalesDetail(string strSaleID)
+        {
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                string strQuery = "SELECT * FROM RandrezaVoharisoaM21Su2332.SalesDetails where SaleID='" + strSaleID + "' ;";
+                dataAdapter = new SqlDataAdapter(strQuery, Connection);
+                dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                dgvPurchaseDetails.DataSource = dataTable;
+
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvCustomerList_SelectionChanged(object sender, EventArgs e)
+        {
+            while (dgvCustomerPurchase.Rows.Count > 0)
+            {
+                dgvCustomerPurchase.Rows.RemoveAt(0);
+            }
+            while (dgvPurchaseDetails.Rows.Count > 0)
+            {
+                dgvPurchaseDetails.Rows.RemoveAt(0);
+            }
+        }
+
+        private void btnClearCoupon_Click(object sender, EventArgs e)
+        {
+            while (dgvCouponList.Rows.Count > 0)
+            {
+                dgvCouponList.Rows.RemoveAt(0);
+            }
+        }
+
+        private void btnClearCustomer_Click(object sender, EventArgs e)
+        {
+           
+            while (dgvCustomerList.Rows.Count > 0)
+            {
+                dgvCustomerList.Rows.RemoveAt(0);
+            }
+
+            while (dgvCustomerPurchase.Rows.Count > 0)
+            {
+                dgvCustomerPurchase.Rows.RemoveAt(0);
+            }
+            while (dgvPurchaseDetails.Rows.Count > 0)
+            {
+                dgvPurchaseDetails.Rows.RemoveAt(0);
             }
         }
     }

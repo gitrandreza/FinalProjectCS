@@ -237,15 +237,17 @@ namespace SU21_Final_Project
         // Write (and overwrite) to the hard drive using the same filename of "Report.html"
         private void PrintInvoice(StringBuilder html)
         {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string filepath = path + "\\NewItemInvoice.html";
 
             try
             {
                 // A "using" statement will automatically close a file after opening it.               
-                using (StreamWriter sw = new StreamWriter("Report.html"))
+                using (StreamWriter swNewItem = new StreamWriter(filepath))
                 {
-                    sw.WriteLine(html);
+                    swNewItem.WriteLine(html);
                 }
-                System.Diagnostics.Process.Start(@"Report.html"); //Open the report in the default web browser
+                System.Diagnostics.Process.Start(filepath); //Open the report in the default web browser
             }
             catch (Exception)
             {
@@ -255,9 +257,9 @@ namespace SU21_Final_Project
 
             //unique filename  use for a date and time with part of a name
             DateTime today = DateTime.Now;
-            using (StreamWriter sw = new StreamWriter($"{today.ToString("yyyy-MM-dd-HHmmss")} - Report.html"))
+            using (StreamWriter swNewItem = new StreamWriter($"{today.ToString("yyyy-MM-dd-HHmmss")} - NewItemInvoice.html"))
             {
-                sw.WriteLine(html);
+                swNewItem.WriteLine(html);
             }
         }
 
@@ -271,7 +273,7 @@ namespace SU21_Final_Project
 
         private void frmAddItems_FormClosing(object sender, FormClosingEventArgs e)
         {
-            new frmAddItems().Show();
+            new frmAdmin().Show();
             this.Hide();
         }
 

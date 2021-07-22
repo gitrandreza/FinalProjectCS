@@ -30,6 +30,8 @@ namespace SU21_Final_Project
         private void InitializeComponent()
         {
             this.gbxInformation = new System.Windows.Forms.GroupBox();
+            this.lblPositionLabel = new System.Windows.Forms.Label();
+            this.cboPosition = new System.Windows.Forms.ComboBox();
             this.mskHiredDate = new System.Windows.Forms.MaskedTextBox();
             this.mskPhone = new System.Windows.Forms.MaskedTextBox();
             this.lblRoleLabel = new System.Windows.Forms.Label();
@@ -59,8 +61,6 @@ namespace SU21_Final_Project
             this.lblZipLabel = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.lblPositionLabel = new System.Windows.Forms.Label();
-            this.cboPosition = new System.Windows.Forms.ComboBox();
             this.gbxInformation.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,6 +103,28 @@ namespace SU21_Final_Project
             this.gbxInformation.TabIndex = 45;
             this.gbxInformation.TabStop = false;
             this.gbxInformation.Text = "Information";
+            // 
+            // lblPositionLabel
+            // 
+            this.lblPositionLabel.AutoSize = true;
+            this.lblPositionLabel.Location = new System.Drawing.Point(621, 70);
+            this.lblPositionLabel.Name = "lblPositionLabel";
+            this.lblPositionLabel.Size = new System.Drawing.Size(63, 17);
+            this.lblPositionLabel.TabIndex = 55;
+            this.lblPositionLabel.Text = "*Position";
+            // 
+            // cboPosition
+            // 
+            this.cboPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPosition.FormattingEnabled = true;
+            this.cboPosition.Items.AddRange(new object[] {
+            "Manager",
+            "Clerk",
+            "Technician"});
+            this.cboPosition.Location = new System.Drawing.Point(685, 66);
+            this.cboPosition.Name = "cboPosition";
+            this.cboPosition.Size = new System.Drawing.Size(78, 24);
+            this.cboPosition.TabIndex = 54;
             // 
             // mskHiredDate
             // 
@@ -435,28 +457,6 @@ namespace SU21_Final_Project
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // lblPositionLabel
-            // 
-            this.lblPositionLabel.AutoSize = true;
-            this.lblPositionLabel.Location = new System.Drawing.Point(621, 70);
-            this.lblPositionLabel.Name = "lblPositionLabel";
-            this.lblPositionLabel.Size = new System.Drawing.Size(63, 17);
-            this.lblPositionLabel.TabIndex = 55;
-            this.lblPositionLabel.Text = "*Position";
-            // 
-            // cboPosition
-            // 
-            this.cboPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboPosition.FormattingEnabled = true;
-            this.cboPosition.Items.AddRange(new object[] {
-            "Manager",
-            "Clerk",
-            "Technician"});
-            this.cboPosition.Location = new System.Drawing.Point(685, 66);
-            this.cboPosition.Name = "cboPosition";
-            this.cboPosition.Size = new System.Drawing.Size(78, 24);
-            this.cboPosition.TabIndex = 54;
-            // 
             // frmAddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -465,8 +465,11 @@ namespace SU21_Final_Project
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.gbxInformation);
+            this.MaximizeBox = false;
             this.Name = "frmAddEmployee";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddEmployee";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAddEmployee_FormClosing);
             this.gbxInformation.ResumeLayout(false);
             this.gbxInformation.PerformLayout();
             this.ResumeLayout(false);

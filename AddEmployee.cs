@@ -411,5 +411,11 @@ namespace SU21_Final_Project
         {
             this.Hide();
         }
+
+        private void frmAddEmployee_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            new frmAddEmployee().Show();
+            this.Hide();
+        }
     }
 }

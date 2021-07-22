@@ -93,7 +93,7 @@ namespace SU21_Final_Project
 
             DisplayAllItems();
 
-           
+
 
         }
 
@@ -168,7 +168,7 @@ namespace SU21_Final_Project
                     if (intResultTryParse == false)
                     {
                         MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                       
+
                     }
 
                     myItems.Quantity = intQuantityAvailable;
@@ -218,9 +218,9 @@ namespace SU21_Final_Project
 
                 Connection.Open();
                 //gets Role Id from based on UserID
-                scRoleID = new SqlCommand("SELECT RandrezaVoharisoaM21Su2332.Users.RoleID from RandrezaVoharisoaM21Su2332.Users where UserID='"+ strUserNumberID + "';", Connection);
+                scRoleID = new SqlCommand("SELECT RandrezaVoharisoaM21Su2332.Users.RoleID from RandrezaVoharisoaM21Su2332.Users where UserID='" + strUserNumberID + "';", Connection);
 
-               srRoleID = scRoleID.ExecuteReader();
+                srRoleID = scRoleID.ExecuteReader();
 
                 srRoleID.Read();
                 int intRoleId = srRoleID.GetInt32(0);
@@ -232,7 +232,7 @@ namespace SU21_Final_Project
                     new frmEmployee().Show();
                     this.Hide();
                 }
-                else if(intRoleId==1)
+                else if (intRoleId == 1)
                 {
                     new frmAdmin().Show();
                     this.Hide();
@@ -242,9 +242,9 @@ namespace SU21_Final_Project
                 {
                     MessageBox.Show("Access denied. Admnistrator use only ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                
-              
-                    Connection.Close(); //closes connection to database
+
+
+                Connection.Close(); //closes connection to database
 
             }
             catch (Exception ex)
@@ -278,8 +278,8 @@ namespace SU21_Final_Project
                     string strQuantityNeed;
                     strQuantityNeed = tbxQuantity.Text;
 
-                    bool intQuantityTryParse = int.TryParse(strQuantityNeed, out intQuantityNeed);
-                    if (intQuantityTryParse == false)
+
+                    if (int.TryParse(strQuantityNeed, out intQuantityNeed) == false)
                     {
                         MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -357,7 +357,7 @@ namespace SU21_Final_Project
 
                                         //lblMessage.Text =dblTotalPrice.ToString();
                                         string strItemTotalPrice = dblTotalPrice.ToString();
-                                        
+
                                         string strItemPrice = myItems.Price.ToString("C2");
 
                                         //Call add cart function to display selection in the cart
@@ -444,14 +444,14 @@ namespace SU21_Final_Project
             {
                 MessageBox.Show("Please select your product", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            if(dgvList.Rows.Count > 0)
+            if (dgvList.Rows.Count > 0)
             {
                 btnRemove.Enabled = true;
                 btnDisplayAmount.Enabled = true;
             }
 
-            
-            
+
+
         }
 
         //Remove Item from list
@@ -498,12 +498,28 @@ namespace SU21_Final_Project
         //Display detail Amount detail and total to pay from the list of order
         private void btnDisplayAmount_Click(object sender, EventArgs e)
         {
+            CalculateAmount();
+
+        }
+
+
+        //Function to calculate amount in the list
+        void CalculateAmount()
+        {
+            int intQuantityTotal = 0;
+            double dblTotalList = 0;
+            double dblAmountTax;
+            double dblDiscount = 0;
+            double dblSubTotal = 0;
+            double dblTotalAmount = 0;
+            double dblTax = 0.0825;
+
             string strTotalPriceList;
-            double dblTotalPriceList;
+            double dblTotalPriceList = 0;
 
 
             string strQuantityTotal;
-            int intQuantityTotalList;
+            int intQuantityTotalList = 0;
 
 
             btnCheckout.Enabled = true;
@@ -527,14 +543,13 @@ namespace SU21_Final_Project
 
                     dblTotalList = dblTotalList + dblTotalPriceList;
                 }
+               
 
                 //Cumulate quantity total for discount
                 for (int i = 0; i < dgvList.Rows.Count; i++)
                 {
                     strQuantityTotal = dgvList.Rows[i].Cells[4].Value.ToString();
-                    
                     bool intResultTryParse = int.TryParse(strQuantityTotal, out intQuantityTotalList);
-
                     if (intResultTryParse == false)
                     {
                         MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -544,45 +559,55 @@ namespace SU21_Final_Project
                     intQuantityTotal = intQuantityTotal + intQuantityTotalList;
                 }
 
-                //Discount and delivery condition based on quantities
-                if (intQuantityTotal > 10 && intQuantityTotal <= 50)
-                {
-                    
-                    lblDiscountOne.BackColor = Color.OrangeRed;
-                    lblDeliveryOne.BackColor = Color.OrangeRed;
-                    dblDiscount = dblTotalList * dblDiscountOne;
-                    dblTotalList = dblTotalList - dblDiscount;
-                }
-              else if (intQuantityTotal >50 && intQuantityTotal < 100)
-                {
-
-                    lblDiscountTwo.BackColor = Color.OrangeRed;
-                    lblDeliveryTwo.BackColor = Color.OrangeRed;
-                    dblDiscount = dblTotalList * dblDiscountTwo;
-                    dblTotalList = dblTotalList - dblDiscount;
-                }
-                else if (intQuantityTotal >= 100)
-                {
-
-                    lblDiscountThree.BackColor = Color.OrangeRed;
-                    lblDeliveryThree.BackColor = Color.OrangeRed;
-                    dblDiscount = dblTotalList * dblDiscountThree;
-                    dblTotalList = dblTotalList - dblDiscount;
-                }
-
-                dblAmountTax = dblTotalList * dblTax;
-                dblSubTotal = dblTotalList;
-                dblTotalAmount = dblSubTotal + dblAmountTax;
-
-                
-                lblDiscount.Text = dblDiscount.ToString("C2");
-                lblSubTotal.Text = dblTotalList.ToString("C2");
-                lblTaxAmount.Text = dblAmountTax.ToString("C2");
-                lblTotalAmount.Text = dblTotalAmount.ToString("C2");
 
             }
+
+
+
+            //Discount and delivery condition based on quantities
+            if (intQuantityTotal > 10 && intQuantityTotal <= 50)
+            {
+
+                lblDiscountOne.BackColor = Color.OrangeRed;
+                lblDeliveryOne.BackColor = Color.OrangeRed;
+                dblDiscount = dblTotalList * dblDiscountOne;
+                dblSubTotal = dblTotalList - dblDiscount;
+            }
+            else if (intQuantityTotal > 50 && intQuantityTotal < 100)
+            {
+
+                lblDiscountTwo.BackColor = Color.OrangeRed;
+                lblDeliveryTwo.BackColor = Color.OrangeRed;
+                dblDiscount = dblTotalList * dblDiscountTwo;
+                dblSubTotal = dblTotalList - dblDiscount;
+            }
+            else if (intQuantityTotal >= 100)
+            {
+
+                lblDiscountThree.BackColor = Color.OrangeRed;
+                lblDeliveryThree.BackColor = Color.OrangeRed;
+                dblDiscount = dblTotalList * dblDiscountThree;
+                dblSubTotal = dblTotalList - dblDiscount;
+            }
+            else
+            {
+                dblSubTotal = dblTotalList;
+            }
+            
            
+            dblAmountTax = dblSubTotal * dblTax;
+            dblTotalAmount = dblSubTotal + dblAmountTax;
+
+            lblTotalList.Text = dblTotalList.ToString("C2");
+            lblDiscount.Text = dblDiscount.ToString("C2");
+            lblSubTotal.Text = dblSubTotal.ToString("C2");
+            lblTaxAmount.Text = dblAmountTax.ToString("C2");
+            lblTotalAmount.Text = dblTotalAmount.ToString("C2");
+            
         }
+
+
+
 
         //Get UserID value from database and display to the label user when login is valid
         public string LabelUserID
@@ -628,7 +653,16 @@ namespace SU21_Final_Project
                         "VALUES(@UserID,@CreationDate,@TotalSale)", Connection);
                     commandSalesReport.Parameters.AddWithValue("@UserID", intUserID);
                     commandSalesReport.Parameters.AddWithValue("@CreationDate", strDate);
-                    commandSalesReport.Parameters.AddWithValue("@TotalSale", dblTotalAmount.ToString());
+
+                    string strTotalAmount= lblTotalAmount.Text.Substring(1);
+                    double dblTotalAmount;
+                    
+                    if (!double.TryParse(strTotalAmount, out dblTotalAmount))
+                    {
+                        MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    commandSalesReport.Parameters.AddWithValue("@TotalSale", dblTotalAmount);
 
                     commandSalesReport.ExecuteNonQuery();
 
@@ -733,7 +767,7 @@ namespace SU21_Final_Project
             html.AppendLine($"<head>{css}<title>{"Imprint Store Report"}</title></head>");
             html.AppendLine("<body>");
 
-            html.AppendLine($"<h1>{"User Sales Detail Receipt"}</h1>");
+            html.AppendLine($"<h1>{"Customer Invoice"}</h1>");
 
             html.Append($"<h5>{"Date: "}{lblDate.Text}</h5>");
             html.Append($"<h5>{"Customer Name: "}{lblNameOfUser.Text}</h5>");
@@ -761,10 +795,12 @@ namespace SU21_Final_Project
             html.Append("<tr><td colspan=8><hr></hd></td></tr>");
             html.Append("<table>");
 
-            html.AppendLine($"<h5>{"Discount: "}{dblDiscount.ToString("C2")}</h5>");
-            html.AppendLine($"<h5>{"Subtotal: "}{dblSubTotal.ToString("C2")}</h5>");
-            html.AppendLine($"<h5>{"Tax Sale: "}{dblAmountTax.ToString("C2")}</h5>");
-            html.AppendLine($"<h5>{"Total Amount: "}{dblTotalAmount.ToString("C2")}</h5>");
+            html.AppendLine($"<h5>{"Total Price: "}{lblTotalList.Text}</h5>");
+            html.AppendLine($"<h5>{"Discount: "}{lblDiscount.Text}</h5>");
+            html.AppendLine($"<h5>{"Subtotal: "}{lblSubTotal.Text}</h5>");
+            html.AppendLine($"<h5>{"Tax Sale: "}{lblTaxAmount.Text}</h5>");
+
+            html.AppendLine($"<h5>{"Total Amount: "}{lblTotalAmount.Text}</h5>");
           
 
             if (lblDeliveryTwo.BackColor == Color.OrangeRed)
@@ -800,9 +836,9 @@ namespace SU21_Final_Project
             try
             {
                 // A "using" statement will automatically close a file after opening it.               
-                using (StreamWriter sw = new StreamWriter(filepath))
+                using (StreamWriter swInvoice = new StreamWriter(filepath))
                 {
-                   sw.WriteLine(html);
+                    swInvoice.WriteLine(html);
                 }
                 System.Diagnostics.Process.Start(filepath);
                 
@@ -815,9 +851,9 @@ namespace SU21_Final_Project
 
             //unique filename  use for a date and time with part of a name
             DateTime today = DateTime.Now;
-            using (StreamWriter sw = new StreamWriter($"{today.ToString("yyyy-MM-dd-HHmmss")} - CustomerInvoice.html"))
+            using (StreamWriter swInvoice = new StreamWriter($"{today.ToString("yyyy-MM-dd-HHmmss")} - CustomerInvoice.html"))
             {
-                sw.WriteLine(html);
+                swInvoice.WriteLine(html);
             }
         }
 
@@ -843,6 +879,7 @@ namespace SU21_Final_Project
             lblSubTotal.Text = "";
             lblTaxAmount.Text = "";
             lblTotalAmount.Text = "";
+            lblTotalList.Text = "";
             btnRemove.Enabled = false;
             btnDisplayAmount.Enabled = false;
             lblDiscountOne.BackColor = Color.Silver;

@@ -30,6 +30,7 @@ namespace SU21_Final_Project
         private void InitializeComponent()
         {
             this.gbxItemInformation = new System.Windows.Forms.GroupBox();
+            this.btnInsertImage = new System.Windows.Forms.Button();
             this.btnSaveItems = new System.Windows.Forms.Button();
             this.cboSupplier = new System.Windows.Forms.ComboBox();
             this.cboCategory = new System.Windows.Forms.ComboBox();
@@ -46,7 +47,6 @@ namespace SU21_Final_Project
             this.lblTagRetailPrice = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.btnInsertImage = new System.Windows.Forms.Button();
             this.gbxItemInformation.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,6 +77,17 @@ namespace SU21_Final_Project
             this.gbxItemInformation.TabIndex = 45;
             this.gbxItemInformation.TabStop = false;
             this.gbxItemInformation.Text = "Item Information";
+            // 
+            // btnInsertImage
+            // 
+            this.btnInsertImage.Location = new System.Drawing.Point(605, 26);
+            this.btnInsertImage.Margin = new System.Windows.Forms.Padding(4);
+            this.btnInsertImage.Name = "btnInsertImage";
+            this.btnInsertImage.Size = new System.Drawing.Size(131, 37);
+            this.btnInsertImage.TabIndex = 46;
+            this.btnInsertImage.Text = "&Insert Item Image";
+            this.btnInsertImage.UseVisualStyleBackColor = true;
+            this.btnInsertImage.Click += new System.EventHandler(this.btnInsertImage_Click);
             // 
             // btnSaveItems
             // 
@@ -227,25 +238,15 @@ namespace SU21_Final_Project
             this.label8.TabIndex = 15;
             this.label8.Text = "Supplier";
             // 
-            // btnInsertImage
-            // 
-            this.btnInsertImage.Location = new System.Drawing.Point(605, 26);
-            this.btnInsertImage.Margin = new System.Windows.Forms.Padding(4);
-            this.btnInsertImage.Name = "btnInsertImage";
-            this.btnInsertImage.Size = new System.Drawing.Size(131, 37);
-            this.btnInsertImage.TabIndex = 46;
-            this.btnInsertImage.Text = "&Insert Item Image";
-            this.btnInsertImage.UseVisualStyleBackColor = true;
-            this.btnInsertImage.Click += new System.EventHandler(this.btnInsertImage_Click);
-            // 
             // frmAddItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(839, 372);
+            this.ClientSize = new System.Drawing.Size(832, 410);
             this.Controls.Add(this.gbxItemInformation);
             this.MaximizeBox = false;
             this.Name = "frmAddItems";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Items";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAddItems_FormClosing);
             this.gbxItemInformation.ResumeLayout(false);

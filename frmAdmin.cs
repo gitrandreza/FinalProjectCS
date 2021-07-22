@@ -26,11 +26,13 @@ namespace SU21_Final_Project
         string strPersonID;
         string strUserID;
 
-
+        string strPersonIdCustomerView;
 
         private void frmAdmin_Load(object sender, EventArgs e)
         {
-            lblDate.Text = DateTime.Now.ToShortDateString();//Get date
+             
+            string strGetDate = DateTime.Now.ToShortDateString();//Get date
+            lblDate.Text = strGetDate;
         }
         public frmAdmin()
         {
@@ -53,7 +55,9 @@ namespace SU21_Final_Project
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                 Connection.Open();
-                dataAdapter = new SqlDataAdapter("SELECT ItemID, Name, Quantity,Cost, RetailPrice ,Description,CategoryID,SupplierID FROM RandrezaVoharisoaM21Su2332.Items", Connection);
+                dataAdapter = new SqlDataAdapter("SELECT ItemID as [Item ID], Name, Quantity," +
+                    "FORMAT(Cost, 'c', 'en-US') AS 'Cost' , " +
+                    "FORMAT(retailPrice, 'c', 'en-US') AS 'Retail Price' ,Description,CategoryID as [Category ID] ,SupplierID as [Supplier ID]FROM RandrezaVoharisoaM21Su2332.Items", Connection);
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvAllProducts.DataSource = dataTable;
@@ -77,7 +81,7 @@ namespace SU21_Final_Project
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                 Connection.Open();
-                dataAdapter = new SqlDataAdapter("SELECT RandrezaVoharisoaM21Su2332.Person.PersonID, RandrezaVoharisoaM21Su2332.Person.NameFirst, RandrezaVoharisoaM21Su2332.Person.NameLast,RandrezaVoharisoaM21Su2332.Person.Address1,RandrezaVoharisoaM21Su2332.Person.City,RandrezaVoharisoaM21Su2332.Person.State, RandrezaVoharisoaM21Su2332.Person.Zipcode,RandrezaVoharisoaM21Su2332.Person.Email, RandrezaVoharisoaM21Su2332.Person.PhonePrimary  FROM RandrezaVoharisoaM21Su2332.Person FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.PersonID = RandrezaVoharisoaM21Su2332.Person.PersonID WHERE RoleID = 1 OR RoleID = 2; ", Connection);
+                dataAdapter = new SqlDataAdapter("SELECT RandrezaVoharisoaM21Su2332.Person.PersonID as [Employee ID], RandrezaVoharisoaM21Su2332.Person.NameFirst as [First Name], RandrezaVoharisoaM21Su2332.Person.NameLast as [Last Name],RandrezaVoharisoaM21Su2332.Person.Address1 as [Address],RandrezaVoharisoaM21Su2332.Person.City,RandrezaVoharisoaM21Su2332.Person.State, RandrezaVoharisoaM21Su2332.Person.Zipcode,RandrezaVoharisoaM21Su2332.Person.Email, RandrezaVoharisoaM21Su2332.Person.PhonePrimary as [Phone]  FROM RandrezaVoharisoaM21Su2332.Person FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.PersonID = RandrezaVoharisoaM21Su2332.Person.PersonID WHERE RoleID = 1 OR RoleID = 2; ", Connection);
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvEmployee.DataSource = dataTable;
@@ -100,7 +104,7 @@ namespace SU21_Final_Project
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                 Connection.Open();
-                dataAdapter = new SqlDataAdapter("SELECT RandrezaVoharisoaM21Su2332.Person.NameFirst, RandrezaVoharisoaM21Su2332.Person.NameLast,RandrezaVoharisoaM21Su2332.Person.Address1,RandrezaVoharisoaM21Su2332.Person.City,RandrezaVoharisoaM21Su2332.Person.State, RandrezaVoharisoaM21Su2332.Person.Zipcode,RandrezaVoharisoaM21Su2332.Person.PhonePrimary, RandrezaVoharisoaM21Su2332.Person.Email  FROM RandrezaVoharisoaM21Su2332.Person FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.PersonID = RandrezaVoharisoaM21Su2332.Person.PersonID WHERE RoleID = 3; ", Connection);
+                dataAdapter = new SqlDataAdapter("SELECT RandrezaVoharisoaM21Su2332.Person.PersonID  as [Person ID],RandrezaVoharisoaM21Su2332.Person.NameFirst  as [First Name], RandrezaVoharisoaM21Su2332.Person.NameLast as [Last Name],RandrezaVoharisoaM21Su2332.Person.Address1  as [Address],RandrezaVoharisoaM21Su2332.Person.City,RandrezaVoharisoaM21Su2332.Person.State, RandrezaVoharisoaM21Su2332.Person.Zipcode,RandrezaVoharisoaM21Su2332.Person.PhonePrimary as [Phone] , RandrezaVoharisoaM21Su2332.Person.Email  FROM RandrezaVoharisoaM21Su2332.Person FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.PersonID = RandrezaVoharisoaM21Su2332.Person.PersonID WHERE RoleID = 3; ", Connection);
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvCustomer.DataSource = dataTable;
@@ -293,7 +297,7 @@ namespace SU21_Final_Project
 
                 if (tbxCost.Text == "")
                 {
-                    strCost = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[3].Value.ToString();
+                    strCost = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[3].Value.ToString().Substring(1);
                     blnCostConvert = double.TryParse(strCost, out dblCost);
                     if (blnCostConvert == false)
                     {
@@ -315,7 +319,7 @@ namespace SU21_Final_Project
 
                 if (tbxRetailPrice.Text == "")
                 {
-                    strRetailPrice = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[4].Value.ToString();
+                    strRetailPrice = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[4].Value.ToString().Substring(1);
                     blnRetailPriceConvert = double.TryParse(strRetailPrice, out dblRetailPrice);
                     if (blnRetailPriceConvert == false)
                     {
@@ -418,7 +422,7 @@ namespace SU21_Final_Project
 
                             DisplayAllItems();
                             ResetUpdateFields();
-
+                            DisplayLowQuantityItems();
                         }
 
                         else
@@ -520,15 +524,15 @@ namespace SU21_Final_Project
         private void PrintInvoice(StringBuilder html)
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string filepath = path + "\\Report.html";
+            string filepath = path + "\\PurchaseItemInvoice.html";
             try
             {
                 // A "using" statement will automatically close a file after opening it.               
-                using (StreamWriter sw = new StreamWriter(filepath))
+                using (StreamWriter swPurchase = new StreamWriter(filepath))
                 {
-                    sw.WriteLine(html);
+                    swPurchase.WriteLine(html);
                 }
-                System.Diagnostics.Process.Start(@"Report.html"); //Open the report in the default web browser
+                System.Diagnostics.Process.Start(filepath); //Open the report in the default web browser
             }
             catch (Exception)
             {
@@ -538,9 +542,9 @@ namespace SU21_Final_Project
 
             //unique filename  use for a date and time with part of a name
             DateTime today = DateTime.Now;
-            using (StreamWriter sw = new StreamWriter($"{today.ToString("yyyy-MM-dd-HHmmss")} - Report.html"))
+            using (StreamWriter swPurchase = new StreamWriter($"{today.ToString("yyyy-MM-dd-HHmmss")} - PurchaseItemInvoice.html"))
             {
-                sw.WriteLine(html);
+                swPurchase.WriteLine(html);
             }
         }
 
@@ -662,7 +666,7 @@ namespace SU21_Final_Project
             cbxCategoryID.Checked = false;
             cboSupplierID.Text = "";
             cbxSupplierID.Checked = false;
-
+            cbxStates.Checked = false;
         }
         private void dgvAllProducts_SelectionChanged(object sender, EventArgs e)
         {
@@ -718,7 +722,7 @@ namespace SU21_Final_Project
                 {
                     //instantiate object from Items class and assign value from cell
                     DataGridViewRow row = this.dgvEmployee.Rows[e.RowIndex];
-                    strPersonId = row.Cells["PersonId"].Value.ToString();
+                    strPersonId = row.Cells["Employee ID"].Value.ToString();
 
 
                     //get salary, hired date and Position from Employees Table
@@ -770,8 +774,8 @@ namespace SU21_Final_Project
                     {
                         //grab current row index selected
                         int intIndexRowSelected = dgvEmployee.CurrentCell.RowIndex;
-                        //grab item name to use in order to delete in the database
-                        strItemID = dgvEmployee.Rows[intIndexRowSelected].Cells[0].Value.ToString();
+                        //grab Employee name to use in order to delete in the database
+                        strUserID = dgvEmployee.Rows[intIndexRowSelected].Cells[0].Value.ToString();
                         dgvEmployee.Rows.RemoveAt(row.Index);
 
                     }
@@ -811,7 +815,7 @@ namespace SU21_Final_Project
             }
             else
             {
-                MessageBox.Show("Please select the product you want to remove", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please select the Employee you want to remove", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
 
@@ -829,7 +833,8 @@ namespace SU21_Final_Project
                 if (MessageBox.Show("Do you want to edit Employee '"+strFirstName+" " + strLastName + "'?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     gbxEdit.Enabled = true;
-
+                    cbxEditPhone.Enabled = true;
+                    cbxStates.Enabled = true;
                 }
                 else
                 {
@@ -921,9 +926,11 @@ namespace SU21_Final_Project
                     strZip = tbxZip.Text;
                 }
 
-                if (tbxEmail.Text == "")
+                if (ValidEmail(tbxEmail.Text)==false)
                 {
                     strEmail = dgvEmployee.Rows[dgvEmployee.CurrentCell.RowIndex].Cells[7].Value.ToString();
+                    MessageBox.Show("This Email format can't be updated?", "Message", MessageBoxButtons.OK);
+                    
                 }
                 else
                 {
@@ -932,10 +939,10 @@ namespace SU21_Final_Project
           
                 }
 
-                if (mskPhones.Text == "")
+                if (ValidPhone(mskPhones.Text)==false)
                 {
                     strPhoneEdit = dgvEmployee.Rows[dgvEmployee.CurrentCell.RowIndex].Cells[8].Value.ToString();
-                    
+
                 }
                 else
                 {
@@ -961,7 +968,7 @@ namespace SU21_Final_Project
 
                     Connection.Close();
 
-                    MessageBox.Show("The selected employee has been updated successfully?", "Message", MessageBoxButtons.OK);
+                    MessageBox.Show("The selected employee has been updated?", "Message", MessageBoxButtons.OK);
 
                     DisplayEmployees();
                     ResetEditFields();
@@ -969,7 +976,7 @@ namespace SU21_Final_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error :" + ex);
+                MessageBox.Show("Error :" + ex, "Message", MessageBoxButtons.OK);
             }
 
         }
@@ -1062,7 +1069,8 @@ namespace SU21_Final_Project
             cbxEditPhone.Enabled = false; mskPhones.Text = "";
             cbxStates.Enabled = false; cboStates.Text = "";
             cbxEmail.Checked = false; tbxEmail.Text = "";
-
+            cbxEditPhone.Checked = false;
+            cbxStates.Checked = false;
         }
 
         private void dgvEmployee_SelectionChanged_1(object sender, EventArgs e)
@@ -1108,8 +1116,8 @@ namespace SU21_Final_Project
                 Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.
                  [0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
                 RegexOptions.CultureInvariant | RegexOptions.Singleline);
-                bool isValidEmail = regex.IsMatch(strValidEmail);
-                if (!isValidEmail)
+                bool blnIsValidEmail = regex.IsMatch(strValidEmail);
+                if (!blnIsValidEmail)
                 {
                     return false;
                 }
@@ -1122,6 +1130,15 @@ namespace SU21_Final_Project
             {
                 throw;
             }
+        }
+
+        public bool ValidPhone(string strValidPhone)
+        {
+           if (mskPhones.Text.Length <12)
+
+                    return false;
+
+            return true;
         }
 
         private void cbxEditPhone_CheckedChanged(object sender, EventArgs e)
@@ -1297,7 +1314,396 @@ namespace SU21_Final_Project
                 MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-    
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            DisplayAllItems();
+            DisplayLowQuantityItems();
+        }
+
+        private void btnAddCustomer_Click(object sender, EventArgs e)
+        {
+            gbxAddNewCustomer.Enabled = true;
+            dgvCustomer.Enabled = false;
+        }
+
+
+        public bool ValidPhone()
+        {
+            if (mskPhoneCustomer.Text.Length < 12 && mskPhoneCustomer.Text.Contains(" "))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool ValidAddress(string strAddress)
+        {
+
+            if (strAddress.Length < 4)
+                return false;
+
+            else if (!strAddress.Any(char.IsLetter))
+            {
+                return false;
+            }
+
+            else if (!strAddress.Any(char.IsDigit))
+            {
+                return false;
+            }
+            return true;
+        }
+        private void btnAddNewCustomer_Click(object sender, EventArgs e)
+        {
+            string strFirstName = tbxFirstNameCustomer.Text;
+            string strLastName = tbxLastNameCustomer.Text;
+            string strAddress = tbxAddressCustomer.Text;
+            string strPhone = mskPhoneCustomer.Text;
+            string strCity = tbxCustomerCity.Text;
+            string strState = cboStatesCustomer.Text;
+            string strZip = tbxZipCustomer.Text;
+            string strEmail = tbxEmailCustomer.Text;
+            string strTitle = "Customer";
+            int intRoleId = 3;
+
+            try
+            {
+
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                if (tbxFirstNameCustomer.Text != "" && tbxLastNameCustomer.Text != "" && tbxAddressCustomer.Text != "" && mskPhoneCustomer.Text != "" && tbxCustomerCity.Text != "" && cboStatesCustomer.Text != ""
+                    && tbxZipCustomer.Text != "" && tbxEmailCustomer.Text != "")
+                {
+
+
+                    if (ValidAddress(strAddress) == true)
+                    {
+
+                        if (ValidEmail(strEmail) == true)
+                        {
+                            if (ValidPhone() == true)
+                            {
+                                SqlCommand commandPerson = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Person(Title,NameFirst,NameLast,Address1,City,Zipcode,State,Email,PhonePrimary) VALUES (@Title,@NameFirst,@NameLast,@Address,@City,@Zipcode,@State,@Email,@Phone)", Connection);
+                                commandPerson.Parameters.AddWithValue("@Title", strTitle);
+                                commandPerson.Parameters.AddWithValue("@NameFirst", strFirstName);
+                                commandPerson.Parameters.AddWithValue("@NameLast", strLastName);
+                                commandPerson.Parameters.AddWithValue("@Address", strAddress);
+                                commandPerson.Parameters.AddWithValue("@City", strCity);
+                                commandPerson.Parameters.AddWithValue("@Zipcode", strZip);
+                                commandPerson.Parameters.AddWithValue("@State", strState);
+                                commandPerson.Parameters.AddWithValue("@Email", strEmail);
+                                commandPerson.Parameters.AddWithValue("@Phone", strPhone);
+                                commandPerson.ExecuteNonQuery();
+
+                                //INSERT RECORD FOR USERS LOGON SECURITY ACCESS
+                                string strAnswerOne = "Not Available";
+                                string strAnswerTwo = "Not Available";
+                                string strAnswerThree = "Not Available";
+                                intRoleId = 3;
+                                string strQuestionOne = "Not Available";
+                                string strQuestionTwo = "Not Available";
+                                string strQuestionThree = "Not Available";
+
+
+
+                                //Get the last PersonID using Max to insert as FK to the User table
+                                string queryLastID = "SELECT MAX(PersonID) from RandrezaVoharisoaM21Su2332.Person";
+                                SqlCommand commandLastID = new SqlCommand(queryLastID, Connection);
+
+                                //gets the results from the sql command
+                                SqlDataReader sr = commandLastID.ExecuteReader();
+                                sr.Read();
+                                int intPersonID = sr.GetInt32(0);
+                                sr.Close();
+                                //generate Username and Password
+                                string strModidfiedLastName = strLastName.Substring(0, strLastName.Length - 2);
+                                string strCreateUsername = strModidfiedLastName + intPersonID.ToString();
+
+                                string strCreatePassword = intRoleId.ToString() + intPersonID.ToString();
+
+                                SqlCommand commandUsers = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Users(PersonID,Username,Password,Answer1,Answer2,RoleID,ThirdQuestion,SecondQuestion,FirstQuestion,Answer3) VALUES(@PersonID,@Username,@Password,@Answer1,@Answer2,@RoleID,@ThirdQuestion,@SecondQuestion,@FirstQuestion,@Answer3)", Connection);
+                                commandUsers.Parameters.AddWithValue("@PersonID", intPersonID);
+                                commandUsers.Parameters.AddWithValue("@Username", strCreateUsername);
+                                commandUsers.Parameters.AddWithValue("@Password", strCreatePassword);
+                                commandUsers.Parameters.AddWithValue("@Answer1", strAnswerOne);
+                                commandUsers.Parameters.AddWithValue("@Answer2", strAnswerTwo);
+                                commandUsers.Parameters.AddWithValue("@RoleID", intRoleId);
+                                commandUsers.Parameters.AddWithValue("@ThirdQuestion", strQuestionThree);
+                                commandUsers.Parameters.AddWithValue("@SecondQuestion", strQuestionTwo);
+                                commandUsers.Parameters.AddWithValue("@FirstQuestion", strQuestionOne);
+                                commandUsers.Parameters.AddWithValue("@Answer3", strAnswerThree);
+
+                                commandUsers.ExecuteNonQuery();
+                                MessageBox.Show("Customer Successfully added", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                dgvCustomer.Enabled = true;
+                                gbxAddNewCustomer.Enabled = false;
+                                DisplayCustomers();
+                                Reset();
+                                Connection.Close();
+                            }
+
+                            else
+                            {
+                                MessageBox.Show("Phone is not valid", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                mskPhoneCustomer.Focus();
+                            }
+
+
+                        }
+
+                        else
+                        {
+                            MessageBox.Show("Email format is not valid", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            tbxEmailCustomer.Focus();
+                        }
+
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Address format is not valid", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        tbxAddressCustomer.Focus();
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Please make sure to fill up the required fields with(*)", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void Reset()
+        {
+            tbxFirstNameCustomer.Text = "";
+            tbxLastNameCustomer.Text = "";
+            tbxZipCustomer.Text = "";
+            tbxEmailCustomer.Text = "";
+            tbxAddressCustomer.Text = "";
+            mskPhoneCustomer.Text = "";
+            cboStatesCustomer.Text = "";
+            tbxCustomerCity.Text = "";
+        }
+
+        private void btnUpdateCustomer_Click(object sender, EventArgs e)
+        {
+            string strFirstName = dgvCustomer.Rows[dgvCustomer.CurrentCell.RowIndex].Cells[1].Value.ToString();
+            string strLastName = dgvCustomer.Rows[dgvCustomer.CurrentCell.RowIndex].Cells[2].Value.ToString();
+
+
+            if (dgvCustomer.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Do you want to edit Customer '" + strFirstName + " " + strLastName + "'?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    gbxAddNewCustomer.Enabled = true;
+                    btnAddCustomer.Enabled = false;
+                }
+                else
+                {
+                    MessageBox.Show("Please select the Customer you want to edit", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please make a selection", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+   
+
+        private void btnEditCustomer_Click(object sender, EventArgs e)
+        {
+            string strNameFirst;
+            string strNameLast;
+            string strAddress;
+            string strCity;
+            string strEmail;
+            string strZip;
+            string strStateEdit;
+            string strPhoneEdit;
+          
+            try
+            {
+                //Connection.Open();
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+                strPersonIdCustomerView = dgvCustomer.Rows[dgvCustomer.CurrentCell.RowIndex].Cells[0].Value.ToString();
+
+                if (tbxFirstNameCustomer.Text == "")
+                {
+                    strNameFirst = dgvCustomer.Rows[dgvCustomer.CurrentCell.RowIndex].Cells[1].Value.ToString();
+                }
+                else
+                {
+                    strNameFirst = tbxFirstNameCustomer.Text;
+                }
+
+                if (tbxLastNameCustomer.Text == "")
+                {
+                    strNameLast = dgvCustomer.Rows[dgvCustomer.CurrentCell.RowIndex].Cells[2].Value.ToString();
+
+                }
+                else
+                {
+                    strNameLast = tbxLastNameCustomer.Text;
+                }
+
+
+                if (tbxAddressCustomer.Text == "")
+                {
+                    strAddress = dgvCustomer.Rows[dgvCustomer.CurrentCell.RowIndex].Cells[3].Value.ToString();
+                }
+                else
+                {
+                    strAddress = tbxAddressCustomer.Text;
+                }
+
+                if (tbxCustomerCity.Text == "")
+                {
+                    strCity = dgvCustomer.Rows[dgvCustomer.CurrentCell.RowIndex].Cells[4].Value.ToString();
+                }
+                else
+                {
+                    strCity = tbxCustomerCity.Text;
+                }
+
+
+                if (cboStatesCustomer.Text == "")
+                {
+                    strStateEdit = dgvCustomer.Rows[dgvCustomer.CurrentCell.RowIndex].Cells[5].Value.ToString();
+
+                }
+                else
+                {
+                    strStateEdit = cboStatesCustomer.SelectedItem.ToString();
+
+                }
+
+
+
+                if (tbxZipCustomer.Text == "")
+                {
+                    strZip = dgvCustomer.Rows[dgvCustomer.CurrentCell.RowIndex].Cells[6].Value.ToString();
+                }
+                else
+                {
+                    strZip = tbxZipCustomer.Text;
+                }
+
+                if (ValidEmail(tbxEmailCustomer.Text) == false)
+                {
+                    strEmail = dgvCustomer.Rows[dgvCustomer.CurrentCell.RowIndex].Cells[7].Value.ToString();
+                    
+
+                }
+                else
+                {
+
+                    strEmail = tbxEmailCustomer.Text;
+
+                }
+
+                if (ValidPhone(mskPhoneCustomer.Text) == false)
+                {
+                    strPhoneEdit = dgvCustomer.Rows[dgvCustomer.CurrentCell.RowIndex].Cells[8].Value.ToString();
+
+                }
+                else
+                {
+                    strPhoneEdit = mskPhoneCustomer.Text;
+                }
+
+                Connection.Open();
+
+                string strQuery = "UPDATE RandrezaVoharisoaM21Su2332.Person SET NameFirst = @NameFirst,NameLast = @NameLast,Address1 = @Address,City = @City,State=@State, Zipcode = @Zip, Email= @Email, PhonePrimary = @Phone" +
+                " where PersonID= '" + strPersonIdCustomerView + "'";
+                SqlCommand editCommande = new SqlCommand(strQuery, Connection);
+                SqlParameter sqlpmNameFirst = editCommande.Parameters.AddWithValue("@NameFirst", strNameFirst);
+                SqlParameter sqlpmNameLast = editCommande.Parameters.AddWithValue("@NameLast", strNameLast);
+                SqlParameter sqlpmAddress = editCommande.Parameters.AddWithValue("@Address", strAddress);
+                SqlParameter sqlpmCity = editCommande.Parameters.AddWithValue("@City", strCity);
+                SqlParameter sqlpmState = editCommande.Parameters.AddWithValue("@State", strStateEdit);
+                SqlParameter sqlpmZip = editCommande.Parameters.AddWithValue("@Zip", strZip);
+                SqlParameter sqlpmEmail = editCommande.Parameters.AddWithValue("@Email", strEmail);
+                SqlParameter sqlpmPhone = editCommande.Parameters.AddWithValue("@Phone", strPhoneEdit);
+                editCommande.ExecuteNonQuery();
+
+
+
+                Connection.Close();
+
+                MessageBox.Show("The selected Customer Information has been updated?", "Message", MessageBoxButtons.OK);
+
+                DisplayCustomers();
+                Reset();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Message", MessageBoxButtons.OK);
+            }
+
+        
+    }
+
+        private void btnRemoveCustomer_Click(object sender, EventArgs e)
+        {
+
+            if (dgvCustomer.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Do you want to remove this Customer?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    foreach (DataGridViewRow row in dgvCustomer.SelectedRows)
+                    {
+                        //grab current row index selected
+                        int intIndexRowSelected = dgvCustomer.CurrentCell.RowIndex;
+                        //grab person ID to use in order to delete in the database
+                        strPersonIdCustomerView = dgvCustomer.Rows[intIndexRowSelected].Cells[0].Value.ToString();
+                        dgvCustomer.Rows.RemoveAt(row.Index);
+
+                    }
+                    try
+                    {
+                        //connect to database
+                        Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                            "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                        Connection.Open();
+ 
+
+                        string strDeleteQueryUser = "DELETE FROM RandrezaVoharisoaM21Su2332.Users where PersonID= '" + strPersonIdCustomerView + "'";
+                        SqlCommand deleteCommandeUser = new SqlCommand(strDeleteQueryUser, Connection);
+
+                        deleteCommandeUser.ExecuteNonQuery();
+
+                        string strDeleteQueryPerson = "DELETE FROM RandrezaVoharisoaM21Su2332.Person where PersonID= '" + strPersonIdCustomerView + "'";
+                        SqlCommand deleteCommandePerson = new SqlCommand(strDeleteQueryPerson, Connection);
+
+                        deleteCommandePerson.ExecuteNonQuery();
+
+
+                        Connection.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error :" + ex);
+                    }
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Please select the Customer you want to remove", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
     }
 
 }
