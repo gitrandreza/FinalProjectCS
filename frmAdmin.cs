@@ -55,9 +55,13 @@ namespace SU21_Final_Project
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                 Connection.Open();
+<<<<<<< HEAD
                 dataAdapter = new SqlDataAdapter("SELECT ItemID as [Item ID], Name, Quantity," +
                     "FORMAT(Cost, 'c', 'en-US') AS 'Cost' , " +
                     "FORMAT(retailPrice, 'c', 'en-US') AS 'Retail Price' ,Description,CategoryID as [Category ID] ,SupplierID as [Supplier ID]FROM RandrezaVoharisoaM21Su2332.Items", Connection);
+=======
+                dataAdapter = new SqlDataAdapter("SELECT ItemID as [Item ID], Name, Quantity,Cost, RetailPrice as [Retail Price] ,Description,CategoryID as [Category ID] ,SupplierID as [Supplier ID]FROM RandrezaVoharisoaM21Su2332.Items", Connection);
+>>>>>>> 7f1d16a54332546517698c8f5f06a539561b9f79
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvAllProducts.DataSource = dataTable;
@@ -104,7 +108,11 @@ namespace SU21_Final_Project
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                 Connection.Open();
+<<<<<<< HEAD
                 dataAdapter = new SqlDataAdapter("SELECT RandrezaVoharisoaM21Su2332.Person.PersonID  as [Person ID],RandrezaVoharisoaM21Su2332.Person.NameFirst  as [First Name], RandrezaVoharisoaM21Su2332.Person.NameLast as [Last Name],RandrezaVoharisoaM21Su2332.Person.Address1  as [Address],RandrezaVoharisoaM21Su2332.Person.City,RandrezaVoharisoaM21Su2332.Person.State, RandrezaVoharisoaM21Su2332.Person.Zipcode,RandrezaVoharisoaM21Su2332.Person.PhonePrimary as [Phone] , RandrezaVoharisoaM21Su2332.Person.Email  FROM RandrezaVoharisoaM21Su2332.Person FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.PersonID = RandrezaVoharisoaM21Su2332.Person.PersonID WHERE RoleID = 3; ", Connection);
+=======
+                dataAdapter = new SqlDataAdapter("SELECT RandrezaVoharisoaM21Su2332.Person.NameFirst  as [First Name], RandrezaVoharisoaM21Su2332.Person.NameLast as [Last Name],RandrezaVoharisoaM21Su2332.Person.Address1  as [Address],RandrezaVoharisoaM21Su2332.Person.City,RandrezaVoharisoaM21Su2332.Person.State, RandrezaVoharisoaM21Su2332.Person.Zipcode,RandrezaVoharisoaM21Su2332.Person.PhonePrimary as [Phone] , RandrezaVoharisoaM21Su2332.Person.Email  FROM RandrezaVoharisoaM21Su2332.Person FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.PersonID = RandrezaVoharisoaM21Su2332.Person.PersonID WHERE RoleID = 3; ", Connection);
+>>>>>>> 7f1d16a54332546517698c8f5f06a539561b9f79
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvCustomer.DataSource = dataTable;

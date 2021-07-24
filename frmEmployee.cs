@@ -53,10 +53,15 @@ namespace SU21_Final_Project
         string strCustomerID;
         bool blnReturningCustomer = false;
         bool blnExpirationCoupon = false;
+<<<<<<< HEAD
 
         string strDiscountIndex;
 
        
+=======
+
+        string strDiscountIndex;
+>>>>>>> 7f1d16a54332546517698c8f5f06a539561b9f79
         private void frmEmployee_Load(object sender, EventArgs e)
         {
             
@@ -914,6 +919,7 @@ namespace SU21_Final_Project
                 throw;
             }
         }
+<<<<<<< HEAD
         public bool ValidPhone()
         {
             if ( mskPhoneCustomer.Text.Length<12 && mskPhoneCustomer.Text.Contains(" "))
@@ -923,6 +929,9 @@ namespace SU21_Final_Project
             return true;
         }
 
+=======
+   
+>>>>>>> 7f1d16a54332546517698c8f5f06a539561b9f79
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
             string strFirstName = tbxFirstNameCustomer.Text;
@@ -1246,6 +1255,7 @@ namespace SU21_Final_Project
                 btnCheckCoupon.Enabled = false;
             }
         }
+<<<<<<< HEAD
 
         //function to display customer from search ID
         public void DisplayEmployeeInfo(string strIdEmployee)
@@ -1594,6 +1604,8 @@ namespace SU21_Final_Project
                 dgvPurchaseDetails.Rows.RemoveAt(0);
             }
         }
+=======
+>>>>>>> 7f1d16a54332546517698c8f5f06a539561b9f79
     }
 }
 

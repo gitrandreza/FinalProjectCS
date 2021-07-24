@@ -278,8 +278,13 @@ namespace SU21_Final_Project
                     string strQuantityNeed;
                     strQuantityNeed = tbxQuantity.Text;
 
+<<<<<<< HEAD
 
                     if (int.TryParse(strQuantityNeed, out intQuantityNeed) == false)
+=======
+                    
+                    if (int.TryParse(strQuantityNeed, out intQuantityNeed )== false)
+>>>>>>> 7f1d16a54332546517698c8f5f06a539561b9f79
                     {
                         MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
