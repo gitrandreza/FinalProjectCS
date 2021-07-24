@@ -1704,6 +1704,12 @@ namespace SU21_Final_Project
             }
 
         }
+
+        private void btnAccessPOS_Click(object sender, EventArgs e)
+        {
+            new frmEmployee().Show();
+            this.Hide();
+        }
     }
 
 }

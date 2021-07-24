@@ -123,6 +123,7 @@ namespace SU21_Final_Project
             this.lblLastNameLabel = new System.Windows.Forms.Label();
             this.lblFirstNameLabel = new System.Windows.Forms.Label();
             this.btnEditCustomer = new System.Windows.Forms.Button();
+            this.btnAccessPOS = new System.Windows.Forms.Button();
             this.tabEmployee.SuspendLayout();
             this.gbxEdit.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -1291,11 +1292,22 @@ namespace SU21_Final_Project
             this.btnEditCustomer.UseVisualStyleBackColor = true;
             this.btnEditCustomer.Click += new System.EventHandler(this.btnEditCustomer_Click);
             // 
+            // btnAccessPOS
+            // 
+            this.btnAccessPOS.Location = new System.Drawing.Point(641, 12);
+            this.btnAccessPOS.Name = "btnAccessPOS";
+            this.btnAccessPOS.Size = new System.Drawing.Size(75, 23);
+            this.btnAccessPOS.TabIndex = 19;
+            this.btnAccessPOS.Text = "POS";
+            this.btnAccessPOS.UseVisualStyleBackColor = true;
+            this.btnAccessPOS.Click += new System.EventHandler(this.btnAccessPOS_Click);
+            // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1132, 620);
+            this.Controls.Add(this.btnAccessPOS);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.tabManagerFeatures);
@@ -1430,5 +1442,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblLastNameLabel;
         private System.Windows.Forms.Label lblFirstNameLabel;
         private System.Windows.Forms.Button btnEditCustomer;
+        private System.Windows.Forms.Button btnAccessPOS;
     }
 }
