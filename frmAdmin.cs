@@ -27,6 +27,7 @@ namespace SU21_Final_Project
         string strUserID;
 
         string strPersonIdCustomerView;
+       
 
         private void frmAdmin_Load(object sender, EventArgs e)
         {
@@ -55,13 +56,11 @@ namespace SU21_Final_Project
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                 Connection.Open();
-<<<<<<< HEAD
+
                 dataAdapter = new SqlDataAdapter("SELECT ItemID as [Item ID], Name, Quantity," +
                     "FORMAT(Cost, 'c', 'en-US') AS 'Cost' , " +
                     "FORMAT(retailPrice, 'c', 'en-US') AS 'Retail Price' ,Description,CategoryID as [Category ID] ,SupplierID as [Supplier ID]FROM RandrezaVoharisoaM21Su2332.Items", Connection);
-=======
-                dataAdapter = new SqlDataAdapter("SELECT ItemID as [Item ID], Name, Quantity,Cost, RetailPrice as [Retail Price] ,Description,CategoryID as [Category ID] ,SupplierID as [Supplier ID]FROM RandrezaVoharisoaM21Su2332.Items", Connection);
->>>>>>> 7f1d16a54332546517698c8f5f06a539561b9f79
+
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvAllProducts.DataSource = dataTable;
@@ -108,11 +107,9 @@ namespace SU21_Final_Project
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                 Connection.Open();
-<<<<<<< HEAD
+
                 dataAdapter = new SqlDataAdapter("SELECT RandrezaVoharisoaM21Su2332.Person.PersonID  as [Person ID],RandrezaVoharisoaM21Su2332.Person.NameFirst  as [First Name], RandrezaVoharisoaM21Su2332.Person.NameLast as [Last Name],RandrezaVoharisoaM21Su2332.Person.Address1  as [Address],RandrezaVoharisoaM21Su2332.Person.City,RandrezaVoharisoaM21Su2332.Person.State, RandrezaVoharisoaM21Su2332.Person.Zipcode,RandrezaVoharisoaM21Su2332.Person.PhonePrimary as [Phone] , RandrezaVoharisoaM21Su2332.Person.Email  FROM RandrezaVoharisoaM21Su2332.Person FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.PersonID = RandrezaVoharisoaM21Su2332.Person.PersonID WHERE RoleID = 3; ", Connection);
-=======
-                dataAdapter = new SqlDataAdapter("SELECT RandrezaVoharisoaM21Su2332.Person.NameFirst  as [First Name], RandrezaVoharisoaM21Su2332.Person.NameLast as [Last Name],RandrezaVoharisoaM21Su2332.Person.Address1  as [Address],RandrezaVoharisoaM21Su2332.Person.City,RandrezaVoharisoaM21Su2332.Person.State, RandrezaVoharisoaM21Su2332.Person.Zipcode,RandrezaVoharisoaM21Su2332.Person.PhonePrimary as [Phone] , RandrezaVoharisoaM21Su2332.Person.Email  FROM RandrezaVoharisoaM21Su2332.Person FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.PersonID = RandrezaVoharisoaM21Su2332.Person.PersonID WHERE RoleID = 3; ", Connection);
->>>>>>> 7f1d16a54332546517698c8f5f06a539561b9f79
+
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvCustomer.DataSource = dataTable;
@@ -1713,10 +1710,160 @@ namespace SU21_Final_Project
 
         }
 
+        //Manager Access to POS
         private void btnAccessPOS_Click(object sender, EventArgs e)
         {
             new frmEmployee().Show();
             this.Hide();
+        }
+
+        //Daily Report
+        private void radDaily_CheckedChanged(object sender, EventArgs e)
+        {
+          
+
+        }
+
+     
+
+        private void radMonthly_CheckedChanged(object sender, EventArgs e)
+        {
+            string strChooseDateReportWeekly = dtpReport.Text;
+            try
+            {
+
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                if (radDaily.Checked == true)
+                {
+                    string strQuery = "SELECT *from RandrezaVoharisoaM21Su2332.SalesReport  where CreationDate between '" + strChooseDateReportWeekly + "' And DATEADD(DAY, 31, '" + strChooseDateReportWeekly + "')";
+                    dataAdapter = new SqlDataAdapter(strQuery, Connection);
+                    dataTable = new DataTable();
+                    dataAdapter.Fill(dataTable);
+                    dgvSalesReport.DataSource = dataTable;
+
+                    Connection.Close();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+      
+
+        private void btnDisplayReport_Click(object sender, EventArgs e)
+        {
+          if(radDaily.Checked==true)
+            {
+                DisplayDaily();
+            }
+         else if(radWeekly.Checked==true)
+            {
+                DisplayWeekly();
+               
+            }
+           else if (radMonthly.Checked == true)
+            {
+                DisplayMonthly();
+            }
+
+            else if (radAllReport.Checked == true)
+            {
+                DisplaySalesReport();
+            }
+        }
+
+        public void DisplayDaily()
+        {
+            string strChooseDateReportDaily = dtpReport.Text;
+            try
+            {
+
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                if (radDaily.Checked == true)
+                {
+                    string strQuery = "SELECT *from RandrezaVoharisoaM21Su2332.SalesReport  where CreationDate = '" + strChooseDateReportDaily + "'";
+                    dataAdapter = new SqlDataAdapter(strQuery, Connection);
+                    dataTable = new DataTable();
+                    dataAdapter.Fill(dataTable);
+                    dgvSalesReport.DataSource = dataTable;
+
+                    Connection.Close();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void DisplayWeekly()
+        {
+            string strChooseDateReportWeekly = dtpReport.Text;
+            try
+            {
+
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                if (radDaily.Checked == true)
+                {
+                    string strQuery = "SELECT *from RandrezaVoharisoaM21Su2332.SalesReport  where CreationDate between '" + strChooseDateReportWeekly + "' And DATEADD(DAY, 7, '" + strChooseDateReportWeekly + "')";
+                    dataAdapter = new SqlDataAdapter(strQuery, Connection);
+                    dataTable = new DataTable();
+                    dataAdapter.Fill(dataTable);
+                    dgvSalesReport.DataSource = dataTable;
+
+                    Connection.Close();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void DisplayMonthly()
+        {
+            string strChooseDateReportMonthly = dtpReport.Text;
+            try
+            {
+
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                if (radDaily.Checked == true)
+                {
+                    string strQuery = "SELECT *from RandrezaVoharisoaM21Su2332.SalesReport  where CreationDate between '" + strChooseDateReportMonthly + "' And DATEADD(DAY, 31, '" + strChooseDateReportMonthly + "')";
+                    dataAdapter = new SqlDataAdapter(strQuery, Connection);
+                    dataTable = new DataTable();
+                    dataAdapter.Fill(dataTable);
+                    dgvSalesReport.DataSource = dataTable;
+
+                    Connection.Close();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 
