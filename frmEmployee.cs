@@ -1051,7 +1051,7 @@ namespace SU21_Final_Project
         public void SearchValidCoupon()
         {
             string strSearchCoupon = tbxCoupon.Text;
-            
+            string strDiscountIndex = "0";
             try
             {
                 //connect to database
@@ -1115,92 +1115,103 @@ namespace SU21_Final_Project
 
         private void btnApplyDiscount_Click(object sender, EventArgs e)
         {
-            string strTotalListForCoupon = tbxTotalPrice.Text.Substring(1);
-            string strDiscountIndex="0";
-            double dblTotalListForCoupon;
-            
-            if (!double.TryParse(strTotalListForCoupon, out dblTotalListForCoupon))
+           
+
+            if (tbxTotalPrice.Text!="")
             {
-                MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-            
-            if(radCoupon.Checked==true )
-            {
-                
-                if(strDiscountIndex == "1")
-                {
-                    CalculateAmount(dblDiscountCouponOne,0);
-                }
-                if (strDiscountIndex == "2" )
-                {
-                    if(dblTotalListForCoupon > 500 && dblTotalListForCoupon < 2000)
-                    {
-                        CalculateAmount(0, dblDiscountCouponTwo);
-                        tbxDiscountCustomer.Text = "$100";
-                    }
-                    else
-                    {
-                        MessageBox.Show("Available only for a total purchase $500 and plus", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                }
-                if (strDiscountIndex == "3" )
-                {
-                    if(dblTotalListForCoupon > 2000)
-                    {
-                        CalculateAmount(0, dblDiscountCouponThree);
-                        tbxDiscountCustomer.Text = "$500";
-                    }
-                    else
-                    {
-                        MessageBox.Show("Available only for a total purchase $2000 and plus", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-
-
-            }
-
-            if(radReturningDiscount.Checked==true)
-            {
-                CalculateAmount(dblDiscountReturning,0);
-            }
-
-            if(radQuantityDiscount.Checked == true)
-            {
-                //Discount and delivery condition based on quantities
-                string strQuantityTotal = tbxQuantityTotal.Text;
-
-               int intQuantityTotalDelivery;
-
-                if (!int.TryParse(strQuantityTotal, out intQuantityTotalDelivery))
+                string strTotalListForCoupon = tbxTotalPrice.Text.Substring(1);
+                string strDiscountIndex = "0";
+                double dblTotalListForCoupon;
+                if (!double.TryParse(strTotalListForCoupon, out dblTotalListForCoupon))
                 {
                     MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
 
-                if (intQuantityTotalDelivery > 10 && intQuantityTotalDelivery <= 50)
+                if (radCoupon.Checked == true)
                 {
 
-                    CalculateAmount(dblDiscountOne,0);
-                    lblDisplayDiscountQuantity.Text = "10% Discount";
-                }
-                else if (intQuantityTotalDelivery > 50 && intQuantityTotalDelivery < 100)
-                {
+                    if (strDiscountIndex == "1")
+                    {
+                        CalculateAmount(dblDiscountCouponOne, 0);
+                    }
+                    if (strDiscountIndex == "2")
+                    {
+                        if (dblTotalListForCoupon > 500 && dblTotalListForCoupon < 2000)
+                        {
+                            CalculateAmount(0, dblDiscountCouponTwo);
+                            tbxDiscountCustomer.Text = "$100";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Available only for a total purchase $500 and plus", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
 
-                    CalculateAmount(dblDiscountTwo,0);
-                    lblDisplayDiscountQuantity.Text = "20% Discount";
+                    }
+                    if (strDiscountIndex == "3")
+                    {
+                        if (dblTotalListForCoupon > 2000)
+                        {
+                            CalculateAmount(0, dblDiscountCouponThree);
+                            tbxDiscountCustomer.Text = "$500";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Available only for a total purchase $2000 and plus", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+
+
                 }
-                else if (intQuantityTotalDelivery >= 100)
+
+                if (radReturningDiscount.Checked == true)
                 {
-                    CalculateAmount(dblDiscountThree,0);
-                    lblDisplayDiscountQuantity.Text = "30% Discount";
+                    CalculateAmount(dblDiscountReturning, 0);
+                }
+
+                if (radQuantityDiscount.Checked == true)
+                {
+                    //Discount and delivery condition based on quantities
+                    string strQuantityTotal = tbxQuantityTotal.Text;
+
+                    int intQuantityTotalDelivery;
+
+                    if (!int.TryParse(strQuantityTotal, out intQuantityTotalDelivery))
+                    {
+                        MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+
+                    if (intQuantityTotalDelivery > 10 && intQuantityTotalDelivery <= 50)
+                    {
+
+                        CalculateAmount(dblDiscountOne, 0);
+                        lblDisplayDiscountQuantity.Text = "10% Discount";
+                    }
+                    else if (intQuantityTotalDelivery > 50 && intQuantityTotalDelivery < 100)
+                    {
+
+                        CalculateAmount(dblDiscountTwo, 0);
+                        lblDisplayDiscountQuantity.Text = "20% Discount";
+                    }
+                    else if (intQuantityTotalDelivery >= 100)
+                    {
+                        CalculateAmount(dblDiscountThree, 0);
+                        lblDisplayDiscountQuantity.Text = "30% Discount";
+                    }
+                }
+                if (radNoDiscount.Checked == true)
+                {
+                    CalculateAmount(0, 0);
                 }
             }
-            if(radNoDiscount.Checked==true)
+            else
             {
-                CalculateAmount(0,0);
+                MessageBox.Show("Please display price by clicking on 'Display' Button", "Missing input", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
+            
+          
 
         }
 
