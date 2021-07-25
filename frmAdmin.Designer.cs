@@ -1226,7 +1226,7 @@ namespace SU21_Final_Project
             // 
             this.dtpReport.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpReport.Location = new System.Drawing.Point(159, 77);
-            this.dtpReport.MinDate = new System.DateTime(2021, 7, 21, 0, 0, 0, 0);
+            this.dtpReport.MinDate = new System.DateTime(2021, 4, 21, 0, 0, 0, 0);
             this.dtpReport.Name = "dtpReport";
             this.dtpReport.Size = new System.Drawing.Size(167, 22);
             this.dtpReport.TabIndex = 3;

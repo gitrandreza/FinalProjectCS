@@ -53,15 +53,10 @@ namespace SU21_Final_Project
         string strCustomerID;
         bool blnReturningCustomer = false;
         bool blnExpirationCoupon = false;
-<<<<<<< HEAD
 
-        string strDiscountIndex;
 
-       
-=======
+        
 
-        string strDiscountIndex;
->>>>>>> 7f1d16a54332546517698c8f5f06a539561b9f79
         private void frmEmployee_Load(object sender, EventArgs e)
         {
             
@@ -919,7 +914,7 @@ namespace SU21_Final_Project
                 throw;
             }
         }
-<<<<<<< HEAD
+
         public bool ValidPhone()
         {
             if ( mskPhoneCustomer.Text.Length<12 && mskPhoneCustomer.Text.Contains(" "))
@@ -929,9 +924,7 @@ namespace SU21_Final_Project
             return true;
         }
 
-=======
-   
->>>>>>> 7f1d16a54332546517698c8f5f06a539561b9f79
+
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
             string strFirstName = tbxFirstNameCustomer.Text;
@@ -1058,6 +1051,7 @@ namespace SU21_Final_Project
         public void SearchValidCoupon()
         {
             string strSearchCoupon = tbxCoupon.Text;
+            
             try
             {
                 //connect to database
@@ -1122,7 +1116,7 @@ namespace SU21_Final_Project
         private void btnApplyDiscount_Click(object sender, EventArgs e)
         {
             string strTotalListForCoupon = tbxTotalPrice.Text.Substring(1);
-
+            string strDiscountIndex="0";
             double dblTotalListForCoupon;
             
             if (!double.TryParse(strTotalListForCoupon, out dblTotalListForCoupon))
@@ -1240,6 +1234,7 @@ namespace SU21_Final_Project
                 lblCouponDescription.Enabled = true;
                 lblCouponDescription.Enabled = true;
                 btnCheckCoupon.Enabled = true;
+                lblCouponDescriptionLabel.Enabled = true;
             }
             else
             {
@@ -1255,7 +1250,7 @@ namespace SU21_Final_Project
                 btnCheckCoupon.Enabled = false;
             }
         }
-<<<<<<< HEAD
+
 
         //function to display customer from search ID
         public void DisplayEmployeeInfo(string strIdEmployee)
@@ -1604,8 +1599,7 @@ namespace SU21_Final_Project
                 dgvPurchaseDetails.Rows.RemoveAt(0);
             }
         }
-=======
->>>>>>> 7f1d16a54332546517698c8f5f06a539561b9f79
+
     }
 }
 
