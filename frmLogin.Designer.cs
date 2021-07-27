@@ -29,6 +29,7 @@ namespace SU21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.lblLoginlabel = new System.Windows.Forms.Label();
             this.lblPasswordlLabel = new System.Windows.Forms.Label();
             this.tbxUsername = new System.Windows.Forms.TextBox();
@@ -40,6 +41,7 @@ namespace SU21_Final_Project
             this.btnExit = new System.Windows.Forms.Button();
             this.lblProgramLogoTwo = new System.Windows.Forms.Label();
             this.lblProgramLogoOne = new System.Windows.Forms.Label();
+            this.btnHelpLoginForm = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblLoginlabel
@@ -179,13 +181,23 @@ namespace SU21_Final_Project
             this.lblProgramLogoOne.TabIndex = 10;
             this.lblProgramLogoOne.Text = "i";
             // 
+            // btnHelpLoginForm
+            // 
+            this.btnHelpLoginForm.Location = new System.Drawing.Point(382, 11);
+            this.btnHelpLoginForm.Name = "btnHelpLoginForm";
+            this.btnHelpLoginForm.Size = new System.Drawing.Size(72, 31);
+            this.btnHelpLoginForm.TabIndex = 11;
+            this.btnHelpLoginForm.Text = "&Help";
+            this.btnHelpLoginForm.UseVisualStyleBackColor = true;
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(489, 309);
+            this.ClientSize = new System.Drawing.Size(489, 318);
+            this.Controls.Add(this.btnHelpLoginForm);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnResetPassword);
             this.Controls.Add(this.lblLoginFailed);
@@ -198,6 +210,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.lblProgramLogoTwo);
             this.Controls.Add(this.lblProgramLogoOne);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frmLogin";
@@ -222,5 +235,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lblProgramLogoTwo;
         private System.Windows.Forms.Label lblProgramLogoOne;
+        private System.Windows.Forms.Button btnHelpLoginForm;
     }
 }

@@ -29,6 +29,7 @@ namespace SU21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmployee));
             this.tabInformation = new System.Windows.Forms.TabPage();
             this.btnClearCustomer = new System.Windows.Forms.Button();
             this.btnClearCoupon = new System.Windows.Forms.Button();
@@ -1553,6 +1554,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.lblUserEmployee);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.tabEmployeeView);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

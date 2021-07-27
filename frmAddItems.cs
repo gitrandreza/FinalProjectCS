@@ -334,6 +334,12 @@ namespace SU21_Final_Project
             //    MessageBox.Show(ex.Message, "Error During Upload", MessageBoxButtons.OK, MessageBoxIcon.Error);
             //}
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            new frmAdmin().Show();
+            this.Hide();
+        }
     }
     
 }

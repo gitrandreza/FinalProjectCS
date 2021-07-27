@@ -29,6 +29,7 @@ namespace SU21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddItems));
             this.gbxItemInformation = new System.Windows.Forms.GroupBox();
             this.btnInsertImage = new System.Windows.Forms.Button();
             this.btnSaveItems = new System.Windows.Forms.Button();
@@ -47,6 +48,7 @@ namespace SU21_Final_Project
             this.lblTagRetailPrice = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Button();
             this.gbxItemInformation.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -238,12 +240,25 @@ namespace SU21_Final_Project
             this.label8.TabIndex = 15;
             this.label8.Text = "Supplier";
             // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(628, 363);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(110, 34);
+            this.btnBack.TabIndex = 47;
+            this.btnBack.Text = "&Close";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // frmAddItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(832, 410);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.gbxItemInformation);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmAddItems";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -275,5 +290,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnSaveItems;
         private System.Windows.Forms.Button btnInsertImage;
+        private System.Windows.Forms.Button btnBack;
     }
 }

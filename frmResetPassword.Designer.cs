@@ -29,6 +29,7 @@ namespace SU21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmResetPassword));
             this.lblQuestionThree = new System.Windows.Forms.Label();
             this.tbxIdol = new System.Windows.Forms.TextBox();
             this.lblQuestionTwo = new System.Windows.Forms.Label();
@@ -336,6 +337,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.lblQuestionOne);
             this.Controls.Add(this.tbxDrink);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmResetPassword";
             this.Padding = new System.Windows.Forms.Padding(20);

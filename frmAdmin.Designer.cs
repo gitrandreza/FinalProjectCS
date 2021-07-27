@@ -29,6 +29,7 @@ namespace SU21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdmin));
             this.tabEmployee = new System.Windows.Forms.TabPage();
             this.gbxEdit = new System.Windows.Forms.GroupBox();
             this.cbxStates = new System.Windows.Forms.CheckBox();
@@ -1328,7 +1329,7 @@ namespace SU21_Final_Project
             // lblSalesDetailLabel
             // 
             this.lblSalesDetailLabel.AutoSize = true;
-            this.lblSalesDetailLabel.Location = new System.Drawing.Point(472, 23);
+            this.lblSalesDetailLabel.Location = new System.Drawing.Point(519, 23);
             this.lblSalesDetailLabel.Name = "lblSalesDetailLabel";
             this.lblSalesDetailLabel.Size = new System.Drawing.Size(137, 17);
             this.lblSalesDetailLabel.TabIndex = 3;
@@ -1348,14 +1349,14 @@ namespace SU21_Final_Project
             this.dgvSalesDetails.AllowUserToAddRows = false;
             this.dgvSalesDetails.AllowUserToDeleteRows = false;
             this.dgvSalesDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSalesDetails.Location = new System.Drawing.Point(522, 43);
+            this.dgvSalesDetails.Location = new System.Drawing.Point(609, 43);
             this.dgvSalesDetails.Name = "dgvSalesDetails";
             this.dgvSalesDetails.ReadOnly = true;
             this.dgvSalesDetails.RowHeadersVisible = false;
             this.dgvSalesDetails.RowHeadersWidth = 51;
             this.dgvSalesDetails.RowTemplate.Height = 24;
             this.dgvSalesDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSalesDetails.Size = new System.Drawing.Size(546, 198);
+            this.dgvSalesDetails.Size = new System.Drawing.Size(459, 198);
             this.dgvSalesDetails.TabIndex = 1;
             // 
             // dgvSalesReport
@@ -1370,7 +1371,7 @@ namespace SU21_Final_Project
             this.dgvSalesReport.RowHeadersWidth = 51;
             this.dgvSalesReport.RowTemplate.Height = 24;
             this.dgvSalesReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSalesReport.Size = new System.Drawing.Size(475, 198);
+            this.dgvSalesReport.Size = new System.Drawing.Size(561, 198);
             this.dgvSalesReport.TabIndex = 0;
             this.dgvSalesReport.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSalesReport_CellClick);
             // 
@@ -1404,7 +1405,7 @@ namespace SU21_Final_Project
             // 
             // btnPrintSelectedSalesReport
             // 
-            this.btnPrintSelectedSalesReport.Location = new System.Drawing.Point(176, 173);
+            this.btnPrintSelectedSalesReport.Location = new System.Drawing.Point(176, 161);
             this.btnPrintSelectedSalesReport.Name = "btnPrintSelectedSalesReport";
             this.btnPrintSelectedSalesReport.Size = new System.Drawing.Size(113, 31);
             this.btnPrintSelectedSalesReport.TabIndex = 11;
@@ -1421,6 +1422,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.tabManagerFeatures);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frmAdmin";
