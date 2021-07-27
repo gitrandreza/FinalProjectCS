@@ -29,6 +29,7 @@ namespace SU21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSignUp));
             this.tbxLastName = new System.Windows.Forms.TextBox();
             this.tbxFirstName = new System.Windows.Forms.TextBox();
             this.lblFirstNameLabel = new System.Windows.Forms.Label();
@@ -67,6 +68,8 @@ namespace SU21_Final_Project
             this.lblPasswordRulesTwo = new System.Windows.Forms.Label();
             this.lblPasswordRulesThree = new System.Windows.Forms.Label();
             this.gbxInformation = new System.Windows.Forms.GroupBox();
+            this.mskPhone2 = new System.Windows.Forms.MaskedTextBox();
+            this.mskPhone1 = new System.Windows.Forms.MaskedTextBox();
             this.cboState = new System.Windows.Forms.ComboBox();
             this.cboSuffix = new System.Windows.Forms.ComboBox();
             this.lblInfosOneLabel = new System.Windows.Forms.Label();
@@ -75,8 +78,6 @@ namespace SU21_Final_Project
             this.btnBack = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.mskPhone1 = new System.Windows.Forms.MaskedTextBox();
-            this.mskPhone2 = new System.Windows.Forms.MaskedTextBox();
             this.gbxInformation.SuspendLayout();
             this.gbxSecurityQuestion.SuspendLayout();
             this.gbxCreateLogin.SuspendLayout();
@@ -449,6 +450,22 @@ namespace SU21_Final_Project
             this.gbxInformation.TabStop = false;
             this.gbxInformation.Text = "Information";
             // 
+            // mskPhone2
+            // 
+            this.mskPhone2.Location = new System.Drawing.Point(511, 46);
+            this.mskPhone2.Mask = "000-000-0000";
+            this.mskPhone2.Name = "mskPhone2";
+            this.mskPhone2.Size = new System.Drawing.Size(100, 22);
+            this.mskPhone2.TabIndex = 48;
+            // 
+            // mskPhone1
+            // 
+            this.mskPhone1.Location = new System.Drawing.Point(133, 247);
+            this.mskPhone1.Mask = "000-000-0000";
+            this.mskPhone1.Name = "mskPhone1";
+            this.mskPhone1.Size = new System.Drawing.Size(100, 22);
+            this.mskPhone1.TabIndex = 47;
+            // 
             // cboState
             // 
             this.cboState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -613,22 +630,6 @@ namespace SU21_Final_Project
             this.label26.TabIndex = 50;
             this.label26.Text = "i";
             // 
-            // mskPhone1
-            // 
-            this.mskPhone1.Location = new System.Drawing.Point(133, 247);
-            this.mskPhone1.Mask = "000-000-0000";
-            this.mskPhone1.Name = "mskPhone1";
-            this.mskPhone1.Size = new System.Drawing.Size(100, 22);
-            this.mskPhone1.TabIndex = 47;
-            // 
-            // mskPhone2
-            // 
-            this.mskPhone2.Location = new System.Drawing.Point(511, 46);
-            this.mskPhone2.Mask = "000-000-0000";
-            this.mskPhone2.Name = "mskPhone2";
-            this.mskPhone2.Size = new System.Drawing.Size(100, 22);
-            this.mskPhone2.TabIndex = 48;
-            // 
             // frmSignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -643,6 +644,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.gbxInformation);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.btnSave);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmSignUp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

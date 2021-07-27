@@ -29,6 +29,7 @@ namespace SU21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddEmployee));
             this.gbxInformation = new System.Windows.Forms.GroupBox();
             this.lblPositionLabel = new System.Windows.Forms.Label();
             this.cboPosition = new System.Windows.Forms.ComboBox();
@@ -465,6 +466,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.gbxInformation);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmAddEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
