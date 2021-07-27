@@ -20,6 +20,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
+using System.Reflection;
 
 namespace SU21_Final_Project
 {
@@ -52,6 +53,8 @@ namespace SU21_Final_Project
 
         int intQuantityAvailable;
         int intQuantityNeed;
+        string strInvoiceCustomer;
+        string strLastSaleReportCustomer;
 
         public static string strUserNumberID;
 
@@ -649,8 +652,12 @@ namespace SU21_Final_Project
 
                     Connection.Open();
                     //Store Sales Report
-                    SqlCommand commandSalesReport = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesReport(UserID,CreationDate, TotalSale) " +
-                        "VALUES(@UserID,@CreationDate,@TotalSale)", Connection);
+
+                    DateTime today = DateTime.Now;
+                    strInvoiceCustomer = today.ToString("yyyy-MM-dd-HHmmss") + "Receipt.html";
+
+                    SqlCommand commandSalesReport = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesReport(UserID,CreationDate, TotalSale,Invoice) " +
+                        "VALUES(@UserID,@CreationDate,@TotalSale,@Invoice)", Connection);
                     commandSalesReport.Parameters.AddWithValue("@UserID", intUserID);
                     commandSalesReport.Parameters.AddWithValue("@CreationDate", strDate);
 
@@ -663,6 +670,10 @@ namespace SU21_Final_Project
                     }
 
                     commandSalesReport.Parameters.AddWithValue("@TotalSale", dblTotalAmount);
+                    commandSalesReport.Parameters.AddWithValue("@Invoice", strInvoiceCustomer);
+
+                    strLastSaleReportCustomer = strInvoiceCustomer;
+                    btnViewReceipt.Enabled = true;
 
                     commandSalesReport.ExecuteNonQuery();
 
@@ -730,12 +741,8 @@ namespace SU21_Final_Project
                         
                     }
 
-                    Connection.Close();
-                    if (MessageBox.Show("Do you want to print your Invoice?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        PrintReport(GenerateReport());
-
-                    }
+                    Connection.Close();                 
+                    PrintReport(GenerateReport());
                     Reset();
                 }
                 catch (SqlException ex)
@@ -771,7 +778,7 @@ namespace SU21_Final_Project
 
             html.Append($"<h5>{"Date: "}{lblDate.Text}</h5>");
             html.Append($"<h5>{"Customer Name: "}{lblNameOfUser.Text}</h5>");
-            html.Append($"<h5>{"Sale ID: "}{intSaleId.ToString()}</h5>");
+            html.Append($"<h5>{"Invoice: "}{strLastSaleReportCustomer}</h5>");
 
             html.AppendLine("<table>");
             html.AppendLine("<tr><td>Name</td><td>Decoration</td><td>Size</td><td>Color</td><td>Quantity</td><td>Price</td><td>Total Price</td></tr>");
@@ -831,7 +838,7 @@ namespace SU21_Final_Project
         private void PrintReport(StringBuilder html)
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string filepath = path + "\\CustomerInvoice.html";
+            string filepath = path + "\\Receipt.html";
            
             try
             {
@@ -840,7 +847,7 @@ namespace SU21_Final_Project
                 {
                     swInvoice.WriteLine(html);
                 }
-                System.Diagnostics.Process.Start(filepath);
+                
                 
             }
             catch (Exception)
@@ -851,7 +858,7 @@ namespace SU21_Final_Project
 
             //unique filename  use for a date and time with part of a name
             DateTime today = DateTime.Now;
-            using (StreamWriter swInvoice = new StreamWriter($"{today.ToString("yyyy-MM-dd-HHmmss")} - CustomerInvoice.html"))
+            using (StreamWriter swInvoice = new StreamWriter($"{strInvoiceCustomer}"))
             {
                 swInvoice.WriteLine(html);
             }
@@ -1001,7 +1008,12 @@ namespace SU21_Final_Project
             }
         }
 
-       
+        private void btnViewReceipt_Click(object sender, EventArgs e)
+        {
+            string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string xslLocation = Path.Combine(executableLocation, strLastSaleReportCustomer);
+            System.Diagnostics.Process.Start(xslLocation);
+        }
     }
 }
 

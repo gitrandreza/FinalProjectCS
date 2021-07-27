@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Reflection;
 namespace SU21_Final_Project
 {
     public partial class frmAdmin : Form
@@ -18,8 +19,7 @@ namespace SU21_Final_Project
         SqlConnection Connection;
         SqlDataAdapter dataAdapter;
         DataTable dataTable;
-        SqlDataReader reader;
-        SqlCommand command;
+       
 
 
         string strItemID;
@@ -27,7 +27,7 @@ namespace SU21_Final_Project
         string strUserID;
 
         string strPersonIdCustomerView;
-       
+        string strInvoiceReport;
 
         private void frmAdmin_Load(object sender, EventArgs e)
         {
@@ -1244,7 +1244,7 @@ namespace SU21_Final_Project
                 //instantiate object from Items class and assign value from cell
                 DataGridViewRow row = this.dgvSalesReport.Rows[e.RowIndex];
                 strSaleId = row.Cells["SaleId"].Value.ToString();
-
+                strInvoiceReport= row.Cells["Invoice"].Value.ToString();
                 DisplaySalesDetail(strSaleId);
 
             }
@@ -1717,15 +1717,6 @@ namespace SU21_Final_Project
             this.Hide();
         }
 
-        //Daily Report
-        private void radDaily_CheckedChanged(object sender, EventArgs e)
-        {
-          
-
-        }
-
-     
-
         private void radMonthly_CheckedChanged(object sender, EventArgs e)
         {
             string strChooseDateReportWeekly = dtpReport.Text;
@@ -1863,6 +1854,31 @@ namespace SU21_Final_Project
             catch (Exception ex)
             {
                 MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnPrintSelectedSalesReport_Click(object sender, EventArgs e)
+        {
+
+            if (dgvSalesReport.SelectedRows.Count > 0)
+            {
+                if (strInvoiceReport == "")
+                {
+                    MessageBox.Show("This Sales doesn't have invoice yet",
+                    "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                    string xslLocation = Path.Combine(executableLocation, strInvoiceReport);
+                    System.Diagnostics.Process.Start(xslLocation);
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Please select report",
+                   "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

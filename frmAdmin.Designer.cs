@@ -132,6 +132,7 @@ namespace SU21_Final_Project
             this.lblDate = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnAccessPOS = new System.Windows.Forms.Button();
+            this.btnPrintSelectedSalesReport = new System.Windows.Forms.Button();
             this.tabEmployee.SuspendLayout();
             this.gbxEdit.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -1154,6 +1155,7 @@ namespace SU21_Final_Project
             // 
             // gbxReport
             // 
+            this.gbxReport.Controls.Add(this.btnPrintSelectedSalesReport);
             this.gbxReport.Controls.Add(this.radAllReport);
             this.gbxReport.Controls.Add(this.radMonthly);
             this.gbxReport.Controls.Add(this.radWeekly);
@@ -1214,7 +1216,7 @@ namespace SU21_Final_Project
             // 
             // btnDisplayReport
             // 
-            this.btnDisplayReport.Location = new System.Drawing.Point(176, 118);
+            this.btnDisplayReport.Location = new System.Drawing.Point(176, 111);
             this.btnDisplayReport.Name = "btnDisplayReport";
             this.btnDisplayReport.Size = new System.Drawing.Size(113, 31);
             this.btnDisplayReport.TabIndex = 6;
@@ -1400,6 +1402,16 @@ namespace SU21_Final_Project
             this.btnAccessPOS.UseVisualStyleBackColor = true;
             this.btnAccessPOS.Click += new System.EventHandler(this.btnAccessPOS_Click);
             // 
+            // btnPrintSelectedSalesReport
+            // 
+            this.btnPrintSelectedSalesReport.Location = new System.Drawing.Point(176, 173);
+            this.btnPrintSelectedSalesReport.Name = "btnPrintSelectedSalesReport";
+            this.btnPrintSelectedSalesReport.Size = new System.Drawing.Size(113, 31);
+            this.btnPrintSelectedSalesReport.TabIndex = 11;
+            this.btnPrintSelectedSalesReport.Text = "&Print Report";
+            this.btnPrintSelectedSalesReport.UseVisualStyleBackColor = true;
+            this.btnPrintSelectedSalesReport.Click += new System.EventHandler(this.btnPrintSelectedSalesReport_Click);
+            // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1551,5 +1563,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.DateTimePicker dtpReport;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton radAllReport;
+        private System.Windows.Forms.Button btnPrintSelectedSalesReport;
     }
 }
