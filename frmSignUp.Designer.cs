@@ -76,6 +76,7 @@ namespace SU21_Final_Project
             this.gbxSecurityQuestion = new System.Windows.Forms.GroupBox();
             this.gbxCreateLogin = new System.Windows.Forms.GroupBox();
             this.btnBack = new System.Windows.Forms.Button();
+            this.btnHelpSignUp = new System.Windows.Forms.Button();
             this.gbxInformation.SuspendLayout();
             this.gbxSecurityQuestion.SuspendLayout();
             this.gbxCreateLogin.SuspendLayout();
@@ -83,7 +84,7 @@ namespace SU21_Final_Project
             // 
             // tbxLastName
             // 
-            this.tbxLastName.Location = new System.Drawing.Point(133, 124);
+            this.tbxLastName.Location = new System.Drawing.Point(145, 108);
             this.tbxLastName.MaxLength = 20;
             this.tbxLastName.Name = "tbxLastName";
             this.tbxLastName.Size = new System.Drawing.Size(165, 22);
@@ -92,7 +93,7 @@ namespace SU21_Final_Project
             // 
             // tbxFirstName
             // 
-            this.tbxFirstName.Location = new System.Drawing.Point(133, 42);
+            this.tbxFirstName.Location = new System.Drawing.Point(145, 26);
             this.tbxFirstName.MaxLength = 20;
             this.tbxFirstName.Name = "tbxFirstName";
             this.tbxFirstName.Size = new System.Drawing.Size(165, 22);
@@ -102,7 +103,7 @@ namespace SU21_Final_Project
             // lblFirstNameLabel
             // 
             this.lblFirstNameLabel.AutoSize = true;
-            this.lblFirstNameLabel.Location = new System.Drawing.Point(41, 46);
+            this.lblFirstNameLabel.Location = new System.Drawing.Point(53, 30);
             this.lblFirstNameLabel.Name = "lblFirstNameLabel";
             this.lblFirstNameLabel.Size = new System.Drawing.Size(92, 17);
             this.lblFirstNameLabel.TabIndex = 2;
@@ -111,7 +112,7 @@ namespace SU21_Final_Project
             // lblLastNameLabel
             // 
             this.lblLastNameLabel.AutoSize = true;
-            this.lblLastNameLabel.Location = new System.Drawing.Point(41, 126);
+            this.lblLastNameLabel.Location = new System.Drawing.Point(53, 110);
             this.lblLastNameLabel.Name = "lblLastNameLabel";
             this.lblLastNameLabel.Size = new System.Drawing.Size(91, 17);
             this.lblLastNameLabel.TabIndex = 3;
@@ -120,7 +121,7 @@ namespace SU21_Final_Project
             // lblMiddleNameLabel
             // 
             this.lblMiddleNameLabel.AutoSize = true;
-            this.lblMiddleNameLabel.Location = new System.Drawing.Point(32, 88);
+            this.lblMiddleNameLabel.Location = new System.Drawing.Point(44, 72);
             this.lblMiddleNameLabel.Name = "lblMiddleNameLabel";
             this.lblMiddleNameLabel.Size = new System.Drawing.Size(101, 17);
             this.lblMiddleNameLabel.TabIndex = 4;
@@ -129,7 +130,7 @@ namespace SU21_Final_Project
             // lblSuffixLabel
             // 
             this.lblSuffixLabel.AutoSize = true;
-            this.lblSuffixLabel.Location = new System.Drawing.Point(80, 161);
+            this.lblSuffixLabel.Location = new System.Drawing.Point(92, 145);
             this.lblSuffixLabel.Name = "lblSuffixLabel";
             this.lblSuffixLabel.Size = new System.Drawing.Size(48, 17);
             this.lblSuffixLabel.TabIndex = 5;
@@ -137,7 +138,7 @@ namespace SU21_Final_Project
             // 
             // tbxMiddleName
             // 
-            this.tbxMiddleName.Location = new System.Drawing.Point(133, 84);
+            this.tbxMiddleName.Location = new System.Drawing.Point(145, 68);
             this.tbxMiddleName.MaxLength = 20;
             this.tbxMiddleName.Name = "tbxMiddleName";
             this.tbxMiddleName.Size = new System.Drawing.Size(165, 22);
@@ -146,7 +147,7 @@ namespace SU21_Final_Project
             // lblCityLabel
             // 
             this.lblCityLabel.AutoSize = true;
-            this.lblCityLabel.Location = new System.Drawing.Point(456, 202);
+            this.lblCityLabel.Location = new System.Drawing.Point(468, 186);
             this.lblCityLabel.Name = "lblCityLabel";
             this.lblCityLabel.Size = new System.Drawing.Size(41, 17);
             this.lblCityLabel.TabIndex = 11;
@@ -154,7 +155,7 @@ namespace SU21_Final_Project
             // 
             // tbxCity
             // 
-            this.tbxCity.Location = new System.Drawing.Point(511, 200);
+            this.tbxCity.Location = new System.Drawing.Point(523, 184);
             this.tbxCity.MaxLength = 30;
             this.tbxCity.Name = "tbxCity";
             this.tbxCity.Size = new System.Drawing.Size(144, 22);
@@ -163,7 +164,7 @@ namespace SU21_Final_Project
             // lblAddressLabel
             // 
             this.lblAddressLabel.AutoSize = true;
-            this.lblAddressLabel.Location = new System.Drawing.Point(419, 87);
+            this.lblAddressLabel.Location = new System.Drawing.Point(431, 71);
             this.lblAddressLabel.Name = "lblAddressLabel";
             this.lblAddressLabel.Size = new System.Drawing.Size(87, 17);
             this.lblAddressLabel.TabIndex = 13;
@@ -171,7 +172,7 @@ namespace SU21_Final_Project
             // 
             // tbxAddressOne
             // 
-            this.tbxAddressOne.Location = new System.Drawing.Point(511, 87);
+            this.tbxAddressOne.Location = new System.Drawing.Point(523, 71);
             this.tbxAddressOne.MaxLength = 30;
             this.tbxAddressOne.Name = "tbxAddressOne";
             this.tbxAddressOne.Size = new System.Drawing.Size(232, 22);
@@ -180,7 +181,7 @@ namespace SU21_Final_Project
             // lblStateLabel
             // 
             this.lblStateLabel.AutoSize = true;
-            this.lblStateLabel.Location = new System.Drawing.Point(448, 249);
+            this.lblStateLabel.Location = new System.Drawing.Point(460, 233);
             this.lblStateLabel.Name = "lblStateLabel";
             this.lblStateLabel.Size = new System.Drawing.Size(52, 17);
             this.lblStateLabel.TabIndex = 15;
@@ -189,7 +190,7 @@ namespace SU21_Final_Project
             // lblAddressTwoLabel
             // 
             this.lblAddressTwoLabel.AutoSize = true;
-            this.lblAddressTwoLabel.Location = new System.Drawing.Point(424, 127);
+            this.lblAddressTwoLabel.Location = new System.Drawing.Point(436, 111);
             this.lblAddressTwoLabel.Name = "lblAddressTwoLabel";
             this.lblAddressTwoLabel.Size = new System.Drawing.Size(81, 17);
             this.lblAddressTwoLabel.TabIndex = 17;
@@ -197,7 +198,7 @@ namespace SU21_Final_Project
             // 
             // tbxAddressTwo
             // 
-            this.tbxAddressTwo.Location = new System.Drawing.Point(511, 124);
+            this.tbxAddressTwo.Location = new System.Drawing.Point(523, 108);
             this.tbxAddressTwo.MaxLength = 30;
             this.tbxAddressTwo.Name = "tbxAddressTwo";
             this.tbxAddressTwo.Size = new System.Drawing.Size(232, 22);
@@ -206,7 +207,7 @@ namespace SU21_Final_Project
             // lblAddressThreeLabel
             // 
             this.lblAddressThreeLabel.AutoSize = true;
-            this.lblAddressThreeLabel.Location = new System.Drawing.Point(424, 169);
+            this.lblAddressThreeLabel.Location = new System.Drawing.Point(436, 153);
             this.lblAddressThreeLabel.Name = "lblAddressThreeLabel";
             this.lblAddressThreeLabel.Size = new System.Drawing.Size(81, 17);
             this.lblAddressThreeLabel.TabIndex = 19;
@@ -214,7 +215,7 @@ namespace SU21_Final_Project
             // 
             // tbxAddressThree
             // 
-            this.tbxAddressThree.Location = new System.Drawing.Point(511, 166);
+            this.tbxAddressThree.Location = new System.Drawing.Point(523, 150);
             this.tbxAddressThree.MaxLength = 30;
             this.tbxAddressThree.Name = "tbxAddressThree";
             this.tbxAddressThree.Size = new System.Drawing.Size(232, 22);
@@ -223,7 +224,7 @@ namespace SU21_Final_Project
             // lblZipLabel
             // 
             this.lblZipLabel.AutoSize = true;
-            this.lblZipLabel.Location = new System.Drawing.Point(610, 245);
+            this.lblZipLabel.Location = new System.Drawing.Point(622, 229);
             this.lblZipLabel.Name = "lblZipLabel";
             this.lblZipLabel.Size = new System.Drawing.Size(37, 17);
             this.lblZipLabel.TabIndex = 21;
@@ -231,7 +232,7 @@ namespace SU21_Final_Project
             // 
             // tbxZip
             // 
-            this.tbxZip.Location = new System.Drawing.Point(649, 245);
+            this.tbxZip.Location = new System.Drawing.Point(661, 229);
             this.tbxZip.MaxLength = 5;
             this.tbxZip.Name = "tbxZip";
             this.tbxZip.Size = new System.Drawing.Size(94, 22);
@@ -321,13 +322,14 @@ namespace SU21_Final_Project
             // 
             // btnSave
             // 
-            this.btnSave.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.BackColor = System.Drawing.Color.Transparent;
+            this.btnSave.FlatAppearance.BorderSize = 2;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSave.Location = new System.Drawing.Point(327, 580);
+            this.btnSave.Location = new System.Drawing.Point(2, 516);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(110, 31);
+            this.btnSave.Size = new System.Drawing.Size(795, 46);
             this.btnSave.TabIndex = 18;
             this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -337,7 +339,7 @@ namespace SU21_Final_Project
             // lblPhoneLabel
             // 
             this.lblPhoneLabel.AutoSize = true;
-            this.lblPhoneLabel.Location = new System.Drawing.Point(47, 249);
+            this.lblPhoneLabel.Location = new System.Drawing.Point(59, 233);
             this.lblPhoneLabel.Name = "lblPhoneLabel";
             this.lblPhoneLabel.Size = new System.Drawing.Size(74, 17);
             this.lblPhoneLabel.TabIndex = 34;
@@ -346,7 +348,7 @@ namespace SU21_Final_Project
             // lblPhoneTwoLabel
             // 
             this.lblPhoneTwoLabel.AutoSize = true;
-            this.lblPhoneTwoLabel.Location = new System.Drawing.Point(435, 49);
+            this.lblPhoneTwoLabel.Location = new System.Drawing.Point(447, 33);
             this.lblPhoneTwoLabel.Name = "lblPhoneTwoLabel";
             this.lblPhoneTwoLabel.Size = new System.Drawing.Size(68, 17);
             this.lblPhoneTwoLabel.TabIndex = 36;
@@ -355,7 +357,7 @@ namespace SU21_Final_Project
             // lblEmailLabel
             // 
             this.lblEmailLabel.AutoSize = true;
-            this.lblEmailLabel.Location = new System.Drawing.Point(17, 207);
+            this.lblEmailLabel.Location = new System.Drawing.Point(29, 191);
             this.lblEmailLabel.Name = "lblEmailLabel";
             this.lblEmailLabel.Size = new System.Drawing.Size(117, 17);
             this.lblEmailLabel.TabIndex = 38;
@@ -363,7 +365,7 @@ namespace SU21_Final_Project
             // 
             // tbxEmail
             // 
-            this.tbxEmail.Location = new System.Drawing.Point(133, 205);
+            this.tbxEmail.Location = new System.Drawing.Point(145, 189);
             this.tbxEmail.MaxLength = 40;
             this.tbxEmail.Name = "tbxEmail";
             this.tbxEmail.Size = new System.Drawing.Size(165, 22);
@@ -442,16 +444,16 @@ namespace SU21_Final_Project
             this.gbxInformation.Controls.Add(this.lblZipLabel);
             this.gbxInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxInformation.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.gbxInformation.Location = new System.Drawing.Point(2, 23);
+            this.gbxInformation.Location = new System.Drawing.Point(2, 49);
             this.gbxInformation.Name = "gbxInformation";
-            this.gbxInformation.Size = new System.Drawing.Size(795, 318);
+            this.gbxInformation.Size = new System.Drawing.Size(795, 259);
             this.gbxInformation.TabIndex = 44;
             this.gbxInformation.TabStop = false;
             this.gbxInformation.Text = "Information";
             // 
             // mskPhone2
             // 
-            this.mskPhone2.Location = new System.Drawing.Point(511, 46);
+            this.mskPhone2.Location = new System.Drawing.Point(523, 30);
             this.mskPhone2.Mask = "000-000-0000";
             this.mskPhone2.Name = "mskPhone2";
             this.mskPhone2.Size = new System.Drawing.Size(100, 22);
@@ -459,7 +461,7 @@ namespace SU21_Final_Project
             // 
             // mskPhone1
             // 
-            this.mskPhone1.Location = new System.Drawing.Point(133, 247);
+            this.mskPhone1.Location = new System.Drawing.Point(145, 231);
             this.mskPhone1.Mask = "000-000-0000";
             this.mskPhone1.Name = "mskPhone1";
             this.mskPhone1.Size = new System.Drawing.Size(100, 22);
@@ -528,7 +530,7 @@ namespace SU21_Final_Project
             "WV",
             "WI",
             "WY"});
-            this.cboState.Location = new System.Drawing.Point(511, 245);
+            this.cboState.Location = new System.Drawing.Point(523, 229);
             this.cboState.MaxLength = 3;
             this.cboState.Name = "cboState";
             this.cboState.Size = new System.Drawing.Size(63, 24);
@@ -542,7 +544,7 @@ namespace SU21_Final_Project
             "Mrs",
             "Mr",
             "Ms"});
-            this.cboSuffix.Location = new System.Drawing.Point(133, 162);
+            this.cboSuffix.Location = new System.Drawing.Point(145, 146);
             this.cboSuffix.Name = "cboSuffix";
             this.cboSuffix.Size = new System.Drawing.Size(78, 24);
             this.cboSuffix.TabIndex = 3;
@@ -567,7 +569,7 @@ namespace SU21_Final_Project
             this.gbxSecurityQuestion.Controls.Add(this.lblQuestionTwoLabel);
             this.gbxSecurityQuestion.Controls.Add(this.tbxAnswerThree);
             this.gbxSecurityQuestion.Controls.Add(this.lblQuestionThreeLabel);
-            this.gbxSecurityQuestion.Location = new System.Drawing.Point(385, 356);
+            this.gbxSecurityQuestion.Location = new System.Drawing.Point(385, 309);
             this.gbxSecurityQuestion.Name = "gbxSecurityQuestion";
             this.gbxSecurityQuestion.Size = new System.Drawing.Size(412, 205);
             this.gbxSecurityQuestion.TabIndex = 45;
@@ -584,7 +586,7 @@ namespace SU21_Final_Project
             this.gbxCreateLogin.Controls.Add(this.lblPasswordRulesThree);
             this.gbxCreateLogin.Controls.Add(this.lblPasswordRulesOne);
             this.gbxCreateLogin.Controls.Add(this.lblPasswordRulesTwo);
-            this.gbxCreateLogin.Location = new System.Drawing.Point(2, 356);
+            this.gbxCreateLogin.Location = new System.Drawing.Point(2, 309);
             this.gbxCreateLogin.Name = "gbxCreateLogin";
             this.gbxCreateLogin.Size = new System.Drawing.Size(382, 205);
             this.gbxCreateLogin.TabIndex = 47;
@@ -593,18 +595,34 @@ namespace SU21_Final_Project
             // 
             // btnBack
             // 
-            this.btnBack.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.BackColor = System.Drawing.Color.Transparent;
+            this.btnBack.FlatAppearance.BorderSize = 2;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnBack.Location = new System.Drawing.Point(17, 580);
+            this.btnBack.Location = new System.Drawing.Point(2, 568);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(110, 31);
+            this.btnBack.Size = new System.Drawing.Size(795, 43);
             this.btnBack.TabIndex = 19;
             this.btnBack.Text = "&Back";
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             this.btnBack.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnBack_KeyDown);
+            // 
+            // btnHelpSignUp
+            // 
+            this.btnHelpSignUp.BackColor = System.Drawing.Color.Transparent;
+            this.btnHelpSignUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnHelpSignUp.FlatAppearance.BorderSize = 3;
+            this.btnHelpSignUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHelpSignUp.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnHelpSignUp.Location = new System.Drawing.Point(690, 4);
+            this.btnHelpSignUp.Name = "btnHelpSignUp";
+            this.btnHelpSignUp.Size = new System.Drawing.Size(97, 46);
+            this.btnHelpSignUp.TabIndex = 48;
+            this.btnHelpSignUp.Text = "HELP?";
+            this.btnHelpSignUp.UseVisualStyleBackColor = false;
+            this.btnHelpSignUp.Click += new System.EventHandler(this.btnHelpSignUp_Click);
             // 
             // frmSignUp
             // 
@@ -614,6 +632,7 @@ namespace SU21_Final_Project
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(806, 615);
+            this.Controls.Add(this.btnHelpSignUp);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.gbxCreateLogin);
             this.Controls.Add(this.gbxSecurityQuestion);
@@ -686,5 +705,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.ComboBox cboState;
         private System.Windows.Forms.MaskedTextBox mskPhone2;
         private System.Windows.Forms.MaskedTextBox mskPhone1;
+        private System.Windows.Forms.Button btnHelpSignUp;
     }
 }

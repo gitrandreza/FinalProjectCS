@@ -47,8 +47,8 @@ namespace SU21_Final_Project
         string strQuestionTwo ;
         string strQuestionThree ;
         bool blnDuplicateUsername;
-       
 
+        public static bool blnSignUpPicture=false;
        
 
         public frmSignUp()
@@ -473,6 +473,13 @@ namespace SU21_Final_Project
             {
                 btnSave.PerformClick();
             }
+        }
+
+        private void btnHelpSignUp_Click(object sender, EventArgs e)
+        {
+            new frmHelp().Show();
+            blnSignUpPicture = true;
+            this.Hide();
         }
     }
 

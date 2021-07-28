@@ -631,6 +631,7 @@ namespace SU21_Final_Project
             // 
             // gbxUpdateField
             // 
+            this.gbxUpdateField.BackColor = System.Drawing.Color.Silver;
             this.gbxUpdateField.Controls.Add(this.cboCategory);
             this.gbxUpdateField.Controls.Add(this.cboSupplierID);
             this.gbxUpdateField.Controls.Add(this.cbxCategoryID);
@@ -1144,7 +1145,7 @@ namespace SU21_Final_Project
             this.btnRemoveCustomer.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnRemoveCustomer.Location = new System.Drawing.Point(751, 287);
             this.btnRemoveCustomer.Name = "btnRemoveCustomer";
-            this.btnRemoveCustomer.Size = new System.Drawing.Size(116, 33);
+            this.btnRemoveCustomer.Size = new System.Drawing.Size(116, 47);
             this.btnRemoveCustomer.TabIndex = 4;
             this.btnRemoveCustomer.Text = "Remove Customer";
             this.btnRemoveCustomer.UseVisualStyleBackColor = false;
@@ -1157,7 +1158,7 @@ namespace SU21_Final_Project
             this.btnUpdateCustomer.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnUpdateCustomer.Location = new System.Drawing.Point(468, 287);
             this.btnUpdateCustomer.Name = "btnUpdateCustomer";
-            this.btnUpdateCustomer.Size = new System.Drawing.Size(116, 33);
+            this.btnUpdateCustomer.Size = new System.Drawing.Size(116, 47);
             this.btnUpdateCustomer.TabIndex = 3;
             this.btnUpdateCustomer.Text = "Update Customer";
             this.btnUpdateCustomer.UseVisualStyleBackColor = false;
@@ -1170,7 +1171,7 @@ namespace SU21_Final_Project
             this.btnAddCustomer.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnAddCustomer.Location = new System.Drawing.Point(131, 287);
             this.btnAddCustomer.Name = "btnAddCustomer";
-            this.btnAddCustomer.Size = new System.Drawing.Size(116, 33);
+            this.btnAddCustomer.Size = new System.Drawing.Size(170, 47);
             this.btnAddCustomer.TabIndex = 2;
             this.btnAddCustomer.Text = "Add New Customer";
             this.btnAddCustomer.UseVisualStyleBackColor = false;
