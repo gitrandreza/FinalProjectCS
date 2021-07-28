@@ -39,9 +39,9 @@ namespace SU21_Final_Project
             this.lblLoginFailed = new System.Windows.Forms.Label();
             this.btnResetPassword = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.lblProgramLogoTwo = new System.Windows.Forms.Label();
-            this.lblProgramLogoOne = new System.Windows.Forms.Label();
             this.btnHelpLoginForm = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblLoginlabel
@@ -49,7 +49,8 @@ namespace SU21_Final_Project
             this.lblLoginlabel.AutoSize = true;
             this.lblLoginlabel.BackColor = System.Drawing.Color.Transparent;
             this.lblLoginlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoginlabel.Location = new System.Drawing.Point(46, 68);
+            this.lblLoginlabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblLoginlabel.Location = new System.Drawing.Point(38, 118);
             this.lblLoginlabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLoginlabel.Name = "lblLoginlabel";
             this.lblLoginlabel.Size = new System.Drawing.Size(86, 17);
@@ -61,7 +62,8 @@ namespace SU21_Final_Project
             this.lblPasswordlLabel.AutoSize = true;
             this.lblPasswordlLabel.BackColor = System.Drawing.Color.Transparent;
             this.lblPasswordlLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPasswordlLabel.Location = new System.Drawing.Point(46, 107);
+            this.lblPasswordlLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblPasswordlLabel.Location = new System.Drawing.Point(38, 157);
             this.lblPasswordlLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPasswordlLabel.Name = "lblPasswordlLabel";
             this.lblPasswordlLabel.Size = new System.Drawing.Size(82, 17);
@@ -70,7 +72,7 @@ namespace SU21_Final_Project
             // 
             // tbxUsername
             // 
-            this.tbxUsername.Location = new System.Drawing.Point(146, 65);
+            this.tbxUsername.Location = new System.Drawing.Point(138, 115);
             this.tbxUsername.Margin = new System.Windows.Forms.Padding(4);
             this.tbxUsername.Name = "tbxUsername";
             this.tbxUsername.Size = new System.Drawing.Size(219, 22);
@@ -78,7 +80,7 @@ namespace SU21_Final_Project
             // 
             // tbxPassword
             // 
-            this.tbxPassword.Location = new System.Drawing.Point(146, 107);
+            this.tbxPassword.Location = new System.Drawing.Point(138, 157);
             this.tbxPassword.Margin = new System.Windows.Forms.Padding(4);
             this.tbxPassword.Name = "tbxPassword";
             this.tbxPassword.Size = new System.Drawing.Size(219, 22);
@@ -122,7 +124,7 @@ namespace SU21_Final_Project
             this.lblLoginFailed.AutoSize = true;
             this.lblLoginFailed.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLoginFailed.ForeColor = System.Drawing.Color.Black;
-            this.lblLoginFailed.Location = new System.Drawing.Point(143, 146);
+            this.lblLoginFailed.Location = new System.Drawing.Point(135, 196);
             this.lblLoginFailed.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLoginFailed.Name = "lblLoginFailed";
             this.lblLoginFailed.Size = new System.Drawing.Size(0, 17);
@@ -158,45 +160,34 @@ namespace SU21_Final_Project
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             this.btnExit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnExit_KeyDown);
             // 
-            // lblProgramLogoTwo
-            // 
-            this.lblProgramLogoTwo.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.lblProgramLogoTwo.Font = new System.Drawing.Font("Segoe Script", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProgramLogoTwo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblProgramLogoTwo.Location = new System.Drawing.Point(30, 0);
-            this.lblProgramLogoTwo.Name = "lblProgramLogoTwo";
-            this.lblProgramLogoTwo.Size = new System.Drawing.Size(144, 43);
-            this.lblProgramLogoTwo.TabIndex = 9;
-            this.lblProgramLogoTwo.Text = "mprint";
-            // 
-            // lblProgramLogoOne
-            // 
-            this.lblProgramLogoOne.BackColor = System.Drawing.Color.Cyan;
-            this.lblProgramLogoOne.Font = new System.Drawing.Font("Microsoft Uighur", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProgramLogoOne.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblProgramLogoOne.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblProgramLogoOne.Location = new System.Drawing.Point(8, 0);
-            this.lblProgramLogoOne.Name = "lblProgramLogoOne";
-            this.lblProgramLogoOne.Size = new System.Drawing.Size(29, 43);
-            this.lblProgramLogoOne.TabIndex = 10;
-            this.lblProgramLogoOne.Text = "i";
-            // 
             // btnHelpLoginForm
             // 
-            this.btnHelpLoginForm.Location = new System.Drawing.Point(382, 11);
+            this.btnHelpLoginForm.Location = new System.Drawing.Point(405, 12);
             this.btnHelpLoginForm.Name = "btnHelpLoginForm";
             this.btnHelpLoginForm.Size = new System.Drawing.Size(72, 31);
             this.btnHelpLoginForm.TabIndex = 11;
             this.btnHelpLoginForm.Text = "&Help";
             this.btnHelpLoginForm.UseVisualStyleBackColor = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(10, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(108, 103);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(489, 318);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnHelpLoginForm);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnResetPassword);
@@ -207,8 +198,6 @@ namespace SU21_Final_Project
             this.Controls.Add(this.tbxUsername);
             this.Controls.Add(this.lblPasswordlLabel);
             this.Controls.Add(this.lblLoginlabel);
-            this.Controls.Add(this.lblProgramLogoTwo);
-            this.Controls.Add(this.lblProgramLogoOne);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -217,6 +206,7 @@ namespace SU21_Final_Project
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLogin_FormClosing);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,8 +223,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnResetPassword;
         private System.Windows.Forms.Label lblLoginFailed;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Label lblProgramLogoTwo;
-        private System.Windows.Forms.Label lblProgramLogoOne;
         private System.Windows.Forms.Button btnHelpLoginForm;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

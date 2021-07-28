@@ -31,6 +31,7 @@ namespace SU21_Final_Project
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmployee));
             this.tabInformation = new System.Windows.Forms.TabPage();
+            this.btnPrintInvoice = new System.Windows.Forms.Button();
             this.btnClearCustomer = new System.Windows.Forms.Button();
             this.btnClearCoupon = new System.Windows.Forms.Button();
             this.lblSalesDetailLabel = new System.Windows.Forms.Label();
@@ -68,6 +69,12 @@ namespace SU21_Final_Project
             this.lblEmployeeAddress = new System.Windows.Forms.Label();
             this.lblTagEmployeeCity = new System.Windows.Forms.Label();
             this.tabPOS = new System.Windows.Forms.TabPage();
+            this.btnViewInvoice = new System.Windows.Forms.Button();
+            this.btnSearchItem = new System.Windows.Forms.Button();
+            this.lblNameItemLabel = new System.Windows.Forms.Label();
+            this.tbxCustomerName = new System.Windows.Forms.TextBox();
+            this.tbxNameItem = new System.Windows.Forms.TextBox();
+            this.lblCustomerNameLabel = new System.Windows.Forms.Label();
             this.tbxTotalPrice = new System.Windows.Forms.TextBox();
             this.lblTotalPriceLabel = new System.Windows.Forms.Label();
             this.lblSelectedListLabel = new System.Windows.Forms.Label();
@@ -146,13 +153,6 @@ namespace SU21_Final_Project
             this.lblDate = new System.Windows.Forms.Label();
             this.lblUserEmployee = new System.Windows.Forms.Label();
             this.lblNameEmployee = new System.Windows.Forms.Label();
-            this.tbxCustomerName = new System.Windows.Forms.TextBox();
-            this.lblCustomerNameLabel = new System.Windows.Forms.Label();
-            this.btnSearchItem = new System.Windows.Forms.Button();
-            this.lblNameItemLabel = new System.Windows.Forms.Label();
-            this.tbxNameItem = new System.Windows.Forms.TextBox();
-            this.btnPrintInvoice = new System.Windows.Forms.Button();
-            this.btnViewInvoice = new System.Windows.Forms.Button();
             this.tabInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPurchaseDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerPurchase)).BeginInit();
@@ -193,6 +193,16 @@ namespace SU21_Final_Project
             this.tabInformation.Text = "Additional Information";
             this.tabInformation.UseVisualStyleBackColor = true;
             // 
+            // btnPrintInvoice
+            // 
+            this.btnPrintInvoice.Location = new System.Drawing.Point(457, 671);
+            this.btnPrintInvoice.Name = "btnPrintInvoice";
+            this.btnPrintInvoice.Size = new System.Drawing.Size(106, 34);
+            this.btnPrintInvoice.TabIndex = 30;
+            this.btnPrintInvoice.Text = "Print Invoice";
+            this.btnPrintInvoice.UseVisualStyleBackColor = true;
+            this.btnPrintInvoice.Click += new System.EventHandler(this.btnPrintInvoice_Click);
+            // 
             // btnClearCustomer
             // 
             this.btnClearCustomer.Location = new System.Drawing.Point(220, 295);
@@ -228,6 +238,7 @@ namespace SU21_Final_Project
             this.dgvPurchaseDetails.AllowUserToDeleteRows = false;
             this.dgvPurchaseDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPurchaseDetails.Location = new System.Drawing.Point(538, 540);
+            this.dgvPurchaseDetails.MultiSelect = false;
             this.dgvPurchaseDetails.Name = "dgvPurchaseDetails";
             this.dgvPurchaseDetails.ReadOnly = true;
             this.dgvPurchaseDetails.RowHeadersVisible = false;
@@ -252,6 +263,7 @@ namespace SU21_Final_Project
             this.dgvCustomerPurchase.AllowUserToDeleteRows = false;
             this.dgvCustomerPurchase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCustomerPurchase.Location = new System.Drawing.Point(6, 543);
+            this.dgvCustomerPurchase.MultiSelect = false;
             this.dgvCustomerPurchase.Name = "dgvCustomerPurchase";
             this.dgvCustomerPurchase.ReadOnly = true;
             this.dgvCustomerPurchase.RowHeadersVisible = false;
@@ -303,6 +315,7 @@ namespace SU21_Final_Project
             this.dgvCustomerList.AllowUserToDeleteRows = false;
             this.dgvCustomerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCustomerList.Location = new System.Drawing.Point(3, 326);
+            this.dgvCustomerList.MultiSelect = false;
             this.dgvCustomerList.Name = "dgvCustomerList";
             this.dgvCustomerList.ReadOnly = true;
             this.dgvCustomerList.RowHeadersVisible = false;
@@ -623,6 +636,60 @@ namespace SU21_Final_Project
             this.tabPOS.TabIndex = 1;
             this.tabPOS.Text = "Point of Sale";
             this.tabPOS.UseVisualStyleBackColor = true;
+            // 
+            // btnViewInvoice
+            // 
+            this.btnViewInvoice.Enabled = false;
+            this.btnViewInvoice.Location = new System.Drawing.Point(876, 655);
+            this.btnViewInvoice.Name = "btnViewInvoice";
+            this.btnViewInvoice.Size = new System.Drawing.Size(107, 29);
+            this.btnViewInvoice.TabIndex = 35;
+            this.btnViewInvoice.Text = "View Invoice";
+            this.btnViewInvoice.UseVisualStyleBackColor = true;
+            this.btnViewInvoice.Click += new System.EventHandler(this.btnViewInvoice_Click);
+            // 
+            // btnSearchItem
+            // 
+            this.btnSearchItem.Location = new System.Drawing.Point(205, 23);
+            this.btnSearchItem.Name = "btnSearchItem";
+            this.btnSearchItem.Size = new System.Drawing.Size(71, 30);
+            this.btnSearchItem.TabIndex = 19;
+            this.btnSearchItem.Text = "&Search";
+            this.btnSearchItem.UseVisualStyleBackColor = true;
+            this.btnSearchItem.Click += new System.EventHandler(this.btnSearchItem_Click);
+            // 
+            // lblNameItemLabel
+            // 
+            this.lblNameItemLabel.AutoSize = true;
+            this.lblNameItemLabel.Location = new System.Drawing.Point(12, 30);
+            this.lblNameItemLabel.Name = "lblNameItemLabel";
+            this.lblNameItemLabel.Size = new System.Drawing.Size(75, 17);
+            this.lblNameItemLabel.TabIndex = 20;
+            this.lblNameItemLabel.Text = "Item Name";
+            // 
+            // tbxCustomerName
+            // 
+            this.tbxCustomerName.Location = new System.Drawing.Point(876, 537);
+            this.tbxCustomerName.Name = "tbxCustomerName";
+            this.tbxCustomerName.ReadOnly = true;
+            this.tbxCustomerName.Size = new System.Drawing.Size(111, 22);
+            this.tbxCustomerName.TabIndex = 34;
+            // 
+            // tbxNameItem
+            // 
+            this.tbxNameItem.Location = new System.Drawing.Point(89, 27);
+            this.tbxNameItem.Name = "tbxNameItem";
+            this.tbxNameItem.Size = new System.Drawing.Size(100, 22);
+            this.tbxNameItem.TabIndex = 18;
+            // 
+            // lblCustomerNameLabel
+            // 
+            this.lblCustomerNameLabel.AutoSize = true;
+            this.lblCustomerNameLabel.Location = new System.Drawing.Point(757, 540);
+            this.lblCustomerNameLabel.Name = "lblCustomerNameLabel";
+            this.lblCustomerNameLabel.Size = new System.Drawing.Size(109, 17);
+            this.lblCustomerNameLabel.TabIndex = 33;
+            this.lblCustomerNameLabel.Text = "Customer Name";
             // 
             // tbxTotalPrice
             // 
@@ -1408,6 +1475,7 @@ namespace SU21_Final_Project
             this.dgvItemList.AllowUserToDeleteRows = false;
             this.dgvItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvItemList.Location = new System.Drawing.Point(8, 286);
+            this.dgvItemList.MultiSelect = false;
             this.dgvItemList.Name = "dgvItemList";
             this.dgvItemList.ReadOnly = true;
             this.dgvItemList.RowHeadersVisible = false;
@@ -1432,6 +1500,7 @@ namespace SU21_Final_Project
             this.dgvEmployeeViewItem.AllowUserToDeleteRows = false;
             this.dgvEmployeeViewItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmployeeViewItem.Location = new System.Drawing.Point(8, 57);
+            this.dgvEmployeeViewItem.MultiSelect = false;
             this.dgvEmployeeViewItem.Name = "dgvEmployeeViewItem";
             this.dgvEmployeeViewItem.ReadOnly = true;
             this.dgvEmployeeViewItem.RowHeadersVisible = false;
@@ -1471,6 +1540,7 @@ namespace SU21_Final_Project
             this.lblUserEmployee.Name = "lblUserEmployee";
             this.lblUserEmployee.Size = new System.Drawing.Size(2, 19);
             this.lblUserEmployee.TabIndex = 28;
+            this.lblUserEmployee.Visible = false;
             // 
             // lblNameEmployee
             // 
@@ -1480,70 +1550,6 @@ namespace SU21_Final_Project
             this.lblNameEmployee.Name = "lblNameEmployee";
             this.lblNameEmployee.Size = new System.Drawing.Size(2, 19);
             this.lblNameEmployee.TabIndex = 29;
-            // 
-            // tbxCustomerName
-            // 
-            this.tbxCustomerName.Location = new System.Drawing.Point(876, 537);
-            this.tbxCustomerName.Name = "tbxCustomerName";
-            this.tbxCustomerName.ReadOnly = true;
-            this.tbxCustomerName.Size = new System.Drawing.Size(111, 22);
-            this.tbxCustomerName.TabIndex = 34;
-            // 
-            // lblCustomerNameLabel
-            // 
-            this.lblCustomerNameLabel.AutoSize = true;
-            this.lblCustomerNameLabel.Location = new System.Drawing.Point(757, 540);
-            this.lblCustomerNameLabel.Name = "lblCustomerNameLabel";
-            this.lblCustomerNameLabel.Size = new System.Drawing.Size(109, 17);
-            this.lblCustomerNameLabel.TabIndex = 33;
-            this.lblCustomerNameLabel.Text = "Customer Name";
-            // 
-            // btnSearchItem
-            // 
-            this.btnSearchItem.Location = new System.Drawing.Point(205, 23);
-            this.btnSearchItem.Name = "btnSearchItem";
-            this.btnSearchItem.Size = new System.Drawing.Size(71, 30);
-            this.btnSearchItem.TabIndex = 19;
-            this.btnSearchItem.Text = "&Search";
-            this.btnSearchItem.UseVisualStyleBackColor = true;
-            this.btnSearchItem.Click += new System.EventHandler(this.btnSearchItem_Click);
-            // 
-            // lblNameItemLabel
-            // 
-            this.lblNameItemLabel.AutoSize = true;
-            this.lblNameItemLabel.Location = new System.Drawing.Point(12, 30);
-            this.lblNameItemLabel.Name = "lblNameItemLabel";
-            this.lblNameItemLabel.Size = new System.Drawing.Size(75, 17);
-            this.lblNameItemLabel.TabIndex = 20;
-            this.lblNameItemLabel.Text = "Item Name";
-            // 
-            // tbxNameItem
-            // 
-            this.tbxNameItem.Location = new System.Drawing.Point(89, 27);
-            this.tbxNameItem.Name = "tbxNameItem";
-            this.tbxNameItem.Size = new System.Drawing.Size(100, 22);
-            this.tbxNameItem.TabIndex = 18;
-            // 
-            // btnPrintInvoice
-            // 
-            this.btnPrintInvoice.Location = new System.Drawing.Point(457, 671);
-            this.btnPrintInvoice.Name = "btnPrintInvoice";
-            this.btnPrintInvoice.Size = new System.Drawing.Size(106, 34);
-            this.btnPrintInvoice.TabIndex = 30;
-            this.btnPrintInvoice.Text = "Print Invoice";
-            this.btnPrintInvoice.UseVisualStyleBackColor = true;
-            this.btnPrintInvoice.Click += new System.EventHandler(this.btnPrintInvoice_Click);
-            // 
-            // btnViewInvoice
-            // 
-            this.btnViewInvoice.Enabled = false;
-            this.btnViewInvoice.Location = new System.Drawing.Point(876, 655);
-            this.btnViewInvoice.Name = "btnViewInvoice";
-            this.btnViewInvoice.Size = new System.Drawing.Size(107, 29);
-            this.btnViewInvoice.TabIndex = 35;
-            this.btnViewInvoice.Text = "View Invoice";
-            this.btnViewInvoice.UseVisualStyleBackColor = true;
-            this.btnViewInvoice.Click += new System.EventHandler(this.btnViewInvoice_Click);
             // 
             // frmEmployee
             // 

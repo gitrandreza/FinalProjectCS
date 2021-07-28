@@ -54,9 +54,8 @@ namespace SU21_Final_Project
             // 
             // gbxItemInformation
             // 
-            this.gbxItemInformation.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.gbxItemInformation.BackColor = System.Drawing.Color.Transparent;
             this.gbxItemInformation.Controls.Add(this.btnInsertImage);
-            this.gbxItemInformation.Controls.Add(this.btnSaveItems);
             this.gbxItemInformation.Controls.Add(this.cboSupplier);
             this.gbxItemInformation.Controls.Add(this.cboCategory);
             this.gbxItemInformation.Controls.Add(this.lblItemName);
@@ -72,7 +71,8 @@ namespace SU21_Final_Project
             this.gbxItemInformation.Controls.Add(this.lblTagRetailPrice);
             this.gbxItemInformation.Controls.Add(this.label6);
             this.gbxItemInformation.Controls.Add(this.label8);
-            this.gbxItemInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxItemInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxItemInformation.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.gbxItemInformation.Location = new System.Drawing.Point(2, 31);
             this.gbxItemInformation.Name = "gbxItemInformation";
             this.gbxItemInformation.Size = new System.Drawing.Size(824, 325);
@@ -93,12 +93,15 @@ namespace SU21_Final_Project
             // 
             // btnSaveItems
             // 
-            this.btnSaveItems.Location = new System.Drawing.Point(265, 285);
+            this.btnSaveItems.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnSaveItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveItems.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSaveItems.Location = new System.Drawing.Point(472, 362);
             this.btnSaveItems.Name = "btnSaveItems";
-            this.btnSaveItems.Size = new System.Drawing.Size(101, 28);
+            this.btnSaveItems.Size = new System.Drawing.Size(110, 42);
             this.btnSaveItems.TabIndex = 43;
             this.btnSaveItems.Text = "Save Item";
-            this.btnSaveItems.UseVisualStyleBackColor = true;
+            this.btnSaveItems.UseVisualStyleBackColor = false;
             this.btnSaveItems.Click += new System.EventHandler(this.btnSaveItems_Click);
             this.btnSaveItems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnSaveItems_KeyDown);
             // 
@@ -110,7 +113,7 @@ namespace SU21_Final_Project
             "1",
             "2",
             "3"});
-            this.cboSupplier.Location = new System.Drawing.Point(133, 289);
+            this.cboSupplier.Location = new System.Drawing.Point(144, 289);
             this.cboSupplier.MaxLength = 3;
             this.cboSupplier.Name = "cboSupplier";
             this.cboSupplier.Size = new System.Drawing.Size(63, 24);
@@ -124,7 +127,7 @@ namespace SU21_Final_Project
             "1",
             "2",
             "3"});
-            this.cboCategory.Location = new System.Drawing.Point(133, 162);
+            this.cboCategory.Location = new System.Drawing.Point(144, 162);
             this.cboCategory.Name = "cboCategory";
             this.cboCategory.Size = new System.Drawing.Size(78, 24);
             this.cboCategory.TabIndex = 3;
@@ -134,13 +137,13 @@ namespace SU21_Final_Project
             this.lblItemName.AutoSize = true;
             this.lblItemName.Location = new System.Drawing.Point(41, 46);
             this.lblItemName.Name = "lblItemName";
-            this.lblItemName.Size = new System.Drawing.Size(75, 17);
+            this.lblItemName.Size = new System.Drawing.Size(84, 17);
             this.lblItemName.TabIndex = 2;
             this.lblItemName.Text = "Item Name";
             // 
             // tbxItemCost
             // 
-            this.tbxItemCost.Location = new System.Drawing.Point(133, 124);
+            this.tbxItemCost.Location = new System.Drawing.Point(144, 124);
             this.tbxItemCost.MaxLength = 20;
             this.tbxItemCost.Name = "tbxItemCost";
             this.tbxItemCost.Size = new System.Drawing.Size(114, 22);
@@ -148,7 +151,7 @@ namespace SU21_Final_Project
             // 
             // tbxItemName
             // 
-            this.tbxItemName.Location = new System.Drawing.Point(133, 44);
+            this.tbxItemName.Location = new System.Drawing.Point(144, 44);
             this.tbxItemName.MaxLength = 20;
             this.tbxItemName.Name = "tbxItemName";
             this.tbxItemName.Size = new System.Drawing.Size(165, 22);
@@ -159,7 +162,7 @@ namespace SU21_Final_Project
             this.lblTagCost.AutoSize = true;
             this.lblTagCost.Location = new System.Drawing.Point(80, 126);
             this.lblTagCost.Name = "lblTagCost";
-            this.lblTagCost.Size = new System.Drawing.Size(36, 17);
+            this.lblTagCost.Size = new System.Drawing.Size(40, 17);
             this.lblTagCost.TabIndex = 3;
             this.lblTagCost.Text = "Cost";
             // 
@@ -168,7 +171,7 @@ namespace SU21_Final_Project
             this.lblTagQuantity.AutoSize = true;
             this.lblTagQuantity.Location = new System.Drawing.Point(55, 84);
             this.lblTagQuantity.Name = "lblTagQuantity";
-            this.lblTagQuantity.Size = new System.Drawing.Size(61, 17);
+            this.lblTagQuantity.Size = new System.Drawing.Size(69, 17);
             this.lblTagQuantity.TabIndex = 4;
             this.lblTagQuantity.Text = "Quantity";
             // 
@@ -177,7 +180,7 @@ namespace SU21_Final_Project
             this.lblTagDescription.AutoSize = true;
             this.lblTagDescription.Location = new System.Drawing.Point(42, 247);
             this.lblTagDescription.Name = "lblTagDescription";
-            this.lblTagDescription.Size = new System.Drawing.Size(79, 17);
+            this.lblTagDescription.Size = new System.Drawing.Size(90, 17);
             this.lblTagDescription.TabIndex = 38;
             this.lblTagDescription.Text = "Description";
             // 
@@ -186,13 +189,13 @@ namespace SU21_Final_Project
             this.lblTagCategory.AutoSize = true;
             this.lblTagCategory.Location = new System.Drawing.Point(56, 164);
             this.lblTagCategory.Name = "lblTagCategory";
-            this.lblTagCategory.Size = new System.Drawing.Size(65, 17);
+            this.lblTagCategory.Size = new System.Drawing.Size(73, 17);
             this.lblTagCategory.TabIndex = 5;
             this.lblTagCategory.Text = "Category";
             // 
             // tbxDescription
             // 
-            this.tbxDescription.Location = new System.Drawing.Point(133, 245);
+            this.tbxDescription.Location = new System.Drawing.Point(144, 245);
             this.tbxDescription.MaxLength = 40;
             this.tbxDescription.Name = "tbxDescription";
             this.tbxDescription.Size = new System.Drawing.Size(335, 22);
@@ -200,7 +203,7 @@ namespace SU21_Final_Project
             // 
             // tbxQuantity
             // 
-            this.tbxQuantity.Location = new System.Drawing.Point(133, 84);
+            this.tbxQuantity.Location = new System.Drawing.Point(144, 84);
             this.tbxQuantity.MaxLength = 20;
             this.tbxQuantity.Name = "tbxQuantity";
             this.tbxQuantity.Size = new System.Drawing.Size(78, 22);
@@ -208,7 +211,7 @@ namespace SU21_Final_Project
             // 
             // tbxRetailPrice
             // 
-            this.tbxRetailPrice.Location = new System.Drawing.Point(133, 202);
+            this.tbxRetailPrice.Location = new System.Drawing.Point(144, 202);
             this.tbxRetailPrice.Name = "tbxRetailPrice";
             this.tbxRetailPrice.Size = new System.Drawing.Size(114, 22);
             this.tbxRetailPrice.TabIndex = 4;
@@ -218,7 +221,7 @@ namespace SU21_Final_Project
             this.lblTagRetailPrice.AutoSize = true;
             this.lblTagRetailPrice.Location = new System.Drawing.Point(41, 206);
             this.lblTagRetailPrice.Name = "lblTagRetailPrice";
-            this.lblTagRetailPrice.Size = new System.Drawing.Size(80, 17);
+            this.lblTagRetailPrice.Size = new System.Drawing.Size(92, 17);
             this.lblTagRetailPrice.TabIndex = 9;
             this.lblTagRetailPrice.Text = "Retail Price";
             // 
@@ -227,7 +230,7 @@ namespace SU21_Final_Project
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(352, 246);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 17);
+            this.label6.Size = new System.Drawing.Size(41, 17);
             this.label6.TabIndex = 11;
             this.label6.Text = "*City";
             // 
@@ -236,27 +239,32 @@ namespace SU21_Final_Project
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(57, 292);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(60, 17);
+            this.label8.Size = new System.Drawing.Size(68, 17);
             this.label8.TabIndex = 15;
             this.label8.Text = "Supplier";
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(628, 363);
+            this.btnBack.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnBack.Location = new System.Drawing.Point(275, 362);
             this.btnBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(110, 34);
+            this.btnBack.Size = new System.Drawing.Size(110, 42);
             this.btnBack.TabIndex = 47;
             this.btnBack.Text = "&Close";
-            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // frmAddItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(832, 410);
             this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.btnSaveItems);
             this.Controls.Add(this.gbxItemInformation);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

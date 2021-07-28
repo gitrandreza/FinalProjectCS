@@ -33,7 +33,6 @@ namespace SU21_Final_Project
             this.gbxInformation = new System.Windows.Forms.GroupBox();
             this.lblPositionLabel = new System.Windows.Forms.Label();
             this.cboPosition = new System.Windows.Forms.ComboBox();
-            this.mskHiredDate = new System.Windows.Forms.MaskedTextBox();
             this.mskPhone = new System.Windows.Forms.MaskedTextBox();
             this.lblRoleLabel = new System.Windows.Forms.Label();
             this.cboRole = new System.Windows.Forms.ComboBox();
@@ -62,15 +61,16 @@ namespace SU21_Final_Project
             this.lblZipLabel = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.dtpEmployeeHiredDate = new System.Windows.Forms.DateTimePicker();
             this.gbxInformation.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbxInformation
             // 
-            this.gbxInformation.BackColor = System.Drawing.SystemColors.Control;
+            this.gbxInformation.BackColor = System.Drawing.Color.Transparent;
+            this.gbxInformation.Controls.Add(this.dtpEmployeeHiredDate);
             this.gbxInformation.Controls.Add(this.lblPositionLabel);
             this.gbxInformation.Controls.Add(this.cboPosition);
-            this.gbxInformation.Controls.Add(this.mskHiredDate);
             this.gbxInformation.Controls.Add(this.mskPhone);
             this.gbxInformation.Controls.Add(this.lblRoleLabel);
             this.gbxInformation.Controls.Add(this.cboRole);
@@ -97,7 +97,8 @@ namespace SU21_Final_Project
             this.gbxInformation.Controls.Add(this.lblSalaryLabel);
             this.gbxInformation.Controls.Add(this.tbxZip);
             this.gbxInformation.Controls.Add(this.lblZipLabel);
-            this.gbxInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxInformation.ForeColor = System.Drawing.Color.White;
             this.gbxInformation.Location = new System.Drawing.Point(3, 12);
             this.gbxInformation.Name = "gbxInformation";
             this.gbxInformation.Size = new System.Drawing.Size(795, 286);
@@ -110,7 +111,7 @@ namespace SU21_Final_Project
             this.lblPositionLabel.AutoSize = true;
             this.lblPositionLabel.Location = new System.Drawing.Point(621, 70);
             this.lblPositionLabel.Name = "lblPositionLabel";
-            this.lblPositionLabel.Size = new System.Drawing.Size(63, 17);
+            this.lblPositionLabel.Size = new System.Drawing.Size(72, 17);
             this.lblPositionLabel.TabIndex = 55;
             this.lblPositionLabel.Text = "*Position";
             // 
@@ -122,19 +123,10 @@ namespace SU21_Final_Project
             "Manager",
             "Clerk",
             "Technician"});
-            this.cboPosition.Location = new System.Drawing.Point(685, 66);
+            this.cboPosition.Location = new System.Drawing.Point(704, 65);
             this.cboPosition.Name = "cboPosition";
             this.cboPosition.Size = new System.Drawing.Size(78, 24);
             this.cboPosition.TabIndex = 54;
-            // 
-            // mskHiredDate
-            // 
-            this.mskHiredDate.Location = new System.Drawing.Point(501, 184);
-            this.mskHiredDate.Mask = "00/00/0000";
-            this.mskHiredDate.Name = "mskHiredDate";
-            this.mskHiredDate.Size = new System.Drawing.Size(100, 22);
-            this.mskHiredDate.TabIndex = 53;
-            this.mskHiredDate.ValidatingType = typeof(System.DateTime);
             // 
             // mskPhone
             // 
@@ -149,7 +141,7 @@ namespace SU21_Final_Project
             this.lblRoleLabel.AutoSize = true;
             this.lblRoleLabel.Location = new System.Drawing.Point(437, 73);
             this.lblRoleLabel.Name = "lblRoleLabel";
-            this.lblRoleLabel.Size = new System.Drawing.Size(42, 17);
+            this.lblRoleLabel.Size = new System.Drawing.Size(47, 17);
             this.lblRoleLabel.TabIndex = 51;
             this.lblRoleLabel.Text = "*Role";
             // 
@@ -158,8 +150,8 @@ namespace SU21_Final_Project
             this.cboRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboRole.FormattingEnabled = true;
             this.cboRole.Items.AddRange(new object[] {
-            "1",
-            "2"});
+            "Manager",
+            "Employee"});
             this.cboRole.Location = new System.Drawing.Point(501, 69);
             this.cboRole.Name = "cboRole";
             this.cboRole.Size = new System.Drawing.Size(78, 24);
@@ -250,20 +242,20 @@ namespace SU21_Final_Project
             // lblInfosOneLabel
             // 
             this.lblInfosOneLabel.AutoSize = true;
-            this.lblInfosOneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInfosOneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInfosOneLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblInfosOneLabel.Location = new System.Drawing.Point(667, 18);
             this.lblInfosOneLabel.Name = "lblInfosOneLabel";
-            this.lblInfosOneLabel.Size = new System.Drawing.Size(122, 17);
+            this.lblInfosOneLabel.Size = new System.Drawing.Size(92, 17);
             this.lblInfosOneLabel.TabIndex = 46;
-            this.lblInfosOneLabel.Text = "(*)Required Fields";
+            this.lblInfosOneLabel.Text = "(*)Required";
             // 
             // lblFirstNameLabel
             // 
             this.lblFirstNameLabel.AutoSize = true;
             this.lblFirstNameLabel.Location = new System.Drawing.Point(41, 46);
             this.lblFirstNameLabel.Name = "lblFirstNameLabel";
-            this.lblFirstNameLabel.Size = new System.Drawing.Size(81, 17);
+            this.lblFirstNameLabel.Size = new System.Drawing.Size(92, 17);
             this.lblFirstNameLabel.TabIndex = 2;
             this.lblFirstNameLabel.Text = "*First Name";
             // 
@@ -288,7 +280,7 @@ namespace SU21_Final_Project
             this.lblLastNameLabel.AutoSize = true;
             this.lblLastNameLabel.Location = new System.Drawing.Point(41, 126);
             this.lblLastNameLabel.Name = "lblLastNameLabel";
-            this.lblLastNameLabel.Size = new System.Drawing.Size(81, 17);
+            this.lblLastNameLabel.Size = new System.Drawing.Size(91, 17);
             this.lblLastNameLabel.TabIndex = 3;
             this.lblLastNameLabel.Text = "*Last Name";
             // 
@@ -297,7 +289,7 @@ namespace SU21_Final_Project
             this.lblMiddleNameLabel.AutoSize = true;
             this.lblMiddleNameLabel.Location = new System.Drawing.Point(32, 88);
             this.lblMiddleNameLabel.Name = "lblMiddleNameLabel";
-            this.lblMiddleNameLabel.Size = new System.Drawing.Size(90, 17);
+            this.lblMiddleNameLabel.Size = new System.Drawing.Size(101, 17);
             this.lblMiddleNameLabel.TabIndex = 4;
             this.lblMiddleNameLabel.Text = "Middle Name";
             // 
@@ -306,7 +298,7 @@ namespace SU21_Final_Project
             this.lblEmailLabel.AutoSize = true;
             this.lblEmailLabel.Location = new System.Drawing.Point(385, 37);
             this.lblEmailLabel.Name = "lblEmailLabel";
-            this.lblEmailLabel.Size = new System.Drawing.Size(103, 17);
+            this.lblEmailLabel.Size = new System.Drawing.Size(117, 17);
             this.lblEmailLabel.TabIndex = 38;
             this.lblEmailLabel.Text = "*Email Address";
             // 
@@ -315,7 +307,7 @@ namespace SU21_Final_Project
             this.lblSuffixLabel.AutoSize = true;
             this.lblSuffixLabel.Location = new System.Drawing.Point(80, 161);
             this.lblSuffixLabel.Name = "lblSuffixLabel";
-            this.lblSuffixLabel.Size = new System.Drawing.Size(42, 17);
+            this.lblSuffixLabel.Size = new System.Drawing.Size(48, 17);
             this.lblSuffixLabel.TabIndex = 5;
             this.lblSuffixLabel.Text = "Suffix";
             // 
@@ -340,7 +332,7 @@ namespace SU21_Final_Project
             this.lblHiredDateLabel.AutoSize = true;
             this.lblHiredDateLabel.Location = new System.Drawing.Point(414, 189);
             this.lblHiredDateLabel.Name = "lblHiredDateLabel";
-            this.lblHiredDateLabel.Size = new System.Drawing.Size(85, 17);
+            this.lblHiredDateLabel.Size = new System.Drawing.Size(97, 17);
             this.lblHiredDateLabel.TabIndex = 36;
             this.lblHiredDateLabel.Text = "*Hired Date ";
             // 
@@ -349,7 +341,7 @@ namespace SU21_Final_Project
             this.lblPhoneLabel.AutoSize = true;
             this.lblPhoneLabel.Location = new System.Drawing.Point(422, 146);
             this.lblPhoneLabel.Name = "lblPhoneLabel";
-            this.lblPhoneLabel.Size = new System.Drawing.Size(58, 17);
+            this.lblPhoneLabel.Size = new System.Drawing.Size(65, 17);
             this.lblPhoneLabel.TabIndex = 34;
             this.lblPhoneLabel.Text = "*Phone ";
             // 
@@ -366,7 +358,7 @@ namespace SU21_Final_Project
             this.lblCityLabel.AutoSize = true;
             this.lblCityLabel.Location = new System.Drawing.Point(94, 248);
             this.lblCityLabel.Name = "lblCityLabel";
-            this.lblCityLabel.Size = new System.Drawing.Size(36, 17);
+            this.lblCityLabel.Size = new System.Drawing.Size(41, 17);
             this.lblCityLabel.TabIndex = 11;
             this.lblCityLabel.Text = "*City";
             // 
@@ -383,7 +375,7 @@ namespace SU21_Final_Project
             this.lblAddressLabel.AutoSize = true;
             this.lblAddressLabel.Location = new System.Drawing.Point(41, 202);
             this.lblAddressLabel.Name = "lblAddressLabel";
-            this.lblAddressLabel.Size = new System.Drawing.Size(77, 17);
+            this.lblAddressLabel.Size = new System.Drawing.Size(87, 17);
             this.lblAddressLabel.TabIndex = 13;
             this.lblAddressLabel.Text = "*Address 1";
             // 
@@ -392,7 +384,7 @@ namespace SU21_Final_Project
             this.lblStateLabel.AutoSize = true;
             this.lblStateLabel.Location = new System.Drawing.Point(395, 252);
             this.lblStateLabel.Name = "lblStateLabel";
-            this.lblStateLabel.Size = new System.Drawing.Size(46, 17);
+            this.lblStateLabel.Size = new System.Drawing.Size(52, 17);
             this.lblStateLabel.TabIndex = 15;
             this.lblStateLabel.Text = "*State";
             // 
@@ -409,7 +401,7 @@ namespace SU21_Final_Project
             this.lblSalaryLabel.AutoSize = true;
             this.lblSalaryLabel.Location = new System.Drawing.Point(427, 108);
             this.lblSalaryLabel.Name = "lblSalaryLabel";
-            this.lblSalaryLabel.Size = new System.Drawing.Size(53, 17);
+            this.lblSalaryLabel.Size = new System.Drawing.Size(60, 17);
             this.lblSalaryLabel.TabIndex = 19;
             this.lblSalaryLabel.Text = "*Salary";
             // 
@@ -426,7 +418,7 @@ namespace SU21_Final_Project
             this.lblZipLabel.AutoSize = true;
             this.lblZipLabel.Location = new System.Drawing.Point(511, 250);
             this.lblZipLabel.Name = "lblZipLabel";
-            this.lblZipLabel.Size = new System.Drawing.Size(33, 17);
+            this.lblZipLabel.Size = new System.Drawing.Size(37, 17);
             this.lblZipLabel.TabIndex = 21;
             this.lblZipLabel.Text = "*Zip";
             // 
@@ -458,10 +450,20 @@ namespace SU21_Final_Project
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // dtpEmployeeHiredDate
+            // 
+            this.dtpEmployeeHiredDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpEmployeeHiredDate.Location = new System.Drawing.Point(501, 189);
+            this.dtpEmployeeHiredDate.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
+            this.dtpEmployeeHiredDate.Name = "dtpEmployeeHiredDate";
+            this.dtpEmployeeHiredDate.Size = new System.Drawing.Size(158, 22);
+            this.dtpEmployeeHiredDate.TabIndex = 56;
+            // 
             // frmAddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(811, 359);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnSave);
@@ -470,7 +472,7 @@ namespace SU21_Final_Project
             this.MaximizeBox = false;
             this.Name = "frmAddEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AddEmployee";
+            this.Text = "Add Employee";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAddEmployee_FormClosing);
             this.gbxInformation.ResumeLayout(false);
             this.gbxInformation.PerformLayout();
@@ -509,8 +511,8 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblRoleLabel;
         private System.Windows.Forms.ComboBox cboRole;
         private System.Windows.Forms.MaskedTextBox mskPhone;
-        private System.Windows.Forms.MaskedTextBox mskHiredDate;
         private System.Windows.Forms.Label lblPositionLabel;
         private System.Windows.Forms.ComboBox cboPosition;
+        private System.Windows.Forms.DateTimePicker dtpEmployeeHiredDate;
     }
 }

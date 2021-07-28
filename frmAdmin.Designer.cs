@@ -111,6 +111,7 @@ namespace SU21_Final_Project
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
             this.tabSalesReport = new System.Windows.Forms.TabPage();
             this.gbxReport = new System.Windows.Forms.GroupBox();
+            this.btnPrintSelectedSalesReport = new System.Windows.Forms.Button();
             this.radAllReport = new System.Windows.Forms.RadioButton();
             this.radMonthly = new System.Windows.Forms.RadioButton();
             this.radWeekly = new System.Windows.Forms.RadioButton();
@@ -133,7 +134,30 @@ namespace SU21_Final_Project
             this.lblDate = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnAccessPOS = new System.Windows.Forms.Button();
-            this.btnPrintSelectedSalesReport = new System.Windows.Forms.Button();
+            this.tabSupplier = new System.Windows.Forms.TabPage();
+            this.dgvSupplierView = new System.Windows.Forms.DataGridView();
+            this.btnRemoveSupplier = new System.Windows.Forms.Button();
+            this.btnEditSupplier = new System.Windows.Forms.Button();
+            this.btnAddSupplier = new System.Windows.Forms.Button();
+            this.gbxAddEditSupplier = new System.Windows.Forms.GroupBox();
+            this.btnSaveEditSupplier = new System.Windows.Forms.Button();
+            this.tbxSupplierCity = new System.Windows.Forms.TextBox();
+            this.lblSupplierCity = new System.Windows.Forms.Label();
+            this.cboSupplierState = new System.Windows.Forms.ComboBox();
+            this.tbxSupplierZip = new System.Windows.Forms.TextBox();
+            this.mskSupplierPhone = new System.Windows.Forms.MaskedTextBox();
+            this.tbxSupplierAddress = new System.Windows.Forms.TextBox();
+            this.tbxEmailSupplier = new System.Windows.Forms.TextBox();
+            this.tbxSupplierContactName = new System.Windows.Forms.TextBox();
+            this.tbxSupplierName = new System.Windows.Forms.TextBox();
+            this.btnSaveAddSupplier = new System.Windows.Forms.Button();
+            this.lblsupplierPhone = new System.Windows.Forms.Label();
+            this.lblSupplierZip = new System.Windows.Forms.Label();
+            this.lblSuppplierState = new System.Windows.Forms.Label();
+            this.lblSupplierAddress = new System.Windows.Forms.Label();
+            this.lblEmailSupplier = new System.Windows.Forms.Label();
+            this.lblSupplierContact = new System.Windows.Forms.Label();
+            this.lblSupplierName = new System.Windows.Forms.Label();
             this.tabEmployee.SuspendLayout();
             this.gbxEdit.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -151,10 +175,14 @@ namespace SU21_Final_Project
             this.gbxCreateCoupon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesReport)).BeginInit();
+            this.tabSupplier.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierView)).BeginInit();
+            this.gbxAddEditSupplier.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabEmployee
             // 
+            this.tabEmployee.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabEmployee.BackgroundImage")));
             this.tabEmployee.Controls.Add(this.gbxEdit);
             this.tabEmployee.Controls.Add(this.groupBox1);
             this.tabEmployee.Controls.Add(this.btnRemoveEmployee);
@@ -171,6 +199,7 @@ namespace SU21_Final_Project
             // 
             // gbxEdit
             // 
+            this.gbxEdit.BackColor = System.Drawing.Color.Silver;
             this.gbxEdit.Controls.Add(this.cbxStates);
             this.gbxEdit.Controls.Add(this.cbxEditPhone);
             this.gbxEdit.Controls.Add(this.btnSaveEdit);
@@ -430,6 +459,7 @@ namespace SU21_Final_Project
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Silver;
             this.groupBox1.Controls.Add(this.lblHiredDate);
             this.groupBox1.Controls.Add(this.lblSalary);
             this.groupBox1.Controls.Add(this.lblPosition);
@@ -534,6 +564,7 @@ namespace SU21_Final_Project
             this.dgvEmployee.AllowUserToDeleteRows = false;
             this.dgvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmployee.Location = new System.Drawing.Point(8, 22);
+            this.dgvEmployee.MultiSelect = false;
             this.dgvEmployee.Name = "dgvEmployee";
             this.dgvEmployee.ReadOnly = true;
             this.dgvEmployee.RowHeadersVisible = false;
@@ -547,6 +578,7 @@ namespace SU21_Final_Project
             // 
             // tabInventory
             // 
+            this.tabInventory.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabInventory.BackgroundImage")));
             this.tabInventory.Controls.Add(this.btnRefresh);
             this.tabInventory.Controls.Add(this.dgvLowItem);
             this.tabInventory.Controls.Add(this.lblLowItemLabel);
@@ -565,9 +597,9 @@ namespace SU21_Final_Project
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(496, 470);
+            this.btnRefresh.Location = new System.Drawing.Point(834, 187);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.Size = new System.Drawing.Size(119, 39);
             this.btnRefresh.TabIndex = 42;
             this.btnRefresh.Text = "&Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
@@ -579,6 +611,7 @@ namespace SU21_Final_Project
             this.dgvLowItem.AllowUserToDeleteRows = false;
             this.dgvLowItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLowItem.Location = new System.Drawing.Point(823, 253);
+            this.dgvLowItem.MultiSelect = false;
             this.dgvLowItem.Name = "dgvLowItem";
             this.dgvLowItem.ReadOnly = true;
             this.dgvLowItem.RowHeadersVisible = false;
@@ -675,7 +708,7 @@ namespace SU21_Final_Project
             // 
             this.tbxDescription.Enabled = false;
             this.tbxDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxDescription.Location = new System.Drawing.Point(409, 35);
+            this.tbxDescription.Location = new System.Drawing.Point(408, 44);
             this.tbxDescription.Multiline = true;
             this.tbxDescription.Name = "tbxDescription";
             this.tbxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -685,7 +718,7 @@ namespace SU21_Final_Project
             // cbxDescription
             // 
             this.cbxDescription.AutoSize = true;
-            this.cbxDescription.Location = new System.Drawing.Point(307, 37);
+            this.cbxDescription.Location = new System.Drawing.Point(301, 39);
             this.cbxDescription.Name = "cbxDescription";
             this.cbxDescription.Size = new System.Drawing.Size(101, 21);
             this.cbxDescription.TabIndex = 23;
@@ -806,6 +839,7 @@ namespace SU21_Final_Project
             this.dgvAllProducts.AllowUserToDeleteRows = false;
             this.dgvAllProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAllProducts.Location = new System.Drawing.Point(8, 6);
+            this.dgvAllProducts.MultiSelect = false;
             this.dgvAllProducts.Name = "dgvAllProducts";
             this.dgvAllProducts.ReadOnly = true;
             this.dgvAllProducts.RowHeadersVisible = false;
@@ -834,6 +868,7 @@ namespace SU21_Final_Project
             this.tabManagerFeatures.Controls.Add(this.tabEmployee);
             this.tabManagerFeatures.Controls.Add(this.tabCustomer);
             this.tabManagerFeatures.Controls.Add(this.tabSalesReport);
+            this.tabManagerFeatures.Controls.Add(this.tabSupplier);
             this.tabManagerFeatures.Location = new System.Drawing.Point(12, 52);
             this.tabManagerFeatures.Name = "tabManagerFeatures";
             this.tabManagerFeatures.SelectedIndex = 0;
@@ -843,6 +878,7 @@ namespace SU21_Final_Project
             // 
             // tabCustomer
             // 
+            this.tabCustomer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabCustomer.BackgroundImage")));
             this.tabCustomer.Controls.Add(this.gbxAddNewCustomer);
             this.tabCustomer.Controls.Add(this.btnRemoveCustomer);
             this.tabCustomer.Controls.Add(this.btnUpdateCustomer);
@@ -857,6 +893,7 @@ namespace SU21_Final_Project
             // 
             // gbxAddNewCustomer
             // 
+            this.gbxAddNewCustomer.BackColor = System.Drawing.Color.LightGray;
             this.gbxAddNewCustomer.Controls.Add(this.btnEditCustomer);
             this.gbxAddNewCustomer.Controls.Add(this.tbxCustomerCity);
             this.gbxAddNewCustomer.Controls.Add(this.lblCityLabel);
@@ -881,16 +918,19 @@ namespace SU21_Final_Project
             this.gbxAddNewCustomer.Size = new System.Drawing.Size(691, 168);
             this.gbxAddNewCustomer.TabIndex = 18;
             this.gbxAddNewCustomer.TabStop = false;
-            this.gbxAddNewCustomer.Text = "Customer Information";
+            this.gbxAddNewCustomer.Text = "Add/Edit Customer ";
             // 
             // btnEditCustomer
             // 
-            this.btnEditCustomer.Location = new System.Drawing.Point(582, 25);
+            this.btnEditCustomer.BackColor = System.Drawing.Color.Gray;
+            this.btnEditCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditCustomer.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnEditCustomer.Location = new System.Drawing.Point(575, 26);
             this.btnEditCustomer.Name = "btnEditCustomer";
-            this.btnEditCustomer.Size = new System.Drawing.Size(103, 34);
+            this.btnEditCustomer.Size = new System.Drawing.Size(116, 33);
             this.btnEditCustomer.TabIndex = 17;
             this.btnEditCustomer.Text = "&Save Edit";
-            this.btnEditCustomer.UseVisualStyleBackColor = true;
+            this.btnEditCustomer.UseVisualStyleBackColor = false;
             this.btnEditCustomer.Click += new System.EventHandler(this.btnEditCustomer_Click);
             // 
             // tbxCustomerCity
@@ -903,11 +943,11 @@ namespace SU21_Final_Project
             // lblCityLabel
             // 
             this.lblCityLabel.AutoSize = true;
-            this.lblCityLabel.Location = new System.Drawing.Point(316, 62);
+            this.lblCityLabel.Location = new System.Drawing.Point(312, 62);
             this.lblCityLabel.Name = "lblCityLabel";
-            this.lblCityLabel.Size = new System.Drawing.Size(31, 17);
+            this.lblCityLabel.Size = new System.Drawing.Size(35, 17);
             this.lblCityLabel.TabIndex = 15;
-            this.lblCityLabel.Text = "City";
+            this.lblCityLabel.Text = "City:";
             // 
             // cboStatesCustomer
             // 
@@ -1023,12 +1063,15 @@ namespace SU21_Final_Project
             // 
             // btnAddNewCustomer
             // 
-            this.btnAddNewCustomer.Location = new System.Drawing.Point(594, 123);
+            this.btnAddNewCustomer.BackColor = System.Drawing.Color.Gray;
+            this.btnAddNewCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddNewCustomer.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnAddNewCustomer.Location = new System.Drawing.Point(575, 124);
             this.btnAddNewCustomer.Name = "btnAddNewCustomer";
-            this.btnAddNewCustomer.Size = new System.Drawing.Size(80, 30);
+            this.btnAddNewCustomer.Size = new System.Drawing.Size(116, 33);
             this.btnAddNewCustomer.TabIndex = 7;
             this.btnAddNewCustomer.Text = "&Add";
-            this.btnAddNewCustomer.UseVisualStyleBackColor = true;
+            this.btnAddNewCustomer.UseVisualStyleBackColor = false;
             this.btnAddNewCustomer.Click += new System.EventHandler(this.btnAddNewCustomer_Click);
             // 
             // lblPhoneLabel
@@ -1096,32 +1139,41 @@ namespace SU21_Final_Project
             // 
             // btnRemoveCustomer
             // 
+            this.btnRemoveCustomer.BackColor = System.Drawing.Color.Gray;
+            this.btnRemoveCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveCustomer.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnRemoveCustomer.Location = new System.Drawing.Point(751, 287);
             this.btnRemoveCustomer.Name = "btnRemoveCustomer";
-            this.btnRemoveCustomer.Size = new System.Drawing.Size(114, 29);
+            this.btnRemoveCustomer.Size = new System.Drawing.Size(116, 33);
             this.btnRemoveCustomer.TabIndex = 4;
             this.btnRemoveCustomer.Text = "Remove Customer";
-            this.btnRemoveCustomer.UseVisualStyleBackColor = true;
+            this.btnRemoveCustomer.UseVisualStyleBackColor = false;
             this.btnRemoveCustomer.Click += new System.EventHandler(this.btnRemoveCustomer_Click);
             // 
             // btnUpdateCustomer
             // 
+            this.btnUpdateCustomer.BackColor = System.Drawing.Color.Gray;
+            this.btnUpdateCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateCustomer.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnUpdateCustomer.Location = new System.Drawing.Point(468, 287);
             this.btnUpdateCustomer.Name = "btnUpdateCustomer";
-            this.btnUpdateCustomer.Size = new System.Drawing.Size(128, 29);
+            this.btnUpdateCustomer.Size = new System.Drawing.Size(116, 33);
             this.btnUpdateCustomer.TabIndex = 3;
             this.btnUpdateCustomer.Text = "Update Customer";
-            this.btnUpdateCustomer.UseVisualStyleBackColor = true;
+            this.btnUpdateCustomer.UseVisualStyleBackColor = false;
             this.btnUpdateCustomer.Click += new System.EventHandler(this.btnUpdateCustomer_Click);
             // 
             // btnAddCustomer
             // 
+            this.btnAddCustomer.BackColor = System.Drawing.Color.Gray;
+            this.btnAddCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddCustomer.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnAddCustomer.Location = new System.Drawing.Point(131, 287);
             this.btnAddCustomer.Name = "btnAddCustomer";
-            this.btnAddCustomer.Size = new System.Drawing.Size(113, 29);
+            this.btnAddCustomer.Size = new System.Drawing.Size(116, 33);
             this.btnAddCustomer.TabIndex = 2;
             this.btnAddCustomer.Text = "Add New Customer";
-            this.btnAddCustomer.UseVisualStyleBackColor = true;
+            this.btnAddCustomer.UseVisualStyleBackColor = false;
             this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
             // 
             // dgvCustomer
@@ -1130,6 +1182,7 @@ namespace SU21_Final_Project
             this.dgvCustomer.AllowUserToDeleteRows = false;
             this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCustomer.Location = new System.Drawing.Point(12, 12);
+            this.dgvCustomer.MultiSelect = false;
             this.dgvCustomer.Name = "dgvCustomer";
             this.dgvCustomer.ReadOnly = true;
             this.dgvCustomer.RowHeadersVisible = false;
@@ -1141,6 +1194,8 @@ namespace SU21_Final_Project
             // 
             // tabSalesReport
             // 
+            this.tabSalesReport.BackColor = System.Drawing.Color.Transparent;
+            this.tabSalesReport.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabSalesReport.BackgroundImage")));
             this.tabSalesReport.Controls.Add(this.gbxReport);
             this.tabSalesReport.Controls.Add(this.gbxCreateCoupon);
             this.tabSalesReport.Controls.Add(this.lblSalesDetailLabel);
@@ -1152,10 +1207,10 @@ namespace SU21_Final_Project
             this.tabSalesReport.Size = new System.Drawing.Size(1097, 538);
             this.tabSalesReport.TabIndex = 3;
             this.tabSalesReport.Text = "Sales Management";
-            this.tabSalesReport.UseVisualStyleBackColor = true;
             // 
             // gbxReport
             // 
+            this.gbxReport.BackColor = System.Drawing.Color.Silver;
             this.gbxReport.Controls.Add(this.btnPrintSelectedSalesReport);
             this.gbxReport.Controls.Add(this.radAllReport);
             this.gbxReport.Controls.Add(this.radMonthly);
@@ -1170,6 +1225,16 @@ namespace SU21_Final_Project
             this.gbxReport.TabIndex = 7;
             this.gbxReport.TabStop = false;
             this.gbxReport.Text = "Report Option";
+            // 
+            // btnPrintSelectedSalesReport
+            // 
+            this.btnPrintSelectedSalesReport.Location = new System.Drawing.Point(176, 161);
+            this.btnPrintSelectedSalesReport.Name = "btnPrintSelectedSalesReport";
+            this.btnPrintSelectedSalesReport.Size = new System.Drawing.Size(113, 31);
+            this.btnPrintSelectedSalesReport.TabIndex = 11;
+            this.btnPrintSelectedSalesReport.Text = "&Print Report";
+            this.btnPrintSelectedSalesReport.UseVisualStyleBackColor = true;
+            this.btnPrintSelectedSalesReport.Click += new System.EventHandler(this.btnPrintSelectedSalesReport_Click);
             // 
             // radAllReport
             // 
@@ -1245,6 +1310,7 @@ namespace SU21_Final_Project
             // 
             // gbxCreateCoupon
             // 
+            this.gbxCreateCoupon.BackColor = System.Drawing.Color.Silver;
             this.gbxCreateCoupon.Controls.Add(this.btnCreateCoupon);
             this.gbxCreateCoupon.Controls.Add(this.dtpEndCoupon);
             this.gbxCreateCoupon.Controls.Add(this.lblEndCouponLabel);
@@ -1261,7 +1327,7 @@ namespace SU21_Final_Project
             // 
             // btnCreateCoupon
             // 
-            this.btnCreateCoupon.Location = new System.Drawing.Point(188, 146);
+            this.btnCreateCoupon.Location = new System.Drawing.Point(187, 161);
             this.btnCreateCoupon.Name = "btnCreateCoupon";
             this.btnCreateCoupon.Size = new System.Drawing.Size(113, 31);
             this.btnCreateCoupon.TabIndex = 6;
@@ -1307,6 +1373,7 @@ namespace SU21_Final_Project
             // 
             // cboCouponDescription
             // 
+            this.cboCouponDescription.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCouponDescription.FormattingEnabled = true;
             this.cboCouponDescription.Items.AddRange(new object[] {
             "25% Off (1) ",
@@ -1329,7 +1396,7 @@ namespace SU21_Final_Project
             // lblSalesDetailLabel
             // 
             this.lblSalesDetailLabel.AutoSize = true;
-            this.lblSalesDetailLabel.Location = new System.Drawing.Point(519, 23);
+            this.lblSalesDetailLabel.Location = new System.Drawing.Point(606, 23);
             this.lblSalesDetailLabel.Name = "lblSalesDetailLabel";
             this.lblSalesDetailLabel.Size = new System.Drawing.Size(137, 17);
             this.lblSalesDetailLabel.TabIndex = 3;
@@ -1350,6 +1417,7 @@ namespace SU21_Final_Project
             this.dgvSalesDetails.AllowUserToDeleteRows = false;
             this.dgvSalesDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSalesDetails.Location = new System.Drawing.Point(609, 43);
+            this.dgvSalesDetails.MultiSelect = false;
             this.dgvSalesDetails.Name = "dgvSalesDetails";
             this.dgvSalesDetails.ReadOnly = true;
             this.dgvSalesDetails.RowHeadersVisible = false;
@@ -1365,6 +1433,7 @@ namespace SU21_Final_Project
             this.dgvSalesReport.AllowUserToDeleteRows = false;
             this.dgvSalesReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSalesReport.Location = new System.Drawing.Point(13, 43);
+            this.dgvSalesReport.MultiSelect = false;
             this.dgvSalesReport.Name = "dgvSalesReport";
             this.dgvSalesReport.ReadOnly = true;
             this.dgvSalesReport.RowHeadersVisible = false;
@@ -1399,29 +1468,322 @@ namespace SU21_Final_Project
             this.btnAccessPOS.Name = "btnAccessPOS";
             this.btnAccessPOS.Size = new System.Drawing.Size(117, 34);
             this.btnAccessPOS.TabIndex = 19;
-            this.btnAccessPOS.Text = "POS";
+            this.btnAccessPOS.Text = "Point Of Sale";
             this.btnAccessPOS.UseVisualStyleBackColor = true;
             this.btnAccessPOS.Click += new System.EventHandler(this.btnAccessPOS_Click);
             // 
-            // btnPrintSelectedSalesReport
+            // tabSupplier
             // 
-            this.btnPrintSelectedSalesReport.Location = new System.Drawing.Point(176, 161);
-            this.btnPrintSelectedSalesReport.Name = "btnPrintSelectedSalesReport";
-            this.btnPrintSelectedSalesReport.Size = new System.Drawing.Size(113, 31);
-            this.btnPrintSelectedSalesReport.TabIndex = 11;
-            this.btnPrintSelectedSalesReport.Text = "&Print Report";
-            this.btnPrintSelectedSalesReport.UseVisualStyleBackColor = true;
-            this.btnPrintSelectedSalesReport.Click += new System.EventHandler(this.btnPrintSelectedSalesReport_Click);
+            this.tabSupplier.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabSupplier.BackgroundImage")));
+            this.tabSupplier.Controls.Add(this.gbxAddEditSupplier);
+            this.tabSupplier.Controls.Add(this.btnRemoveSupplier);
+            this.tabSupplier.Controls.Add(this.btnEditSupplier);
+            this.tabSupplier.Controls.Add(this.btnAddSupplier);
+            this.tabSupplier.Controls.Add(this.dgvSupplierView);
+            this.tabSupplier.Location = new System.Drawing.Point(4, 25);
+            this.tabSupplier.Name = "tabSupplier";
+            this.tabSupplier.Size = new System.Drawing.Size(1097, 538);
+            this.tabSupplier.TabIndex = 4;
+            this.tabSupplier.Text = "Supplier";
+            this.tabSupplier.UseVisualStyleBackColor = true;
+            // 
+            // dgvSupplierView
+            // 
+            this.dgvSupplierView.AllowUserToAddRows = false;
+            this.dgvSupplierView.AllowUserToDeleteRows = false;
+            this.dgvSupplierView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSupplierView.Location = new System.Drawing.Point(14, 28);
+            this.dgvSupplierView.MultiSelect = false;
+            this.dgvSupplierView.Name = "dgvSupplierView";
+            this.dgvSupplierView.ReadOnly = true;
+            this.dgvSupplierView.RowHeadersVisible = false;
+            this.dgvSupplierView.RowHeadersWidth = 51;
+            this.dgvSupplierView.RowTemplate.Height = 24;
+            this.dgvSupplierView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSupplierView.Size = new System.Drawing.Size(1064, 199);
+            this.dgvSupplierView.TabIndex = 2;
+            // 
+            // btnRemoveSupplier
+            // 
+            this.btnRemoveSupplier.Location = new System.Drawing.Point(809, 233);
+            this.btnRemoveSupplier.Name = "btnRemoveSupplier";
+            this.btnRemoveSupplier.Size = new System.Drawing.Size(114, 29);
+            this.btnRemoveSupplier.TabIndex = 7;
+            this.btnRemoveSupplier.Text = "Remove Supplier";
+            this.btnRemoveSupplier.UseVisualStyleBackColor = true;
+            this.btnRemoveSupplier.Click += new System.EventHandler(this.btnRemoveSupplier_Click);
+            // 
+            // btnEditSupplier
+            // 
+            this.btnEditSupplier.Location = new System.Drawing.Point(526, 233);
+            this.btnEditSupplier.Name = "btnEditSupplier";
+            this.btnEditSupplier.Size = new System.Drawing.Size(128, 29);
+            this.btnEditSupplier.TabIndex = 6;
+            this.btnEditSupplier.Text = "Edit Supplier Infos";
+            this.btnEditSupplier.UseVisualStyleBackColor = true;
+            this.btnEditSupplier.Click += new System.EventHandler(this.btnEditSupplier_Click);
+            // 
+            // btnAddSupplier
+            // 
+            this.btnAddSupplier.Location = new System.Drawing.Point(189, 233);
+            this.btnAddSupplier.Name = "btnAddSupplier";
+            this.btnAddSupplier.Size = new System.Drawing.Size(113, 29);
+            this.btnAddSupplier.TabIndex = 5;
+            this.btnAddSupplier.Text = "Add New Supplier";
+            this.btnAddSupplier.UseVisualStyleBackColor = true;
+            this.btnAddSupplier.Click += new System.EventHandler(this.btnAddSupplier_Click);
+            // 
+            // gbxAddEditSupplier
+            // 
+            this.gbxAddEditSupplier.Controls.Add(this.btnSaveEditSupplier);
+            this.gbxAddEditSupplier.Controls.Add(this.tbxSupplierCity);
+            this.gbxAddEditSupplier.Controls.Add(this.lblSupplierCity);
+            this.gbxAddEditSupplier.Controls.Add(this.cboSupplierState);
+            this.gbxAddEditSupplier.Controls.Add(this.tbxSupplierZip);
+            this.gbxAddEditSupplier.Controls.Add(this.mskSupplierPhone);
+            this.gbxAddEditSupplier.Controls.Add(this.tbxSupplierAddress);
+            this.gbxAddEditSupplier.Controls.Add(this.tbxEmailSupplier);
+            this.gbxAddEditSupplier.Controls.Add(this.tbxSupplierContactName);
+            this.gbxAddEditSupplier.Controls.Add(this.tbxSupplierName);
+            this.gbxAddEditSupplier.Controls.Add(this.btnSaveAddSupplier);
+            this.gbxAddEditSupplier.Controls.Add(this.lblsupplierPhone);
+            this.gbxAddEditSupplier.Controls.Add(this.lblSupplierZip);
+            this.gbxAddEditSupplier.Controls.Add(this.lblSuppplierState);
+            this.gbxAddEditSupplier.Controls.Add(this.lblSupplierAddress);
+            this.gbxAddEditSupplier.Controls.Add(this.lblEmailSupplier);
+            this.gbxAddEditSupplier.Controls.Add(this.lblSupplierContact);
+            this.gbxAddEditSupplier.Controls.Add(this.lblSupplierName);
+            this.gbxAddEditSupplier.Enabled = false;
+            this.gbxAddEditSupplier.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.gbxAddEditSupplier.Location = new System.Drawing.Point(211, 286);
+            this.gbxAddEditSupplier.Name = "gbxAddEditSupplier";
+            this.gbxAddEditSupplier.Size = new System.Drawing.Size(691, 187);
+            this.gbxAddEditSupplier.TabIndex = 19;
+            this.gbxAddEditSupplier.TabStop = false;
+            this.gbxAddEditSupplier.Text = "Add/Edit Supplier";
+            // 
+            // btnSaveEditSupplier
+            // 
+            this.btnSaveEditSupplier.Location = new System.Drawing.Point(582, 25);
+            this.btnSaveEditSupplier.Name = "btnSaveEditSupplier";
+            this.btnSaveEditSupplier.Size = new System.Drawing.Size(103, 34);
+            this.btnSaveEditSupplier.TabIndex = 17;
+            this.btnSaveEditSupplier.Text = "&Save Edit";
+            this.btnSaveEditSupplier.UseVisualStyleBackColor = true;
+            this.btnSaveEditSupplier.Click += new System.EventHandler(this.btnSaveEditSupplier_Click);
+            // 
+            // tbxSupplierCity
+            // 
+            this.tbxSupplierCity.Location = new System.Drawing.Point(358, 59);
+            this.tbxSupplierCity.Name = "tbxSupplierCity";
+            this.tbxSupplierCity.Size = new System.Drawing.Size(211, 22);
+            this.tbxSupplierCity.TabIndex = 16;
+            // 
+            // lblSupplierCity
+            // 
+            this.lblSupplierCity.AutoSize = true;
+            this.lblSupplierCity.Location = new System.Drawing.Point(316, 62);
+            this.lblSupplierCity.Name = "lblSupplierCity";
+            this.lblSupplierCity.Size = new System.Drawing.Size(31, 17);
+            this.lblSupplierCity.TabIndex = 15;
+            this.lblSupplierCity.Text = "City";
+            // 
+            // cboSupplierState
+            // 
+            this.cboSupplierState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSupplierState.FormattingEnabled = true;
+            this.cboSupplierState.Items.AddRange(new object[] {
+            "AK",
+            "AS",
+            "AZ",
+            "AR",
+            "CA",
+            "CO",
+            "CT",
+            "DE",
+            "DC",
+            "FM",
+            "FL",
+            "GA",
+            "GU",
+            "HI",
+            "ID",
+            "IL",
+            "IN",
+            "IA",
+            "KS",
+            "KY",
+            "LA",
+            "ME",
+            "MH",
+            "MD",
+            "MA",
+            "MI",
+            "MN",
+            "MS",
+            "MO",
+            "MT",
+            "NE",
+            "NV",
+            "NH",
+            "NJ",
+            "NM",
+            "NY",
+            "NC",
+            "ND",
+            "MP",
+            "OH",
+            "OK",
+            "OR",
+            "PW",
+            "PA",
+            "PR",
+            "RI",
+            "SC",
+            "SD",
+            "TN",
+            "TX",
+            "UT",
+            "VT",
+            "VI",
+            "VA",
+            "WA",
+            "WV",
+            "WI",
+            "WY"});
+            this.cboSupplierState.Location = new System.Drawing.Point(358, 92);
+            this.cboSupplierState.Name = "cboSupplierState";
+            this.cboSupplierState.Size = new System.Drawing.Size(87, 24);
+            this.cboSupplierState.TabIndex = 14;
+            // 
+            // tbxSupplierZip
+            // 
+            this.tbxSupplierZip.Location = new System.Drawing.Point(357, 130);
+            this.tbxSupplierZip.MaxLength = 5;
+            this.tbxSupplierZip.Name = "tbxSupplierZip";
+            this.tbxSupplierZip.Size = new System.Drawing.Size(72, 22);
+            this.tbxSupplierZip.TabIndex = 13;
+            // 
+            // mskSupplierPhone
+            // 
+            this.mskSupplierPhone.Location = new System.Drawing.Point(115, 140);
+            this.mskSupplierPhone.Mask = "000-000-0000";
+            this.mskSupplierPhone.Name = "mskSupplierPhone";
+            this.mskSupplierPhone.Size = new System.Drawing.Size(100, 22);
+            this.mskSupplierPhone.TabIndex = 12;
+            // 
+            // tbxSupplierAddress
+            // 
+            this.tbxSupplierAddress.Location = new System.Drawing.Point(358, 29);
+            this.tbxSupplierAddress.Name = "tbxSupplierAddress";
+            this.tbxSupplierAddress.Size = new System.Drawing.Size(211, 22);
+            this.tbxSupplierAddress.TabIndex = 11;
+            // 
+            // tbxEmailSupplier
+            // 
+            this.tbxEmailSupplier.Location = new System.Drawing.Point(115, 107);
+            this.tbxEmailSupplier.Name = "tbxEmailSupplier";
+            this.tbxEmailSupplier.Size = new System.Drawing.Size(139, 22);
+            this.tbxEmailSupplier.TabIndex = 10;
+            // 
+            // tbxSupplierContactName
+            // 
+            this.tbxSupplierContactName.Location = new System.Drawing.Point(115, 69);
+            this.tbxSupplierContactName.Name = "tbxSupplierContactName";
+            this.tbxSupplierContactName.Size = new System.Drawing.Size(139, 22);
+            this.tbxSupplierContactName.TabIndex = 9;
+            // 
+            // tbxSupplierName
+            // 
+            this.tbxSupplierName.Location = new System.Drawing.Point(115, 31);
+            this.tbxSupplierName.Name = "tbxSupplierName";
+            this.tbxSupplierName.Size = new System.Drawing.Size(139, 22);
+            this.tbxSupplierName.TabIndex = 8;
+            // 
+            // btnSaveAddSupplier
+            // 
+            this.btnSaveAddSupplier.Location = new System.Drawing.Point(594, 123);
+            this.btnSaveAddSupplier.Name = "btnSaveAddSupplier";
+            this.btnSaveAddSupplier.Size = new System.Drawing.Size(80, 30);
+            this.btnSaveAddSupplier.TabIndex = 7;
+            this.btnSaveAddSupplier.Text = "&Save New";
+            this.btnSaveAddSupplier.UseVisualStyleBackColor = true;
+            this.btnSaveAddSupplier.Click += new System.EventHandler(this.btnSaveAddSupplier_Click);
+            // 
+            // lblsupplierPhone
+            // 
+            this.lblsupplierPhone.AutoSize = true;
+            this.lblsupplierPhone.Location = new System.Drawing.Point(47, 145);
+            this.lblsupplierPhone.Name = "lblsupplierPhone";
+            this.lblsupplierPhone.Size = new System.Drawing.Size(53, 17);
+            this.lblsupplierPhone.TabIndex = 6;
+            this.lblsupplierPhone.Text = "Phone:";
+            // 
+            // lblSupplierZip
+            // 
+            this.lblSupplierZip.AutoSize = true;
+            this.lblSupplierZip.Location = new System.Drawing.Point(315, 130);
+            this.lblSupplierZip.Name = "lblSupplierZip";
+            this.lblSupplierZip.Size = new System.Drawing.Size(32, 17);
+            this.lblSupplierZip.TabIndex = 5;
+            this.lblSupplierZip.Text = "Zip:";
+            // 
+            // lblSuppplierState
+            // 
+            this.lblSuppplierState.AutoSize = true;
+            this.lblSuppplierState.Location = new System.Drawing.Point(302, 96);
+            this.lblSuppplierState.Name = "lblSuppplierState";
+            this.lblSuppplierState.Size = new System.Drawing.Size(45, 17);
+            this.lblSuppplierState.TabIndex = 4;
+            this.lblSuppplierState.Text = "State:";
+            // 
+            // lblSupplierAddress
+            // 
+            this.lblSupplierAddress.AutoSize = true;
+            this.lblSupplierAddress.Location = new System.Drawing.Point(287, 32);
+            this.lblSupplierAddress.Name = "lblSupplierAddress";
+            this.lblSupplierAddress.Size = new System.Drawing.Size(60, 17);
+            this.lblSupplierAddress.TabIndex = 3;
+            this.lblSupplierAddress.Text = "Address";
+            // 
+            // lblEmailSupplier
+            // 
+            this.lblEmailSupplier.AutoSize = true;
+            this.lblEmailSupplier.Location = new System.Drawing.Point(55, 113);
+            this.lblEmailSupplier.Name = "lblEmailSupplier";
+            this.lblEmailSupplier.Size = new System.Drawing.Size(42, 17);
+            this.lblEmailSupplier.TabIndex = 2;
+            this.lblEmailSupplier.Text = "Email";
+            // 
+            // lblSupplierContact
+            // 
+            this.lblSupplierContact.AutoSize = true;
+            this.lblSupplierContact.Location = new System.Drawing.Point(12, 74);
+            this.lblSupplierContact.Name = "lblSupplierContact";
+            this.lblSupplierContact.Size = new System.Drawing.Size(97, 17);
+            this.lblSupplierContact.TabIndex = 1;
+            this.lblSupplierContact.Text = "Contact Name";
+            // 
+            // lblSupplierName
+            // 
+            this.lblSupplierName.AutoSize = true;
+            this.lblSupplierName.Location = new System.Drawing.Point(8, 34);
+            this.lblSupplierName.Name = "lblSupplierName";
+            this.lblSupplierName.Size = new System.Drawing.Size(108, 17);
+            this.lblSupplierName.TabIndex = 0;
+            this.lblSupplierName.Text = "Company Name";
             // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1132, 620);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(1132, 610);
             this.Controls.Add(this.btnAccessPOS);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.tabManagerFeatures);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
@@ -1455,6 +1817,10 @@ namespace SU21_Final_Project
             this.gbxCreateCoupon.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesDetails)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesReport)).EndInit();
+            this.tabSupplier.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierView)).EndInit();
+            this.gbxAddEditSupplier.ResumeLayout(false);
+            this.gbxAddEditSupplier.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1566,5 +1932,29 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton radAllReport;
         private System.Windows.Forms.Button btnPrintSelectedSalesReport;
+        private System.Windows.Forms.TabPage tabSupplier;
+        private System.Windows.Forms.GroupBox gbxAddEditSupplier;
+        private System.Windows.Forms.Button btnSaveEditSupplier;
+        private System.Windows.Forms.TextBox tbxSupplierCity;
+        private System.Windows.Forms.Label lblSupplierCity;
+        private System.Windows.Forms.ComboBox cboSupplierState;
+        private System.Windows.Forms.TextBox tbxSupplierZip;
+        private System.Windows.Forms.MaskedTextBox mskSupplierPhone;
+        private System.Windows.Forms.TextBox tbxSupplierAddress;
+        private System.Windows.Forms.TextBox tbxEmailSupplier;
+        private System.Windows.Forms.TextBox tbxSupplierContactName;
+        private System.Windows.Forms.TextBox tbxSupplierName;
+        private System.Windows.Forms.Button btnSaveAddSupplier;
+        private System.Windows.Forms.Label lblsupplierPhone;
+        private System.Windows.Forms.Label lblSupplierZip;
+        private System.Windows.Forms.Label lblSuppplierState;
+        private System.Windows.Forms.Label lblSupplierAddress;
+        private System.Windows.Forms.Label lblEmailSupplier;
+        private System.Windows.Forms.Label lblSupplierContact;
+        private System.Windows.Forms.Label lblSupplierName;
+        private System.Windows.Forms.Button btnRemoveSupplier;
+        private System.Windows.Forms.Button btnEditSupplier;
+        private System.Windows.Forms.Button btnAddSupplier;
+        private System.Windows.Forms.DataGridView dgvSupplierView;
     }
 }

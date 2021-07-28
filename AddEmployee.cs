@@ -68,7 +68,7 @@ namespace SU21_Final_Project
 
                 Connection.Open();
                 if (tbxFirstName.Text != "" && tbxLastName.Text != "" && tbxAddressOne.Text != "" && mskPhone.Text != "" && tbxCity.Text != "" && tbxZip.Text != ""
-                    && cboState.Text != "" && tbxEmail.Text != ""  && cboRole.Text != "" && cboPosition.Text != "" && tbxSalary.Text != "" && mskHiredDate.Text != "")
+                    && cboState.Text != "" && tbxEmail.Text != ""  && cboRole.Text != "" && cboPosition.Text != "" && tbxSalary.Text != "" && dtpEmployeeHiredDate.Text != "")
                 {
                     SqlCommand commandCheckUsername = new SqlCommand("SELECT Username FROM RandrezaVoharisoaM21Su2332.Users;", Connection);
 
@@ -122,17 +122,22 @@ namespace SU21_Final_Project
                                                
                                                 strSalary = tbxSalary.Text;
 
-                                                strHiredDate = mskHiredDate.Text;
+                                                strHiredDate = dtpEmployeeHiredDate.Text;
                                                 strCity = tbxCity.Text;
                                                 strState = cboState.SelectedItem.ToString();
                                                 
                                                 strRole= cboRole.SelectedItem.ToString();
+                                   
                                                 int intRoleID;
-                                                bool blnTryParse =  int.TryParse(strRole, out intRoleID);
-                                                if (blnTryParse == false)
-                                                {
-                                                    MessageBox.Show("You did not enter a value I can convert to an Integer", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                                }
+
+                                    if (strRole == "Manager")
+                                    {
+                                        intRoleID = 1;
+                                    }
+                                    else
+                                    {
+                                        intRoleID = 2;
+                                    }
 
                                                 strPosition = cboPosition.SelectedItem.ToString();
                                    

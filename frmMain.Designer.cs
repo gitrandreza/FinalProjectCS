@@ -29,9 +29,9 @@ namespace SU21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.lblDate = new System.Windows.Forms.Label();
             this.dgvAll = new System.Windows.Forms.DataGridView();
@@ -86,8 +86,6 @@ namespace SU21_Final_Project
             this.lblName = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
             this.pnlHeader = new System.Windows.Forms.Panel();
-            this.lblLogo2 = new System.Windows.Forms.Label();
-            this.lblLogo1 = new System.Windows.Forms.Label();
             this.lblDeliveryLabel = new System.Windows.Forms.Label();
             this.lblDeliveryThree = new System.Windows.Forms.Label();
             this.lblDeliveryTwo = new System.Windows.Forms.Label();
@@ -107,7 +105,7 @@ namespace SU21_Final_Project
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lblDate.ForeColor = System.Drawing.SystemColors.Control;
             this.lblDate.Location = new System.Drawing.Point(485, 10);
             this.lblDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDate.Name = "lblDate";
@@ -119,18 +117,19 @@ namespace SU21_Final_Project
             this.dgvAll.AllowUserToAddRows = false;
             this.dgvAll.AllowUserToDeleteRows = false;
             this.dgvAll.BackgroundColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAll.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAll.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvAll.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAll.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dgvAll.Location = new System.Drawing.Point(30, 88);
             this.dgvAll.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvAll.MultiSelect = false;
             this.dgvAll.Name = "dgvAll";
             this.dgvAll.ReadOnly = true;
             this.dgvAll.RowHeadersVisible = false;
@@ -468,7 +467,7 @@ namespace SU21_Final_Project
             this.btnAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdmin.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnAdmin.Location = new System.Drawing.Point(172, 6);
+            this.btnAdmin.Location = new System.Drawing.Point(176, 6);
             this.btnAdmin.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdmin.Name = "btnAdmin";
             this.btnAdmin.Size = new System.Drawing.Size(129, 28);
@@ -484,49 +483,52 @@ namespace SU21_Final_Project
             this.lblUser.AutoSize = true;
             this.lblUser.BackColor = System.Drawing.Color.Transparent;
             this.lblUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUser.ForeColor = System.Drawing.Color.SteelBlue;
+            this.lblUser.ForeColor = System.Drawing.SystemColors.Control;
             this.lblUser.Location = new System.Drawing.Point(733, 10);
             this.lblUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(0, 17);
             this.lblUser.TabIndex = 24;
+            this.lblUser.Visible = false;
             // 
             // lblUserIDLabel
             // 
             this.lblUserIDLabel.AutoSize = true;
             this.lblUserIDLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserIDLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblUserIDLabel.ForeColor = System.Drawing.SystemColors.Control;
             this.lblUserIDLabel.Location = new System.Drawing.Point(649, 10);
             this.lblUserIDLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUserIDLabel.Name = "lblUserIDLabel";
             this.lblUserIDLabel.Size = new System.Drawing.Size(71, 16);
             this.lblUserIDLabel.TabIndex = 25;
             this.lblUserIDLabel.Text = "User ID#:";
+            this.lblUserIDLabel.Visible = false;
             // 
             // dgvList
             // 
             this.dgvList.AllowUserToAddRows = false;
             this.dgvList.AllowUserToDeleteRows = false;
             this.dgvList.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvList.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvList.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvList.Location = new System.Drawing.Point(643, 92);
             this.dgvList.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvList.MultiSelect = false;
             this.dgvList.Name = "dgvList";
             this.dgvList.ReadOnly = true;
             this.dgvList.RowHeadersVisible = false;
@@ -721,7 +723,7 @@ namespace SU21_Final_Project
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReset.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnReset.Location = new System.Drawing.Point(534, 657);
+            this.btnReset.Location = new System.Drawing.Point(458, 687);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(123, 28);
             this.btnReset.TabIndex = 9;
@@ -734,20 +736,20 @@ namespace SU21_Final_Project
             // 
             this.lblNameLabel.AutoSize = true;
             this.lblNameLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblNameLabel.ForeColor = System.Drawing.SystemColors.Control;
             this.lblNameLabel.Location = new System.Drawing.Point(831, 10);
             this.lblNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameLabel.Name = "lblNameLabel";
             this.lblNameLabel.Size = new System.Drawing.Size(51, 16);
             this.lblNameLabel.TabIndex = 33;
-            this.lblNameLabel.Text = "Name:";
+            this.lblNameLabel.Text = "Hello, ";
             // 
             // lblNameOfUser
             // 
             this.lblNameOfUser.AutoSize = true;
             this.lblNameOfUser.BackColor = System.Drawing.Color.Transparent;
             this.lblNameOfUser.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameOfUser.ForeColor = System.Drawing.Color.SteelBlue;
+            this.lblNameOfUser.ForeColor = System.Drawing.SystemColors.Control;
             this.lblNameOfUser.Location = new System.Drawing.Point(889, 10);
             this.lblNameOfUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameOfUser.Name = "lblNameOfUser";
@@ -807,8 +809,6 @@ namespace SU21_Final_Project
             // pnlHeader
             // 
             this.pnlHeader.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.pnlHeader.Controls.Add(this.lblLogo2);
-            this.pnlHeader.Controls.Add(this.lblLogo1);
             this.pnlHeader.Controls.Add(this.lblNameLabel);
             this.pnlHeader.Controls.Add(this.lblDate);
             this.pnlHeader.Controls.Add(this.btnLogout);
@@ -820,29 +820,6 @@ namespace SU21_Final_Project
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(1135, 41);
             this.pnlHeader.TabIndex = 41;
-            // 
-            // lblLogo2
-            // 
-            this.lblLogo2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.lblLogo2.Font = new System.Drawing.Font("Segoe Script", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLogo2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblLogo2.Location = new System.Drawing.Point(20, -1);
-            this.lblLogo2.Name = "lblLogo2";
-            this.lblLogo2.Size = new System.Drawing.Size(145, 43);
-            this.lblLogo2.TabIndex = 46;
-            this.lblLogo2.Text = "mprint ";
-            // 
-            // lblLogo1
-            // 
-            this.lblLogo1.BackColor = System.Drawing.Color.Cyan;
-            this.lblLogo1.Font = new System.Drawing.Font("Microsoft Uighur", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLogo1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblLogo1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblLogo1.Location = new System.Drawing.Point(-2, -1);
-            this.lblLogo1.Name = "lblLogo1";
-            this.lblLogo1.Size = new System.Drawing.Size(29, 43);
-            this.lblLogo1.TabIndex = 47;
-            this.lblLogo1.Text = "i";
             // 
             // lblDeliveryLabel
             // 
@@ -944,8 +921,8 @@ namespace SU21_Final_Project
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Tag = "2021.05.02";
-            this.Text = "Imprint Manager System";
+            this.Tag = "0";
+            this.Text = "Customer View";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAll)).EndInit();
@@ -1022,8 +999,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblDeliveryTwo;
         private System.Windows.Forms.Label lblDeliveryOne;
         private System.Windows.Forms.Label lblForMoreLabel;
-        private System.Windows.Forms.Label lblLogo2;
-        private System.Windows.Forms.Label lblLogo1;
         private System.Windows.Forms.Label lblTotalList;
         private System.Windows.Forms.Label lblTotalListLabel;
         private System.Windows.Forms.Button btnViewReceipt;

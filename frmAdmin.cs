@@ -28,7 +28,7 @@ namespace SU21_Final_Project
 
         string strPersonIdCustomerView;
         string strInvoiceReport;
-
+        string strSupplierId;
         private void frmAdmin_Load(object sender, EventArgs e)
         {
              
@@ -142,6 +142,11 @@ namespace SU21_Final_Project
             if (tabManagerFeatures.SelectedTab.Name == "tabSalesReport")
             {
                 DisplaySalesReport();
+                radAllReport.Checked = true;
+            }
+            if (tabManagerFeatures.SelectedTab.Name == "tabSupplier")
+            {
+                DisplaySupplierList();
             }
         }
 
@@ -1497,6 +1502,18 @@ namespace SU21_Final_Project
             tbxCustomerCity.Text = "";
         }
 
+        public void ResetSupplierEntry()
+        {
+            tbxSupplierName.Text = "";
+            tbxSupplierContactName.Text = "";
+            tbxSupplierZip.Text = "";
+            tbxEmailSupplier.Text = "";
+            tbxSupplierAddress.Text = "";
+            mskSupplierPhone.Text = "";
+            cboSupplierState.Text = "";
+           tbxSupplierCity.Text = "";
+        }
+
         private void btnUpdateCustomer_Click(object sender, EventArgs e)
         {
             string strFirstName = dgvCustomer.Rows[dgvCustomer.CurrentCell.RowIndex].Cells[1].Value.ToString();
@@ -1880,6 +1897,320 @@ namespace SU21_Final_Project
                 MessageBox.Show("Please select report",
                    "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        //Display supplier from database
+        public void DisplaySupplierList()
+        {
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+
+                dataAdapter = new SqlDataAdapter("SELECT RandrezaVoharisoaM21Su2332.Suppliers.SupplierID  as [Supplier ID],RandrezaVoharisoaM21Su2332.Suppliers.Name  as [Company Name], RandrezaVoharisoaM21Su2332.Suppliers.Contact as [Contact Name],RandrezaVoharisoaM21Su2332.Suppliers.Address,RandrezaVoharisoaM21Su2332.Suppliers.City,RandrezaVoharisoaM21Su2332.Suppliers.State, RandrezaVoharisoaM21Su2332.Suppliers.Zip,RandrezaVoharisoaM21Su2332.Suppliers.Phone , RandrezaVoharisoaM21Su2332.Suppliers.Email  FROM RandrezaVoharisoaM21Su2332.Suppliers; ", Connection);
+
+                dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                dgvSupplierView.DataSource = dataTable;
+
+
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnAddSupplier_Click(object sender, EventArgs e)
+        {
+            gbxAddEditSupplier.Enabled = true;
+            DisplaySupplierList();
+            btnSaveEditSupplier.Enabled = false;
+        }
+
+        private void btnEditSupplier_Click(object sender, EventArgs e)
+        {
+            string strCompanyName = dgvSupplierView.Rows[dgvSupplierView.CurrentCell.RowIndex].Cells[1].Value.ToString();
+            btnSaveAddSupplier.Enabled = false;
+
+
+            if (dgvSupplierView.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Do you want to edit Supplier '" +strCompanyName+ "'?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                   gbxAddEditSupplier.Enabled = true;
+                    btnSaveAddSupplier.Enabled = false;
+                }
+                else
+                {
+                    MessageBox.Show("Please select the Supplier you want to edit", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please make a selection", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnSaveEditSupplier_Click(object sender, EventArgs e)
+        {
+            string strCompanyName;
+            string strContactName;
+            string strSupplierAddress;
+            string strSupplierCity;
+            string strSupplierState;
+            string strSupplierEmail;
+            string strSupplierZip;
+            string strSupplierPhone;
+
+            try
+            {
+                //Connection.Open();
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+                strSupplierId= dgvSupplierView.Rows[dgvSupplierView.CurrentCell.RowIndex].Cells[0].Value.ToString();
+
+                if (tbxSupplierName.Text == "")
+                {
+                    strCompanyName = dgvSupplierView.Rows[dgvSupplierView.CurrentCell.RowIndex].Cells[1].Value.ToString();
+                }
+                else
+                {
+                    strCompanyName = tbxSupplierName.Text;
+                }
+
+                if (tbxSupplierContactName.Text == "")
+                {
+                    strContactName = dgvSupplierView.Rows[dgvSupplierView.CurrentCell.RowIndex].Cells[2].Value.ToString();
+
+                }
+                else
+                {
+                    strContactName = tbxSupplierContactName.Text;
+                }
+
+
+                if (tbxSupplierAddress.Text == "")
+                {
+                    strSupplierAddress = dgvSupplierView.Rows[dgvSupplierView.CurrentCell.RowIndex].Cells[3].Value.ToString();
+                }
+                else
+                {
+                    strSupplierAddress = tbxSupplierAddress.Text;
+                }
+
+                if (tbxSupplierCity.Text == "")
+                {
+                    strSupplierCity = dgvSupplierView.Rows[dgvSupplierView.CurrentCell.RowIndex].Cells[4].Value.ToString();
+                }
+                else
+                {
+                    strSupplierCity = tbxSupplierCity.Text;
+                }
+
+
+                if (cboSupplierState.Text == "")
+                {
+                    strSupplierState = dgvSupplierView.Rows[dgvSupplierView.CurrentCell.RowIndex].Cells[5].Value.ToString();
+
+                }
+                else
+                {
+                    strSupplierState = cboSupplierState.SelectedItem.ToString();
+
+                }
+
+
+
+                if (tbxSupplierZip.Text == "")
+                {
+                    strSupplierZip = dgvSupplierView.Rows[dgvSupplierView.CurrentCell.RowIndex].Cells[6].Value.ToString();
+                }
+                else
+                {
+                    strSupplierZip = tbxSupplierZip.Text;
+                }
+
+                if (ValidEmail(tbxEmailSupplier.Text) == false)
+                {
+                    strSupplierEmail = dgvSupplierView.Rows[dgvSupplierView.CurrentCell.RowIndex].Cells[8].Value.ToString();
+
+
+                }
+                else
+                {
+
+                    strSupplierEmail = tbxEmailSupplier.Text;
+
+                }
+
+                if (ValidPhone(mskSupplierPhone.Text) == false)
+                {
+                    strSupplierPhone = dgvSupplierView.Rows[dgvSupplierView.CurrentCell.RowIndex].Cells[7].Value.ToString();
+
+                }
+                else
+                {
+                    strSupplierPhone = mskSupplierPhone.Text;
+                }
+
+                Connection.Open();
+
+                string strQuery = "UPDATE RandrezaVoharisoaM21Su2332.Suppliers SET Name = @Name,Contact = @Contact,Address = @Address,City = @City,State=@State, Zip = @Zip, Email= @Email, Phone = @Phone" +
+                " where SupplierID= '" + strSupplierId+ "'";
+                SqlCommand editCommande = new SqlCommand(strQuery, Connection);
+                SqlParameter sqlpmNameFirst = editCommande.Parameters.AddWithValue("@Name", strCompanyName);
+                SqlParameter sqlpmNameLast = editCommande.Parameters.AddWithValue("@Contact", strContactName);
+                SqlParameter sqlpmAddress = editCommande.Parameters.AddWithValue("@Address", strSupplierAddress);
+                SqlParameter sqlpmCity = editCommande.Parameters.AddWithValue("@City", strSupplierCity);
+                SqlParameter sqlpmState = editCommande.Parameters.AddWithValue("@State", strSupplierState);
+                SqlParameter sqlpmZip = editCommande.Parameters.AddWithValue("@Zip", strSupplierZip);
+                SqlParameter sqlpmEmail = editCommande.Parameters.AddWithValue("@Email", strSupplierEmail);
+                SqlParameter sqlpmPhone = editCommande.Parameters.AddWithValue("@Phone", strSupplierPhone);
+                editCommande.ExecuteNonQuery();
+
+
+
+                Connection.Close();
+
+                MessageBox.Show("The selected Supplier Information has been updated?", "Message", MessageBoxButtons.OK);
+
+                DisplayCustomers();
+                Reset();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Message", MessageBoxButtons.OK);
+            }
+        }
+
+        private void btnSaveAddSupplier_Click(object sender, EventArgs e)
+        {
+            string strCompanyName=tbxSupplierName.Text;
+            string strContactName = tbxSupplierContactName.Text;
+            string strSupplierAddress = tbxSupplierAddress.Text;
+            string strSupplierCity = tbxSupplierCity.Text;
+            string strSupplierState = cboSupplierState.Text;
+            string strSupplierEmail = tbxEmailSupplier.Text;
+            string strSupplierZip = tbxSupplierZip.Text;
+            string strSupplierPhone = mskSupplierPhone.Text;
+       
+
+            try
+            {
+
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                if (tbxSupplierName.Text != "" && tbxSupplierContactName.Text != "" && tbxSupplierAddress.Text != "" && tbxSupplierCity.Text != "" && cboSupplierState.Text != "" && tbxEmailSupplier.Text != ""
+                    && tbxSupplierZip.Text != "" && mskSupplierPhone.Text != "")
+                {
+
+
+                    if (ValidAddress(strSupplierAddress) == true)
+                    {
+
+                        if (ValidEmail(strSupplierEmail) == true)
+                        {
+                          
+                                SqlCommand commandSupplier = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Suppliers(Name,Contact,Address,City,Zip,State,Email,Phone) VALUES (@Name,@Contact,@Address,@City,@Zip,@State,@Email,@Phone)", Connection);
+
+                                commandSupplier.Parameters.AddWithValue("@Name", strCompanyName);
+                                commandSupplier.Parameters.AddWithValue("@Contact", strContactName);
+                                commandSupplier.Parameters.AddWithValue("@Address", strSupplierAddress);
+                                commandSupplier.Parameters.AddWithValue("@City", strSupplierCity);
+                                commandSupplier.Parameters.AddWithValue("@Zip", strSupplierZip);
+                                commandSupplier.Parameters.AddWithValue("@State", strSupplierState);
+                                commandSupplier.Parameters.AddWithValue("@Email", strSupplierEmail);
+                                commandSupplier.Parameters.AddWithValue("@Phone", strSupplierPhone);
+                                commandSupplier.ExecuteNonQuery();
+
+                                
+                              
+                                DisplaySupplierList();
+                                ResetSupplierEntry();
+                                Connection.Close();
+                           
+
+
+                        }
+
+                        else
+                        {
+                            MessageBox.Show("Email format is not valid", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            tbxEmailCustomer.Focus();
+                        }
+
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Address format is not valid", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        tbxAddressCustomer.Focus();
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Please make sure to fill up the required fields with(*)", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnRemoveSupplier_Click(object sender, EventArgs e)
+        {
+            if (dgvSupplierView.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Do you want to remove this Supplier?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    foreach (DataGridViewRow row in dgvSupplierView.SelectedRows)
+                    {
+                       
+                        int intIndexRowSelected = dgvSupplierView.CurrentCell.RowIndex;
+                       
+                        strSupplierId = dgvSupplierView.Rows[intIndexRowSelected].Cells[0].Value.ToString();
+                        dgvSupplierView.Rows.RemoveAt(row.Index);
+
+                    }
+                    try
+                    {
+                        //connect to database
+                        Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                            "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                        Connection.Open();
+
+
+                        string strDeleteQuery = "DELETE FROM RandrezaVoharisoaM21Su2332.Suppliers where SupplierID= '" + strSupplierId + "'";
+                        SqlCommand deleteCommand = new SqlCommand(strDeleteQuery, Connection);
+
+                        deleteCommand.ExecuteNonQuery();
+                        DisplaySupplierList();
+
+                        Connection.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error :" + ex);
+                    }
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Please select the Customer you want to remove", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
     }
 

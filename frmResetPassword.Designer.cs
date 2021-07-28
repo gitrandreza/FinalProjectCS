@@ -52,8 +52,6 @@ namespace SU21_Final_Project
             this.btnBack = new System.Windows.Forms.Button();
             this.lblConfirmPassword = new System.Windows.Forms.Label();
             this.tbxConfirmPassword = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -138,6 +136,7 @@ namespace SU21_Final_Project
             // lblValidAnswers
             // 
             this.lblValidAnswers.AutoSize = true;
+            this.lblValidAnswers.BackColor = System.Drawing.Color.Transparent;
             this.lblValidAnswers.ForeColor = System.Drawing.Color.ForestGreen;
             this.lblValidAnswers.Location = new System.Drawing.Point(210, 349);
             this.lblValidAnswers.Name = "lblValidAnswers";
@@ -161,7 +160,9 @@ namespace SU21_Final_Project
             // lblNewPassword
             // 
             this.lblNewPassword.AutoSize = true;
+            this.lblNewPassword.BackColor = System.Drawing.Color.Transparent;
             this.lblNewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewPassword.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblNewPassword.Location = new System.Drawing.Point(31, 364);
             this.lblNewPassword.Name = "lblNewPassword";
             this.lblNewPassword.Size = new System.Drawing.Size(112, 17);
@@ -181,7 +182,9 @@ namespace SU21_Final_Project
             // lblUsernameLabel
             // 
             this.lblUsernameLabel.AutoSize = true;
+            this.lblUsernameLabel.BackColor = System.Drawing.Color.Transparent;
             this.lblUsernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsernameLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblUsernameLabel.Location = new System.Drawing.Point(122, 60);
             this.lblUsernameLabel.Name = "lblUsernameLabel";
             this.lblUsernameLabel.Size = new System.Drawing.Size(125, 17);
@@ -213,6 +216,7 @@ namespace SU21_Final_Project
             // lblPasswordRules3
             // 
             this.lblPasswordRules3.AutoSize = true;
+            this.lblPasswordRules3.BackColor = System.Drawing.Color.Transparent;
             this.lblPasswordRules3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPasswordRules3.ForeColor = System.Drawing.Color.Blue;
             this.lblPasswordRules3.Location = new System.Drawing.Point(217, 432);
@@ -224,6 +228,7 @@ namespace SU21_Final_Project
             // lblPasswordRules1
             // 
             this.lblPasswordRules1.AutoSize = true;
+            this.lblPasswordRules1.BackColor = System.Drawing.Color.Transparent;
             this.lblPasswordRules1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPasswordRules1.ForeColor = System.Drawing.Color.Blue;
             this.lblPasswordRules1.Location = new System.Drawing.Point(217, 398);
@@ -235,6 +240,7 @@ namespace SU21_Final_Project
             // lblPasswordRules2
             // 
             this.lblPasswordRules2.AutoSize = true;
+            this.lblPasswordRules2.BackColor = System.Drawing.Color.Transparent;
             this.lblPasswordRules2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPasswordRules2.ForeColor = System.Drawing.Color.Blue;
             this.lblPasswordRules2.Location = new System.Drawing.Point(217, 415);
@@ -247,9 +253,9 @@ namespace SU21_Final_Project
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel1.Controls.Add(this.btnCheck);
-            this.panel1.Location = new System.Drawing.Point(-1, 100);
+            this.panel1.Location = new System.Drawing.Point(14, 100);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(605, 244);
+            this.panel1.Size = new System.Drawing.Size(590, 244);
             this.panel1.TabIndex = 51;
             // 
             // btnBack
@@ -270,7 +276,9 @@ namespace SU21_Final_Project
             // lblConfirmPassword
             // 
             this.lblConfirmPassword.AutoSize = true;
+            this.lblConfirmPassword.BackColor = System.Drawing.Color.Transparent;
             this.lblConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConfirmPassword.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblConfirmPassword.Location = new System.Drawing.Point(23, 439);
             this.lblConfirmPassword.Name = "lblConfirmPassword";
             this.lblConfirmPassword.Size = new System.Drawing.Size(137, 17);
@@ -286,36 +294,12 @@ namespace SU21_Final_Project
             this.tbxConfirmPassword.TabIndex = 6;
             this.tbxConfirmPassword.UseSystemPasswordChar = true;
             // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label3.Font = new System.Drawing.Font("Segoe Script", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label3.Location = new System.Drawing.Point(26, 3);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(146, 43);
-            this.label3.TabIndex = 55;
-            this.label3.Text = "mprint ";
-            // 
-            // label4
-            // 
-            this.label4.BackColor = System.Drawing.Color.Cyan;
-            this.label4.Font = new System.Drawing.Font("Microsoft Uighur", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label4.Location = new System.Drawing.Point(4, 3);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 43);
-            this.label4.TabIndex = 56;
-            this.label4.Text = "i";
-            // 
             // frmResetPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(613, 551);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.lblConfirmPassword);
             this.Controls.Add(this.tbxConfirmPassword);
             this.Controls.Add(this.btnBack);
@@ -374,7 +358,5 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label lblConfirmPassword;
         private System.Windows.Forms.TextBox tbxConfirmPassword;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
     }
 }

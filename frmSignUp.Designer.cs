@@ -76,8 +76,6 @@ namespace SU21_Final_Project
             this.gbxSecurityQuestion = new System.Windows.Forms.GroupBox();
             this.gbxCreateLogin = new System.Windows.Forms.GroupBox();
             this.btnBack = new System.Windows.Forms.Button();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
             this.gbxInformation.SuspendLayout();
             this.gbxSecurityQuestion.SuspendLayout();
             this.gbxCreateLogin.SuspendLayout();
@@ -106,7 +104,7 @@ namespace SU21_Final_Project
             this.lblFirstNameLabel.AutoSize = true;
             this.lblFirstNameLabel.Location = new System.Drawing.Point(41, 46);
             this.lblFirstNameLabel.Name = "lblFirstNameLabel";
-            this.lblFirstNameLabel.Size = new System.Drawing.Size(81, 17);
+            this.lblFirstNameLabel.Size = new System.Drawing.Size(92, 17);
             this.lblFirstNameLabel.TabIndex = 2;
             this.lblFirstNameLabel.Text = "*First Name";
             // 
@@ -115,7 +113,7 @@ namespace SU21_Final_Project
             this.lblLastNameLabel.AutoSize = true;
             this.lblLastNameLabel.Location = new System.Drawing.Point(41, 126);
             this.lblLastNameLabel.Name = "lblLastNameLabel";
-            this.lblLastNameLabel.Size = new System.Drawing.Size(81, 17);
+            this.lblLastNameLabel.Size = new System.Drawing.Size(91, 17);
             this.lblLastNameLabel.TabIndex = 3;
             this.lblLastNameLabel.Text = "*Last Name";
             // 
@@ -124,7 +122,7 @@ namespace SU21_Final_Project
             this.lblMiddleNameLabel.AutoSize = true;
             this.lblMiddleNameLabel.Location = new System.Drawing.Point(32, 88);
             this.lblMiddleNameLabel.Name = "lblMiddleNameLabel";
-            this.lblMiddleNameLabel.Size = new System.Drawing.Size(90, 17);
+            this.lblMiddleNameLabel.Size = new System.Drawing.Size(101, 17);
             this.lblMiddleNameLabel.TabIndex = 4;
             this.lblMiddleNameLabel.Text = "Middle Name";
             // 
@@ -133,7 +131,7 @@ namespace SU21_Final_Project
             this.lblSuffixLabel.AutoSize = true;
             this.lblSuffixLabel.Location = new System.Drawing.Point(80, 161);
             this.lblSuffixLabel.Name = "lblSuffixLabel";
-            this.lblSuffixLabel.Size = new System.Drawing.Size(42, 17);
+            this.lblSuffixLabel.Size = new System.Drawing.Size(48, 17);
             this.lblSuffixLabel.TabIndex = 5;
             this.lblSuffixLabel.Text = "Suffix";
             // 
@@ -150,7 +148,7 @@ namespace SU21_Final_Project
             this.lblCityLabel.AutoSize = true;
             this.lblCityLabel.Location = new System.Drawing.Point(456, 202);
             this.lblCityLabel.Name = "lblCityLabel";
-            this.lblCityLabel.Size = new System.Drawing.Size(36, 17);
+            this.lblCityLabel.Size = new System.Drawing.Size(41, 17);
             this.lblCityLabel.TabIndex = 11;
             this.lblCityLabel.Text = "*City";
             // 
@@ -167,7 +165,7 @@ namespace SU21_Final_Project
             this.lblAddressLabel.AutoSize = true;
             this.lblAddressLabel.Location = new System.Drawing.Point(419, 87);
             this.lblAddressLabel.Name = "lblAddressLabel";
-            this.lblAddressLabel.Size = new System.Drawing.Size(77, 17);
+            this.lblAddressLabel.Size = new System.Drawing.Size(87, 17);
             this.lblAddressLabel.TabIndex = 13;
             this.lblAddressLabel.Text = "*Address 1";
             // 
@@ -184,7 +182,7 @@ namespace SU21_Final_Project
             this.lblStateLabel.AutoSize = true;
             this.lblStateLabel.Location = new System.Drawing.Point(448, 249);
             this.lblStateLabel.Name = "lblStateLabel";
-            this.lblStateLabel.Size = new System.Drawing.Size(46, 17);
+            this.lblStateLabel.Size = new System.Drawing.Size(52, 17);
             this.lblStateLabel.TabIndex = 15;
             this.lblStateLabel.Text = "*State";
             // 
@@ -193,7 +191,7 @@ namespace SU21_Final_Project
             this.lblAddressTwoLabel.AutoSize = true;
             this.lblAddressTwoLabel.Location = new System.Drawing.Point(424, 127);
             this.lblAddressTwoLabel.Name = "lblAddressTwoLabel";
-            this.lblAddressTwoLabel.Size = new System.Drawing.Size(72, 17);
+            this.lblAddressTwoLabel.Size = new System.Drawing.Size(81, 17);
             this.lblAddressTwoLabel.TabIndex = 17;
             this.lblAddressTwoLabel.Text = "Address 2";
             // 
@@ -210,7 +208,7 @@ namespace SU21_Final_Project
             this.lblAddressThreeLabel.AutoSize = true;
             this.lblAddressThreeLabel.Location = new System.Drawing.Point(424, 169);
             this.lblAddressThreeLabel.Name = "lblAddressThreeLabel";
-            this.lblAddressThreeLabel.Size = new System.Drawing.Size(72, 17);
+            this.lblAddressThreeLabel.Size = new System.Drawing.Size(81, 17);
             this.lblAddressThreeLabel.TabIndex = 19;
             this.lblAddressThreeLabel.Text = "Address 3";
             // 
@@ -227,7 +225,7 @@ namespace SU21_Final_Project
             this.lblZipLabel.AutoSize = true;
             this.lblZipLabel.Location = new System.Drawing.Point(610, 245);
             this.lblZipLabel.Name = "lblZipLabel";
-            this.lblZipLabel.Size = new System.Drawing.Size(33, 17);
+            this.lblZipLabel.Size = new System.Drawing.Size(37, 17);
             this.lblZipLabel.TabIndex = 21;
             this.lblZipLabel.Text = "*Zip";
             // 
@@ -341,7 +339,7 @@ namespace SU21_Final_Project
             this.lblPhoneLabel.AutoSize = true;
             this.lblPhoneLabel.Location = new System.Drawing.Point(47, 249);
             this.lblPhoneLabel.Name = "lblPhoneLabel";
-            this.lblPhoneLabel.Size = new System.Drawing.Size(66, 17);
+            this.lblPhoneLabel.Size = new System.Drawing.Size(74, 17);
             this.lblPhoneLabel.TabIndex = 34;
             this.lblPhoneLabel.Text = "*Phone 1";
             // 
@@ -350,7 +348,7 @@ namespace SU21_Final_Project
             this.lblPhoneTwoLabel.AutoSize = true;
             this.lblPhoneTwoLabel.Location = new System.Drawing.Point(435, 49);
             this.lblPhoneTwoLabel.Name = "lblPhoneTwoLabel";
-            this.lblPhoneTwoLabel.Size = new System.Drawing.Size(61, 17);
+            this.lblPhoneTwoLabel.Size = new System.Drawing.Size(68, 17);
             this.lblPhoneTwoLabel.TabIndex = 36;
             this.lblPhoneTwoLabel.Text = "Phone 2";
             // 
@@ -359,7 +357,7 @@ namespace SU21_Final_Project
             this.lblEmailLabel.AutoSize = true;
             this.lblEmailLabel.Location = new System.Drawing.Point(17, 207);
             this.lblEmailLabel.Name = "lblEmailLabel";
-            this.lblEmailLabel.Size = new System.Drawing.Size(103, 17);
+            this.lblEmailLabel.Size = new System.Drawing.Size(117, 17);
             this.lblEmailLabel.TabIndex = 38;
             this.lblEmailLabel.Text = "*Email Address";
             // 
@@ -382,7 +380,7 @@ namespace SU21_Final_Project
             // lblPasswordRulesOne
             // 
             this.lblPasswordRulesOne.AutoSize = true;
-            this.lblPasswordRulesOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPasswordRulesOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPasswordRulesOne.ForeColor = System.Drawing.Color.Blue;
             this.lblPasswordRulesOne.Location = new System.Drawing.Point(4, 137);
             this.lblPasswordRulesOne.Name = "lblPasswordRulesOne";
@@ -393,7 +391,7 @@ namespace SU21_Final_Project
             // lblPasswordRulesTwo
             // 
             this.lblPasswordRulesTwo.AutoSize = true;
-            this.lblPasswordRulesTwo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPasswordRulesTwo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPasswordRulesTwo.ForeColor = System.Drawing.Color.Blue;
             this.lblPasswordRulesTwo.Location = new System.Drawing.Point(3, 154);
             this.lblPasswordRulesTwo.Name = "lblPasswordRulesTwo";
@@ -404,7 +402,7 @@ namespace SU21_Final_Project
             // lblPasswordRulesThree
             // 
             this.lblPasswordRulesThree.AutoSize = true;
-            this.lblPasswordRulesThree.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPasswordRulesThree.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPasswordRulesThree.ForeColor = System.Drawing.Color.Blue;
             this.lblPasswordRulesThree.Location = new System.Drawing.Point(2, 171);
             this.lblPasswordRulesThree.Name = "lblPasswordRulesThree";
@@ -414,7 +412,7 @@ namespace SU21_Final_Project
             // 
             // gbxInformation
             // 
-            this.gbxInformation.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.gbxInformation.BackColor = System.Drawing.Color.Transparent;
             this.gbxInformation.Controls.Add(this.mskPhone2);
             this.gbxInformation.Controls.Add(this.mskPhone1);
             this.gbxInformation.Controls.Add(this.cboState);
@@ -442,10 +440,11 @@ namespace SU21_Final_Project
             this.gbxInformation.Controls.Add(this.lblAddressThreeLabel);
             this.gbxInformation.Controls.Add(this.tbxZip);
             this.gbxInformation.Controls.Add(this.lblZipLabel);
-            this.gbxInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxInformation.Location = new System.Drawing.Point(2, 55);
+            this.gbxInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxInformation.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.gbxInformation.Location = new System.Drawing.Point(2, 23);
             this.gbxInformation.Name = "gbxInformation";
-            this.gbxInformation.Size = new System.Drawing.Size(795, 286);
+            this.gbxInformation.Size = new System.Drawing.Size(795, 318);
             this.gbxInformation.TabIndex = 44;
             this.gbxInformation.TabStop = false;
             this.gbxInformation.Text = "Information";
@@ -551,17 +550,17 @@ namespace SU21_Final_Project
             // lblInfosOneLabel
             // 
             this.lblInfosOneLabel.AutoSize = true;
-            this.lblInfosOneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInfosOneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInfosOneLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblInfosOneLabel.Location = new System.Drawing.Point(667, 18);
             this.lblInfosOneLabel.Name = "lblInfosOneLabel";
-            this.lblInfosOneLabel.Size = new System.Drawing.Size(122, 17);
+            this.lblInfosOneLabel.Size = new System.Drawing.Size(97, 17);
             this.lblInfosOneLabel.TabIndex = 46;
-            this.lblInfosOneLabel.Text = "(*)Required Fields";
+            this.lblInfosOneLabel.Text = "(*)Required ";
             // 
             // gbxSecurityQuestion
             // 
-            this.gbxSecurityQuestion.BackColor = System.Drawing.Color.MistyRose;
+            this.gbxSecurityQuestion.BackColor = System.Drawing.Color.Transparent;
             this.gbxSecurityQuestion.Controls.Add(this.lblQuestionOneLabel);
             this.gbxSecurityQuestion.Controls.Add(this.tbxAnswerOne);
             this.gbxSecurityQuestion.Controls.Add(this.tbxAnswerTwo);
@@ -577,7 +576,7 @@ namespace SU21_Final_Project
             // 
             // gbxCreateLogin
             // 
-            this.gbxCreateLogin.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.gbxCreateLogin.BackColor = System.Drawing.Color.Transparent;
             this.gbxCreateLogin.Controls.Add(this.tbxCreateUsername);
             this.gbxCreateLogin.Controls.Add(this.lblCreateUsernameLabel);
             this.gbxCreateLogin.Controls.Add(this.tbxCreatePassword);
@@ -607,43 +606,21 @@ namespace SU21_Final_Project
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             this.btnBack.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnBack_KeyDown);
             // 
-            // label25
-            // 
-            this.label25.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label25.Font = new System.Drawing.Font("Segoe Script", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label25.Location = new System.Drawing.Point(27, 9);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(155, 43);
-            this.label25.TabIndex = 49;
-            this.label25.Text = "mprint";
-            // 
-            // label26
-            // 
-            this.label26.BackColor = System.Drawing.Color.Cyan;
-            this.label26.Font = new System.Drawing.Font("Microsoft Uighur", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label26.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label26.Location = new System.Drawing.Point(5, 9);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(29, 43);
-            this.label26.TabIndex = 50;
-            this.label26.Text = "i";
-            // 
             // frmSignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(806, 615);
-            this.Controls.Add(this.label25);
-            this.Controls.Add(this.label26);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.gbxCreateLogin);
             this.Controls.Add(this.gbxSecurityQuestion);
             this.Controls.Add(this.gbxInformation);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.btnSave);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmSignUp";
@@ -707,8 +684,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.GroupBox gbxCreateLogin;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.ComboBox cboState;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label26;
         private System.Windows.Forms.MaskedTextBox mskPhone2;
         private System.Windows.Forms.MaskedTextBox mskPhone1;
     }
