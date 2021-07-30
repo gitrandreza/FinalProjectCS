@@ -67,7 +67,7 @@ namespace SU21_Final_Project
         double dblDiscountCouponOne = 0.25;
         double dblDiscountCouponTwo = 100;
         double dblDiscountCouponThree = 500;
-
+        double dblDiscountCouponPercentage;
 
         public frmMain()
         {
@@ -577,6 +577,8 @@ namespace SU21_Final_Project
 
 
             }
+            
+            dblDiscountCouponPercentage = dblTotalList * dblCoupounPercentage;
 
 
 
@@ -587,7 +589,7 @@ namespace SU21_Final_Project
                 lblDiscountOne.BackColor = Color.OrangeRed;
                 lblDeliveryOne.BackColor = Color.OrangeRed;
                 dblDiscount = dblTotalList * dblDiscountOne;
-                dblSubTotal = dblTotalList - dblDiscount-dblCouponOFF;
+                dblSubTotal = dblTotalList - dblDiscount-dblCouponOFF-dblDiscountCouponPercentage;
             }
             else if (intQuantityTotal > 50 && intQuantityTotal < 100)
             {
@@ -595,7 +597,7 @@ namespace SU21_Final_Project
                 lblDiscountTwo.BackColor = Color.OrangeRed;
                 lblDeliveryTwo.BackColor = Color.OrangeRed;
                 dblDiscount = dblTotalList * dblDiscountTwo;
-                dblSubTotal = dblTotalList - dblDiscount - dblCouponOFF;
+                dblSubTotal = dblTotalList - dblDiscount - dblCouponOFF-dblDiscountCouponPercentage; ;
             }
             else if (intQuantityTotal >= 100)
             {
@@ -603,11 +605,11 @@ namespace SU21_Final_Project
                 lblDiscountThree.BackColor = Color.OrangeRed;
                 lblDeliveryThree.BackColor = Color.OrangeRed;
                 dblDiscount = dblTotalList * dblDiscountThree;
-                dblSubTotal = dblTotalList - dblDiscount - dblCouponOFF;
+                dblSubTotal = dblTotalList - dblDiscount - dblCouponOFF- dblDiscountCouponPercentage; ;
             }
             else
             {
-                dblDiscount = dblTotalList;
+                dblSubTotal = dblTotalList-dblCouponOFF- dblDiscountCouponPercentage; ;
             }
             
            
@@ -675,11 +677,11 @@ namespace SU21_Final_Project
                         Connection.Open();
                         //Store Sales Report
 
-                        DateTime today = DateTime.Now;
-                        strInvoiceCustomer = today.ToString("yyyy-MM-dd-HHmmss") + "Receipt.html";
+                       ;
 
-                        SqlCommand commandSalesReport = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesReport(UserID,CreationDate, TotalSale,Invoice) " +
-                            "VALUES(@UserID,@CreationDate,@TotalSale,@Invoice)", Connection);
+
+                        SqlCommand commandSalesReport = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesReport(UserID,CreationDate, TotalSale) " +
+                            "VALUES(@UserID,@CreationDate,@TotalSale)", Connection);
                         commandSalesReport.Parameters.AddWithValue("@UserID", intUserID);
                         commandSalesReport.Parameters.AddWithValue("@CreationDate", strDate);
 
@@ -692,15 +694,13 @@ namespace SU21_Final_Project
                         }
 
                         commandSalesReport.Parameters.AddWithValue("@TotalSale", dblTotalAmount);
-                        commandSalesReport.Parameters.AddWithValue("@Invoice", strInvoiceCustomer);
-
-                        strLastSaleReportCustomer = strInvoiceCustomer;
+             
                         btnViewReceipt.Enabled = true;
                         blnPaid = true;
 
                         commandSalesReport.ExecuteNonQuery();
 
-                        //Get the last SaleID using Max to insert as FK to the Sales Report table
+                        //Get the last SaleID using Max to insert as FK to the Sales Report table and as Id of Invoice 
                         string strQuerySaleID = "SELECT MAX(SaleId) from RandrezaVoharisoaM21Su2332.SalesReport";
                         SqlCommand commandSalesID = new SqlCommand(strQuerySaleID, Connection);
 
@@ -708,6 +708,9 @@ namespace SU21_Final_Project
                         SqlDataReader srSaleID = commandSalesID.ExecuteReader();
                         srSaleID.Read();
                         intSaleId = srSaleID.GetInt32(0);
+                      
+                        strInvoiceCustomer = intSaleId.ToString()+".html";
+                        strLastSaleReportCustomer = intSaleId.ToString();
                         srSaleID.Close();
 
                         //Loop through the data grid view List to store sales details in database table
@@ -872,8 +875,8 @@ namespace SU21_Final_Project
         // Print the HTML report on the desktop
         private void PrintReport(StringBuilder html)
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string filepath = path + "\\Receipt.html";
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string filepath = path + "\\"+strInvoiceCustomer+" ";
            
             try
             {
@@ -891,8 +894,7 @@ namespace SU21_Final_Project
                     "Error with System Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            //unique filename  use for a date and time with part of a name
-            DateTime today = DateTime.Now;
+           
             using (StreamWriter swInvoice = new StreamWriter($"{strInvoiceCustomer}"))
             {
                 swInvoice.WriteLine(html);
@@ -937,7 +939,7 @@ namespace SU21_Final_Project
             lblQuantityAvailable.Text = "";
             tbxDescription.Text = "";
             tbxQuantity.Text = "";
-
+            lblTotalList.Text = "";
             lblDiscount.Text = "";
             dblDiscount = 0;
            
@@ -1045,9 +1047,21 @@ namespace SU21_Final_Project
 
         private void btnViewReceipt_Click(object sender, EventArgs e)
         {
-            string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string xslLocation = Path.Combine(executableLocation, strLastSaleReportCustomer);
-            System.Diagnostics.Process.Start(xslLocation);
+
+            try
+            {
+               
+                    string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                    string xslLocation = Path.Combine(executableLocation, strLastSaleReportCustomer + ".html");
+                    System.Diagnostics.Process.Start(xslLocation);
+                
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Cannot find Report associate with this.",
+                    "Error with System Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         //CREDIT CARD
@@ -1066,7 +1080,7 @@ namespace SU21_Final_Project
         public bool ValidCVV(string strValidCVV)
         {
 
-            if (strValidCVV.Length != 3 || strValidCVV.Length != 4)
+            if (strValidCVV.Length <3)
             {
                 return false;
             }
@@ -1152,9 +1166,7 @@ namespace SU21_Final_Project
                 if (MessageBox.Show("Are you sure you want to Apply this coupon, your other discount won't be applied?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
 
-                    lblDiscountOne.BackColor = Color.Silver;
-                    lblDiscountTwo.BackColor = Color.Silver;
-                    lblDiscountThree.BackColor = Color.Silver;
+                   
                     SearchValidCoupon();
 
                     string strTotalListForCoupon = lblTotalList.Text.Substring(1);
@@ -1167,13 +1179,20 @@ namespace SU21_Final_Project
                     }
                     if (strDiscountIndex == "1")
                     {
-                        CalculateAmount(dblDiscountCouponOne, 0, 0, 0);
+                        CalculateAmount(dblDiscountCouponOne,0, 0, 0, 0);
+                        lblDiscountOne.BackColor = Color.Silver;
+                        lblDiscountTwo.BackColor = Color.Silver;
+                        lblDiscountThree.BackColor = Color.Silver;
+                        lblDiscount.Text = dblDiscountCouponPercentage.ToString("C2");
                     }
                     if (strDiscountIndex == "2")
                     {
                         if (dblTotalListForCoupon > 500 && dblTotalListForCoupon < 2000)
                         {
                             CalculateAmount(0, dblDiscountCouponTwo, 0, 0, 0);
+                            lblDiscountOne.BackColor = Color.Silver;
+                            lblDiscountTwo.BackColor = Color.Silver;
+                            lblDiscountThree.BackColor = Color.Silver;
                             lblDiscount.Text = "$100";
                         }
                         else
@@ -1187,6 +1206,9 @@ namespace SU21_Final_Project
                         if (dblTotalListForCoupon > 2000)
                         {
                             CalculateAmount(0, dblDiscountCouponThree, 0, 0, 0);
+                            lblDiscountOne.BackColor = Color.Silver;
+                            lblDiscountTwo.BackColor = Color.Silver;
+                            lblDiscountThree.BackColor = Color.Silver;
                             lblDiscount.Text = "$500";
                         }
                         else
@@ -1202,6 +1224,13 @@ namespace SU21_Final_Project
                 MessageBox.Show("Enter your coupon number", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
+        }
+
+        private void btnCancelCoupon_Click(object sender, EventArgs e)
+        {
+            CalculateAmount();
+            tbxCoupon.Text = "";
+            lblCouponDescription.Text = "";
         }
     }
 }

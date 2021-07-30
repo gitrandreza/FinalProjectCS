@@ -30,7 +30,7 @@ namespace SU21_Final_Project
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmployee));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabInformation = new System.Windows.Forms.TabPage();
             this.btnPrintInvoice = new System.Windows.Forms.Button();
             this.btnClearCustomer = new System.Windows.Forms.Button();
@@ -689,7 +689,7 @@ namespace SU21_Final_Project
             this.btnViewInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnViewInvoice.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnViewInvoice.Location = new System.Drawing.Point(310, 198);
+            this.btnViewInvoice.Location = new System.Drawing.Point(316, 201);
             this.btnViewInvoice.Name = "btnViewInvoice";
             this.btnViewInvoice.Size = new System.Drawing.Size(295, 42);
             this.btnViewInvoice.TabIndex = 35;
@@ -741,7 +741,7 @@ namespace SU21_Final_Project
             this.btnPlaceOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlaceOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlaceOrder.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnPlaceOrder.Location = new System.Drawing.Point(310, 150);
+            this.btnPlaceOrder.Location = new System.Drawing.Point(316, 153);
             this.btnPlaceOrder.Name = "btnPlaceOrder";
             this.btnPlaceOrder.Size = new System.Drawing.Size(295, 47);
             this.btnPlaceOrder.TabIndex = 32;
@@ -1591,14 +1591,14 @@ namespace SU21_Final_Project
             this.dgvEmployeeViewItem.AllowUserToAddRows = false;
             this.dgvEmployeeViewItem.AllowUserToDeleteRows = false;
             this.dgvEmployeeViewItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEmployeeViewItem.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEmployeeViewItem.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvEmployeeViewItem.Location = new System.Drawing.Point(3, 3);
             this.dgvEmployeeViewItem.MultiSelect = false;
             this.dgvEmployeeViewItem.Name = "dgvEmployeeViewItem";
@@ -1903,7 +1903,7 @@ namespace SU21_Final_Project
             this.lblCustomerName.AutoSize = true;
             this.lblCustomerName.Enabled = false;
             this.lblCustomerName.ForeColor = System.Drawing.Color.Black;
-            this.lblCustomerName.Location = new System.Drawing.Point(295, 149);
+            this.lblCustomerName.Location = new System.Drawing.Point(144, 172);
             this.lblCustomerName.Name = "lblCustomerName";
             this.lblCustomerName.Size = new System.Drawing.Size(122, 17);
             this.lblCustomerName.TabIndex = 35;

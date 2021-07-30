@@ -131,14 +131,7 @@ namespace SU21_Final_Project
             this.lblSalesReportLabel = new System.Windows.Forms.Label();
             this.dgvSalesDetails = new System.Windows.Forms.DataGridView();
             this.dgvSalesReport = new System.Windows.Forms.DataGridView();
-            this.lblDate = new System.Windows.Forms.Label();
-            this.btnLogout = new System.Windows.Forms.Button();
-            this.btnAccessPOS = new System.Windows.Forms.Button();
             this.tabSupplier = new System.Windows.Forms.TabPage();
-            this.dgvSupplierView = new System.Windows.Forms.DataGridView();
-            this.btnRemoveSupplier = new System.Windows.Forms.Button();
-            this.btnEditSupplier = new System.Windows.Forms.Button();
-            this.btnAddSupplier = new System.Windows.Forms.Button();
             this.gbxAddEditSupplier = new System.Windows.Forms.GroupBox();
             this.btnSaveEditSupplier = new System.Windows.Forms.Button();
             this.tbxSupplierCity = new System.Windows.Forms.TextBox();
@@ -158,6 +151,13 @@ namespace SU21_Final_Project
             this.lblEmailSupplier = new System.Windows.Forms.Label();
             this.lblSupplierContact = new System.Windows.Forms.Label();
             this.lblSupplierName = new System.Windows.Forms.Label();
+            this.btnRemoveSupplier = new System.Windows.Forms.Button();
+            this.btnEditSupplier = new System.Windows.Forms.Button();
+            this.btnAddSupplier = new System.Windows.Forms.Button();
+            this.dgvSupplierView = new System.Windows.Forms.DataGridView();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.btnAccessPOS = new System.Windows.Forms.Button();
             this.tabEmployee.SuspendLayout();
             this.gbxEdit.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -176,8 +176,8 @@ namespace SU21_Final_Project
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesReport)).BeginInit();
             this.tabSupplier.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierView)).BeginInit();
             this.gbxAddEditSupplier.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierView)).BeginInit();
             this.SuspendLayout();
             // 
             // tabEmployee
@@ -873,7 +873,7 @@ namespace SU21_Final_Project
             this.tabManagerFeatures.Location = new System.Drawing.Point(12, 52);
             this.tabManagerFeatures.Name = "tabManagerFeatures";
             this.tabManagerFeatures.SelectedIndex = 0;
-            this.tabManagerFeatures.Size = new System.Drawing.Size(1105, 567);
+            this.tabManagerFeatures.Size = new System.Drawing.Size(1105, 546);
             this.tabManagerFeatures.TabIndex = 0;
             this.tabManagerFeatures.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabManagerFeatures_Selected);
             // 
@@ -1205,7 +1205,7 @@ namespace SU21_Final_Project
             this.tabSalesReport.Controls.Add(this.dgvSalesReport);
             this.tabSalesReport.Location = new System.Drawing.Point(4, 25);
             this.tabSalesReport.Name = "tabSalesReport";
-            this.tabSalesReport.Size = new System.Drawing.Size(1097, 538);
+            this.tabSalesReport.Size = new System.Drawing.Size(1097, 517);
             this.tabSalesReport.TabIndex = 3;
             this.tabSalesReport.Text = "Sales Management";
             // 
@@ -1445,34 +1445,6 @@ namespace SU21_Final_Project
             this.dgvSalesReport.TabIndex = 0;
             this.dgvSalesReport.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSalesReport_CellClick);
             // 
-            // lblDate
-            // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(350, 9);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(0, 17);
-            this.lblDate.TabIndex = 14;
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.Location = new System.Drawing.Point(971, 12);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(113, 34);
-            this.btnLogout.TabIndex = 15;
-            this.btnLogout.Text = "Log out";
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            // 
-            // btnAccessPOS
-            // 
-            this.btnAccessPOS.Location = new System.Drawing.Point(795, 12);
-            this.btnAccessPOS.Name = "btnAccessPOS";
-            this.btnAccessPOS.Size = new System.Drawing.Size(117, 34);
-            this.btnAccessPOS.TabIndex = 19;
-            this.btnAccessPOS.Text = "Point Of Sale";
-            this.btnAccessPOS.UseVisualStyleBackColor = true;
-            this.btnAccessPOS.Click += new System.EventHandler(this.btnAccessPOS_Click);
-            // 
             // tabSupplier
             // 
             this.tabSupplier.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabSupplier.BackgroundImage")));
@@ -1487,52 +1459,6 @@ namespace SU21_Final_Project
             this.tabSupplier.TabIndex = 4;
             this.tabSupplier.Text = "Supplier";
             this.tabSupplier.UseVisualStyleBackColor = true;
-            // 
-            // dgvSupplierView
-            // 
-            this.dgvSupplierView.AllowUserToAddRows = false;
-            this.dgvSupplierView.AllowUserToDeleteRows = false;
-            this.dgvSupplierView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSupplierView.Location = new System.Drawing.Point(14, 28);
-            this.dgvSupplierView.MultiSelect = false;
-            this.dgvSupplierView.Name = "dgvSupplierView";
-            this.dgvSupplierView.ReadOnly = true;
-            this.dgvSupplierView.RowHeadersVisible = false;
-            this.dgvSupplierView.RowHeadersWidth = 51;
-            this.dgvSupplierView.RowTemplate.Height = 24;
-            this.dgvSupplierView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSupplierView.Size = new System.Drawing.Size(1064, 199);
-            this.dgvSupplierView.TabIndex = 2;
-            // 
-            // btnRemoveSupplier
-            // 
-            this.btnRemoveSupplier.Location = new System.Drawing.Point(809, 233);
-            this.btnRemoveSupplier.Name = "btnRemoveSupplier";
-            this.btnRemoveSupplier.Size = new System.Drawing.Size(114, 29);
-            this.btnRemoveSupplier.TabIndex = 7;
-            this.btnRemoveSupplier.Text = "Remove Supplier";
-            this.btnRemoveSupplier.UseVisualStyleBackColor = true;
-            this.btnRemoveSupplier.Click += new System.EventHandler(this.btnRemoveSupplier_Click);
-            // 
-            // btnEditSupplier
-            // 
-            this.btnEditSupplier.Location = new System.Drawing.Point(526, 233);
-            this.btnEditSupplier.Name = "btnEditSupplier";
-            this.btnEditSupplier.Size = new System.Drawing.Size(128, 29);
-            this.btnEditSupplier.TabIndex = 6;
-            this.btnEditSupplier.Text = "Edit Supplier Infos";
-            this.btnEditSupplier.UseVisualStyleBackColor = true;
-            this.btnEditSupplier.Click += new System.EventHandler(this.btnEditSupplier_Click);
-            // 
-            // btnAddSupplier
-            // 
-            this.btnAddSupplier.Location = new System.Drawing.Point(189, 233);
-            this.btnAddSupplier.Name = "btnAddSupplier";
-            this.btnAddSupplier.Size = new System.Drawing.Size(113, 29);
-            this.btnAddSupplier.TabIndex = 5;
-            this.btnAddSupplier.Text = "Add New Supplier";
-            this.btnAddSupplier.UseVisualStyleBackColor = true;
-            this.btnAddSupplier.Click += new System.EventHandler(this.btnAddSupplier_Click);
             // 
             // gbxAddEditSupplier
             // 
@@ -1774,6 +1700,80 @@ namespace SU21_Final_Project
             this.lblSupplierName.TabIndex = 0;
             this.lblSupplierName.Text = "Company Name";
             // 
+            // btnRemoveSupplier
+            // 
+            this.btnRemoveSupplier.Location = new System.Drawing.Point(809, 233);
+            this.btnRemoveSupplier.Name = "btnRemoveSupplier";
+            this.btnRemoveSupplier.Size = new System.Drawing.Size(114, 29);
+            this.btnRemoveSupplier.TabIndex = 7;
+            this.btnRemoveSupplier.Text = "Remove Supplier";
+            this.btnRemoveSupplier.UseVisualStyleBackColor = true;
+            this.btnRemoveSupplier.Click += new System.EventHandler(this.btnRemoveSupplier_Click);
+            // 
+            // btnEditSupplier
+            // 
+            this.btnEditSupplier.Location = new System.Drawing.Point(526, 233);
+            this.btnEditSupplier.Name = "btnEditSupplier";
+            this.btnEditSupplier.Size = new System.Drawing.Size(128, 29);
+            this.btnEditSupplier.TabIndex = 6;
+            this.btnEditSupplier.Text = "Edit Supplier Infos";
+            this.btnEditSupplier.UseVisualStyleBackColor = true;
+            this.btnEditSupplier.Click += new System.EventHandler(this.btnEditSupplier_Click);
+            // 
+            // btnAddSupplier
+            // 
+            this.btnAddSupplier.Location = new System.Drawing.Point(189, 233);
+            this.btnAddSupplier.Name = "btnAddSupplier";
+            this.btnAddSupplier.Size = new System.Drawing.Size(113, 29);
+            this.btnAddSupplier.TabIndex = 5;
+            this.btnAddSupplier.Text = "Add New Supplier";
+            this.btnAddSupplier.UseVisualStyleBackColor = true;
+            this.btnAddSupplier.Click += new System.EventHandler(this.btnAddSupplier_Click);
+            // 
+            // dgvSupplierView
+            // 
+            this.dgvSupplierView.AllowUserToAddRows = false;
+            this.dgvSupplierView.AllowUserToDeleteRows = false;
+            this.dgvSupplierView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSupplierView.Location = new System.Drawing.Point(14, 28);
+            this.dgvSupplierView.MultiSelect = false;
+            this.dgvSupplierView.Name = "dgvSupplierView";
+            this.dgvSupplierView.ReadOnly = true;
+            this.dgvSupplierView.RowHeadersVisible = false;
+            this.dgvSupplierView.RowHeadersWidth = 51;
+            this.dgvSupplierView.RowTemplate.Height = 24;
+            this.dgvSupplierView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSupplierView.Size = new System.Drawing.Size(1064, 199);
+            this.dgvSupplierView.TabIndex = 2;
+            // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.Location = new System.Drawing.Point(350, 9);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(0, 17);
+            this.lblDate.TabIndex = 14;
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.Location = new System.Drawing.Point(971, 12);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(113, 34);
+            this.btnLogout.TabIndex = 15;
+            this.btnLogout.Text = "Log out";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // btnAccessPOS
+            // 
+            this.btnAccessPOS.Location = new System.Drawing.Point(795, 12);
+            this.btnAccessPOS.Name = "btnAccessPOS";
+            this.btnAccessPOS.Size = new System.Drawing.Size(117, 34);
+            this.btnAccessPOS.TabIndex = 19;
+            this.btnAccessPOS.Text = "Point Of Sale";
+            this.btnAccessPOS.UseVisualStyleBackColor = true;
+            this.btnAccessPOS.Click += new System.EventHandler(this.btnAccessPOS_Click);
+            // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1819,9 +1819,9 @@ namespace SU21_Final_Project
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesDetails)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesReport)).EndInit();
             this.tabSupplier.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierView)).EndInit();
             this.gbxAddEditSupplier.ResumeLayout(false);
             this.gbxAddEditSupplier.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

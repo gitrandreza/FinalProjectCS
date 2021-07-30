@@ -526,11 +526,10 @@ namespace SU21_Final_Project
                             Connection.Open();
                             //Store Sales Report
 
-                            DateTime today = DateTime.Now;
-                            strInvoiceReference = today.ToString("yyyy-MM-dd-HHmmss") + "InvoiceCustomer.html";
+                           
 
-                            SqlCommand commandSalesReport = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesReport(UserID,CreationDate, TotalSale, Invoice) " +
-                                "VALUES(@UserID,@CreationDate,@TotalSale,@Invoice)", Connection);
+                            SqlCommand commandSalesReport = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesReport(UserID,CreationDate, TotalSale) " +
+                                "VALUES(@UserID,@CreationDate,@TotalSale)", Connection);
                             commandSalesReport.Parameters.AddWithValue("@UserID", intCustomerUserID);
                             commandSalesReport.Parameters.AddWithValue("@CreationDate", strDate);
 
@@ -542,9 +541,9 @@ namespace SU21_Final_Project
                             }
 
                             commandSalesReport.Parameters.AddWithValue("@TotalSale", dblConvertTotalToPay);
-                            commandSalesReport.Parameters.AddWithValue("@Invoice", strInvoiceReference);
+                           
                             
-                            strLastSaleReport = strInvoiceReference;
+                           
                             btnViewInvoice.Enabled = true;
                             blnPaid = true;
                             commandSalesReport.ExecuteNonQuery();
@@ -559,6 +558,9 @@ namespace SU21_Final_Project
                             SqlDataReader srSaleID = commandSalesID.ExecuteReader();
                             srSaleID.Read();
                             intSaleId = srSaleID.GetInt32(0);
+                            
+                            strInvoiceReference = intSaleId.ToString();
+                            strLastSaleReport = intSaleId.ToString() + ".html";
                             srSaleID.Close();
 
                             //Loop through the data grid view List to store sales details in database table
@@ -713,8 +715,8 @@ namespace SU21_Final_Project
         // Print the HTML report on the desktop
         private void PrintReportEmployeeView(StringBuilder html)
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string filepath = path + "\\Invoice.html";
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string filepath = path + "\\" + strLastSaleReport+"";
 
             try
             {
@@ -734,7 +736,7 @@ namespace SU21_Final_Project
 
             //unique filename  use for a date and time with part of a name
 
-            using (StreamWriter swHistory = new StreamWriter($"{strInvoiceReference}")) 
+            using (StreamWriter swHistory = new StreamWriter($"{strLastSaleReport}")) 
             {
                 swHistory.WriteLine(html);
             }
@@ -745,23 +747,31 @@ namespace SU21_Final_Project
         {
             if (dgvCustomerPurchase.SelectedRows.Count > 0)
             {
-                if(strInvoiceReference=="")
+                try
                 {
-                    MessageBox.Show("This Sales doesn't have invoice yet",
-                    "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (strInvoiceReference == "")
+                    {
+                        MessageBox.Show("This Sales doesn't have invoice yet",
+                        "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                        string xslLocation = Path.Combine(executableLocation, strInvoiceReference + ".html");
+                        System.Diagnostics.Process.Start(xslLocation);
+                    }
                 }
-                else
+                catch (Exception)
                 {
-                    string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                    string xslLocation = Path.Combine(executableLocation, strInvoiceReference);
-                    System.Diagnostics.Process.Start(xslLocation);
+                    MessageBox.Show("Cannot find Report associate with this.",
+                        "Error with System Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-               
+
             }
             else
             {
                 MessageBox.Show("Please select report",
-                   "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                   "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
                
         }
@@ -829,7 +839,7 @@ namespace SU21_Final_Project
             tbxEmailCustomer.Text = "";
             radYes.Checked = false;
             radNo.Checked = false;
-
+            tbxIDSearch.Text = "";
         }
         //Print Invoice
         private void btnPrint_Click(object sender, EventArgs e)
@@ -1703,7 +1713,7 @@ namespace SU21_Final_Project
                 //instantiate object from Items class and assign value from cell
                 DataGridViewRow row = this.dgvCustomerPurchase.Rows[e.RowIndex];
                 strSaleId = row.Cells["SaleId"].Value.ToString();
-                strInvoiceReference = row.Cells["Invoice"].Value.ToString();
+                strInvoiceReference = row.Cells["SaleId"].Value.ToString();
 
                 DisplaySalesDetail(strSaleId);
 
@@ -1798,7 +1808,7 @@ namespace SU21_Final_Project
         public bool ValidCVV(string strValidCVV)
         {
 
-            if (strValidCVV.Length !=3 || strValidCVV.Length != 4)
+            if (strValidCVV.Length <3)
             {
                 return false;
             }
@@ -1831,7 +1841,7 @@ namespace SU21_Final_Project
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            new frmMain().Show();
+            new frmLogin().Show();
             this.Hide();
 
 

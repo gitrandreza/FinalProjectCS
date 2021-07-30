@@ -1249,7 +1249,7 @@ namespace SU21_Final_Project
                 //instantiate object from Items class and assign value from cell
                 DataGridViewRow row = this.dgvSalesReport.Rows[e.RowIndex];
                 strSaleId = row.Cells["SaleId"].Value.ToString();
-                strInvoiceReport= row.Cells["Invoice"].Value.ToString();
+                strInvoiceReport= row.Cells["SaleId"].Value.ToString();
                 DisplaySalesDetail(strSaleId);
 
             }
@@ -1879,16 +1879,25 @@ namespace SU21_Final_Project
 
             if (dgvSalesReport.SelectedRows.Count > 0)
             {
-                if (strInvoiceReport == "")
+
+                try
                 {
-                    MessageBox.Show("This Sales doesn't have invoice yet",
-                    "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (strInvoiceReport == "")
+                    {
+                        MessageBox.Show("This Sales doesn't have invoice yet",
+                        "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                        string xslLocation = Path.Combine(executableLocation, strInvoiceReport);
+                        System.Diagnostics.Process.Start(xslLocation);
+                    }
                 }
-                else
+                catch (Exception)
                 {
-                    string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                    string xslLocation = Path.Combine(executableLocation, strInvoiceReport);
-                    System.Diagnostics.Process.Start(xslLocation);
+                    MessageBox.Show("Cannot find Report associate with this.",
+                        "Error with System Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }

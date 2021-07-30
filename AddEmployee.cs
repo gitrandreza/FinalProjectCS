@@ -416,12 +416,13 @@ namespace SU21_Final_Project
 
         private void btnBack_Click_1(object sender, EventArgs e)
         {
+            new frmAdmin().Show();
             this.Hide();
         }
 
         private void frmAddEmployee_FormClosing(object sender, FormClosingEventArgs e)
         {
-            new frmAddEmployee().Show();
+            new frmAdmin().Show();
             this.Hide();
         }
 
