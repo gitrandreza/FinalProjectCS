@@ -416,11 +416,7 @@ namespace SU21_Final_Project
 
         }
 
-        //Accept digit only for Phone
-        private void tbxPhoneOne_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
+      
 
         private void tbxDateOfBirth_KeyPress(object sender, KeyPressEventArgs e)
         {

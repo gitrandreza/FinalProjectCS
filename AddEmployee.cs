@@ -42,6 +42,8 @@ namespace SU21_Final_Project
       
        
         bool blnDuplicateUsername;
+
+        public static bool blnAddEmployee=false;
         public frmAddEmployee()
         {
             InitializeComponent();
@@ -420,6 +422,13 @@ namespace SU21_Final_Project
         private void frmAddEmployee_FormClosing(object sender, FormClosingEventArgs e)
         {
             new frmAddEmployee().Show();
+            this.Hide();
+        }
+
+        private void btnHelpAddEmployee_Click(object sender, EventArgs e)
+        {
+            new frmHelp().Show();
+            blnAddEmployee = true;
             this.Hide();
         }
     }

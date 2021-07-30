@@ -31,6 +31,7 @@ namespace SU21_Final_Project
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddEmployee));
             this.gbxInformation = new System.Windows.Forms.GroupBox();
+            this.dtpEmployeeHiredDate = new System.Windows.Forms.DateTimePicker();
             this.lblPositionLabel = new System.Windows.Forms.Label();
             this.cboPosition = new System.Windows.Forms.ComboBox();
             this.mskPhone = new System.Windows.Forms.MaskedTextBox();
@@ -61,7 +62,7 @@ namespace SU21_Final_Project
             this.lblZipLabel = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.dtpEmployeeHiredDate = new System.Windows.Forms.DateTimePicker();
+            this.btnHelpAddEmployee = new System.Windows.Forms.Button();
             this.gbxInformation.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,17 +100,27 @@ namespace SU21_Final_Project
             this.gbxInformation.Controls.Add(this.lblZipLabel);
             this.gbxInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxInformation.ForeColor = System.Drawing.Color.White;
-            this.gbxInformation.Location = new System.Drawing.Point(3, 12);
+            this.gbxInformation.Location = new System.Drawing.Point(2, 46);
             this.gbxInformation.Name = "gbxInformation";
-            this.gbxInformation.Size = new System.Drawing.Size(795, 286);
+            this.gbxInformation.Size = new System.Drawing.Size(717, 286);
             this.gbxInformation.TabIndex = 45;
             this.gbxInformation.TabStop = false;
             this.gbxInformation.Text = "Information";
             // 
+            // dtpEmployeeHiredDate
+            // 
+            this.dtpEmployeeHiredDate.CalendarForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dtpEmployeeHiredDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpEmployeeHiredDate.Location = new System.Drawing.Point(439, 204);
+            this.dtpEmployeeHiredDate.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
+            this.dtpEmployeeHiredDate.Name = "dtpEmployeeHiredDate";
+            this.dtpEmployeeHiredDate.Size = new System.Drawing.Size(158, 22);
+            this.dtpEmployeeHiredDate.TabIndex = 56;
+            // 
             // lblPositionLabel
             // 
             this.lblPositionLabel.AutoSize = true;
-            this.lblPositionLabel.Location = new System.Drawing.Point(621, 70);
+            this.lblPositionLabel.Location = new System.Drawing.Point(536, 86);
             this.lblPositionLabel.Name = "lblPositionLabel";
             this.lblPositionLabel.Size = new System.Drawing.Size(72, 17);
             this.lblPositionLabel.TabIndex = 55;
@@ -123,14 +134,14 @@ namespace SU21_Final_Project
             "Manager",
             "Clerk",
             "Technician"});
-            this.cboPosition.Location = new System.Drawing.Point(704, 65);
+            this.cboPosition.Location = new System.Drawing.Point(619, 81);
             this.cboPosition.Name = "cboPosition";
             this.cboPosition.Size = new System.Drawing.Size(78, 24);
             this.cboPosition.TabIndex = 54;
             // 
             // mskPhone
             // 
-            this.mskPhone.Location = new System.Drawing.Point(501, 146);
+            this.mskPhone.Location = new System.Drawing.Point(439, 161);
             this.mskPhone.Mask = "000-000-0000";
             this.mskPhone.Name = "mskPhone";
             this.mskPhone.Size = new System.Drawing.Size(89, 22);
@@ -139,7 +150,7 @@ namespace SU21_Final_Project
             // lblRoleLabel
             // 
             this.lblRoleLabel.AutoSize = true;
-            this.lblRoleLabel.Location = new System.Drawing.Point(437, 73);
+            this.lblRoleLabel.Location = new System.Drawing.Point(375, 88);
             this.lblRoleLabel.Name = "lblRoleLabel";
             this.lblRoleLabel.Size = new System.Drawing.Size(47, 17);
             this.lblRoleLabel.TabIndex = 51;
@@ -152,7 +163,7 @@ namespace SU21_Final_Project
             this.cboRole.Items.AddRange(new object[] {
             "Manager",
             "Employee"});
-            this.cboRole.Location = new System.Drawing.Point(501, 69);
+            this.cboRole.Location = new System.Drawing.Point(439, 84);
             this.cboRole.Name = "cboRole";
             this.cboRole.Size = new System.Drawing.Size(78, 24);
             this.cboRole.TabIndex = 50;
@@ -220,7 +231,7 @@ namespace SU21_Final_Project
             "WV",
             "WI",
             "WY"});
-            this.cboState.Location = new System.Drawing.Point(444, 248);
+            this.cboState.Location = new System.Drawing.Point(382, 263);
             this.cboState.MaxLength = 3;
             this.cboState.Name = "cboState";
             this.cboState.Size = new System.Drawing.Size(63, 24);
@@ -234,7 +245,7 @@ namespace SU21_Final_Project
             "Mrs",
             "Mr",
             "Ms"});
-            this.cboSuffix.Location = new System.Drawing.Point(133, 162);
+            this.cboSuffix.Location = new System.Drawing.Point(133, 177);
             this.cboSuffix.Name = "cboSuffix";
             this.cboSuffix.Size = new System.Drawing.Size(78, 24);
             this.cboSuffix.TabIndex = 3;
@@ -244,7 +255,7 @@ namespace SU21_Final_Project
             this.lblInfosOneLabel.AutoSize = true;
             this.lblInfosOneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInfosOneLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblInfosOneLabel.Location = new System.Drawing.Point(667, 18);
+            this.lblInfosOneLabel.Location = new System.Drawing.Point(605, 30);
             this.lblInfosOneLabel.Name = "lblInfosOneLabel";
             this.lblInfosOneLabel.Size = new System.Drawing.Size(92, 17);
             this.lblInfosOneLabel.TabIndex = 46;
@@ -253,7 +264,7 @@ namespace SU21_Final_Project
             // lblFirstNameLabel
             // 
             this.lblFirstNameLabel.AutoSize = true;
-            this.lblFirstNameLabel.Location = new System.Drawing.Point(41, 46);
+            this.lblFirstNameLabel.Location = new System.Drawing.Point(41, 61);
             this.lblFirstNameLabel.Name = "lblFirstNameLabel";
             this.lblFirstNameLabel.Size = new System.Drawing.Size(92, 17);
             this.lblFirstNameLabel.TabIndex = 2;
@@ -261,7 +272,7 @@ namespace SU21_Final_Project
             // 
             // tbxLastName
             // 
-            this.tbxLastName.Location = new System.Drawing.Point(133, 124);
+            this.tbxLastName.Location = new System.Drawing.Point(133, 139);
             this.tbxLastName.MaxLength = 20;
             this.tbxLastName.Name = "tbxLastName";
             this.tbxLastName.Size = new System.Drawing.Size(165, 22);
@@ -269,7 +280,7 @@ namespace SU21_Final_Project
             // 
             // tbxFirstName
             // 
-            this.tbxFirstName.Location = new System.Drawing.Point(133, 42);
+            this.tbxFirstName.Location = new System.Drawing.Point(133, 57);
             this.tbxFirstName.MaxLength = 20;
             this.tbxFirstName.Name = "tbxFirstName";
             this.tbxFirstName.Size = new System.Drawing.Size(165, 22);
@@ -278,7 +289,7 @@ namespace SU21_Final_Project
             // lblLastNameLabel
             // 
             this.lblLastNameLabel.AutoSize = true;
-            this.lblLastNameLabel.Location = new System.Drawing.Point(41, 126);
+            this.lblLastNameLabel.Location = new System.Drawing.Point(41, 141);
             this.lblLastNameLabel.Name = "lblLastNameLabel";
             this.lblLastNameLabel.Size = new System.Drawing.Size(91, 17);
             this.lblLastNameLabel.TabIndex = 3;
@@ -287,7 +298,7 @@ namespace SU21_Final_Project
             // lblMiddleNameLabel
             // 
             this.lblMiddleNameLabel.AutoSize = true;
-            this.lblMiddleNameLabel.Location = new System.Drawing.Point(32, 88);
+            this.lblMiddleNameLabel.Location = new System.Drawing.Point(32, 103);
             this.lblMiddleNameLabel.Name = "lblMiddleNameLabel";
             this.lblMiddleNameLabel.Size = new System.Drawing.Size(101, 17);
             this.lblMiddleNameLabel.TabIndex = 4;
@@ -296,7 +307,7 @@ namespace SU21_Final_Project
             // lblEmailLabel
             // 
             this.lblEmailLabel.AutoSize = true;
-            this.lblEmailLabel.Location = new System.Drawing.Point(385, 37);
+            this.lblEmailLabel.Location = new System.Drawing.Point(323, 52);
             this.lblEmailLabel.Name = "lblEmailLabel";
             this.lblEmailLabel.Size = new System.Drawing.Size(117, 17);
             this.lblEmailLabel.TabIndex = 38;
@@ -305,7 +316,7 @@ namespace SU21_Final_Project
             // lblSuffixLabel
             // 
             this.lblSuffixLabel.AutoSize = true;
-            this.lblSuffixLabel.Location = new System.Drawing.Point(80, 161);
+            this.lblSuffixLabel.Location = new System.Drawing.Point(80, 176);
             this.lblSuffixLabel.Name = "lblSuffixLabel";
             this.lblSuffixLabel.Size = new System.Drawing.Size(48, 17);
             this.lblSuffixLabel.TabIndex = 5;
@@ -313,7 +324,7 @@ namespace SU21_Final_Project
             // 
             // tbxEmail
             // 
-            this.tbxEmail.Location = new System.Drawing.Point(501, 35);
+            this.tbxEmail.Location = new System.Drawing.Point(439, 50);
             this.tbxEmail.MaxLength = 40;
             this.tbxEmail.Name = "tbxEmail";
             this.tbxEmail.Size = new System.Drawing.Size(165, 22);
@@ -321,7 +332,7 @@ namespace SU21_Final_Project
             // 
             // tbxMiddleName
             // 
-            this.tbxMiddleName.Location = new System.Drawing.Point(133, 84);
+            this.tbxMiddleName.Location = new System.Drawing.Point(133, 99);
             this.tbxMiddleName.MaxLength = 20;
             this.tbxMiddleName.Name = "tbxMiddleName";
             this.tbxMiddleName.Size = new System.Drawing.Size(165, 22);
@@ -330,7 +341,7 @@ namespace SU21_Final_Project
             // lblHiredDateLabel
             // 
             this.lblHiredDateLabel.AutoSize = true;
-            this.lblHiredDateLabel.Location = new System.Drawing.Point(414, 189);
+            this.lblHiredDateLabel.Location = new System.Drawing.Point(352, 204);
             this.lblHiredDateLabel.Name = "lblHiredDateLabel";
             this.lblHiredDateLabel.Size = new System.Drawing.Size(97, 17);
             this.lblHiredDateLabel.TabIndex = 36;
@@ -339,7 +350,7 @@ namespace SU21_Final_Project
             // lblPhoneLabel
             // 
             this.lblPhoneLabel.AutoSize = true;
-            this.lblPhoneLabel.Location = new System.Drawing.Point(422, 146);
+            this.lblPhoneLabel.Location = new System.Drawing.Point(360, 161);
             this.lblPhoneLabel.Name = "lblPhoneLabel";
             this.lblPhoneLabel.Size = new System.Drawing.Size(65, 17);
             this.lblPhoneLabel.TabIndex = 34;
@@ -347,7 +358,7 @@ namespace SU21_Final_Project
             // 
             // tbxCity
             // 
-            this.tbxCity.Location = new System.Drawing.Point(133, 246);
+            this.tbxCity.Location = new System.Drawing.Point(133, 261);
             this.tbxCity.MaxLength = 30;
             this.tbxCity.Name = "tbxCity";
             this.tbxCity.Size = new System.Drawing.Size(144, 22);
@@ -356,7 +367,7 @@ namespace SU21_Final_Project
             // lblCityLabel
             // 
             this.lblCityLabel.AutoSize = true;
-            this.lblCityLabel.Location = new System.Drawing.Point(94, 248);
+            this.lblCityLabel.Location = new System.Drawing.Point(94, 263);
             this.lblCityLabel.Name = "lblCityLabel";
             this.lblCityLabel.Size = new System.Drawing.Size(41, 17);
             this.lblCityLabel.TabIndex = 11;
@@ -364,16 +375,16 @@ namespace SU21_Final_Project
             // 
             // tbxAddressOne
             // 
-            this.tbxAddressOne.Location = new System.Drawing.Point(133, 202);
+            this.tbxAddressOne.Location = new System.Drawing.Point(133, 217);
             this.tbxAddressOne.MaxLength = 30;
             this.tbxAddressOne.Name = "tbxAddressOne";
-            this.tbxAddressOne.Size = new System.Drawing.Size(269, 22);
+            this.tbxAddressOne.Size = new System.Drawing.Size(165, 22);
             this.tbxAddressOne.TabIndex = 6;
             // 
             // lblAddressLabel
             // 
             this.lblAddressLabel.AutoSize = true;
-            this.lblAddressLabel.Location = new System.Drawing.Point(41, 202);
+            this.lblAddressLabel.Location = new System.Drawing.Point(41, 217);
             this.lblAddressLabel.Name = "lblAddressLabel";
             this.lblAddressLabel.Size = new System.Drawing.Size(87, 17);
             this.lblAddressLabel.TabIndex = 13;
@@ -382,7 +393,7 @@ namespace SU21_Final_Project
             // lblStateLabel
             // 
             this.lblStateLabel.AutoSize = true;
-            this.lblStateLabel.Location = new System.Drawing.Point(395, 252);
+            this.lblStateLabel.Location = new System.Drawing.Point(333, 267);
             this.lblStateLabel.Name = "lblStateLabel";
             this.lblStateLabel.Size = new System.Drawing.Size(52, 17);
             this.lblStateLabel.TabIndex = 15;
@@ -390,7 +401,7 @@ namespace SU21_Final_Project
             // 
             // tbxSalary
             // 
-            this.tbxSalary.Location = new System.Drawing.Point(501, 105);
+            this.tbxSalary.Location = new System.Drawing.Point(439, 120);
             this.tbxSalary.MaxLength = 30;
             this.tbxSalary.Name = "tbxSalary";
             this.tbxSalary.Size = new System.Drawing.Size(158, 22);
@@ -399,7 +410,7 @@ namespace SU21_Final_Project
             // lblSalaryLabel
             // 
             this.lblSalaryLabel.AutoSize = true;
-            this.lblSalaryLabel.Location = new System.Drawing.Point(427, 108);
+            this.lblSalaryLabel.Location = new System.Drawing.Point(365, 123);
             this.lblSalaryLabel.Name = "lblSalaryLabel";
             this.lblSalaryLabel.Size = new System.Drawing.Size(60, 17);
             this.lblSalaryLabel.TabIndex = 19;
@@ -407,7 +418,7 @@ namespace SU21_Final_Project
             // 
             // tbxZip
             // 
-            this.tbxZip.Location = new System.Drawing.Point(550, 250);
+            this.tbxZip.Location = new System.Drawing.Point(488, 265);
             this.tbxZip.MaxLength = 5;
             this.tbxZip.Name = "tbxZip";
             this.tbxZip.Size = new System.Drawing.Size(94, 22);
@@ -416,7 +427,7 @@ namespace SU21_Final_Project
             // lblZipLabel
             // 
             this.lblZipLabel.AutoSize = true;
-            this.lblZipLabel.Location = new System.Drawing.Point(511, 250);
+            this.lblZipLabel.Location = new System.Drawing.Point(449, 265);
             this.lblZipLabel.Name = "lblZipLabel";
             this.lblZipLabel.Size = new System.Drawing.Size(37, 17);
             this.lblZipLabel.TabIndex = 21;
@@ -424,13 +435,15 @@ namespace SU21_Final_Project
             // 
             // btnBack
             // 
-            this.btnBack.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.BackColor = System.Drawing.Color.Transparent;
+            this.btnBack.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnBack.FlatAppearance.BorderSize = 3;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnBack.Location = new System.Drawing.Point(152, 317);
+            this.btnBack.Location = new System.Drawing.Point(2, 396);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(110, 31);
+            this.btnBack.Size = new System.Drawing.Size(717, 44);
             this.btnBack.TabIndex = 49;
             this.btnBack.Text = "&Back";
             this.btnBack.UseVisualStyleBackColor = false;
@@ -438,33 +451,42 @@ namespace SU21_Final_Project
             // 
             // btnSave
             // 
-            this.btnSave.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.BackColor = System.Drawing.Color.Transparent;
+            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnSave.FlatAppearance.BorderSize = 3;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSave.Location = new System.Drawing.Point(483, 317);
+            this.btnSave.Location = new System.Drawing.Point(2, 338);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(110, 31);
+            this.btnSave.Size = new System.Drawing.Size(717, 52);
             this.btnSave.TabIndex = 48;
             this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // dtpEmployeeHiredDate
+            // btnHelpAddEmployee
             // 
-            this.dtpEmployeeHiredDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpEmployeeHiredDate.Location = new System.Drawing.Point(501, 189);
-            this.dtpEmployeeHiredDate.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
-            this.dtpEmployeeHiredDate.Name = "dtpEmployeeHiredDate";
-            this.dtpEmployeeHiredDate.Size = new System.Drawing.Size(158, 22);
-            this.dtpEmployeeHiredDate.TabIndex = 56;
+            this.btnHelpAddEmployee.BackColor = System.Drawing.Color.Transparent;
+            this.btnHelpAddEmployee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnHelpAddEmployee.FlatAppearance.BorderSize = 3;
+            this.btnHelpAddEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHelpAddEmployee.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnHelpAddEmployee.Location = new System.Drawing.Point(604, 3);
+            this.btnHelpAddEmployee.Name = "btnHelpAddEmployee";
+            this.btnHelpAddEmployee.Size = new System.Drawing.Size(109, 46);
+            this.btnHelpAddEmployee.TabIndex = 56;
+            this.btnHelpAddEmployee.Text = "HELP?";
+            this.btnHelpAddEmployee.UseVisualStyleBackColor = false;
+            this.btnHelpAddEmployee.Click += new System.EventHandler(this.btnHelpAddEmployee_Click);
             // 
             // frmAddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(811, 359);
+            this.ClientSize = new System.Drawing.Size(722, 448);
+            this.Controls.Add(this.btnHelpAddEmployee);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.gbxInformation);
@@ -514,5 +536,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblPositionLabel;
         private System.Windows.Forms.ComboBox cboPosition;
         private System.Windows.Forms.DateTimePicker dtpEmployeeHiredDate;
+        private System.Windows.Forms.Button btnHelpAddEmployee;
     }
 }

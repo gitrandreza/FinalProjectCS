@@ -42,9 +42,7 @@ namespace SU21_Final_Project
         double dblSubTotal;
         double dblAmountTax;
         double dblTotalAmount;
-        double dblDiscountOne = 0.1;
-        double dblDiscountTwo = 0.2;
-        double dblDiscountThree = 0.3;
+        
         double dblDiscount;
         double dblTotalList;
         int intQuantityTotal;
@@ -57,6 +55,19 @@ namespace SU21_Final_Project
         string strLastSaleReportCustomer;
 
         public static string strUserNumberID;
+
+        string strCreditCardNumber;
+        string strCreditCardName;
+        string strCreditCardDate;
+        string strCreditCardCVV;
+        bool blnPaid = false;
+
+
+        string strDiscountIndex;
+        double dblDiscountCouponOne = 0.25;
+        double dblDiscountCouponTwo = 100;
+        double dblDiscountCouponThree = 500;
+
 
         public frmMain()
         {
@@ -507,7 +518,9 @@ namespace SU21_Final_Project
 
 
         //Function to calculate amount in the list
-        void CalculateAmount()
+        void CalculateAmount(double dblCoupounPercentage=0,double dblCouponOFF=0, double dblDiscountOne = 0.1,
+        double dblDiscountTwo = 0.2,
+        double dblDiscountThree = 0.3)
         {
             int intQuantityTotal = 0;
             double dblTotalList = 0;
@@ -574,7 +587,7 @@ namespace SU21_Final_Project
                 lblDiscountOne.BackColor = Color.OrangeRed;
                 lblDeliveryOne.BackColor = Color.OrangeRed;
                 dblDiscount = dblTotalList * dblDiscountOne;
-                dblSubTotal = dblTotalList - dblDiscount;
+                dblSubTotal = dblTotalList - dblDiscount-dblCouponOFF;
             }
             else if (intQuantityTotal > 50 && intQuantityTotal < 100)
             {
@@ -582,7 +595,7 @@ namespace SU21_Final_Project
                 lblDiscountTwo.BackColor = Color.OrangeRed;
                 lblDeliveryTwo.BackColor = Color.OrangeRed;
                 dblDiscount = dblTotalList * dblDiscountTwo;
-                dblSubTotal = dblTotalList - dblDiscount;
+                dblSubTotal = dblTotalList - dblDiscount - dblCouponOFF;
             }
             else if (intQuantityTotal >= 100)
             {
@@ -590,11 +603,11 @@ namespace SU21_Final_Project
                 lblDiscountThree.BackColor = Color.OrangeRed;
                 lblDeliveryThree.BackColor = Color.OrangeRed;
                 dblDiscount = dblTotalList * dblDiscountThree;
-                dblSubTotal = dblTotalList - dblDiscount;
+                dblSubTotal = dblTotalList - dblDiscount - dblCouponOFF;
             }
             else
             {
-                dblSubTotal = dblTotalList;
+                dblDiscount = dblTotalList;
             }
             
            
@@ -624,131 +637,149 @@ namespace SU21_Final_Project
         //Store sale in the Database when checked out
         private void btnCheckout_Click(object sender, EventArgs e)
         {
+
+           
             if (lblTotalAmount.Text != "")
             {
-                int intUserID;
-               string strUserID = lblUser.Text;
-                bool intResultTryParse = int.TryParse(strUserID, out intUserID);
-                if(intResultTryParse==false)
+                strCreditCardCVV = mskCVV.Text;
+                strCreditCardDate = dtpCreditCard.Text;
+                strCreditCardName = tbxNameCredit.Text;
+                strCreditCardNumber = tbxCardNumber.Text;
+
+                if(ValidCVV(strCreditCardCVV)==true && ValidCreditCardNumber(strCreditCardNumber)==true && tbxNameCredit.Text!="" && dtpCreditCard.Text!="")
                 {
-                    MessageBox.Show("You did not enter a value to convert","Conversion Issue",MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                string strDate = lblDate.Text;
-
-                try
-                {
-
-                    Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
-                        "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-                try
-                {
-
-                    Connection.Open();
-                    //Store Sales Report
-
-                    DateTime today = DateTime.Now;
-                    strInvoiceCustomer = today.ToString("yyyy-MM-dd-HHmmss") + "Receipt.html";
-
-                    SqlCommand commandSalesReport = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesReport(UserID,CreationDate, TotalSale,Invoice) " +
-                        "VALUES(@UserID,@CreationDate,@TotalSale,@Invoice)", Connection);
-                    commandSalesReport.Parameters.AddWithValue("@UserID", intUserID);
-                    commandSalesReport.Parameters.AddWithValue("@CreationDate", strDate);
-
-                    string strTotalAmount= lblTotalAmount.Text.Substring(1);
-                    double dblTotalAmount;
-                    
-                    if (!double.TryParse(strTotalAmount, out dblTotalAmount))
+                    int intUserID;
+                    string strUserID = lblUser.Text;
+                    bool intResultTryParse = int.TryParse(strUserID, out intUserID);
+                    if (intResultTryParse == false)
                     {
                         MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    string strDate = lblDate.Text;
 
-                    commandSalesReport.Parameters.AddWithValue("@TotalSale", dblTotalAmount);
-                    commandSalesReport.Parameters.AddWithValue("@Invoice", strInvoiceCustomer);
-
-                    strLastSaleReportCustomer = strInvoiceCustomer;
-                    btnViewReceipt.Enabled = true;
-
-                    commandSalesReport.ExecuteNonQuery();
-
-                    //Get the last SaleID using Max to insert as FK to the Sales Report table
-                    string strQuerySaleID = "SELECT MAX(SaleId) from RandrezaVoharisoaM21Su2332.SalesReport";
-                    SqlCommand commandSalesID = new SqlCommand(strQuerySaleID, Connection);
-
-                    //gets Sale Id from insert sale report in the table sales report
-                    SqlDataReader srSaleID = commandSalesID.ExecuteReader();
-                    srSaleID.Read();
-                    intSaleId = srSaleID.GetInt32(0);
-                    srSaleID.Close();
-
-                    //Loop through the data grid view List to store sales details in database table
-                    foreach (DataGridViewRow row in dgvList.Rows)
+                    try
                     {
-                        //Store List in the table Sales Details
-                        SqlCommand commandSalesDetails = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesDetails(SaleID,ItemID,QuantitySold,Decoration,Size,Color) " +
-                          "VALUES(@SaleID,@ItemID,@QuantitySold,@Decoration,@Size,@Color)", Connection);
-                        //Select item ID of each Item Name in the data grid view list
-                        string strItemID;
-                        string strNameItem = row.Cells["Name"].Value.ToString();
-                        SqlCommand commandItemID = new SqlCommand("SELECT RandrezaVoharisoaM21Su2332.Items.ItemID FROM RandrezaVoharisoaM21Su2332.Items " +
-                            "FULL JOIN RandrezaVoharisoaM21Su2332.SalesDetails " +
-                            "ON RandrezaVoharisoaM21Su2332.SalesDetails.ItemID = RandrezaVoharisoaM21Su2332.Items.ItemID WHERE Name = '" + strNameItem + "'", Connection);
-                        SqlDataReader srItemID = commandItemID.ExecuteReader();
-                        srItemID.Read();
-                        strItemID = srItemID["ItemID"].ToString();
-                       srItemID.Close();
 
-                        string strQuantitySold = row.Cells["Quantity"].Value.ToString();
-                        string strDecoration = row.Cells["Type of Decoration"].Value.ToString();
-                        string strSize = row.Cells["Size"].Value.ToString();
-                        string strColor = row.Cells["Color"].Value.ToString();
-
-                        commandSalesDetails.Parameters.AddWithValue("@SaleID", intSaleId);
-                        commandSalesDetails.Parameters.AddWithValue("@ItemID", strItemID);
-                        commandSalesDetails.Parameters.AddWithValue("@QuantitySold", strQuantitySold);
-                        commandSalesDetails.Parameters.AddWithValue("@Decoration", strDecoration);
-                        commandSalesDetails.Parameters.AddWithValue("@Size", strSize);
-                        commandSalesDetails.Parameters.AddWithValue("@Color", strColor);
-
-                        commandSalesDetails.ExecuteNonQuery();
+                        Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                            "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                     }
-
-                    //Loop through the data grid view All column quantity to UPDATE QUANTITY in database table
-                    foreach (DataGridViewRow row in dgvAll.Rows)
+                    catch (Exception ex)
                     {
-                        
-                        string strQuantityUpdate= row.Cells["Quantity"].Value.ToString();
-                        int intQuantityDgv;
-                        bool blnConvert= int.TryParse(strQuantityUpdate, out intQuantityDgv);
-                        if (blnConvert == false)
+                        MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    try
+                    {
+
+                        Connection.Open();
+                        //Store Sales Report
+
+                        DateTime today = DateTime.Now;
+                        strInvoiceCustomer = today.ToString("yyyy-MM-dd-HHmmss") + "Receipt.html";
+
+                        SqlCommand commandSalesReport = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesReport(UserID,CreationDate, TotalSale,Invoice) " +
+                            "VALUES(@UserID,@CreationDate,@TotalSale,@Invoice)", Connection);
+                        commandSalesReport.Parameters.AddWithValue("@UserID", intUserID);
+                        commandSalesReport.Parameters.AddWithValue("@CreationDate", strDate);
+
+                        string strTotalAmount = lblTotalAmount.Text.Substring(1);
+                        double dblTotalAmount;
+
+                        if (!double.TryParse(strTotalAmount, out dblTotalAmount))
                         {
                             MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                        string strNameItem= row.Cells["Name"].Value.ToString();
-                        //UPDATE quantity in the table Items
-                        string strUpdateQuery = "UPDATE RandrezaVoharisoaM21Su2332.Items SET Quantity = @Quantity where Name= '" + strNameItem + "'";
-                        SqlCommand commandUpQuantity = new SqlCommand(strUpdateQuery, Connection);
-                       
-                        SqlParameter sqlParams = commandUpQuantity.Parameters.AddWithValue("@Quantity", intQuantityDgv);
-                        commandUpQuantity.ExecuteNonQuery();
-                        
-                    }
 
-                    Connection.Close();                 
-                    PrintReport(GenerateReport());
-                    Reset();
+                        commandSalesReport.Parameters.AddWithValue("@TotalSale", dblTotalAmount);
+                        commandSalesReport.Parameters.AddWithValue("@Invoice", strInvoiceCustomer);
+
+                        strLastSaleReportCustomer = strInvoiceCustomer;
+                        btnViewReceipt.Enabled = true;
+                        blnPaid = true;
+
+                        commandSalesReport.ExecuteNonQuery();
+
+                        //Get the last SaleID using Max to insert as FK to the Sales Report table
+                        string strQuerySaleID = "SELECT MAX(SaleId) from RandrezaVoharisoaM21Su2332.SalesReport";
+                        SqlCommand commandSalesID = new SqlCommand(strQuerySaleID, Connection);
+
+                        //gets Sale Id from insert sale report in the table sales report
+                        SqlDataReader srSaleID = commandSalesID.ExecuteReader();
+                        srSaleID.Read();
+                        intSaleId = srSaleID.GetInt32(0);
+                        srSaleID.Close();
+
+                        //Loop through the data grid view List to store sales details in database table
+                        foreach (DataGridViewRow row in dgvList.Rows)
+                        {
+                            //Store List in the table Sales Details
+                            SqlCommand commandSalesDetails = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesDetails(SaleID,ItemID,QuantitySold,Decoration,Size,Color) " +
+                              "VALUES(@SaleID,@ItemID,@QuantitySold,@Decoration,@Size,@Color)", Connection);
+                            //Select item ID of each Item Name in the data grid view list
+                            string strItemID;
+                            string strNameItem = row.Cells["Name"].Value.ToString();
+                            SqlCommand commandItemID = new SqlCommand("SELECT RandrezaVoharisoaM21Su2332.Items.ItemID FROM RandrezaVoharisoaM21Su2332.Items " +
+                                "FULL JOIN RandrezaVoharisoaM21Su2332.SalesDetails " +
+                                "ON RandrezaVoharisoaM21Su2332.SalesDetails.ItemID = RandrezaVoharisoaM21Su2332.Items.ItemID WHERE Name = '" + strNameItem + "'", Connection);
+                            SqlDataReader srItemID = commandItemID.ExecuteReader();
+                            srItemID.Read();
+                            strItemID = srItemID["ItemID"].ToString();
+                            srItemID.Close();
+
+                            string strQuantitySold = row.Cells["Quantity"].Value.ToString();
+                            string strDecoration = row.Cells["Type of Decoration"].Value.ToString();
+                            string strSize = row.Cells["Size"].Value.ToString();
+                            string strColor = row.Cells["Color"].Value.ToString();
+
+                            commandSalesDetails.Parameters.AddWithValue("@SaleID", intSaleId);
+                            commandSalesDetails.Parameters.AddWithValue("@ItemID", strItemID);
+                            commandSalesDetails.Parameters.AddWithValue("@QuantitySold", strQuantitySold);
+                            commandSalesDetails.Parameters.AddWithValue("@Decoration", strDecoration);
+                            commandSalesDetails.Parameters.AddWithValue("@Size", strSize);
+                            commandSalesDetails.Parameters.AddWithValue("@Color", strColor);
+
+                            commandSalesDetails.ExecuteNonQuery();
+
+                        }
+
+                        //Loop through the data grid view All column quantity to UPDATE QUANTITY in database table
+                        foreach (DataGridViewRow row in dgvAll.Rows)
+                        {
+
+                            string strQuantityUpdate = row.Cells["Quantity"].Value.ToString();
+                            int intQuantityDgv;
+                            bool blnConvert = int.TryParse(strQuantityUpdate, out intQuantityDgv);
+                            if (blnConvert == false)
+                            {
+                                MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            string strNameItem = row.Cells["Name"].Value.ToString();
+                            //UPDATE quantity in the table Items
+                            string strUpdateQuery = "UPDATE RandrezaVoharisoaM21Su2332.Items SET Quantity = @Quantity where Name= '" + strNameItem + "'";
+                            SqlCommand commandUpQuantity = new SqlCommand(strUpdateQuery, Connection);
+
+                            SqlParameter sqlParams = commandUpQuantity.Parameters.AddWithValue("@Quantity", intQuantityDgv);
+                            commandUpQuantity.ExecuteNonQuery();
+
+                        }
+
+                        Connection.Close();
+                        PrintReport(GenerateReport());
+                        MessageBox.Show("Your Order has been successfully placed", "Transaction Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Reset();
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch (SqlException ex)
+                else
                 {
-                    MessageBox.Show(ex.Message, "Error Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please verify your credit card Information", "Invalid Credit Card", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
+               
 
             }
             else
@@ -795,6 +826,7 @@ namespace SU21_Final_Project
                 html.Append($"<td>{row.Cells["Quantity"].Value}</td>");
                 html.Append($"<td>${row.Cells["Unit Price"].Value}</td>");
                 html.Append($"<td>${row.Cells["Total Price"].Value}</td>");
+               
                 html.Append("</tr>");
                 html.AppendLine("<tr><td colspan=8><hr /></td></tr>");
             }
@@ -808,7 +840,10 @@ namespace SU21_Final_Project
             html.AppendLine($"<h5>{"Tax Sale: "}{lblTaxAmount.Text}</h5>");
 
             html.AppendLine($"<h5>{"Total Amount: "}{lblTotalAmount.Text}</h5>");
-          
+            if (blnPaid == true)
+            {
+                html.AppendLine($"<h5>{"Paid with credit card ##### : "}{strCreditCardNumber.Substring(strCreditCardNumber.Length - 4)}</h5>");
+            }
 
             if (lblDeliveryTwo.BackColor == Color.OrangeRed)
             {
@@ -1013,6 +1048,160 @@ namespace SU21_Final_Project
             string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string xslLocation = Path.Combine(executableLocation, strLastSaleReportCustomer);
             System.Diagnostics.Process.Start(xslLocation);
+        }
+
+        //CREDIT CARD
+        public bool ValidCreditCardNumber(string strCreditCard)
+        {
+
+            if (strCreditCard.Length !=16)
+            {
+                return false;
+            }
+               
+
+            return true;
+        }
+
+        public bool ValidCVV(string strValidCVV)
+        {
+
+            if (strValidCVV.Length != 3 || strValidCVV.Length != 4)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private void tbxCardNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+    (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void mskCVV_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+    (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        //FUNCTION TO CHECK COUPON IN DATABASE
+        public void SearchValidCoupon()
+        {
+            string strSearchCoupon = tbxCoupon.Text;
+
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                string strQuery = "SELECT CouponID, Description, Expiration,DiscountIndex FROM RandrezaVoharisoaM21Su2332.Coupon where CouponID='" + strSearchCoupon + "' and Expiration > '" + lblDate.Text + "' ;";
+                SqlCommand command = new SqlCommand(strQuery, Connection);
+
+                //gets the results from the sql command
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+
+
+                var Expiration = reader.GetDateTime(2);
+                lblCouponDescription.Text = reader["Description"].ToString();
+                
+
+                int intCouponId = reader.GetInt32(0);
+                strDiscountIndex = reader["DiscountIndex"].ToString();
+
+
+
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+
+
+
+                if (Connection != null)
+                {
+                    Connection.Close();
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbxCoupon.Text = "";
+                tbxCoupon.Focus();
+                lblCouponDescription.Text = "Cannot find coupon, it's been already used or expired";
+                
+            }
+        }
+
+        private void btnApplyCoupon_Click(object sender, EventArgs e)
+        {
+
+            if (tbxCoupon.Text != "")
+            {
+                if (MessageBox.Show("Are you sure you want to Apply this coupon, your other discount won't be applied?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+
+                    lblDiscountOne.BackColor = Color.Silver;
+                    lblDiscountTwo.BackColor = Color.Silver;
+                    lblDiscountThree.BackColor = Color.Silver;
+                    SearchValidCoupon();
+
+                    string strTotalListForCoupon = lblTotalList.Text.Substring(1);
+
+                    double dblTotalListForCoupon;
+                    if (!double.TryParse(strTotalListForCoupon, out dblTotalListForCoupon))
+                    {
+                        MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+                    if (strDiscountIndex == "1")
+                    {
+                        CalculateAmount(dblDiscountCouponOne, 0, 0, 0);
+                    }
+                    if (strDiscountIndex == "2")
+                    {
+                        if (dblTotalListForCoupon > 500 && dblTotalListForCoupon < 2000)
+                        {
+                            CalculateAmount(0, dblDiscountCouponTwo, 0, 0, 0);
+                            lblDiscount.Text = "$100";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Available only for a total purchase $500 and plus", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+
+                    }
+                    if (strDiscountIndex == "3")
+                    {
+                        if (dblTotalListForCoupon > 2000)
+                        {
+                            CalculateAmount(0, dblDiscountCouponThree, 0, 0, 0);
+                            lblDiscount.Text = "$500";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Available only for a total purchase $2000 and plus", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Enter your coupon number", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
     }
 }

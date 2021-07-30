@@ -38,46 +38,44 @@ namespace SU21_Final_Project
             this.btnResetPassword = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnHelpLoginForm = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pbxLogo = new System.Windows.Forms.PictureBox();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // tbxUsername
             // 
             this.tbxUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxUsername.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.tbxUsername.Location = new System.Drawing.Point(10, 255);
+            this.tbxUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxUsername.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.tbxUsername.Location = new System.Drawing.Point(128, 220);
             this.tbxUsername.Margin = new System.Windows.Forms.Padding(4);
-            this.tbxUsername.Multiline = true;
             this.tbxUsername.Name = "tbxUsername";
-            this.tbxUsername.Size = new System.Drawing.Size(480, 32);
+            this.tbxUsername.Size = new System.Drawing.Size(365, 17);
             this.tbxUsername.TabIndex = 0;
-            this.tbxUsername.Text = "Username here";
             // 
             // tbxPassword
             // 
             this.tbxPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxPassword.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.tbxPassword.Location = new System.Drawing.Point(10, 294);
+            this.tbxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxPassword.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.tbxPassword.Location = new System.Drawing.Point(128, 259);
             this.tbxPassword.Margin = new System.Windows.Forms.Padding(4);
-            this.tbxPassword.Multiline = true;
             this.tbxPassword.Name = "tbxPassword";
-            this.tbxPassword.Size = new System.Drawing.Size(480, 32);
+            this.tbxPassword.Size = new System.Drawing.Size(365, 17);
             this.tbxPassword.TabIndex = 1;
-            this.tbxPassword.Text = "Password here";
             this.tbxPassword.UseSystemPasswordChar = true;
             // 
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.Color.Transparent;
             this.btnLogin.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnLogin.FlatAppearance.BorderSize = 2;
+            this.btnLogin.FlatAppearance.BorderSize = 3;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLogin.Location = new System.Drawing.Point(10, 334);
+            this.btnLogin.Location = new System.Drawing.Point(10, 364);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(480, 51);
@@ -91,11 +89,11 @@ namespace SU21_Final_Project
             // 
             this.btnSignUp.BackColor = System.Drawing.Color.Transparent;
             this.btnSignUp.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnSignUp.FlatAppearance.BorderSize = 2;
+            this.btnSignUp.FlatAppearance.BorderSize = 3;
             this.btnSignUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSignUp.ForeColor = System.Drawing.Color.White;
-            this.btnSignUp.Location = new System.Drawing.Point(10, 412);
+            this.btnSignUp.Location = new System.Drawing.Point(10, 433);
             this.btnSignUp.Margin = new System.Windows.Forms.Padding(4);
             this.btnSignUp.Name = "btnSignUp";
             this.btnSignUp.Size = new System.Drawing.Size(480, 51);
@@ -108,23 +106,24 @@ namespace SU21_Final_Project
             // lblLoginFailed
             // 
             this.lblLoginFailed.AutoSize = true;
-            this.lblLoginFailed.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoginFailed.ForeColor = System.Drawing.Color.Black;
-            this.lblLoginFailed.Location = new System.Drawing.Point(132, 294);
+            this.lblLoginFailed.BackColor = System.Drawing.Color.Transparent;
+            this.lblLoginFailed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoginFailed.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblLoginFailed.Location = new System.Drawing.Point(125, 304);
             this.lblLoginFailed.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLoginFailed.Name = "lblLoginFailed";
-            this.lblLoginFailed.Size = new System.Drawing.Size(0, 17);
+            this.lblLoginFailed.Size = new System.Drawing.Size(0, 18);
             this.lblLoginFailed.TabIndex = 6;
             // 
             // btnResetPassword
             // 
             this.btnResetPassword.BackColor = System.Drawing.Color.Transparent;
             this.btnResetPassword.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnResetPassword.FlatAppearance.BorderSize = 2;
+            this.btnResetPassword.FlatAppearance.BorderSize = 3;
             this.btnResetPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResetPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnResetPassword.ForeColor = System.Drawing.Color.White;
-            this.btnResetPassword.Location = new System.Drawing.Point(12, 490);
+            this.btnResetPassword.Location = new System.Drawing.Point(12, 500);
             this.btnResetPassword.Name = "btnResetPassword";
             this.btnResetPassword.Size = new System.Drawing.Size(480, 51);
             this.btnResetPassword.TabIndex = 4;
@@ -137,7 +136,7 @@ namespace SU21_Final_Project
             // 
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
             this.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnExit.FlatAppearance.BorderSize = 2;
+            this.btnExit.FlatAppearance.BorderSize = 3;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.Color.White;
@@ -165,15 +164,39 @@ namespace SU21_Final_Project
             this.btnHelpLoginForm.UseVisualStyleBackColor = false;
             this.btnHelpLoginForm.Click += new System.EventHandler(this.btnHelpLoginForm_Click);
             // 
-            // pictureBox1
+            // pbxLogo
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(128, 24);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(229, 198);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
+            this.pbxLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbxLogo.Image")));
+            this.pbxLogo.Location = new System.Drawing.Point(128, 3);
+            this.pbxLogo.Name = "pbxLogo";
+            this.pbxLogo.Size = new System.Drawing.Size(229, 198);
+            this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxLogo.TabIndex = 12;
+            this.pbxLogo.TabStop = false;
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.BackColor = System.Drawing.Color.Transparent;
+            this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblUsername.Location = new System.Drawing.Point(26, 219);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(85, 18);
+            this.lblUsername.TabIndex = 13;
+            this.lblUsername.Text = "Username";
+            // 
+            // lblPassword
+            // 
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.BackColor = System.Drawing.Color.Transparent;
+            this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassword.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblPassword.Location = new System.Drawing.Point(26, 259);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(83, 18);
+            this.lblPassword.TabIndex = 14;
+            this.lblPassword.Text = "Password";
             // 
             // frmLogin
             // 
@@ -183,7 +206,9 @@ namespace SU21_Final_Project
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(496, 638);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.lblPassword);
+            this.Controls.Add(this.lblUsername);
+            this.Controls.Add(this.pbxLogo);
             this.Controls.Add(this.btnHelpLoginForm);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnResetPassword);
@@ -200,7 +225,7 @@ namespace SU21_Final_Project
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLogin_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,6 +240,8 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblLoginFailed;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnHelpLoginForm;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbxLogo;
+        private System.Windows.Forms.Label lblUsername;
+        private System.Windows.Forms.Label lblPassword;
     }
 }

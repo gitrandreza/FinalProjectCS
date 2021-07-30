@@ -51,6 +51,8 @@ namespace SU21_Final_Project
             this.lblConfirmPassword = new System.Windows.Forms.Label();
             this.tbxConfirmPassword = new System.Windows.Forms.TextBox();
             this.btnHelpResetPassword = new System.Windows.Forms.Button();
+            this.lblCheckUsername = new System.Windows.Forms.Label();
+            this.llblNewPassword = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,15 +60,17 @@ namespace SU21_Final_Project
             // 
             this.lblQuestionThree.AutoSize = true;
             this.lblQuestionThree.BackColor = System.Drawing.Color.Transparent;
-            this.lblQuestionThree.Location = new System.Drawing.Point(133, 195);
+            this.lblQuestionThree.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuestionThree.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblQuestionThree.Location = new System.Drawing.Point(100, 118);
             this.lblQuestionThree.Name = "lblQuestionThree";
-            this.lblQuestionThree.Size = new System.Drawing.Size(122, 17);
+            this.lblQuestionThree.Size = new System.Drawing.Size(140, 17);
             this.lblQuestionThree.TabIndex = 37;
             this.lblQuestionThree.Text = "*Who is your idol?";
             // 
             // tbxIdol
             // 
-            this.tbxIdol.Location = new System.Drawing.Point(279, 195);
+            this.tbxIdol.Location = new System.Drawing.Point(269, 118);
             this.tbxIdol.Name = "tbxIdol";
             this.tbxIdol.Size = new System.Drawing.Size(323, 22);
             this.tbxIdol.TabIndex = 3;
@@ -75,15 +79,17 @@ namespace SU21_Final_Project
             // 
             this.lblQuestionTwo.AutoSize = true;
             this.lblQuestionTwo.BackColor = System.Drawing.Color.Transparent;
-            this.lblQuestionTwo.Location = new System.Drawing.Point(29, 147);
+            this.lblQuestionTwo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuestionTwo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblQuestionTwo.Location = new System.Drawing.Point(-4, 78);
             this.lblQuestionTwo.Name = "lblQuestionTwo";
-            this.lblQuestionTwo.Size = new System.Drawing.Size(226, 17);
+            this.lblQuestionTwo.Size = new System.Drawing.Size(261, 17);
             this.lblQuestionTwo.TabIndex = 35;
             this.lblQuestionTwo.Text = "*What is your favorite type of dog?";
             // 
             // tbxDog
             // 
-            this.tbxDog.Location = new System.Drawing.Point(279, 147);
+            this.tbxDog.Location = new System.Drawing.Point(269, 78);
             this.tbxDog.Name = "tbxDog";
             this.tbxDog.Size = new System.Drawing.Size(323, 22);
             this.tbxDog.TabIndex = 2;
@@ -92,15 +98,17 @@ namespace SU21_Final_Project
             // 
             this.lblQuestionOne.AutoSize = true;
             this.lblQuestionOne.BackColor = System.Drawing.Color.Transparent;
-            this.lblQuestionOne.Location = new System.Drawing.Point(69, 103);
+            this.lblQuestionOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuestionOne.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblQuestionOne.Location = new System.Drawing.Point(36, 46);
             this.lblQuestionOne.Name = "lblQuestionOne";
-            this.lblQuestionOne.Size = new System.Drawing.Size(186, 17);
+            this.lblQuestionOne.Size = new System.Drawing.Size(215, 17);
             this.lblQuestionOne.TabIndex = 33;
             this.lblQuestionOne.Text = "*What is your favorite drink?";
             // 
             // tbxDrink
             // 
-            this.tbxDrink.Location = new System.Drawing.Point(279, 100);
+            this.tbxDrink.Location = new System.Drawing.Point(269, 43);
             this.tbxDrink.Name = "tbxDrink";
             this.tbxDrink.Size = new System.Drawing.Size(323, 22);
             this.tbxDrink.TabIndex = 1;
@@ -110,11 +118,12 @@ namespace SU21_Final_Project
             this.lblMessageText.AutoSize = true;
             this.lblMessageText.BackColor = System.Drawing.Color.Transparent;
             this.lblMessageText.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMessageText.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblMessageText.Location = new System.Drawing.Point(124, 70);
             this.lblMessageText.Name = "lblMessageText";
-            this.lblMessageText.Size = new System.Drawing.Size(457, 17);
+            this.lblMessageText.Size = new System.Drawing.Size(409, 17);
             this.lblMessageText.TabIndex = 38;
-            this.lblMessageText.Text = "Please answer the 3 questions below to verify you information";
+            this.lblMessageText.Text = "Please fill up the fields below to check your information";
             this.lblMessageText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnCheck
@@ -126,7 +135,7 @@ namespace SU21_Final_Project
             this.btnCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheck.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnCheck.Location = new System.Drawing.Point(3, 168);
+            this.btnCheck.Location = new System.Drawing.Point(3, 146);
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.Size = new System.Drawing.Size(615, 53);
             this.btnCheck.TabIndex = 4;
@@ -141,7 +150,7 @@ namespace SU21_Final_Project
             this.lblValidAnswers.BackColor = System.Drawing.Color.Transparent;
             this.lblValidAnswers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValidAnswers.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.lblValidAnswers.Location = new System.Drawing.Point(189, 321);
+            this.lblValidAnswers.Location = new System.Drawing.Point(201, 338);
             this.lblValidAnswers.Name = "lblValidAnswers";
             this.lblValidAnswers.Size = new System.Drawing.Size(302, 18);
             this.lblValidAnswers.TabIndex = 40;
@@ -154,7 +163,7 @@ namespace SU21_Final_Project
             this.lblInvalidAnswers.BackColor = System.Drawing.Color.Transparent;
             this.lblInvalidAnswers.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInvalidAnswers.ForeColor = System.Drawing.Color.Red;
-            this.lblInvalidAnswers.Location = new System.Drawing.Point(110, 221);
+            this.lblInvalidAnswers.Location = new System.Drawing.Point(110, 202);
             this.lblInvalidAnswers.Name = "lblInvalidAnswers";
             this.lblInvalidAnswers.Size = new System.Drawing.Size(482, 17);
             this.lblInvalidAnswers.TabIndex = 41;
@@ -167,7 +176,7 @@ namespace SU21_Final_Project
             this.tbxNewPassword.Enabled = false;
             this.tbxNewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxNewPassword.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.tbxNewPassword.Location = new System.Drawing.Point(158, 342);
+            this.tbxNewPassword.Location = new System.Drawing.Point(160, 368);
             this.tbxNewPassword.Name = "tbxNewPassword";
             this.tbxNewPassword.Size = new System.Drawing.Size(356, 24);
             this.tbxNewPassword.TabIndex = 5;
@@ -175,13 +184,12 @@ namespace SU21_Final_Project
             // 
             // tbxEnterUsername
             // 
-            this.tbxEnterUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxEnterUsername.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.tbxEnterUsername.Location = new System.Drawing.Point(9, 25);
+            this.tbxEnterUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxEnterUsername.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.tbxEnterUsername.Location = new System.Drawing.Point(269, 7);
             this.tbxEnterUsername.Name = "tbxEnterUsername";
-            this.tbxEnterUsername.Size = new System.Drawing.Size(271, 24);
+            this.tbxEnterUsername.Size = new System.Drawing.Size(323, 24);
             this.tbxEnterUsername.TabIndex = 0;
-            this.tbxEnterUsername.Text = "Enter  your username here";
             // 
             // btnNewPassword
             // 
@@ -241,10 +249,18 @@ namespace SU21_Final_Project
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.btnCheck);
+            this.panel1.Controls.Add(this.lblCheckUsername);
             this.panel1.Controls.Add(this.lblInvalidAnswers);
-            this.panel1.Location = new System.Drawing.Point(6, 55);
+            this.panel1.Controls.Add(this.lblQuestionOne);
+            this.panel1.Controls.Add(this.lblQuestionTwo);
+            this.panel1.Controls.Add(this.lblQuestionThree);
+            this.panel1.Controls.Add(this.tbxIdol);
+            this.panel1.Controls.Add(this.tbxDrink);
+            this.panel1.Controls.Add(this.tbxDog);
+            this.panel1.Controls.Add(this.tbxEnterUsername);
+            this.panel1.Location = new System.Drawing.Point(6, 90);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(618, 244);
+            this.panel1.Size = new System.Drawing.Size(618, 230);
             this.panel1.TabIndex = 51;
             // 
             // btnBack
@@ -270,8 +286,8 @@ namespace SU21_Final_Project
             this.lblConfirmPassword.AutoSize = true;
             this.lblConfirmPassword.BackColor = System.Drawing.Color.Transparent;
             this.lblConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConfirmPassword.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.lblConfirmPassword.Location = new System.Drawing.Point(265, 378);
+            this.lblConfirmPassword.ForeColor = System.Drawing.Color.Snow;
+            this.lblConfirmPassword.Location = new System.Drawing.Point(15, 403);
             this.lblConfirmPassword.Name = "lblConfirmPassword";
             this.lblConfirmPassword.Size = new System.Drawing.Size(137, 17);
             this.lblConfirmPassword.TabIndex = 54;
@@ -301,12 +317,37 @@ namespace SU21_Final_Project
             this.btnHelpResetPassword.UseVisualStyleBackColor = false;
             this.btnHelpResetPassword.Click += new System.EventHandler(this.btnHelpResetPassword_Click);
             // 
+            // lblCheckUsername
+            // 
+            this.lblCheckUsername.AutoSize = true;
+            this.lblCheckUsername.BackColor = System.Drawing.Color.Transparent;
+            this.lblCheckUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCheckUsername.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblCheckUsername.Location = new System.Drawing.Point(91, 12);
+            this.lblCheckUsername.Name = "lblCheckUsername";
+            this.lblCheckUsername.Size = new System.Drawing.Size(160, 17);
+            this.lblCheckUsername.TabIndex = 56;
+            this.lblCheckUsername.Text = "Enter your username";
+            // 
+            // llblNewPassword
+            // 
+            this.llblNewPassword.AutoSize = true;
+            this.llblNewPassword.BackColor = System.Drawing.Color.Transparent;
+            this.llblNewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llblNewPassword.ForeColor = System.Drawing.Color.Snow;
+            this.llblNewPassword.Location = new System.Drawing.Point(15, 375);
+            this.llblNewPassword.Name = "llblNewPassword";
+            this.llblNewPassword.Size = new System.Drawing.Size(112, 17);
+            this.llblNewPassword.TabIndex = 57;
+            this.llblNewPassword.Text = "New Password";
+            // 
             // frmResetPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(626, 591);
+            this.Controls.Add(this.llblNewPassword);
             this.Controls.Add(this.btnHelpResetPassword);
             this.Controls.Add(this.lblConfirmPassword);
             this.Controls.Add(this.tbxConfirmPassword);
@@ -315,16 +356,9 @@ namespace SU21_Final_Project
             this.Controls.Add(this.lblPasswordRules1);
             this.Controls.Add(this.lblPasswordRules2);
             this.Controls.Add(this.btnNewPassword);
-            this.Controls.Add(this.tbxEnterUsername);
             this.Controls.Add(this.tbxNewPassword);
             this.Controls.Add(this.lblValidAnswers);
             this.Controls.Add(this.lblMessageText);
-            this.Controls.Add(this.lblQuestionThree);
-            this.Controls.Add(this.tbxIdol);
-            this.Controls.Add(this.lblQuestionTwo);
-            this.Controls.Add(this.tbxDog);
-            this.Controls.Add(this.lblQuestionOne);
-            this.Controls.Add(this.tbxDrink);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -363,5 +397,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblConfirmPassword;
         private System.Windows.Forms.TextBox tbxConfirmPassword;
         private System.Windows.Forms.Button btnHelpResetPassword;
+        private System.Windows.Forms.Label lblCheckUsername;
+        private System.Windows.Forms.Label llblNewPassword;
     }
 }

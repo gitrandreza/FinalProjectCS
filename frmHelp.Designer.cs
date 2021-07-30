@@ -34,16 +34,18 @@ namespace SU21_Final_Project
             this.btnClose = new System.Windows.Forms.Button();
             this.pbxHelpSignUp = new System.Windows.Forms.PictureBox();
             this.pbxHelpResetPassword = new System.Windows.Forms.PictureBox();
+            this.pbxAddEmployee = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxHelpLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxHelpSignUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxHelpResetPassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxAddEmployee)).BeginInit();
             this.SuspendLayout();
             // 
             // pbxHelpLogin
             // 
             this.pbxHelpLogin.ErrorImage = null;
             this.pbxHelpLogin.Image = ((System.Drawing.Image)(resources.GetObject("pbxHelpLogin.Image")));
-            this.pbxHelpLogin.Location = new System.Drawing.Point(16, 12);
+            this.pbxHelpLogin.Location = new System.Drawing.Point(27, 12);
             this.pbxHelpLogin.Name = "pbxHelpLogin";
             this.pbxHelpLogin.Size = new System.Drawing.Size(691, 591);
             this.pbxHelpLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -90,12 +92,24 @@ namespace SU21_Final_Project
             this.pbxHelpResetPassword.TabStop = false;
             this.pbxHelpResetPassword.Visible = false;
             // 
+            // pbxAddEmployee
+            // 
+            this.pbxAddEmployee.Image = ((System.Drawing.Image)(resources.GetObject("pbxAddEmployee.Image")));
+            this.pbxAddEmployee.Location = new System.Drawing.Point(0, 0);
+            this.pbxAddEmployee.Name = "pbxAddEmployee";
+            this.pbxAddEmployee.Size = new System.Drawing.Size(707, 603);
+            this.pbxAddEmployee.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxAddEmployee.TabIndex = 6;
+            this.pbxAddEmployee.TabStop = false;
+            this.pbxAddEmployee.Visible = false;
+            // 
             // frmHelp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(740, 691);
+            this.Controls.Add(this.pbxAddEmployee);
             this.Controls.Add(this.pbxHelpResetPassword);
             this.Controls.Add(this.pbxHelpSignUp);
             this.Controls.Add(this.btnClose);
@@ -109,6 +123,7 @@ namespace SU21_Final_Project
             ((System.ComponentModel.ISupportInitialize)(this.pbxHelpLogin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxHelpSignUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxHelpResetPassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxAddEmployee)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -118,5 +133,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.PictureBox pbxHelpSignUp;
         public System.Windows.Forms.PictureBox pbxHelpLogin;
         private System.Windows.Forms.PictureBox pbxHelpResetPassword;
+        private System.Windows.Forms.PictureBox pbxAddEmployee;
     }
 }

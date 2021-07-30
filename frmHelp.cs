@@ -26,12 +26,12 @@ namespace SU21_Final_Project
         {
 
 
-            if(pbxHelpLogin.Visible==true || pbxHelpSignUp.Visible == true|| pbxHelpResetPassword.Visible == true)
+            if(pbxHelpLogin.Visible==true)
             {
                 new frmLogin().Show();
                 this.Hide();
             }
-            else if ( pbxHelpSignUp.Visible == true )
+            else if (pbxHelpSignUp.Visible == true )
             {
                 new frmSignUp().Show();
                 this.Hide();
@@ -39,6 +39,12 @@ namespace SU21_Final_Project
            else if (pbxHelpResetPassword.Visible == true)
             {
                 new frmResetPassword().Show();
+                this.Hide();
+            }
+
+            else if (pbxAddEmployee.Visible == true)
+            {
+                new frmAdmin().Show();
                 this.Hide();
             }
         }
@@ -61,6 +67,14 @@ namespace SU21_Final_Project
                 pbxHelpLogin.Visible = false;
                 pbxHelpSignUp.Visible = false;
             }
+            else if (frmAddEmployee.blnAddEmployee == false)
+            {
+                pbxAddEmployee.Visible = true;
+                pbxHelpResetPassword.Visible = false;
+                pbxHelpLogin.Visible = false;
+                pbxHelpSignUp.Visible = false;
+            }
+
         }
     }
 }
