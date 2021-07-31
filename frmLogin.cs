@@ -109,10 +109,18 @@ namespace SU21_Final_Project
         //Exit Application
         private void btnExit_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Do you want to exit the application", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            try
             {
-                Application.Exit();
+                if (MessageBox.Show("Do you want to exit the application", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+          
         }
 
 

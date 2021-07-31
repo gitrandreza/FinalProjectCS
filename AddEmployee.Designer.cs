@@ -68,7 +68,7 @@ namespace SU21_Final_Project
             // 
             // gbxInformation
             // 
-            this.gbxInformation.BackColor = System.Drawing.Color.Transparent;
+            this.gbxInformation.BackColor = System.Drawing.Color.White;
             this.gbxInformation.Controls.Add(this.dtpEmployeeHiredDate);
             this.gbxInformation.Controls.Add(this.lblPositionLabel);
             this.gbxInformation.Controls.Add(this.cboPosition);
@@ -99,10 +99,10 @@ namespace SU21_Final_Project
             this.gbxInformation.Controls.Add(this.tbxZip);
             this.gbxInformation.Controls.Add(this.lblZipLabel);
             this.gbxInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxInformation.ForeColor = System.Drawing.Color.White;
+            this.gbxInformation.ForeColor = System.Drawing.Color.Black;
             this.gbxInformation.Location = new System.Drawing.Point(2, 46);
             this.gbxInformation.Name = "gbxInformation";
-            this.gbxInformation.Size = new System.Drawing.Size(717, 286);
+            this.gbxInformation.Size = new System.Drawing.Size(717, 296);
             this.gbxInformation.TabIndex = 45;
             this.gbxInformation.TabStop = false;
             this.gbxInformation.Text = "Information";
@@ -457,7 +457,7 @@ namespace SU21_Final_Project
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSave.Location = new System.Drawing.Point(2, 338);
+            this.btnSave.Location = new System.Drawing.Point(2, 343);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(717, 52);
             this.btnSave.TabIndex = 48;
@@ -472,9 +472,9 @@ namespace SU21_Final_Project
             this.btnHelpAddEmployee.FlatAppearance.BorderSize = 3;
             this.btnHelpAddEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHelpAddEmployee.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnHelpAddEmployee.Location = new System.Drawing.Point(604, 3);
+            this.btnHelpAddEmployee.Location = new System.Drawing.Point(604, 1);
             this.btnHelpAddEmployee.Name = "btnHelpAddEmployee";
-            this.btnHelpAddEmployee.Size = new System.Drawing.Size(109, 46);
+            this.btnHelpAddEmployee.Size = new System.Drawing.Size(109, 43);
             this.btnHelpAddEmployee.TabIndex = 56;
             this.btnHelpAddEmployee.Text = "HELP?";
             this.btnHelpAddEmployee.UseVisualStyleBackColor = false;
@@ -484,7 +484,7 @@ namespace SU21_Final_Project
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackColor = System.Drawing.Color.Tan;
             this.ClientSize = new System.Drawing.Size(722, 448);
             this.Controls.Add(this.btnHelpAddEmployee);
             this.Controls.Add(this.btnBack);

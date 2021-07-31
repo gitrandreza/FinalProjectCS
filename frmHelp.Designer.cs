@@ -122,6 +122,7 @@ namespace SU21_Final_Project
             this.Name = "frmHelp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Help";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmHelp_FormClosing);
             this.Load += new System.EventHandler(this.frmHelp_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxHelpLogin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxHelpSignUp)).EndInit();

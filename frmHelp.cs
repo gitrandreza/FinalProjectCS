@@ -76,5 +76,23 @@ namespace SU21_Final_Project
             }
 
         }
+
+        private void frmHelp_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            switch (e.CloseReason)
+            {
+                case CloseReason.UserClosing:
+                    if (MessageBox.Show("Do you want to close this form?", "Close Form", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                    }
+                    else
+                    {
+                        new frmAdmin().Show();
+                        this.Hide();
+                    }
+                    break;
+            }
+        }
     }
 }

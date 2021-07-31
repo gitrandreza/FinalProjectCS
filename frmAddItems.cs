@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
 
+
 namespace SU21_Final_Project
 {
     public partial class frmAddItems : Form
@@ -27,8 +28,14 @@ namespace SU21_Final_Project
         int intCategory;
         double dblRetailPrice;
         string strDescription;
+        string strfileName;
+
         int intSupplierID;
-        
+        int intPurchaseID;
+        string strPurchaseInvoice;
+        string strPurchaseInvoiceFile;
+
+
         bool blnDuplicateItemName;
         public frmAddItems()
         {
@@ -59,7 +66,7 @@ namespace SU21_Final_Project
                         //check through the user table column to find a matching value
                         if (reader["Name"].ToString() == strItemName)
                         {
-                            MessageBox.Show("Duplicate Item", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Duplicate Item, please use 'Add quantity' using  'Update Item function'", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             blnDuplicateItemName = true;
                             tbxItemName.Text = "";
                             tbxItemName.Focus();
@@ -80,23 +87,41 @@ namespace SU21_Final_Project
 
                         //INSERT RECORD FOR NEW INPUT
                          string strQuantityPurchased=tbxQuantity.Text;
-                         bool intQuantityTryParse = int.TryParse(strQuantityPurchased, out intQuantityPurchased);
+                       
+                        if (!int.TryParse(strQuantityPurchased, out intQuantityPurchased))
+                        {
+                            MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
 
                         string strItemCost = tbxItemCost.Text;
-                        bool dblResultTryParse = double.TryParse(strItemCost, out dblItemCost);
-                        
+                      
+                        if (!double.TryParse(strItemCost, out dblItemCost))
+                        {
+                            MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
 
                         string strCategory=cboCategory.SelectedItem.ToString();
-                        bool intCategoryTryParse = int.TryParse(strCategory, out intCategory);
-
+                       
+                        if (!int.TryParse(strCategory, out intCategory))
+                        {
+                            MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
 
                         string strRetailPrice = tbxRetailPrice.Text;
-                        bool dblRetailPriceTryParse = double.TryParse(strRetailPrice, out dblRetailPrice);
-
-                        strDescription=tbxDescription.Text;
+                      
+                        if (!double.TryParse(strRetailPrice, out dblRetailPrice))
+                        {
+                            MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        strDescription =tbxDescription.Text;
 
                         string strSupplierID = cboSupplier.SelectedItem.ToString();
-                        bool intSupplierTryParse = int.TryParse(strSupplierID, out intSupplierID);
+                       
+                        if (!int.TryParse(strSupplierID, out intSupplierID))
+                        {
+                            MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
 
                         if (intQuantityPurchased > 0 && intQuantityPurchased < int.MaxValue)
                         {
@@ -111,7 +136,9 @@ namespace SU21_Final_Project
                             commandItem.Parameters.AddWithValue("@Quantity", intQuantityPurchased);
                             commandItem.Parameters.AddWithValue("@Cost", dblItemCost);
 
-                                    byte[] image = File.ReadAllBytes("C:\\defaultPic.png");
+                                    string strPath = strfileName;
+                                    byte[] image = File.ReadAllBytes(@strPath);
+                                    
 
                                     SqlParameter sqlParams = commandItem.Parameters.AddWithValue("@Image", image); // The parameter will be the image as a byte array
                                     sqlParams.DbType = System.Data.DbType.Binary; // The type of data we are sending to the server will be a binary file
@@ -125,11 +152,35 @@ namespace SU21_Final_Project
                             commandItem.ExecuteNonQuery();
                             MessageBox.Show("New Item added", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+
+                                    SqlCommand commandPurchaseReport = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Purchase(SupplierID,PurchaseDate, ItemName) VALUES (@SupplierID,@PurchaseDate,@ItemName)", Connection);
+                                    commandPurchaseReport.Parameters.AddWithValue("@SupplierID", intSupplierID.ToString());
+                                    commandPurchaseReport.Parameters.AddWithValue("@PurchaseDate", strDate);
+                                    commandPurchaseReport.Parameters.AddWithValue("@ItemName", strItemName);
+
+                                    commandPurchaseReport.ExecuteNonQuery();
+
+                                    //Get the last PurchaseID using Max to use as Purchase Invoice number
+                                    string strQueryPurchaseID = "SELECT MAX(PurchaseId) from RandrezaVoharisoaM21Su2332.Purchase";
+                                    SqlCommand commandPurchaseID = new SqlCommand(strQueryPurchaseID, Connection);
+
+                                    //gets Sale Id from insert sale report in the table sales report
+                                    SqlDataReader srPurchaseID = commandPurchaseID.ExecuteReader();
+                                    srPurchaseID.Read();
+                                    intPurchaseID = srPurchaseID.GetInt32(0);
+
+                                    strPurchaseInvoice = intPurchaseID.ToString() + ".html";
+                                    strPurchaseInvoiceFile = intPurchaseID.ToString();
+                                    srPurchaseID.Close();
+
+
                                     if (MessageBox.Show("Do you want Invoice?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                                     {
                                         PrintInvoice(GenerateInvoice(strItemName, intQuantityPurchased, dblItemCost));
 
                                     }
+
+
 
                                     Connection.Close();
 
@@ -198,8 +249,7 @@ namespace SU21_Final_Project
             html.AppendLine($"<h1>{" Purchase Detail"}</h1>");
 
             html.Append($"<h5>{"Date: "}{strDate}</h5>");
-            //html.Append($"<h5>{"Customer Name: "}{lblNameOfUser.Text}</h5>");
-            //html.Append($"<h5>{"Sale ID: "}{intSaleId.ToString()}</h5>");
+            html.Append($"<h5>{"Purchase Invoice: "}{strPurchaseInvoiceFile}</h5>");
 
             html.AppendLine("<table>");
             html.AppendLine("<tr><td>Name</td><td>Quantity</td><td>Cost</td><td>TotalCost</td>");
@@ -237,8 +287,8 @@ namespace SU21_Final_Project
         // Write (and overwrite) to the hard drive using the same filename of "Report.html"
         private void PrintInvoice(StringBuilder html)
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string filepath = path + "\\NewItemInvoice.html";
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string filepath = path + "\\" + strPurchaseInvoice + " ";
 
             try
             {
@@ -255,9 +305,8 @@ namespace SU21_Final_Project
                     "Error with System Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            //unique filename  use for a date and time with part of a name
-            DateTime today = DateTime.Now;
-            using (StreamWriter swNewItem = new StreamWriter($"{today.ToString("yyyy-MM-dd-HHmmss")} - NewItemInvoice.html"))
+          
+            using (StreamWriter swNewItem = new StreamWriter($"{strPurchaseInvoice}"))
             {
                 swNewItem.WriteLine(html);
             }
@@ -273,72 +322,52 @@ namespace SU21_Final_Project
 
         private void frmAddItems_FormClosing(object sender, FormClosingEventArgs e)
         {
-            new frmAdmin().Show();
-            this.Hide();
+            switch (e.CloseReason)
+            {
+                case CloseReason.UserClosing:
+                    if (MessageBox.Show("Do you want to close this form?", "Close Form", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                    }
+                    else
+                    {
+                        new frmAdmin().Show();
+                        this.Hide();
+                    }
+                    break;
+            }
         }
 
         private void btnInsertImage_Click(object sender, EventArgs e)
         {
-            ////strItemName = cboItemName.SelectedItem.ToString();
-            //try
-            //{
+            using(OpenFileDialog ofd= new OpenFileDialog() { Filter ="JPEG| * .jpg", ValidateNames=true, Multiselect = false })
+            {
+                if(ofd.ShowDialog()==DialogResult.OK)
+                {
+                    strfileName = ofd.FileName;
+                    tbxFileName.Text = strfileName;
+                    pbxDisplayItemImage.Image = Image.FromFile(strfileName);
+                    btnSaveItems.Enabled = true;
+                }
+            }
 
-            //    Connection.Open();
-            //    Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
-            //        "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
-            //    Connection.Close();
 
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Error :" + ex);
-            //}
-            //try
-            //{
-
-            //    //insert image
-
-            //    byte[] image = File.ReadAllBytes("C:\\defaultPic.png");
-
-            //    Connection.Open();
-
-            //    string insertQuery = "UPDATE RandrezaVoharisoaM21Su2332.Items set Image = @Image where ItemID= '" + strItemID + "'"; // @Image is a parameter we will fill in later
-            //    SqlCommand insertCmd = new SqlCommand(insertQuery, Connection);
-            //    SqlParameter sqlParams = insertCmd.Parameters.AddWithValue("@Image", image); // The parameter will be the image as a byte array
-            //    sqlParams.DbType = System.Data.DbType.Binary; // The type of data we are sending to the server will be a binary file
-            //    insertCmd.ExecuteNonQuery();
-
-            //    MessageBox.Show("File was successfully added to the database.", "File Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            //    //SqlDataAdapter dataAdapter = new SqlDataAdapter(new SqlCommand("SELECT Image FROM RandrezaVoharisoaM21Su2332.Items WHERE CategoryId = 2", Connection));
-            //    //DataSet dataSet = new DataSet();
-            //    //dataAdapter.Fill(dataSet);
-
-            //    //Display Image
-            //    byte[] imgData;
-            //    SqlCommand cmd = new SqlCommand("Select Image From RandrezaVoharisoaM21Su2332.Items where ItemID = '" + strItemID + "'", Connection);
-            //    SqlDataReader reader = cmd.ExecuteReader();
-            //    reader.Read();
-            //    long bufLength = reader.GetBytes(0, 0, null, 0, 0);
-            //    imgData = new byte[bufLength];
-            //    reader.GetBytes(0, 0, imgData, 0, (int)bufLength);
-            //    MemoryStream ms = new MemoryStream(imgData);
-            //    ms.Position = 0;
-            //    pbxItemPicture.Image = Image.FromStream(ms);
-            //    reader.Close();
-
-            //    Connection.Close();
-            //}
-            //catch (SqlException ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Error During Upload", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+           
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
             new frmAdmin().Show();
             this.Hide();
+        }
+
+        private void tbxQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+       (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
         }
     }
     

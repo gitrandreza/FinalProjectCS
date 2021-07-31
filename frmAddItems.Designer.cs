@@ -31,8 +31,7 @@ namespace SU21_Final_Project
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddItems));
             this.gbxItemInformation = new System.Windows.Forms.GroupBox();
-            this.btnInsertImage = new System.Windows.Forms.Button();
-            this.btnSaveItems = new System.Windows.Forms.Button();
+            this.btnLoad = new System.Windows.Forms.Button();
             this.cboSupplier = new System.Windows.Forms.ComboBox();
             this.cboCategory = new System.Windows.Forms.ComboBox();
             this.lblItemName = new System.Windows.Forms.Label();
@@ -46,16 +45,26 @@ namespace SU21_Final_Project
             this.tbxQuantity = new System.Windows.Forms.TextBox();
             this.tbxRetailPrice = new System.Windows.Forms.TextBox();
             this.lblTagRetailPrice = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.btnSaveItems = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.pbxDisplayItemImage = new System.Windows.Forms.PictureBox();
+            this.lblImageSource = new System.Windows.Forms.Label();
+            this.tbxFileName = new System.Windows.Forms.TextBox();
             this.gbxItemInformation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxDisplayItemImage)).BeginInit();
             this.SuspendLayout();
             // 
             // gbxItemInformation
             // 
-            this.gbxItemInformation.BackColor = System.Drawing.Color.Transparent;
-            this.gbxItemInformation.Controls.Add(this.btnInsertImage);
+            this.gbxItemInformation.BackColor = System.Drawing.Color.White;
+            this.gbxItemInformation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.gbxItemInformation.Controls.Add(this.btnSaveItems);
+            this.gbxItemInformation.Controls.Add(this.btnBack);
+            this.gbxItemInformation.Controls.Add(this.tbxFileName);
+            this.gbxItemInformation.Controls.Add(this.lblImageSource);
+            this.gbxItemInformation.Controls.Add(this.pbxDisplayItemImage);
+            this.gbxItemInformation.Controls.Add(this.btnLoad);
             this.gbxItemInformation.Controls.Add(this.cboSupplier);
             this.gbxItemInformation.Controls.Add(this.cboCategory);
             this.gbxItemInformation.Controls.Add(this.lblItemName);
@@ -69,41 +78,29 @@ namespace SU21_Final_Project
             this.gbxItemInformation.Controls.Add(this.tbxQuantity);
             this.gbxItemInformation.Controls.Add(this.tbxRetailPrice);
             this.gbxItemInformation.Controls.Add(this.lblTagRetailPrice);
-            this.gbxItemInformation.Controls.Add(this.label6);
             this.gbxItemInformation.Controls.Add(this.label8);
             this.gbxItemInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxItemInformation.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.gbxItemInformation.Location = new System.Drawing.Point(2, 31);
+            this.gbxItemInformation.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.gbxItemInformation.Location = new System.Drawing.Point(5, 65);
             this.gbxItemInformation.Name = "gbxItemInformation";
-            this.gbxItemInformation.Size = new System.Drawing.Size(824, 325);
+            this.gbxItemInformation.Size = new System.Drawing.Size(824, 417);
             this.gbxItemInformation.TabIndex = 45;
             this.gbxItemInformation.TabStop = false;
             this.gbxItemInformation.Text = "Item Information";
             // 
-            // btnInsertImage
+            // btnLoad
             // 
-            this.btnInsertImage.Location = new System.Drawing.Point(605, 26);
-            this.btnInsertImage.Margin = new System.Windows.Forms.Padding(4);
-            this.btnInsertImage.Name = "btnInsertImage";
-            this.btnInsertImage.Size = new System.Drawing.Size(131, 37);
-            this.btnInsertImage.TabIndex = 46;
-            this.btnInsertImage.Text = "&Insert Item Image";
-            this.btnInsertImage.UseVisualStyleBackColor = true;
-            this.btnInsertImage.Click += new System.EventHandler(this.btnInsertImage_Click);
-            // 
-            // btnSaveItems
-            // 
-            this.btnSaveItems.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnSaveItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveItems.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSaveItems.Location = new System.Drawing.Point(472, 362);
-            this.btnSaveItems.Name = "btnSaveItems";
-            this.btnSaveItems.Size = new System.Drawing.Size(110, 42);
-            this.btnSaveItems.TabIndex = 43;
-            this.btnSaveItems.Text = "Save Item";
-            this.btnSaveItems.UseVisualStyleBackColor = false;
-            this.btnSaveItems.Click += new System.EventHandler(this.btnSaveItems_Click);
-            this.btnSaveItems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnSaveItems_KeyDown);
+            this.btnLoad.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLoad.BackgroundImage")));
+            this.btnLoad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLoad.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnLoad.Location = new System.Drawing.Point(550, 37);
+            this.btnLoad.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(250, 53);
+            this.btnLoad.TabIndex = 46;
+            this.btnLoad.Text = "&Load Image";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnInsertImage_Click);
             // 
             // cboSupplier
             // 
@@ -113,7 +110,7 @@ namespace SU21_Final_Project
             "1",
             "2",
             "3"});
-            this.cboSupplier.Location = new System.Drawing.Point(144, 289);
+            this.cboSupplier.Location = new System.Drawing.Point(137, 298);
             this.cboSupplier.MaxLength = 3;
             this.cboSupplier.Name = "cboSupplier";
             this.cboSupplier.Size = new System.Drawing.Size(63, 24);
@@ -127,7 +124,7 @@ namespace SU21_Final_Project
             "1",
             "2",
             "3"});
-            this.cboCategory.Location = new System.Drawing.Point(144, 162);
+            this.cboCategory.Location = new System.Drawing.Point(137, 171);
             this.cboCategory.Name = "cboCategory";
             this.cboCategory.Size = new System.Drawing.Size(78, 24);
             this.cboCategory.TabIndex = 3;
@@ -135,7 +132,7 @@ namespace SU21_Final_Project
             // lblItemName
             // 
             this.lblItemName.AutoSize = true;
-            this.lblItemName.Location = new System.Drawing.Point(41, 46);
+            this.lblItemName.Location = new System.Drawing.Point(34, 55);
             this.lblItemName.Name = "lblItemName";
             this.lblItemName.Size = new System.Drawing.Size(84, 17);
             this.lblItemName.TabIndex = 2;
@@ -143,7 +140,7 @@ namespace SU21_Final_Project
             // 
             // tbxItemCost
             // 
-            this.tbxItemCost.Location = new System.Drawing.Point(144, 124);
+            this.tbxItemCost.Location = new System.Drawing.Point(137, 133);
             this.tbxItemCost.MaxLength = 20;
             this.tbxItemCost.Name = "tbxItemCost";
             this.tbxItemCost.Size = new System.Drawing.Size(114, 22);
@@ -151,7 +148,7 @@ namespace SU21_Final_Project
             // 
             // tbxItemName
             // 
-            this.tbxItemName.Location = new System.Drawing.Point(144, 44);
+            this.tbxItemName.Location = new System.Drawing.Point(137, 53);
             this.tbxItemName.MaxLength = 20;
             this.tbxItemName.Name = "tbxItemName";
             this.tbxItemName.Size = new System.Drawing.Size(165, 22);
@@ -160,7 +157,7 @@ namespace SU21_Final_Project
             // lblTagCost
             // 
             this.lblTagCost.AutoSize = true;
-            this.lblTagCost.Location = new System.Drawing.Point(80, 126);
+            this.lblTagCost.Location = new System.Drawing.Point(73, 135);
             this.lblTagCost.Name = "lblTagCost";
             this.lblTagCost.Size = new System.Drawing.Size(40, 17);
             this.lblTagCost.TabIndex = 3;
@@ -169,7 +166,7 @@ namespace SU21_Final_Project
             // lblTagQuantity
             // 
             this.lblTagQuantity.AutoSize = true;
-            this.lblTagQuantity.Location = new System.Drawing.Point(55, 84);
+            this.lblTagQuantity.Location = new System.Drawing.Point(48, 93);
             this.lblTagQuantity.Name = "lblTagQuantity";
             this.lblTagQuantity.Size = new System.Drawing.Size(69, 17);
             this.lblTagQuantity.TabIndex = 4;
@@ -178,7 +175,7 @@ namespace SU21_Final_Project
             // lblTagDescription
             // 
             this.lblTagDescription.AutoSize = true;
-            this.lblTagDescription.Location = new System.Drawing.Point(42, 247);
+            this.lblTagDescription.Location = new System.Drawing.Point(35, 256);
             this.lblTagDescription.Name = "lblTagDescription";
             this.lblTagDescription.Size = new System.Drawing.Size(90, 17);
             this.lblTagDescription.TabIndex = 38;
@@ -187,7 +184,7 @@ namespace SU21_Final_Project
             // lblTagCategory
             // 
             this.lblTagCategory.AutoSize = true;
-            this.lblTagCategory.Location = new System.Drawing.Point(56, 164);
+            this.lblTagCategory.Location = new System.Drawing.Point(49, 173);
             this.lblTagCategory.Name = "lblTagCategory";
             this.lblTagCategory.Size = new System.Drawing.Size(73, 17);
             this.lblTagCategory.TabIndex = 5;
@@ -195,7 +192,7 @@ namespace SU21_Final_Project
             // 
             // tbxDescription
             // 
-            this.tbxDescription.Location = new System.Drawing.Point(144, 245);
+            this.tbxDescription.Location = new System.Drawing.Point(137, 254);
             this.tbxDescription.MaxLength = 40;
             this.tbxDescription.Name = "tbxDescription";
             this.tbxDescription.Size = new System.Drawing.Size(335, 22);
@@ -203,15 +200,16 @@ namespace SU21_Final_Project
             // 
             // tbxQuantity
             // 
-            this.tbxQuantity.Location = new System.Drawing.Point(144, 84);
+            this.tbxQuantity.Location = new System.Drawing.Point(137, 93);
             this.tbxQuantity.MaxLength = 20;
             this.tbxQuantity.Name = "tbxQuantity";
             this.tbxQuantity.Size = new System.Drawing.Size(78, 22);
             this.tbxQuantity.TabIndex = 1;
+            this.tbxQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxQuantity_KeyPress);
             // 
             // tbxRetailPrice
             // 
-            this.tbxRetailPrice.Location = new System.Drawing.Point(144, 202);
+            this.tbxRetailPrice.Location = new System.Drawing.Point(137, 211);
             this.tbxRetailPrice.Name = "tbxRetailPrice";
             this.tbxRetailPrice.Size = new System.Drawing.Size(114, 22);
             this.tbxRetailPrice.TabIndex = 4;
@@ -219,52 +217,86 @@ namespace SU21_Final_Project
             // lblTagRetailPrice
             // 
             this.lblTagRetailPrice.AutoSize = true;
-            this.lblTagRetailPrice.Location = new System.Drawing.Point(41, 206);
+            this.lblTagRetailPrice.Location = new System.Drawing.Point(34, 215);
             this.lblTagRetailPrice.Name = "lblTagRetailPrice";
             this.lblTagRetailPrice.Size = new System.Drawing.Size(92, 17);
             this.lblTagRetailPrice.TabIndex = 9;
             this.lblTagRetailPrice.Text = "Retail Price";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(352, 246);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 17);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "*City";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(57, 292);
+            this.label8.Location = new System.Drawing.Point(50, 301);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(68, 17);
             this.label8.TabIndex = 15;
             this.label8.Text = "Supplier";
             // 
+            // btnSaveItems
+            // 
+            this.btnSaveItems.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnSaveItems.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSaveItems.BackgroundImage")));
+            this.btnSaveItems.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSaveItems.Enabled = false;
+            this.btnSaveItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveItems.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSaveItems.Location = new System.Drawing.Point(400, 359);
+            this.btnSaveItems.Name = "btnSaveItems";
+            this.btnSaveItems.Size = new System.Drawing.Size(424, 53);
+            this.btnSaveItems.TabIndex = 43;
+            this.btnSaveItems.Text = "Save Item";
+            this.btnSaveItems.UseVisualStyleBackColor = false;
+            this.btnSaveItems.Click += new System.EventHandler(this.btnSaveItems_Click);
+            this.btnSaveItems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnSaveItems_KeyDown);
+            // 
             // btnBack
             // 
             this.btnBack.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnBack.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBack.BackgroundImage")));
+            this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnBack.Location = new System.Drawing.Point(275, 362);
+            this.btnBack.Location = new System.Drawing.Point(0, 359);
             this.btnBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(110, 42);
+            this.btnBack.Size = new System.Drawing.Size(403, 53);
             this.btnBack.TabIndex = 47;
             this.btnBack.Text = "&Close";
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // pbxDisplayItemImage
+            // 
+            this.pbxDisplayItemImage.BackColor = System.Drawing.Color.White;
+            this.pbxDisplayItemImage.Location = new System.Drawing.Point(550, 88);
+            this.pbxDisplayItemImage.Name = "pbxDisplayItemImage";
+            this.pbxDisplayItemImage.Size = new System.Drawing.Size(250, 192);
+            this.pbxDisplayItemImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxDisplayItemImage.TabIndex = 48;
+            this.pbxDisplayItemImage.TabStop = false;
+            // 
+            // lblImageSource
+            // 
+            this.lblImageSource.AutoSize = true;
+            this.lblImageSource.Location = new System.Drawing.Point(466, 314);
+            this.lblImageSource.Name = "lblImageSource";
+            this.lblImageSource.Size = new System.Drawing.Size(107, 17);
+            this.lblImageSource.TabIndex = 49;
+            this.lblImageSource.Text = "Image Source";
+            // 
+            // tbxFileName
+            // 
+            this.tbxFileName.Location = new System.Drawing.Point(579, 311);
+            this.tbxFileName.Name = "tbxFileName";
+            this.tbxFileName.ReadOnly = true;
+            this.tbxFileName.Size = new System.Drawing.Size(206, 22);
+            this.tbxFileName.TabIndex = 50;
+            // 
             // frmAddItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(832, 410);
-            this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.btnSaveItems);
+            this.ClientSize = new System.Drawing.Size(832, 488);
             this.Controls.Add(this.gbxItemInformation);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -274,6 +306,7 @@ namespace SU21_Final_Project
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAddItems_FormClosing);
             this.gbxItemInformation.ResumeLayout(false);
             this.gbxItemInformation.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxDisplayItemImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -294,10 +327,12 @@ namespace SU21_Final_Project
         private System.Windows.Forms.TextBox tbxQuantity;
         private System.Windows.Forms.TextBox tbxRetailPrice;
         private System.Windows.Forms.Label lblTagRetailPrice;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnSaveItems;
-        private System.Windows.Forms.Button btnInsertImage;
+        private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.PictureBox pbxDisplayItemImage;
+        private System.Windows.Forms.TextBox tbxFileName;
+        private System.Windows.Forms.Label lblImageSource;
     }
 }

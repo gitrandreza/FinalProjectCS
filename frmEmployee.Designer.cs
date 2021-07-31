@@ -30,7 +30,7 @@ namespace SU21_Final_Project
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmployee));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabInformation = new System.Windows.Forms.TabPage();
             this.btnPrintInvoice = new System.Windows.Forms.Button();
             this.btnClearCustomer = new System.Windows.Forms.Button();
@@ -845,6 +845,7 @@ namespace SU21_Final_Project
             // radNoDiscount
             // 
             this.radNoDiscount.AutoSize = true;
+            this.radNoDiscount.Checked = true;
             this.radNoDiscount.ForeColor = System.Drawing.Color.Black;
             this.radNoDiscount.Location = new System.Drawing.Point(6, 173);
             this.radNoDiscount.Name = "radNoDiscount";
@@ -1591,14 +1592,14 @@ namespace SU21_Final_Project
             this.dgvEmployeeViewItem.AllowUserToAddRows = false;
             this.dgvEmployeeViewItem.AllowUserToDeleteRows = false;
             this.dgvEmployeeViewItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEmployeeViewItem.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEmployeeViewItem.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvEmployeeViewItem.Location = new System.Drawing.Point(3, 3);
             this.dgvEmployeeViewItem.MultiSelect = false;
             this.dgvEmployeeViewItem.Name = "dgvEmployeeViewItem";
@@ -1914,7 +1915,7 @@ namespace SU21_Final_Project
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackColor = System.Drawing.Color.Tan;
             this.ClientSize = new System.Drawing.Size(1095, 890);
             this.Controls.Add(this.btnResetAll);
             this.Controls.Add(this.btnHelpEmployeeView);

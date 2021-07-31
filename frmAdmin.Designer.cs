@@ -158,6 +158,16 @@ namespace SU21_Final_Project
             this.lblDate = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnAccessPOS = new System.Windows.Forms.Button();
+            this.btnHelp = new System.Windows.Forms.Button();
+            this.dgvPurchaseRecord = new System.Windows.Forms.DataGridView();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabEmployee.SuspendLayout();
             this.gbxEdit.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -178,11 +188,11 @@ namespace SU21_Final_Project
             this.tabSupplier.SuspendLayout();
             this.gbxAddEditSupplier.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPurchaseRecord)).BeginInit();
             this.SuspendLayout();
             // 
             // tabEmployee
             // 
-            this.tabEmployee.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabEmployee.BackgroundImage")));
             this.tabEmployee.Controls.Add(this.gbxEdit);
             this.tabEmployee.Controls.Add(this.groupBox1);
             this.tabEmployee.Controls.Add(this.btnRemoveEmployee);
@@ -192,14 +202,14 @@ namespace SU21_Final_Project
             this.tabEmployee.Location = new System.Drawing.Point(4, 25);
             this.tabEmployee.Name = "tabEmployee";
             this.tabEmployee.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEmployee.Size = new System.Drawing.Size(1097, 538);
+            this.tabEmployee.Size = new System.Drawing.Size(1110, 524);
             this.tabEmployee.TabIndex = 1;
             this.tabEmployee.Text = "Employee Management";
             this.tabEmployee.UseVisualStyleBackColor = true;
             // 
             // gbxEdit
             // 
-            this.gbxEdit.BackColor = System.Drawing.Color.Silver;
+            this.gbxEdit.BackColor = System.Drawing.Color.Linen;
             this.gbxEdit.Controls.Add(this.cbxStates);
             this.gbxEdit.Controls.Add(this.cbxEditPhone);
             this.gbxEdit.Controls.Add(this.btnSaveEdit);
@@ -218,9 +228,10 @@ namespace SU21_Final_Project
             this.gbxEdit.Controls.Add(this.tbxEmail);
             this.gbxEdit.Controls.Add(this.cbxZip);
             this.gbxEdit.Enabled = false;
-            this.gbxEdit.Location = new System.Drawing.Point(19, 309);
+            this.gbxEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxEdit.Location = new System.Drawing.Point(8, 309);
             this.gbxEdit.Name = "gbxEdit";
-            this.gbxEdit.Size = new System.Drawing.Size(695, 213);
+            this.gbxEdit.Size = new System.Drawing.Size(726, 213);
             this.gbxEdit.TabIndex = 57;
             this.gbxEdit.TabStop = false;
             this.gbxEdit.Text = "Edit Fields";
@@ -230,7 +241,7 @@ namespace SU21_Final_Project
             this.cbxStates.AutoSize = true;
             this.cbxStates.Location = new System.Drawing.Point(385, 102);
             this.cbxStates.Name = "cbxStates";
-            this.cbxStates.Size = new System.Drawing.Size(70, 21);
+            this.cbxStates.Size = new System.Drawing.Size(76, 21);
             this.cbxStates.TabIndex = 57;
             this.cbxStates.Text = "States";
             this.cbxStates.UseVisualStyleBackColor = true;
@@ -241,7 +252,7 @@ namespace SU21_Final_Project
             this.cbxEditPhone.AutoSize = true;
             this.cbxEditPhone.Location = new System.Drawing.Point(385, 66);
             this.cbxEditPhone.Name = "cbxEditPhone";
-            this.cbxEditPhone.Size = new System.Drawing.Size(79, 21);
+            this.cbxEditPhone.Size = new System.Drawing.Size(85, 21);
             this.cbxEditPhone.TabIndex = 56;
             this.cbxEditPhone.Text = "Phone#";
             this.cbxEditPhone.UseVisualStyleBackColor = true;
@@ -249,9 +260,13 @@ namespace SU21_Final_Project
             // 
             // btnSaveEdit
             // 
-            this.btnSaveEdit.Location = new System.Drawing.Point(318, 173);
+            this.btnSaveEdit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSaveEdit.BackgroundImage")));
+            this.btnSaveEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSaveEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveEdit.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnSaveEdit.Location = new System.Drawing.Point(0, 162);
             this.btnSaveEdit.Name = "btnSaveEdit";
-            this.btnSaveEdit.Size = new System.Drawing.Size(103, 34);
+            this.btnSaveEdit.Size = new System.Drawing.Size(726, 51);
             this.btnSaveEdit.TabIndex = 16;
             this.btnSaveEdit.Text = "&Save Edit";
             this.btnSaveEdit.UseVisualStyleBackColor = true;
@@ -260,7 +275,7 @@ namespace SU21_Final_Project
             // tbxAddress
             // 
             this.tbxAddress.Enabled = false;
-            this.tbxAddress.Location = new System.Drawing.Point(138, 99);
+            this.tbxAddress.Location = new System.Drawing.Point(148, 99);
             this.tbxAddress.MaxLength = 50;
             this.tbxAddress.Name = "tbxAddress";
             this.tbxAddress.Size = new System.Drawing.Size(181, 22);
@@ -269,7 +284,7 @@ namespace SU21_Final_Project
             // mskPhones
             // 
             this.mskPhones.Enabled = false;
-            this.mskPhones.Location = new System.Drawing.Point(482, 64);
+            this.mskPhones.Location = new System.Drawing.Point(500, 64);
             this.mskPhones.Mask = "000-000-0000";
             this.mskPhones.Name = "mskPhones";
             this.mskPhones.Size = new System.Drawing.Size(100, 22);
@@ -280,7 +295,7 @@ namespace SU21_Final_Project
             this.cbxLastName.AutoSize = true;
             this.cbxLastName.Location = new System.Drawing.Point(17, 64);
             this.cbxLastName.Name = "cbxLastName";
-            this.cbxLastName.Size = new System.Drawing.Size(98, 21);
+            this.cbxLastName.Size = new System.Drawing.Size(107, 21);
             this.cbxLastName.TabIndex = 40;
             this.cbxLastName.Text = "Last Name";
             this.cbxLastName.UseVisualStyleBackColor = true;
@@ -291,7 +306,7 @@ namespace SU21_Final_Project
             this.cbxAddress.AutoSize = true;
             this.cbxAddress.Location = new System.Drawing.Point(16, 99);
             this.cbxAddress.Name = "cbxAddress";
-            this.cbxAddress.Size = new System.Drawing.Size(82, 21);
+            this.cbxAddress.Size = new System.Drawing.Size(89, 21);
             this.cbxAddress.TabIndex = 44;
             this.cbxAddress.Text = "Address";
             this.cbxAddress.UseVisualStyleBackColor = true;
@@ -361,7 +376,7 @@ namespace SU21_Final_Project
             "WV",
             "WI",
             "WY"});
-            this.cboStates.Location = new System.Drawing.Point(482, 99);
+            this.cboStates.Location = new System.Drawing.Point(500, 99);
             this.cboStates.Name = "cboStates";
             this.cboStates.Size = new System.Drawing.Size(89, 24);
             this.cboStates.TabIndex = 54;
@@ -369,7 +384,7 @@ namespace SU21_Final_Project
             // tbxLastName
             // 
             this.tbxLastName.Enabled = false;
-            this.tbxLastName.Location = new System.Drawing.Point(140, 64);
+            this.tbxLastName.Location = new System.Drawing.Point(150, 64);
             this.tbxLastName.MaxLength = 30;
             this.tbxLastName.Name = "tbxLastName";
             this.tbxLastName.Size = new System.Drawing.Size(181, 22);
@@ -379,7 +394,7 @@ namespace SU21_Final_Project
             // tbxCity
             // 
             this.tbxCity.Enabled = false;
-            this.tbxCity.Location = new System.Drawing.Point(138, 134);
+            this.tbxCity.Location = new System.Drawing.Point(148, 134);
             this.tbxCity.MaxLength = 30;
             this.tbxCity.Name = "tbxCity";
             this.tbxCity.Size = new System.Drawing.Size(181, 22);
@@ -390,7 +405,7 @@ namespace SU21_Final_Project
             this.cbxFirstName.AutoSize = true;
             this.cbxFirstName.Location = new System.Drawing.Point(16, 27);
             this.cbxFirstName.Name = "cbxFirstName";
-            this.cbxFirstName.Size = new System.Drawing.Size(98, 21);
+            this.cbxFirstName.Size = new System.Drawing.Size(108, 21);
             this.cbxFirstName.TabIndex = 17;
             this.cbxFirstName.Text = "First Name";
             this.cbxFirstName.UseVisualStyleBackColor = true;
@@ -401,7 +416,7 @@ namespace SU21_Final_Project
             this.cbxCity.AutoSize = true;
             this.cbxCity.Location = new System.Drawing.Point(16, 134);
             this.cbxCity.Name = "cbxCity";
-            this.cbxCity.Size = new System.Drawing.Size(53, 21);
+            this.cbxCity.Size = new System.Drawing.Size(57, 21);
             this.cbxCity.TabIndex = 48;
             this.cbxCity.Text = "City";
             this.cbxCity.UseVisualStyleBackColor = true;
@@ -412,7 +427,7 @@ namespace SU21_Final_Project
             this.cbxEmail.AutoSize = true;
             this.cbxEmail.Location = new System.Drawing.Point(385, 27);
             this.cbxEmail.Name = "cbxEmail";
-            this.cbxEmail.Size = new System.Drawing.Size(64, 21);
+            this.cbxEmail.Size = new System.Drawing.Size(69, 21);
             this.cbxEmail.TabIndex = 52;
             this.cbxEmail.Text = "Email";
             this.cbxEmail.UseVisualStyleBackColor = true;
@@ -421,7 +436,7 @@ namespace SU21_Final_Project
             // tbxFirstName
             // 
             this.tbxFirstName.Enabled = false;
-            this.tbxFirstName.Location = new System.Drawing.Point(138, 27);
+            this.tbxFirstName.Location = new System.Drawing.Point(148, 27);
             this.tbxFirstName.MaxLength = 30;
             this.tbxFirstName.Name = "tbxFirstName";
             this.tbxFirstName.Size = new System.Drawing.Size(183, 22);
@@ -431,7 +446,7 @@ namespace SU21_Final_Project
             // tbxZip
             // 
             this.tbxZip.Enabled = false;
-            this.tbxZip.Location = new System.Drawing.Point(482, 134);
+            this.tbxZip.Location = new System.Drawing.Point(500, 134);
             this.tbxZip.MaxLength = 5;
             this.tbxZip.Name = "tbxZip";
             this.tbxZip.Size = new System.Drawing.Size(97, 22);
@@ -441,7 +456,7 @@ namespace SU21_Final_Project
             // tbxEmail
             // 
             this.tbxEmail.Enabled = false;
-            this.tbxEmail.Location = new System.Drawing.Point(482, 27);
+            this.tbxEmail.Location = new System.Drawing.Point(500, 27);
             this.tbxEmail.Name = "tbxEmail";
             this.tbxEmail.Size = new System.Drawing.Size(145, 22);
             this.tbxEmail.TabIndex = 51;
@@ -451,7 +466,7 @@ namespace SU21_Final_Project
             this.cbxZip.AutoSize = true;
             this.cbxZip.Location = new System.Drawing.Point(388, 135);
             this.cbxZip.Name = "cbxZip";
-            this.cbxZip.Size = new System.Drawing.Size(50, 21);
+            this.cbxZip.Size = new System.Drawing.Size(53, 21);
             this.cbxZip.TabIndex = 50;
             this.cbxZip.Text = "Zip";
             this.cbxZip.UseVisualStyleBackColor = true;
@@ -459,16 +474,17 @@ namespace SU21_Final_Project
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.Silver;
+            this.groupBox1.BackColor = System.Drawing.Color.Linen;
             this.groupBox1.Controls.Add(this.lblHiredDate);
             this.groupBox1.Controls.Add(this.lblSalary);
             this.groupBox1.Controls.Add(this.lblPosition);
             this.groupBox1.Controls.Add(this.lblSalaryLabel);
             this.groupBox1.Controls.Add(this.lblPositionLabel);
             this.groupBox1.Controls.Add(this.lblHiredDateLabel);
-            this.groupBox1.Location = new System.Drawing.Point(768, 293);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(740, 309);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(305, 223);
+            this.groupBox1.Size = new System.Drawing.Size(364, 207);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Employee Additional Information";
@@ -503,35 +519,39 @@ namespace SU21_Final_Project
             // lblSalaryLabel
             // 
             this.lblSalaryLabel.AutoSize = true;
-            this.lblSalaryLabel.Location = new System.Drawing.Point(33, 86);
+            this.lblSalaryLabel.Location = new System.Drawing.Point(21, 86);
             this.lblSalaryLabel.Name = "lblSalaryLabel";
-            this.lblSalaryLabel.Size = new System.Drawing.Size(48, 17);
+            this.lblSalaryLabel.Size = new System.Drawing.Size(54, 17);
             this.lblSalaryLabel.TabIndex = 2;
             this.lblSalaryLabel.Text = "Salary";
             // 
             // lblPositionLabel
             // 
             this.lblPositionLabel.AutoSize = true;
-            this.lblPositionLabel.Location = new System.Drawing.Point(33, 150);
+            this.lblPositionLabel.Location = new System.Drawing.Point(21, 150);
             this.lblPositionLabel.Name = "lblPositionLabel";
-            this.lblPositionLabel.Size = new System.Drawing.Size(62, 17);
+            this.lblPositionLabel.Size = new System.Drawing.Size(71, 17);
             this.lblPositionLabel.TabIndex = 1;
             this.lblPositionLabel.Text = "Position:";
             // 
             // lblHiredDateLabel
             // 
             this.lblHiredDateLabel.AutoSize = true;
-            this.lblHiredDateLabel.Location = new System.Drawing.Point(33, 26);
+            this.lblHiredDateLabel.Location = new System.Drawing.Point(21, 26);
             this.lblHiredDateLabel.Name = "lblHiredDateLabel";
-            this.lblHiredDateLabel.Size = new System.Drawing.Size(80, 17);
+            this.lblHiredDateLabel.Size = new System.Drawing.Size(91, 17);
             this.lblHiredDateLabel.TabIndex = 0;
             this.lblHiredDateLabel.Text = "Hired Date:";
             // 
             // btnRemoveEmployee
             // 
-            this.btnRemoveEmployee.Location = new System.Drawing.Point(309, 260);
+            this.btnRemoveEmployee.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRemoveEmployee.BackgroundImage")));
+            this.btnRemoveEmployee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRemoveEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveEmployee.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnRemoveEmployee.Location = new System.Drawing.Point(758, 246);
             this.btnRemoveEmployee.Name = "btnRemoveEmployee";
-            this.btnRemoveEmployee.Size = new System.Drawing.Size(137, 33);
+            this.btnRemoveEmployee.Size = new System.Drawing.Size(346, 57);
             this.btnRemoveEmployee.TabIndex = 15;
             this.btnRemoveEmployee.Text = "&Remove Employee";
             this.btnRemoveEmployee.UseVisualStyleBackColor = true;
@@ -539,9 +559,13 @@ namespace SU21_Final_Project
             // 
             // btnAddEmployee
             // 
-            this.btnAddEmployee.Location = new System.Drawing.Point(136, 260);
+            this.btnAddEmployee.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAddEmployee.BackgroundImage")));
+            this.btnAddEmployee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAddEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddEmployee.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnAddEmployee.Location = new System.Drawing.Point(8, 246);
             this.btnAddEmployee.Name = "btnAddEmployee";
-            this.btnAddEmployee.Size = new System.Drawing.Size(137, 33);
+            this.btnAddEmployee.Size = new System.Drawing.Size(326, 57);
             this.btnAddEmployee.TabIndex = 14;
             this.btnAddEmployee.Text = "&Add Employee";
             this.btnAddEmployee.UseVisualStyleBackColor = true;
@@ -549,10 +573,14 @@ namespace SU21_Final_Project
             // 
             // btnEditEmployee
             // 
-            this.btnEditEmployee.Location = new System.Drawing.Point(479, 260);
+            this.btnEditEmployee.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEditEmployee.BackgroundImage")));
+            this.btnEditEmployee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEditEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditEmployee.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnEditEmployee.Location = new System.Drawing.Point(336, 246);
             this.btnEditEmployee.Margin = new System.Windows.Forms.Padding(4);
             this.btnEditEmployee.Name = "btnEditEmployee";
-            this.btnEditEmployee.Size = new System.Drawing.Size(137, 33);
+            this.btnEditEmployee.Size = new System.Drawing.Size(423, 57);
             this.btnEditEmployee.TabIndex = 13;
             this.btnEditEmployee.Text = "&Edit ";
             this.btnEditEmployee.UseVisualStyleBackColor = true;
@@ -571,14 +599,13 @@ namespace SU21_Final_Project
             this.dgvEmployee.RowHeadersWidth = 51;
             this.dgvEmployee.RowTemplate.Height = 24;
             this.dgvEmployee.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEmployee.Size = new System.Drawing.Size(1065, 223);
+            this.dgvEmployee.Size = new System.Drawing.Size(1096, 223);
             this.dgvEmployee.TabIndex = 0;
             this.dgvEmployee.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmployee_CellClick);
             this.dgvEmployee.SelectionChanged += new System.EventHandler(this.dgvEmployee_SelectionChanged_1);
             // 
             // tabInventory
             // 
-            this.tabInventory.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabInventory.BackgroundImage")));
             this.tabInventory.Controls.Add(this.btnRefresh);
             this.tabInventory.Controls.Add(this.dgvLowItem);
             this.tabInventory.Controls.Add(this.lblLowItemLabel);
@@ -587,19 +614,26 @@ namespace SU21_Final_Project
             this.tabInventory.Controls.Add(this.btnAddItems);
             this.tabInventory.Controls.Add(this.dgvAllProducts);
             this.tabInventory.Controls.Add(this.btnUpdateItem);
+            this.tabInventory.Controls.Add(this.btnSaveUpdate);
             this.tabInventory.Location = new System.Drawing.Point(4, 25);
             this.tabInventory.Name = "tabInventory";
             this.tabInventory.Padding = new System.Windows.Forms.Padding(3);
-            this.tabInventory.Size = new System.Drawing.Size(1097, 538);
+            this.tabInventory.Size = new System.Drawing.Size(1110, 524);
             this.tabInventory.TabIndex = 0;
             this.tabInventory.Text = "Inventory Control";
             this.tabInventory.UseVisualStyleBackColor = true;
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(834, 187);
+            this.btnRefresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRefresh.BackgroundImage")));
+            this.btnRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRefresh.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnRefresh.FlatAppearance.BorderSize = 3;
+            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnRefresh.Location = new System.Drawing.Point(801, 181);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(119, 39);
+            this.btnRefresh.Size = new System.Drawing.Size(303, 51);
             this.btnRefresh.TabIndex = 42;
             this.btnRefresh.Text = "&Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
@@ -617,7 +651,7 @@ namespace SU21_Final_Project
             this.dgvLowItem.RowHeadersVisible = false;
             this.dgvLowItem.RowHeadersWidth = 51;
             this.dgvLowItem.RowTemplate.Height = 24;
-            this.dgvLowItem.Size = new System.Drawing.Size(257, 199);
+            this.dgvLowItem.Size = new System.Drawing.Size(281, 110);
             this.dgvLowItem.TabIndex = 41;
             // 
             // lblLowItemLabel
@@ -645,7 +679,6 @@ namespace SU21_Final_Project
             this.gbxUpdateField.Controls.Add(this.tbxCost);
             this.gbxUpdateField.Controls.Add(this.tbxQuantity);
             this.gbxUpdateField.Controls.Add(this.cbxName);
-            this.gbxUpdateField.Controls.Add(this.btnSaveUpdate);
             this.gbxUpdateField.Controls.Add(this.tbxName);
             this.gbxUpdateField.Enabled = false;
             this.gbxUpdateField.Location = new System.Drawing.Point(20, 249);
@@ -797,9 +830,15 @@ namespace SU21_Final_Project
             // 
             // btnSaveUpdate
             // 
-            this.btnSaveUpdate.Location = new System.Drawing.Point(657, 64);
+            this.btnSaveUpdate.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSaveUpdate.BackgroundImage")));
+            this.btnSaveUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSaveUpdate.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnSaveUpdate.FlatAppearance.BorderSize = 3;
+            this.btnSaveUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveUpdate.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnSaveUpdate.Location = new System.Drawing.Point(20, 449);
             this.btnSaveUpdate.Name = "btnSaveUpdate";
-            this.btnSaveUpdate.Size = new System.Drawing.Size(103, 34);
+            this.btnSaveUpdate.Size = new System.Drawing.Size(797, 51);
             this.btnSaveUpdate.TabIndex = 16;
             this.btnSaveUpdate.Text = "&Save Change";
             this.btnSaveUpdate.UseVisualStyleBackColor = true;
@@ -815,9 +854,15 @@ namespace SU21_Final_Project
             // 
             // btnRemoveItem
             // 
-            this.btnRemoveItem.Location = new System.Drawing.Point(567, 188);
+            this.btnRemoveItem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRemoveItem.BackgroundImage")));
+            this.btnRemoveItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRemoveItem.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnRemoveItem.FlatAppearance.BorderSize = 3;
+            this.btnRemoveItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveItem.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnRemoveItem.Location = new System.Drawing.Point(537, 182);
             this.btnRemoveItem.Name = "btnRemoveItem";
-            this.btnRemoveItem.Size = new System.Drawing.Size(122, 38);
+            this.btnRemoveItem.Size = new System.Drawing.Size(270, 51);
             this.btnRemoveItem.TabIndex = 12;
             this.btnRemoveItem.Text = "Remove Item";
             this.btnRemoveItem.UseVisualStyleBackColor = true;
@@ -825,9 +870,15 @@ namespace SU21_Final_Project
             // 
             // btnAddItems
             // 
-            this.btnAddItems.Location = new System.Drawing.Point(73, 188);
+            this.btnAddItems.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAddItems.BackgroundImage")));
+            this.btnAddItems.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAddItems.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAddItems.FlatAppearance.BorderSize = 3;
+            this.btnAddItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddItems.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnAddItems.Location = new System.Drawing.Point(6, 181);
             this.btnAddItems.Name = "btnAddItems";
-            this.btnAddItems.Size = new System.Drawing.Size(121, 37);
+            this.btnAddItems.Size = new System.Drawing.Size(270, 51);
             this.btnAddItems.TabIndex = 3;
             this.btnAddItems.Text = "Add New Items";
             this.btnAddItems.UseVisualStyleBackColor = true;
@@ -847,16 +898,22 @@ namespace SU21_Final_Project
             this.dgvAllProducts.RowHeadersWidth = 51;
             this.dgvAllProducts.RowTemplate.Height = 24;
             this.dgvAllProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAllProducts.Size = new System.Drawing.Size(1072, 176);
+            this.dgvAllProducts.Size = new System.Drawing.Size(1096, 176);
             this.dgvAllProducts.TabIndex = 1;
             this.dgvAllProducts.SelectionChanged += new System.EventHandler(this.dgvAllProducts_SelectionChanged);
             // 
             // btnUpdateItem
             // 
-            this.btnUpdateItem.Location = new System.Drawing.Point(299, 189);
+            this.btnUpdateItem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnUpdateItem.BackgroundImage")));
+            this.btnUpdateItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnUpdateItem.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnUpdateItem.FlatAppearance.BorderSize = 3;
+            this.btnUpdateItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateItem.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnUpdateItem.Location = new System.Drawing.Point(271, 181);
             this.btnUpdateItem.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdateItem.Name = "btnUpdateItem";
-            this.btnUpdateItem.Size = new System.Drawing.Size(150, 37);
+            this.btnUpdateItem.Size = new System.Drawing.Size(270, 51);
             this.btnUpdateItem.TabIndex = 7;
             this.btnUpdateItem.Text = "&Update Item ";
             this.btnUpdateItem.UseVisualStyleBackColor = true;
@@ -873,13 +930,12 @@ namespace SU21_Final_Project
             this.tabManagerFeatures.Location = new System.Drawing.Point(12, 52);
             this.tabManagerFeatures.Name = "tabManagerFeatures";
             this.tabManagerFeatures.SelectedIndex = 0;
-            this.tabManagerFeatures.Size = new System.Drawing.Size(1105, 546);
+            this.tabManagerFeatures.Size = new System.Drawing.Size(1108, 553);
             this.tabManagerFeatures.TabIndex = 0;
             this.tabManagerFeatures.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabManagerFeatures_Selected);
             // 
             // tabCustomer
             // 
-            this.tabCustomer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabCustomer.BackgroundImage")));
             this.tabCustomer.Controls.Add(this.gbxAddNewCustomer);
             this.tabCustomer.Controls.Add(this.btnRemoveCustomer);
             this.tabCustomer.Controls.Add(this.btnUpdateCustomer);
@@ -887,14 +943,14 @@ namespace SU21_Final_Project
             this.tabCustomer.Controls.Add(this.dgvCustomer);
             this.tabCustomer.Location = new System.Drawing.Point(4, 25);
             this.tabCustomer.Name = "tabCustomer";
-            this.tabCustomer.Size = new System.Drawing.Size(1097, 538);
+            this.tabCustomer.Size = new System.Drawing.Size(1110, 524);
             this.tabCustomer.TabIndex = 2;
             this.tabCustomer.Text = "Customer Management";
             this.tabCustomer.UseVisualStyleBackColor = true;
             // 
             // gbxAddNewCustomer
             // 
-            this.gbxAddNewCustomer.BackColor = System.Drawing.Color.LightGray;
+            this.gbxAddNewCustomer.BackColor = System.Drawing.Color.Linen;
             this.gbxAddNewCustomer.Controls.Add(this.btnEditCustomer);
             this.gbxAddNewCustomer.Controls.Add(this.tbxCustomerCity);
             this.gbxAddNewCustomer.Controls.Add(this.lblCityLabel);
@@ -914,9 +970,9 @@ namespace SU21_Final_Project
             this.gbxAddNewCustomer.Controls.Add(this.lblLastNameLabel);
             this.gbxAddNewCustomer.Controls.Add(this.lblFirstNameLabel);
             this.gbxAddNewCustomer.Enabled = false;
-            this.gbxAddNewCustomer.Location = new System.Drawing.Point(131, 347);
+            this.gbxAddNewCustomer.Location = new System.Drawing.Point(12, 334);
             this.gbxAddNewCustomer.Name = "gbxAddNewCustomer";
-            this.gbxAddNewCustomer.Size = new System.Drawing.Size(691, 168);
+            this.gbxAddNewCustomer.Size = new System.Drawing.Size(1092, 181);
             this.gbxAddNewCustomer.TabIndex = 18;
             this.gbxAddNewCustomer.TabStop = false;
             this.gbxAddNewCustomer.Text = "Add/Edit Customer ";
@@ -924,11 +980,16 @@ namespace SU21_Final_Project
             // btnEditCustomer
             // 
             this.btnEditCustomer.BackColor = System.Drawing.Color.Gray;
-            this.btnEditCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditCustomer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEditCustomer.BackgroundImage")));
+            this.btnEditCustomer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEditCustomer.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnEditCustomer.FlatAppearance.BorderSize = 3;
+            this.btnEditCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditCustomer.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnEditCustomer.Location = new System.Drawing.Point(575, 26);
+            this.btnEditCustomer.Location = new System.Drawing.Point(769, 10);
             this.btnEditCustomer.Name = "btnEditCustomer";
-            this.btnEditCustomer.Size = new System.Drawing.Size(116, 33);
+            this.btnEditCustomer.Size = new System.Drawing.Size(323, 81);
             this.btnEditCustomer.TabIndex = 17;
             this.btnEditCustomer.Text = "&Save Edit";
             this.btnEditCustomer.UseVisualStyleBackColor = false;
@@ -936,7 +997,7 @@ namespace SU21_Final_Project
             // 
             // tbxCustomerCity
             // 
-            this.tbxCustomerCity.Location = new System.Drawing.Point(358, 59);
+            this.tbxCustomerCity.Location = new System.Drawing.Point(489, 64);
             this.tbxCustomerCity.Name = "tbxCustomerCity";
             this.tbxCustomerCity.Size = new System.Drawing.Size(211, 22);
             this.tbxCustomerCity.TabIndex = 16;
@@ -944,7 +1005,7 @@ namespace SU21_Final_Project
             // lblCityLabel
             // 
             this.lblCityLabel.AutoSize = true;
-            this.lblCityLabel.Location = new System.Drawing.Point(312, 62);
+            this.lblCityLabel.Location = new System.Drawing.Point(420, 67);
             this.lblCityLabel.Name = "lblCityLabel";
             this.lblCityLabel.Size = new System.Drawing.Size(35, 17);
             this.lblCityLabel.TabIndex = 15;
@@ -1013,14 +1074,14 @@ namespace SU21_Final_Project
             "WV",
             "WI",
             "WY"});
-            this.cboStatesCustomer.Location = new System.Drawing.Point(358, 92);
+            this.cboStatesCustomer.Location = new System.Drawing.Point(489, 97);
             this.cboStatesCustomer.Name = "cboStatesCustomer";
             this.cboStatesCustomer.Size = new System.Drawing.Size(87, 24);
             this.cboStatesCustomer.TabIndex = 14;
             // 
             // tbxZipCustomer
             // 
-            this.tbxZipCustomer.Location = new System.Drawing.Point(357, 130);
+            this.tbxZipCustomer.Location = new System.Drawing.Point(488, 135);
             this.tbxZipCustomer.MaxLength = 5;
             this.tbxZipCustomer.Name = "tbxZipCustomer";
             this.tbxZipCustomer.Size = new System.Drawing.Size(72, 22);
@@ -1028,48 +1089,53 @@ namespace SU21_Final_Project
             // 
             // mskPhoneCustomer
             // 
-            this.mskPhoneCustomer.Location = new System.Drawing.Point(115, 140);
+            this.mskPhoneCustomer.Location = new System.Drawing.Point(141, 138);
             this.mskPhoneCustomer.Mask = "000-000-0000";
             this.mskPhoneCustomer.Name = "mskPhoneCustomer";
-            this.mskPhoneCustomer.Size = new System.Drawing.Size(100, 22);
+            this.mskPhoneCustomer.Size = new System.Drawing.Size(142, 22);
             this.mskPhoneCustomer.TabIndex = 12;
             // 
             // tbxAddressCustomer
             // 
-            this.tbxAddressCustomer.Location = new System.Drawing.Point(358, 29);
+            this.tbxAddressCustomer.Location = new System.Drawing.Point(489, 34);
             this.tbxAddressCustomer.Name = "tbxAddressCustomer";
             this.tbxAddressCustomer.Size = new System.Drawing.Size(211, 22);
             this.tbxAddressCustomer.TabIndex = 11;
             // 
             // tbxEmailCustomer
             // 
-            this.tbxEmailCustomer.Location = new System.Drawing.Point(115, 107);
+            this.tbxEmailCustomer.Location = new System.Drawing.Point(141, 105);
             this.tbxEmailCustomer.Name = "tbxEmailCustomer";
-            this.tbxEmailCustomer.Size = new System.Drawing.Size(139, 22);
+            this.tbxEmailCustomer.Size = new System.Drawing.Size(181, 22);
             this.tbxEmailCustomer.TabIndex = 10;
             // 
             // tbxLastNameCustomer
             // 
-            this.tbxLastNameCustomer.Location = new System.Drawing.Point(115, 69);
+            this.tbxLastNameCustomer.Location = new System.Drawing.Point(141, 67);
             this.tbxLastNameCustomer.Name = "tbxLastNameCustomer";
-            this.tbxLastNameCustomer.Size = new System.Drawing.Size(139, 22);
+            this.tbxLastNameCustomer.Size = new System.Drawing.Size(181, 22);
             this.tbxLastNameCustomer.TabIndex = 9;
             // 
             // tbxFirstNameCustomer
             // 
-            this.tbxFirstNameCustomer.Location = new System.Drawing.Point(115, 31);
+            this.tbxFirstNameCustomer.Location = new System.Drawing.Point(141, 29);
             this.tbxFirstNameCustomer.Name = "tbxFirstNameCustomer";
-            this.tbxFirstNameCustomer.Size = new System.Drawing.Size(139, 22);
+            this.tbxFirstNameCustomer.Size = new System.Drawing.Size(181, 22);
             this.tbxFirstNameCustomer.TabIndex = 8;
             // 
             // btnAddNewCustomer
             // 
             this.btnAddNewCustomer.BackColor = System.Drawing.Color.Gray;
-            this.btnAddNewCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddNewCustomer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAddNewCustomer.BackgroundImage")));
+            this.btnAddNewCustomer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAddNewCustomer.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAddNewCustomer.FlatAppearance.BorderSize = 3;
+            this.btnAddNewCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddNewCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddNewCustomer.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnAddNewCustomer.Location = new System.Drawing.Point(575, 124);
+            this.btnAddNewCustomer.Location = new System.Drawing.Point(771, 93);
             this.btnAddNewCustomer.Name = "btnAddNewCustomer";
-            this.btnAddNewCustomer.Size = new System.Drawing.Size(116, 33);
+            this.btnAddNewCustomer.Size = new System.Drawing.Size(317, 82);
             this.btnAddNewCustomer.TabIndex = 7;
             this.btnAddNewCustomer.Text = "&Add";
             this.btnAddNewCustomer.UseVisualStyleBackColor = false;
@@ -1087,7 +1153,7 @@ namespace SU21_Final_Project
             // lblZipLabel
             // 
             this.lblZipLabel.AutoSize = true;
-            this.lblZipLabel.Location = new System.Drawing.Point(315, 130);
+            this.lblZipLabel.Location = new System.Drawing.Point(423, 135);
             this.lblZipLabel.Name = "lblZipLabel";
             this.lblZipLabel.Size = new System.Drawing.Size(32, 17);
             this.lblZipLabel.TabIndex = 5;
@@ -1096,7 +1162,7 @@ namespace SU21_Final_Project
             // lblStateLabel
             // 
             this.lblStateLabel.AutoSize = true;
-            this.lblStateLabel.Location = new System.Drawing.Point(302, 96);
+            this.lblStateLabel.Location = new System.Drawing.Point(410, 101);
             this.lblStateLabel.Name = "lblStateLabel";
             this.lblStateLabel.Size = new System.Drawing.Size(45, 17);
             this.lblStateLabel.TabIndex = 4;
@@ -1105,7 +1171,7 @@ namespace SU21_Final_Project
             // lblAddressLabel
             // 
             this.lblAddressLabel.AutoSize = true;
-            this.lblAddressLabel.Location = new System.Drawing.Point(287, 32);
+            this.lblAddressLabel.Location = new System.Drawing.Point(395, 37);
             this.lblAddressLabel.Name = "lblAddressLabel";
             this.lblAddressLabel.Size = new System.Drawing.Size(60, 17);
             this.lblAddressLabel.TabIndex = 3;
@@ -1141,11 +1207,16 @@ namespace SU21_Final_Project
             // btnRemoveCustomer
             // 
             this.btnRemoveCustomer.BackColor = System.Drawing.Color.Gray;
-            this.btnRemoveCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveCustomer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRemoveCustomer.BackgroundImage")));
+            this.btnRemoveCustomer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRemoveCustomer.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnRemoveCustomer.FlatAppearance.BorderSize = 3;
+            this.btnRemoveCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveCustomer.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnRemoveCustomer.Location = new System.Drawing.Point(751, 287);
+            this.btnRemoveCustomer.Location = new System.Drawing.Point(761, 272);
             this.btnRemoveCustomer.Name = "btnRemoveCustomer";
-            this.btnRemoveCustomer.Size = new System.Drawing.Size(116, 47);
+            this.btnRemoveCustomer.Size = new System.Drawing.Size(343, 56);
             this.btnRemoveCustomer.TabIndex = 4;
             this.btnRemoveCustomer.Text = "Remove Customer";
             this.btnRemoveCustomer.UseVisualStyleBackColor = false;
@@ -1154,11 +1225,16 @@ namespace SU21_Final_Project
             // btnUpdateCustomer
             // 
             this.btnUpdateCustomer.BackColor = System.Drawing.Color.Gray;
-            this.btnUpdateCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateCustomer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnUpdateCustomer.BackgroundImage")));
+            this.btnUpdateCustomer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnUpdateCustomer.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnUpdateCustomer.FlatAppearance.BorderSize = 3;
+            this.btnUpdateCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdateCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateCustomer.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnUpdateCustomer.Location = new System.Drawing.Point(468, 287);
+            this.btnUpdateCustomer.Location = new System.Drawing.Point(362, 272);
             this.btnUpdateCustomer.Name = "btnUpdateCustomer";
-            this.btnUpdateCustomer.Size = new System.Drawing.Size(116, 47);
+            this.btnUpdateCustomer.Size = new System.Drawing.Size(400, 56);
             this.btnUpdateCustomer.TabIndex = 3;
             this.btnUpdateCustomer.Text = "Update Customer";
             this.btnUpdateCustomer.UseVisualStyleBackColor = false;
@@ -1167,11 +1243,16 @@ namespace SU21_Final_Project
             // btnAddCustomer
             // 
             this.btnAddCustomer.BackColor = System.Drawing.Color.Gray;
-            this.btnAddCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddCustomer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAddCustomer.BackgroundImage")));
+            this.btnAddCustomer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAddCustomer.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAddCustomer.FlatAppearance.BorderSize = 3;
+            this.btnAddCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddCustomer.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnAddCustomer.Location = new System.Drawing.Point(131, 287);
+            this.btnAddCustomer.Location = new System.Drawing.Point(12, 272);
             this.btnAddCustomer.Name = "btnAddCustomer";
-            this.btnAddCustomer.Size = new System.Drawing.Size(170, 47);
+            this.btnAddCustomer.Size = new System.Drawing.Size(400, 56);
             this.btnAddCustomer.TabIndex = 2;
             this.btnAddCustomer.Text = "Add New Customer";
             this.btnAddCustomer.UseVisualStyleBackColor = false;
@@ -1190,13 +1271,12 @@ namespace SU21_Final_Project
             this.dgvCustomer.RowHeadersWidth = 51;
             this.dgvCustomer.RowTemplate.Height = 24;
             this.dgvCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCustomer.Size = new System.Drawing.Size(1064, 263);
+            this.dgvCustomer.Size = new System.Drawing.Size(1092, 263);
             this.dgvCustomer.TabIndex = 1;
             // 
             // tabSalesReport
             // 
             this.tabSalesReport.BackColor = System.Drawing.Color.Transparent;
-            this.tabSalesReport.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabSalesReport.BackgroundImage")));
             this.tabSalesReport.Controls.Add(this.gbxReport);
             this.tabSalesReport.Controls.Add(this.gbxCreateCoupon);
             this.tabSalesReport.Controls.Add(this.lblSalesDetailLabel);
@@ -1205,13 +1285,13 @@ namespace SU21_Final_Project
             this.tabSalesReport.Controls.Add(this.dgvSalesReport);
             this.tabSalesReport.Location = new System.Drawing.Point(4, 25);
             this.tabSalesReport.Name = "tabSalesReport";
-            this.tabSalesReport.Size = new System.Drawing.Size(1097, 517);
+            this.tabSalesReport.Size = new System.Drawing.Size(1100, 524);
             this.tabSalesReport.TabIndex = 3;
             this.tabSalesReport.Text = "Sales Management";
             // 
             // gbxReport
             // 
-            this.gbxReport.BackColor = System.Drawing.Color.Silver;
+            this.gbxReport.BackColor = System.Drawing.Color.Linen;
             this.gbxReport.Controls.Add(this.btnPrintSelectedSalesReport);
             this.gbxReport.Controls.Add(this.radAllReport);
             this.gbxReport.Controls.Add(this.radMonthly);
@@ -1220,18 +1300,20 @@ namespace SU21_Final_Project
             this.gbxReport.Controls.Add(this.btnDisplayReport);
             this.gbxReport.Controls.Add(this.dtpReport);
             this.gbxReport.Controls.Add(this.label2);
-            this.gbxReport.Location = new System.Drawing.Point(29, 281);
+            this.gbxReport.Location = new System.Drawing.Point(28, 281);
             this.gbxReport.Name = "gbxReport";
-            this.gbxReport.Size = new System.Drawing.Size(459, 210);
+            this.gbxReport.Size = new System.Drawing.Size(411, 210);
             this.gbxReport.TabIndex = 7;
             this.gbxReport.TabStop = false;
             this.gbxReport.Text = "Report Option";
             // 
             // btnPrintSelectedSalesReport
             // 
-            this.btnPrintSelectedSalesReport.Location = new System.Drawing.Point(176, 161);
+            this.btnPrintSelectedSalesReport.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPrintSelectedSalesReport.BackgroundImage")));
+            this.btnPrintSelectedSalesReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPrintSelectedSalesReport.Location = new System.Drawing.Point(0, 151);
             this.btnPrintSelectedSalesReport.Name = "btnPrintSelectedSalesReport";
-            this.btnPrintSelectedSalesReport.Size = new System.Drawing.Size(113, 31);
+            this.btnPrintSelectedSalesReport.Size = new System.Drawing.Size(411, 53);
             this.btnPrintSelectedSalesReport.TabIndex = 11;
             this.btnPrintSelectedSalesReport.Text = "&Print Report";
             this.btnPrintSelectedSalesReport.UseVisualStyleBackColor = true;
@@ -1240,6 +1322,7 @@ namespace SU21_Final_Project
             // radAllReport
             // 
             this.radAllReport.AutoSize = true;
+            this.radAllReport.Checked = true;
             this.radAllReport.Location = new System.Drawing.Point(344, 30);
             this.radAllReport.Name = "radAllReport";
             this.radAllReport.Size = new System.Drawing.Size(44, 21);
@@ -1255,7 +1338,6 @@ namespace SU21_Final_Project
             this.radMonthly.Name = "radMonthly";
             this.radMonthly.Size = new System.Drawing.Size(78, 21);
             this.radMonthly.TabIndex = 9;
-            this.radMonthly.TabStop = true;
             this.radMonthly.Text = "Monthly";
             this.radMonthly.UseVisualStyleBackColor = true;
             // 
@@ -1266,7 +1348,6 @@ namespace SU21_Final_Project
             this.radWeekly.Name = "radWeekly";
             this.radWeekly.Size = new System.Drawing.Size(75, 21);
             this.radWeekly.TabIndex = 8;
-            this.radWeekly.TabStop = true;
             this.radWeekly.Text = "Weekly";
             this.radWeekly.UseVisualStyleBackColor = true;
             // 
@@ -1277,15 +1358,16 @@ namespace SU21_Final_Project
             this.radDaily.Name = "radDaily";
             this.radDaily.Size = new System.Drawing.Size(60, 21);
             this.radDaily.TabIndex = 7;
-            this.radDaily.TabStop = true;
             this.radDaily.Text = "Daily";
             this.radDaily.UseVisualStyleBackColor = true;
             // 
             // btnDisplayReport
             // 
-            this.btnDisplayReport.Location = new System.Drawing.Point(176, 111);
+            this.btnDisplayReport.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDisplayReport.BackgroundImage")));
+            this.btnDisplayReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDisplayReport.Location = new System.Drawing.Point(0, 109);
             this.btnDisplayReport.Name = "btnDisplayReport";
-            this.btnDisplayReport.Size = new System.Drawing.Size(113, 31);
+            this.btnDisplayReport.Size = new System.Drawing.Size(411, 44);
             this.btnDisplayReport.TabIndex = 6;
             this.btnDisplayReport.Text = "Display";
             this.btnDisplayReport.UseVisualStyleBackColor = true;
@@ -1311,7 +1393,7 @@ namespace SU21_Final_Project
             // 
             // gbxCreateCoupon
             // 
-            this.gbxCreateCoupon.BackColor = System.Drawing.Color.Silver;
+            this.gbxCreateCoupon.BackColor = System.Drawing.Color.Linen;
             this.gbxCreateCoupon.Controls.Add(this.btnCreateCoupon);
             this.gbxCreateCoupon.Controls.Add(this.dtpEndCoupon);
             this.gbxCreateCoupon.Controls.Add(this.lblEndCouponLabel);
@@ -1319,18 +1401,20 @@ namespace SU21_Final_Project
             this.gbxCreateCoupon.Controls.Add(this.lblStartDateLabel);
             this.gbxCreateCoupon.Controls.Add(this.cboCouponDescription);
             this.gbxCreateCoupon.Controls.Add(this.lblCouponLabel);
-            this.gbxCreateCoupon.Location = new System.Drawing.Point(609, 281);
+            this.gbxCreateCoupon.Location = new System.Drawing.Point(632, 275);
             this.gbxCreateCoupon.Name = "gbxCreateCoupon";
-            this.gbxCreateCoupon.Size = new System.Drawing.Size(459, 210);
+            this.gbxCreateCoupon.Size = new System.Drawing.Size(376, 210);
             this.gbxCreateCoupon.TabIndex = 4;
             this.gbxCreateCoupon.TabStop = false;
             this.gbxCreateCoupon.Text = "Create Coupon";
             // 
             // btnCreateCoupon
             // 
-            this.btnCreateCoupon.Location = new System.Drawing.Point(187, 161);
+            this.btnCreateCoupon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCreateCoupon.BackgroundImage")));
+            this.btnCreateCoupon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCreateCoupon.Location = new System.Drawing.Point(0, 151);
             this.btnCreateCoupon.Name = "btnCreateCoupon";
-            this.btnCreateCoupon.Size = new System.Drawing.Size(113, 31);
+            this.btnCreateCoupon.Size = new System.Drawing.Size(376, 59);
             this.btnCreateCoupon.TabIndex = 6;
             this.btnCreateCoupon.Text = "Create Coupon";
             this.btnCreateCoupon.UseVisualStyleBackColor = true;
@@ -1417,7 +1501,7 @@ namespace SU21_Final_Project
             this.dgvSalesDetails.AllowUserToAddRows = false;
             this.dgvSalesDetails.AllowUserToDeleteRows = false;
             this.dgvSalesDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSalesDetails.Location = new System.Drawing.Point(609, 43);
+            this.dgvSalesDetails.Location = new System.Drawing.Point(445, 43);
             this.dgvSalesDetails.MultiSelect = false;
             this.dgvSalesDetails.Name = "dgvSalesDetails";
             this.dgvSalesDetails.ReadOnly = true;
@@ -1425,7 +1509,7 @@ namespace SU21_Final_Project
             this.dgvSalesDetails.RowHeadersWidth = 51;
             this.dgvSalesDetails.RowTemplate.Height = 24;
             this.dgvSalesDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSalesDetails.Size = new System.Drawing.Size(459, 198);
+            this.dgvSalesDetails.Size = new System.Drawing.Size(659, 198);
             this.dgvSalesDetails.TabIndex = 1;
             // 
             // dgvSalesReport
@@ -1441,28 +1525,38 @@ namespace SU21_Final_Project
             this.dgvSalesReport.RowHeadersWidth = 51;
             this.dgvSalesReport.RowTemplate.Height = 24;
             this.dgvSalesReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSalesReport.Size = new System.Drawing.Size(561, 198);
+            this.dgvSalesReport.Size = new System.Drawing.Size(426, 198);
             this.dgvSalesReport.TabIndex = 0;
             this.dgvSalesReport.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSalesReport_CellClick);
             // 
             // tabSupplier
             // 
-            this.tabSupplier.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabSupplier.BackgroundImage")));
+            this.tabSupplier.Controls.Add(this.button1);
+            this.tabSupplier.Controls.Add(this.button2);
+            this.tabSupplier.Controls.Add(this.radioButton1);
+            this.tabSupplier.Controls.Add(this.radioButton2);
+            this.tabSupplier.Controls.Add(this.radioButton3);
+            this.tabSupplier.Controls.Add(this.radioButton4);
+            this.tabSupplier.Controls.Add(this.dateTimePicker1);
+            this.tabSupplier.Controls.Add(this.label1);
+            this.tabSupplier.Controls.Add(this.dgvPurchaseRecord);
+            this.tabSupplier.Controls.Add(this.btnSaveEditSupplier);
             this.tabSupplier.Controls.Add(this.gbxAddEditSupplier);
             this.tabSupplier.Controls.Add(this.btnRemoveSupplier);
             this.tabSupplier.Controls.Add(this.btnEditSupplier);
             this.tabSupplier.Controls.Add(this.btnAddSupplier);
             this.tabSupplier.Controls.Add(this.dgvSupplierView);
+            this.tabSupplier.Controls.Add(this.btnSaveAddSupplier);
             this.tabSupplier.Location = new System.Drawing.Point(4, 25);
             this.tabSupplier.Name = "tabSupplier";
-            this.tabSupplier.Size = new System.Drawing.Size(1097, 538);
+            this.tabSupplier.Size = new System.Drawing.Size(1100, 524);
             this.tabSupplier.TabIndex = 4;
-            this.tabSupplier.Text = "Supplier";
+            this.tabSupplier.Text = "Supplier Management";
             this.tabSupplier.UseVisualStyleBackColor = true;
             // 
             // gbxAddEditSupplier
             // 
-            this.gbxAddEditSupplier.Controls.Add(this.btnSaveEditSupplier);
+            this.gbxAddEditSupplier.BackColor = System.Drawing.Color.Linen;
             this.gbxAddEditSupplier.Controls.Add(this.tbxSupplierCity);
             this.gbxAddEditSupplier.Controls.Add(this.lblSupplierCity);
             this.gbxAddEditSupplier.Controls.Add(this.cboSupplierState);
@@ -1472,7 +1566,6 @@ namespace SU21_Final_Project
             this.gbxAddEditSupplier.Controls.Add(this.tbxEmailSupplier);
             this.gbxAddEditSupplier.Controls.Add(this.tbxSupplierContactName);
             this.gbxAddEditSupplier.Controls.Add(this.tbxSupplierName);
-            this.gbxAddEditSupplier.Controls.Add(this.btnSaveAddSupplier);
             this.gbxAddEditSupplier.Controls.Add(this.lblsupplierPhone);
             this.gbxAddEditSupplier.Controls.Add(this.lblSupplierZip);
             this.gbxAddEditSupplier.Controls.Add(this.lblSuppplierState);
@@ -1482,18 +1575,22 @@ namespace SU21_Final_Project
             this.gbxAddEditSupplier.Controls.Add(this.lblSupplierName);
             this.gbxAddEditSupplier.Enabled = false;
             this.gbxAddEditSupplier.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.gbxAddEditSupplier.Location = new System.Drawing.Point(211, 286);
+            this.gbxAddEditSupplier.Location = new System.Drawing.Point(14, 288);
             this.gbxAddEditSupplier.Name = "gbxAddEditSupplier";
-            this.gbxAddEditSupplier.Size = new System.Drawing.Size(691, 187);
+            this.gbxAddEditSupplier.Size = new System.Drawing.Size(589, 187);
             this.gbxAddEditSupplier.TabIndex = 19;
             this.gbxAddEditSupplier.TabStop = false;
             this.gbxAddEditSupplier.Text = "Add/Edit Supplier";
             // 
             // btnSaveEditSupplier
             // 
-            this.btnSaveEditSupplier.Location = new System.Drawing.Point(582, 25);
+            this.btnSaveEditSupplier.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSaveEditSupplier.BackgroundImage")));
+            this.btnSaveEditSupplier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSaveEditSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveEditSupplier.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnSaveEditSupplier.Location = new System.Drawing.Point(14, 473);
             this.btnSaveEditSupplier.Name = "btnSaveEditSupplier";
-            this.btnSaveEditSupplier.Size = new System.Drawing.Size(103, 34);
+            this.btnSaveEditSupplier.Size = new System.Drawing.Size(296, 49);
             this.btnSaveEditSupplier.TabIndex = 17;
             this.btnSaveEditSupplier.Text = "&Save Edit";
             this.btnSaveEditSupplier.UseVisualStyleBackColor = true;
@@ -1629,9 +1726,13 @@ namespace SU21_Final_Project
             // 
             // btnSaveAddSupplier
             // 
-            this.btnSaveAddSupplier.Location = new System.Drawing.Point(594, 123);
+            this.btnSaveAddSupplier.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSaveAddSupplier.BackgroundImage")));
+            this.btnSaveAddSupplier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSaveAddSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveAddSupplier.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnSaveAddSupplier.Location = new System.Drawing.Point(304, 472);
             this.btnSaveAddSupplier.Name = "btnSaveAddSupplier";
-            this.btnSaveAddSupplier.Size = new System.Drawing.Size(80, 30);
+            this.btnSaveAddSupplier.Size = new System.Drawing.Size(299, 52);
             this.btnSaveAddSupplier.TabIndex = 7;
             this.btnSaveAddSupplier.Text = "&Save New";
             this.btnSaveAddSupplier.UseVisualStyleBackColor = true;
@@ -1702,9 +1803,13 @@ namespace SU21_Final_Project
             // 
             // btnRemoveSupplier
             // 
-            this.btnRemoveSupplier.Location = new System.Drawing.Point(809, 233);
+            this.btnRemoveSupplier.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRemoveSupplier.BackgroundImage")));
+            this.btnRemoveSupplier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRemoveSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveSupplier.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnRemoveSupplier.Location = new System.Drawing.Point(758, 228);
             this.btnRemoveSupplier.Name = "btnRemoveSupplier";
-            this.btnRemoveSupplier.Size = new System.Drawing.Size(114, 29);
+            this.btnRemoveSupplier.Size = new System.Drawing.Size(346, 56);
             this.btnRemoveSupplier.TabIndex = 7;
             this.btnRemoveSupplier.Text = "Remove Supplier";
             this.btnRemoveSupplier.UseVisualStyleBackColor = true;
@@ -1712,19 +1817,27 @@ namespace SU21_Final_Project
             // 
             // btnEditSupplier
             // 
-            this.btnEditSupplier.Location = new System.Drawing.Point(526, 233);
+            this.btnEditSupplier.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEditSupplier.BackgroundImage")));
+            this.btnEditSupplier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEditSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditSupplier.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnEditSupplier.Location = new System.Drawing.Point(371, 228);
             this.btnEditSupplier.Name = "btnEditSupplier";
-            this.btnEditSupplier.Size = new System.Drawing.Size(128, 29);
+            this.btnEditSupplier.Size = new System.Drawing.Size(387, 56);
             this.btnEditSupplier.TabIndex = 6;
-            this.btnEditSupplier.Text = "Edit Supplier Infos";
+            this.btnEditSupplier.Text = "Edit Supplier Information";
             this.btnEditSupplier.UseVisualStyleBackColor = true;
             this.btnEditSupplier.Click += new System.EventHandler(this.btnEditSupplier_Click);
             // 
             // btnAddSupplier
             // 
-            this.btnAddSupplier.Location = new System.Drawing.Point(189, 233);
+            this.btnAddSupplier.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAddSupplier.BackgroundImage")));
+            this.btnAddSupplier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAddSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddSupplier.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnAddSupplier.Location = new System.Drawing.Point(14, 228);
             this.btnAddSupplier.Name = "btnAddSupplier";
-            this.btnAddSupplier.Size = new System.Drawing.Size(113, 29);
+            this.btnAddSupplier.Size = new System.Drawing.Size(355, 56);
             this.btnAddSupplier.TabIndex = 5;
             this.btnAddSupplier.Text = "Add New Supplier";
             this.btnAddSupplier.UseVisualStyleBackColor = true;
@@ -1735,7 +1848,7 @@ namespace SU21_Final_Project
             this.dgvSupplierView.AllowUserToAddRows = false;
             this.dgvSupplierView.AllowUserToDeleteRows = false;
             this.dgvSupplierView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSupplierView.Location = new System.Drawing.Point(14, 28);
+            this.dgvSupplierView.Location = new System.Drawing.Point(14, 4);
             this.dgvSupplierView.MultiSelect = false;
             this.dgvSupplierView.Name = "dgvSupplierView";
             this.dgvSupplierView.ReadOnly = true;
@@ -1743,22 +1856,31 @@ namespace SU21_Final_Project
             this.dgvSupplierView.RowHeadersWidth = 51;
             this.dgvSupplierView.RowTemplate.Height = 24;
             this.dgvSupplierView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSupplierView.Size = new System.Drawing.Size(1064, 199);
+            this.dgvSupplierView.Size = new System.Drawing.Size(1090, 223);
             this.dgvSupplierView.TabIndex = 2;
             // 
             // lblDate
             // 
             this.lblDate.AutoSize = true;
+            this.lblDate.BackColor = System.Drawing.Color.Transparent;
+            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblDate.Location = new System.Drawing.Point(350, 9);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(0, 17);
+            this.lblDate.Size = new System.Drawing.Size(0, 18);
             this.lblDate.TabIndex = 14;
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(971, 12);
+            this.btnLogout.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLogout.BackgroundImage")));
+            this.btnLogout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLogout.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnLogout.FlatAppearance.BorderSize = 3;
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.ForeColor = System.Drawing.Color.SeaShell;
+            this.btnLogout.Location = new System.Drawing.Point(855, 0);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(113, 34);
+            this.btnLogout.Size = new System.Drawing.Size(147, 75);
             this.btnLogout.TabIndex = 15;
             this.btnLogout.Text = "Log out";
             this.btnLogout.UseVisualStyleBackColor = true;
@@ -1766,13 +1888,132 @@ namespace SU21_Final_Project
             // 
             // btnAccessPOS
             // 
-            this.btnAccessPOS.Location = new System.Drawing.Point(795, 12);
+            this.btnAccessPOS.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAccessPOS.BackgroundImage")));
+            this.btnAccessPOS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAccessPOS.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAccessPOS.FlatAppearance.BorderSize = 3;
+            this.btnAccessPOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccessPOS.ForeColor = System.Drawing.Color.SeaShell;
+            this.btnAccessPOS.Location = new System.Drawing.Point(706, 0);
             this.btnAccessPOS.Name = "btnAccessPOS";
-            this.btnAccessPOS.Size = new System.Drawing.Size(117, 34);
+            this.btnAccessPOS.Size = new System.Drawing.Size(149, 75);
             this.btnAccessPOS.TabIndex = 19;
             this.btnAccessPOS.Text = "Point Of Sale";
             this.btnAccessPOS.UseVisualStyleBackColor = true;
             this.btnAccessPOS.Click += new System.EventHandler(this.btnAccessPOS_Click);
+            // 
+            // btnHelp
+            // 
+            this.btnHelp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHelp.BackgroundImage")));
+            this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnHelp.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnHelp.FlatAppearance.BorderSize = 3;
+            this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelp.ForeColor = System.Drawing.Color.SeaShell;
+            this.btnHelp.Location = new System.Drawing.Point(1000, -1);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(130, 75);
+            this.btnHelp.TabIndex = 20;
+            this.btnHelp.Text = "Help?";
+            this.btnHelp.UseVisualStyleBackColor = true;
+            // 
+            // dgvPurchaseRecord
+            // 
+            this.dgvPurchaseRecord.AllowUserToAddRows = false;
+            this.dgvPurchaseRecord.AllowUserToDeleteRows = false;
+            this.dgvPurchaseRecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPurchaseRecord.Location = new System.Drawing.Point(609, 290);
+            this.dgvPurchaseRecord.MultiSelect = false;
+            this.dgvPurchaseRecord.Name = "dgvPurchaseRecord";
+            this.dgvPurchaseRecord.ReadOnly = true;
+            this.dgvPurchaseRecord.RowHeadersVisible = false;
+            this.dgvPurchaseRecord.RowHeadersWidth = 51;
+            this.dgvPurchaseRecord.RowTemplate.Height = 24;
+            this.dgvPurchaseRecord.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPurchaseRecord.Size = new System.Drawing.Size(342, 169);
+            this.dgvPurchaseRecord.TabIndex = 20;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(901, 462);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(44, 21);
+            this.radioButton1.TabIndex = 26;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "All";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(794, 463);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(78, 21);
+            this.radioButton2.TabIndex = 25;
+            this.radioButton2.Text = "Monthly";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(699, 463);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(75, 21);
+            this.radioButton3.TabIndex = 24;
+            this.radioButton3.Text = "Weekly";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(620, 463);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(60, 21);
+            this.radioButton4.TabIndex = 23;
+            this.radioButton4.Text = "Daily";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(729, 494);
+            this.dateTimePicker1.MinDate = new System.DateTime(2021, 4, 21, 0, 0, 0, 0);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(167, 22);
+            this.dateTimePicker1.TabIndex = 22;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(659, 499);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 17);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Begin on";
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Location = new System.Drawing.Point(949, 380);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(148, 80);
+            this.button1.TabIndex = 28;
+            this.button1.Text = "&Print Report";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Location = new System.Drawing.Point(949, 288);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(148, 84);
+            this.button2.TabIndex = 27;
+            this.button2.Text = "Purchase History";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // frmAdmin
             // 
@@ -1780,6 +2021,7 @@ namespace SU21_Final_Project
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1132, 610);
+            this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnAccessPOS);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.lblDate);
@@ -1819,9 +2061,11 @@ namespace SU21_Final_Project
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesDetails)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesReport)).EndInit();
             this.tabSupplier.ResumeLayout(false);
+            this.tabSupplier.PerformLayout();
             this.gbxAddEditSupplier.ResumeLayout(false);
             this.gbxAddEditSupplier.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPurchaseRecord)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1957,5 +2201,15 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnEditSupplier;
         private System.Windows.Forms.Button btnAddSupplier;
         private System.Windows.Forms.DataGridView dgvSupplierView;
+        private System.Windows.Forms.Button btnHelp;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dgvPurchaseRecord;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

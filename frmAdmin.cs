@@ -29,6 +29,11 @@ namespace SU21_Final_Project
         string strPersonIdCustomerView;
         string strInvoiceReport;
         string strSupplierId;
+
+        string strPurchaseID;
+        string strPurchaseInvoice;
+        string strPurchaseInvoiceFile;
+        int intPurchaseID;
         private void frmAdmin_Load(object sender, EventArgs e)
         {
              
@@ -430,6 +435,32 @@ namespace SU21_Final_Project
 
                             MessageBox.Show("The selected item has been updated successfully?", "Message", MessageBoxButtons.OK);
 
+
+                            //Store in Purchase table
+                            SqlCommand commandPurchaseReport = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Purchase(SupplierID,PurchaseDate, ItemName) VALUES (@SupplierID,@PurchaseDate,@ItemName)", Connection);
+                            commandPurchaseReport.Parameters.AddWithValue("@SupplierID", intSupplierID.ToString());
+                            commandPurchaseReport.Parameters.AddWithValue("@PurchaseDate", lblDate.Text);
+                            commandPurchaseReport.Parameters.AddWithValue("@ItemName", strName);
+
+                            commandPurchaseReport.ExecuteNonQuery();
+
+                            //Get the last PurchaseID using Max to use as Purchase Invoice number
+                            string strQueryPurchaseID = "SELECT MAX(PurchaseId) from RandrezaVoharisoaM21Su2332.Purchase";
+                            SqlCommand commandPurchaseID = new SqlCommand(strQueryPurchaseID, Connection);
+
+                            //gets Sale Id from insert sale report in the table sales report
+                            SqlDataReader srPurchaseID = commandPurchaseID.ExecuteReader();
+                            srPurchaseID.Read();
+                            intPurchaseID = srPurchaseID.GetInt32(0);
+
+                            strPurchaseInvoice = intPurchaseID.ToString() + ".html";
+                            strPurchaseInvoiceFile = intPurchaseID.ToString();
+                            srPurchaseID.Close();
+
+
+
+
+
                             DisplayAllItems();
                             ResetUpdateFields();
                             DisplayLowQuantityItems();
@@ -498,8 +529,7 @@ namespace SU21_Final_Project
             html.AppendLine($"<h1>{" Purchase Detail"}</h1>");
 
             html.Append($"<h5>{"Date: "}{lblDate.Text}</h5>");
-            //html.Append($"<h5>{"Customer Name: "}{lblNameOfUser.Text}</h5>");
-            //html.Append($"<h5>{"Sale ID: "}{intSaleId.ToString()}</h5>");
+            html.Append($"<h5>{"Purchase Invoice: "}{strPurchaseInvoiceFile}</h5>");
 
             html.AppendLine("<table>");
             html.AppendLine("<tr><td>Name</td><td>Quantity</td><td>Cost</td><td>TotalCost</td>");
@@ -533,8 +563,8 @@ namespace SU21_Final_Project
        
         private void PrintInvoice(StringBuilder html)
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string filepath = path + "\\PurchaseItemInvoice.html";
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string filepath = path + "\\" + strPurchaseInvoice + " ";
             try
             {
                 // A "using" statement will automatically close a file after opening it.               
@@ -550,9 +580,7 @@ namespace SU21_Final_Project
                     "Error with System Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            //unique filename  use for a date and time with part of a name
-            DateTime today = DateTime.Now;
-            using (StreamWriter swPurchase = new StreamWriter($"{today.ToString("yyyy-MM-dd-HHmmss")} - PurchaseItemInvoice.html"))
+            using (StreamWriter swPurchase = new StreamWriter($"{strPurchaseInvoice}"))
             {
                 swPurchase.WriteLine(html);
             }

@@ -677,7 +677,7 @@ namespace SU21_Final_Project
                         Connection.Open();
                         //Store Sales Report
 
-                       ;
+                       
 
 
                         SqlCommand commandSalesReport = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesReport(UserID,CreationDate, TotalSale) " +
@@ -901,11 +901,7 @@ namespace SU21_Final_Project
             }
         }
 
-        //Close Application
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-           
-        }
+   
         
 
         //Reset Selection
