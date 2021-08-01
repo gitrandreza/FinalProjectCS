@@ -34,6 +34,7 @@ namespace SU21_Final_Project
         string strPurchaseInvoice;
         string strPurchaseInvoiceFile;
         int intPurchaseID;
+        string strPurchaseNumber;
         private void frmAdmin_Load(object sender, EventArgs e)
         {
              
@@ -431,7 +432,7 @@ namespace SU21_Final_Project
                             SqlParameter sqlpmSupplier = updateCommande.Parameters.AddWithValue("@SupplierID", intSupplierID);
                             updateCommande.ExecuteNonQuery();
                             btnSaveUpdate.Enabled = true;
-                            Connection.Close();
+                           
 
                             MessageBox.Show("The selected item has been updated successfully?", "Message", MessageBoxButtons.OK);
 
@@ -457,13 +458,14 @@ namespace SU21_Final_Project
                             strPurchaseInvoiceFile = intPurchaseID.ToString();
                             srPurchaseID.Close();
 
-
+                           
 
 
 
                             DisplayAllItems();
                             ResetUpdateFields();
                             DisplayLowQuantityItems();
+                            Connection.Close();
                         }
 
                         else
@@ -490,11 +492,11 @@ namespace SU21_Final_Project
 
                 if (blnInvoice == true)
                 {
-                    if (MessageBox.Show("Do you want Invoice?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
+                   
                         PrintInvoice(GenerateInvoice(strName, intAddQuantity, dblCost));
+                    MessageBox.Show("Your purchase has been saved, Invoice ID is " + strPurchaseInvoiceFile + " ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    }
+
                 }
             }
             catch (Exception ex)
@@ -1825,8 +1827,7 @@ namespace SU21_Final_Project
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                 Connection.Open();
-                if (radDaily.Checked == true)
-                {
+              
                     string strQuery = "SELECT *from RandrezaVoharisoaM21Su2332.SalesReport  where CreationDate = '" + strChooseDateReportDaily + "'";
                     dataAdapter = new SqlDataAdapter(strQuery, Connection);
                     dataTable = new DataTable();
@@ -1835,7 +1836,7 @@ namespace SU21_Final_Project
 
                     Connection.Close();
 
-                }
+                
 
             }
             catch (Exception ex)
@@ -1854,8 +1855,7 @@ namespace SU21_Final_Project
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                 Connection.Open();
-                if (radDaily.Checked == true)
-                {
+               
                     string strQuery = "SELECT *from RandrezaVoharisoaM21Su2332.SalesReport  where CreationDate between '" + strChooseDateReportWeekly + "' And DATEADD(DAY, 7, '" + strChooseDateReportWeekly + "')";
                     dataAdapter = new SqlDataAdapter(strQuery, Connection);
                     dataTable = new DataTable();
@@ -1864,7 +1864,7 @@ namespace SU21_Final_Project
 
                     Connection.Close();
 
-                }
+                
 
             }
             catch (Exception ex)
@@ -1883,8 +1883,7 @@ namespace SU21_Final_Project
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                 Connection.Open();
-                if (radDaily.Checked == true)
-                {
+              
                     string strQuery = "SELECT *from RandrezaVoharisoaM21Su2332.SalesReport  where CreationDate between '" + strChooseDateReportMonthly + "' And DATEADD(DAY, 31, '" + strChooseDateReportMonthly + "')";
                     dataAdapter = new SqlDataAdapter(strQuery, Connection);
                     dataTable = new DataTable();
@@ -1893,7 +1892,7 @@ namespace SU21_Final_Project
 
                     Connection.Close();
 
-                }
+                
 
             }
             catch (Exception ex)
@@ -1918,7 +1917,7 @@ namespace SU21_Final_Project
                     else
                     {
                         string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                        string xslLocation = Path.Combine(executableLocation, strInvoiceReport);
+                        string xslLocation = Path.Combine(executableLocation, strInvoiceReport + ".html");
                         System.Diagnostics.Process.Start(xslLocation);
                     }
                 }
@@ -2249,6 +2248,168 @@ namespace SU21_Final_Project
             }
 
         }
+
+        public void DisplayAllPurchaseHistory()
+        {
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                dataAdapter = new SqlDataAdapter("SELECT * FROM RandrezaVoharisoaM21Su2332.Purchase;", Connection);
+                dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                dgvPurchaseRecord.DataSource = dataTable;
+
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void DisplayPurchaseWeekly()
+        {
+            string strChooseDateReportWeekly = dtpPurchaseDate.Text;
+            try
+            {
+
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+               
+                    string strQuery = "SELECT *from RandrezaVoharisoaM21Su2332.Purchase  where PurchaseDate between '" + strChooseDateReportWeekly + "' And DATEADD(DAY, 7, '" + strChooseDateReportWeekly + "')";
+                    dataAdapter = new SqlDataAdapter(strQuery, Connection);
+                    dataTable = new DataTable();
+                    dataAdapter.Fill(dataTable);
+                    dgvPurchaseRecord.DataSource = dataTable;
+
+                    Connection.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void DisplayPurchaseDaily()
+        {
+            string strChooseDateReportWeekly = dtpPurchaseDate.Text;
+            try
+            {
+
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                
+                    string strQuery = "SELECT *from RandrezaVoharisoaM21Su2332.Purchase  where PurchaseDate = '" + strChooseDateReportWeekly + "'";
+                    dataAdapter = new SqlDataAdapter(strQuery, Connection);
+                    dataTable = new DataTable();
+                    dataAdapter.Fill(dataTable);
+                    dgvPurchaseRecord.DataSource = dataTable;
+
+                    Connection.Close();
+
+                
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void DisplayPurchaseMonthly()
+        {
+            string strChooseDateReportMonthly = dtpPurchaseDate.Text;
+            try
+            {
+
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+             
+                    string strQuery = "SELECT *from RandrezaVoharisoaM21Su2332.Purchase  where PurchaseDate between '" + strChooseDateReportMonthly + "' And DATEADD(DAY, 31, '" + strChooseDateReportMonthly + "')";
+                    dataAdapter = new SqlDataAdapter(strQuery, Connection);
+                    dataTable = new DataTable();
+                    dataAdapter.Fill(dataTable);
+                    dgvPurchaseRecord.DataSource = dataTable;
+
+                    Connection.Close();
+
+                
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnDisplayPurchase_Click(object sender, EventArgs e)
+        {
+            if(radPurchaseAll.Checked==true)
+            {
+                DisplayAllPurchaseHistory();
+            }
+            else if (radPurchaseDaily.Checked == true)
+            {
+                DisplayPurchaseDaily();
+            }
+            else if (radPurchaseWeekly.Checked == true)
+            {
+                DisplayPurchaseWeekly();
+            }
+            else if (radPurchaseMonthly.Checked == true)
+            {
+                DisplayPurchaseMonthly();
+            }
+        }
+        private void dgvPurchaseRecord_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.RowIndex >= 0)
+            {
+                //instantiate object from Items class and assign value from cell
+                DataGridViewRow row = this.dgvPurchaseRecord.Rows[e.RowIndex];
+                strPurchaseNumber = row.Cells["PurchaseID"].Value.ToString();
+
+            }
+        }
+        private void btnPrintPurchaseReport_Click(object sender, EventArgs e)
+        {
+            if (dgvPurchaseRecord.SelectedRows.Count > 0)
+            {
+
+                try
+                {
+                 
+                        string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                        string xslLocation = Path.Combine(executableLocation, strPurchaseNumber + ".html");
+                        System.Diagnostics.Process.Start(xslLocation);
+                    
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Cannot find Report associate with this.",
+                        "Error with System Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Please select report",
+                   "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+      
     }
 
 }

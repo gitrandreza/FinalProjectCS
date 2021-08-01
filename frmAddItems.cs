@@ -173,13 +173,10 @@ namespace SU21_Final_Project
                                     strPurchaseInvoiceFile = intPurchaseID.ToString();
                                     srPurchaseID.Close();
 
+                                  
 
-                                    if (MessageBox.Show("Do you want Invoice?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                                    {
-                                        PrintInvoice(GenerateInvoice(strItemName, intQuantityPurchased, dblItemCost));
-
-                                    }
-
+                                    PrintInvoice(GenerateInvoice(strItemName, intQuantityPurchased, dblItemCost));
+                                    MessageBox.Show("Your purchase has been saved, Invoice ID is "+ strPurchaseInvoiceFile +" ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
                                     Connection.Close();

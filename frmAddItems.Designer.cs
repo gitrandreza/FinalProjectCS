@@ -31,6 +31,11 @@ namespace SU21_Final_Project
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddItems));
             this.gbxItemInformation = new System.Windows.Forms.GroupBox();
+            this.btnSaveItems = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.tbxFileName = new System.Windows.Forms.TextBox();
+            this.lblImageSource = new System.Windows.Forms.Label();
+            this.pbxDisplayItemImage = new System.Windows.Forms.PictureBox();
             this.btnLoad = new System.Windows.Forms.Button();
             this.cboSupplier = new System.Windows.Forms.ComboBox();
             this.cboCategory = new System.Windows.Forms.ComboBox();
@@ -46,11 +51,7 @@ namespace SU21_Final_Project
             this.tbxRetailPrice = new System.Windows.Forms.TextBox();
             this.lblTagRetailPrice = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.btnSaveItems = new System.Windows.Forms.Button();
-            this.btnBack = new System.Windows.Forms.Button();
-            this.pbxDisplayItemImage = new System.Windows.Forms.PictureBox();
-            this.lblImageSource = new System.Windows.Forms.Label();
-            this.tbxFileName = new System.Windows.Forms.TextBox();
+            this.btnHelpAddItem = new System.Windows.Forms.Button();
             this.gbxItemInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxDisplayItemImage)).BeginInit();
             this.SuspendLayout();
@@ -81,12 +82,72 @@ namespace SU21_Final_Project
             this.gbxItemInformation.Controls.Add(this.label8);
             this.gbxItemInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxItemInformation.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.gbxItemInformation.Location = new System.Drawing.Point(5, 65);
+            this.gbxItemInformation.Location = new System.Drawing.Point(3, 62);
             this.gbxItemInformation.Name = "gbxItemInformation";
-            this.gbxItemInformation.Size = new System.Drawing.Size(824, 417);
+            this.gbxItemInformation.Size = new System.Drawing.Size(824, 423);
             this.gbxItemInformation.TabIndex = 45;
             this.gbxItemInformation.TabStop = false;
-            this.gbxItemInformation.Text = "Item Information";
+            this.gbxItemInformation.Text = "Add New Item";
+            // 
+            // btnSaveItems
+            // 
+            this.btnSaveItems.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnSaveItems.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSaveItems.BackgroundImage")));
+            this.btnSaveItems.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSaveItems.Enabled = false;
+            this.btnSaveItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveItems.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSaveItems.Location = new System.Drawing.Point(400, 359);
+            this.btnSaveItems.Name = "btnSaveItems";
+            this.btnSaveItems.Size = new System.Drawing.Size(424, 53);
+            this.btnSaveItems.TabIndex = 43;
+            this.btnSaveItems.Text = "Save Item";
+            this.btnSaveItems.UseVisualStyleBackColor = false;
+            this.btnSaveItems.Click += new System.EventHandler(this.btnSaveItems_Click);
+            this.btnSaveItems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnSaveItems_KeyDown);
+            // 
+            // btnBack
+            // 
+            this.btnBack.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnBack.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBack.BackgroundImage")));
+            this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnBack.Location = new System.Drawing.Point(0, 359);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(403, 53);
+            this.btnBack.TabIndex = 47;
+            this.btnBack.Text = "&Close";
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // tbxFileName
+            // 
+            this.tbxFileName.Location = new System.Drawing.Point(579, 311);
+            this.tbxFileName.Name = "tbxFileName";
+            this.tbxFileName.ReadOnly = true;
+            this.tbxFileName.Size = new System.Drawing.Size(206, 22);
+            this.tbxFileName.TabIndex = 50;
+            // 
+            // lblImageSource
+            // 
+            this.lblImageSource.AutoSize = true;
+            this.lblImageSource.Location = new System.Drawing.Point(466, 314);
+            this.lblImageSource.Name = "lblImageSource";
+            this.lblImageSource.Size = new System.Drawing.Size(107, 17);
+            this.lblImageSource.TabIndex = 49;
+            this.lblImageSource.Text = "Image Source";
+            // 
+            // pbxDisplayItemImage
+            // 
+            this.pbxDisplayItemImage.BackColor = System.Drawing.Color.White;
+            this.pbxDisplayItemImage.Location = new System.Drawing.Point(550, 88);
+            this.pbxDisplayItemImage.Name = "pbxDisplayItemImage";
+            this.pbxDisplayItemImage.Size = new System.Drawing.Size(250, 192);
+            this.pbxDisplayItemImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxDisplayItemImage.TabIndex = 48;
+            this.pbxDisplayItemImage.TabStop = false;
             // 
             // btnLoad
             // 
@@ -232,71 +293,28 @@ namespace SU21_Final_Project
             this.label8.TabIndex = 15;
             this.label8.Text = "Supplier";
             // 
-            // btnSaveItems
+            // btnHelpAddItem
             // 
-            this.btnSaveItems.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnSaveItems.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSaveItems.BackgroundImage")));
-            this.btnSaveItems.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSaveItems.Enabled = false;
-            this.btnSaveItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveItems.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSaveItems.Location = new System.Drawing.Point(400, 359);
-            this.btnSaveItems.Name = "btnSaveItems";
-            this.btnSaveItems.Size = new System.Drawing.Size(424, 53);
-            this.btnSaveItems.TabIndex = 43;
-            this.btnSaveItems.Text = "Save Item";
-            this.btnSaveItems.UseVisualStyleBackColor = false;
-            this.btnSaveItems.Click += new System.EventHandler(this.btnSaveItems_Click);
-            this.btnSaveItems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnSaveItems_KeyDown);
-            // 
-            // btnBack
-            // 
-            this.btnBack.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnBack.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBack.BackgroundImage")));
-            this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnBack.Location = new System.Drawing.Point(0, 359);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(4);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(403, 53);
-            this.btnBack.TabIndex = 47;
-            this.btnBack.Text = "&Close";
-            this.btnBack.UseVisualStyleBackColor = false;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
-            // pbxDisplayItemImage
-            // 
-            this.pbxDisplayItemImage.BackColor = System.Drawing.Color.White;
-            this.pbxDisplayItemImage.Location = new System.Drawing.Point(550, 88);
-            this.pbxDisplayItemImage.Name = "pbxDisplayItemImage";
-            this.pbxDisplayItemImage.Size = new System.Drawing.Size(250, 192);
-            this.pbxDisplayItemImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxDisplayItemImage.TabIndex = 48;
-            this.pbxDisplayItemImage.TabStop = false;
-            // 
-            // lblImageSource
-            // 
-            this.lblImageSource.AutoSize = true;
-            this.lblImageSource.Location = new System.Drawing.Point(466, 314);
-            this.lblImageSource.Name = "lblImageSource";
-            this.lblImageSource.Size = new System.Drawing.Size(107, 17);
-            this.lblImageSource.TabIndex = 49;
-            this.lblImageSource.Text = "Image Source";
-            // 
-            // tbxFileName
-            // 
-            this.tbxFileName.Location = new System.Drawing.Point(579, 311);
-            this.tbxFileName.Name = "tbxFileName";
-            this.tbxFileName.ReadOnly = true;
-            this.tbxFileName.Size = new System.Drawing.Size(206, 22);
-            this.tbxFileName.TabIndex = 50;
+            this.btnHelpAddItem.BackColor = System.Drawing.Color.Transparent;
+            this.btnHelpAddItem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHelpAddItem.BackgroundImage")));
+            this.btnHelpAddItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnHelpAddItem.FlatAppearance.BorderSize = 3;
+            this.btnHelpAddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHelpAddItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnHelpAddItem.Location = new System.Drawing.Point(711, 12);
+            this.btnHelpAddItem.Name = "btnHelpAddItem";
+            this.btnHelpAddItem.Size = new System.Drawing.Size(109, 43);
+            this.btnHelpAddItem.TabIndex = 57;
+            this.btnHelpAddItem.Text = "HELP?";
+            this.btnHelpAddItem.UseVisualStyleBackColor = false;
             // 
             // frmAddItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(832, 488);
+            this.BackColor = System.Drawing.Color.Maroon;
+            this.ClientSize = new System.Drawing.Size(832, 497);
+            this.Controls.Add(this.btnHelpAddItem);
             this.Controls.Add(this.gbxItemInformation);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -334,5 +352,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.PictureBox pbxDisplayItemImage;
         private System.Windows.Forms.TextBox tbxFileName;
         private System.Windows.Forms.Label lblImageSource;
+        private System.Windows.Forms.Button btnHelpAddItem;
     }
 }

@@ -30,7 +30,6 @@ namespace SU21_Final_Project
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmployee));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabInformation = new System.Windows.Forms.TabPage();
             this.btnPrintInvoice = new System.Windows.Forms.Button();
             this.btnClearCustomer = new System.Windows.Forms.Button();
@@ -70,19 +69,42 @@ namespace SU21_Final_Project
             this.lblEmployeeAddress = new System.Windows.Forms.Label();
             this.lblTagEmployeeCity = new System.Windows.Forms.Label();
             this.tabPOS = new System.Windows.Forms.TabPage();
-            this.btnViewInvoice = new System.Windows.Forms.Button();
-            this.tbxTotalPrice = new System.Windows.Forms.TextBox();
-            this.lblTotalPriceLabel = new System.Windows.Forms.Label();
-            this.tbxDelivery = new System.Windows.Forms.TextBox();
-            this.lblDeliveryLabel = new System.Windows.Forms.Label();
-            this.btnPlaceOrder = new System.Windows.Forms.Button();
-            this.gboDiscountChoice = new System.Windows.Forms.GroupBox();
+            this.lblList = new System.Windows.Forms.Label();
             this.btnApplyDiscount = new System.Windows.Forms.Button();
+            this.gbxCreditCard = new System.Windows.Forms.GroupBox();
+            this.dtpCreditCard = new System.Windows.Forms.DateTimePicker();
+            this.lblCardDate = new System.Windows.Forms.Label();
+            this.mskCVV = new System.Windows.Forms.MaskedTextBox();
+            this.lblCreditCardName = new System.Windows.Forms.Label();
+            this.btnViewInvoice = new System.Windows.Forms.Button();
+            this.tbxNameCredit = new System.Windows.Forms.TextBox();
+            this.btnPlaceOrder = new System.Windows.Forms.Button();
+            this.tbxTotalPrice = new System.Windows.Forms.TextBox();
+            this.lblCVV = new System.Windows.Forms.Label();
+            this.lblTotalPriceLabel = new System.Windows.Forms.Label();
+            this.lblCardNumber = new System.Windows.Forms.Label();
+            this.tbxDelivery = new System.Windows.Forms.TextBox();
+            this.tbxCardNumber = new System.Windows.Forms.TextBox();
+            this.lblDeliveryLabel = new System.Windows.Forms.Label();
+            this.pbxCreditCard = new System.Windows.Forms.PictureBox();
+            this.tbxTotalToPay = new System.Windows.Forms.TextBox();
+            this.lblDiscountLabel = new System.Windows.Forms.Label();
+            this.lblSubTotalCustomer = new System.Windows.Forms.Label();
+            this.lblTotalToPayCustomer = new System.Windows.Forms.Label();
+            this.lblTaxLabel = new System.Windows.Forms.Label();
+            this.tbxTaxCustomer = new System.Windows.Forms.TextBox();
+            this.tbxDiscountCustomer = new System.Windows.Forms.TextBox();
+            this.tbxSubTotalCustomer = new System.Windows.Forms.TextBox();
+            this.lblDescriptionLabel = new System.Windows.Forms.Label();
+            this.tbxDescription = new System.Windows.Forms.TextBox();
+            this.gboDiscountChoice = new System.Windows.Forms.GroupBox();
+            this.lblCustomerName = new System.Windows.Forms.Label();
             this.tbxQuantityTotal = new System.Windows.Forms.TextBox();
             this.lblExpiration = new System.Windows.Forms.Label();
             this.lblCouponDescription = new System.Windows.Forms.Label();
             this.lblExpirationLabel = new System.Windows.Forms.Label();
             this.lblCouponDescriptionLabel = new System.Windows.Forms.Label();
+            this.tbxCustomerName = new System.Windows.Forms.TextBox();
             this.radNoDiscount = new System.Windows.Forms.RadioButton();
             this.lblDisplayDiscountReturn = new System.Windows.Forms.Label();
             this.lblDisplayDiscountQuantity = new System.Windows.Forms.Label();
@@ -91,12 +113,9 @@ namespace SU21_Final_Project
             this.tbxCoupon = new System.Windows.Forms.TextBox();
             this.radCoupon = new System.Windows.Forms.RadioButton();
             this.radQuantityDiscount = new System.Windows.Forms.RadioButton();
-            this.tbxTotalToPay = new System.Windows.Forms.TextBox();
-            this.lblTotalToPayCustomer = new System.Windows.Forms.Label();
-            this.tbxTaxCustomer = new System.Windows.Forms.TextBox();
             this.lblColorLabel = new System.Windows.Forms.Label();
-            this.tbxSubTotalCustomer = new System.Windows.Forms.TextBox();
             this.gbxReturning = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnSearchCustomerID = new System.Windows.Forms.Button();
             this.gbxAddCustomer = new System.Windows.Forms.GroupBox();
             this.tbxCustomerState = new System.Windows.Forms.TextBox();
@@ -109,7 +128,6 @@ namespace SU21_Final_Project
             this.tbxEmailCustomer = new System.Windows.Forms.TextBox();
             this.tbxLastNameCustomer = new System.Windows.Forms.TextBox();
             this.tbxFirstNameCustomer = new System.Windows.Forms.TextBox();
-            this.btnAddCustomer = new System.Windows.Forms.Button();
             this.lblPhoneLabel = new System.Windows.Forms.Label();
             this.lblZipLabel = new System.Windows.Forms.Label();
             this.lblStateLabel = new System.Windows.Forms.Label();
@@ -121,13 +139,10 @@ namespace SU21_Final_Project
             this.tbxIDSearch = new System.Windows.Forms.TextBox();
             this.radNo = new System.Windows.Forms.RadioButton();
             this.radYes = new System.Windows.Forms.RadioButton();
-            this.tbxDiscountCustomer = new System.Windows.Forms.TextBox();
-            this.lblTaxLabel = new System.Windows.Forms.Label();
             this.lblQuantityLabel = new System.Windows.Forms.Label();
-            this.lblSubTotalCustomer = new System.Windows.Forms.Label();
             this.lblQuantityAvailableLabel = new System.Windows.Forms.Label();
-            this.lblDiscountLabel = new System.Windows.Forms.Label();
             this.lblQuantityRemain = new System.Windows.Forms.Label();
+            this.btnAddCustomer = new System.Windows.Forms.Button();
             this.btnDisplayPrice = new System.Windows.Forms.Button();
             this.btnRemoveCart = new System.Windows.Forms.Button();
             this.btnAddSelection = new System.Windows.Forms.Button();
@@ -148,26 +163,10 @@ namespace SU21_Final_Project
             this.lblDate = new System.Windows.Forms.Label();
             this.lblUserEmployee = new System.Windows.Forms.Label();
             this.lblNameEmployee = new System.Windows.Forms.Label();
-            this.tbxDescription = new System.Windows.Forms.TextBox();
-            this.lblDescriptionLabel = new System.Windows.Forms.Label();
-            this.gbxCreditCard = new System.Windows.Forms.GroupBox();
-            this.dtpCreditCard = new System.Windows.Forms.DateTimePicker();
-            this.lblCardDate = new System.Windows.Forms.Label();
-            this.mskCVV = new System.Windows.Forms.MaskedTextBox();
-            this.lblCreditCardName = new System.Windows.Forms.Label();
-            this.tbxNameCredit = new System.Windows.Forms.TextBox();
-            this.lblCVV = new System.Windows.Forms.Label();
-            this.lblCardNumber = new System.Windows.Forms.Label();
-            this.tbxCardNumber = new System.Windows.Forms.TextBox();
-            this.pbxCreditCard = new System.Windows.Forms.PictureBox();
-            this.tbxCustomerName = new System.Windows.Forms.TextBox();
             this.lblHello = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnHelpEmployeeView = new System.Windows.Forms.Button();
             this.btnResetAll = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblList = new System.Windows.Forms.Label();
-            this.lblCustomerName = new System.Windows.Forms.Label();
             this.tabInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPurchaseDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerPurchase)).BeginInit();
@@ -175,6 +174,8 @@ namespace SU21_Final_Project
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerList)).BeginInit();
             this.gboEmployeeInformation.SuspendLayout();
             this.tabPOS.SuspendLayout();
+            this.gbxCreditCard.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxCreditCard)).BeginInit();
             this.gboDiscountChoice.SuspendLayout();
             this.gbxReturning.SuspendLayout();
             this.gbxAddCustomer.SuspendLayout();
@@ -184,8 +185,6 @@ namespace SU21_Final_Project
             ((System.ComponentModel.ISupportInitialize)(this.pbxItemPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeViewItem)).BeginInit();
             this.tabEmployeeView.SuspendLayout();
-            this.gbxCreditCard.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxCreditCard)).BeginInit();
             this.SuspendLayout();
             // 
             // tabInformation
@@ -213,8 +212,9 @@ namespace SU21_Final_Project
             // btnPrintInvoice
             // 
             this.btnPrintInvoice.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPrintInvoice.BackgroundImage")));
+            this.btnPrintInvoice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPrintInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrintInvoice.ForeColor = System.Drawing.Color.Snow;
+            this.btnPrintInvoice.ForeColor = System.Drawing.Color.Maroon;
             this.btnPrintInvoice.Location = new System.Drawing.Point(861, 693);
             this.btnPrintInvoice.Name = "btnPrintInvoice";
             this.btnPrintInvoice.Size = new System.Drawing.Size(222, 114);
@@ -226,9 +226,10 @@ namespace SU21_Final_Project
             // btnClearCustomer
             // 
             this.btnClearCustomer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClearCustomer.BackgroundImage")));
+            this.btnClearCustomer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnClearCustomer.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnClearCustomer.FlatAppearance.BorderSize = 3;
-            this.btnClearCustomer.ForeColor = System.Drawing.Color.Snow;
+            this.btnClearCustomer.ForeColor = System.Drawing.Color.Maroon;
             this.btnClearCustomer.Location = new System.Drawing.Point(538, 475);
             this.btnClearCustomer.Name = "btnClearCustomer";
             this.btnClearCustomer.Size = new System.Drawing.Size(541, 59);
@@ -240,9 +241,10 @@ namespace SU21_Final_Project
             // btnClearCoupon
             // 
             this.btnClearCoupon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClearCoupon.BackgroundImage")));
+            this.btnClearCoupon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnClearCoupon.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnClearCoupon.FlatAppearance.BorderSize = 3;
-            this.btnClearCoupon.ForeColor = System.Drawing.Color.Snow;
+            this.btnClearCoupon.ForeColor = System.Drawing.Color.Maroon;
             this.btnClearCoupon.Location = new System.Drawing.Point(909, 266);
             this.btnClearCoupon.Name = "btnClearCoupon";
             this.btnClearCoupon.Size = new System.Drawing.Size(174, 51);
@@ -322,9 +324,10 @@ namespace SU21_Final_Project
             // btnViewCouponList
             // 
             this.btnViewCouponList.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnViewCouponList.BackgroundImage")));
+            this.btnViewCouponList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnViewCouponList.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnViewCouponList.FlatAppearance.BorderSize = 3;
-            this.btnViewCouponList.ForeColor = System.Drawing.Color.Snow;
+            this.btnViewCouponList.ForeColor = System.Drawing.Color.Maroon;
             this.btnViewCouponList.Location = new System.Drawing.Point(707, 266);
             this.btnViewCouponList.Name = "btnViewCouponList";
             this.btnViewCouponList.Size = new System.Drawing.Size(196, 51);
@@ -336,9 +339,10 @@ namespace SU21_Final_Project
             // btnDisplayCustomerList
             // 
             this.btnDisplayCustomerList.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDisplayCustomerList.BackgroundImage")));
+            this.btnDisplayCustomerList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDisplayCustomerList.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnDisplayCustomerList.FlatAppearance.BorderSize = 3;
-            this.btnDisplayCustomerList.ForeColor = System.Drawing.Color.Snow;
+            this.btnDisplayCustomerList.ForeColor = System.Drawing.Color.Maroon;
             this.btnDisplayCustomerList.Location = new System.Drawing.Point(3, 475);
             this.btnDisplayCustomerList.Name = "btnDisplayCustomerList";
             this.btnDisplayCustomerList.Size = new System.Drawing.Size(529, 58);
@@ -481,10 +485,11 @@ namespace SU21_Final_Project
             // btnSaveEmployeeEdit
             // 
             this.btnSaveEmployeeEdit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSaveEmployeeEdit.BackgroundImage")));
+            this.btnSaveEmployeeEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSaveEmployeeEdit.Enabled = false;
             this.btnSaveEmployeeEdit.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSaveEmployeeEdit.FlatAppearance.BorderSize = 3;
-            this.btnSaveEmployeeEdit.ForeColor = System.Drawing.Color.Snow;
+            this.btnSaveEmployeeEdit.ForeColor = System.Drawing.Color.Maroon;
             this.btnSaveEmployeeEdit.Location = new System.Drawing.Point(0, 257);
             this.btnSaveEmployeeEdit.Name = "btnSaveEmployeeEdit";
             this.btnSaveEmployeeEdit.Size = new System.Drawing.Size(695, 52);
@@ -679,6 +684,114 @@ namespace SU21_Final_Project
             this.tabPOS.TabIndex = 1;
             this.tabPOS.Text = "                   Point of Sale                 ";
             // 
+            // lblList
+            // 
+            this.lblList.AutoSize = true;
+            this.lblList.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblList.ForeColor = System.Drawing.Color.Black;
+            this.lblList.Location = new System.Drawing.Point(11, 378);
+            this.lblList.Name = "lblList";
+            this.lblList.Size = new System.Drawing.Size(119, 17);
+            this.lblList.TabIndex = 39;
+            this.lblList.Text = "Items Selected:";
+            // 
+            // btnApplyDiscount
+            // 
+            this.btnApplyDiscount.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnApplyDiscount.BackgroundImage")));
+            this.btnApplyDiscount.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnApplyDiscount.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnApplyDiscount.FlatAppearance.BorderSize = 3;
+            this.btnApplyDiscount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnApplyDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnApplyDiscount.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnApplyDiscount.Location = new System.Drawing.Point(17, 762);
+            this.btnApplyDiscount.Name = "btnApplyDiscount";
+            this.btnApplyDiscount.Size = new System.Drawing.Size(448, 48);
+            this.btnApplyDiscount.TabIndex = 31;
+            this.btnApplyDiscount.Text = "&Apply Discount";
+            this.btnApplyDiscount.UseVisualStyleBackColor = true;
+            this.btnApplyDiscount.Click += new System.EventHandler(this.btnApplyDiscount_Click);
+            // 
+            // gbxCreditCard
+            // 
+            this.gbxCreditCard.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.gbxCreditCard.Controls.Add(this.dtpCreditCard);
+            this.gbxCreditCard.Controls.Add(this.lblCardDate);
+            this.gbxCreditCard.Controls.Add(this.mskCVV);
+            this.gbxCreditCard.Controls.Add(this.lblCreditCardName);
+            this.gbxCreditCard.Controls.Add(this.btnViewInvoice);
+            this.gbxCreditCard.Controls.Add(this.tbxNameCredit);
+            this.gbxCreditCard.Controls.Add(this.btnPlaceOrder);
+            this.gbxCreditCard.Controls.Add(this.tbxTotalPrice);
+            this.gbxCreditCard.Controls.Add(this.lblCVV);
+            this.gbxCreditCard.Controls.Add(this.lblTotalPriceLabel);
+            this.gbxCreditCard.Controls.Add(this.lblCardNumber);
+            this.gbxCreditCard.Controls.Add(this.tbxDelivery);
+            this.gbxCreditCard.Controls.Add(this.tbxCardNumber);
+            this.gbxCreditCard.Controls.Add(this.lblDeliveryLabel);
+            this.gbxCreditCard.Controls.Add(this.pbxCreditCard);
+            this.gbxCreditCard.Controls.Add(this.tbxTotalToPay);
+            this.gbxCreditCard.Controls.Add(this.lblDiscountLabel);
+            this.gbxCreditCard.Controls.Add(this.lblSubTotalCustomer);
+            this.gbxCreditCard.Controls.Add(this.lblTotalToPayCustomer);
+            this.gbxCreditCard.Controls.Add(this.lblTaxLabel);
+            this.gbxCreditCard.Controls.Add(this.tbxTaxCustomer);
+            this.gbxCreditCard.Controls.Add(this.tbxDiscountCustomer);
+            this.gbxCreditCard.Controls.Add(this.tbxSubTotalCustomer);
+            this.gbxCreditCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxCreditCard.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.gbxCreditCard.Location = new System.Drawing.Point(478, 564);
+            this.gbxCreditCard.Name = "gbxCreditCard";
+            this.gbxCreditCard.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.gbxCreditCard.Size = new System.Drawing.Size(615, 246);
+            this.gbxCreditCard.TabIndex = 38;
+            this.gbxCreditCard.TabStop = false;
+            this.gbxCreditCard.Text = "Payment Information";
+            // 
+            // dtpCreditCard
+            // 
+            this.dtpCreditCard.CustomFormat = "MM/yyyy";
+            this.dtpCreditCard.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpCreditCard.Location = new System.Drawing.Point(33, 159);
+            this.dtpCreditCard.MaxDate = new System.DateTime(2031, 12, 31, 0, 0, 0, 0);
+            this.dtpCreditCard.MinDate = new System.DateTime(2021, 7, 29, 13, 44, 32, 0);
+            this.dtpCreditCard.Name = "dtpCreditCard";
+            this.dtpCreditCard.Size = new System.Drawing.Size(116, 22);
+            this.dtpCreditCard.TabIndex = 54;
+            this.dtpCreditCard.Value = new System.DateTime(2021, 7, 29, 13, 44, 32, 0);
+            // 
+            // lblCardDate
+            // 
+            this.lblCardDate.AutoSize = true;
+            this.lblCardDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCardDate.Location = new System.Drawing.Point(26, 130);
+            this.lblCardDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCardDate.Name = "lblCardDate";
+            this.lblCardDate.Size = new System.Drawing.Size(123, 18);
+            this.lblCardDate.TabIndex = 53;
+            this.lblCardDate.Text = "Expiration Date";
+            // 
+            // mskCVV
+            // 
+            this.mskCVV.Location = new System.Drawing.Point(171, 157);
+            this.mskCVV.Mask = "00000";
+            this.mskCVV.Name = "mskCVV";
+            this.mskCVV.Size = new System.Drawing.Size(100, 22);
+            this.mskCVV.TabIndex = 52;
+            this.mskCVV.ValidatingType = typeof(int);
+            this.mskCVV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mskCVV_KeyPress);
+            // 
+            // lblCreditCardName
+            // 
+            this.lblCreditCardName.AutoSize = true;
+            this.lblCreditCardName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCreditCardName.Location = new System.Drawing.Point(76, 77);
+            this.lblCreditCardName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCreditCardName.Name = "lblCreditCardName";
+            this.lblCreditCardName.Size = new System.Drawing.Size(167, 18);
+            this.lblCreditCardName.TabIndex = 51;
+            this.lblCreditCardName.Text = "Name on Credit Card";
+            // 
             // btnViewInvoice
             // 
             this.btnViewInvoice.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnViewInvoice.BackgroundImage")));
@@ -697,39 +810,14 @@ namespace SU21_Final_Project
             this.btnViewInvoice.UseVisualStyleBackColor = true;
             this.btnViewInvoice.Click += new System.EventHandler(this.btnViewInvoice_Click);
             // 
-            // tbxTotalPrice
+            // tbxNameCredit
             // 
-            this.tbxTotalPrice.Location = new System.Drawing.Point(426, 6);
-            this.tbxTotalPrice.Name = "tbxTotalPrice";
-            this.tbxTotalPrice.ReadOnly = true;
-            this.tbxTotalPrice.Size = new System.Drawing.Size(163, 22);
-            this.tbxTotalPrice.TabIndex = 28;
-            // 
-            // lblTotalPriceLabel
-            // 
-            this.lblTotalPriceLabel.AutoSize = true;
-            this.lblTotalPriceLabel.Location = new System.Drawing.Point(316, 9);
-            this.lblTotalPriceLabel.Name = "lblTotalPriceLabel";
-            this.lblTotalPriceLabel.Size = new System.Drawing.Size(92, 17);
-            this.lblTotalPriceLabel.TabIndex = 27;
-            this.lblTotalPriceLabel.Text = "Total Price:";
-            // 
-            // tbxDelivery
-            // 
-            this.tbxDelivery.Location = new System.Drawing.Point(426, 126);
-            this.tbxDelivery.Name = "tbxDelivery";
-            this.tbxDelivery.ReadOnly = true;
-            this.tbxDelivery.Size = new System.Drawing.Size(163, 22);
-            this.tbxDelivery.TabIndex = 26;
-            // 
-            // lblDeliveryLabel
-            // 
-            this.lblDeliveryLabel.AutoSize = true;
-            this.lblDeliveryLabel.Location = new System.Drawing.Point(336, 131);
-            this.lblDeliveryLabel.Name = "lblDeliveryLabel";
-            this.lblDeliveryLabel.Size = new System.Drawing.Size(72, 17);
-            this.lblDeliveryLabel.TabIndex = 25;
-            this.lblDeliveryLabel.Text = "Delivery:";
+            this.tbxNameCredit.Location = new System.Drawing.Point(18, 100);
+            this.tbxNameCredit.MaxLength = 16;
+            this.tbxNameCredit.Name = "tbxNameCredit";
+            this.tbxNameCredit.Size = new System.Drawing.Size(256, 22);
+            this.tbxNameCredit.TabIndex = 50;
+            this.tbxNameCredit.Tag = "";
             // 
             // btnPlaceOrder
             // 
@@ -748,6 +836,174 @@ namespace SU21_Final_Project
             this.btnPlaceOrder.Text = "Place &Order";
             this.btnPlaceOrder.UseVisualStyleBackColor = true;
             this.btnPlaceOrder.Click += new System.EventHandler(this.btnPlaceOrder_Click);
+            // 
+            // tbxTotalPrice
+            // 
+            this.tbxTotalPrice.Location = new System.Drawing.Point(426, 6);
+            this.tbxTotalPrice.Name = "tbxTotalPrice";
+            this.tbxTotalPrice.ReadOnly = true;
+            this.tbxTotalPrice.Size = new System.Drawing.Size(163, 22);
+            this.tbxTotalPrice.TabIndex = 28;
+            // 
+            // lblCVV
+            // 
+            this.lblCVV.AutoSize = true;
+            this.lblCVV.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCVV.Location = new System.Drawing.Point(199, 130);
+            this.lblCVV.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCVV.Name = "lblCVV";
+            this.lblCVV.Size = new System.Drawing.Size(40, 18);
+            this.lblCVV.TabIndex = 49;
+            this.lblCVV.Text = "CVV";
+            // 
+            // lblTotalPriceLabel
+            // 
+            this.lblTotalPriceLabel.AutoSize = true;
+            this.lblTotalPriceLabel.Location = new System.Drawing.Point(316, 9);
+            this.lblTotalPriceLabel.Name = "lblTotalPriceLabel";
+            this.lblTotalPriceLabel.Size = new System.Drawing.Size(92, 17);
+            this.lblTotalPriceLabel.TabIndex = 27;
+            this.lblTotalPriceLabel.Text = "Total Price:";
+            // 
+            // lblCardNumber
+            // 
+            this.lblCardNumber.AutoSize = true;
+            this.lblCardNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCardNumber.Location = new System.Drawing.Point(76, 28);
+            this.lblCardNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCardNumber.Name = "lblCardNumber";
+            this.lblCardNumber.Size = new System.Drawing.Size(153, 18);
+            this.lblCardNumber.TabIndex = 47;
+            this.lblCardNumber.Text = "Enter Card Number";
+            // 
+            // tbxDelivery
+            // 
+            this.tbxDelivery.Location = new System.Drawing.Point(426, 126);
+            this.tbxDelivery.Name = "tbxDelivery";
+            this.tbxDelivery.ReadOnly = true;
+            this.tbxDelivery.Size = new System.Drawing.Size(163, 22);
+            this.tbxDelivery.TabIndex = 26;
+            // 
+            // tbxCardNumber
+            // 
+            this.tbxCardNumber.Location = new System.Drawing.Point(18, 51);
+            this.tbxCardNumber.MaxLength = 16;
+            this.tbxCardNumber.Name = "tbxCardNumber";
+            this.tbxCardNumber.Size = new System.Drawing.Size(256, 22);
+            this.tbxCardNumber.TabIndex = 7;
+            this.tbxCardNumber.Tag = "";
+            this.tbxCardNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxCardNumber_KeyPress_1);
+            // 
+            // lblDeliveryLabel
+            // 
+            this.lblDeliveryLabel.AutoSize = true;
+            this.lblDeliveryLabel.Location = new System.Drawing.Point(336, 131);
+            this.lblDeliveryLabel.Name = "lblDeliveryLabel";
+            this.lblDeliveryLabel.Size = new System.Drawing.Size(72, 17);
+            this.lblDeliveryLabel.TabIndex = 25;
+            this.lblDeliveryLabel.Text = "Delivery:";
+            // 
+            // pbxCreditCard
+            // 
+            this.pbxCreditCard.BackColor = System.Drawing.Color.Transparent;
+            this.pbxCreditCard.Image = ((System.Drawing.Image)(resources.GetObject("pbxCreditCard.Image")));
+            this.pbxCreditCard.Location = new System.Drawing.Point(71, 198);
+            this.pbxCreditCard.Name = "pbxCreditCard";
+            this.pbxCreditCard.Size = new System.Drawing.Size(154, 34);
+            this.pbxCreditCard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxCreditCard.TabIndex = 0;
+            this.pbxCreditCard.TabStop = false;
+            // 
+            // tbxTotalToPay
+            // 
+            this.tbxTotalToPay.Location = new System.Drawing.Point(426, 102);
+            this.tbxTotalToPay.Name = "tbxTotalToPay";
+            this.tbxTotalToPay.ReadOnly = true;
+            this.tbxTotalToPay.Size = new System.Drawing.Size(163, 22);
+            this.tbxTotalToPay.TabIndex = 22;
+            // 
+            // lblDiscountLabel
+            // 
+            this.lblDiscountLabel.AutoSize = true;
+            this.lblDiscountLabel.Location = new System.Drawing.Point(332, 33);
+            this.lblDiscountLabel.Name = "lblDiscountLabel";
+            this.lblDiscountLabel.Size = new System.Drawing.Size(76, 17);
+            this.lblDiscountLabel.TabIndex = 15;
+            this.lblDiscountLabel.Text = "Discount:";
+            // 
+            // lblSubTotalCustomer
+            // 
+            this.lblSubTotalCustomer.AutoSize = true;
+            this.lblSubTotalCustomer.Location = new System.Drawing.Point(330, 60);
+            this.lblSubTotalCustomer.Name = "lblSubTotalCustomer";
+            this.lblSubTotalCustomer.Size = new System.Drawing.Size(78, 17);
+            this.lblSubTotalCustomer.TabIndex = 16;
+            this.lblSubTotalCustomer.Text = "SubTotal:";
+            // 
+            // lblTotalToPayCustomer
+            // 
+            this.lblTotalToPayCustomer.AutoSize = true;
+            this.lblTotalToPayCustomer.Location = new System.Drawing.Point(307, 108);
+            this.lblTotalToPayCustomer.Name = "lblTotalToPayCustomer";
+            this.lblTotalToPayCustomer.Size = new System.Drawing.Size(101, 17);
+            this.lblTotalToPayCustomer.TabIndex = 21;
+            this.lblTotalToPayCustomer.Text = "Total to Pay:";
+            // 
+            // lblTaxLabel
+            // 
+            this.lblTaxLabel.AutoSize = true;
+            this.lblTaxLabel.Location = new System.Drawing.Point(307, 84);
+            this.lblTaxLabel.Name = "lblTaxLabel";
+            this.lblTaxLabel.Size = new System.Drawing.Size(101, 17);
+            this.lblTaxLabel.TabIndex = 17;
+            this.lblTaxLabel.Text = "Tax (8.25%):";
+            // 
+            // tbxTaxCustomer
+            // 
+            this.tbxTaxCustomer.Location = new System.Drawing.Point(426, 78);
+            this.tbxTaxCustomer.Name = "tbxTaxCustomer";
+            this.tbxTaxCustomer.ReadOnly = true;
+            this.tbxTaxCustomer.Size = new System.Drawing.Size(163, 22);
+            this.tbxTaxCustomer.TabIndex = 20;
+            // 
+            // tbxDiscountCustomer
+            // 
+            this.tbxDiscountCustomer.Location = new System.Drawing.Point(426, 30);
+            this.tbxDiscountCustomer.Name = "tbxDiscountCustomer";
+            this.tbxDiscountCustomer.ReadOnly = true;
+            this.tbxDiscountCustomer.Size = new System.Drawing.Size(163, 22);
+            this.tbxDiscountCustomer.TabIndex = 18;
+            // 
+            // tbxSubTotalCustomer
+            // 
+            this.tbxSubTotalCustomer.Location = new System.Drawing.Point(426, 54);
+            this.tbxSubTotalCustomer.Name = "tbxSubTotalCustomer";
+            this.tbxSubTotalCustomer.ReadOnly = true;
+            this.tbxSubTotalCustomer.Size = new System.Drawing.Size(163, 22);
+            this.tbxSubTotalCustomer.TabIndex = 19;
+            // 
+            // lblDescriptionLabel
+            // 
+            this.lblDescriptionLabel.AutoSize = true;
+            this.lblDescriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescriptionLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblDescriptionLabel.Location = new System.Drawing.Point(261, 227);
+            this.lblDescriptionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDescriptionLabel.Name = "lblDescriptionLabel";
+            this.lblDescriptionLabel.Size = new System.Drawing.Size(95, 17);
+            this.lblDescriptionLabel.TabIndex = 37;
+            this.lblDescriptionLabel.Text = "Description:";
+            // 
+            // tbxDescription
+            // 
+            this.tbxDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxDescription.Location = new System.Drawing.Point(254, 255);
+            this.tbxDescription.Multiline = true;
+            this.tbxDescription.Name = "tbxDescription";
+            this.tbxDescription.ReadOnly = true;
+            this.tbxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbxDescription.Size = new System.Drawing.Size(211, 115);
+            this.tbxDescription.TabIndex = 36;
             // 
             // gboDiscountChoice
             // 
@@ -775,22 +1031,16 @@ namespace SU21_Final_Project
             this.gboDiscountChoice.TabStop = false;
             this.gboDiscountChoice.Text = "Choose Discount";
             // 
-            // btnApplyDiscount
+            // lblCustomerName
             // 
-            this.btnApplyDiscount.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnApplyDiscount.BackgroundImage")));
-            this.btnApplyDiscount.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnApplyDiscount.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnApplyDiscount.FlatAppearance.BorderSize = 3;
-            this.btnApplyDiscount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnApplyDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnApplyDiscount.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnApplyDiscount.Location = new System.Drawing.Point(17, 762);
-            this.btnApplyDiscount.Name = "btnApplyDiscount";
-            this.btnApplyDiscount.Size = new System.Drawing.Size(448, 48);
-            this.btnApplyDiscount.TabIndex = 31;
-            this.btnApplyDiscount.Text = "&Apply Discount";
-            this.btnApplyDiscount.UseVisualStyleBackColor = true;
-            this.btnApplyDiscount.Click += new System.EventHandler(this.btnApplyDiscount_Click);
+            this.lblCustomerName.AutoSize = true;
+            this.lblCustomerName.Enabled = false;
+            this.lblCustomerName.ForeColor = System.Drawing.Color.Black;
+            this.lblCustomerName.Location = new System.Drawing.Point(144, 172);
+            this.lblCustomerName.Name = "lblCustomerName";
+            this.lblCustomerName.Size = new System.Drawing.Size(122, 17);
+            this.lblCustomerName.TabIndex = 35;
+            this.lblCustomerName.Text = "Customer Name";
             // 
             // tbxQuantityTotal
             // 
@@ -841,6 +1091,14 @@ namespace SU21_Final_Project
             this.lblCouponDescriptionLabel.Size = new System.Drawing.Size(95, 17);
             this.lblCouponDescriptionLabel.TabIndex = 31;
             this.lblCouponDescriptionLabel.Text = "Description:";
+            // 
+            // tbxCustomerName
+            // 
+            this.tbxCustomerName.Location = new System.Drawing.Point(272, 169);
+            this.tbxCustomerName.Name = "tbxCustomerName";
+            this.tbxCustomerName.ReadOnly = true;
+            this.tbxCustomerName.Size = new System.Drawing.Size(167, 22);
+            this.tbxCustomerName.TabIndex = 34;
             // 
             // radNoDiscount
             // 
@@ -938,31 +1196,6 @@ namespace SU21_Final_Project
             this.radQuantityDiscount.UseVisualStyleBackColor = true;
             this.radQuantityDiscount.CheckedChanged += new System.EventHandler(this.radQuantityDiscount_CheckedChanged);
             // 
-            // tbxTotalToPay
-            // 
-            this.tbxTotalToPay.Location = new System.Drawing.Point(426, 102);
-            this.tbxTotalToPay.Name = "tbxTotalToPay";
-            this.tbxTotalToPay.ReadOnly = true;
-            this.tbxTotalToPay.Size = new System.Drawing.Size(163, 22);
-            this.tbxTotalToPay.TabIndex = 22;
-            // 
-            // lblTotalToPayCustomer
-            // 
-            this.lblTotalToPayCustomer.AutoSize = true;
-            this.lblTotalToPayCustomer.Location = new System.Drawing.Point(307, 108);
-            this.lblTotalToPayCustomer.Name = "lblTotalToPayCustomer";
-            this.lblTotalToPayCustomer.Size = new System.Drawing.Size(101, 17);
-            this.lblTotalToPayCustomer.TabIndex = 21;
-            this.lblTotalToPayCustomer.Text = "Total to Pay:";
-            // 
-            // tbxTaxCustomer
-            // 
-            this.tbxTaxCustomer.Location = new System.Drawing.Point(426, 78);
-            this.tbxTaxCustomer.Name = "tbxTaxCustomer";
-            this.tbxTaxCustomer.ReadOnly = true;
-            this.tbxTaxCustomer.Size = new System.Drawing.Size(163, 22);
-            this.tbxTaxCustomer.TabIndex = 20;
-            // 
             // lblColorLabel
             // 
             this.lblColorLabel.AutoSize = true;
@@ -973,14 +1206,6 @@ namespace SU21_Final_Project
             this.lblColorLabel.Size = new System.Drawing.Size(51, 17);
             this.lblColorLabel.TabIndex = 13;
             this.lblColorLabel.Text = "Color:";
-            // 
-            // tbxSubTotalCustomer
-            // 
-            this.tbxSubTotalCustomer.Location = new System.Drawing.Point(426, 54);
-            this.tbxSubTotalCustomer.Name = "tbxSubTotalCustomer";
-            this.tbxSubTotalCustomer.ReadOnly = true;
-            this.tbxSubTotalCustomer.Size = new System.Drawing.Size(163, 22);
-            this.tbxSubTotalCustomer.TabIndex = 19;
             // 
             // gbxReturning
             // 
@@ -999,6 +1224,16 @@ namespace SU21_Final_Project
             this.gbxReturning.TabIndex = 7;
             this.gbxReturning.TabStop = false;
             this.gbxReturning.Text = "Search or Add Customer";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(25, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(88, 17);
+            this.label1.TabIndex = 39;
+            this.label1.Text = "Returning?";
             // 
             // btnSearchCustomerID
             // 
@@ -1183,23 +1418,6 @@ namespace SU21_Final_Project
             this.tbxFirstNameCustomer.Size = new System.Drawing.Size(139, 22);
             this.tbxFirstNameCustomer.TabIndex = 12;
             // 
-            // btnAddCustomer
-            // 
-            this.btnAddCustomer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAddCustomer.BackgroundImage")));
-            this.btnAddCustomer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAddCustomer.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnAddCustomer.FlatAppearance.BorderSize = 3;
-            this.btnAddCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddCustomer.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnAddCustomer.Location = new System.Drawing.Point(929, 379);
-            this.btnAddCustomer.Name = "btnAddCustomer";
-            this.btnAddCustomer.Size = new System.Drawing.Size(142, 56);
-            this.btnAddCustomer.TabIndex = 21;
-            this.btnAddCustomer.Text = "Add &Customer";
-            this.btnAddCustomer.UseVisualStyleBackColor = true;
-            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
-            // 
             // lblPhoneLabel
             // 
             this.lblPhoneLabel.AutoSize = true;
@@ -1318,23 +1536,6 @@ namespace SU21_Final_Project
             this.radYes.UseVisualStyleBackColor = true;
             this.radYes.CheckedChanged += new System.EventHandler(this.radYes_CheckedChanged);
             // 
-            // tbxDiscountCustomer
-            // 
-            this.tbxDiscountCustomer.Location = new System.Drawing.Point(426, 30);
-            this.tbxDiscountCustomer.Name = "tbxDiscountCustomer";
-            this.tbxDiscountCustomer.ReadOnly = true;
-            this.tbxDiscountCustomer.Size = new System.Drawing.Size(163, 22);
-            this.tbxDiscountCustomer.TabIndex = 18;
-            // 
-            // lblTaxLabel
-            // 
-            this.lblTaxLabel.AutoSize = true;
-            this.lblTaxLabel.Location = new System.Drawing.Point(307, 84);
-            this.lblTaxLabel.Name = "lblTaxLabel";
-            this.lblTaxLabel.Size = new System.Drawing.Size(101, 17);
-            this.lblTaxLabel.TabIndex = 17;
-            this.lblTaxLabel.Text = "Tax (8.25%):";
-            // 
             // lblQuantityLabel
             // 
             this.lblQuantityLabel.AutoSize = true;
@@ -1345,15 +1546,6 @@ namespace SU21_Final_Project
             this.lblQuantityLabel.Size = new System.Drawing.Size(113, 17);
             this.lblQuantityLabel.TabIndex = 11;
             this.lblQuantityLabel.Text = "Enter Quantity";
-            // 
-            // lblSubTotalCustomer
-            // 
-            this.lblSubTotalCustomer.AutoSize = true;
-            this.lblSubTotalCustomer.Location = new System.Drawing.Point(330, 60);
-            this.lblSubTotalCustomer.Name = "lblSubTotalCustomer";
-            this.lblSubTotalCustomer.Size = new System.Drawing.Size(78, 17);
-            this.lblSubTotalCustomer.TabIndex = 16;
-            this.lblSubTotalCustomer.Text = "SubTotal:";
             // 
             // lblQuantityAvailableLabel
             // 
@@ -1366,15 +1558,6 @@ namespace SU21_Final_Project
             this.lblQuantityAvailableLabel.TabIndex = 10;
             this.lblQuantityAvailableLabel.Text = "Available";
             // 
-            // lblDiscountLabel
-            // 
-            this.lblDiscountLabel.AutoSize = true;
-            this.lblDiscountLabel.Location = new System.Drawing.Point(332, 33);
-            this.lblDiscountLabel.Name = "lblDiscountLabel";
-            this.lblDiscountLabel.Size = new System.Drawing.Size(76, 17);
-            this.lblDiscountLabel.TabIndex = 15;
-            this.lblDiscountLabel.Text = "Discount:";
-            // 
             // lblQuantityRemain
             // 
             this.lblQuantityRemain.AutoSize = true;
@@ -1382,6 +1565,23 @@ namespace SU21_Final_Project
             this.lblQuantityRemain.Name = "lblQuantityRemain";
             this.lblQuantityRemain.Size = new System.Drawing.Size(0, 18);
             this.lblQuantityRemain.TabIndex = 9;
+            // 
+            // btnAddCustomer
+            // 
+            this.btnAddCustomer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAddCustomer.BackgroundImage")));
+            this.btnAddCustomer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAddCustomer.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAddCustomer.FlatAppearance.BorderSize = 3;
+            this.btnAddCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddCustomer.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnAddCustomer.Location = new System.Drawing.Point(929, 379);
+            this.btnAddCustomer.Name = "btnAddCustomer";
+            this.btnAddCustomer.Size = new System.Drawing.Size(142, 56);
+            this.btnAddCustomer.TabIndex = 21;
+            this.btnAddCustomer.Text = "Add &Customer";
+            this.btnAddCustomer.UseVisualStyleBackColor = true;
+            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
             // 
             // btnDisplayPrice
             // 
@@ -1592,14 +1792,6 @@ namespace SU21_Final_Project
             this.dgvEmployeeViewItem.AllowUserToAddRows = false;
             this.dgvEmployeeViewItem.AllowUserToDeleteRows = false;
             this.dgvEmployeeViewItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEmployeeViewItem.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvEmployeeViewItem.Location = new System.Drawing.Point(3, 3);
             this.dgvEmployeeViewItem.MultiSelect = false;
             this.dgvEmployeeViewItem.Name = "dgvEmployeeViewItem";
@@ -1656,169 +1848,6 @@ namespace SU21_Final_Project
             this.lblNameEmployee.Size = new System.Drawing.Size(0, 18);
             this.lblNameEmployee.TabIndex = 29;
             // 
-            // tbxDescription
-            // 
-            this.tbxDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxDescription.Location = new System.Drawing.Point(254, 255);
-            this.tbxDescription.Multiline = true;
-            this.tbxDescription.Name = "tbxDescription";
-            this.tbxDescription.ReadOnly = true;
-            this.tbxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbxDescription.Size = new System.Drawing.Size(211, 115);
-            this.tbxDescription.TabIndex = 36;
-            // 
-            // lblDescriptionLabel
-            // 
-            this.lblDescriptionLabel.AutoSize = true;
-            this.lblDescriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescriptionLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblDescriptionLabel.Location = new System.Drawing.Point(261, 227);
-            this.lblDescriptionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDescriptionLabel.Name = "lblDescriptionLabel";
-            this.lblDescriptionLabel.Size = new System.Drawing.Size(95, 17);
-            this.lblDescriptionLabel.TabIndex = 37;
-            this.lblDescriptionLabel.Text = "Description:";
-            // 
-            // gbxCreditCard
-            // 
-            this.gbxCreditCard.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.gbxCreditCard.Controls.Add(this.dtpCreditCard);
-            this.gbxCreditCard.Controls.Add(this.lblCardDate);
-            this.gbxCreditCard.Controls.Add(this.mskCVV);
-            this.gbxCreditCard.Controls.Add(this.lblCreditCardName);
-            this.gbxCreditCard.Controls.Add(this.btnViewInvoice);
-            this.gbxCreditCard.Controls.Add(this.tbxNameCredit);
-            this.gbxCreditCard.Controls.Add(this.btnPlaceOrder);
-            this.gbxCreditCard.Controls.Add(this.tbxTotalPrice);
-            this.gbxCreditCard.Controls.Add(this.lblCVV);
-            this.gbxCreditCard.Controls.Add(this.lblTotalPriceLabel);
-            this.gbxCreditCard.Controls.Add(this.lblCardNumber);
-            this.gbxCreditCard.Controls.Add(this.tbxDelivery);
-            this.gbxCreditCard.Controls.Add(this.tbxCardNumber);
-            this.gbxCreditCard.Controls.Add(this.lblDeliveryLabel);
-            this.gbxCreditCard.Controls.Add(this.pbxCreditCard);
-            this.gbxCreditCard.Controls.Add(this.tbxTotalToPay);
-            this.gbxCreditCard.Controls.Add(this.lblDiscountLabel);
-            this.gbxCreditCard.Controls.Add(this.lblSubTotalCustomer);
-            this.gbxCreditCard.Controls.Add(this.lblTotalToPayCustomer);
-            this.gbxCreditCard.Controls.Add(this.lblTaxLabel);
-            this.gbxCreditCard.Controls.Add(this.tbxTaxCustomer);
-            this.gbxCreditCard.Controls.Add(this.tbxDiscountCustomer);
-            this.gbxCreditCard.Controls.Add(this.tbxSubTotalCustomer);
-            this.gbxCreditCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxCreditCard.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.gbxCreditCard.Location = new System.Drawing.Point(478, 564);
-            this.gbxCreditCard.Name = "gbxCreditCard";
-            this.gbxCreditCard.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.gbxCreditCard.Size = new System.Drawing.Size(615, 246);
-            this.gbxCreditCard.TabIndex = 38;
-            this.gbxCreditCard.TabStop = false;
-            this.gbxCreditCard.Text = "Payment Information";
-            // 
-            // dtpCreditCard
-            // 
-            this.dtpCreditCard.CustomFormat = "MM/yyyy";
-            this.dtpCreditCard.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpCreditCard.Location = new System.Drawing.Point(33, 159);
-            this.dtpCreditCard.MaxDate = new System.DateTime(2031, 12, 31, 0, 0, 0, 0);
-            this.dtpCreditCard.MinDate = new System.DateTime(2021, 7, 29, 13, 44, 32, 0);
-            this.dtpCreditCard.Name = "dtpCreditCard";
-            this.dtpCreditCard.Size = new System.Drawing.Size(116, 22);
-            this.dtpCreditCard.TabIndex = 54;
-            this.dtpCreditCard.Value = new System.DateTime(2021, 7, 29, 13, 44, 32, 0);
-            // 
-            // lblCardDate
-            // 
-            this.lblCardDate.AutoSize = true;
-            this.lblCardDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCardDate.Location = new System.Drawing.Point(26, 130);
-            this.lblCardDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblCardDate.Name = "lblCardDate";
-            this.lblCardDate.Size = new System.Drawing.Size(123, 18);
-            this.lblCardDate.TabIndex = 53;
-            this.lblCardDate.Text = "Expiration Date";
-            // 
-            // mskCVV
-            // 
-            this.mskCVV.Location = new System.Drawing.Point(171, 157);
-            this.mskCVV.Mask = "00000";
-            this.mskCVV.Name = "mskCVV";
-            this.mskCVV.Size = new System.Drawing.Size(100, 22);
-            this.mskCVV.TabIndex = 52;
-            this.mskCVV.ValidatingType = typeof(int);
-            this.mskCVV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mskCVV_KeyPress);
-            // 
-            // lblCreditCardName
-            // 
-            this.lblCreditCardName.AutoSize = true;
-            this.lblCreditCardName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreditCardName.Location = new System.Drawing.Point(76, 77);
-            this.lblCreditCardName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblCreditCardName.Name = "lblCreditCardName";
-            this.lblCreditCardName.Size = new System.Drawing.Size(167, 18);
-            this.lblCreditCardName.TabIndex = 51;
-            this.lblCreditCardName.Text = "Name on Credit Card";
-            // 
-            // tbxNameCredit
-            // 
-            this.tbxNameCredit.Location = new System.Drawing.Point(18, 100);
-            this.tbxNameCredit.MaxLength = 16;
-            this.tbxNameCredit.Name = "tbxNameCredit";
-            this.tbxNameCredit.Size = new System.Drawing.Size(256, 22);
-            this.tbxNameCredit.TabIndex = 50;
-            this.tbxNameCredit.Tag = "";
-            // 
-            // lblCVV
-            // 
-            this.lblCVV.AutoSize = true;
-            this.lblCVV.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCVV.Location = new System.Drawing.Point(199, 130);
-            this.lblCVV.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblCVV.Name = "lblCVV";
-            this.lblCVV.Size = new System.Drawing.Size(40, 18);
-            this.lblCVV.TabIndex = 49;
-            this.lblCVV.Text = "CVV";
-            // 
-            // lblCardNumber
-            // 
-            this.lblCardNumber.AutoSize = true;
-            this.lblCardNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCardNumber.Location = new System.Drawing.Point(76, 28);
-            this.lblCardNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblCardNumber.Name = "lblCardNumber";
-            this.lblCardNumber.Size = new System.Drawing.Size(153, 18);
-            this.lblCardNumber.TabIndex = 47;
-            this.lblCardNumber.Text = "Enter Card Number";
-            // 
-            // tbxCardNumber
-            // 
-            this.tbxCardNumber.Location = new System.Drawing.Point(18, 51);
-            this.tbxCardNumber.MaxLength = 16;
-            this.tbxCardNumber.Name = "tbxCardNumber";
-            this.tbxCardNumber.Size = new System.Drawing.Size(256, 22);
-            this.tbxCardNumber.TabIndex = 7;
-            this.tbxCardNumber.Tag = "";
-            this.tbxCardNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxCardNumber_KeyPress_1);
-            // 
-            // pbxCreditCard
-            // 
-            this.pbxCreditCard.BackColor = System.Drawing.Color.Transparent;
-            this.pbxCreditCard.Image = ((System.Drawing.Image)(resources.GetObject("pbxCreditCard.Image")));
-            this.pbxCreditCard.Location = new System.Drawing.Point(71, 198);
-            this.pbxCreditCard.Name = "pbxCreditCard";
-            this.pbxCreditCard.Size = new System.Drawing.Size(154, 34);
-            this.pbxCreditCard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxCreditCard.TabIndex = 0;
-            this.pbxCreditCard.TabStop = false;
-            // 
-            // tbxCustomerName
-            // 
-            this.tbxCustomerName.Location = new System.Drawing.Point(272, 169);
-            this.tbxCustomerName.Name = "tbxCustomerName";
-            this.tbxCustomerName.ReadOnly = true;
-            this.tbxCustomerName.Size = new System.Drawing.Size(167, 22);
-            this.tbxCustomerName.TabIndex = 34;
-            // 
             // lblHello
             // 
             this.lblHello.AutoSize = true;
@@ -1834,12 +1863,13 @@ namespace SU21_Final_Project
             // btnLogout
             // 
             this.btnLogout.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLogout.BackgroundImage")));
+            this.btnLogout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnLogout.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnLogout.FlatAppearance.BorderSize = 3;
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.Color.SeaShell;
-            this.btnLogout.Location = new System.Drawing.Point(865, 0);
+            this.btnLogout.Location = new System.Drawing.Point(865, 5);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(124, 48);
             this.btnLogout.TabIndex = 18;
@@ -1850,12 +1880,14 @@ namespace SU21_Final_Project
             // btnHelpEmployeeView
             // 
             this.btnHelpEmployeeView.BackColor = System.Drawing.Color.Transparent;
+            this.btnHelpEmployeeView.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHelpEmployeeView.BackgroundImage")));
+            this.btnHelpEmployeeView.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnHelpEmployeeView.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnHelpEmployeeView.FlatAppearance.BorderSize = 3;
             this.btnHelpEmployeeView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHelpEmployeeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHelpEmployeeView.ForeColor = System.Drawing.Color.SeaShell;
-            this.btnHelpEmployeeView.Location = new System.Drawing.Point(992, 0);
+            this.btnHelpEmployeeView.Location = new System.Drawing.Point(992, 5);
             this.btnHelpEmployeeView.Name = "btnHelpEmployeeView";
             this.btnHelpEmployeeView.Size = new System.Drawing.Size(101, 48);
             this.btnHelpEmployeeView.TabIndex = 40;
@@ -1865,12 +1897,13 @@ namespace SU21_Final_Project
             // btnResetAll
             // 
             this.btnResetAll.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnResetAll.BackgroundImage")));
+            this.btnResetAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnResetAll.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnResetAll.FlatAppearance.BorderSize = 3;
             this.btnResetAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResetAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnResetAll.ForeColor = System.Drawing.Color.SeaShell;
-            this.btnResetAll.Location = new System.Drawing.Point(720, 0);
+            this.btnResetAll.Location = new System.Drawing.Point(720, 5);
             this.btnResetAll.Name = "btnResetAll";
             this.btnResetAll.Size = new System.Drawing.Size(140, 48);
             this.btnResetAll.TabIndex = 39;
@@ -1878,44 +1911,12 @@ namespace SU21_Final_Project
             this.btnResetAll.UseVisualStyleBackColor = true;
             this.btnResetAll.Click += new System.EventHandler(this.btnResetAll_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(25, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 17);
-            this.label1.TabIndex = 39;
-            this.label1.Text = "Returning?";
-            // 
-            // lblList
-            // 
-            this.lblList.AutoSize = true;
-            this.lblList.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblList.ForeColor = System.Drawing.Color.Black;
-            this.lblList.Location = new System.Drawing.Point(11, 378);
-            this.lblList.Name = "lblList";
-            this.lblList.Size = new System.Drawing.Size(119, 17);
-            this.lblList.TabIndex = 39;
-            this.lblList.Text = "Items Selected:";
-            // 
-            // lblCustomerName
-            // 
-            this.lblCustomerName.AutoSize = true;
-            this.lblCustomerName.Enabled = false;
-            this.lblCustomerName.ForeColor = System.Drawing.Color.Black;
-            this.lblCustomerName.Location = new System.Drawing.Point(144, 172);
-            this.lblCustomerName.Name = "lblCustomerName";
-            this.lblCustomerName.Size = new System.Drawing.Size(122, 17);
-            this.lblCustomerName.TabIndex = 35;
-            this.lblCustomerName.Text = "Customer Name";
-            // 
             // frmEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.BackColor = System.Drawing.Color.Tan;
+            this.BackColor = System.Drawing.Color.Maroon;
             this.ClientSize = new System.Drawing.Size(1095, 890);
             this.Controls.Add(this.btnResetAll);
             this.Controls.Add(this.btnHelpEmployeeView);
@@ -1943,6 +1944,9 @@ namespace SU21_Final_Project
             this.gboEmployeeInformation.PerformLayout();
             this.tabPOS.ResumeLayout(false);
             this.tabPOS.PerformLayout();
+            this.gbxCreditCard.ResumeLayout(false);
+            this.gbxCreditCard.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxCreditCard)).EndInit();
             this.gboDiscountChoice.ResumeLayout(false);
             this.gboDiscountChoice.PerformLayout();
             this.gbxReturning.ResumeLayout(false);
@@ -1957,9 +1961,6 @@ namespace SU21_Final_Project
             ((System.ComponentModel.ISupportInitialize)(this.pbxItemPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeViewItem)).EndInit();
             this.tabEmployeeView.ResumeLayout(false);
-            this.gbxCreditCard.ResumeLayout(false);
-            this.gbxCreditCard.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxCreditCard)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

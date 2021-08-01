@@ -105,7 +105,7 @@ namespace SU21_Final_Project
             this.gbxInformation.Size = new System.Drawing.Size(717, 296);
             this.gbxInformation.TabIndex = 45;
             this.gbxInformation.TabStop = false;
-            this.gbxInformation.Text = "Information";
+            this.gbxInformation.Text = "Add New Employee";
             // 
             // dtpEmployeeHiredDate
             // 
@@ -436,14 +436,16 @@ namespace SU21_Final_Project
             // btnBack
             // 
             this.btnBack.BackColor = System.Drawing.Color.Transparent;
+            this.btnBack.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBack.BackgroundImage")));
+            this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBack.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnBack.FlatAppearance.BorderSize = 3;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnBack.Location = new System.Drawing.Point(2, 396);
+            this.btnBack.Location = new System.Drawing.Point(2, 407);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(717, 44);
+            this.btnBack.Size = new System.Drawing.Size(717, 66);
             this.btnBack.TabIndex = 49;
             this.btnBack.Text = "&Back";
             this.btnBack.UseVisualStyleBackColor = false;
@@ -452,6 +454,8 @@ namespace SU21_Final_Project
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.Transparent;
+            this.btnSave.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSave.BackgroundImage")));
+            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSave.FlatAppearance.BorderSize = 3;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -459,7 +463,7 @@ namespace SU21_Final_Project
             this.btnSave.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnSave.Location = new System.Drawing.Point(2, 343);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(717, 52);
+            this.btnSave.Size = new System.Drawing.Size(717, 63);
             this.btnSave.TabIndex = 48;
             this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -468,6 +472,7 @@ namespace SU21_Final_Project
             // btnHelpAddEmployee
             // 
             this.btnHelpAddEmployee.BackColor = System.Drawing.Color.Transparent;
+            this.btnHelpAddEmployee.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHelpAddEmployee.BackgroundImage")));
             this.btnHelpAddEmployee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnHelpAddEmployee.FlatAppearance.BorderSize = 3;
             this.btnHelpAddEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -484,8 +489,8 @@ namespace SU21_Final_Project
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Tan;
-            this.ClientSize = new System.Drawing.Size(722, 448);
+            this.BackColor = System.Drawing.Color.Maroon;
+            this.ClientSize = new System.Drawing.Size(722, 484);
             this.Controls.Add(this.btnHelpAddEmployee);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnSave);
