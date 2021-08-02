@@ -16,5 +16,29 @@ namespace SU21_Final_Project
         {
             InitializeComponent();
         }
+
+        private void btnCloseForm_Click(object sender, EventArgs e)
+        {
+            new frmAdmin().Show();
+            this.Hide();
+        }
+
+        private void frmManagerViewHelp_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            switch (e.CloseReason)
+            {
+                case CloseReason.UserClosing:
+                    if (MessageBox.Show("Are you sure you want to close this?", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                    }
+                    else
+                    {
+                        new frmAdmin().Show();
+                        this.Hide();
+                    }
+                    break;
+            }
+        }
     }
 }

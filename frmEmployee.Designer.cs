@@ -829,9 +829,9 @@ namespace SU21_Final_Project
             this.btnPlaceOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlaceOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlaceOrder.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnPlaceOrder.Location = new System.Drawing.Point(316, 153);
+            this.btnPlaceOrder.Location = new System.Drawing.Point(319, 148);
             this.btnPlaceOrder.Name = "btnPlaceOrder";
-            this.btnPlaceOrder.Size = new System.Drawing.Size(295, 47);
+            this.btnPlaceOrder.Size = new System.Drawing.Size(294, 47);
             this.btnPlaceOrder.TabIndex = 39;
             this.btnPlaceOrder.Text = "Place &Order";
             this.btnPlaceOrder.UseVisualStyleBackColor = true;
@@ -1932,7 +1932,7 @@ namespace SU21_Final_Project
             this.MaximizeBox = false;
             this.Name = "frmEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Administrator(Employee)";
+            this.Text = "Employee View";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmEmployee_FormClosing);
             this.Load += new System.EventHandler(this.frmEmployee_Load);
             this.tabInformation.ResumeLayout(false);

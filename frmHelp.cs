@@ -24,58 +24,11 @@ namespace SU21_Final_Project
         //Back to previous form based on picture Help
         private void btnClose_Click(object sender, EventArgs e)
         {
-
-
-            if(pbxHelpLogin.Visible==true)
-            {
-                new frmLogin().Show();
-                this.Hide();
-            }
-            else if (pbxHelpSignUp.Visible == true )
-            {
-                new frmSignUp().Show();
-                this.Hide();
-            }
-           else if (pbxHelpResetPassword.Visible == true)
-            {
-                new frmResetPassword().Show();
-                this.Hide();
-            }
-
-            else if (pbxAddEmployee.Visible == true)
-            {
-                new frmAdmin().Show();
-                this.Hide();
-            }
+            
+            this.Hide();
         }
 
-        //Display picture Help based on form 
-        private void frmHelp_Load(object sender, EventArgs e)
-        {
-            if (frmLogin.blnHelpLoginPicture == false)
-            {
-                pbxHelpLogin.Visible = true;
-            }
-            else if (frmSignUp.blnSignUpPicture == false)
-            {
-                pbxHelpSignUp.Visible = true;
-                pbxHelpLogin.Visible = false;
-            }
-            else if (frmResetPassword.blnResetPasswordPicture == false)
-            {
-                pbxHelpResetPassword.Visible = true;
-                pbxHelpLogin.Visible = false;
-                pbxHelpSignUp.Visible = false;
-            }
-            else if (frmAddEmployee.blnAddEmployee == false)
-            {
-                pbxAddEmployee.Visible = true;
-                pbxHelpResetPassword.Visible = false;
-                pbxHelpLogin.Visible = false;
-                pbxHelpSignUp.Visible = false;
-            }
-
-        }
+    
 
         private void frmHelp_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -88,7 +41,7 @@ namespace SU21_Final_Project
                     }
                     else
                     {
-                        new frmAdmin().Show();
+                        
                         this.Hide();
                     }
                     break;

@@ -67,6 +67,12 @@
     <Compile Include="AddEmployee.Designer.cs">
       <DependentUpon>AddEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAddEmployeeHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddEmployeeHelp.Designer.cs">
+      <DependentUpon>frmAddEmployeeHelp.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAddItems.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,12 @@
     </Compile>
     <Compile Include="frmEmployee.Designer.cs">
       <DependentUpon>frmEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHelpAddItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHelpAddItem.Designer.cs">
+      <DependentUpon>frmHelpAddItem.cs</DependentUpon>
     </Compile>
     <Compile Include="frmHelpEmployeeView.cs">
       <SubType>Form</SubType>
@@ -139,11 +151,17 @@
     <EmbeddedResource Include="AddEmployee.resx">
       <DependentUpon>AddEmployee.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAddEmployeeHelp.resx">
+      <DependentUpon>frmAddEmployeeHelp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAddItems.resx">
       <DependentUpon>frmAddItems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEmployee.resx">
       <DependentUpon>frmEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHelpAddItem.resx">
+      <DependentUpon>frmHelpAddItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmHelpEmployeeView.resx">
       <DependentUpon>frmHelpEmployeeView.cs</DependentUpon>

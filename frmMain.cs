@@ -33,7 +33,7 @@ namespace SU21_Final_Project
         SqlConnection Connection;
         SqlDataAdapter dataAdapter;
         DataTable dataTable;
-        frmLogin frmLogin = new frmLogin();
+        
 
         //Instantiate Item class
         Items myItems = new Items();
@@ -1240,7 +1240,7 @@ namespace SU21_Final_Project
         private void btnHelpEmployeeView_Click(object sender, EventArgs e)
         {
             new frmHelpMain().Show();
-            this.Hide();
+            
         }
     }
 }

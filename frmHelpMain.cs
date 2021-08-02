@@ -19,8 +19,26 @@ namespace SU21_Final_Project
 
         private void btnBacktoMain_Click(object sender, EventArgs e)
         {
-            new frmMain().Show();
+            
             this.Hide();
+        }
+
+        private void frmHelpMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            switch (e.CloseReason)
+            {
+                case CloseReason.UserClosing:
+                    if (MessageBox.Show("Do you want to close this form?", "Close Form", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                    }
+                    else
+                    {
+                        
+                        this.Hide();
+                    }
+                    break;
+            }
         }
     }
 }

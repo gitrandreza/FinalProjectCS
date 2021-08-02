@@ -19,8 +19,28 @@ namespace SU21_Final_Project
 
         private void btnReturnEmployeeView_Click(object sender, EventArgs e)
         {
-            new frmEmployee().Show();
+            new frmEmployee().Visible = true;
             this.Hide();
+        }
+
+        private void frmHelpEmployeeView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            switch (e.CloseReason)
+            {
+                case CloseReason.UserClosing:
+                    if (MessageBox.Show("Are you sure you want to close?", "Close Form", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                    }
+                    else
+                    {
+
+
+                        this.Hide();
+                        new frmEmployee().Visible = true;
+                    }
+                    break;
+            }
         }
     }
 }

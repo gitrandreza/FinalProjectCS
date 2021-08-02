@@ -28,7 +28,7 @@ namespace SU21_Final_Project
         string strConfirmPassword;
         bool blnMatch=false;
 
-        public static bool blnResetPasswordPicture = false;
+    
         public frmResetPassword()
         {
             InitializeComponent();
@@ -263,8 +263,8 @@ namespace SU21_Final_Project
         private void btnHelpResetPassword_Click(object sender, EventArgs e)
         {
             new frmHelp().Show();
-            blnResetPasswordPicture = true;
-            this.Hide();
+           
+            
         }
     }
 }

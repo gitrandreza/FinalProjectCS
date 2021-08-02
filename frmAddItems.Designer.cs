@@ -286,6 +286,7 @@ namespace SU21_Final_Project
             this.btnHelpAddItem.TabIndex = 57;
             this.btnHelpAddItem.Text = "HELP?";
             this.btnHelpAddItem.UseVisualStyleBackColor = false;
+            this.btnHelpAddItem.Click += new System.EventHandler(this.btnHelpAddItem_Click);
             // 
             // frmAddItems
             // 

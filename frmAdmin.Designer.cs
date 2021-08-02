@@ -2037,7 +2037,7 @@ namespace SU21_Final_Project
             this.MaximizeBox = false;
             this.Name = "frmAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Administrator (Manager)";
+            this.Text = "Manager View";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAdmin_FormClosing);
             this.Load += new System.EventHandler(this.frmAdmin_Load);
             this.tabEmployee.ResumeLayout(false);

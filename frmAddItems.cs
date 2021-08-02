@@ -35,7 +35,7 @@ namespace SU21_Final_Project
         string strPurchaseInvoice;
         string strPurchaseInvoiceFile;
 
-
+      
         bool blnDuplicateItemName;
         public frmAddItems()
         {
@@ -364,6 +364,13 @@ namespace SU21_Final_Project
             {
                 e.Handled = true;
             }
+        }
+
+        private void btnHelpAddItem_Click(object sender, EventArgs e)
+        {
+            new frmHelpAddItem().Show();
+            this.Visible = false;
+            
         }
     }
     

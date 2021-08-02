@@ -77,7 +77,7 @@ namespace SU21_Final_Project
             this.btnReturnEmployeeView.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnReturnEmployeeView.BackgroundImage")));
             this.btnReturnEmployeeView.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnReturnEmployeeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReturnEmployeeView.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnReturnEmployeeView.ForeColor = System.Drawing.Color.Maroon;
             this.btnReturnEmployeeView.Location = new System.Drawing.Point(1, 670);
             this.btnReturnEmployeeView.Margin = new System.Windows.Forms.Padding(4);
             this.btnReturnEmployeeView.Name = "btnReturnEmployeeView";
@@ -99,6 +99,7 @@ namespace SU21_Final_Project
             this.Name = "frmHelpEmployeeView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Help Employee View";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmHelpEmployeeView_FormClosing);
             this.tabEmployeeViewHelp.ResumeLayout(false);
             this.ResumeLayout(false);
 

@@ -74,6 +74,7 @@ namespace SU21_Final_Project
             this.Name = "frmHelpMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Help ";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmHelpMain_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pbxHelpMain)).EndInit();
             this.ResumeLayout(false);
 

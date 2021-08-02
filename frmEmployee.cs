@@ -1891,7 +1891,7 @@ namespace SU21_Final_Project
         private void btnHelpEmployeeView_Click(object sender, EventArgs e)
         {
             new frmHelpEmployeeView().Show();
-            this.Hide();
+            this.Visible = false;
         }
     }
 }

@@ -23,7 +23,7 @@ namespace SU21_Final_Project
         string strPassword;
 
 
-        public static bool blnHelpLoginPicture=false;
+      
         public frmLogin()
         {
             InitializeComponent();
@@ -186,8 +186,8 @@ namespace SU21_Final_Project
         private void btnHelpLoginForm_Click(object sender, EventArgs e)
         {
             new frmHelp().Show();
-            blnHelpLoginPicture = true;
-            this.Hide();
+          
+            
         }
     }
 }
