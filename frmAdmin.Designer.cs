@@ -1659,6 +1659,7 @@ namespace SU21_Final_Project
             // 
             this.btnSaveEditSupplier.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSaveEditSupplier.BackgroundImage")));
             this.btnSaveEditSupplier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSaveEditSupplier.Enabled = false;
             this.btnSaveEditSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveEditSupplier.ForeColor = System.Drawing.Color.SaddleBrown;
             this.btnSaveEditSupplier.Location = new System.Drawing.Point(14, 473);
@@ -2017,6 +2018,7 @@ namespace SU21_Final_Project
             this.btnHelpAdmin.TabIndex = 20;
             this.btnHelpAdmin.Text = "Help?";
             this.btnHelpAdmin.UseVisualStyleBackColor = true;
+            this.btnHelpAdmin.Click += new System.EventHandler(this.btnHelpAdmin_Click);
             // 
             // frmAdmin
             // 

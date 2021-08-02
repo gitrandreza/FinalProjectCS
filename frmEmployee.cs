@@ -111,7 +111,7 @@ namespace SU21_Final_Project
                 Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
                 Connection.Open();
-                dataAdapter = new SqlDataAdapter("SELECT ItemID , Name, Quantity,CategoryID, RetailPrice , Description,SupplierID FROM RandrezaVoharisoaM21Su2332.Items", Connection);
+                dataAdapter = new SqlDataAdapter("SELECT ItemID as [Item ID] , Name, Quantity,CategoryID as [Category ID], FORMAT(RetailPrice, 'c', 'en-US') AS 'Retail Price', Description,SupplierID as [Supplier ID] FROM RandrezaVoharisoaM21Su2332.Items", Connection);
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvEmployeeViewItem.DataSource = dataTable;
@@ -174,7 +174,7 @@ namespace SU21_Final_Project
 
                     intQuantitySelected = intQuantityAvailable;
 
-                    strPrice = row.Cells["RetailPrice"].Value.ToString();                   
+                    strPrice = row.Cells["Retail Price"].Value.ToString().Substring(1);                   
                     bool dblResultTryParse = double.TryParse(strPrice, out dblPrice);
                     if (dblResultTryParse == false)
                     {
@@ -280,10 +280,10 @@ namespace SU21_Final_Project
                                 }
 
                                 double dblTotalPrice =dblPriceItemSelected * intQuantityNeeded;
-                                string strTotalPrice = dblTotalPrice.ToString();
+                                string strTotalPrice = dblTotalPrice.ToString("C2");
 
 
-                                string[] row = { strItemSelectedName, strItemDeco, strItemColor, strItemSize, strQuantityNeeded,dblPriceItemSelected.ToString(), strTotalPrice };
+                                string[] row = { strItemSelectedName, strItemDeco, strItemColor, strItemSize, strQuantityNeeded,dblPriceItemSelected.ToString("C2"), strTotalPrice };
                                 dgvItemList.Rows.Add(row);
                                 dgvItemList.CurrentCell.Selected = false;
 
@@ -381,6 +381,11 @@ namespace SU21_Final_Project
                     dgvEmployeeViewItem.Rows[intIndexRowSelected].Cells[2].Value = intQuantitySelected.ToString();
                 }
                 DisplayEmployeeViewItems();
+
+                if (dgvItemList.SelectedRows.Count == 0)
+                {
+                    btnPlaceOrder.Enabled = false;
+                }
             }
             else
             {
@@ -423,7 +428,7 @@ namespace SU21_Final_Project
                 //cumulate Total Price of order from list cart
                 for (int i = 0; i < dgvItemList.Rows.Count; i++)
                 {
-                    strTotalPriceList = dgvItemList.Rows[i].Cells[6].Value.ToString();
+                    strTotalPriceList = dgvItemList.Rows[i].Cells[6].Value.ToString().Substring(1);
 
                     bool dblResultTryParse = double.TryParse(strTotalPriceList, out dblTotalPriceList);
 
@@ -1513,8 +1518,15 @@ namespace SU21_Final_Project
             if (tabEmployeeView.SelectedTab.Name == "tabInformation")
             {
                 DisplayEmployeeInfo(strEmployeeUserID);
+                btnResetAll.Enabled = false;
+            }
+            if (tabEmployeeView.SelectedTab.Name == "tabPOS")
+            {
+               
+                btnResetAll.Enabled = true;
             }
         }
+
 
         private void cbxEmployeePhone_CheckedChanged(object sender, EventArgs e)
         {
@@ -1874,6 +1886,12 @@ namespace SU21_Final_Project
 
                 }
             }
+        }
+
+        private void btnHelpEmployeeView_Click(object sender, EventArgs e)
+        {
+            new frmHelpEmployeeView().Show();
+            this.Hide();
         }
     }
 }

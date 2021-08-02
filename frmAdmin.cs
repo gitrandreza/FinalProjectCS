@@ -528,10 +528,10 @@ namespace SU21_Final_Project
             html.AppendLine($"<head>{css}<title>{"Invoice"}</title></head>");
             html.AppendLine("<body>");
 
-            html.AppendLine($"<h1>{" Purchase Detail"}</h1>");
+            html.AppendLine($"<h1>{" Purchase Invoice"}</h1>");
 
             html.Append($"<h5>{"Date: "}{lblDate.Text}</h5>");
-            html.Append($"<h5>{"Purchase Invoice: "}{strPurchaseInvoiceFile}</h5>");
+            html.Append($"<h5>{"Purchase Invoice #: "}{strPurchaseInvoiceFile}</h5>");
 
             html.AppendLine("<table>");
             html.AppendLine("<tr><td>Name</td><td>Quantity</td><td>Cost</td><td>TotalCost</td>");
@@ -551,7 +551,7 @@ namespace SU21_Final_Project
 
 
             html.AppendLine($"<h5>{"Subtotal: "}{dblTotalCost.ToString("C2")}</h5>");
-            html.AppendLine($"<h5>{"Tax Sale(8.25%): "}{dblTaxValue.ToString("C2")}</h5>");
+            html.AppendLine($"<h5>{"Tax (8.25%): "}{dblTaxValue.ToString("C2")}</h5>");
             html.AppendLine($"<h5>{"Total Amount: "}{dblTotalPay.ToString("C2")}</h5>");
 
 
@@ -1236,7 +1236,7 @@ namespace SU21_Final_Project
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                 Connection.Open();
-                dataAdapter = new SqlDataAdapter("SELECT * FROM RandrezaVoharisoaM21Su2332.SalesReport;", Connection);
+                dataAdapter = new SqlDataAdapter("SELECT SaleId as [Sale ID], UserID as [User ID], CreationDate as [Date of Sale], TotalSale as [Sales Amount]  FROM RandrezaVoharisoaM21Su2332.SalesReport;", Connection);
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvSalesReport.DataSource = dataTable;
@@ -1258,7 +1258,7 @@ namespace SU21_Final_Project
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                 Connection.Open();
-                string strQuery = "SELECT * FROM RandrezaVoharisoaM21Su2332.SalesDetails where SaleID='" + strSaleID + "' ;";
+                string strQuery = "SELECT SaleID as [Sale ID],ItemID as [Item ID], QuantitySold as [Quantity], Decoration, Size, Color FROM RandrezaVoharisoaM21Su2332.SalesDetails where SaleID='" + strSaleID + "' ;";
                 dataAdapter = new SqlDataAdapter(strQuery, Connection);
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
@@ -1278,8 +1278,8 @@ namespace SU21_Final_Project
             {
                 //instantiate object from Items class and assign value from cell
                 DataGridViewRow row = this.dgvSalesReport.Rows[e.RowIndex];
-                strSaleId = row.Cells["SaleId"].Value.ToString();
-                strInvoiceReport= row.Cells["SaleId"].Value.ToString();
+                strSaleId = row.Cells["Sale ID"].Value.ToString();
+                strInvoiceReport= row.Cells["Sale ID"].Value.ToString();
                 DisplaySalesDetail(strSaleId);
 
             }
@@ -1966,12 +1966,13 @@ namespace SU21_Final_Project
             gbxAddEditSupplier.Enabled = true;
             DisplaySupplierList();
             btnSaveEditSupplier.Enabled = false;
+            btnSaveAddSupplier.Enabled = true;
         }
 
         private void btnEditSupplier_Click(object sender, EventArgs e)
         {
             string strCompanyName = dgvSupplierView.Rows[dgvSupplierView.CurrentCell.RowIndex].Cells[1].Value.ToString();
-            btnSaveAddSupplier.Enabled = false;
+           
 
 
             if (dgvSupplierView.SelectedRows.Count > 0)
@@ -1980,6 +1981,7 @@ namespace SU21_Final_Project
                 {
                    gbxAddEditSupplier.Enabled = true;
                     btnSaveAddSupplier.Enabled = false;
+                    btnEditSupplier.Enabled = true;
                 }
                 else
                 {
@@ -2117,7 +2119,7 @@ namespace SU21_Final_Project
 
                 DisplayCustomers();
                 Reset();
-
+                btnEditSupplier.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -2171,7 +2173,9 @@ namespace SU21_Final_Project
                               
                                 DisplaySupplierList();
                                 ResetSupplierEntry();
-                                Connection.Close();
+                            btnSaveAddSupplier.Enabled = false;
+                            MessageBox.Show("New Supplier was successfully added", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Connection.Close();
                            
 
 
@@ -2231,6 +2235,7 @@ namespace SU21_Final_Project
                         SqlCommand deleteCommand = new SqlCommand(strDeleteQuery, Connection);
 
                         deleteCommand.ExecuteNonQuery();
+                        MessageBox.Show("Supplier has been removed", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         DisplaySupplierList();
 
                         Connection.Close();
@@ -2258,7 +2263,7 @@ namespace SU21_Final_Project
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                 Connection.Open();
-                dataAdapter = new SqlDataAdapter("SELECT * FROM RandrezaVoharisoaM21Su2332.Purchase;", Connection);
+                dataAdapter = new SqlDataAdapter("SELECT PurchaseID as [Purchase ID],SupplierID as [Supplier ID], PurchaseDate as [Date of Purchase], ItemName as [Product Purchased] FROM RandrezaVoharisoaM21Su2332.Purchase;", Connection);
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvPurchaseRecord.DataSource = dataTable;
@@ -2409,7 +2414,11 @@ namespace SU21_Final_Project
             }
         }
 
-      
+        private void btnHelpAdmin_Click(object sender, EventArgs e)
+        {
+            new frmManagerViewHelp().Show();
+            this.Hide();
+        }
     }
 
 }

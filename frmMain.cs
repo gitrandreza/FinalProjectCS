@@ -369,8 +369,8 @@ namespace SU21_Final_Project
 
 
 
-                                        //lblMessage.Text =dblTotalPrice.ToString();
-                                        string strItemTotalPrice = dblTotalPrice.ToString();
+                                       
+                                        string strItemTotalPrice = dblTotalPrice.ToString("C2");
 
                                         string strItemPrice = myItems.Price.ToString("C2");
 
@@ -496,13 +496,21 @@ namespace SU21_Final_Project
                 lblDiscount.Text = "";
                 dblDiscount = 0;
                 lblTotalAmount.Text = "";
-
+                lblTotalList.Text = "";
                 lblDeliveryOne.BackColor = Color.Silver;
                 lblDeliveryTwo.BackColor = Color.Silver;
                 lblDeliveryThree.BackColor = Color.Silver;
+                lblQuantityAvailable.Text = "";
+                cboColor.Text = "";
 
                 DisplayAllItems();
+                if (dgvList.SelectedRows.Count == 0)
+                {
+                    btnDisplayAmount.Enabled = false;
+                }
             }
+
+            
             else
             {
                 MessageBox.Show("Please select the product you want to remove", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -546,7 +554,7 @@ namespace SU21_Final_Project
                 //cumulate Total Price of order from list cart
                 for (int i = 0; i < dgvList.Rows.Count; i++)
                 {
-                    strTotalPriceList = dgvList.Rows[i].Cells[6].Value.ToString();
+                    strTotalPriceList = dgvList.Rows[i].Cells[6].Value.ToString().Substring(1);
 
                     bool dblResultTryParse = double.TryParse(strTotalPriceList, out dblTotalPriceList);
 
@@ -577,7 +585,7 @@ namespace SU21_Final_Project
 
 
             }
-            
+          
             dblDiscountCouponPercentage = dblTotalList * dblCoupounPercentage;
 
 
@@ -1227,6 +1235,12 @@ namespace SU21_Final_Project
             CalculateAmount();
             tbxCoupon.Text = "";
             lblCouponDescription.Text = "";
+        }
+
+        private void btnHelpEmployeeView_Click(object sender, EventArgs e)
+        {
+            new frmHelpMain().Show();
+            this.Hide();
         }
     }
 }

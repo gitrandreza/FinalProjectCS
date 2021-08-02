@@ -79,6 +79,18 @@
     <Compile Include="frmEmployee.Designer.cs">
       <DependentUpon>frmEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmHelpEmployeeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHelpEmployeeView.Designer.cs">
+      <DependentUpon>frmHelpEmployeeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHelpMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHelpMain.Designer.cs">
+      <DependentUpon>frmHelpMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +102,12 @@
     </Compile>
     <Compile Include="frmAdmin.Designer.cs">
       <DependentUpon>frmAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmManagerViewHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManagerViewHelp.Designer.cs">
+      <DependentUpon>frmManagerViewHelp.cs</DependentUpon>
     </Compile>
     <Compile Include="frmResetPassword.cs">
       <SubType>Form</SubType>
@@ -127,6 +145,12 @@
     <EmbeddedResource Include="frmEmployee.resx">
       <DependentUpon>frmEmployee.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmHelpEmployeeView.resx">
+      <DependentUpon>frmHelpEmployeeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHelpMain.resx">
+      <DependentUpon>frmHelpMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -135,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManagerViewHelp.resx">
+      <DependentUpon>frmManagerViewHelp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmResetPassword.resx">
       <DependentUpon>frmResetPassword.cs</DependentUpon>

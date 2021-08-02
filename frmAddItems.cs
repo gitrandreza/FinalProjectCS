@@ -337,12 +337,11 @@ namespace SU21_Final_Project
 
         private void btnInsertImage_Click(object sender, EventArgs e)
         {
-            using(OpenFileDialog ofd= new OpenFileDialog() { Filter ="JPEG| * .jpg", ValidateNames=true, Multiselect = false })
+            using(OpenFileDialog ofd= new OpenFileDialog() { Filter ="JPEG| * .jpg; *.png", ValidateNames=true, Multiselect = false })
             {
                 if(ofd.ShowDialog()==DialogResult.OK)
                 {
-                    strfileName = ofd.FileName;
-                    tbxFileName.Text = strfileName;
+                    strfileName = ofd.FileName;                   
                     pbxDisplayItemImage.Image = Image.FromFile(strfileName);
                     btnSaveItems.Enabled = true;
                 }

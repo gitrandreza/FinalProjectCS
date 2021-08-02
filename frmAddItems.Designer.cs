@@ -33,8 +33,6 @@ namespace SU21_Final_Project
             this.gbxItemInformation = new System.Windows.Forms.GroupBox();
             this.btnSaveItems = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
-            this.tbxFileName = new System.Windows.Forms.TextBox();
-            this.lblImageSource = new System.Windows.Forms.Label();
             this.pbxDisplayItemImage = new System.Windows.Forms.PictureBox();
             this.btnLoad = new System.Windows.Forms.Button();
             this.cboSupplier = new System.Windows.Forms.ComboBox();
@@ -62,8 +60,6 @@ namespace SU21_Final_Project
             this.gbxItemInformation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.gbxItemInformation.Controls.Add(this.btnSaveItems);
             this.gbxItemInformation.Controls.Add(this.btnBack);
-            this.gbxItemInformation.Controls.Add(this.tbxFileName);
-            this.gbxItemInformation.Controls.Add(this.lblImageSource);
             this.gbxItemInformation.Controls.Add(this.pbxDisplayItemImage);
             this.gbxItemInformation.Controls.Add(this.btnLoad);
             this.gbxItemInformation.Controls.Add(this.cboSupplier);
@@ -121,23 +117,6 @@ namespace SU21_Final_Project
             this.btnBack.Text = "&Close";
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
-            // tbxFileName
-            // 
-            this.tbxFileName.Location = new System.Drawing.Point(579, 311);
-            this.tbxFileName.Name = "tbxFileName";
-            this.tbxFileName.ReadOnly = true;
-            this.tbxFileName.Size = new System.Drawing.Size(206, 22);
-            this.tbxFileName.TabIndex = 50;
-            // 
-            // lblImageSource
-            // 
-            this.lblImageSource.AutoSize = true;
-            this.lblImageSource.Location = new System.Drawing.Point(466, 314);
-            this.lblImageSource.Name = "lblImageSource";
-            this.lblImageSource.Size = new System.Drawing.Size(107, 17);
-            this.lblImageSource.TabIndex = 49;
-            this.lblImageSource.Text = "Image Source";
             // 
             // pbxDisplayItemImage
             // 
@@ -350,8 +329,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.PictureBox pbxDisplayItemImage;
-        private System.Windows.Forms.TextBox tbxFileName;
-        private System.Windows.Forms.Label lblImageSource;
         private System.Windows.Forms.Button btnHelpAddItem;
     }
 }
