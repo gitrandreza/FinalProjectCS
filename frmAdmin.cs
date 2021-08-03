@@ -298,17 +298,25 @@ namespace SU21_Final_Project
                 }
                 else
                 {
-
-                    strAddQuantity = tbxQuantity.Text;
-                    blnQuantityConvert = int.TryParse(strAddQuantity, out intAddQuantity);
-                    if (blnQuantityConvert == false)
+                    if(!tbxQuantity.Text.Contains("."))
                     {
-                        MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        strAddQuantity = tbxQuantity.Text;
+                        blnQuantityConvert = int.TryParse(strAddQuantity, out intAddQuantity);
+                        if (blnQuantityConvert == false)
+                        {
+                            MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            tbxQuantity.Focus();
+                        }
 
+                        
                     }
-
+                    else
+                    {
+                        MessageBox.Show("Please enter a valid quantity number", "Invalid Quantity", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     intUpdateQuantity = intSelectedQuantity + intAddQuantity;
                     blnInvoice = true;
+
                 }
 
                 if (tbxCost.Text == "")

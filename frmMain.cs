@@ -1240,7 +1240,7 @@ namespace SU21_Final_Project
         private void btnHelpEmployeeView_Click(object sender, EventArgs e)
         {
             new frmHelpMain().Show();
-            
+          
         }
     }
 }

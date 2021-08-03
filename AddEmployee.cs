@@ -321,8 +321,8 @@ namespace SU21_Final_Project
                 Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.
                  [0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
                 RegexOptions.CultureInvariant | RegexOptions.Singleline);
-                bool isValidEmail = regex.IsMatch(strValidEmail);
-                if (!isValidEmail)
+                bool blnIsValidEmail = regex.IsMatch(strValidEmail);
+                if (!blnIsValidEmail)
                 {
                     return false;
                 }

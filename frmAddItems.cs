@@ -86,12 +86,21 @@ namespace SU21_Final_Project
                         reader.Close();
 
                         //INSERT RECORD FOR NEW INPUT
-                         string strQuantityPurchased=tbxQuantity.Text;
-                       
-                        if (!int.TryParse(strQuantityPurchased, out intQuantityPurchased))
+                        if (!tbxQuantity.Text.Contains("."))
                         {
-                            MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            string strQuantityPurchased = tbxQuantity.Text;
+
+                            if (!int.TryParse(strQuantityPurchased, out intQuantityPurchased))
+                            {
+                                MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
+                        else
+                        {
+                            MessageBox.Show("Invalid quantity number", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            tbxQuantity.Focus();
+                        }
+                        
 
                         string strItemCost = tbxItemCost.Text;
                       

@@ -1746,7 +1746,7 @@ namespace SU21_Final_Project
             // 
             this.radEmbroidered.AutoSize = true;
             this.radEmbroidered.ForeColor = System.Drawing.Color.Black;
-            this.radEmbroidered.Location = new System.Drawing.Point(12, 18);
+            this.radEmbroidered.Location = new System.Drawing.Point(5, 19);
             this.radEmbroidered.Name = "radEmbroidered";
             this.radEmbroidered.Size = new System.Drawing.Size(121, 21);
             this.radEmbroidered.TabIndex = 4;

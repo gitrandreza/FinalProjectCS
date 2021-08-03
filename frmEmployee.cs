@@ -201,196 +201,214 @@ namespace SU21_Final_Project
         //Add selected list with features in the list
         private void btnAddSelection_Click(object sender, EventArgs e)
         {
-            if (tbxQuantityNeeded.Text != "")
+            try
             {
-
-               
-                strQuantityNeeded = tbxQuantityNeeded.Text;
-                bool intQuantityTryParse = int.TryParse(strQuantityNeeded, out intQuantityNeeded);
-                if (intQuantityTryParse == false)
+                if (tbxQuantityNeeded.Text != "" && !tbxQuantityNeeded.Text.Contains("."))
                 {
-                    MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                }
 
 
-                if (intQuantityNeeded <= intQuantityAvailable)
-                {
-                    if (radEmbroidered.Checked == true || radPrinted.Checked == true || radBlank.Checked == true)
+                    strQuantityNeeded = tbxQuantityNeeded.Text;
+                    bool intQuantityTryParse = int.TryParse(strQuantityNeeded, out intQuantityNeeded);
+                    if (intQuantityTryParse == false)
                     {
-                        if (radSmall.Checked == true || radMedium.Checked == true || radLarge.Checked == true)
+                        MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+
+
+                    if (intQuantityNeeded <= intQuantityAvailable)
+                    {
+
+                        if (radEmbroidered.Checked == true || radPrinted.Checked == true || radBlank.Checked == true)
                         {
-                            if (cboColor.SelectedItem != null)
+                            if (radSmall.Checked == true || radMedium.Checked == true || radLarge.Checked == true)
                             {
-                                //Build datagriedviewList 
-                                dgvItemList.ColumnCount = 7;
-                                dgvItemList.Columns[0].Name = "Name";
-                                dgvItemList.Columns[1].Name = "Type of Decoration";
-                                dgvItemList.Columns[2].Name = "Color";
-                                dgvItemList.Columns[3].Name = "Size";
-                                dgvItemList.Columns[4].Name = "Quantity";
-                                dgvItemList.Columns[5].Name = "Unit Price";
-                                dgvItemList.Columns[6].Name = "Total Price";
-
-
-
-                                //Get selection information from input 
-
-
-                                string strItemDeco = "N/A";
-                                if (radEmbroidered.Checked == true)
+                                if (cboColor.SelectedItem != null)
                                 {
-                                    strItemDeco = "Embroidered";
-                                }
-                                else if (radPrinted.Checked == true)
-                                {
-                                    strItemDeco = "Printed";
-                                }
+                                    //Build datagriedviewList 
+                                    dgvItemList.ColumnCount = 7;
+                                    dgvItemList.Columns[0].Name = "Name";
+                                    dgvItemList.Columns[1].Name = "Type of Decoration";
+                                    dgvItemList.Columns[2].Name = "Color";
+                                    dgvItemList.Columns[3].Name = "Size";
+                                    dgvItemList.Columns[4].Name = "Quantity";
+                                    dgvItemList.Columns[5].Name = "Unit Price";
+                                    dgvItemList.Columns[6].Name = "Total Price";
 
-                                else if (radBlank.Checked == true)
-                                {
-                                    strItemDeco = "Blank";
-                                }
 
-                                string strItemColor;
-                                if (cboColor.SelectedItem == null)
-                                {
-                                    strItemColor = "N/A";
+
+                                    //Get selection information from input 
+
+
+                                    string strItemDeco = "N/A";
+                                    if (radEmbroidered.Checked == true)
+                                    {
+                                        strItemDeco = "Embroidered";
+                                    }
+                                    else if (radPrinted.Checked == true)
+                                    {
+                                        strItemDeco = "Printed";
+                                    }
+
+                                    else if (radBlank.Checked == true)
+                                    {
+                                        strItemDeco = "Blank";
+                                    }
+
+                                    string strItemColor;
+                                    if (cboColor.SelectedItem == null)
+                                    {
+                                        strItemColor = "N/A";
+
+                                    }
+                                    else
+                                    {
+                                        strItemColor = cboColor.SelectedItem.ToString();
+                                    }
+
+
+                                    string strItemSize = "N/A";
+                                    if (radSmall.Checked == true)
+                                    {
+                                        strItemSize = "Small";
+                                    }
+                                    else if (radMedium.Checked == true)
+                                    {
+                                        strItemSize = "Medium";
+                                    }
+
+                                    else if (radLarge.Checked == true)
+                                    {
+                                        strItemSize = "Large";
+                                    }
+
+                                    double dblTotalPrice = dblPriceItemSelected * intQuantityNeeded;
+                                    string strTotalPrice = dblTotalPrice.ToString("C2");
+
+
+                                    string[] row = { strItemSelectedName, strItemDeco, strItemColor, strItemSize, strQuantityNeeded, dblPriceItemSelected.ToString("C2"), strTotalPrice };
+                                    dgvItemList.Rows.Add(row);
+                                    dgvItemList.CurrentCell.Selected = false;
+
+
+                                    if (intQuantitySelected > 0)
+                                    {
+                                        //Decrease Quantity Item selected
+                                        intQuantitySelected = intQuantitySelected - intQuantityNeeded;
+
+                                        lblQuantityRemain.Text = intQuantitySelected.ToString();
+
+                                        //grab current row index selected
+                                        int intIndexRowSelected = dgvEmployeeViewItem.CurrentCell.RowIndex;
+                                        //Insert quantity updated to current row and Cell "Quantity" index 1
+                                        dgvEmployeeViewItem.Rows[intIndexRowSelected].Cells[2].Value = intQuantitySelected.ToString();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Sorry, this item is out of stock!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+
+                                    //Reset Selection
+                                    tbxQuantityNeeded.Text = "";
+                                    radEmbroidered.Checked = false;
+                                    radPrinted.Checked = false;
+                                    radBlank.Checked = false;
+                                    radLarge.Checked = false;
+                                    radMedium.Checked = false;
+                                    radSmall.Checked = false;
+                                    cboColor.Text = "";
+                                    lblQuantityRemain.Text = "";
 
                                 }
                                 else
                                 {
-                                    strItemColor = cboColor.SelectedItem.ToString();
+                                    MessageBox.Show("Please choose Color", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
-
-
-                                string strItemSize = "N/A";
-                                if (radSmall.Checked == true)
-                                {
-                                    strItemSize = "Small";
-                                }
-                                else if (radMedium.Checked == true)
-                                {
-                                    strItemSize = "Medium";
-                                }
-
-                                else if (radLarge.Checked == true)
-                                {
-                                    strItemSize = "Large";
-                                }
-
-                                double dblTotalPrice =dblPriceItemSelected * intQuantityNeeded;
-                                string strTotalPrice = dblTotalPrice.ToString("C2");
-
-
-                                string[] row = { strItemSelectedName, strItemDeco, strItemColor, strItemSize, strQuantityNeeded,dblPriceItemSelected.ToString("C2"), strTotalPrice };
-                                dgvItemList.Rows.Add(row);
-                                dgvItemList.CurrentCell.Selected = false;
-
-
-                                if (intQuantitySelected > 0)
-                                {
-                                    //Decrease Quantity Item selected
-                                    intQuantitySelected = intQuantitySelected - intQuantityNeeded;
-
-                                    lblQuantityRemain.Text = intQuantitySelected.ToString();
-
-                                    //grab current row index selected
-                                    int intIndexRowSelected = dgvEmployeeViewItem.CurrentCell.RowIndex;
-                                    //Insert quantity updated to current row and Cell "Quantity" index 1
-                                    dgvEmployeeViewItem.Rows[intIndexRowSelected].Cells[2].Value = intQuantitySelected.ToString();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Sorry, this item is out of stock!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-
-                                //Reset Selection
-                                tbxQuantityNeeded.Text = "";
-                                radEmbroidered.Checked = false;
-                                radPrinted.Checked = false;
-                                radBlank.Checked = false;
-                                radLarge.Checked = false;
-                                radMedium.Checked = false;
-                                radSmall.Checked = false;
-                                cboColor.Text = "";
-                                lblQuantityRemain.Text = "";
-                                
                             }
+
                             else
                             {
-                                MessageBox.Show("Please choose Color", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Please choose size", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
-
                         else
                         {
-                            MessageBox.Show("Please choose size", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Please choose decoration", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Please choose decoration", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                        MessageBox.Show("Quantity Unavailable", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        tbxQuantityNeeded.Text = "";
+                        tbxQuantityNeeded.Focus();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Quantity Unavailable", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    tbxQuantityNeeded.Text = "";
+                    MessageBox.Show("Please add quantity or a valid Quantity number", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     tbxQuantityNeeded.Focus();
                 }
+
+
+                if (dgvItemList.Rows.Count > 0)
+                {
+                    btnRemoveCart.Enabled = true;
+                    btnDisplayPrice.Enabled = true;
+                }
+
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Please add quantity", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                tbxQuantityNeeded.Focus();
-            }
-            
-       
-            if(dgvItemList.Rows.Count > 0)
-            {
-                btnRemoveCart.Enabled = true;
-                btnDisplayPrice.Enabled = true;
+                MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            
             
         }
 
         private void btnRemoveCart_Click(object sender, EventArgs e)
         {
-            if (dgvItemList.SelectedRows.Count > 0)
+            try
             {
-                tbxTotalPrice.Text = "";
-                tbxDiscountCustomer.Text = "";
-                tbxSubTotalCustomer.Text = "";
-                tbxTotalToPay.Text = "";
-                tbxTaxCustomer.Text = "";
-
-                foreach (DataGridViewRow row in dgvItemList.SelectedRows)
+                if (dgvItemList.SelectedRows.Count > 0)
                 {
-                    dgvItemList.Rows.RemoveAt(row.Index);
+                    tbxTotalPrice.Text = "";
+                    tbxDiscountCustomer.Text = "";
+                    tbxSubTotalCustomer.Text = "";
+                    tbxTotalToPay.Text = "";
+                    tbxTaxCustomer.Text = "";
 
-                    //Increase Quantity Available
-                    intQuantitySelected = intQuantitySelected + intQuantityNeeded;
+                    foreach (DataGridViewRow row in dgvItemList.SelectedRows)
+                    {
+                        dgvItemList.Rows.RemoveAt(row.Index);
 
-                    lblQuantityRemain.Text = intQuantitySelected.ToString();
-                    //grab current row index selected
-                    int intIndexRowSelected = dgvEmployeeViewItem.CurrentCell.RowIndex;
-                    //Insert quantity updated to current row and Cell "Quantity" index 1
-                    dgvEmployeeViewItem.Rows[intIndexRowSelected].Cells[2].Value = intQuantitySelected.ToString();
+                        //Increase Quantity Available
+                        intQuantitySelected = intQuantitySelected + intQuantityNeeded;
+
+                        lblQuantityRemain.Text = intQuantitySelected.ToString();
+                        //grab current row index selected
+                        int intIndexRowSelected = dgvEmployeeViewItem.CurrentCell.RowIndex;
+                        //Insert quantity updated to current row and Cell "Quantity" index 1
+                        dgvEmployeeViewItem.Rows[intIndexRowSelected].Cells[2].Value = intQuantitySelected.ToString();
+                    }
+                    DisplayEmployeeViewItems();
+
+                    if (dgvItemList.SelectedRows.Count == 0)
+                    {
+                        btnPlaceOrder.Enabled = false;
+                    }
                 }
-                DisplayEmployeeViewItems();
-
-                if (dgvItemList.SelectedRows.Count == 0)
+                else
                 {
-                    btnPlaceOrder.Enabled = false;
+                    MessageBox.Show("Please select the product you want to remove", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("Please select the product you want to remove", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+           
         }
        
 
@@ -398,265 +416,283 @@ namespace SU21_Final_Project
         private void btnDisplayPrice_Click(object sender, EventArgs e)
         {
             CalculateAmount(0, 0);
-            
+            btnPlaceOrder.Enabled = true;
         }
 
         //Function to calculate amount in the list
         void CalculateAmount(double dblDiscountPercentage, double dblDiscountOff)
         {
-            int intQuantityTotal = 0;
-            double dblTotalList=0;
-            double dblAmountTax;
-            double dblDiscount = 0;
-            double dblSubTotal=0;
-            double dblTotalAmount=0;
-            double dblTax = 0.0825;
-
-            string strTotalPriceList;
-            double dblTotalPriceList=0;
-
-
-            string strQuantityTotal;
-            int intQuantityTotalList=0;
-
-
-            
-
-            if (dgvItemList.Rows.Count > 0)//make sure data list is not empty
+            try
             {
+                int intQuantityTotal = 0;
+                double dblTotalList = 0;
+                double dblAmountTax;
+                double dblDiscount = 0;
+                double dblSubTotal = 0;
+                double dblTotalAmount = 0;
+                double dblTax = 0.0825;
 
-                //cumulate Total Price of order from list cart
-                for (int i = 0; i < dgvItemList.Rows.Count; i++)
+                string strTotalPriceList;
+                double dblTotalPriceList = 0;
+
+
+                string strQuantityTotal;
+                int intQuantityTotalList = 0;
+
+
+
+
+                if (dgvItemList.Rows.Count > 0)//make sure data list is not empty
                 {
-                    strTotalPriceList = dgvItemList.Rows[i].Cells[6].Value.ToString().Substring(1);
 
-                    bool dblResultTryParse = double.TryParse(strTotalPriceList, out dblTotalPriceList);
-
-                    if (dblResultTryParse == false)
+                    //cumulate Total Price of order from list cart
+                    for (int i = 0; i < dgvItemList.Rows.Count; i++)
                     {
-                        MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        strTotalPriceList = dgvItemList.Rows[i].Cells[6].Value.ToString().Substring(1);
 
+                        bool dblResultTryParse = double.TryParse(strTotalPriceList, out dblTotalPriceList);
+
+                        if (dblResultTryParse == false)
+                        {
+                            MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        }
+
+
+                        dblTotalList = dblTotalList + dblTotalPriceList;
+                    }
+                    tbxTotalPrice.Text = dblTotalList.ToString("C2");
+
+                    //Cumulate quantity total for discount
+                    for (int i = 0; i < dgvItemList.Rows.Count; i++)
+                    {
+                        strQuantityTotal = dgvItemList.Rows[i].Cells[4].Value.ToString();
+                        bool intResultTryParse = int.TryParse(strQuantityTotal, out intQuantityTotalList);
+                        if (intResultTryParse == false)
+                        {
+                            MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        }
+
+                        intQuantityTotal = intQuantityTotal + intQuantityTotalList;
+                        intQuantityDiscount = intQuantityTotal;
                     }
 
 
-                    dblTotalList = dblTotalList + dblTotalPriceList;
                 }
-                tbxTotalPrice.Text = dblTotalList.ToString("C2");
 
-                //Cumulate quantity total for discount
-                for (int i = 0; i < dgvItemList.Rows.Count; i++)
+
+                dblDiscount = dblTotalList * dblDiscountPercentage;
+                dblSubTotal = dblTotalList - dblDiscount - dblDiscountOff;
+                dblAmountTax = dblTotalList * dblTax;
+                dblTotalAmount = dblSubTotal + dblAmountTax;
+
+                tbxDiscountCustomer.Text = dblDiscount.ToString("C2");
+                tbxSubTotalCustomer.Text = dblSubTotal.ToString("C2");
+                tbxTaxCustomer.Text = dblAmountTax.ToString("C2");
+                tbxTotalToPay.Text = dblTotalAmount.ToString("C2");
+                tbxQuantityTotal.Text = intQuantityTotal.ToString();
+
+                if (intQuantityTotal > 10)
                 {
-                    strQuantityTotal = dgvItemList.Rows[i].Cells[4].Value.ToString();
-                    bool intResultTryParse = int.TryParse(strQuantityTotal, out intQuantityTotalList);
-                    if (intResultTryParse == false)
-                    {
-                        MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    }
-
-                    intQuantityTotal = intQuantityTotal + intQuantityTotalList;
-                    intQuantityDiscount = intQuantityTotal;
+                    tbxDelivery.Text = "24h";
                 }
-
-
+                else if (intQuantityTotal > 50)
+                {
+                    tbxDelivery.Text = "48h";
+                }
+                else if (intQuantityTotal > 100)
+                {
+                    tbxDelivery.Text = "72h";
+                }
+                else
+                {
+                    tbxDelivery.Text = "On call";
+                }
             }
-
-
-            dblDiscount = dblTotalList * dblDiscountPercentage;
-            dblSubTotal = dblTotalList- dblDiscount-dblDiscountOff;
-            dblAmountTax = dblTotalList * dblTax;
-            dblTotalAmount = dblSubTotal + dblAmountTax;
-
-            tbxDiscountCustomer.Text = dblDiscount.ToString("C2");
-            tbxSubTotalCustomer.Text = dblSubTotal.ToString("C2");
-            tbxTaxCustomer.Text = dblAmountTax.ToString("C2");
-            tbxTotalToPay.Text = dblTotalAmount.ToString("C2");
-            tbxQuantityTotal.Text = intQuantityTotal.ToString();
-
-            if(intQuantityTotal>10)
+            catch(Exception ex)
             {
-                tbxDelivery.Text = "24h";
+                MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if(intQuantityTotal > 50)
-            {
-                tbxDelivery.Text = "48h";
-            }
-            else if (intQuantityTotal > 100)
-            {
-                tbxDelivery.Text = "72h";
-            }
-            else
-            {
-                tbxDelivery.Text = "On call";
-            }
+           
         }
 
       
         private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
-            if (tbxTotalToPay.Text != "")
+            try
             {
-                strCreditCardCVV = mskCVV.Text;
-                strCreditCardDate = dtpCreditCard.Text;
-                strCreditCardName = tbxNameCredit.Text;
-                strCreditCardNumber = tbxCardNumber.Text;
-
-                if(ValidCVV(strCreditCardCVV) == true && ValidCreditCardNumber(strCreditCardNumber) == true && tbxNameCredit.Text != "" && dtpCreditCard.Text != "")
+                if (tbxTotalToPay.Text != "")
                 {
-                    if (tbxCustomerName.Text == "")
+                    strCreditCardCVV = mskCVV.Text;
+                    strCreditCardDate = dtpCreditCard.Text;
+                    strCreditCardName = tbxNameCredit.Text;
+                    strCreditCardNumber = tbxCardNumber.Text;
+
+                    if (ValidCVV(strCreditCardCVV) == true && ValidCreditCardNumber(strCreditCardNumber) == true && tbxNameCredit.Text != "" && dtpCreditCard.Text != "")
                     {
-                        MessageBox.Show("Need Customer information, please", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        gbxAddCustomer.Focus();
-                    }
-                    else
-                    {
-
-                        string strDate = lblDate.Text;
-
-                        try
+                        if (tbxCustomerName.Text == "")
                         {
-
-                            Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
-                                "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
-
+                            MessageBox.Show("Need Customer information, please", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            gbxAddCustomer.Focus();
                         }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-
-                        try
+                        else
                         {
 
-                            Connection.Open();
-                            //Store Sales Report
+                            string strDate = lblDate.Text;
 
-                           
-
-                            SqlCommand commandSalesReport = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesReport(UserID,CreationDate, TotalSale) " +
-                                "VALUES(@UserID,@CreationDate,@TotalSale)", Connection);
-                            commandSalesReport.Parameters.AddWithValue("@UserID", intCustomerUserID);
-                            commandSalesReport.Parameters.AddWithValue("@CreationDate", strDate);
-
-                            string strConvertTotalToPay = tbxTotalToPay.Text.Substring(1);
-                            double dblConvertTotalToPay;
-                            if (!double.TryParse(strConvertTotalToPay, out dblConvertTotalToPay))
+                            try
                             {
-                                MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
 
-                            commandSalesReport.Parameters.AddWithValue("@TotalSale", dblConvertTotalToPay);
-                           
-                            
-                           
-                            btnViewInvoice.Enabled = true;
-                            blnPaid = true;
-                            commandSalesReport.ExecuteNonQuery();
-
-
-
-                            //Get the last SaleID using Max to insert as FK to the Sales Report table
-                            string strQuerySaleID = "SELECT MAX(SaleId) from RandrezaVoharisoaM21Su2332.SalesReport";
-                            SqlCommand commandSalesID = new SqlCommand(strQuerySaleID, Connection);
-
-                            //gets Sale Id from insert sale report in the table sales report
-                            SqlDataReader srSaleID = commandSalesID.ExecuteReader();
-                            srSaleID.Read();
-                            intSaleId = srSaleID.GetInt32(0);
-                            
-                            strInvoiceReference = intSaleId.ToString();
-                            strLastSaleReport = intSaleId.ToString() + ".html";
-                            srSaleID.Close();
-
-                            //Loop through the data grid view List to store sales details in database table
-                            foreach (DataGridViewRow row in dgvItemList.Rows)
-                            {
-                                //Store List in the table Sales Details
-                                SqlCommand commandSalesDetails = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesDetails(SaleID,ItemID,QuantitySold,Decoration,Size,Color) " +
-                                  "VALUES(@SaleID,@ItemID,@QuantitySold,@Decoration,@Size,@Color)", Connection);
-                                //Select item ID of each Item Name in the data grid view list
-                                string strItemID;
-                                string strNameItem = row.Cells["Name"].Value.ToString();
-                                SqlCommand commandItemID = new SqlCommand("SELECT RandrezaVoharisoaM21Su2332.Items.ItemID FROM RandrezaVoharisoaM21Su2332.Items " +
-                                    "FULL JOIN RandrezaVoharisoaM21Su2332.SalesDetails " +
-                                    "ON RandrezaVoharisoaM21Su2332.SalesDetails.ItemID = RandrezaVoharisoaM21Su2332.Items.ItemID WHERE Name = '" + strNameItem + "'", Connection);
-                                SqlDataReader srItemID = commandItemID.ExecuteReader();
-                                srItemID.Read();
-                                strItemID = srItemID["ItemID"].ToString();
-                                srItemID.Close();
-
-                                string strQuantitySold = row.Cells["Quantity"].Value.ToString();
-                                string strDecoration = row.Cells["Type of Decoration"].Value.ToString();
-                                string strSize = row.Cells["Size"].Value.ToString();
-                                string strColor = row.Cells["Color"].Value.ToString();
-
-                                commandSalesDetails.Parameters.AddWithValue("@SaleID", intSaleId);
-                                commandSalesDetails.Parameters.AddWithValue("@ItemID", strItemID);
-                                commandSalesDetails.Parameters.AddWithValue("@QuantitySold", strQuantitySold);
-                                commandSalesDetails.Parameters.AddWithValue("@Decoration", strDecoration);
-                                commandSalesDetails.Parameters.AddWithValue("@Size", strSize);
-                                commandSalesDetails.Parameters.AddWithValue("@Color", strColor);
-
-
-                                commandSalesDetails.ExecuteNonQuery();
+                                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                             }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
 
-                            //Loop through the data grid view All column quantity to UPDATE QUANTITY in database table
-                            foreach (DataGridViewRow row in dgvEmployeeViewItem.Rows)
+                            try
                             {
 
-                                string strQuantityUpdate = row.Cells["Quantity"].Value.ToString();
-                                int intQuantityDgv;
-                                bool blnConvert = int.TryParse(strQuantityUpdate, out intQuantityDgv);
-                                if (blnConvert == false)
+                                Connection.Open();
+                                //Store Sales Report
+
+
+
+                                SqlCommand commandSalesReport = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesReport(UserID,CreationDate, TotalSale) " +
+                                    "VALUES(@UserID,@CreationDate,@TotalSale)", Connection);
+                                commandSalesReport.Parameters.AddWithValue("@UserID", intCustomerUserID);
+                                commandSalesReport.Parameters.AddWithValue("@CreationDate", strDate);
+
+                                string strConvertTotalToPay = tbxTotalToPay.Text.Substring(1);
+                                double dblConvertTotalToPay;
+                                if (!double.TryParse(strConvertTotalToPay, out dblConvertTotalToPay))
                                 {
                                     MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
 
-                                string strNameItem = row.Cells["Name"].Value.ToString();
-                                //UPDATE quantity in the table Items
-                                string strUpdateQuery = "UPDATE RandrezaVoharisoaM21Su2332.Items SET Quantity = @Quantity where Name= '" + strNameItem + "'";
-                                SqlCommand commandUpQuantity = new SqlCommand(strUpdateQuery, Connection);
+                                commandSalesReport.Parameters.AddWithValue("@TotalSale", dblConvertTotalToPay);
 
-                                SqlParameter sqlParams = commandUpQuantity.Parameters.AddWithValue("@Quantity", intQuantityDgv);
-                                commandUpQuantity.ExecuteNonQuery();
 
+
+                                btnViewInvoice.Enabled = true;
+                                blnPaid = true;
+                                commandSalesReport.ExecuteNonQuery();
+
+
+
+                                //Get the last SaleID using Max to insert as FK to the Sales Report table
+                                string strQuerySaleID = "SELECT MAX(SaleId) from RandrezaVoharisoaM21Su2332.SalesReport";
+                                SqlCommand commandSalesID = new SqlCommand(strQuerySaleID, Connection);
+
+                                //gets Sale Id from insert sale report in the table sales report
+                                SqlDataReader srSaleID = commandSalesID.ExecuteReader();
+                                srSaleID.Read();
+                                intSaleId = srSaleID.GetInt32(0);
+
+                                strInvoiceReference = intSaleId.ToString();
+                                strLastSaleReport = intSaleId.ToString() + ".html";
+                                srSaleID.Close();
+
+                                //Loop through the data grid view List to store sales details in database table
+                                foreach (DataGridViewRow row in dgvItemList.Rows)
+                                {
+                                    //Store List in the table Sales Details
+                                    SqlCommand commandSalesDetails = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesDetails(SaleID,ItemID,QuantitySold,Decoration,Size,Color) " +
+                                      "VALUES(@SaleID,@ItemID,@QuantitySold,@Decoration,@Size,@Color)", Connection);
+                                    //Select item ID of each Item Name in the data grid view list
+                                    string strItemID;
+                                    string strNameItem = row.Cells["Name"].Value.ToString();
+                                    SqlCommand commandItemID = new SqlCommand("SELECT RandrezaVoharisoaM21Su2332.Items.ItemID FROM RandrezaVoharisoaM21Su2332.Items " +
+                                        "FULL JOIN RandrezaVoharisoaM21Su2332.SalesDetails " +
+                                        "ON RandrezaVoharisoaM21Su2332.SalesDetails.ItemID = RandrezaVoharisoaM21Su2332.Items.ItemID WHERE Name = '" + strNameItem + "'", Connection);
+                                    SqlDataReader srItemID = commandItemID.ExecuteReader();
+                                    srItemID.Read();
+                                    strItemID = srItemID["ItemID"].ToString();
+                                    srItemID.Close();
+
+                                    string strQuantitySold = row.Cells["Quantity"].Value.ToString();
+                                    string strDecoration = row.Cells["Type of Decoration"].Value.ToString();
+                                    string strSize = row.Cells["Size"].Value.ToString();
+                                    string strColor = row.Cells["Color"].Value.ToString();
+
+                                    commandSalesDetails.Parameters.AddWithValue("@SaleID", intSaleId);
+                                    commandSalesDetails.Parameters.AddWithValue("@ItemID", strItemID);
+                                    commandSalesDetails.Parameters.AddWithValue("@QuantitySold", strQuantitySold);
+                                    commandSalesDetails.Parameters.AddWithValue("@Decoration", strDecoration);
+                                    commandSalesDetails.Parameters.AddWithValue("@Size", strSize);
+                                    commandSalesDetails.Parameters.AddWithValue("@Color", strColor);
+
+
+                                    commandSalesDetails.ExecuteNonQuery();
+
+                                }
+
+                                //Loop through the data grid view All column quantity to UPDATE QUANTITY in database table
+                                foreach (DataGridViewRow row in dgvEmployeeViewItem.Rows)
+                                {
+
+                                    string strQuantityUpdate = row.Cells["Quantity"].Value.ToString();
+                                    int intQuantityDgv;
+                                    bool blnConvert = int.TryParse(strQuantityUpdate, out intQuantityDgv);
+                                    if (blnConvert == false)
+                                    {
+                                        MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+
+                                    string strNameItem = row.Cells["Name"].Value.ToString();
+                                    //UPDATE quantity in the table Items
+                                    string strUpdateQuery = "UPDATE RandrezaVoharisoaM21Su2332.Items SET Quantity = @Quantity where Name= '" + strNameItem + "'";
+                                    SqlCommand commandUpQuantity = new SqlCommand(strUpdateQuery, Connection);
+
+                                    SqlParameter sqlParams = commandUpQuantity.Parameters.AddWithValue("@Quantity", intQuantityDgv);
+                                    commandUpQuantity.ExecuteNonQuery();
+
+                                }
+
+                                Connection.Close();
+
+                                PrintReportEmployeeView(GenerateReportEmployeeView());
+                                MessageBox.Show("Your Order has been successfully placed", "Transaction Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                Reset();
+                                ResetCustomerInformation();
+                                btnViewInvoice.Enabled = true;
+                            }
+                            catch (SqlException ex)
+                            {
+                                MessageBox.Show(ex.Message, "Error Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
 
-                            Connection.Close();
 
-                            PrintReportEmployeeView(GenerateReportEmployeeView());
-                            MessageBox.Show("Your Order has been successfully placed", "Transaction Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                           
-                            Reset();
-                            ResetCustomerInformation();
                         }
-                        catch (SqlException ex)
-                        {
-                            MessageBox.Show(ex.Message, "Error Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-
-
                     }
+                    else
+                    {
+                        MessageBox.Show("Please verify your credit card Information", "Invalid Credit Card", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+
                 }
                 else
                 {
-                    MessageBox.Show("Please verify your credit card Information", "Invalid Credit Card", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please  Display Amount before checking out", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-               
-               
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Please  Display Amount before checking out", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+           
 
         }
         
         //Display receipt in HTML
         private StringBuilder GenerateReportEmployeeView()
         {
+
             StringBuilder html = new StringBuilder();
             StringBuilder css = new StringBuilder();
             css.AppendLine("<style>");
@@ -678,21 +714,28 @@ namespace SU21_Final_Project
             html.AppendLine("<table>");
             html.AppendLine("<tr><td>Name</td><td>Decoration</td><td>Size</td><td>Color</td><td>Quantity</td><td>Price</td><td>Total Price</td></tr>");
             html.AppendLine("<tr><td colspan=8><hr /></td></tr>");
-
-            //Loop through the data grid view List to display user Order in the receipt
-            foreach (DataGridViewRow row in dgvItemList.Rows)
+            try
             {
-                html.Append("<tr>");
-                html.Append($"<td>{row.Cells["Name"].Value}</td>");
-                html.Append($"<td>{row.Cells["Type of Decoration"].Value}</td>");
-                html.Append($"<td>{row.Cells["Size"].Value}</td>");
-                html.Append($"<td>{row.Cells["Color"].Value}</td>");
-                html.Append($"<td>{row.Cells["Quantity"].Value}</td>");
-                html.Append($"<td>${row.Cells["Unit Price"].Value}</td>");
-                html.Append($"<td>${row.Cells["Total Price"].Value}</td>");
-                html.Append("</tr>");
-                html.AppendLine("<tr><td colspan=8><hr /></td></tr>");
+                //Loop through the data grid view List to display user Order in the receipt
+                foreach (DataGridViewRow row in dgvItemList.Rows)
+                {
+                    html.Append("<tr>");
+                    html.Append($"<td>{row.Cells["Name"].Value}</td>");
+                    html.Append($"<td>{row.Cells["Type of Decoration"].Value}</td>");
+                    html.Append($"<td>{row.Cells["Size"].Value}</td>");
+                    html.Append($"<td>{row.Cells["Color"].Value}</td>");
+                    html.Append($"<td>{row.Cells["Quantity"].Value}</td>");
+                    html.Append($"<td>${row.Cells["Unit Price"].Value}</td>");
+                    html.Append($"<td>${row.Cells["Total Price"].Value}</td>");
+                    html.Append("</tr>");
+                    html.AppendLine("<tr><td colspan=8><hr /></td></tr>");
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
 
             html.Append("<tr><td colspan=8><hr></hd></td></tr>");
             html.Append("<table>");
@@ -720,64 +763,73 @@ namespace SU21_Final_Project
         // Print the HTML report on the desktop
         private void PrintReportEmployeeView(StringBuilder html)
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string filepath = path + "\\" + strLastSaleReport+"";
-
             try
             {
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string filepath = path + "\\" + strLastSaleReport + "";
+
+
                 // A "using" statement will automatically close a file after opening it.               
                 using (StreamWriter swHistory = new StreamWriter(filepath))
                 {
                     swHistory.WriteLine(html);
                 }
-               
 
+
+                //unique filename  use for a date and time with part of a name
+
+                using (StreamWriter swHistory = new StreamWriter($"{strLastSaleReport}"))
+                {
+                    swHistory.WriteLine(html);
+                }
             }
             catch (Exception)
             {
                 MessageBox.Show("You currently do not have write permissions for this feature.",
                     "Error with System Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            //unique filename  use for a date and time with part of a name
-
-            using (StreamWriter swHistory = new StreamWriter($"{strLastSaleReport}")) 
-            {
-                swHistory.WriteLine(html);
-            }
+           
         }
 
         //getting the invoice and display in html based o Invoice value in salesReport
         private void btnPrintInvoice_Click(object sender, EventArgs e)
         {
-            if (dgvCustomerPurchase.SelectedRows.Count > 0)
+            try
             {
-                try
+                if (dgvCustomerPurchase.SelectedRows.Count > 0)
                 {
-                    if (strInvoiceReference == "")
+                    try
                     {
-                        MessageBox.Show("This Sales doesn't have invoice yet",
-                        "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (strInvoiceReference == "")
+                        {
+                            MessageBox.Show("This Sales doesn't have invoice yet",
+                            "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                            string xslLocation = Path.Combine(executableLocation, strInvoiceReference + ".html");
+                            System.Diagnostics.Process.Start(xslLocation);
+                        }
                     }
-                    else
+                    catch (Exception)
                     {
-                        string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                        string xslLocation = Path.Combine(executableLocation, strInvoiceReference + ".html");
-                        System.Diagnostics.Process.Start(xslLocation);
+                        MessageBox.Show("Cannot find Report associate with this.",
+                            "Error with System Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Cannot find Report associate with this.",
-                        "Error with System Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
 
+                }
+                else
+                {
+                    MessageBox.Show("Please select report",
+                       "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Please select report",
-                   "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+           
                
         }
         private void tbxQuantityNeeded_KeyPress(object sender, KeyPressEventArgs e)
@@ -822,8 +874,10 @@ namespace SU21_Final_Project
             dtpCreditCard.Text = "";
             mskCVV.Text = "";
             tbxCustomerName.Text = "";
-            cboColor.ResetText();
-;
+            btnAddCustomer.Enabled = false;
+            btnPlaceOrder.Enabled = false;
+            btnViewInvoice.Enabled = false;
+
             DisplayEmployeeViewItems();
            
 
@@ -845,6 +899,7 @@ namespace SU21_Final_Project
             radYes.Checked = false;
             radNo.Checked = false;
             tbxIDSearch.Text = "";
+            btnAddCustomer.Enabled = false;
         }
         //Print Invoice
         private void btnPrint_Click(object sender, EventArgs e)
@@ -998,7 +1053,8 @@ namespace SU21_Final_Project
         {
             if(radNo.Checked==true)
             {
-                
+                MessageBox.Show("Please enter new customer information ", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbxFirstNameCustomer.Focus();
                 tbxFirstNameCustomer.ReadOnly = false;
                 tbxLastNameCustomer.ReadOnly = false;
                 tbxEmailCustomer.ReadOnly = false;
@@ -1019,6 +1075,7 @@ namespace SU21_Final_Project
                 tbxZipCustomer.Text = "";
                 tbxCustomerState.Text = "";
                 mskPhoneCustomer.Text = "";
+                tbxQuantityTotal.Text = "";
             }
            
 
@@ -1252,7 +1309,7 @@ namespace SU21_Final_Project
 
 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 MessageBox.Show("Cannot find coupon, it's been already used or expired ", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tbxCoupon.Text = "";
@@ -1279,110 +1336,116 @@ namespace SU21_Final_Project
 
         private void btnApplyDiscount_Click(object sender, EventArgs e)
         {
-           
-
-            if (tbxTotalPrice.Text!="")
+            try
             {
-                if (tbxCoupon.Text == "" && radCoupon.Checked==true)
+                if (tbxTotalPrice.Text != "")
                 {
-                    MessageBox.Show("Enter Coupon Number please", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    string strTotalListForCoupon = tbxTotalPrice.Text.Substring(1);
-
-                    double dblTotalListForCoupon;
-                    if (!double.TryParse(strTotalListForCoupon, out dblTotalListForCoupon))
+                    if (tbxCoupon.Text == "" && radCoupon.Checked == true)
                     {
-                        MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                        MessageBox.Show("Enter Coupon Number please", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
-                    if (radCoupon.Checked == true)
+                    else
                     {
+                        string strTotalListForCoupon = tbxTotalPrice.Text.Substring(1);
 
-                        if (strDiscountIndex == "1")
-                        {
-                            CalculateAmount(dblDiscountCouponOne, 0);
-                        }
-                        if (strDiscountIndex == "2")
-                        {
-                            if (dblTotalListForCoupon > 500 && dblTotalListForCoupon < 2000)
-                            {
-                                CalculateAmount(0, dblDiscountCouponTwo);
-                                tbxDiscountCustomer.Text = "$100";
-                            }
-                            else
-                            {
-                                MessageBox.Show("Available only for a total purchase $500 and plus", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-
-                        }
-                        if (strDiscountIndex == "3")
-                        {
-                            if (dblTotalListForCoupon > 2000)
-                            {
-                                CalculateAmount(0, dblDiscountCouponThree);
-                                tbxDiscountCustomer.Text = "$500";
-                            }
-                            else
-                            {
-                                MessageBox.Show("Available only for a total purchase $2000 and plus", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-
-
-                    }
-
-                    if (radReturningDiscount.Checked == true && radYes.Checked == true)
-                    {
-
-                        CalculateAmount(dblDiscountReturning, 0);
-                        lblDisplayDiscountReturn.Text = "5% discount will be applied";
-                    }
-
-                    if (radQuantityDiscount.Checked == true)
-                    {
-                        //Discount and delivery condition based on quantities
-                        string strQuantityTotal = tbxQuantityTotal.Text;
-
-                        int intQuantityTotalDelivery;
-
-                        if (!int.TryParse(strQuantityTotal, out intQuantityTotalDelivery))
+                        double dblTotalListForCoupon;
+                        if (!double.TryParse(strTotalListForCoupon, out dblTotalListForCoupon))
                         {
                             MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         }
 
-                        if (intQuantityTotalDelivery > 10 && intQuantityTotalDelivery <= 50)
+                        if (radCoupon.Checked == true)
                         {
 
-                            CalculateAmount(dblDiscountOne, 0);
-                            lblDisplayDiscountQuantity.Text = "10% Discount";
+                            if (strDiscountIndex == "1")
+                            {
+                                CalculateAmount(dblDiscountCouponOne, 0);
+                            }
+                            if (strDiscountIndex == "2")
+                            {
+                                if (dblTotalListForCoupon > 500 && dblTotalListForCoupon < 2000)
+                                {
+                                    CalculateAmount(0, dblDiscountCouponTwo);
+                                    tbxDiscountCustomer.Text = "$100";
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Available only for a total purchase $500 and plus", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+
+                            }
+                            if (strDiscountIndex == "3")
+                            {
+                                if (dblTotalListForCoupon > 2000)
+                                {
+                                    CalculateAmount(0, dblDiscountCouponThree);
+                                    tbxDiscountCustomer.Text = "$500";
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Available only for a total purchase $2000 and plus", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+
+
                         }
-                        else if (intQuantityTotalDelivery > 50 && intQuantityTotalDelivery < 100)
+
+                        if (radReturningDiscount.Checked == true && radYes.Checked == true)
                         {
 
-                            CalculateAmount(dblDiscountTwo, 0);
-                            lblDisplayDiscountQuantity.Text = "20% Discount";
+                            CalculateAmount(dblDiscountReturning, 0);
+                            lblDisplayDiscountReturn.Text = "5% discount will be applied";
                         }
-                        else if (intQuantityTotalDelivery >= 100)
+
+                        if (radQuantityDiscount.Checked == true)
                         {
-                            CalculateAmount(dblDiscountThree, 0);
-                            lblDisplayDiscountQuantity.Text = "30% Discount";
+                            //Discount and delivery condition based on quantities
+                            string strQuantityTotal = tbxQuantityTotal.Text;
+
+                            int intQuantityTotalDelivery;
+
+                            if (!int.TryParse(strQuantityTotal, out intQuantityTotalDelivery))
+                            {
+                                MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            }
+
+                            if (intQuantityTotalDelivery > 10 && intQuantityTotalDelivery <= 50)
+                            {
+
+                                CalculateAmount(dblDiscountOne, 0);
+                                lblDisplayDiscountQuantity.Text = "10% Discount";
+                            }
+                            else if (intQuantityTotalDelivery > 50 && intQuantityTotalDelivery < 100)
+                            {
+
+                                CalculateAmount(dblDiscountTwo, 0);
+                                lblDisplayDiscountQuantity.Text = "20% Discount";
+                            }
+                            else if (intQuantityTotalDelivery >= 100)
+                            {
+                                CalculateAmount(dblDiscountThree, 0);
+                                lblDisplayDiscountQuantity.Text = "30% Discount";
+                            }
+                        }
+                        if (radNoDiscount.Checked == true)
+                        {
+                            CalculateAmount(0, 0);
                         }
                     }
-                    if (radNoDiscount.Checked == true)
-                    {
-                        CalculateAmount(0, 0);
-                    }
+
                 }
-               
+                else
+                {
+                    MessageBox.Show("Please display price by clicking on 'Display' Button", "Missing input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Please display price by clicking on 'Display' Button", "Missing input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+           
             
             
           
@@ -1513,18 +1576,25 @@ namespace SU21_Final_Project
 
         private void tabEmployeeView_Selected(object sender, TabControlEventArgs e)
         {
+            try
+            {
+                string strEmployeeUserID = lblUserEmployee.Text;
+                if (tabEmployeeView.SelectedTab.Name == "tabInformation")
+                {
+                    DisplayEmployeeInfo(strEmployeeUserID);
+                    btnResetAll.Enabled = false;
+                }
+                if (tabEmployeeView.SelectedTab.Name == "tabPOS")
+                {
 
-            string strEmployeeUserID = lblUserEmployee.Text;
-            if (tabEmployeeView.SelectedTab.Name == "tabInformation")
-            {
-                DisplayEmployeeInfo(strEmployeeUserID);
-                btnResetAll.Enabled = false;
+                    btnResetAll.Enabled = true;
+                }
             }
-            if (tabEmployeeView.SelectedTab.Name == "tabPOS")
+            catch(Exception ex)
             {
-               
-                btnResetAll.Enabled = true;
+                MessageBox.Show("Message: " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+          
         }
 
 
@@ -1675,29 +1745,29 @@ namespace SU21_Final_Project
                 Connection.Open();
 
                 if (e.RowIndex >= 0)
-            {
-                //Get PersonID
-                DataGridViewRow row = this.dgvCustomerList.Rows[e.RowIndex];
-                strPersonIDSelectedCustomer = row.Cells["Person ID"].Value.ToString();
-
-
-                //get UserID from UserTable based on PersonID
-                string strQuery = "SELECT RandrezaVoharisoaM21Su2332.Users.UserID FROM RandrezaVoharisoaM21Su2332.Users  WHERE RandrezaVoharisoaM21Su2332.Users.PersonID='" + strPersonIDSelectedCustomer + "'";
-                SqlCommand command = new SqlCommand(strQuery, Connection);
-
-                //gets the results from the sql command
-                SqlDataReader reader = command.ExecuteReader();
-                reader.Read();
-
-                int intUserId = reader.GetInt32(0);//use to acces User table
-                strUserIDSelectedCustomer = intUserId.ToString();
-
-                if (reader != null)
                 {
-                    reader.Close();
-                }
+                    //Get PersonID
+                    DataGridViewRow row = this.dgvCustomerList.Rows[e.RowIndex];
+                    strPersonIDSelectedCustomer = row.Cells["Person ID"].Value.ToString();
 
-            }
+
+                    //get UserID from UserTable based on PersonID
+                    string strQuery = "SELECT RandrezaVoharisoaM21Su2332.Users.UserID FROM RandrezaVoharisoaM21Su2332.Users  WHERE RandrezaVoharisoaM21Su2332.Users.PersonID='" + strPersonIDSelectedCustomer + "'";
+                    SqlCommand command = new SqlCommand(strQuery, Connection);
+
+                    //gets the results from the sql command
+                    SqlDataReader reader = command.ExecuteReader();
+                    reader.Read();
+
+                    int intUserId = reader.GetInt32(0);//use to acces User table
+                    strUserIDSelectedCustomer = intUserId.ToString();
+
+                    if (reader != null)
+                    {
+                        reader.Close();
+                    }
+
+                }
 
 
 
@@ -1719,17 +1789,26 @@ namespace SU21_Final_Project
 
         private void dgvCustomerPurchase_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
             string strSaleId;
-            if (e.RowIndex >= 0)
+            try
             {
-                //instantiate object from Items class and assign value from cell
-                DataGridViewRow row = this.dgvCustomerPurchase.Rows[e.RowIndex];
-                strSaleId = row.Cells["SaleId"].Value.ToString();
-                strInvoiceReference = row.Cells["SaleId"].Value.ToString();
+                if (e.RowIndex >= 0)
+                {
+                    //instantiate object from Items class and assign value from cell
+                    DataGridViewRow row = this.dgvCustomerPurchase.Rows[e.RowIndex];
+                    strSaleId = row.Cells["SaleId"].Value.ToString();
+                    strInvoiceReference = row.Cells["SaleId"].Value.ToString();
 
-                DisplaySalesDetail(strSaleId);
+                    DisplaySalesDetail(strSaleId);
 
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
         }
 
         public void DisplaySalesDetail(string strSaleID)
@@ -1757,48 +1836,79 @@ namespace SU21_Final_Project
 
         private void dgvCustomerList_SelectionChanged(object sender, EventArgs e)
         {
-            while (dgvCustomerPurchase.Rows.Count > 0)
+            try
             {
-                dgvCustomerPurchase.Rows.RemoveAt(0);
+                while (dgvCustomerPurchase.Rows.Count > 0)
+                {
+                    dgvCustomerPurchase.Rows.RemoveAt(0);
+                }
+                while (dgvPurchaseDetails.Rows.Count > 0)
+                {
+                    dgvPurchaseDetails.Rows.RemoveAt(0);
+                }
             }
-            while (dgvPurchaseDetails.Rows.Count > 0)
+            catch(Exception ex)
             {
-                dgvPurchaseDetails.Rows.RemoveAt(0);
+                MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+          
         }
 
         private void btnClearCoupon_Click(object sender, EventArgs e)
         {
-            while (dgvCouponList.Rows.Count > 0)
+            try
             {
-                dgvCouponList.Rows.RemoveAt(0);
+                while (dgvCouponList.Rows.Count > 0)
+                {
+                    dgvCouponList.Rows.RemoveAt(0);
+                }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
         }
 
         private void btnClearCustomer_Click(object sender, EventArgs e)
         {
-           
-            while (dgvCustomerList.Rows.Count > 0)
+            try
             {
-                dgvCustomerList.Rows.RemoveAt(0);
-            }
+                while (dgvCustomerList.Rows.Count > 0)
+                {
+                    dgvCustomerList.Rows.RemoveAt(0);
+                }
 
-            while (dgvCustomerPurchase.Rows.Count > 0)
-            {
-                dgvCustomerPurchase.Rows.RemoveAt(0);
+                while (dgvCustomerPurchase.Rows.Count > 0)
+                {
+                    dgvCustomerPurchase.Rows.RemoveAt(0);
+                }
+                while (dgvPurchaseDetails.Rows.Count > 0)
+                {
+                    dgvPurchaseDetails.Rows.RemoveAt(0);
+                }
             }
-            while (dgvPurchaseDetails.Rows.Count > 0)
+            catch(Exception ex)
             {
-                dgvPurchaseDetails.Rows.RemoveAt(0);
+                MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+           
+           
         }
 
         private void btnViewInvoice_Click(object sender, EventArgs e)
         {
-            
-            string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string xslLocation = Path.Combine(executableLocation, strLastSaleReport);
-            System.Diagnostics.Process.Start(xslLocation);
+            try
+            {
+                string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                string xslLocation = Path.Combine(executableLocation, strLastSaleReport);
+                System.Diagnostics.Process.Start(xslLocation);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
         }
 
      
@@ -1877,19 +1987,28 @@ namespace SU21_Final_Project
 
         private void radQuantityDiscount_CheckedChanged(object sender, EventArgs e)
         {
-            if (radQuantityDiscount.Checked == true)
+            try
             {
-                if (dgvItemList.Rows.Count > 0)//make sure data list is not empty
+                if (radQuantityDiscount.Checked == true)
                 {
+                    if (dgvItemList.Rows.Count > 0)//make sure data list is not empty
+                    {
 
-                    tbxQuantityTotal.Text = intQuantityDiscount.ToString();
+                        tbxQuantityTotal.Text = intQuantityDiscount.ToString();
 
+                    }
                 }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
         }
 
         private void btnHelpEmployeeView_Click(object sender, EventArgs e)
         {
+
             new frmHelpEmployeeView().Show();
             this.Visible = false;
         }

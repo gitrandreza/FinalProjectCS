@@ -1,4 +1,5 @@
 ﻿
+
 namespace SU21_Final_Project
 {
     partial class frmMain
@@ -29,10 +30,10 @@ namespace SU21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblDate = new System.Windows.Forms.Label();
             this.dgvAll = new System.Windows.Forms.DataGridView();
             this.pbxAll = new System.Windows.Forms.PictureBox();
@@ -135,14 +136,14 @@ namespace SU21_Final_Project
             this.dgvAll.AllowUserToAddRows = false;
             this.dgvAll.AllowUserToDeleteRows = false;
             this.dgvAll.BackgroundColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAll.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAll.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvAll.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAll.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dgvAll.Location = new System.Drawing.Point(11, 92);
@@ -486,7 +487,7 @@ namespace SU21_Final_Project
             this.btnAdmin.Location = new System.Drawing.Point(565, -5);
             this.btnAdmin.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdmin.Name = "btnAdmin";
-            this.btnAdmin.Size = new System.Drawing.Size(301, 46);
+            this.btnAdmin.Size = new System.Drawing.Size(301, 55);
             this.btnAdmin.TabIndex = 22;
             this.btnAdmin.Text = "Ad&ministrator Access";
             this.btnAdmin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -525,23 +526,23 @@ namespace SU21_Final_Project
             this.dgvList.AllowUserToAddRows = false;
             this.dgvList.AllowUserToDeleteRows = false;
             this.dgvList.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvList.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvList.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvList.Location = new System.Drawing.Point(3, 388);
             this.dgvList.Margin = new System.Windows.Forms.Padding(4);
             this.dgvList.MultiSelect = false;
@@ -915,7 +916,7 @@ namespace SU21_Final_Project
             this.btnLogout.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnLogout.Location = new System.Drawing.Point(867, -5);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(139, 47);
+            this.btnLogout.Size = new System.Drawing.Size(139, 55);
             this.btnLogout.TabIndex = 23;
             this.btnLogout.Text = "&Log out";
             this.btnLogout.UseVisualStyleBackColor = false;
@@ -925,6 +926,7 @@ namespace SU21_Final_Project
             // pnlHeader
             // 
             this.pnlHeader.BackColor = System.Drawing.Color.Maroon;
+            this.pnlHeader.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlHeader.BackgroundImage")));
             this.pnlHeader.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlHeader.Controls.Add(this.btnHelpEmployeeView);
             this.pnlHeader.Controls.Add(this.lblNameLabel);
@@ -951,7 +953,7 @@ namespace SU21_Final_Project
             this.btnHelpEmployeeView.ForeColor = System.Drawing.Color.SeaShell;
             this.btnHelpEmployeeView.Location = new System.Drawing.Point(1000, -5);
             this.btnHelpEmployeeView.Name = "btnHelpEmployeeView";
-            this.btnHelpEmployeeView.Size = new System.Drawing.Size(134, 47);
+            this.btnHelpEmployeeView.Size = new System.Drawing.Size(134, 55);
             this.btnHelpEmployeeView.TabIndex = 24;
             this.btnHelpEmployeeView.Text = "HELP?";
             this.btnHelpEmployeeView.UseVisualStyleBackColor = false;
@@ -1262,4 +1264,5 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnCancelCoupon;
     }
 }
+
 

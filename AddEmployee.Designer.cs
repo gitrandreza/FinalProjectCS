@@ -307,11 +307,11 @@ namespace SU21_Final_Project
             // lblEmailLabel
             // 
             this.lblEmailLabel.AutoSize = true;
-            this.lblEmailLabel.Location = new System.Drawing.Point(323, 52);
+            this.lblEmailLabel.Location = new System.Drawing.Point(369, 50);
             this.lblEmailLabel.Name = "lblEmailLabel";
-            this.lblEmailLabel.Size = new System.Drawing.Size(117, 17);
+            this.lblEmailLabel.Size = new System.Drawing.Size(53, 17);
             this.lblEmailLabel.TabIndex = 38;
-            this.lblEmailLabel.Text = "*Email Address";
+            this.lblEmailLabel.Text = "*Email";
             // 
             // lblSuffixLabel
             // 
@@ -386,9 +386,9 @@ namespace SU21_Final_Project
             this.lblAddressLabel.AutoSize = true;
             this.lblAddressLabel.Location = new System.Drawing.Point(41, 217);
             this.lblAddressLabel.Name = "lblAddressLabel";
-            this.lblAddressLabel.Size = new System.Drawing.Size(87, 17);
+            this.lblAddressLabel.Size = new System.Drawing.Size(78, 17);
             this.lblAddressLabel.TabIndex = 13;
-            this.lblAddressLabel.Text = "*Address 1";
+            this.lblAddressLabel.Text = "*Address ";
             // 
             // lblStateLabel
             // 
