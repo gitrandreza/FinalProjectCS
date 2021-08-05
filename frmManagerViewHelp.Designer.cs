@@ -133,6 +133,7 @@ namespace SU21_Final_Project
             this.ClientSize = new System.Drawing.Size(790, 653);
             this.Controls.Add(this.btnCloseForm);
             this.Controls.Add(this.tabManagementHelp);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmManagerViewHelp";

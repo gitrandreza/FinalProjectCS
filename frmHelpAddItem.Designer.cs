@@ -52,17 +52,18 @@ namespace SU21_Final_Project
             this.btnCloseForm.UseVisualStyleBackColor = false;
             this.btnCloseForm.Click += new System.EventHandler(this.btnCloseForm_Click);
             // 
-            // frmHelpAddItemEmployee
+            // frmHelpAddItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(608, 672);
+            this.ClientSize = new System.Drawing.Size(608, 673);
             this.Controls.Add(this.btnCloseForm);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "frmHelpAddItemEmployee";
+            this.Name = "frmHelpAddItem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Help Add Item";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmHelpAddItemEmployee_FormClosing);

@@ -62,7 +62,7 @@ namespace SU21_Final_Project
             // tabInformation
             // 
             this.tabInformation.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabInformation.BackgroundImage")));
-            this.tabInformation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabInformation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.tabInformation.Location = new System.Drawing.Point(4, 25);
             this.tabInformation.Name = "tabInformation";
             this.tabInformation.Padding = new System.Windows.Forms.Padding(3);
@@ -94,6 +94,7 @@ namespace SU21_Final_Project
             this.ClientSize = new System.Drawing.Size(862, 720);
             this.Controls.Add(this.btnReturnEmployeeView);
             this.Controls.Add(this.tabEmployeeViewHelp);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmHelpEmployeeView";

@@ -218,6 +218,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.tbxPassword);
             this.Controls.Add(this.tbxUsername);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;

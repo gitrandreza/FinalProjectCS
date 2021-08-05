@@ -26,6 +26,7 @@ namespace SU21_Final_Project
 
         string strGetDate = DateTime.Now.ToShortDateString();//Get date
         string strDescription;
+        string strCategory;
         string strItemSelectedName;
         string strQuantityAvailable;
         int intQuantityAvailable;
@@ -65,6 +66,7 @@ namespace SU21_Final_Project
         string strCreditCardDate;
         string strCreditCardCVV;
         bool blnPaid = false;
+       
 
         int intQuantityDiscount;
         private void frmEmployee_Load(object sender, EventArgs e)
@@ -149,7 +151,7 @@ namespace SU21_Final_Project
             }
 
         }
-
+        //Display Items List in the Employee view
         private void dgvEmployeeViewItem_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -164,6 +166,7 @@ namespace SU21_Final_Project
                      strItemSelectedName= row.Cells["Name"].Value.ToString();
                     strQuantityAvailable = row.Cells["Quantity"].Value.ToString();
                     strDescription = row.Cells["Description"].Value.ToString();
+                    strCategory= row.Cells["Category ID"].Value.ToString();
 
                     bool intResultTryParse = int.TryParse(strQuantityAvailable, out intQuantityAvailable);
                     if (intResultTryParse == false)
@@ -184,6 +187,25 @@ namespace SU21_Final_Project
                     lblQuantityRemain.Text = strQuantityAvailable;
                     dblPriceItemSelected = dblPrice;
                     tbxDescription.Text = strDescription;
+
+
+
+                    //Disable features depends on category and Items
+                    if (strCategory == "2")
+                    {
+                        radEmbroidered.Enabled = false;
+                        radSmall.Enabled = false;
+                        radLarge.Enabled = false;
+                        radMedium.Checked = true;
+                        cboColor.SelectedIndex = 8;
+                    }
+                    else
+                    {
+                        radEmbroidered.Enabled = true;
+                        radSmall.Enabled = true;
+                        radLarge.Enabled = true;
+                        radMedium.Checked = false;
+                    }
 
                 }
 
@@ -484,7 +506,7 @@ namespace SU21_Final_Project
 
                 dblDiscount = dblTotalList * dblDiscountPercentage;
                 dblSubTotal = dblTotalList - dblDiscount - dblDiscountOff;
-                dblAmountTax = dblTotalList * dblTax;
+                dblAmountTax = dblSubTotal * dblTax;
                 dblTotalAmount = dblSubTotal + dblAmountTax;
 
                 tbxDiscountCustomer.Text = dblDiscount.ToString("C2");
@@ -510,11 +532,11 @@ namespace SU21_Final_Project
                     tbxDelivery.Text = "On call";
                 }
             }
-            catch(Exception ex)
+            catch (ArithmeticException ex)
             {
-                MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error Arithmetic", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
+
         }
 
       
@@ -655,10 +677,29 @@ namespace SU21_Final_Project
                                 Connection.Close();
 
                                 PrintReportEmployeeView(GenerateReportEmployeeView());
-                                MessageBox.Show("Your Order has been successfully placed", "Transaction Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                               
 
                                 Reset();
                                 ResetCustomerInformation();
+                                if (MessageBox.Show("Do you need your invoice?", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                {
+                                    try
+                                    {
+                                        string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                                        string xslLocation = Path.Combine(executableLocation, strLastSaleReport);
+                                        System.Diagnostics.Process.Start(xslLocation);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+                                else
+                                {
+
+                                    MessageBox.Show("Customer Order has been successfully placed", "Transaction Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+
                                 btnViewInvoice.Enabled = true;
                             }
                             catch (SqlException ex)
@@ -725,8 +766,8 @@ namespace SU21_Final_Project
                     html.Append($"<td>{row.Cells["Size"].Value}</td>");
                     html.Append($"<td>{row.Cells["Color"].Value}</td>");
                     html.Append($"<td>{row.Cells["Quantity"].Value}</td>");
-                    html.Append($"<td>${row.Cells["Unit Price"].Value}</td>");
-                    html.Append($"<td>${row.Cells["Total Price"].Value}</td>");
+                    html.Append($"<td>{row.Cells["Unit Price"].Value}</td>");
+                    html.Append($"<td>{row.Cells["Total Price"].Value}</td>");
                     html.Append("</tr>");
                     html.AppendLine("<tr><td colspan=8><hr /></td></tr>");
                 }
@@ -739,10 +780,10 @@ namespace SU21_Final_Project
 
             html.Append("<tr><td colspan=8><hr></hd></td></tr>");
             html.Append("<table>");
-
+            html.AppendLine($"<h5>{"Totale Price: "}{tbxTotalPrice.Text}</h5>");
             html.AppendLine($"<h5>{"Discount: "}{tbxDiscountCustomer.Text}</h5>");
             html.AppendLine($"<h5>{"Subtotal: "}{tbxSubTotalCustomer.Text}</h5>");
-            html.AppendLine($"<h5>{"Tax Sale: "}{tbxTaxCustomer.Text}</h5>");
+            html.AppendLine($"<h5>{"Sales Tax: "}{tbxTaxCustomer.Text}</h5>");
             html.AppendLine($"<h5>{"Total Amount: "}{tbxTotalToPay.Text}</h5>");
 
                 html.AppendLine($"<h5>{"Estimated Delivery: "}{tbxDelivery.Text}</h5>");
@@ -752,8 +793,8 @@ namespace SU21_Final_Project
                 html.AppendLine($"<h5>{"Paid with credit card ##### : "}{strCreditCardNumber.Substring(strCreditCardNumber.Length - 4)}</h5>");
             }
 
-            html.Append($"<h5>{"Employee Name: "}{lblNameEmployee.Text}</h5>");
-            html.Append($"<h2>{"Company: Imprint Store  "}</h2>");
+            html.Append($"<h5>{"Cashier Name: "}{lblNameEmployee.Text}</h5>");
+            html.Append($"<h2>{"Imprint Store "}</h2>");
 
             html.Append("</body></html>");//close body
 
@@ -877,6 +918,7 @@ namespace SU21_Final_Project
             btnAddCustomer.Enabled = false;
             btnPlaceOrder.Enabled = false;
             btnViewInvoice.Enabled = false;
+            tbxDescription.Text = "";
 
             DisplayEmployeeViewItems();
            
@@ -913,11 +955,14 @@ namespace SU21_Final_Project
         {
             if (radYes.Checked == true)
             {
+                MessageBox.Show("Ask for customer ID and Enter ID, or Go to Additional Information tab and search for Customer",
+                      "Message Customer ID information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 tbxIDSearch.Enabled = true;
+                lblIDLabel.Enabled = true;
                 lblIDLabel.Enabled = true;
                 btnSearchCustomerID.Enabled = true;
                 btnAddCustomer.Enabled = false;
-               
+                tbxIDSearch.Focus();
 
                 tbxFirstNameCustomer.ReadOnly = true;               
                 tbxLastNameCustomer.ReadOnly = true;
@@ -989,7 +1034,8 @@ namespace SU21_Final_Project
 
                 tbxCustomerName.Text = tbxFirstNameCustomer.Text.ToString() + " " + tbxLastNameCustomer.Text.ToString();
                 btnPlaceOrder.Enabled = true;
-              
+                lblDisplayDiscountReturn.Text = "5% off";
+                blnReturningCustomer = true;
 
                 if (readerPersonID != null)
                 {
@@ -1020,9 +1066,9 @@ namespace SU21_Final_Project
 
             
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Message " + ex , "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Cannot find Customer ID, please go to Additional Information Tab and Search in Customer List " , "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tbxIDSearch.Text = "";
                 tbxIDSearch.Focus();
             }
@@ -1053,7 +1099,8 @@ namespace SU21_Final_Project
         {
             if(radNo.Checked==true)
             {
-                MessageBox.Show("Please enter new customer information ", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please enter new customer information ", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                lblDisplayDiscountReturn.Text = "Don't Apply for new Customer";
                 tbxFirstNameCustomer.Focus();
                 tbxFirstNameCustomer.ReadOnly = false;
                 tbxLastNameCustomer.ReadOnly = false;
@@ -1076,6 +1123,7 @@ namespace SU21_Final_Project
                 tbxCustomerState.Text = "";
                 mskPhoneCustomer.Text = "";
                 tbxQuantityTotal.Text = "";
+                tbxIDSearch.Text = "";
             }
            
 
@@ -1160,75 +1208,87 @@ namespace SU21_Final_Project
 
                         if (ValidEmail(strEmail) == true)
                         {
-                            if(ValidPhone()==true)
+                            if (ValidPhone() == true)
                             {
-                                SqlCommand commandPerson = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Person(Title,NameFirst,NameLast,Address1,City,Zipcode,State,Email,PhonePrimary) VALUES (@Title,@NameFirst,@NameLast,@Address,@City,@Zipcode,@State,@Email,@Phone)", Connection);
-                                commandPerson.Parameters.AddWithValue("@Title", strTitle);
-                                commandPerson.Parameters.AddWithValue("@NameFirst", strFirstName);
-                                commandPerson.Parameters.AddWithValue("@NameLast", strLastName);
-                                commandPerson.Parameters.AddWithValue("@Address", strAddress);
-                                commandPerson.Parameters.AddWithValue("@City", strCity);
-                                commandPerson.Parameters.AddWithValue("@Zipcode", strZip);
-                                commandPerson.Parameters.AddWithValue("@State", strState);
-                                commandPerson.Parameters.AddWithValue("@Email", strEmail);
-                                commandPerson.Parameters.AddWithValue("@Phone", strPhone);
-                                commandPerson.ExecuteNonQuery();
+                                if (!tbxZipCustomer.Text.Contains(".") && tbxZipCustomer.Text.Length > 5)
+                                {
+                                    SqlCommand commandPerson = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Person(Title,NameFirst,NameLast,Address1,City,Zipcode,State,Email,PhonePrimary) VALUES (@Title,@NameFirst,@NameLast,@Address,@City,@Zipcode,@State,@Email,@Phone)", Connection);
+                                    commandPerson.Parameters.AddWithValue("@Title", strTitle);
+                                    commandPerson.Parameters.AddWithValue("@NameFirst", strFirstName);
+                                    commandPerson.Parameters.AddWithValue("@NameLast", strLastName);
+                                    commandPerson.Parameters.AddWithValue("@Address", strAddress);
+                                    commandPerson.Parameters.AddWithValue("@City", strCity);
+                                    commandPerson.Parameters.AddWithValue("@Zipcode", strZip);
+                                    commandPerson.Parameters.AddWithValue("@State", strState);
+                                    commandPerson.Parameters.AddWithValue("@Email", strEmail);
+                                    commandPerson.Parameters.AddWithValue("@Phone", strPhone);
+                                    commandPerson.ExecuteNonQuery();
 
-                                //INSERT RECORD FOR USERS LOGON SECURITY ACCESS
-                                string strAnswerOne = "Not Available";
-                                string strAnswerTwo = "Not Available";
-                                string strAnswerThree = "Not Available";
-                                intRoleId = 3;
-                                string strQuestionOne = "Not Available";
-                                string strQuestionTwo = "Not Available";
-                                string strQuestionThree = "Not Available";
+                                    //INSERT RECORD FOR USERS LOGON SECURITY ACCESS
+                                    string strAnswerOne = "Not Available";
+                                    string strAnswerTwo = "Not Available";
+                                    string strAnswerThree = "Not Available";
+                                    intRoleId = 3;
+                                    string strQuestionOne = "Not Available";
+                                    string strQuestionTwo = "Not Available";
+                                    string strQuestionThree = "Not Available";
 
 
 
-                                //Get the last PersonID using Max to insert as FK to the User table
-                                string queryLastID = "SELECT MAX(PersonID) from RandrezaVoharisoaM21Su2332.Person";
-                                SqlCommand commandLastID = new SqlCommand(queryLastID, Connection);
+                                    //Get the last PersonID using Max to insert as FK to the User table
+                                    string queryLastID = "SELECT MAX(PersonID) from RandrezaVoharisoaM21Su2332.Person";
+                                    SqlCommand commandLastID = new SqlCommand(queryLastID, Connection);
 
-                                //gets the results from the sql command
-                                SqlDataReader srOne = commandLastID.ExecuteReader();
-                                srOne.Read();
-                                int intPersonID = srOne.GetInt32(0);
-                                srOne.Close();
-                                //generate Username and Password
-                                string strModidfiedLastName = strLastName.Substring(0, strLastName.Length - 2);
-                                string strCreateUsername = strModidfiedLastName + intPersonID.ToString();
+                                    //gets the results from the sql command
+                                    SqlDataReader srOne = commandLastID.ExecuteReader();
+                                    srOne.Read();
+                                    int intPersonID = srOne.GetInt32(0);
+                                    srOne.Close();
+                                    //generate Username and Password
+                                    string strModidfiedLastName = strLastName.Substring(0, strLastName.Length - 2);
+                                    string strCreateUsername = strModidfiedLastName + intPersonID.ToString();
 
-                                string strCreatePassword = intRoleId.ToString() + intPersonID.ToString();
+                                    string strCreatePassword = intRoleId.ToString() + intPersonID.ToString();
 
-                                SqlCommand commandUsers = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Users(PersonID,Username,Password,Answer1,Answer2,RoleID,ThirdQuestion,SecondQuestion,FirstQuestion,Answer3) VALUES(@PersonID,@Username,@Password,@Answer1,@Answer2,@RoleID,@ThirdQuestion,@SecondQuestion,@FirstQuestion,@Answer3)", Connection);
-                                commandUsers.Parameters.AddWithValue("@PersonID", intPersonID);
-                                commandUsers.Parameters.AddWithValue("@Username", strCreateUsername);
-                                commandUsers.Parameters.AddWithValue("@Password", strCreatePassword);
-                                commandUsers.Parameters.AddWithValue("@Answer1", strAnswerOne);
-                                commandUsers.Parameters.AddWithValue("@Answer2", strAnswerTwo);
-                                commandUsers.Parameters.AddWithValue("@RoleID", intRoleId);
-                                commandUsers.Parameters.AddWithValue("@ThirdQuestion", strQuestionThree);
-                                commandUsers.Parameters.AddWithValue("@SecondQuestion", strQuestionTwo);
-                                commandUsers.Parameters.AddWithValue("@FirstQuestion", strQuestionOne);
-                                commandUsers.Parameters.AddWithValue("@Answer3", strAnswerThree);
+                                    SqlCommand commandUsers = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Users(PersonID,Username,Password,Answer1,Answer2,RoleID,ThirdQuestion,SecondQuestion,FirstQuestion,Answer3) VALUES(@PersonID,@Username,@Password,@Answer1,@Answer2,@RoleID,@ThirdQuestion,@SecondQuestion,@FirstQuestion,@Answer3)", Connection);
+                                    commandUsers.Parameters.AddWithValue("@PersonID", intPersonID);
+                                    commandUsers.Parameters.AddWithValue("@Username", strCreateUsername);
+                                    commandUsers.Parameters.AddWithValue("@Password", strCreatePassword);
+                                    commandUsers.Parameters.AddWithValue("@Answer1", strAnswerOne);
+                                    commandUsers.Parameters.AddWithValue("@Answer2", strAnswerTwo);
+                                    commandUsers.Parameters.AddWithValue("@RoleID", intRoleId);
+                                    commandUsers.Parameters.AddWithValue("@ThirdQuestion", strQuestionThree);
+                                    commandUsers.Parameters.AddWithValue("@SecondQuestion", strQuestionTwo);
+                                    commandUsers.Parameters.AddWithValue("@FirstQuestion", strQuestionOne);
+                                    commandUsers.Parameters.AddWithValue("@Answer3", strAnswerThree);
 
-                                commandUsers.ExecuteNonQuery();
-                                
-                                MessageBox.Show("New Customer has been added successfully", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                tbxCustomerName.Text = strFirstName + " " + strLastName;
+                                    commandUsers.ExecuteNonQuery();
 
-                                //Get the last PersonID using Max to insert as FK to the User table
-                                string queryLastUserID = "SELECT MAX(UserID) from RandrezaVoharisoaM21Su2332.Users";
-                                SqlCommand commandLastUserID = new SqlCommand(queryLastUserID, Connection);
+                                    MessageBox.Show("New Customer has been added successfully", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    tbxCustomerName.Text = strFirstName + " " + strLastName;
+                                    blnReturningCustomer = false;
 
-                                //gets the results from the sql command
-                                SqlDataReader srUserID = commandLastUserID.ExecuteReader();
-                                srUserID.Read();
-                                intCustomerUserID = srUserID.GetInt32(0);
-                                srUserID.Close();
-                                Connection.Close();
-                                btnPlaceOrder.Enabled = true;
-                                ResetCustomerInformation();
+                                    //Get the last PersonID using Max to insert as FK to the User table
+                                    string queryLastUserID = "SELECT MAX(UserID) from RandrezaVoharisoaM21Su2332.Users";
+                                    SqlCommand commandLastUserID = new SqlCommand(queryLastUserID, Connection);
+
+                                    //gets the results from the sql command
+                                    SqlDataReader srUserID = commandLastUserID.ExecuteReader();
+                                    srUserID.Read();
+                                    intCustomerUserID = srUserID.GetInt32(0);
+                                    srUserID.Close();
+                                    Connection.Close();
+                                    btnPlaceOrder.Enabled = true;
+                                    ResetCustomerInformation();
+
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Zip is not valid", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    tbxZipCustomer.Text = "";
+                                    tbxZipCustomer.Focus();
+                                }
+
                             }
 
                             else
@@ -1391,11 +1451,11 @@ namespace SU21_Final_Project
 
                         }
 
-                        if (radReturningDiscount.Checked == true && radYes.Checked == true)
+                        if (radReturningDiscount.Checked == true && tbxFirstNameCustomer.Text!="")
                         {
 
                             CalculateAmount(dblDiscountReturning, 0);
-                            lblDisplayDiscountReturn.Text = "5% discount will be applied";
+                            lblDisplayDiscountReturn.Text = "5% off";
                         }
 
                         if (radQuantityDiscount.Checked == true)
@@ -1771,7 +1831,7 @@ namespace SU21_Final_Project
 
 
 
-                dataAdapter = new SqlDataAdapter("SELECT * FROM RandrezaVoharisoaM21Su2332.SalesReport where UserID = '" + strUserIDSelectedCustomer + "'", Connection);
+                dataAdapter = new SqlDataAdapter("SELECT SaleId as[Sale ID], UserID as [User ID], CreationDate as [Transaction Date] FROM RandrezaVoharisoaM21Su2332.SalesReport where UserID = '" + strUserIDSelectedCustomer + "'", Connection);
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvCustomerPurchase.DataSource = dataTable;
@@ -1797,8 +1857,8 @@ namespace SU21_Final_Project
                 {
                     //instantiate object from Items class and assign value from cell
                     DataGridViewRow row = this.dgvCustomerPurchase.Rows[e.RowIndex];
-                    strSaleId = row.Cells["SaleId"].Value.ToString();
-                    strInvoiceReference = row.Cells["SaleId"].Value.ToString();
+                    strSaleId = row.Cells["Sale ID"].Value.ToString();
+                    strInvoiceReference = row.Cells["Sale ID"].Value.ToString();
 
                     DisplaySalesDetail(strSaleId);
 
@@ -1820,7 +1880,7 @@ namespace SU21_Final_Project
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                 Connection.Open();
-                string strQuery = "SELECT * FROM RandrezaVoharisoaM21Su2332.SalesDetails where SaleID='" + strSaleID + "' ;";
+                string strQuery = "SELECT SalesDetailID as [Transaction Detail ID], SaleID as [Sale ID], ItemID as [Item ID], QuantitySold as [Quantity Sold], Decoration, Size, Color FROM RandrezaVoharisoaM21Su2332.SalesDetails where SaleID='" + strSaleID + "' ;";
                 dataAdapter = new SqlDataAdapter(strQuery, Connection);
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
@@ -1989,12 +2049,32 @@ namespace SU21_Final_Project
         {
             try
             {
+                string strQuantityTotal;
+                int intQuantityTotalList;
+                int intQuantityTotal=0;
                 if (radQuantityDiscount.Checked == true)
                 {
                     if (dgvItemList.Rows.Count > 0)//make sure data list is not empty
                     {
 
-                        tbxQuantityTotal.Text = intQuantityDiscount.ToString();
+                        MessageBox.Show("+10 items= 10% off\n +50 items= 20% off\n +100 items= 30% off",
+                      "Discount Quantity Description", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //Cumulate quantity total for discount
+                        for (int i = 0; i < dgvItemList.Rows.Count; i++)
+                        {
+                            strQuantityTotal = dgvItemList.Rows[i].Cells[4].Value.ToString();
+                            bool intResultTryParse = int.TryParse(strQuantityTotal, out intQuantityTotalList);
+                            if (intResultTryParse == false)
+                            {
+                                MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            }
+
+                            intQuantityTotal = intQuantityTotal + intQuantityTotalList;
+                            
+                        }
+
+                        tbxQuantityTotal.Text = intQuantityTotal.ToString();
 
                     }
                 }
@@ -2011,6 +2091,22 @@ namespace SU21_Final_Project
 
             new frmHelpEmployeeView().Show();
             this.Visible = false;
+        }
+
+        //Display if customer received dscount based on loyalty
+        private void radReturningDiscount_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radReturningDiscount.Checked == true)
+            {
+                if (blnReturningCustomer==true)
+                {
+                    lblDisplayDiscountReturn.Text = "5% off";
+                }
+                else
+                {
+                    lblDisplayDiscountReturn.Text = "Don't apply on new customer";
+                }
+            }
         }
     }
 }

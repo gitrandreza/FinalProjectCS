@@ -366,6 +366,8 @@ namespace SU21_Final_Project
             this.Controls.Add(this.lblValidAnswers);
             this.Controls.Add(this.lblMessageText);
             this.Controls.Add(this.panel1);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmResetPassword";

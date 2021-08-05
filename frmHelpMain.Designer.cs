@@ -69,6 +69,7 @@ namespace SU21_Final_Project
             this.ClientSize = new System.Drawing.Size(848, 682);
             this.Controls.Add(this.pbxHelpMain);
             this.Controls.Add(this.btnBacktoMain);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmHelpMain";

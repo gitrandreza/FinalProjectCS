@@ -115,7 +115,7 @@ namespace SU21_Final_Project
             this.radQuantityDiscount = new System.Windows.Forms.RadioButton();
             this.lblColorLabel = new System.Windows.Forms.Label();
             this.gbxReturning = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblReturningCustomerLabel = new System.Windows.Forms.Label();
             this.btnSearchCustomerID = new System.Windows.Forms.Button();
             this.gbxAddCustomer = new System.Windows.Forms.GroupBox();
             this.tbxCustomerState = new System.Windows.Forms.TextBox();
@@ -167,6 +167,7 @@ namespace SU21_Final_Project
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnHelpEmployeeView = new System.Windows.Forms.Button();
             this.btnResetAll = new System.Windows.Forms.Button();
+            this.lblCustomerListLabel = new System.Windows.Forms.Label();
             this.tabInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPurchaseDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerPurchase)).BeginInit();
@@ -189,6 +190,7 @@ namespace SU21_Final_Project
             // 
             // tabInformation
             // 
+            this.tabInformation.Controls.Add(this.lblCustomerListLabel);
             this.tabInformation.Controls.Add(this.btnPrintInvoice);
             this.tabInformation.Controls.Add(this.btnClearCustomer);
             this.tabInformation.Controls.Add(this.btnClearCoupon);
@@ -215,9 +217,9 @@ namespace SU21_Final_Project
             this.btnPrintInvoice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPrintInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrintInvoice.ForeColor = System.Drawing.Color.Maroon;
-            this.btnPrintInvoice.Location = new System.Drawing.Point(861, 693);
+            this.btnPrintInvoice.Location = new System.Drawing.Point(539, 618);
             this.btnPrintInvoice.Name = "btnPrintInvoice";
-            this.btnPrintInvoice.Size = new System.Drawing.Size(222, 114);
+            this.btnPrintInvoice.Size = new System.Drawing.Size(260, 89);
             this.btnPrintInvoice.TabIndex = 51;
             this.btnPrintInvoice.Text = "Print Invoice";
             this.btnPrintInvoice.UseVisualStyleBackColor = true;
@@ -230,9 +232,9 @@ namespace SU21_Final_Project
             this.btnClearCustomer.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnClearCustomer.FlatAppearance.BorderSize = 3;
             this.btnClearCustomer.ForeColor = System.Drawing.Color.Maroon;
-            this.btnClearCustomer.Location = new System.Drawing.Point(538, 475);
+            this.btnClearCustomer.Location = new System.Drawing.Point(796, 618);
             this.btnClearCustomer.Name = "btnClearCustomer";
-            this.btnClearCustomer.Size = new System.Drawing.Size(541, 59);
+            this.btnClearCustomer.Size = new System.Drawing.Size(283, 89);
             this.btnClearCustomer.TabIndex = 50;
             this.btnClearCustomer.Text = "Clear";
             this.btnClearCustomer.UseVisualStyleBackColor = true;
@@ -257,7 +259,7 @@ namespace SU21_Final_Project
             // 
             this.lblSalesDetailLabel.AutoSize = true;
             this.lblSalesDetailLabel.ForeColor = System.Drawing.Color.Black;
-            this.lblSalesDetailLabel.Location = new System.Drawing.Point(8, 677);
+            this.lblSalesDetailLabel.Location = new System.Drawing.Point(11, 710);
             this.lblSalesDetailLabel.Name = "lblSalesDetailLabel";
             this.lblSalesDetailLabel.Size = new System.Drawing.Size(131, 17);
             this.lblSalesDetailLabel.TabIndex = 27;
@@ -268,7 +270,7 @@ namespace SU21_Final_Project
             this.dgvPurchaseDetails.AllowUserToAddRows = false;
             this.dgvPurchaseDetails.AllowUserToDeleteRows = false;
             this.dgvPurchaseDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPurchaseDetails.Location = new System.Drawing.Point(14, 693);
+            this.dgvPurchaseDetails.Location = new System.Drawing.Point(14, 730);
             this.dgvPurchaseDetails.MultiSelect = false;
             this.dgvPurchaseDetails.Name = "dgvPurchaseDetails";
             this.dgvPurchaseDetails.ReadOnly = true;
@@ -276,25 +278,25 @@ namespace SU21_Final_Project
             this.dgvPurchaseDetails.RowHeadersWidth = 51;
             this.dgvPurchaseDetails.RowTemplate.Height = 24;
             this.dgvPurchaseDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPurchaseDetails.Size = new System.Drawing.Size(841, 117);
+            this.dgvPurchaseDetails.Size = new System.Drawing.Size(1065, 80);
             this.dgvPurchaseDetails.TabIndex = 26;
             // 
             // lblCustomerSaleReport
             // 
             this.lblCustomerSaleReport.AutoSize = true;
             this.lblCustomerSaleReport.ForeColor = System.Drawing.Color.Black;
-            this.lblCustomerSaleReport.Location = new System.Drawing.Point(6, 536);
+            this.lblCustomerSaleReport.Location = new System.Drawing.Point(6, 539);
             this.lblCustomerSaleReport.Name = "lblCustomerSaleReport";
-            this.lblCustomerSaleReport.Size = new System.Drawing.Size(205, 17);
+            this.lblCustomerSaleReport.Size = new System.Drawing.Size(132, 17);
             this.lblCustomerSaleReport.TabIndex = 25;
-            this.lblCustomerSaleReport.Text = "Customer Purchase History";
+            this.lblCustomerSaleReport.Text = "Purchase History";
             // 
             // dgvCustomerPurchase
             // 
             this.dgvCustomerPurchase.AllowUserToAddRows = false;
             this.dgvCustomerPurchase.AllowUserToDeleteRows = false;
             this.dgvCustomerPurchase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCustomerPurchase.Location = new System.Drawing.Point(6, 556);
+            this.dgvCustomerPurchase.Location = new System.Drawing.Point(11, 560);
             this.dgvCustomerPurchase.MultiSelect = false;
             this.dgvCustomerPurchase.Name = "dgvCustomerPurchase";
             this.dgvCustomerPurchase.ReadOnly = true;
@@ -302,7 +304,7 @@ namespace SU21_Final_Project
             this.dgvCustomerPurchase.RowHeadersWidth = 51;
             this.dgvCustomerPurchase.RowTemplate.Height = 24;
             this.dgvCustomerPurchase.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCustomerPurchase.Size = new System.Drawing.Size(1073, 114);
+            this.dgvCustomerPurchase.Size = new System.Drawing.Size(526, 147);
             this.dgvCustomerPurchase.TabIndex = 24;
             this.dgvCustomerPurchase.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomerPurchase_CellClick);
             // 
@@ -343,9 +345,9 @@ namespace SU21_Final_Project
             this.btnDisplayCustomerList.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnDisplayCustomerList.FlatAppearance.BorderSize = 3;
             this.btnDisplayCustomerList.ForeColor = System.Drawing.Color.Maroon;
-            this.btnDisplayCustomerList.Location = new System.Drawing.Point(3, 475);
+            this.btnDisplayCustomerList.Location = new System.Drawing.Point(538, 560);
             this.btnDisplayCustomerList.Name = "btnDisplayCustomerList";
-            this.btnDisplayCustomerList.Size = new System.Drawing.Size(529, 58);
+            this.btnDisplayCustomerList.Size = new System.Drawing.Size(541, 58);
             this.btnDisplayCustomerList.TabIndex = 49;
             this.btnDisplayCustomerList.Text = "View Customers List";
             this.btnDisplayCustomerList.UseVisualStyleBackColor = true;
@@ -356,7 +358,7 @@ namespace SU21_Final_Project
             this.dgvCustomerList.AllowUserToAddRows = false;
             this.dgvCustomerList.AllowUserToDeleteRows = false;
             this.dgvCustomerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCustomerList.Location = new System.Drawing.Point(3, 326);
+            this.dgvCustomerList.Location = new System.Drawing.Point(3, 343);
             this.dgvCustomerList.MultiSelect = false;
             this.dgvCustomerList.Name = "dgvCustomerList";
             this.dgvCustomerList.ReadOnly = true;
@@ -364,7 +366,7 @@ namespace SU21_Final_Project
             this.dgvCustomerList.RowHeadersWidth = 51;
             this.dgvCustomerList.RowTemplate.Height = 24;
             this.dgvCustomerList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCustomerList.Size = new System.Drawing.Size(1076, 149);
+            this.dgvCustomerList.Size = new System.Drawing.Size(1076, 190);
             this.dgvCustomerList.TabIndex = 20;
             this.dgvCustomerList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomerList_CellClick);
             this.dgvCustomerList.SelectionChanged += new System.EventHandler(this.dgvCustomerList_SelectionChanged);
@@ -1029,7 +1031,7 @@ namespace SU21_Final_Project
             this.gboDiscountChoice.Size = new System.Drawing.Size(455, 197);
             this.gboDiscountChoice.TabIndex = 23;
             this.gboDiscountChoice.TabStop = false;
-            this.gboDiscountChoice.Text = "Choose Discount";
+            this.gboDiscountChoice.Text = "Choose One Discount to Apply";
             // 
             // lblCustomerName
             // 
@@ -1044,7 +1046,7 @@ namespace SU21_Final_Project
             // 
             // tbxQuantityTotal
             // 
-            this.tbxQuantityTotal.Location = new System.Drawing.Point(172, 99);
+            this.tbxQuantityTotal.Location = new System.Drawing.Point(238, 99);
             this.tbxQuantityTotal.Name = "tbxQuantityTotal";
             this.tbxQuantityTotal.ReadOnly = true;
             this.tbxQuantityTotal.Size = new System.Drawing.Size(55, 22);
@@ -1088,9 +1090,9 @@ namespace SU21_Final_Project
             this.lblCouponDescriptionLabel.ForeColor = System.Drawing.Color.Black;
             this.lblCouponDescriptionLabel.Location = new System.Drawing.Point(5, 63);
             this.lblCouponDescriptionLabel.Name = "lblCouponDescriptionLabel";
-            this.lblCouponDescriptionLabel.Size = new System.Drawing.Size(95, 17);
+            this.lblCouponDescriptionLabel.Size = new System.Drawing.Size(155, 17);
             this.lblCouponDescriptionLabel.TabIndex = 31;
-            this.lblCouponDescriptionLabel.Text = "Description:";
+            this.lblCouponDescriptionLabel.Text = "Coupon Description:";
             // 
             // tbxCustomerName
             // 
@@ -1127,7 +1129,7 @@ namespace SU21_Final_Project
             // 
             this.lblDisplayDiscountQuantity.AutoSize = true;
             this.lblDisplayDiscountQuantity.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblDisplayDiscountQuantity.Location = new System.Drawing.Point(287, 102);
+            this.lblDisplayDiscountQuantity.Location = new System.Drawing.Point(320, 102);
             this.lblDisplayDiscountQuantity.Name = "lblDisplayDiscountQuantity";
             this.lblDisplayDiscountQuantity.Size = new System.Drawing.Size(2, 19);
             this.lblDisplayDiscountQuantity.TabIndex = 27;
@@ -1142,7 +1144,7 @@ namespace SU21_Final_Project
             this.btnCheckCoupon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckCoupon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckCoupon.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnCheckCoupon.Location = new System.Drawing.Point(213, 17);
+            this.btnCheckCoupon.Location = new System.Drawing.Point(213, 19);
             this.btnCheckCoupon.Name = "btnCheckCoupon";
             this.btnCheckCoupon.Size = new System.Drawing.Size(108, 39);
             this.btnCheckCoupon.TabIndex = 29;
@@ -1161,6 +1163,7 @@ namespace SU21_Final_Project
             this.radReturningDiscount.TabStop = true;
             this.radReturningDiscount.Text = "Customer Return";
             this.radReturningDiscount.UseVisualStyleBackColor = true;
+            this.radReturningDiscount.CheckedChanged += new System.EventHandler(this.radReturningDiscount_CheckedChanged);
             // 
             // tbxCoupon
             // 
@@ -1189,10 +1192,10 @@ namespace SU21_Final_Project
             this.radQuantityDiscount.ForeColor = System.Drawing.Color.Black;
             this.radQuantityDiscount.Location = new System.Drawing.Point(6, 98);
             this.radQuantityDiscount.Name = "radQuantityDiscount";
-            this.radQuantityDiscount.Size = new System.Drawing.Size(158, 21);
+            this.radQuantityDiscount.Size = new System.Drawing.Size(223, 21);
             this.radQuantityDiscount.TabIndex = 30;
             this.radQuantityDiscount.TabStop = true;
-            this.radQuantityDiscount.Text = "Apply on Quantity";
+            this.radQuantityDiscount.Text = "Apply on Quantity Ordered";
             this.radQuantityDiscount.UseVisualStyleBackColor = true;
             this.radQuantityDiscount.CheckedChanged += new System.EventHandler(this.radQuantityDiscount_CheckedChanged);
             // 
@@ -1210,7 +1213,7 @@ namespace SU21_Final_Project
             // gbxReturning
             // 
             this.gbxReturning.BackColor = System.Drawing.Color.Linen;
-            this.gbxReturning.Controls.Add(this.label1);
+            this.gbxReturning.Controls.Add(this.lblReturningCustomerLabel);
             this.gbxReturning.Controls.Add(this.btnSearchCustomerID);
             this.gbxReturning.Controls.Add(this.gbxAddCustomer);
             this.gbxReturning.Controls.Add(this.lblIDLabel);
@@ -1220,20 +1223,20 @@ namespace SU21_Final_Project
             this.gbxReturning.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxReturning.Location = new System.Drawing.Point(492, 182);
             this.gbxReturning.Name = "gbxReturning";
-            this.gbxReturning.Size = new System.Drawing.Size(587, 200);
+            this.gbxReturning.Size = new System.Drawing.Size(587, 213);
             this.gbxReturning.TabIndex = 7;
             this.gbxReturning.TabStop = false;
             this.gbxReturning.Text = "Search or Add Customer";
             // 
-            // label1
+            // lblReturningCustomerLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(25, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 17);
-            this.label1.TabIndex = 39;
-            this.label1.Text = "Returning?";
+            this.lblReturningCustomerLabel.AutoSize = true;
+            this.lblReturningCustomerLabel.ForeColor = System.Drawing.Color.DarkBlue;
+            this.lblReturningCustomerLabel.Location = new System.Drawing.Point(11, 34);
+            this.lblReturningCustomerLabel.Name = "lblReturningCustomerLabel";
+            this.lblReturningCustomerLabel.Size = new System.Drawing.Size(161, 17);
+            this.lblReturningCustomerLabel.TabIndex = 39;
+            this.lblReturningCustomerLabel.Text = "Customer Returning?";
             // 
             // btnSearchCustomerID
             // 
@@ -1272,7 +1275,7 @@ namespace SU21_Final_Project
             this.gbxAddCustomer.Controls.Add(this.lblEmailLabel);
             this.gbxAddCustomer.Controls.Add(this.lblLastNameLabel);
             this.gbxAddCustomer.Controls.Add(this.lblFirstNameLabel);
-            this.gbxAddCustomer.Location = new System.Drawing.Point(-1, 61);
+            this.gbxAddCustomer.Location = new System.Drawing.Point(-1, 70);
             this.gbxAddCustomer.Name = "gbxAddCustomer";
             this.gbxAddCustomer.Size = new System.Drawing.Size(582, 133);
             this.gbxAddCustomer.TabIndex = 17;
@@ -1511,8 +1514,8 @@ namespace SU21_Final_Project
             // radNo
             // 
             this.radNo.AutoSize = true;
-            this.radNo.ForeColor = System.Drawing.Color.Black;
-            this.radNo.Location = new System.Drawing.Point(180, 25);
+            this.radNo.ForeColor = System.Drawing.Color.DarkBlue;
+            this.radNo.Location = new System.Drawing.Point(184, 45);
             this.radNo.Name = "radNo";
             this.radNo.Size = new System.Drawing.Size(49, 21);
             this.radNo.TabIndex = 12;
@@ -1525,8 +1528,8 @@ namespace SU21_Final_Project
             // radYes
             // 
             this.radYes.AutoSize = true;
-            this.radYes.ForeColor = System.Drawing.Color.Black;
-            this.radYes.Location = new System.Drawing.Point(121, 24);
+            this.radYes.ForeColor = System.Drawing.Color.DarkBlue;
+            this.radYes.Location = new System.Drawing.Point(183, 22);
             this.radYes.Name = "radYes";
             this.radYes.Size = new System.Drawing.Size(56, 21);
             this.radYes.TabIndex = 11;
@@ -1575,9 +1578,9 @@ namespace SU21_Final_Project
             this.btnAddCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddCustomer.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnAddCustomer.Location = new System.Drawing.Point(929, 379);
+            this.btnAddCustomer.Location = new System.Drawing.Point(929, 398);
             this.btnAddCustomer.Name = "btnAddCustomer";
-            this.btnAddCustomer.Size = new System.Drawing.Size(142, 56);
+            this.btnAddCustomer.Size = new System.Drawing.Size(142, 54);
             this.btnAddCustomer.TabIndex = 24;
             this.btnAddCustomer.Text = "Add &Customer";
             this.btnAddCustomer.UseVisualStyleBackColor = true;
@@ -1593,9 +1596,9 @@ namespace SU21_Final_Project
             this.btnDisplayPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDisplayPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDisplayPrice.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnDisplayPrice.Location = new System.Drawing.Point(931, 434);
+            this.btnDisplayPrice.Location = new System.Drawing.Point(931, 450);
             this.btnDisplayPrice.Name = "btnDisplayPrice";
-            this.btnDisplayPrice.Size = new System.Drawing.Size(140, 61);
+            this.btnDisplayPrice.Size = new System.Drawing.Size(140, 54);
             this.btnDisplayPrice.TabIndex = 25;
             this.btnDisplayPrice.Text = "&Display Total";
             this.btnDisplayPrice.UseVisualStyleBackColor = true;
@@ -1611,9 +1614,9 @@ namespace SU21_Final_Project
             this.btnRemoveCart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemoveCart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveCart.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnRemoveCart.Location = new System.Drawing.Point(931, 492);
+            this.btnRemoveCart.Location = new System.Drawing.Point(931, 501);
             this.btnRemoveCart.Name = "btnRemoveCart";
-            this.btnRemoveCart.Size = new System.Drawing.Size(140, 66);
+            this.btnRemoveCart.Size = new System.Drawing.Size(140, 57);
             this.btnRemoveCart.TabIndex = 26;
             this.btnRemoveCart.Text = "&Remove";
             this.btnRemoveCart.UseVisualStyleBackColor = true;
@@ -1648,7 +1651,8 @@ namespace SU21_Final_Project
             "Green",
             "Black",
             "Grey",
-            "Pink"});
+            "Pink",
+            "N/A"});
             this.cboColor.Location = new System.Drawing.Point(366, 183);
             this.cboColor.Name = "cboColor";
             this.cboColor.Size = new System.Drawing.Size(100, 26);
@@ -1912,6 +1916,16 @@ namespace SU21_Final_Project
             this.btnResetAll.UseVisualStyleBackColor = true;
             this.btnResetAll.Click += new System.EventHandler(this.btnResetAll_Click);
             // 
+            // lblCustomerListLabel
+            // 
+            this.lblCustomerListLabel.AutoSize = true;
+            this.lblCustomerListLabel.ForeColor = System.Drawing.Color.Black;
+            this.lblCustomerListLabel.Location = new System.Drawing.Point(3, 323);
+            this.lblCustomerListLabel.Name = "lblCustomerListLabel";
+            this.lblCustomerListLabel.Size = new System.Drawing.Size(305, 17);
+            this.lblCustomerListLabel.TabIndex = 52;
+            this.lblCustomerListLabel.Text = "Select Customer to see Purchase History";
+            // 
             // frmEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1928,6 +1942,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.tabEmployeeView);
             this.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmEmployee";
@@ -2106,6 +2121,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnResetAll;
         private System.Windows.Forms.Label lblList;
         private System.Windows.Forms.Label lblCustomerName;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblReturningCustomerLabel;
+        private System.Windows.Forms.Label lblCustomerListLabel;
     }
 }
