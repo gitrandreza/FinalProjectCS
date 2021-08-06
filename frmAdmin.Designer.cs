@@ -66,9 +66,7 @@ namespace SU21_Final_Project
             this.lblLowItemLabel = new System.Windows.Forms.Label();
             this.gbxUpdateField = new System.Windows.Forms.GroupBox();
             this.cboCategory = new System.Windows.Forms.ComboBox();
-            this.cboSupplierID = new System.Windows.Forms.ComboBox();
             this.cbxCategoryID = new System.Windows.Forms.CheckBox();
-            this.cbxSupplierID = new System.Windows.Forms.CheckBox();
             this.tbxDescription = new System.Windows.Forms.TextBox();
             this.cbxDescription = new System.Windows.Forms.CheckBox();
             this.cbxRetailPrice = new System.Windows.Forms.CheckBox();
@@ -168,6 +166,7 @@ namespace SU21_Final_Project
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnAccessPOS = new System.Windows.Forms.Button();
             this.btnHelpAdmin = new System.Windows.Forms.Button();
+            this.lblPurchaseHistoryLabel = new System.Windows.Forms.Label();
             this.tabEmployee.SuspendLayout();
             this.gbxEdit.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -202,7 +201,7 @@ namespace SU21_Final_Project
             this.tabEmployee.Location = new System.Drawing.Point(4, 25);
             this.tabEmployee.Name = "tabEmployee";
             this.tabEmployee.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEmployee.Size = new System.Drawing.Size(1100, 524);
+            this.tabEmployee.Size = new System.Drawing.Size(1100, 536);
             this.tabEmployee.TabIndex = 1;
             this.tabEmployee.Text = "Employee Management";
             this.tabEmployee.UseVisualStyleBackColor = true;
@@ -618,7 +617,7 @@ namespace SU21_Final_Project
             this.tabInventory.Location = new System.Drawing.Point(4, 25);
             this.tabInventory.Name = "tabInventory";
             this.tabInventory.Padding = new System.Windows.Forms.Padding(3);
-            this.tabInventory.Size = new System.Drawing.Size(1100, 524);
+            this.tabInventory.Size = new System.Drawing.Size(1100, 536);
             this.tabInventory.TabIndex = 0;
             this.tabInventory.Text = "Inventory Control";
             this.tabInventory.UseVisualStyleBackColor = true;
@@ -631,9 +630,9 @@ namespace SU21_Final_Project
             this.btnRefresh.FlatAppearance.BorderSize = 3;
             this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRefresh.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnRefresh.Location = new System.Drawing.Point(801, 181);
+            this.btnRefresh.Location = new System.Drawing.Point(806, 182);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(303, 51);
+            this.btnRefresh.Size = new System.Drawing.Size(298, 50);
             this.btnRefresh.TabIndex = 42;
             this.btnRefresh.Text = "&Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
@@ -644,7 +643,7 @@ namespace SU21_Final_Project
             this.dgvLowItem.AllowUserToAddRows = false;
             this.dgvLowItem.AllowUserToDeleteRows = false;
             this.dgvLowItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLowItem.Location = new System.Drawing.Point(823, 266);
+            this.dgvLowItem.Location = new System.Drawing.Point(823, 257);
             this.dgvLowItem.MultiSelect = false;
             this.dgvLowItem.Name = "dgvLowItem";
             this.dgvLowItem.ReadOnly = true;
@@ -657,19 +656,17 @@ namespace SU21_Final_Project
             // lblLowItemLabel
             // 
             this.lblLowItemLabel.AutoSize = true;
-            this.lblLowItemLabel.Location = new System.Drawing.Point(820, 246);
+            this.lblLowItemLabel.Location = new System.Drawing.Point(820, 237);
             this.lblLowItemLabel.Name = "lblLowItemLabel";
-            this.lblLowItemLabel.Size = new System.Drawing.Size(173, 17);
+            this.lblLowItemLabel.Size = new System.Drawing.Size(240, 17);
             this.lblLowItemLabel.TabIndex = 40;
-            this.lblLowItemLabel.Text = "List of Low Quantity Items:";
+            this.lblLowItemLabel.Text = "Item(s )below needs to be restocked:";
             // 
             // gbxUpdateField
             // 
             this.gbxUpdateField.BackColor = System.Drawing.Color.Silver;
             this.gbxUpdateField.Controls.Add(this.cboCategory);
-            this.gbxUpdateField.Controls.Add(this.cboSupplierID);
             this.gbxUpdateField.Controls.Add(this.cbxCategoryID);
-            this.gbxUpdateField.Controls.Add(this.cbxSupplierID);
             this.gbxUpdateField.Controls.Add(this.tbxDescription);
             this.gbxUpdateField.Controls.Add(this.cbxDescription);
             this.gbxUpdateField.Controls.Add(this.cbxRetailPrice);
@@ -697,29 +694,15 @@ namespace SU21_Final_Project
             "1",
             "2",
             "3"});
-            this.cboCategory.Location = new System.Drawing.Point(408, 149);
+            this.cboCategory.Location = new System.Drawing.Point(111, 148);
             this.cboCategory.Name = "cboCategory";
             this.cboCategory.Size = new System.Drawing.Size(101, 24);
             this.cboCategory.TabIndex = 38;
             // 
-            // cboSupplierID
-            // 
-            this.cboSupplierID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboSupplierID.Enabled = false;
-            this.cboSupplierID.FormattingEnabled = true;
-            this.cboSupplierID.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3"});
-            this.cboSupplierID.Location = new System.Drawing.Point(657, 149);
-            this.cboSupplierID.Name = "cboSupplierID";
-            this.cboSupplierID.Size = new System.Drawing.Size(80, 24);
-            this.cboSupplierID.TabIndex = 37;
-            // 
             // cbxCategoryID
             // 
             this.cbxCategoryID.AutoSize = true;
-            this.cbxCategoryID.Location = new System.Drawing.Point(307, 152);
+            this.cbxCategoryID.Location = new System.Drawing.Point(10, 151);
             this.cbxCategoryID.Name = "cbxCategoryID";
             this.cbxCategoryID.Size = new System.Drawing.Size(95, 21);
             this.cbxCategoryID.TabIndex = 36;
@@ -727,32 +710,21 @@ namespace SU21_Final_Project
             this.cbxCategoryID.UseVisualStyleBackColor = true;
             this.cbxCategoryID.CheckedChanged += new System.EventHandler(this.cbxCategoryID_CheckedChanged);
             // 
-            // cbxSupplierID
-            // 
-            this.cbxSupplierID.AutoSize = true;
-            this.cbxSupplierID.Location = new System.Drawing.Point(561, 153);
-            this.cbxSupplierID.Name = "cbxSupplierID";
-            this.cbxSupplierID.Size = new System.Drawing.Size(90, 21);
-            this.cbxSupplierID.TabIndex = 35;
-            this.cbxSupplierID.Text = "Supplier#";
-            this.cbxSupplierID.UseVisualStyleBackColor = true;
-            this.cbxSupplierID.CheckedChanged += new System.EventHandler(this.cbxSupplierID_CheckedChanged);
-            // 
             // tbxDescription
             // 
             this.tbxDescription.Enabled = false;
             this.tbxDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxDescription.Location = new System.Drawing.Point(408, 44);
+            this.tbxDescription.Location = new System.Drawing.Point(371, 44);
             this.tbxDescription.Multiline = true;
             this.tbxDescription.Name = "tbxDescription";
             this.tbxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbxDescription.Size = new System.Drawing.Size(236, 92);
+            this.tbxDescription.Size = new System.Drawing.Size(272, 128);
             this.tbxDescription.TabIndex = 34;
             // 
             // cbxDescription
             // 
             this.cbxDescription.AutoSize = true;
-            this.cbxDescription.Location = new System.Drawing.Point(301, 39);
+            this.cbxDescription.Location = new System.Drawing.Point(371, 21);
             this.cbxDescription.Name = "cbxDescription";
             this.cbxDescription.Size = new System.Drawing.Size(101, 21);
             this.cbxDescription.TabIndex = 23;
@@ -763,7 +735,7 @@ namespace SU21_Final_Project
             // cbxRetailPrice
             // 
             this.cbxRetailPrice.AutoSize = true;
-            this.cbxRetailPrice.Location = new System.Drawing.Point(10, 152);
+            this.cbxRetailPrice.Location = new System.Drawing.Point(10, 121);
             this.cbxRetailPrice.Name = "cbxRetailPrice";
             this.cbxRetailPrice.Size = new System.Drawing.Size(102, 21);
             this.cbxRetailPrice.TabIndex = 21;
@@ -774,7 +746,7 @@ namespace SU21_Final_Project
             // tbxRetailPrice
             // 
             this.tbxRetailPrice.Enabled = false;
-            this.tbxRetailPrice.Location = new System.Drawing.Point(112, 152);
+            this.tbxRetailPrice.Location = new System.Drawing.Point(112, 121);
             this.tbxRetailPrice.Name = "tbxRetailPrice";
             this.tbxRetailPrice.Size = new System.Drawing.Size(142, 22);
             this.tbxRetailPrice.TabIndex = 20;
@@ -782,7 +754,7 @@ namespace SU21_Final_Project
             // cbxCost
             // 
             this.cbxCost.AutoSize = true;
-            this.cbxCost.Location = new System.Drawing.Point(10, 115);
+            this.cbxCost.Location = new System.Drawing.Point(10, 88);
             this.cbxCost.Name = "cbxCost";
             this.cbxCost.Size = new System.Drawing.Size(58, 21);
             this.cbxCost.TabIndex = 19;
@@ -793,7 +765,7 @@ namespace SU21_Final_Project
             // cbxQuantity
             // 
             this.cbxQuantity.AutoSize = true;
-            this.cbxQuantity.Location = new System.Drawing.Point(10, 76);
+            this.cbxQuantity.Location = new System.Drawing.Point(10, 57);
             this.cbxQuantity.Name = "cbxQuantity";
             this.cbxQuantity.Size = new System.Drawing.Size(112, 21);
             this.cbxQuantity.TabIndex = 19;
@@ -804,7 +776,7 @@ namespace SU21_Final_Project
             // tbxCost
             // 
             this.tbxCost.Enabled = false;
-            this.tbxCost.Location = new System.Drawing.Point(111, 115);
+            this.tbxCost.Location = new System.Drawing.Point(111, 88);
             this.tbxCost.Name = "tbxCost";
             this.tbxCost.Size = new System.Drawing.Size(142, 22);
             this.tbxCost.TabIndex = 18;
@@ -812,7 +784,7 @@ namespace SU21_Final_Project
             // tbxQuantity
             // 
             this.tbxQuantity.Enabled = false;
-            this.tbxQuantity.Location = new System.Drawing.Point(142, 74);
+            this.tbxQuantity.Location = new System.Drawing.Point(142, 55);
             this.tbxQuantity.Name = "tbxQuantity";
             this.tbxQuantity.Size = new System.Drawing.Size(111, 22);
             this.tbxQuantity.TabIndex = 18;
@@ -820,7 +792,7 @@ namespace SU21_Final_Project
             // cbxName
             // 
             this.cbxName.AutoSize = true;
-            this.cbxName.Location = new System.Drawing.Point(10, 39);
+            this.cbxName.Location = new System.Drawing.Point(10, 24);
             this.cbxName.Name = "cbxName";
             this.cbxName.Size = new System.Drawing.Size(67, 21);
             this.cbxName.TabIndex = 17;
@@ -831,7 +803,7 @@ namespace SU21_Final_Project
             // tbxName
             // 
             this.tbxName.Enabled = false;
-            this.tbxName.Location = new System.Drawing.Point(111, 39);
+            this.tbxName.Location = new System.Drawing.Point(111, 24);
             this.tbxName.Name = "tbxName";
             this.tbxName.Size = new System.Drawing.Size(142, 22);
             this.tbxName.TabIndex = 15;
@@ -930,7 +902,7 @@ namespace SU21_Final_Project
             this.tabManagerFeatures.Location = new System.Drawing.Point(12, 52);
             this.tabManagerFeatures.Name = "tabManagerFeatures";
             this.tabManagerFeatures.SelectedIndex = 0;
-            this.tabManagerFeatures.Size = new System.Drawing.Size(1108, 553);
+            this.tabManagerFeatures.Size = new System.Drawing.Size(1108, 565);
             this.tabManagerFeatures.TabIndex = 0;
             this.tabManagerFeatures.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabManagerFeatures_Selected);
             // 
@@ -943,7 +915,7 @@ namespace SU21_Final_Project
             this.tabCustomer.Controls.Add(this.dgvCustomer);
             this.tabCustomer.Location = new System.Drawing.Point(4, 25);
             this.tabCustomer.Name = "tabCustomer";
-            this.tabCustomer.Size = new System.Drawing.Size(1100, 524);
+            this.tabCustomer.Size = new System.Drawing.Size(1100, 536);
             this.tabCustomer.TabIndex = 2;
             this.tabCustomer.Text = "Customer Management";
             this.tabCustomer.UseVisualStyleBackColor = true;
@@ -1285,7 +1257,7 @@ namespace SU21_Final_Project
             this.tabSalesReport.Controls.Add(this.dgvSalesReport);
             this.tabSalesReport.Location = new System.Drawing.Point(4, 25);
             this.tabSalesReport.Name = "tabSalesReport";
-            this.tabSalesReport.Size = new System.Drawing.Size(1100, 524);
+            this.tabSalesReport.Size = new System.Drawing.Size(1100, 536);
             this.tabSalesReport.TabIndex = 3;
             this.tabSalesReport.Text = "Sales Management";
             // 
@@ -1531,6 +1503,7 @@ namespace SU21_Final_Project
             // 
             // tabSupplier
             // 
+            this.tabSupplier.Controls.Add(this.lblPurchaseHistoryLabel);
             this.tabSupplier.Controls.Add(this.btnPrintPurchaseReport);
             this.tabSupplier.Controls.Add(this.btnDisplayPurchase);
             this.tabSupplier.Controls.Add(this.radPurchaseAll);
@@ -1549,18 +1522,18 @@ namespace SU21_Final_Project
             this.tabSupplier.Controls.Add(this.btnSaveAddSupplier);
             this.tabSupplier.Location = new System.Drawing.Point(4, 25);
             this.tabSupplier.Name = "tabSupplier";
-            this.tabSupplier.Size = new System.Drawing.Size(1100, 524);
+            this.tabSupplier.Size = new System.Drawing.Size(1100, 536);
             this.tabSupplier.TabIndex = 4;
-            this.tabSupplier.Text = "Supplier Management";
+            this.tabSupplier.Text = "Supplier/Purchase View";
             this.tabSupplier.UseVisualStyleBackColor = true;
             // 
             // btnPrintPurchaseReport
             // 
             this.btnPrintPurchaseReport.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPrintPurchaseReport.BackgroundImage")));
             this.btnPrintPurchaseReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnPrintPurchaseReport.Location = new System.Drawing.Point(949, 380);
+            this.btnPrintPurchaseReport.Location = new System.Drawing.Point(941, 476);
             this.btnPrintPurchaseReport.Name = "btnPrintPurchaseReport";
-            this.btnPrintPurchaseReport.Size = new System.Drawing.Size(148, 80);
+            this.btnPrintPurchaseReport.Size = new System.Drawing.Size(156, 48);
             this.btnPrintPurchaseReport.TabIndex = 28;
             this.btnPrintPurchaseReport.Text = "&Print Report";
             this.btnPrintPurchaseReport.UseVisualStyleBackColor = true;
@@ -1570,11 +1543,11 @@ namespace SU21_Final_Project
             // 
             this.btnDisplayPurchase.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDisplayPurchase.BackgroundImage")));
             this.btnDisplayPurchase.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDisplayPurchase.Location = new System.Drawing.Point(949, 288);
+            this.btnDisplayPurchase.Location = new System.Drawing.Point(609, 473);
             this.btnDisplayPurchase.Name = "btnDisplayPurchase";
-            this.btnDisplayPurchase.Size = new System.Drawing.Size(148, 84);
+            this.btnDisplayPurchase.Size = new System.Drawing.Size(326, 54);
             this.btnDisplayPurchase.TabIndex = 27;
-            this.btnDisplayPurchase.Text = "Purchase History";
+            this.btnDisplayPurchase.Text = "Display Purchase History";
             this.btnDisplayPurchase.UseVisualStyleBackColor = true;
             this.btnDisplayPurchase.Click += new System.EventHandler(this.btnDisplayPurchase_Click);
             // 
@@ -1582,7 +1555,7 @@ namespace SU21_Final_Project
             // 
             this.radPurchaseAll.AutoSize = true;
             this.radPurchaseAll.Checked = true;
-            this.radPurchaseAll.Location = new System.Drawing.Point(901, 462);
+            this.radPurchaseAll.Location = new System.Drawing.Point(941, 413);
             this.radPurchaseAll.Name = "radPurchaseAll";
             this.radPurchaseAll.Size = new System.Drawing.Size(44, 21);
             this.radPurchaseAll.TabIndex = 26;
@@ -1593,7 +1566,7 @@ namespace SU21_Final_Project
             // radPurchaseMonthly
             // 
             this.radPurchaseMonthly.AutoSize = true;
-            this.radPurchaseMonthly.Location = new System.Drawing.Point(794, 463);
+            this.radPurchaseMonthly.Location = new System.Drawing.Point(845, 414);
             this.radPurchaseMonthly.Name = "radPurchaseMonthly";
             this.radPurchaseMonthly.Size = new System.Drawing.Size(78, 21);
             this.radPurchaseMonthly.TabIndex = 25;
@@ -1603,7 +1576,7 @@ namespace SU21_Final_Project
             // radPurchaseWeekly
             // 
             this.radPurchaseWeekly.AutoSize = true;
-            this.radPurchaseWeekly.Location = new System.Drawing.Point(699, 463);
+            this.radPurchaseWeekly.Location = new System.Drawing.Point(750, 414);
             this.radPurchaseWeekly.Name = "radPurchaseWeekly";
             this.radPurchaseWeekly.Size = new System.Drawing.Size(75, 21);
             this.radPurchaseWeekly.TabIndex = 24;
@@ -1613,7 +1586,7 @@ namespace SU21_Final_Project
             // radPurchaseDaily
             // 
             this.radPurchaseDaily.AutoSize = true;
-            this.radPurchaseDaily.Location = new System.Drawing.Point(620, 463);
+            this.radPurchaseDaily.Location = new System.Drawing.Point(671, 414);
             this.radPurchaseDaily.Name = "radPurchaseDaily";
             this.radPurchaseDaily.Size = new System.Drawing.Size(60, 21);
             this.radPurchaseDaily.TabIndex = 23;
@@ -1623,7 +1596,7 @@ namespace SU21_Final_Project
             // dtpPurchaseDate
             // 
             this.dtpPurchaseDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpPurchaseDate.Location = new System.Drawing.Point(729, 494);
+            this.dtpPurchaseDate.Location = new System.Drawing.Point(780, 445);
             this.dtpPurchaseDate.MinDate = new System.DateTime(2021, 4, 21, 0, 0, 0, 0);
             this.dtpPurchaseDate.Name = "dtpPurchaseDate";
             this.dtpPurchaseDate.Size = new System.Drawing.Size(167, 22);
@@ -1632,7 +1605,7 @@ namespace SU21_Final_Project
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(659, 499);
+            this.label1.Location = new System.Drawing.Point(710, 450);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 17);
             this.label1.TabIndex = 21;
@@ -1643,7 +1616,7 @@ namespace SU21_Final_Project
             this.dgvPurchaseRecord.AllowUserToAddRows = false;
             this.dgvPurchaseRecord.AllowUserToDeleteRows = false;
             this.dgvPurchaseRecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPurchaseRecord.Location = new System.Drawing.Point(609, 290);
+            this.dgvPurchaseRecord.Location = new System.Drawing.Point(609, 260);
             this.dgvPurchaseRecord.MultiSelect = false;
             this.dgvPurchaseRecord.Name = "dgvPurchaseRecord";
             this.dgvPurchaseRecord.ReadOnly = true;
@@ -1651,7 +1624,7 @@ namespace SU21_Final_Project
             this.dgvPurchaseRecord.RowHeadersWidth = 51;
             this.dgvPurchaseRecord.RowTemplate.Height = 24;
             this.dgvPurchaseRecord.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPurchaseRecord.Size = new System.Drawing.Size(342, 169);
+            this.dgvPurchaseRecord.Size = new System.Drawing.Size(488, 152);
             this.dgvPurchaseRecord.TabIndex = 20;
             this.dgvPurchaseRecord.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPurchaseRecord_CellClick);
             // 
@@ -1659,7 +1632,6 @@ namespace SU21_Final_Project
             // 
             this.btnSaveEditSupplier.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSaveEditSupplier.BackgroundImage")));
             this.btnSaveEditSupplier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSaveEditSupplier.Enabled = false;
             this.btnSaveEditSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveEditSupplier.ForeColor = System.Drawing.Color.SaddleBrown;
             this.btnSaveEditSupplier.Location = new System.Drawing.Point(14, 473);
@@ -1895,9 +1867,9 @@ namespace SU21_Final_Project
             this.btnRemoveSupplier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnRemoveSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveSupplier.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnRemoveSupplier.Location = new System.Drawing.Point(758, 228);
+            this.btnRemoveSupplier.Location = new System.Drawing.Point(402, 228);
             this.btnRemoveSupplier.Name = "btnRemoveSupplier";
-            this.btnRemoveSupplier.Size = new System.Drawing.Size(346, 56);
+            this.btnRemoveSupplier.Size = new System.Drawing.Size(201, 56);
             this.btnRemoveSupplier.TabIndex = 7;
             this.btnRemoveSupplier.Text = "Remove Supplier";
             this.btnRemoveSupplier.UseVisualStyleBackColor = true;
@@ -1909,9 +1881,9 @@ namespace SU21_Final_Project
             this.btnEditSupplier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEditSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditSupplier.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnEditSupplier.Location = new System.Drawing.Point(371, 228);
+            this.btnEditSupplier.Location = new System.Drawing.Point(187, 226);
             this.btnEditSupplier.Name = "btnEditSupplier";
-            this.btnEditSupplier.Size = new System.Drawing.Size(387, 56);
+            this.btnEditSupplier.Size = new System.Drawing.Size(218, 56);
             this.btnEditSupplier.TabIndex = 6;
             this.btnEditSupplier.Text = "Edit Supplier Information";
             this.btnEditSupplier.UseVisualStyleBackColor = true;
@@ -1925,7 +1897,7 @@ namespace SU21_Final_Project
             this.btnAddSupplier.ForeColor = System.Drawing.Color.SaddleBrown;
             this.btnAddSupplier.Location = new System.Drawing.Point(14, 228);
             this.btnAddSupplier.Name = "btnAddSupplier";
-            this.btnAddSupplier.Size = new System.Drawing.Size(355, 56);
+            this.btnAddSupplier.Size = new System.Drawing.Size(177, 56);
             this.btnAddSupplier.TabIndex = 5;
             this.btnAddSupplier.Text = "Add New Supplier";
             this.btnAddSupplier.UseVisualStyleBackColor = true;
@@ -1979,8 +1951,8 @@ namespace SU21_Final_Project
             this.btnLogout.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnLogout.FlatAppearance.BorderSize = 3;
             this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.ForeColor = System.Drawing.Color.SeaShell;
-            this.btnLogout.Location = new System.Drawing.Point(879, 0);
+            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.Location = new System.Drawing.Point(886, 1);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(123, 75);
             this.btnLogout.TabIndex = 15;
@@ -1995,12 +1967,12 @@ namespace SU21_Final_Project
             this.btnAccessPOS.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnAccessPOS.FlatAppearance.BorderSize = 3;
             this.btnAccessPOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAccessPOS.ForeColor = System.Drawing.Color.SeaShell;
-            this.btnAccessPOS.Location = new System.Drawing.Point(762, 0);
+            this.btnAccessPOS.ForeColor = System.Drawing.Color.White;
+            this.btnAccessPOS.Location = new System.Drawing.Point(769, 0);
             this.btnAccessPOS.Name = "btnAccessPOS";
             this.btnAccessPOS.Size = new System.Drawing.Size(120, 75);
             this.btnAccessPOS.TabIndex = 19;
-            this.btnAccessPOS.Text = "Point Of Sale";
+            this.btnAccessPOS.Text = "Point of Sale";
             this.btnAccessPOS.UseVisualStyleBackColor = true;
             this.btnAccessPOS.Click += new System.EventHandler(this.btnAccessPOS_Click);
             // 
@@ -2011,21 +1983,31 @@ namespace SU21_Final_Project
             this.btnHelpAdmin.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnHelpAdmin.FlatAppearance.BorderSize = 3;
             this.btnHelpAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelpAdmin.ForeColor = System.Drawing.Color.SeaShell;
-            this.btnHelpAdmin.Location = new System.Drawing.Point(1000, -1);
+            this.btnHelpAdmin.ForeColor = System.Drawing.Color.White;
+            this.btnHelpAdmin.Location = new System.Drawing.Point(1008, -1);
             this.btnHelpAdmin.Name = "btnHelpAdmin";
-            this.btnHelpAdmin.Size = new System.Drawing.Size(130, 75);
+            this.btnHelpAdmin.Size = new System.Drawing.Size(122, 75);
             this.btnHelpAdmin.TabIndex = 20;
             this.btnHelpAdmin.Text = "Help?";
             this.btnHelpAdmin.UseVisualStyleBackColor = true;
             this.btnHelpAdmin.Click += new System.EventHandler(this.btnHelpAdmin_Click);
+            // 
+            // lblPurchaseHistoryLabel
+            // 
+            this.lblPurchaseHistoryLabel.AutoSize = true;
+            this.lblPurchaseHistoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPurchaseHistoryLabel.Location = new System.Drawing.Point(609, 240);
+            this.lblPurchaseHistoryLabel.Name = "lblPurchaseHistoryLabel";
+            this.lblPurchaseHistoryLabel.Size = new System.Drawing.Size(137, 17);
+            this.lblPurchaseHistoryLabel.TabIndex = 29;
+            this.lblPurchaseHistoryLabel.Text = "Purchase History:";
             // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1132, 610);
+            this.ClientSize = new System.Drawing.Size(1132, 634);
             this.Controls.Add(this.btnHelpAdmin);
             this.Controls.Add(this.btnAccessPOS);
             this.Controls.Add(this.btnLogout);
@@ -2099,9 +2081,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.CheckBox cbxRetailPrice;
         private System.Windows.Forms.TextBox tbxRetailPrice;
         private System.Windows.Forms.ComboBox cboCategory;
-        private System.Windows.Forms.ComboBox cboSupplierID;
         private System.Windows.Forms.CheckBox cbxCategoryID;
-        private System.Windows.Forms.CheckBox cbxSupplierID;
         private System.Windows.Forms.TextBox tbxDescription;
         private System.Windows.Forms.Button btnRemoveEmployee;
         private System.Windows.Forms.Button btnAddEmployee;
@@ -2217,5 +2197,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.DataGridView dgvPurchaseRecord;
         private System.Windows.Forms.Button btnPrintPurchaseReport;
         private System.Windows.Forms.Button btnDisplayPurchase;
+        private System.Windows.Forms.Label lblPurchaseHistoryLabel;
     }
 }

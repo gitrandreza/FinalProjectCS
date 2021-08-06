@@ -19,7 +19,7 @@ namespace SU21_Final_Project
         SqlConnection Connection;
         SqlDataAdapter dataAdapter;
         DataTable dataTable;
-       
+        DataTable dt;
 
 
         string strItemID;
@@ -35,6 +35,8 @@ namespace SU21_Final_Project
         string strPurchaseInvoiceFile;
         int intPurchaseID;
         string strPurchaseNumber;
+        string strSupplierInvoice;
+
         private void frmAdmin_Load(object sender, EventArgs e)
         {
              
@@ -398,8 +400,7 @@ namespace SU21_Final_Project
 
                 }
 
-                if (cboSupplierID.Text == "")
-                {
+             
 
                     strSupplierID = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[7].Value.ToString();
                     intSupplierTryParse = int.TryParse(strSupplierID, out intSupplierID);
@@ -408,18 +409,10 @@ namespace SU21_Final_Project
                         MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     }
+                    strSupplierInvoice = strSupplierID;
+              
 
-                }
-                else
-                {
-                    strSupplierID = cboSupplierID.SelectedItem.ToString();
-                    intSupplierTryParse = int.TryParse(strSupplierID, out intSupplierID);
-                    if (intSupplierTryParse == false)
-                    {
-                        MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    }
-                }
                 if (intSelectedQuantity >= 0 && intSelectedQuantity < int.MaxValue)
                 {
                     if (dblCost > 0 && dblCost < double.MaxValue)
@@ -563,7 +556,7 @@ namespace SU21_Final_Project
             html.AppendLine($"<h5>{"Total Amount: "}{dblTotalPay.ToString("C2")}</h5>");
 
 
-            html.Append($"<h2>{"Company: Supplier  "}</h2>");
+            html.Append($"<h2>{"Supplier ID: "}{strSupplierInvoice}</h2>");
 
             html.Append("</body></html>");//close body
 
@@ -691,17 +684,7 @@ namespace SU21_Final_Project
             }
         }
 
-        private void cbxSupplierID_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbxSupplierID.Checked == true)
-            {
-                cboSupplierID.Enabled = true;
-            }
-            else
-            {
-                cboSupplierID.Enabled = false;
-            }
-        }
+
 
         public void ResetUpdateFields()
         {
@@ -712,8 +695,7 @@ namespace SU21_Final_Project
             cbxDescription.Checked = false; tbxDescription.Text = "";
             cboCategory.Text = "";
             cbxCategoryID.Checked = false;
-            cboSupplierID.Text = "";
-            cbxSupplierID.Checked = false;
+          
             cbxStates.Checked = false;
         }
         private void dgvAllProducts_SelectionChanged(object sender, EventArgs e)
@@ -1836,7 +1818,7 @@ namespace SU21_Final_Project
 
                 Connection.Open();
               
-                    string strQuery = "SELECT *from RandrezaVoharisoaM21Su2332.SalesReport  where CreationDate = '" + strChooseDateReportDaily + "'";
+                    string strQuery = "SELECT SaleId as [Sale ID], UserID as [User ID], CreationDate as [Date of Sale], TotalSale as [Sales Amount] from RandrezaVoharisoaM21Su2332.SalesReport  where CreationDate = '" + strChooseDateReportDaily + "'";
                     dataAdapter = new SqlDataAdapter(strQuery, Connection);
                     dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);
@@ -1864,7 +1846,7 @@ namespace SU21_Final_Project
 
                 Connection.Open();
                
-                    string strQuery = "SELECT *from RandrezaVoharisoaM21Su2332.SalesReport  where CreationDate between '" + strChooseDateReportWeekly + "' And DATEADD(DAY, 7, '" + strChooseDateReportWeekly + "')";
+                    string strQuery = "SELECT SaleId as [Sale ID], UserID as [User ID], CreationDate as [Date of Sale], TotalSale as [Sales Amount] from RandrezaVoharisoaM21Su2332.SalesReport  where CreationDate between '" + strChooseDateReportWeekly + "' And DATEADD(DAY, 7, '" + strChooseDateReportWeekly + "')";
                     dataAdapter = new SqlDataAdapter(strQuery, Connection);
                     dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);
@@ -1892,7 +1874,7 @@ namespace SU21_Final_Project
 
                 Connection.Open();
               
-                    string strQuery = "SELECT *from RandrezaVoharisoaM21Su2332.SalesReport  where CreationDate between '" + strChooseDateReportMonthly + "' And DATEADD(DAY, 31, '" + strChooseDateReportMonthly + "')";
+                    string strQuery = "SELECT SaleId as [Sale ID], UserID as [User ID], CreationDate as [Date of Sale], TotalSale as [Sales Amount] from RandrezaVoharisoaM21Su2332.SalesReport  where CreationDate between '" + strChooseDateReportMonthly + "' And DATEADD(DAY, 31, '" + strChooseDateReportMonthly + "')";
                     dataAdapter = new SqlDataAdapter(strQuery, Connection);
                     dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);
@@ -1979,27 +1961,35 @@ namespace SU21_Final_Project
 
         private void btnEditSupplier_Click(object sender, EventArgs e)
         {
-            string strCompanyName = dgvSupplierView.Rows[dgvSupplierView.CurrentCell.RowIndex].Cells[1].Value.ToString();
-           
-
-
-            if (dgvSupplierView.SelectedRows.Count > 0)
+            try
             {
-                if (MessageBox.Show("Do you want to edit Supplier '" +strCompanyName+ "'?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                string strCompanyName = dgvSupplierView.Rows[dgvSupplierView.CurrentCell.RowIndex].Cells[1].Value.ToString();
+
+
+
+                if (dgvSupplierView.SelectedRows.Count > 0)
                 {
-                   gbxAddEditSupplier.Enabled = true;
-                    btnSaveAddSupplier.Enabled = false;
-                    btnEditSupplier.Enabled = true;
+                    if (MessageBox.Show("Do you want to edit Supplier '" + strCompanyName + "'?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        gbxAddEditSupplier.Enabled = true;
+                        btnSaveAddSupplier.Enabled = false;
+                        btnSaveEditSupplier.Enabled = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please select the Supplier you want to edit", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Please select the Supplier you want to edit", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Please make a selection", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("Please make a selection", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
         }
 
         private void btnSaveEditSupplier_Click(object sender, EventArgs e)
@@ -2125,9 +2115,9 @@ namespace SU21_Final_Project
 
                 MessageBox.Show("The selected Supplier Information has been updated?", "Message", MessageBoxButtons.OK);
 
-                DisplayCustomers();
-                Reset();
-                btnEditSupplier.Enabled = false;
+                DisplaySupplierList();
+                ResetSupplierEntry();
+                btnSaveEditSupplier.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -2294,7 +2284,7 @@ namespace SU21_Final_Project
 
                 Connection.Open();
                
-                    string strQuery = "SELECT *from RandrezaVoharisoaM21Su2332.Purchase  where PurchaseDate between '" + strChooseDateReportWeekly + "' And DATEADD(DAY, 7, '" + strChooseDateReportWeekly + "')";
+                    string strQuery = "SELECT PurchaseID as [Purchase ID],SupplierID as [Supplier ID], PurchaseDate as [Date of Purchase], ItemName as [Product Purchased] from RandrezaVoharisoaM21Su2332.Purchase  where PurchaseDate between '" + strChooseDateReportWeekly + "' And DATEADD(DAY, 7, '" + strChooseDateReportWeekly + "')";
                     dataAdapter = new SqlDataAdapter(strQuery, Connection);
                     dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);
@@ -2311,7 +2301,7 @@ namespace SU21_Final_Project
 
         public void DisplayPurchaseDaily()
         {
-            string strChooseDateReportWeekly = dtpPurchaseDate.Text;
+            string strChooseDateReportDaily = dtpPurchaseDate.Text;
             try
             {
 
@@ -2320,7 +2310,7 @@ namespace SU21_Final_Project
 
                 Connection.Open();
                 
-                    string strQuery = "SELECT *from RandrezaVoharisoaM21Su2332.Purchase  where PurchaseDate = '" + strChooseDateReportWeekly + "'";
+                    string strQuery = "SELECT PurchaseID as [Purchase ID],SupplierID as [Supplier ID], PurchaseDate as [Date of Purchase], ItemName as [Product Purchased] from RandrezaVoharisoaM21Su2332.Purchase  where PurchaseDate = '" + strChooseDateReportDaily + "'";
                     dataAdapter = new SqlDataAdapter(strQuery, Connection);
                     dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);
@@ -2348,7 +2338,7 @@ namespace SU21_Final_Project
 
                 Connection.Open();
              
-                    string strQuery = "SELECT *from RandrezaVoharisoaM21Su2332.Purchase  where PurchaseDate between '" + strChooseDateReportMonthly + "' And DATEADD(DAY, 31, '" + strChooseDateReportMonthly + "')";
+                    string strQuery = "SELECT PurchaseID as [Purchase ID],SupplierID as [Supplier ID], PurchaseDate as [Date of Purchase], ItemName as [Product Purchased] from RandrezaVoharisoaM21Su2332.Purchase  where PurchaseDate between '" + strChooseDateReportMonthly + "' And DATEADD(DAY, 31, '" + strChooseDateReportMonthly + "')";
                     dataAdapter = new SqlDataAdapter(strQuery, Connection);
                     dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);
@@ -2386,14 +2376,21 @@ namespace SU21_Final_Project
         }
         private void dgvPurchaseRecord_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            if (e.RowIndex >= 0)
+            try
             {
-                //instantiate object from Items class and assign value from cell
-                DataGridViewRow row = this.dgvPurchaseRecord.Rows[e.RowIndex];
-                strPurchaseNumber = row.Cells["PurchaseID"].Value.ToString();
+                if (e.RowIndex >= 0)
+                {
+                    //instantiate object from Items class and assign value from cell
+                    DataGridViewRow row = this.dgvPurchaseRecord.Rows[e.RowIndex];
+                    strPurchaseNumber = row.Cells["Purchase ID"].Value.ToString();
 
+                }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
         }
         private void btnPrintPurchaseReport_Click(object sender, EventArgs e)
         {
@@ -2427,6 +2424,8 @@ namespace SU21_Final_Project
             new frmManagerViewHelp().Show();
             this.Hide();
         }
+
+      
     }
 
 }
