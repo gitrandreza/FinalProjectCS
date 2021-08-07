@@ -30,10 +30,10 @@ namespace SU21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblDate = new System.Windows.Forms.Label();
             this.dgvAll = new System.Windows.Forms.DataGridView();
             this.pbxAll = new System.Windows.Forms.PictureBox();
@@ -123,12 +123,12 @@ namespace SU21_Final_Project
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.BackColor = System.Drawing.Color.Transparent;
-            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblDate.Location = new System.Drawing.Point(228, 9);
+            this.lblDate.Location = new System.Drawing.Point(228, 6);
             this.lblDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(0, 18);
+            this.lblDate.Size = new System.Drawing.Size(0, 25);
             this.lblDate.TabIndex = 0;
             // 
             // dgvAll
@@ -136,14 +136,14 @@ namespace SU21_Final_Project
             this.dgvAll.AllowUserToAddRows = false;
             this.dgvAll.AllowUserToDeleteRows = false;
             this.dgvAll.BackgroundColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAll.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAll.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvAll.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAll.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dgvAll.Location = new System.Drawing.Point(11, 92);
@@ -401,6 +401,7 @@ namespace SU21_Final_Project
             this.tbxQuantity.Name = "tbxQuantity";
             this.tbxQuantity.Size = new System.Drawing.Size(75, 22);
             this.tbxQuantity.TabIndex = 1;
+            this.tbxQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxQuantity_KeyPress);
             // 
             // lblEnterQuantityLabel
             // 
@@ -483,14 +484,14 @@ namespace SU21_Final_Project
             this.btnAdmin.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnAdmin.FlatAppearance.BorderSize = 3;
             this.btnAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdmin.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnAdmin.Location = new System.Drawing.Point(565, -5);
+            this.btnAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdmin.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnAdmin.Location = new System.Drawing.Point(513, -9);
             this.btnAdmin.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdmin.Name = "btnAdmin";
-            this.btnAdmin.Size = new System.Drawing.Size(301, 55);
+            this.btnAdmin.Size = new System.Drawing.Size(353, 55);
             this.btnAdmin.TabIndex = 22;
-            this.btnAdmin.Text = "Ad&ministrator Access";
+            this.btnAdmin.Text = "Access to Admin";
             this.btnAdmin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAdmin.UseVisualStyleBackColor = false;
             this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
@@ -514,8 +515,8 @@ namespace SU21_Final_Project
             this.lblUserIDLabel.AutoSize = true;
             this.lblUserIDLabel.BackColor = System.Drawing.Color.Transparent;
             this.lblUserIDLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserIDLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblUserIDLabel.Location = new System.Drawing.Point(440, 9);
+            this.lblUserIDLabel.ForeColor = System.Drawing.Color.Transparent;
+            this.lblUserIDLabel.Location = new System.Drawing.Point(725, 351);
             this.lblUserIDLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUserIDLabel.Name = "lblUserIDLabel";
             this.lblUserIDLabel.Size = new System.Drawing.Size(71, 16);
@@ -528,23 +529,23 @@ namespace SU21_Final_Project
             this.dgvList.AllowUserToAddRows = false;
             this.dgvList.AllowUserToDeleteRows = false;
             this.dgvList.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.dgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvList.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvList.DefaultCellStyle = dataGridViewCellStyle18;
             this.dgvList.Location = new System.Drawing.Point(3, 388);
             this.dgvList.Margin = new System.Windows.Forms.Padding(4);
             this.dgvList.MultiSelect = false;
@@ -669,6 +670,7 @@ namespace SU21_Final_Project
             this.tbxNameCredit.Size = new System.Drawing.Size(256, 22);
             this.tbxNameCredit.TabIndex = 16;
             this.tbxNameCredit.Tag = "";
+            this.tbxNameCredit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxNameCredit_KeyPress);
             // 
             // lblCVV
             // 
@@ -861,12 +863,12 @@ namespace SU21_Final_Project
             // 
             this.lblNameLabel.AutoSize = true;
             this.lblNameLabel.BackColor = System.Drawing.Color.Transparent;
-            this.lblNameLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNameLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNameLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblNameLabel.Location = new System.Drawing.Point(5, 13);
+            this.lblNameLabel.Location = new System.Drawing.Point(11, 7);
             this.lblNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameLabel.Name = "lblNameLabel";
-            this.lblNameLabel.Size = new System.Drawing.Size(51, 16);
+            this.lblNameLabel.Size = new System.Drawing.Size(70, 23);
             this.lblNameLabel.TabIndex = 33;
             this.lblNameLabel.Text = "Hello, ";
             // 
@@ -874,12 +876,12 @@ namespace SU21_Final_Project
             // 
             this.lblNameOfUser.AutoSize = true;
             this.lblNameOfUser.BackColor = System.Drawing.Color.Transparent;
-            this.lblNameOfUser.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNameOfUser.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNameOfUser.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblNameOfUser.Location = new System.Drawing.Point(63, 13);
+            this.lblNameOfUser.Location = new System.Drawing.Point(106, 7);
             this.lblNameOfUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameOfUser.Name = "lblNameOfUser";
-            this.lblNameOfUser.Size = new System.Drawing.Size(0, 16);
+            this.lblNameOfUser.Size = new System.Drawing.Size(0, 23);
             this.lblNameOfUser.TabIndex = 32;
             // 
             // lblSelectItemLabel
@@ -915,7 +917,7 @@ namespace SU21_Final_Project
             this.btnLogout.FlatAppearance.BorderSize = 3;
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnLogout.ForeColor = System.Drawing.Color.White;
             this.btnLogout.Location = new System.Drawing.Point(867, -5);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(139, 55);
@@ -937,7 +939,6 @@ namespace SU21_Final_Project
             this.pnlHeader.Controls.Add(this.lblUser);
             this.pnlHeader.Controls.Add(this.lblNameOfUser);
             this.pnlHeader.Controls.Add(this.btnAdmin);
-            this.pnlHeader.Controls.Add(this.lblUserIDLabel);
             this.pnlHeader.Location = new System.Drawing.Point(8, 10);
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(1135, 41);
@@ -952,7 +953,7 @@ namespace SU21_Final_Project
             this.btnHelpEmployeeView.FlatAppearance.BorderSize = 3;
             this.btnHelpEmployeeView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHelpEmployeeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelpEmployeeView.ForeColor = System.Drawing.Color.SeaShell;
+            this.btnHelpEmployeeView.ForeColor = System.Drawing.Color.White;
             this.btnHelpEmployeeView.Location = new System.Drawing.Point(1000, -5);
             this.btnHelpEmployeeView.Name = "btnHelpEmployeeView";
             this.btnHelpEmployeeView.Size = new System.Drawing.Size(134, 55);
@@ -1056,9 +1057,9 @@ namespace SU21_Final_Project
             this.lblCoupon.ForeColor = System.Drawing.Color.Black;
             this.lblCoupon.Location = new System.Drawing.Point(412, 598);
             this.lblCoupon.Name = "lblCoupon";
-            this.lblCoupon.Size = new System.Drawing.Size(107, 17);
+            this.lblCoupon.Size = new System.Drawing.Size(121, 17);
             this.lblCoupon.TabIndex = 60;
-            this.lblCoupon.Text = "Enter Coupon";
+            this.lblCoupon.Text = "Enter Coupon #";
             // 
             // lblCouponDescriptionLabel
             // 
@@ -1129,6 +1130,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.btnApplyCoupon);
             this.Controls.Add(this.tbxCoupon);
             this.Controls.Add(this.pbxOrderList);
+            this.Controls.Add(this.lblUserIDLabel);
             this.Controls.Add(this.lblTotalAmount);
             this.Controls.Add(this.lblDiscount);
             this.Controls.Add(this.lblTaxAmount);

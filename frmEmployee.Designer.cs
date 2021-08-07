@@ -31,6 +31,7 @@ namespace SU21_Final_Project
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmployee));
             this.tabInformation = new System.Windows.Forms.TabPage();
+            this.lblCustomerListLabel = new System.Windows.Forms.Label();
             this.btnPrintInvoice = new System.Windows.Forms.Button();
             this.btnClearCustomer = new System.Windows.Forms.Button();
             this.btnClearCoupon = new System.Windows.Forms.Button();
@@ -167,7 +168,6 @@ namespace SU21_Final_Project
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnHelpEmployeeView = new System.Windows.Forms.Button();
             this.btnResetAll = new System.Windows.Forms.Button();
-            this.lblCustomerListLabel = new System.Windows.Forms.Label();
             this.tabInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPurchaseDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerPurchase)).BeginInit();
@@ -210,6 +210,16 @@ namespace SU21_Final_Project
             this.tabInformation.TabIndex = 0;
             this.tabInformation.Text = "               Additional Information                ";
             this.tabInformation.UseVisualStyleBackColor = true;
+            // 
+            // lblCustomerListLabel
+            // 
+            this.lblCustomerListLabel.AutoSize = true;
+            this.lblCustomerListLabel.ForeColor = System.Drawing.Color.Black;
+            this.lblCustomerListLabel.Location = new System.Drawing.Point(3, 323);
+            this.lblCustomerListLabel.Name = "lblCustomerListLabel";
+            this.lblCustomerListLabel.Size = new System.Drawing.Size(305, 17);
+            this.lblCustomerListLabel.TabIndex = 52;
+            this.lblCustomerListLabel.Text = "Select Customer to see Purchase History";
             // 
             // btnPrintInvoice
             // 
@@ -1158,10 +1168,10 @@ namespace SU21_Final_Project
             this.radReturningDiscount.ForeColor = System.Drawing.Color.Black;
             this.radReturningDiscount.Location = new System.Drawing.Point(6, 135);
             this.radReturningDiscount.Name = "radReturningDiscount";
-            this.radReturningDiscount.Size = new System.Drawing.Size(151, 21);
+            this.radReturningDiscount.Size = new System.Drawing.Size(156, 21);
             this.radReturningDiscount.TabIndex = 32;
             this.radReturningDiscount.TabStop = true;
-            this.radReturningDiscount.Text = "Customer Return";
+            this.radReturningDiscount.Text = "Return Customer ";
             this.radReturningDiscount.UseVisualStyleBackColor = true;
             this.radReturningDiscount.CheckedChanged += new System.EventHandler(this.radReturningDiscount_CheckedChanged);
             // 
@@ -1234,9 +1244,9 @@ namespace SU21_Final_Project
             this.lblReturningCustomerLabel.ForeColor = System.Drawing.Color.DarkBlue;
             this.lblReturningCustomerLabel.Location = new System.Drawing.Point(11, 34);
             this.lblReturningCustomerLabel.Name = "lblReturningCustomerLabel";
-            this.lblReturningCustomerLabel.Size = new System.Drawing.Size(161, 17);
+            this.lblReturningCustomerLabel.Size = new System.Drawing.Size(166, 17);
             this.lblReturningCustomerLabel.TabIndex = 39;
-            this.lblReturningCustomerLabel.Text = "Customer Returning?";
+            this.lblReturningCustomerLabel.Text = "Returning Customer ?";
             // 
             // btnSearchCustomerID
             // 
@@ -1915,16 +1925,6 @@ namespace SU21_Final_Project
             this.btnResetAll.Text = "Reset All";
             this.btnResetAll.UseVisualStyleBackColor = true;
             this.btnResetAll.Click += new System.EventHandler(this.btnResetAll_Click);
-            // 
-            // lblCustomerListLabel
-            // 
-            this.lblCustomerListLabel.AutoSize = true;
-            this.lblCustomerListLabel.ForeColor = System.Drawing.Color.Black;
-            this.lblCustomerListLabel.Location = new System.Drawing.Point(3, 323);
-            this.lblCustomerListLabel.Name = "lblCustomerListLabel";
-            this.lblCustomerListLabel.Size = new System.Drawing.Size(305, 17);
-            this.lblCustomerListLabel.TabIndex = 52;
-            this.lblCustomerListLabel.Text = "Select Customer to see Purchase History";
             // 
             // frmEmployee
             // 

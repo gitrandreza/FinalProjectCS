@@ -68,7 +68,9 @@ namespace SU21_Final_Project
                         //check through the user table column to find a matching value
                         if (reader["Username"].ToString().Equals(strEnterUsername, StringComparison.CurrentCultureIgnoreCase))
                         {
-                            if ( reader["Answer1"].ToString().Equals(strAnswerOne, StringComparison.CurrentCultureIgnoreCase)
+
+
+                            if (reader["Answer1"].ToString().Equals(strAnswerOne, StringComparison.CurrentCultureIgnoreCase)
                                 && reader["Answer2"].ToString().Equals(strAnswerTwo, StringComparison.CurrentCultureIgnoreCase)
                                 && reader["Answer3"].ToString().Equals(strAnswerThree, StringComparison.CurrentCultureIgnoreCase))
                             {
@@ -79,8 +81,41 @@ namespace SU21_Final_Project
                                 btnNewPassword.Enabled = true;
                                 blnMatch = true;
 
+                               
+
                             }
 
+                            else if (reader["Answer1"].ToString().Equals("Not Available", StringComparison.CurrentCultureIgnoreCase)
+                              && reader["Answer2"].ToString().Equals("Not Available", StringComparison.CurrentCultureIgnoreCase)
+                              && reader["Answer3"].ToString().Equals("Not Available", StringComparison.CurrentCultureIgnoreCase))
+                            {
+                                lblInvalidAnswers.Visible = false;
+                                lblValidAnswers.Visible = true;
+                                tbxNewPassword.Enabled = true;
+                                tbxConfirmPassword.Enabled = true;
+                                btnNewPassword.Enabled = true;
+                               
+                                tbxDog.Text = "Not Applicable, Customer created by Employee";
+                                tbxDrink.Text= "Not Applicable, Customer created up by Employee";
+                                tbxIdol.Text= "Not Applicable, Customer created up by Employee";
+                                blnMatch = true;
+                            }
+
+                            else if (reader["Answer1"].ToString().Equals("N/A", StringComparison.CurrentCultureIgnoreCase)
+                            && reader["Answer2"].ToString().Equals("N/A", StringComparison.CurrentCultureIgnoreCase)
+                            && reader["Answer3"].ToString().Equals("N/A", StringComparison.CurrentCultureIgnoreCase))
+                            {
+                                lblInvalidAnswers.Visible = false;
+                                lblValidAnswers.Visible = true;
+                                tbxNewPassword.Enabled = true;
+                                tbxConfirmPassword.Enabled = true;
+                                btnNewPassword.Enabled = true;
+
+                                tbxDog.Text = "Not Applicable, Employee created by Manager";
+                                tbxDrink.Text = "Not Applicable, Employee created up by Manager";
+                                tbxIdol.Text = "Not Applicable, Employee created up by Manager";
+                                blnMatch = true;
+                            }
 
                         }
 
@@ -134,17 +169,25 @@ namespace SU21_Final_Project
 
                 {
 
-                    Connection.Open();
+                        try
+                        {
+                            Connection.Open();
 
-                    string updateQuery = "UPDATE RandrezaVoharisoaM21Su2332.Users set Password = @Password where Username ='" + strEnterUsername + "' ";
-                    SqlCommand updateCommand = new SqlCommand(updateQuery, Connection);
-                    SqlParameter sqlParams = updateCommand.Parameters.AddWithValue("@Password", strNewPassword);
-                    updateCommand.ExecuteNonQuery();
-                    MessageBox.Show("New Password saved", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            string updateQuery = "UPDATE RandrezaVoharisoaM21Su2332.Users set Password = @Password where Username ='" + strEnterUsername + "' ";
+                            SqlCommand updateCommand = new SqlCommand(updateQuery, Connection);
+                            SqlParameter sqlParams = updateCommand.Parameters.AddWithValue("@Password", strNewPassword);
+                            updateCommand.ExecuteNonQuery();
+                            MessageBox.Show("New Password saved", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    Connection.Close();
-                    this.Hide();
-                    new frmLogin().Show();
+                            Connection.Close();
+                            this.Hide();
+                            new frmLogin().Show();
+                        }
+                        catch(Exception ex)
+                        {
+                            MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                  
                 }
             }
                 else
@@ -163,7 +206,7 @@ namespace SU21_Final_Project
         //Check for password Validation
         public bool ValidPassword(string strPassword)
         {
-
+         
             if (strPassword.Length < 8 || strPassword.Length > 20)
                 return false;
 
@@ -262,7 +305,7 @@ namespace SU21_Final_Project
 
         private void btnHelpResetPassword_Click(object sender, EventArgs e)
         {
-            new frmHelp().Show();
+            new frmHelpResetPassword().Show();
            
             
         }

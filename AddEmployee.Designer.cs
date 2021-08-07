@@ -231,7 +231,7 @@ namespace SU21_Final_Project
             "WV",
             "WI",
             "WY"});
-            this.cboState.Location = new System.Drawing.Point(382, 263);
+            this.cboState.Location = new System.Drawing.Point(401, 264);
             this.cboState.MaxLength = 3;
             this.cboState.Name = "cboState";
             this.cboState.Size = new System.Drawing.Size(63, 24);
@@ -272,7 +272,7 @@ namespace SU21_Final_Project
             // 
             // tbxLastName
             // 
-            this.tbxLastName.Location = new System.Drawing.Point(133, 139);
+            this.tbxLastName.Location = new System.Drawing.Point(140, 139);
             this.tbxLastName.MaxLength = 20;
             this.tbxLastName.Name = "tbxLastName";
             this.tbxLastName.Size = new System.Drawing.Size(165, 22);
@@ -280,7 +280,7 @@ namespace SU21_Final_Project
             // 
             // tbxFirstName
             // 
-            this.tbxFirstName.Location = new System.Drawing.Point(133, 57);
+            this.tbxFirstName.Location = new System.Drawing.Point(140, 57);
             this.tbxFirstName.MaxLength = 20;
             this.tbxFirstName.Name = "tbxFirstName";
             this.tbxFirstName.Size = new System.Drawing.Size(165, 22);
@@ -332,7 +332,7 @@ namespace SU21_Final_Project
             // 
             // tbxMiddleName
             // 
-            this.tbxMiddleName.Location = new System.Drawing.Point(133, 99);
+            this.tbxMiddleName.Location = new System.Drawing.Point(140, 99);
             this.tbxMiddleName.MaxLength = 20;
             this.tbxMiddleName.Name = "tbxMiddleName";
             this.tbxMiddleName.Size = new System.Drawing.Size(165, 22);
@@ -375,7 +375,7 @@ namespace SU21_Final_Project
             // 
             // tbxAddressOne
             // 
-            this.tbxAddressOne.Location = new System.Drawing.Point(133, 217);
+            this.tbxAddressOne.Location = new System.Drawing.Point(138, 217);
             this.tbxAddressOne.MaxLength = 30;
             this.tbxAddressOne.Name = "tbxAddressOne";
             this.tbxAddressOne.Size = new System.Drawing.Size(165, 22);
@@ -402,10 +402,11 @@ namespace SU21_Final_Project
             // tbxSalary
             // 
             this.tbxSalary.Location = new System.Drawing.Point(439, 120);
-            this.tbxSalary.MaxLength = 30;
+            this.tbxSalary.MaxLength = 10;
             this.tbxSalary.Name = "tbxSalary";
             this.tbxSalary.Size = new System.Drawing.Size(158, 22);
             this.tbxSalary.TabIndex = 8;
+            this.tbxSalary.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxSalary_KeyPress);
             // 
             // lblSalaryLabel
             // 
@@ -418,16 +419,17 @@ namespace SU21_Final_Project
             // 
             // tbxZip
             // 
-            this.tbxZip.Location = new System.Drawing.Point(488, 265);
+            this.tbxZip.Location = new System.Drawing.Point(539, 264);
             this.tbxZip.MaxLength = 5;
             this.tbxZip.Name = "tbxZip";
             this.tbxZip.Size = new System.Drawing.Size(94, 22);
             this.tbxZip.TabIndex = 13;
+            this.tbxZip.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxZip_KeyPress_1);
             // 
             // lblZipLabel
             // 
             this.lblZipLabel.AutoSize = true;
-            this.lblZipLabel.Location = new System.Drawing.Point(449, 265);
+            this.lblZipLabel.Location = new System.Drawing.Point(491, 266);
             this.lblZipLabel.Name = "lblZipLabel";
             this.lblZipLabel.Size = new System.Drawing.Size(37, 17);
             this.lblZipLabel.TabIndex = 21;

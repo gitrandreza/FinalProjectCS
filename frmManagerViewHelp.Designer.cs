@@ -56,7 +56,7 @@ namespace SU21_Final_Project
             // tabInventory
             // 
             this.tabInventory.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabInventory.BackgroundImage")));
-            this.tabInventory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabInventory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.tabInventory.Location = new System.Drawing.Point(4, 25);
             this.tabInventory.Name = "tabInventory";
             this.tabInventory.Padding = new System.Windows.Forms.Padding(3);
@@ -68,7 +68,7 @@ namespace SU21_Final_Project
             // tabEmployee
             // 
             this.tabEmployee.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabEmployee.BackgroundImage")));
-            this.tabEmployee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabEmployee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.tabEmployee.Location = new System.Drawing.Point(4, 25);
             this.tabEmployee.Name = "tabEmployee";
             this.tabEmployee.Padding = new System.Windows.Forms.Padding(3);
@@ -80,7 +80,7 @@ namespace SU21_Final_Project
             // tabCustomer
             // 
             this.tabCustomer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabCustomer.BackgroundImage")));
-            this.tabCustomer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabCustomer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.tabCustomer.Location = new System.Drawing.Point(4, 25);
             this.tabCustomer.Name = "tabCustomer";
             this.tabCustomer.Size = new System.Drawing.Size(781, 570);
@@ -91,7 +91,7 @@ namespace SU21_Final_Project
             // tabSalesReport
             // 
             this.tabSalesReport.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabSalesReport.BackgroundImage")));
-            this.tabSalesReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabSalesReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.tabSalesReport.Location = new System.Drawing.Point(4, 25);
             this.tabSalesReport.Name = "tabSalesReport";
             this.tabSalesReport.Size = new System.Drawing.Size(781, 570);
@@ -102,7 +102,7 @@ namespace SU21_Final_Project
             // tabSupplier
             // 
             this.tabSupplier.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabSupplier.BackgroundImage")));
-            this.tabSupplier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabSupplier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.tabSupplier.Location = new System.Drawing.Point(4, 25);
             this.tabSupplier.Name = "tabSupplier";
             this.tabSupplier.Size = new System.Drawing.Size(781, 570);

@@ -38,14 +38,14 @@ namespace SU21_Final_Project
         //Instantiate Item class
         Items myItems = new Items();
 
-        double dblTax = 0.0825;
-        double dblSubTotal;
-        double dblAmountTax;
-        double dblTotalAmount;
+       // double dblTax = 0.0825;
+       // double dblSubTotal;
+      //  double dblAmountTax;
+       // double dblTotalAmount;
         
         double dblDiscount;
-        double dblTotalList;
-        int intQuantityTotal;
+       // double dblTotalList;
+       // int intQuantityTotal;
         int intSaleId;
 
 
@@ -677,9 +677,7 @@ namespace SU21_Final_Project
         }
 
 
-
-
-        //Get UserID value from database and display to the label user when login is valid
+        //Get UserID value from database and use it to access admin views, lblUser is not visible in running, it's just for the program use
         public string LabelUserID
         {
          
@@ -994,12 +992,13 @@ namespace SU21_Final_Project
    
         
 
-        //Reset Selection
+        //Call Reset Selection
         private void btnReset_Click(object sender, EventArgs e)
         {
             Reset();
         }
 
+        //Method for reset all 
         public void Reset()
         {
             dgvList.Rows.Clear();            
@@ -1064,7 +1063,7 @@ namespace SU21_Final_Project
             }
            
         }
-
+        //Handling closing form
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             switch (e.CloseReason)
@@ -1178,8 +1177,7 @@ namespace SU21_Final_Project
 
         private void tbxCardNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-    (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -1187,8 +1185,7 @@ namespace SU21_Final_Project
 
         private void mskCVV_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-    (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -1321,18 +1318,34 @@ namespace SU21_Final_Project
            
 
         }
-
+        //Cancel Coupon
         private void btnCancelCoupon_Click(object sender, EventArgs e)
         {
             CalculateAmount();
             tbxCoupon.Text = "";
             lblCouponDescription.Text = "";
         }
-
+        //Acces to help content
         private void btnHelpEmployeeView_Click(object sender, EventArgs e)
         {
             new frmHelpMain().Show();
           
+        }
+        //Make sure to not enter anything than number 
+        private void tbxQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        //Make sure to not enter anything than letter 
+        private void tbxNameCredit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

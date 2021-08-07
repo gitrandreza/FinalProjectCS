@@ -1,7 +1,7 @@
 ﻿
 namespace SU21_Final_Project
 {
-    partial class frmHelp
+    partial class frmSignUpHelp
     {
         /// <summary>
         /// Required designer variable.
@@ -29,10 +29,10 @@ namespace SU21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHelp));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSignUpHelp));
             this.btnClose = new System.Windows.Forms.Button();
-            this.pbxHelpImage = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxHelpImage)).BeginInit();
+            this.pbxHelp = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxHelp)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
@@ -45,49 +45,47 @@ namespace SU21_Final_Project
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.Sienna;
-            this.btnClose.Location = new System.Drawing.Point(3, 622);
+            this.btnClose.Location = new System.Drawing.Point(2, 478);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(734, 64);
-            this.btnClose.TabIndex = 3;
+            this.btnClose.Size = new System.Drawing.Size(689, 64);
+            this.btnClose.TabIndex = 4;
             this.btnClose.Text = "&Close";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // pbxHelpImage
+            // pbxHelp
             // 
-            this.pbxHelpImage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbxHelpImage.Image = ((System.Drawing.Image)(resources.GetObject("pbxHelpImage.Image")));
-            this.pbxHelpImage.Location = new System.Drawing.Point(12, 12);
-            this.pbxHelpImage.Name = "pbxHelpImage";
-            this.pbxHelpImage.Size = new System.Drawing.Size(712, 603);
-            this.pbxHelpImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbxHelpImage.TabIndex = 4;
-            this.pbxHelpImage.TabStop = false;
+            this.pbxHelp.Image = ((System.Drawing.Image)(resources.GetObject("pbxHelp.Image")));
+            this.pbxHelp.Location = new System.Drawing.Point(0, 0);
+            this.pbxHelp.Name = "pbxHelp";
+            this.pbxHelp.Size = new System.Drawing.Size(691, 484);
+            this.pbxHelp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxHelp.TabIndex = 5;
+            this.pbxHelp.TabStop = false;
             // 
-            // frmHelp
+            // frmSignUpHelp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(736, 685);
-            this.Controls.Add(this.pbxHelpImage);
+            this.ClientSize = new System.Drawing.Size(692, 544);
+            this.Controls.Add(this.pbxHelp);
             this.Controls.Add(this.btnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "frmHelp";
+            this.Name = "frmSignUpHelp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Login Form Help";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmHelp_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.pbxHelpImage)).EndInit();
+            this.Text = "Sign Up Help";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSignUpHelp_FormClosing);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxHelp)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.PictureBox pbxHelpImage;
+        private System.Windows.Forms.PictureBox pbxHelp;
     }
 }

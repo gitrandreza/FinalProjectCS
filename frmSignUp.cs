@@ -17,8 +17,6 @@ namespace SU21_Final_Project
 
 
         SqlConnection Connection;
-        
-        
 
         string strTitle;
         string strFirstName ;
@@ -408,38 +406,18 @@ namespace SU21_Final_Project
         //Accept digit only for zip
         private void tbxZip_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-        (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
 
         }
 
-      
 
-        private void tbxDateOfBirth_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-      (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void tbxPhoneTwo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-    (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-        }
 
         private void tbxFirstName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) &&
-    (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -447,8 +425,7 @@ namespace SU21_Final_Project
 
         private void tbxLastName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) &&
-   (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -473,7 +450,8 @@ namespace SU21_Final_Project
 
         private void btnHelpSignUp_Click(object sender, EventArgs e)
         {
-            new frmHelp().Show();
+            new frmSignUpHelp().Show();
+
             
         }
     }

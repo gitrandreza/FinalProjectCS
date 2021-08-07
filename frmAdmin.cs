@@ -51,6 +51,7 @@ namespace SU21_Final_Project
             {
                 DisplayAllItems();
                 DisplayLowQuantityItems();
+                DisplayLowItems();
             }
 
         }
@@ -170,46 +171,53 @@ namespace SU21_Final_Project
         //Remove selected Item from Data grid and Database
         private void btnRemoveItem_Click(object sender, EventArgs e)
         {
-
-            if (dgvAllProducts.SelectedRows.Count > 0)
+            try
             {
-                if (MessageBox.Show("Do you want to remove this item?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (dgvAllProducts.SelectedRows.Count > 0)
                 {
-                    foreach (DataGridViewRow row in dgvAllProducts.SelectedRows)
+                    if (MessageBox.Show("Do you want to remove this item?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        //grab current row index selected
-                        int intIndexRowSelected = dgvAllProducts.CurrentCell.RowIndex;
-                        //grab item name to use in order to delete in the database
-                        strItemID = dgvAllProducts.Rows[intIndexRowSelected].Cells[0].Value.ToString();
-                        dgvAllProducts.Rows.RemoveAt(row.Index);
+                        foreach (DataGridViewRow row in dgvAllProducts.SelectedRows)
+                        {
+                            //grab current row index selected
+                            int intIndexRowSelected = dgvAllProducts.CurrentCell.RowIndex;
+                            //grab item name to use in order to delete in the database
+                            strItemID = dgvAllProducts.Rows[intIndexRowSelected].Cells[0].Value.ToString();
+                            dgvAllProducts.Rows.RemoveAt(row.Index);
 
+                        }
+                        try
+                        {
+                            //connect to database
+                            Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                                "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                            Connection.Open();
+
+                            string strDeleteQuery = "DELETE FROM RandrezaVoharisoaM21Su2332.Items where ItemID= '" + strItemID + "'";
+                            SqlCommand deleteCommande = new SqlCommand(strDeleteQuery, Connection);
+
+                            deleteCommande.ExecuteNonQuery();
+
+                            Connection.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error :" + ex, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-                    try
-                    {
-                        //connect to database
-                        Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
-                            "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
-                        Connection.Open();
-
-                        string strDeleteQuery = "DELETE FROM RandrezaVoharisoaM21Su2332.Items where ItemID= '" + strItemID + "'";
-                        SqlCommand deleteCommande = new SqlCommand(strDeleteQuery, Connection);
-
-                        deleteCommande.ExecuteNonQuery();
-
-                        Connection.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error :" + ex);
-                    }
                 }
-
+                else
+                {
+                    MessageBox.Show("Please select the product you want to remove", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("Please select the product you want to remove", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Error :" + ex, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
 
         }
 
@@ -217,24 +225,32 @@ namespace SU21_Final_Project
         //Update Selected Item
         private void btnUpdateItem_Click_1(object sender, EventArgs e)
         {
-            string strItemNameSelected = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[1].Value.ToString();
-
-            if (dgvAllProducts.SelectedRows.Count > 0)
+            try
             {
-                if (MessageBox.Show("Do you want to edit '" + strItemNameSelected + "'?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    gbxUpdateField.Enabled = true;
+                string strItemNameSelected = dgvAllProducts.Rows[dgvAllProducts.CurrentCell.RowIndex].Cells[1].Value.ToString();
 
+                if (dgvAllProducts.SelectedRows.Count > 0)
+                {
+                    if (MessageBox.Show("Do you want to edit '" + strItemNameSelected + "'?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        gbxUpdateField.Enabled = true;
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please select the product you want to edit", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Please select the product you want to edit", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Please select the product you want to update", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("Please select the product you want to update", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Error :" + ex, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+           
 
         }
 
@@ -466,6 +482,7 @@ namespace SU21_Final_Project
                             DisplayAllItems();
                             ResetUpdateFields();
                             DisplayLowQuantityItems();
+                            DisplayLowItems();
                             Connection.Close();
                         }
 
@@ -502,7 +519,7 @@ namespace SU21_Final_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error :" + ex);
+                MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -644,6 +661,7 @@ namespace SU21_Final_Project
             else
             {
                 tbxCost.Enabled = false;
+                tbxCost.Text = "";
             }
         }
 
@@ -771,6 +789,7 @@ namespace SU21_Final_Project
 
                     int intUserId = reader.GetInt32(3);//use to acces User table
                     strUserID = intUserId.ToString();
+                    
 
                     if (reader != null)
                     {
@@ -784,9 +803,13 @@ namespace SU21_Final_Project
                     Connection.Close();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Employee is no longer active" , "Status Employee", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                lblSalary.Text ="No longer available" ;
+                lblPosition.Text = "No longer available";
+                lblHiredDate.Text = "No longer available";
+
             }
 
         }
@@ -794,59 +817,63 @@ namespace SU21_Final_Project
         //Remove Employee from database tables( Employees, Users, Person)
         private void btnRemoveEmployee_Click(object sender, EventArgs e)
         {
-
-
-            if (dgvEmployee.SelectedRows.Count > 0)
+            try
             {
-                if (MessageBox.Show("Do you want to remove this Employee?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (dgvEmployee.SelectedRows.Count > 0)
                 {
-                    foreach (DataGridViewRow row in dgvEmployee.SelectedRows)
+                    if (MessageBox.Show("Do you want to remove this Employee?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        //grab current row index selected
-                        int intIndexRowSelected = dgvEmployee.CurrentCell.RowIndex;
-                        //grab Employee name to use in order to delete in the database
-                        strUserID = dgvEmployee.Rows[intIndexRowSelected].Cells[0].Value.ToString();
-                        dgvEmployee.Rows.RemoveAt(row.Index);
+                        foreach (DataGridViewRow row in dgvEmployee.SelectedRows)
+                        {
+                            //grab current row index selected
+                            int intIndexRowSelected = dgvEmployee.CurrentCell.RowIndex;
+                            //grab Employee name to use in order to delete in the database
+                            strPersonID = dgvEmployee.Rows[intIndexRowSelected].Cells[0].Value.ToString();
+                            dgvEmployee.Rows.RemoveAt(row.Index);
 
+                        }
+                        try
+                        {
+                            //connect to database
+                            Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                                "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                            Connection.Open();
+
+
+                            string strDeleteQueryEmployee = "DELETE FROM RandrezaVoharisoaM21Su2332.Employees where UserID= '" + strUserID + "'";
+                            SqlCommand deleteCommandeEmployee = new SqlCommand(strDeleteQueryEmployee, Connection);
+
+                            deleteCommandeEmployee.ExecuteNonQuery();
+
+                            string strUpdateRole = "UPDATE RandrezaVoharisoaM21Su2332.Users SET RoleID= 3 where UserID= '" + strUserID + "'";
+                            SqlCommand UpdateCommandeUser = new SqlCommand(strUpdateRole, Connection);
+
+                            UpdateCommandeUser.ExecuteNonQuery();
+
+                         
+
+
+                            Connection.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-                    try
-                    {
-                        //connect to database
-                        Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
-                            "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
-                        Connection.Open();
-
-
-                        string strDeleteQueryEmployee = "DELETE FROM RandrezaVoharisoaM21Su2332.Employees where UserID= '" + strUserID + "'";
-                        SqlCommand deleteCommandeEmployee = new SqlCommand(strDeleteQueryEmployee, Connection);
-
-                        deleteCommandeEmployee.ExecuteNonQuery();
-
-                        string strDeleteQueryUser = "DELETE FROM RandrezaVoharisoaM21Su2332.Users where PersonID= '" + strPersonID + "'";
-                        SqlCommand deleteCommandeUser = new SqlCommand(strDeleteQueryUser, Connection);
-
-                        deleteCommandeUser.ExecuteNonQuery();
-
-                        string strDeleteQueryPerson = "DELETE FROM RandrezaVoharisoaM21Su2332.Person where PersonID= '" + strPersonID + "'";
-                        SqlCommand deleteCommandePerson = new SqlCommand(strDeleteQueryPerson, Connection);
-
-                        deleteCommandePerson.ExecuteNonQuery();
-
-
-                        Connection.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error :" + ex);
-                    }
                 }
-
+                else
+                {
+                    MessageBox.Show("Please select the Employee you want to remove", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Please select the Employee you want to remove", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+          
 
 
         }
@@ -854,27 +881,35 @@ namespace SU21_Final_Project
         //Edit Employee Informatiom
         private void btnEditEmployee_Click(object sender, EventArgs e)
         {
-            string strFirstName= dgvEmployee.Rows[dgvEmployee.CurrentCell.RowIndex].Cells[1].Value.ToString();
-            string strLastName = dgvEmployee.Rows[dgvEmployee.CurrentCell.RowIndex].Cells[2].Value.ToString();
-
-
-            if (dgvEmployee.SelectedRows.Count > 0)
+            try
             {
-                if (MessageBox.Show("Do you want to edit Employee '"+strFirstName+" " + strLastName + "'?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                string strFirstName = dgvEmployee.Rows[dgvEmployee.CurrentCell.RowIndex].Cells[1].Value.ToString();
+                string strLastName = dgvEmployee.Rows[dgvEmployee.CurrentCell.RowIndex].Cells[2].Value.ToString();
+
+
+                if (dgvEmployee.SelectedRows.Count > 0)
                 {
-                    gbxEdit.Enabled = true;
-                    cbxEditPhone.Enabled = true;
-                    cbxStates.Enabled = true;
+                    if (MessageBox.Show("Do you want to edit Employee '" + strFirstName + " " + strLastName + "'?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        gbxEdit.Enabled = true;
+                        cbxEditPhone.Enabled = true;
+                        cbxStates.Enabled = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please select the Employee you want to edit", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Please select the Employee you want to edit", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Please make a selection", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("Please make a selection", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+           
         }
 
         private void btnSaveEdit_Click(object sender, EventArgs e)
@@ -1006,7 +1041,7 @@ namespace SU21_Final_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error :" + ex, "Message", MessageBoxButtons.OK);
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK);
             }
 
         }
@@ -1131,8 +1166,7 @@ namespace SU21_Final_Project
 
         private void tbxZip_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-      (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) )
             {
                 e.Handled = true;
             }
@@ -1194,7 +1228,7 @@ namespace SU21_Final_Project
                 cboStates.Enabled = false;
             }
         }
-
+        //Display items less than 50
         public void DisplayLowQuantityItems()
         {
             try
@@ -1207,7 +1241,7 @@ namespace SU21_Final_Project
                 dataAdapter = new SqlDataAdapter("SELECT Name, Quantity FROM RandrezaVoharisoaM21Su2332.Items where Quantity <50;", Connection);
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
-                dgvLowItem.DataSource = dataTable;
+                dgvLowItem50.DataSource = dataTable;
 
                 Connection.Close();
             }
@@ -1217,6 +1251,30 @@ namespace SU21_Final_Project
             }
         }
 
+        //Method to display items less than 100
+        public void DisplayLowItems()
+        {
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                dataAdapter = new SqlDataAdapter("SELECT Name, Quantity FROM RandrezaVoharisoaM21Su2332.Items where Quantity between 50 and 99;", Connection);
+                dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                dgvLowItem100.DataSource = dataTable;
+
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //Method to display Sales reports
         public void DisplaySalesReport()
         {
             try
@@ -1264,15 +1322,24 @@ namespace SU21_Final_Project
         private void dgvSalesReport_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             string strSaleId;
-            if (e.RowIndex >= 0)
+            try
             {
-                //instantiate object from Items class and assign value from cell
-                DataGridViewRow row = this.dgvSalesReport.Rows[e.RowIndex];
-                strSaleId = row.Cells["Sale ID"].Value.ToString();
-                strInvoiceReport= row.Cells["Sale ID"].Value.ToString();
-                DisplaySalesDetail(strSaleId);
+                if (e.RowIndex >= 0)
+                {
+                    //instantiate object from Items class and assign value from cell
+                    DataGridViewRow row = this.dgvSalesReport.Rows[e.RowIndex];
+                    strSaleId = row.Cells["Sale ID"].Value.ToString();
+                    strInvoiceReport = row.Cells["Sale ID"].Value.ToString();
+                    DisplaySalesDetail(strSaleId);
 
+                }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+           
         }
 
         private void btnCreateCoupon_Click(object sender, EventArgs e)
@@ -1345,16 +1412,19 @@ namespace SU21_Final_Project
             }
         }
 
+        //Refresh lists
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             DisplayAllItems();
             DisplayLowQuantityItems();
+            DisplayLowItems();
         }
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
             gbxAddNewCustomer.Enabled = true;
             dgvCustomer.Enabled = false;
+            btnAddNewCustomer.Enabled = true;
         }
 
 
@@ -1536,26 +1606,35 @@ namespace SU21_Final_Project
 
         private void btnUpdateCustomer_Click(object sender, EventArgs e)
         {
-            string strFirstName = dgvCustomer.Rows[dgvCustomer.CurrentCell.RowIndex].Cells[1].Value.ToString();
-            string strLastName = dgvCustomer.Rows[dgvCustomer.CurrentCell.RowIndex].Cells[2].Value.ToString();
-
-
-            if (dgvCustomer.SelectedRows.Count > 0)
+            try
             {
-                if (MessageBox.Show("Do you want to edit Customer '" + strFirstName + " " + strLastName + "'?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                string strFirstName = dgvCustomer.Rows[dgvCustomer.CurrentCell.RowIndex].Cells[1].Value.ToString();
+                string strLastName = dgvCustomer.Rows[dgvCustomer.CurrentCell.RowIndex].Cells[2].Value.ToString();
+
+
+                if (dgvCustomer.SelectedRows.Count > 0)
                 {
-                    gbxAddNewCustomer.Enabled = true;
-                    btnAddCustomer.Enabled = false;
+                    if (MessageBox.Show("Do you want to edit Customer '" + strFirstName + " " + strLastName + "'?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        gbxAddNewCustomer.Enabled = true;
+                        btnAddCustomer.Enabled = false;
+                        btnEditCustomer.Enabled = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please select the Customer you want to edit", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Please select the Customer you want to edit", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Please make a selection", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            else
+            catch(IndexOutOfRangeException ex)
             {
-                MessageBox.Show("Please make a selection", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK);
             }
+           
         }
 
    
@@ -1685,6 +1764,7 @@ namespace SU21_Final_Project
 
                 DisplayCustomers();
                 Reset();
+                btnAddCustomer.Enabled = true;
 
             }
             catch (Exception ex)
@@ -1697,53 +1777,61 @@ namespace SU21_Final_Project
 
         private void btnRemoveCustomer_Click(object sender, EventArgs e)
         {
-
-            if (dgvCustomer.SelectedRows.Count > 0)
+            try
             {
-                if (MessageBox.Show("Do you want to remove this Customer?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (dgvCustomer.SelectedRows.Count > 0)
                 {
-                    foreach (DataGridViewRow row in dgvCustomer.SelectedRows)
+                    if (MessageBox.Show("Do you want to remove this Customer?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        //grab current row index selected
-                        int intIndexRowSelected = dgvCustomer.CurrentCell.RowIndex;
-                        //grab person ID to use in order to delete in the database
-                        strPersonIdCustomerView = dgvCustomer.Rows[intIndexRowSelected].Cells[0].Value.ToString();
-                        dgvCustomer.Rows.RemoveAt(row.Index);
+                        foreach (DataGridViewRow row in dgvCustomer.SelectedRows)
+                        {
+                            //grab current row index selected
+                            int intIndexRowSelected = dgvCustomer.CurrentCell.RowIndex;
+                            //grab person ID to use in order to delete in the database
+                            strPersonIdCustomerView = dgvCustomer.Rows[intIndexRowSelected].Cells[0].Value.ToString();
+                            dgvCustomer.Rows.RemoveAt(row.Index);
 
+                        }
+                        try
+                        {
+                            //connect to database
+                            Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                                "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                            Connection.Open();
+
+
+                            string strDeleteQueryUser = "DELETE FROM RandrezaVoharisoaM21Su2332.Users where PersonID= '" + strPersonIdCustomerView + "'";
+                            SqlCommand deleteCommandeUser = new SqlCommand(strDeleteQueryUser, Connection);
+
+                            deleteCommandeUser.ExecuteNonQuery();
+
+                            string strDeleteQueryPerson = "DELETE FROM RandrezaVoharisoaM21Su2332.Person where PersonID= '" + strPersonIdCustomerView + "'";
+                            SqlCommand deleteCommandePerson = new SqlCommand(strDeleteQueryPerson, Connection);
+
+                            deleteCommandePerson.ExecuteNonQuery();
+
+
+                            Connection.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error :" + ex);
+                        }
                     }
-                    try
-                    {
-                        //connect to database
-                        Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
-                            "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
-                        Connection.Open();
- 
-
-                        string strDeleteQueryUser = "DELETE FROM RandrezaVoharisoaM21Su2332.Users where PersonID= '" + strPersonIdCustomerView + "'";
-                        SqlCommand deleteCommandeUser = new SqlCommand(strDeleteQueryUser, Connection);
-
-                        deleteCommandeUser.ExecuteNonQuery();
-
-                        string strDeleteQueryPerson = "DELETE FROM RandrezaVoharisoaM21Su2332.Person where PersonID= '" + strPersonIdCustomerView + "'";
-                        SqlCommand deleteCommandePerson = new SqlCommand(strDeleteQueryPerson, Connection);
-
-                        deleteCommandePerson.ExecuteNonQuery();
-
-
-                        Connection.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error :" + ex);
-                    }
                 }
-
+                else
+                {
+                    MessageBox.Show("Please select the Customer you want to remove", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Please select the Customer you want to remove", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                MessageBox.Show("Error :" + ex, "Message", MessageBoxButtons.OK);
             }
+          
 
         }
 
@@ -1754,6 +1842,7 @@ namespace SU21_Final_Project
             this.Hide();
         }
 
+        //Select monthly report
         private void radMonthly_CheckedChanged(object sender, EventArgs e)
         {
             string strChooseDateReportWeekly = dtpReport.Text;
@@ -1784,7 +1873,7 @@ namespace SU21_Final_Project
         }
 
       
-
+        //Display daily, weekly, monthly report
         private void btnDisplayReport_Click(object sender, EventArgs e)
         {
           if(radDaily.Checked==true)
@@ -1807,6 +1896,7 @@ namespace SU21_Final_Project
             }
         }
 
+        //Method  to Display daily report 
         public void DisplayDaily()
         {
             string strChooseDateReportDaily = dtpReport.Text;
@@ -1835,6 +1925,7 @@ namespace SU21_Final_Project
             }
         }
 
+        //Method  to Display weekly report 
         public void DisplayWeekly()
         {
             string strChooseDateReportWeekly = dtpReport.Text;
@@ -1863,6 +1954,8 @@ namespace SU21_Final_Project
             }
         }
 
+
+        //Method  to Display monthly report 
         public void DisplayMonthly()
         {
             string strChooseDateReportMonthly = dtpReport.Text;
@@ -1893,36 +1986,43 @@ namespace SU21_Final_Project
 
         private void btnPrintSelectedSalesReport_Click(object sender, EventArgs e)
         {
-
-            if (dgvSalesReport.SelectedRows.Count > 0)
+            try
             {
-
-                try
+                if (dgvSalesReport.SelectedRows.Count > 0)
                 {
-                    if (strInvoiceReport == "")
-                    {
-                        MessageBox.Show("This Sales doesn't have invoice yet",
-                        "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                        string xslLocation = Path.Combine(executableLocation, strInvoiceReport + ".html");
-                        System.Diagnostics.Process.Start(xslLocation);
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Cannot find Report associate with this.",
-                        "Error with System Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
 
+                    try
+                    {
+                        if (strInvoiceReport == "")
+                        {
+                            MessageBox.Show("This Sales doesn't have invoice yet",
+                            "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                            string xslLocation = Path.Combine(executableLocation, strInvoiceReport + ".html");
+                            System.Diagnostics.Process.Start(xslLocation);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Cannot find Report associate with this.",
+                            "Error with System Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Please select report",
+                       "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("Please select report",
-                   "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+           
         }
 
         //Display supplier from database
@@ -2207,51 +2307,68 @@ namespace SU21_Final_Project
 
         private void btnRemoveSupplier_Click(object sender, EventArgs e)
         {
-            if (dgvSupplierView.SelectedRows.Count > 0)
+            try
             {
-                if (MessageBox.Show("Do you want to remove this Supplier?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (dgvSupplierView.SelectedRows.Count > 0)
                 {
-                    foreach (DataGridViewRow row in dgvSupplierView.SelectedRows)
+                    if (MessageBox.Show("Do you want to remove this Supplier?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                       
-                        int intIndexRowSelected = dgvSupplierView.CurrentCell.RowIndex;
-                       
-                        strSupplierId = dgvSupplierView.Rows[intIndexRowSelected].Cells[0].Value.ToString();
-                        dgvSupplierView.Rows.RemoveAt(row.Index);
+                        foreach (DataGridViewRow row in dgvSupplierView.SelectedRows)
+                        {
 
+                            int intIndexRowSelected = dgvSupplierView.CurrentCell.RowIndex;
+
+                            strSupplierId = dgvSupplierView.Rows[intIndexRowSelected].Cells[0].Value.ToString();
+                            dgvSupplierView.Rows.RemoveAt(row.Index);
+
+                        }
+                        try
+                        {
+                            //connect to database
+                            Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                                "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                            Connection.Open();
+
+                            string strDeleteQueryPurchase = "DELETE FROM RandrezaVoharisoaM21Su2332.Purchase where SupplierID= '" + strSupplierId + "'";
+                            SqlCommand deleteCommandPurchase = new SqlCommand(strDeleteQueryPurchase, Connection);
+
+                            deleteCommandPurchase.ExecuteNonQuery();
+
+                            string strDeleteQuery = "DELETE FROM RandrezaVoharisoaM21Su2332.Suppliers where SupplierID= '" + strSupplierId + "'";
+                            SqlCommand deleteCommand = new SqlCommand(strDeleteQuery, Connection);
+
+                            deleteCommand.ExecuteNonQuery();
+
+
+
+
+                            MessageBox.Show("Supplier has been removed", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            DisplaySupplierList();
+
+                            Connection.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error :" + ex);
+                        }
                     }
-                    try
-                    {
-                        //connect to database
-                        Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
-                            "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
-                        Connection.Open();
-
-
-                        string strDeleteQuery = "DELETE FROM RandrezaVoharisoaM21Su2332.Suppliers where SupplierID= '" + strSupplierId + "'";
-                        SqlCommand deleteCommand = new SqlCommand(strDeleteQuery, Connection);
-
-                        deleteCommand.ExecuteNonQuery();
-                        MessageBox.Show("Supplier has been removed", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        DisplaySupplierList();
-
-                        Connection.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error :" + ex);
-                    }
                 }
-
+                else
+                {
+                    MessageBox.Show("Please select the Customer you want to remove", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("Please select the Customer you want to remove", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+           
 
         }
 
+        //Method to Display all purchase history
         public void DisplayAllPurchaseHistory()
         {
             try
@@ -2273,6 +2390,8 @@ namespace SU21_Final_Project
                 MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        //Method to Display weekly purchase history
         public void DisplayPurchaseWeekly()
         {
             string strChooseDateReportWeekly = dtpPurchaseDate.Text;
@@ -2299,6 +2418,7 @@ namespace SU21_Final_Project
             }
         }
 
+        //Method to Display daily purchase history
         public void DisplayPurchaseDaily()
         {
             string strChooseDateReportDaily = dtpPurchaseDate.Text;
@@ -2355,6 +2475,8 @@ namespace SU21_Final_Project
             }
         }
 
+
+        //Display daily or weekly or monthly purchase history 
         private void btnDisplayPurchase_Click(object sender, EventArgs e)
         {
             if(radPurchaseAll.Checked==true)
@@ -2394,38 +2516,83 @@ namespace SU21_Final_Project
         }
         private void btnPrintPurchaseReport_Click(object sender, EventArgs e)
         {
-            if (dgvPurchaseRecord.SelectedRows.Count > 0)
+            try
             {
-
-                try
+                if (dgvPurchaseRecord.SelectedRows.Count > 0)
                 {
-                 
+
+                    try
+                    {
+
                         string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
                         string xslLocation = Path.Combine(executableLocation, strPurchaseNumber + ".html");
                         System.Diagnostics.Process.Start(xslLocation);
-                    
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Cannot find Report associate with this.",
-                        "Error with System Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
 
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Cannot find Report associate with this.",
+                            "Error with System Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Please select report",
+                       "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("Please select report",
-                   "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error :" + ex, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+           
         }
 
+        //Access to help form
         private void btnHelpAdmin_Click(object sender, EventArgs e)
         {
             new frmManagerViewHelp().Show();
             this.Hide();
         }
+        //---------------Accept only number with the text boxes events below
+        private void tbxQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
 
-      
+        private void tbxCost_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbxRetailPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbxZipCustomer_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void lblLowItemLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

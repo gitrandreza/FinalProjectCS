@@ -103,6 +103,12 @@
     <Compile Include="frmHelpMain.Designer.cs">
       <DependentUpon>frmHelpMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmHelpResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHelpResetPassword.Designer.cs">
+      <DependentUpon>frmHelpResetPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +145,12 @@
     <Compile Include="frmHelp.Designer.cs">
       <DependentUpon>frmHelp.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSignUpHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSignUpHelp.Designer.cs">
+      <DependentUpon>frmSignUpHelp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Items.cs" />
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -169,6 +181,9 @@
     <EmbeddedResource Include="frmHelpMain.resx">
       <DependentUpon>frmHelpMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmHelpResetPassword.resx">
+      <DependentUpon>frmHelpResetPassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -189,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmHelp.resx">
       <DependentUpon>frmHelp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSignUpHelp.resx">
+      <DependentUpon>frmSignUpHelp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

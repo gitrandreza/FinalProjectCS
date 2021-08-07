@@ -29,9 +29,11 @@ namespace SU21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddItems));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbxItemInformation = new System.Windows.Forms.GroupBox();
+            this.tbxSupplier = new System.Windows.Forms.TextBox();
+            this.dgvSupplierList = new System.Windows.Forms.DataGridView();
             this.btnSaveItems = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.pbxDisplayItemImage = new System.Windows.Forms.PictureBox();
@@ -50,11 +52,9 @@ namespace SU21_Final_Project
             this.lblTagRetailPrice = new System.Windows.Forms.Label();
             this.lblChooseSupplier = new System.Windows.Forms.Label();
             this.btnHelpAddItem = new System.Windows.Forms.Button();
-            this.dgvSupplierList = new System.Windows.Forms.DataGridView();
-            this.tbxSupplier = new System.Windows.Forms.TextBox();
             this.gbxItemInformation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxDisplayItemImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxDisplayItemImage)).BeginInit();
             this.SuspendLayout();
             // 
             // gbxItemInformation
@@ -89,6 +89,43 @@ namespace SU21_Final_Project
             this.gbxItemInformation.TabStop = false;
             this.gbxItemInformation.Text = "Add New Item";
             // 
+            // tbxSupplier
+            // 
+            this.tbxSupplier.Location = new System.Drawing.Point(137, 414);
+            this.tbxSupplier.Name = "tbxSupplier";
+            this.tbxSupplier.ReadOnly = true;
+            this.tbxSupplier.Size = new System.Drawing.Size(183, 22);
+            this.tbxSupplier.TabIndex = 50;
+            // 
+            // dgvSupplierList
+            // 
+            this.dgvSupplierList.AllowUserToAddRows = false;
+            this.dgvSupplierList.AllowUserToDeleteRows = false;
+            this.dgvSupplierList.BackgroundColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSupplierList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvSupplierList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSupplierList.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dgvSupplierList.Location = new System.Drawing.Point(137, 272);
+            this.dgvSupplierList.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvSupplierList.MultiSelect = false;
+            this.dgvSupplierList.Name = "dgvSupplierList";
+            this.dgvSupplierList.ReadOnly = true;
+            this.dgvSupplierList.RowHeadersVisible = false;
+            this.dgvSupplierList.RowHeadersWidth = 51;
+            this.dgvSupplierList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvSupplierList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSupplierList.Size = new System.Drawing.Size(314, 126);
+            this.dgvSupplierList.StandardTab = true;
+            this.dgvSupplierList.TabIndex = 6;
+            this.dgvSupplierList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSupplierList_CellClick);
+            // 
             // btnSaveItems
             // 
             this.btnSaveItems.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -100,7 +137,7 @@ namespace SU21_Final_Project
             this.btnSaveItems.Location = new System.Drawing.Point(405, 457);
             this.btnSaveItems.Name = "btnSaveItems";
             this.btnSaveItems.Size = new System.Drawing.Size(414, 53);
-            this.btnSaveItems.TabIndex = 43;
+            this.btnSaveItems.TabIndex = 9;
             this.btnSaveItems.Text = "Save Item";
             this.btnSaveItems.UseVisualStyleBackColor = false;
             this.btnSaveItems.Click += new System.EventHandler(this.btnSaveItems_Click);
@@ -117,7 +154,7 @@ namespace SU21_Final_Project
             this.btnBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(403, 53);
-            this.btnBack.TabIndex = 47;
+            this.btnBack.TabIndex = 8;
             this.btnBack.Text = "&Close";
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
@@ -141,7 +178,7 @@ namespace SU21_Final_Project
             this.btnLoad.Margin = new System.Windows.Forms.Padding(4);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(250, 53);
-            this.btnLoad.TabIndex = 46;
+            this.btnLoad.TabIndex = 7;
             this.btnLoad.Text = "&Import Image";
             this.btnLoad.UseVisualStyleBackColor = true;
             this.btnLoad.Click += new System.EventHandler(this.btnInsertImage_Click);
@@ -175,6 +212,7 @@ namespace SU21_Final_Project
             this.tbxItemCost.Name = "tbxItemCost";
             this.tbxItemCost.Size = new System.Drawing.Size(114, 22);
             this.tbxItemCost.TabIndex = 2;
+            this.tbxItemCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxItemCost_KeyPress);
             // 
             // tbxItemName
             // 
@@ -234,7 +272,7 @@ namespace SU21_Final_Project
             this.tbxQuantity.Location = new System.Drawing.Point(137, 81);
             this.tbxQuantity.MaxLength = 20;
             this.tbxQuantity.Name = "tbxQuantity";
-            this.tbxQuantity.Size = new System.Drawing.Size(78, 22);
+            this.tbxQuantity.Size = new System.Drawing.Size(114, 22);
             this.tbxQuantity.TabIndex = 1;
             this.tbxQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxQuantity_KeyPress);
             // 
@@ -244,6 +282,7 @@ namespace SU21_Final_Project
             this.tbxRetailPrice.Name = "tbxRetailPrice";
             this.tbxRetailPrice.Size = new System.Drawing.Size(114, 22);
             this.tbxRetailPrice.TabIndex = 4;
+            this.tbxRetailPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxRetailPrice_KeyPress);
             // 
             // lblTagRetailPrice
             // 
@@ -274,47 +313,10 @@ namespace SU21_Final_Project
             this.btnHelpAddItem.Location = new System.Drawing.Point(711, 12);
             this.btnHelpAddItem.Name = "btnHelpAddItem";
             this.btnHelpAddItem.Size = new System.Drawing.Size(109, 43);
-            this.btnHelpAddItem.TabIndex = 57;
+            this.btnHelpAddItem.TabIndex = 10;
             this.btnHelpAddItem.Text = "HELP?";
             this.btnHelpAddItem.UseVisualStyleBackColor = false;
             this.btnHelpAddItem.Click += new System.EventHandler(this.btnHelpAddItem_Click);
-            // 
-            // dgvSupplierList
-            // 
-            this.dgvSupplierList.AllowUserToAddRows = false;
-            this.dgvSupplierList.AllowUserToDeleteRows = false;
-            this.dgvSupplierList.BackgroundColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSupplierList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvSupplierList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSupplierList.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.dgvSupplierList.Location = new System.Drawing.Point(137, 272);
-            this.dgvSupplierList.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvSupplierList.MultiSelect = false;
-            this.dgvSupplierList.Name = "dgvSupplierList";
-            this.dgvSupplierList.ReadOnly = true;
-            this.dgvSupplierList.RowHeadersVisible = false;
-            this.dgvSupplierList.RowHeadersWidth = 51;
-            this.dgvSupplierList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvSupplierList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSupplierList.Size = new System.Drawing.Size(314, 126);
-            this.dgvSupplierList.StandardTab = true;
-            this.dgvSupplierList.TabIndex = 49;
-            this.dgvSupplierList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSupplierList_CellClick);
-            // 
-            // tbxSupplier
-            // 
-            this.tbxSupplier.Location = new System.Drawing.Point(137, 414);
-            this.tbxSupplier.Name = "tbxSupplier";
-            this.tbxSupplier.ReadOnly = true;
-            this.tbxSupplier.Size = new System.Drawing.Size(183, 22);
-            this.tbxSupplier.TabIndex = 50;
             // 
             // frmAddItems
             // 
@@ -334,8 +336,8 @@ namespace SU21_Final_Project
             this.Load += new System.EventHandler(this.frmAddItems_Load);
             this.gbxItemInformation.ResumeLayout(false);
             this.gbxItemInformation.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxDisplayItemImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxDisplayItemImage)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -350,7 +350,7 @@ namespace SU21_Final_Project
                     break;
             }
         }
-
+        //Import Image
         private void btnInsertImage_Click(object sender, EventArgs e)
         {
             try
@@ -378,10 +378,10 @@ namespace SU21_Final_Project
             this.Hide();
         }
 
+        //Make sure to enter digit only
         private void tbxQuantity_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-       (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -454,6 +454,23 @@ namespace SU21_Final_Project
             catch (Exception ex)
             {
                 MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //-----------------Make to enter number only---------------
+        private void tbxItemCost_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbxRetailPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }
