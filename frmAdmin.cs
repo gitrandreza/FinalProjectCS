@@ -1300,7 +1300,7 @@ namespace SU21_Final_Project
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                 Connection.Open();
-                dataAdapter = new SqlDataAdapter("SELECT SaleId as [Sale ID], UserID as [User ID], CreationDate as [Date of Sale], TotalSale as [Sales Amount]  FROM RandrezaVoharisoaM21Su2332.SalesReport;", Connection);
+                dataAdapter = new SqlDataAdapter("SELECT SaleId as [Sale ID], UserID as [User ID], CreationDate as [Date of Sale]  FROM RandrezaVoharisoaM21Su2332.SalesReport;", Connection);
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvSalesReport.DataSource = dataTable;
@@ -1951,7 +1951,7 @@ namespace SU21_Final_Project
 
                 Connection.Open();
               
-                    string strQuery = "SELECT SaleId as [Sale ID], UserID as [User ID], CreationDate as [Date of Sale], TotalSale as [Sales Amount] from RandrezaVoharisoaM21Su2332.SalesReport  where CreationDate = '" + strChooseDateReportDaily + "'";
+                    string strQuery = "SELECT SaleId as [Sale ID], UserID as [User ID], CreationDate as [Date of Sale] from RandrezaVoharisoaM21Su2332.SalesReport  where CreationDate = '" + strChooseDateReportDaily + "'";
                     dataAdapter = new SqlDataAdapter(strQuery, Connection);
                     dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);
@@ -1980,7 +1980,7 @@ namespace SU21_Final_Project
 
                 Connection.Open();
                
-                    string strQuery = "SELECT SaleId as [Sale ID], UserID as [User ID], CreationDate as [Date of Sale], TotalSale as [Sales Amount] from RandrezaVoharisoaM21Su2332.SalesReport  where CreationDate between '" + strChooseDateReportWeekly + "' And DATEADD(DAY, 7, '" + strChooseDateReportWeekly + "')";
+                    string strQuery = "SELECT SaleId as [Sale ID], UserID as [User ID], CreationDate as [Date of Sale] from RandrezaVoharisoaM21Su2332.SalesReport  where CreationDate between '" + strChooseDateReportWeekly + "' And DATEADD(DAY, 7, '" + strChooseDateReportWeekly + "')";
                     dataAdapter = new SqlDataAdapter(strQuery, Connection);
                     dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);
@@ -2010,7 +2010,7 @@ namespace SU21_Final_Project
 
                 Connection.Open();
               
-                    string strQuery = "SELECT SaleId as [Sale ID], UserID as [User ID], CreationDate as [Date of Sale], TotalSale as [Sales Amount] from RandrezaVoharisoaM21Su2332.SalesReport  where CreationDate between '" + strChooseDateReportMonthly + "' And DATEADD(DAY, 31, '" + strChooseDateReportMonthly + "')";
+                    string strQuery = "SELECT SaleId as [Sale ID], UserID as [User ID], CreationDate as [Date of Sale] from RandrezaVoharisoaM21Su2332.SalesReport  where CreationDate between '" + strChooseDateReportMonthly + "' And DATEADD(DAY, 31, '" + strChooseDateReportMonthly + "')";
                     dataAdapter = new SqlDataAdapter(strQuery, Connection);
                     dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);

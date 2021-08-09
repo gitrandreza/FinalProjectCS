@@ -52,6 +52,7 @@ namespace SU21_Final_Project
             this.lblTagRetailPrice = new System.Windows.Forms.Label();
             this.lblChooseSupplier = new System.Windows.Forms.Label();
             this.btnHelpAddItem = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.gbxItemInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxDisplayItemImage)).BeginInit();
@@ -61,6 +62,7 @@ namespace SU21_Final_Project
             // 
             this.gbxItemInformation.BackColor = System.Drawing.Color.White;
             this.gbxItemInformation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.gbxItemInformation.Controls.Add(this.label1);
             this.gbxItemInformation.Controls.Add(this.tbxSupplier);
             this.gbxItemInformation.Controls.Add(this.dgvSupplierList);
             this.gbxItemInformation.Controls.Add(this.btnSaveItems);
@@ -318,6 +320,17 @@ namespace SU21_Final_Project
             this.btnHelpAddItem.UseVisualStyleBackColor = false;
             this.btnHelpAddItem.Click += new System.EventHandler(this.btnHelpAddItem_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.LightCoral;
+            this.label1.Location = new System.Drawing.Point(229, 140);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(186, 17);
+            this.label1.TabIndex = 51;
+            this.label1.Text = "(1=Clothes; 2=Gifts,3=Bags)";
+            // 
             // frmAddItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -365,5 +378,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Button btnHelpAddItem;
         private System.Windows.Forms.DataGridView dgvSupplierList;
         private System.Windows.Forms.TextBox tbxSupplier;
+        private System.Windows.Forms.Label label1;
     }
 }

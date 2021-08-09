@@ -724,11 +724,8 @@ namespace SU21_Final_Project
                             Connection.Open();
                             //Store Sales Report
 
-
-
-
-                            SqlCommand commandSalesReport = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesReport(UserID,CreationDate, TotalSale) " +
-                                "VALUES(@UserID,@CreationDate,@TotalSale)", Connection);
+                            SqlCommand commandSalesReport = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.SalesReport(UserID,CreationDate) " +
+                                "VALUES(@UserID,@CreationDate)", Connection);
                             commandSalesReport.Parameters.AddWithValue("@UserID", intUserID);
                             commandSalesReport.Parameters.AddWithValue("@CreationDate", strDate);
 
@@ -740,7 +737,7 @@ namespace SU21_Final_Project
                                 MessageBox.Show("You did not enter a value to convert", "Conversion Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
 
-                            commandSalesReport.Parameters.AddWithValue("@TotalSale", dblTotalAmount);
+                           
 
                             btnViewReceipt.Enabled = true;
                             blnPaid = true;

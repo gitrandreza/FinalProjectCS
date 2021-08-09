@@ -460,7 +460,7 @@ namespace SU21_Final_Project
         //-----------------Make to enter number only---------------
         private void tbxItemCost_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
@@ -468,7 +468,7 @@ namespace SU21_Final_Project
 
         private void tbxRetailPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)  && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
