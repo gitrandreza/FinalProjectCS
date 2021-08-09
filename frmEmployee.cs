@@ -1770,6 +1770,9 @@ namespace SU21_Final_Project
 
         private void btnDisplayCustomerList_Click(object sender, EventArgs e)
         {
+            radEmail.Checked = false;
+            radPhone.Checked = false;
+            btnSearchEmail.Enabled = false;
             try
             {
                 //connect to database
@@ -2106,6 +2109,108 @@ namespace SU21_Final_Project
                 {
                     lblDisplayDiscountReturn.Text = "Don't apply on new customer";
                 }
+            }
+        }
+
+        //Method to Search Customer by email
+        public void DisplayCustomerEmailOnly(string strByEmail)
+        {
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                dataAdapter = new SqlDataAdapter("SELECT RandrezaVoharisoaM21Su2332.Person.PersonID  as [Person ID], RandrezaVoharisoaM21Su2332.Person.NameFirst  as [First Name], RandrezaVoharisoaM21Su2332.Person.NameLast as [Last Name],RandrezaVoharisoaM21Su2332.Person.Address1  as [Address],RandrezaVoharisoaM21Su2332.Person.City,RandrezaVoharisoaM21Su2332.Person.State, RandrezaVoharisoaM21Su2332.Person.Zipcode,RandrezaVoharisoaM21Su2332.Person.PhonePrimary as [Phone] , RandrezaVoharisoaM21Su2332.Person.Email  FROM RandrezaVoharisoaM21Su2332.Person  FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.PersonID = RandrezaVoharisoaM21Su2332.Person.PersonID WHERE RoleID = 3 and RandrezaVoharisoaM21Su2332.Person.Email='" + strByEmail + "' ; ", Connection);
+                dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                dgvCustomerList.DataSource = dataTable;
+
+
+                Connection.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Cannot find this customer email ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbxSearchEmail.Text = "";
+            }
+        }
+
+        //Method to Search Customer by Phone
+        public void DisplayCustomerPhoneOnly(string strByPhone)
+        {
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                Connection.Open();
+                dataAdapter = new SqlDataAdapter("SELECT RandrezaVoharisoaM21Su2332.Person.PersonID  as [Person ID], RandrezaVoharisoaM21Su2332.Person.NameFirst  as [First Name], RandrezaVoharisoaM21Su2332.Person.NameLast as [Last Name],RandrezaVoharisoaM21Su2332.Person.Address1  as [Address],RandrezaVoharisoaM21Su2332.Person.City,RandrezaVoharisoaM21Su2332.Person.State, RandrezaVoharisoaM21Su2332.Person.Zipcode,RandrezaVoharisoaM21Su2332.Person.PhonePrimary as [Phone] , RandrezaVoharisoaM21Su2332.Person.Email  FROM RandrezaVoharisoaM21Su2332.Person  FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.PersonID = RandrezaVoharisoaM21Su2332.Person.PersonID WHERE RoleID = 3 and RandrezaVoharisoaM21Su2332.Person.PhonePrimary='" + strByPhone + "' ; ", Connection);
+                dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                dgvCustomerList.DataSource = dataTable;
+
+
+                Connection.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Cannot find this customer email ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mskSearchPhone.Text = "";
+            }
+        }
+
+        //Search customer by phone or by email
+        private void btnSearchEmail_Click(object sender, EventArgs e)
+        {
+            
+            string strCustomerEmail = tbxSearchEmail.Text;
+            string strSearchPhone = mskSearchPhone.Text;
+
+            if (radEmail.Checked==true&& tbxSearchEmail.Text!=""&& ValidEmail(strCustomerEmail))
+            {
+                DisplayCustomerEmailOnly(strCustomerEmail);
+            }
+            else if (radPhone.Checked == true && mskSearchPhone.Text != "")
+            {
+                DisplayCustomerPhoneOnly(strSearchPhone);
+            }
+            else
+            {
+                MessageBox.Show("Please enter customer phone or email to search", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbxSearchEmail.Text = "";
+                mskSearchPhone.Text = "";
+            }
+        }
+
+        //Activate search customer email
+        private void radEmail_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radEmail.Checked == true)
+            {
+                tbxSearchEmail.Enabled = true;
+                btnSearchEmail.Enabled = true;
+            }
+            else
+            {
+                tbxSearchEmail.Enabled = false;
+            }
+        }
+
+        //Activate search customer phone
+        private void radPhone_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radPhone.Checked == true)
+            {
+                mskSearchPhone.Enabled = true;
+                btnSearchEmail.Enabled = true;
+            }
+            else
+            {
+                mskSearchPhone.Enabled = false;
+                mskSearchPhone.Text = "";
             }
         }
     }

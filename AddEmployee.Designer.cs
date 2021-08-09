@@ -115,7 +115,7 @@ namespace SU21_Final_Project
             this.dtpEmployeeHiredDate.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.dtpEmployeeHiredDate.Name = "dtpEmployeeHiredDate";
             this.dtpEmployeeHiredDate.Size = new System.Drawing.Size(158, 22);
-            this.dtpEmployeeHiredDate.TabIndex = 56;
+            this.dtpEmployeeHiredDate.TabIndex = 11;
             // 
             // lblPositionLabel
             // 
@@ -137,7 +137,7 @@ namespace SU21_Final_Project
             this.cboPosition.Location = new System.Drawing.Point(619, 81);
             this.cboPosition.Name = "cboPosition";
             this.cboPosition.Size = new System.Drawing.Size(78, 24);
-            this.cboPosition.TabIndex = 54;
+            this.cboPosition.TabIndex = 8;
             // 
             // mskPhone
             // 
@@ -145,7 +145,7 @@ namespace SU21_Final_Project
             this.mskPhone.Mask = "000-000-0000";
             this.mskPhone.Name = "mskPhone";
             this.mskPhone.Size = new System.Drawing.Size(89, 22);
-            this.mskPhone.TabIndex = 52;
+            this.mskPhone.TabIndex = 10;
             // 
             // lblRoleLabel
             // 
@@ -166,12 +166,13 @@ namespace SU21_Final_Project
             this.cboRole.Location = new System.Drawing.Point(439, 84);
             this.cboRole.Name = "cboRole";
             this.cboRole.Size = new System.Drawing.Size(78, 24);
-            this.cboRole.TabIndex = 50;
+            this.cboRole.TabIndex = 7;
             // 
             // cboState
             // 
             this.cboState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboState.FormattingEnabled = true;
+            this.cboState.ItemHeight = 16;
             this.cboState.Items.AddRange(new object[] {
             "AK",
             "AS",
@@ -241,6 +242,7 @@ namespace SU21_Final_Project
             // 
             this.cboSuffix.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSuffix.FormattingEnabled = true;
+            this.cboSuffix.ItemHeight = 16;
             this.cboSuffix.Items.AddRange(new object[] {
             "Mrs",
             "Mr",
@@ -328,7 +330,7 @@ namespace SU21_Final_Project
             this.tbxEmail.MaxLength = 40;
             this.tbxEmail.Name = "tbxEmail";
             this.tbxEmail.Size = new System.Drawing.Size(165, 22);
-            this.tbxEmail.TabIndex = 5;
+            this.tbxEmail.TabIndex = 6;
             // 
             // tbxMiddleName
             // 
@@ -362,7 +364,7 @@ namespace SU21_Final_Project
             this.tbxCity.MaxLength = 30;
             this.tbxCity.Name = "tbxCity";
             this.tbxCity.Size = new System.Drawing.Size(144, 22);
-            this.tbxCity.TabIndex = 11;
+            this.tbxCity.TabIndex = 5;
             // 
             // lblCityLabel
             // 
@@ -379,7 +381,7 @@ namespace SU21_Final_Project
             this.tbxAddressOne.MaxLength = 30;
             this.tbxAddressOne.Name = "tbxAddressOne";
             this.tbxAddressOne.Size = new System.Drawing.Size(165, 22);
-            this.tbxAddressOne.TabIndex = 6;
+            this.tbxAddressOne.TabIndex = 4;
             // 
             // lblAddressLabel
             // 
@@ -405,7 +407,7 @@ namespace SU21_Final_Project
             this.tbxSalary.MaxLength = 10;
             this.tbxSalary.Name = "tbxSalary";
             this.tbxSalary.Size = new System.Drawing.Size(158, 22);
-            this.tbxSalary.TabIndex = 8;
+            this.tbxSalary.TabIndex = 9;
             this.tbxSalary.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxSalary_KeyPress);
             // 
             // lblSalaryLabel
@@ -445,10 +447,10 @@ namespace SU21_Final_Project
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnBack.Location = new System.Drawing.Point(2, 411);
+            this.btnBack.Location = new System.Drawing.Point(2, 415);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(717, 66);
-            this.btnBack.TabIndex = 49;
+            this.btnBack.TabIndex = 15;
             this.btnBack.Text = "&Back";
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click_1);
@@ -466,7 +468,7 @@ namespace SU21_Final_Project
             this.btnSave.Location = new System.Drawing.Point(2, 347);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(717, 63);
-            this.btnSave.TabIndex = 48;
+            this.btnSave.TabIndex = 14;
             this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -482,7 +484,7 @@ namespace SU21_Final_Project
             this.btnHelpAddEmployee.Location = new System.Drawing.Point(604, 1);
             this.btnHelpAddEmployee.Name = "btnHelpAddEmployee";
             this.btnHelpAddEmployee.Size = new System.Drawing.Size(109, 43);
-            this.btnHelpAddEmployee.TabIndex = 56;
+            this.btnHelpAddEmployee.TabIndex = 16;
             this.btnHelpAddEmployee.Text = "HELP?";
             this.btnHelpAddEmployee.UseVisualStyleBackColor = false;
             this.btnHelpAddEmployee.Click += new System.EventHandler(this.btnHelpAddEmployee_Click);

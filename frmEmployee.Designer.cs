@@ -168,6 +168,11 @@ namespace SU21_Final_Project
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnHelpEmployeeView = new System.Windows.Forms.Button();
             this.btnResetAll = new System.Windows.Forms.Button();
+            this.btnSearchEmail = new System.Windows.Forms.Button();
+            this.tbxSearchEmail = new System.Windows.Forms.TextBox();
+            this.radEmail = new System.Windows.Forms.RadioButton();
+            this.radPhone = new System.Windows.Forms.RadioButton();
+            this.mskSearchPhone = new System.Windows.Forms.MaskedTextBox();
             this.tabInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPurchaseDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerPurchase)).BeginInit();
@@ -190,6 +195,11 @@ namespace SU21_Final_Project
             // 
             // tabInformation
             // 
+            this.tabInformation.Controls.Add(this.mskSearchPhone);
+            this.tabInformation.Controls.Add(this.radPhone);
+            this.tabInformation.Controls.Add(this.radEmail);
+            this.tabInformation.Controls.Add(this.btnSearchEmail);
+            this.tabInformation.Controls.Add(this.tbxSearchEmail);
             this.tabInformation.Controls.Add(this.lblCustomerListLabel);
             this.tabInformation.Controls.Add(this.btnPrintInvoice);
             this.tabInformation.Controls.Add(this.btnClearCustomer);
@@ -227,9 +237,9 @@ namespace SU21_Final_Project
             this.btnPrintInvoice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPrintInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrintInvoice.ForeColor = System.Drawing.Color.Maroon;
-            this.btnPrintInvoice.Location = new System.Drawing.Point(539, 618);
+            this.btnPrintInvoice.Location = new System.Drawing.Point(923, 553);
             this.btnPrintInvoice.Name = "btnPrintInvoice";
-            this.btnPrintInvoice.Size = new System.Drawing.Size(260, 89);
+            this.btnPrintInvoice.Size = new System.Drawing.Size(156, 72);
             this.btnPrintInvoice.TabIndex = 51;
             this.btnPrintInvoice.Text = "Print Invoice";
             this.btnPrintInvoice.UseVisualStyleBackColor = true;
@@ -242,11 +252,11 @@ namespace SU21_Final_Project
             this.btnClearCustomer.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnClearCustomer.FlatAppearance.BorderSize = 3;
             this.btnClearCustomer.ForeColor = System.Drawing.Color.Maroon;
-            this.btnClearCustomer.Location = new System.Drawing.Point(796, 618);
+            this.btnClearCustomer.Location = new System.Drawing.Point(923, 628);
             this.btnClearCustomer.Name = "btnClearCustomer";
-            this.btnClearCustomer.Size = new System.Drawing.Size(283, 89);
+            this.btnClearCustomer.Size = new System.Drawing.Size(151, 73);
             this.btnClearCustomer.TabIndex = 50;
-            this.btnClearCustomer.Text = "Clear";
+            this.btnClearCustomer.Text = "Clear All";
             this.btnClearCustomer.UseVisualStyleBackColor = true;
             this.btnClearCustomer.Click += new System.EventHandler(this.btnClearCustomer_Click);
             // 
@@ -269,7 +279,7 @@ namespace SU21_Final_Project
             // 
             this.lblSalesDetailLabel.AutoSize = true;
             this.lblSalesDetailLabel.ForeColor = System.Drawing.Color.Black;
-            this.lblSalesDetailLabel.Location = new System.Drawing.Point(11, 710);
+            this.lblSalesDetailLabel.Location = new System.Drawing.Point(646, 710);
             this.lblSalesDetailLabel.Name = "lblSalesDetailLabel";
             this.lblSalesDetailLabel.Size = new System.Drawing.Size(131, 17);
             this.lblSalesDetailLabel.TabIndex = 27;
@@ -295,7 +305,7 @@ namespace SU21_Final_Project
             // 
             this.lblCustomerSaleReport.AutoSize = true;
             this.lblCustomerSaleReport.ForeColor = System.Drawing.Color.Black;
-            this.lblCustomerSaleReport.Location = new System.Drawing.Point(6, 539);
+            this.lblCustomerSaleReport.Location = new System.Drawing.Point(636, 536);
             this.lblCustomerSaleReport.Name = "lblCustomerSaleReport";
             this.lblCustomerSaleReport.Size = new System.Drawing.Size(132, 17);
             this.lblCustomerSaleReport.TabIndex = 25;
@@ -306,7 +316,7 @@ namespace SU21_Final_Project
             this.dgvCustomerPurchase.AllowUserToAddRows = false;
             this.dgvCustomerPurchase.AllowUserToDeleteRows = false;
             this.dgvCustomerPurchase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCustomerPurchase.Location = new System.Drawing.Point(11, 560);
+            this.dgvCustomerPurchase.Location = new System.Drawing.Point(398, 553);
             this.dgvCustomerPurchase.MultiSelect = false;
             this.dgvCustomerPurchase.Name = "dgvCustomerPurchase";
             this.dgvCustomerPurchase.ReadOnly = true;
@@ -314,7 +324,7 @@ namespace SU21_Final_Project
             this.dgvCustomerPurchase.RowHeadersWidth = 51;
             this.dgvCustomerPurchase.RowTemplate.Height = 24;
             this.dgvCustomerPurchase.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCustomerPurchase.Size = new System.Drawing.Size(526, 147);
+            this.dgvCustomerPurchase.Size = new System.Drawing.Size(522, 149);
             this.dgvCustomerPurchase.TabIndex = 24;
             this.dgvCustomerPurchase.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomerPurchase_CellClick);
             // 
@@ -355,11 +365,11 @@ namespace SU21_Final_Project
             this.btnDisplayCustomerList.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnDisplayCustomerList.FlatAppearance.BorderSize = 3;
             this.btnDisplayCustomerList.ForeColor = System.Drawing.Color.Maroon;
-            this.btnDisplayCustomerList.Location = new System.Drawing.Point(538, 560);
+            this.btnDisplayCustomerList.Location = new System.Drawing.Point(3, 536);
             this.btnDisplayCustomerList.Name = "btnDisplayCustomerList";
-            this.btnDisplayCustomerList.Size = new System.Drawing.Size(541, 58);
+            this.btnDisplayCustomerList.Size = new System.Drawing.Size(389, 55);
             this.btnDisplayCustomerList.TabIndex = 49;
-            this.btnDisplayCustomerList.Text = "View Customers List";
+            this.btnDisplayCustomerList.Text = "Display All Customer";
             this.btnDisplayCustomerList.UseVisualStyleBackColor = true;
             this.btnDisplayCustomerList.Click += new System.EventHandler(this.btnDisplayCustomerList_Click);
             // 
@@ -1258,9 +1268,9 @@ namespace SU21_Final_Project
             this.btnSearchCustomerID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearchCustomerID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearchCustomerID.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnSearchCustomerID.Location = new System.Drawing.Point(439, 12);
+            this.btnSearchCustomerID.Location = new System.Drawing.Point(467, 12);
             this.btnSearchCustomerID.Name = "btnSearchCustomerID";
-            this.btnSearchCustomerID.Size = new System.Drawing.Size(136, 43);
+            this.btnSearchCustomerID.Size = new System.Drawing.Size(108, 56);
             this.btnSearchCustomerID.TabIndex = 14;
             this.btnSearchCustomerID.Text = "&Search";
             this.btnSearchCustomerID.UseVisualStyleBackColor = true;
@@ -1294,7 +1304,7 @@ namespace SU21_Final_Project
             // 
             // tbxCustomerState
             // 
-            this.tbxCustomerState.Location = new System.Drawing.Point(419, 66);
+            this.tbxCustomerState.Location = new System.Drawing.Point(429, 66);
             this.tbxCustomerState.Name = "tbxCustomerState";
             this.tbxCustomerState.Size = new System.Drawing.Size(121, 22);
             this.tbxCustomerState.TabIndex = 22;
@@ -1302,7 +1312,7 @@ namespace SU21_Final_Project
             // 
             // tbxCustomerCity
             // 
-            this.tbxCustomerCity.Location = new System.Drawing.Point(329, 40);
+            this.tbxCustomerCity.Location = new System.Drawing.Point(339, 41);
             this.tbxCustomerCity.Name = "tbxCustomerCity";
             this.tbxCustomerCity.Size = new System.Drawing.Size(211, 22);
             this.tbxCustomerCity.TabIndex = 20;
@@ -1313,9 +1323,9 @@ namespace SU21_Final_Project
             this.lblCityLabel.ForeColor = System.Drawing.Color.Black;
             this.lblCityLabel.Location = new System.Drawing.Point(286, 44);
             this.lblCityLabel.Name = "lblCityLabel";
-            this.lblCityLabel.Size = new System.Drawing.Size(35, 17);
+            this.lblCityLabel.Size = new System.Drawing.Size(41, 17);
             this.lblCityLabel.TabIndex = 15;
-            this.lblCityLabel.Text = "City";
+            this.lblCityLabel.Text = "*City";
             // 
             // cboStatesCustomer
             // 
@@ -1381,14 +1391,14 @@ namespace SU21_Final_Project
             "WV",
             "WI",
             "WY"});
-            this.cboStatesCustomer.Location = new System.Drawing.Point(331, 66);
+            this.cboStatesCustomer.Location = new System.Drawing.Point(341, 66);
             this.cboStatesCustomer.Name = "cboStatesCustomer";
             this.cboStatesCustomer.Size = new System.Drawing.Size(87, 24);
             this.cboStatesCustomer.TabIndex = 21;
             // 
             // tbxZipCustomer
             // 
-            this.tbxZipCustomer.Location = new System.Drawing.Point(329, 98);
+            this.tbxZipCustomer.Location = new System.Drawing.Point(341, 96);
             this.tbxZipCustomer.MaxLength = 5;
             this.tbxZipCustomer.Name = "tbxZipCustomer";
             this.tbxZipCustomer.Size = new System.Drawing.Size(89, 22);
@@ -1405,7 +1415,7 @@ namespace SU21_Final_Project
             // 
             // tbxAddressCustomer
             // 
-            this.tbxAddressCustomer.Location = new System.Drawing.Point(329, 14);
+            this.tbxAddressCustomer.Location = new System.Drawing.Point(339, 14);
             this.tbxAddressCustomer.Name = "tbxAddressCustomer";
             this.tbxAddressCustomer.Size = new System.Drawing.Size(211, 22);
             this.tbxAddressCustomer.TabIndex = 19;
@@ -1426,7 +1436,7 @@ namespace SU21_Final_Project
             // 
             // tbxFirstNameCustomer
             // 
-            this.tbxFirstNameCustomer.Location = new System.Drawing.Point(115, 20);
+            this.tbxFirstNameCustomer.Location = new System.Drawing.Point(116, 20);
             this.tbxFirstNameCustomer.Name = "tbxFirstNameCustomer";
             this.tbxFirstNameCustomer.Size = new System.Drawing.Size(139, 22);
             this.tbxFirstNameCustomer.TabIndex = 15;
@@ -1435,21 +1445,21 @@ namespace SU21_Final_Project
             // 
             this.lblPhoneLabel.AutoSize = true;
             this.lblPhoneLabel.ForeColor = System.Drawing.Color.Black;
-            this.lblPhoneLabel.Location = new System.Drawing.Point(55, 102);
+            this.lblPhoneLabel.Location = new System.Drawing.Point(45, 101);
             this.lblPhoneLabel.Name = "lblPhoneLabel";
-            this.lblPhoneLabel.Size = new System.Drawing.Size(59, 17);
+            this.lblPhoneLabel.Size = new System.Drawing.Size(65, 17);
             this.lblPhoneLabel.TabIndex = 6;
-            this.lblPhoneLabel.Text = "Phone:";
+            this.lblPhoneLabel.Text = "*Phone:";
             // 
             // lblZipLabel
             // 
             this.lblZipLabel.AutoSize = true;
             this.lblZipLabel.ForeColor = System.Drawing.Color.Black;
-            this.lblZipLabel.Location = new System.Drawing.Point(278, 103);
+            this.lblZipLabel.Location = new System.Drawing.Point(293, 96);
             this.lblZipLabel.Name = "lblZipLabel";
-            this.lblZipLabel.Size = new System.Drawing.Size(36, 17);
+            this.lblZipLabel.Size = new System.Drawing.Size(42, 17);
             this.lblZipLabel.TabIndex = 5;
-            this.lblZipLabel.Text = "Zip:";
+            this.lblZipLabel.Text = "*Zip:";
             // 
             // lblStateLabel
             // 
@@ -1457,9 +1467,9 @@ namespace SU21_Final_Project
             this.lblStateLabel.ForeColor = System.Drawing.Color.Black;
             this.lblStateLabel.Location = new System.Drawing.Point(280, 71);
             this.lblStateLabel.Name = "lblStateLabel";
-            this.lblStateLabel.Size = new System.Drawing.Size(51, 17);
+            this.lblStateLabel.Size = new System.Drawing.Size(57, 17);
             this.lblStateLabel.TabIndex = 4;
-            this.lblStateLabel.Text = "State:";
+            this.lblStateLabel.Text = "*State:";
             // 
             // lblAddressLabel
             // 
@@ -1467,57 +1477,57 @@ namespace SU21_Final_Project
             this.lblAddressLabel.ForeColor = System.Drawing.Color.Black;
             this.lblAddressLabel.Location = new System.Drawing.Point(263, 17);
             this.lblAddressLabel.Name = "lblAddressLabel";
-            this.lblAddressLabel.Size = new System.Drawing.Size(67, 17);
+            this.lblAddressLabel.Size = new System.Drawing.Size(73, 17);
             this.lblAddressLabel.TabIndex = 3;
-            this.lblAddressLabel.Text = "Address";
+            this.lblAddressLabel.Text = "*Address";
             // 
             // lblEmailLabel
             // 
             this.lblEmailLabel.AutoSize = true;
             this.lblEmailLabel.ForeColor = System.Drawing.Color.Black;
-            this.lblEmailLabel.Location = new System.Drawing.Point(63, 77);
+            this.lblEmailLabel.Location = new System.Drawing.Point(53, 76);
             this.lblEmailLabel.Name = "lblEmailLabel";
-            this.lblEmailLabel.Size = new System.Drawing.Size(47, 17);
+            this.lblEmailLabel.Size = new System.Drawing.Size(53, 17);
             this.lblEmailLabel.TabIndex = 2;
-            this.lblEmailLabel.Text = "Email";
+            this.lblEmailLabel.Text = "*Email";
             // 
             // lblLastNameLabel
             // 
             this.lblLastNameLabel.AutoSize = true;
             this.lblLastNameLabel.ForeColor = System.Drawing.Color.Black;
-            this.lblLastNameLabel.Location = new System.Drawing.Point(30, 49);
+            this.lblLastNameLabel.Location = new System.Drawing.Point(20, 48);
             this.lblLastNameLabel.Name = "lblLastNameLabel";
-            this.lblLastNameLabel.Size = new System.Drawing.Size(85, 17);
+            this.lblLastNameLabel.Size = new System.Drawing.Size(91, 17);
             this.lblLastNameLabel.TabIndex = 1;
-            this.lblLastNameLabel.Text = "Last Name";
+            this.lblLastNameLabel.Text = "*Last Name";
             // 
             // lblFirstNameLabel
             // 
             this.lblFirstNameLabel.AutoSize = true;
             this.lblFirstNameLabel.ForeColor = System.Drawing.Color.Black;
-            this.lblFirstNameLabel.Location = new System.Drawing.Point(27, 23);
+            this.lblFirstNameLabel.Location = new System.Drawing.Point(17, 22);
             this.lblFirstNameLabel.Name = "lblFirstNameLabel";
-            this.lblFirstNameLabel.Size = new System.Drawing.Size(86, 17);
+            this.lblFirstNameLabel.Size = new System.Drawing.Size(92, 17);
             this.lblFirstNameLabel.TabIndex = 0;
-            this.lblFirstNameLabel.Text = "First Name";
+            this.lblFirstNameLabel.Text = "*First Name";
             // 
             // lblIDLabel
             // 
             this.lblIDLabel.AutoSize = true;
             this.lblIDLabel.Enabled = false;
             this.lblIDLabel.ForeColor = System.Drawing.Color.Black;
-            this.lblIDLabel.Location = new System.Drawing.Point(248, 26);
+            this.lblIDLabel.Location = new System.Drawing.Point(251, 21);
             this.lblIDLabel.Name = "lblIDLabel";
-            this.lblIDLabel.Size = new System.Drawing.Size(81, 17);
+            this.lblIDLabel.Size = new System.Drawing.Size(193, 17);
             this.lblIDLabel.TabIndex = 15;
-            this.lblIDLabel.Text = "Enter ID #";
+            this.lblIDLabel.Text = "Search by  Customer ID #";
             // 
             // tbxIDSearch
             // 
             this.tbxIDSearch.Enabled = false;
-            this.tbxIDSearch.Location = new System.Drawing.Point(334, 23);
+            this.tbxIDSearch.Location = new System.Drawing.Point(288, 44);
             this.tbxIDSearch.Name = "tbxIDSearch";
-            this.tbxIDSearch.Size = new System.Drawing.Size(100, 22);
+            this.tbxIDSearch.Size = new System.Drawing.Size(120, 22);
             this.tbxIDSearch.TabIndex = 13;
             this.tbxIDSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxIDSearch_KeyPress);
             // 
@@ -1926,6 +1936,65 @@ namespace SU21_Final_Project
             this.btnResetAll.UseVisualStyleBackColor = true;
             this.btnResetAll.Click += new System.EventHandler(this.btnResetAll_Click);
             // 
+            // btnSearchEmail
+            // 
+            this.btnSearchEmail.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSearchEmail.BackgroundImage")));
+            this.btnSearchEmail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSearchEmail.Enabled = false;
+            this.btnSearchEmail.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnSearchEmail.FlatAppearance.BorderSize = 3;
+            this.btnSearchEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearchEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchEmail.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnSearchEmail.Location = new System.Drawing.Point(3, 660);
+            this.btnSearchEmail.Name = "btnSearchEmail";
+            this.btnSearchEmail.Size = new System.Drawing.Size(389, 62);
+            this.btnSearchEmail.TabIndex = 54;
+            this.btnSearchEmail.Text = "&Search";
+            this.btnSearchEmail.UseVisualStyleBackColor = true;
+            this.btnSearchEmail.Click += new System.EventHandler(this.btnSearchEmail_Click);
+            // 
+            // tbxSearchEmail
+            // 
+            this.tbxSearchEmail.Enabled = false;
+            this.tbxSearchEmail.Location = new System.Drawing.Point(189, 634);
+            this.tbxSearchEmail.Name = "tbxSearchEmail";
+            this.tbxSearchEmail.Size = new System.Drawing.Size(189, 22);
+            this.tbxSearchEmail.TabIndex = 53;
+            // 
+            // radEmail
+            // 
+            this.radEmail.AutoSize = true;
+            this.radEmail.Location = new System.Drawing.Point(25, 634);
+            this.radEmail.Name = "radEmail";
+            this.radEmail.Size = new System.Drawing.Size(112, 21);
+            this.radEmail.TabIndex = 56;
+            this.radEmail.TabStop = true;
+            this.radEmail.Text = "Enter Email";
+            this.radEmail.UseVisualStyleBackColor = true;
+            this.radEmail.CheckedChanged += new System.EventHandler(this.radEmail_CheckedChanged);
+            // 
+            // radPhone
+            // 
+            this.radPhone.AutoSize = true;
+            this.radPhone.Location = new System.Drawing.Point(25, 604);
+            this.radPhone.Name = "radPhone";
+            this.radPhone.Size = new System.Drawing.Size(158, 21);
+            this.radPhone.TabIndex = 57;
+            this.radPhone.TabStop = true;
+            this.radPhone.Text = "Search by  Phone";
+            this.radPhone.UseVisualStyleBackColor = true;
+            this.radPhone.CheckedChanged += new System.EventHandler(this.radPhone_CheckedChanged);
+            // 
+            // mskSearchPhone
+            // 
+            this.mskSearchPhone.Enabled = false;
+            this.mskSearchPhone.Location = new System.Drawing.Point(189, 606);
+            this.mskSearchPhone.Mask = "000-000-0000";
+            this.mskSearchPhone.Name = "mskSearchPhone";
+            this.mskSearchPhone.Size = new System.Drawing.Size(136, 22);
+            this.mskSearchPhone.TabIndex = 58;
+            // 
             // frmEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2123,5 +2192,10 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblCustomerName;
         private System.Windows.Forms.Label lblReturningCustomerLabel;
         private System.Windows.Forms.Label lblCustomerListLabel;
+        private System.Windows.Forms.Button btnSearchEmail;
+        private System.Windows.Forms.TextBox tbxSearchEmail;
+        private System.Windows.Forms.RadioButton radPhone;
+        private System.Windows.Forms.RadioButton radEmail;
+        private System.Windows.Forms.MaskedTextBox mskSearchPhone;
     }
 }
