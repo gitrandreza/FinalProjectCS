@@ -61,6 +61,8 @@ namespace SU21_Final_Project
             this.btnEditEmployee = new System.Windows.Forms.Button();
             this.dgvEmployee = new System.Windows.Forms.DataGridView();
             this.tabInventory = new System.Windows.Forms.TabPage();
+            this.lblLowItem2 = new System.Windows.Forms.Label();
+            this.dgvLowItem100 = new System.Windows.Forms.DataGridView();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.dgvLowItem50 = new System.Windows.Forms.DataGridView();
             this.lblLowItemLabel = new System.Windows.Forms.Label();
@@ -138,8 +140,8 @@ namespace SU21_Final_Project
             this.radPurchaseWeekly = new System.Windows.Forms.RadioButton();
             this.radPurchaseDaily = new System.Windows.Forms.RadioButton();
             this.dtpPurchaseDate = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
             this.dgvPurchaseRecord = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnSaveEditSupplier = new System.Windows.Forms.Button();
             this.gbxAddEditSupplier = new System.Windows.Forms.GroupBox();
             this.tbxSupplierCity = new System.Windows.Forms.TextBox();
@@ -167,13 +169,12 @@ namespace SU21_Final_Project
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnAccessPOS = new System.Windows.Forms.Button();
             this.btnHelpAdmin = new System.Windows.Forms.Button();
-            this.dgvLowItem100 = new System.Windows.Forms.DataGridView();
-            this.lblLowItem2 = new System.Windows.Forms.Label();
             this.tabEmployee.SuspendLayout();
             this.gbxEdit.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
             this.tabInventory.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLowItem100)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLowItem50)).BeginInit();
             this.gbxUpdateField.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllProducts)).BeginInit();
@@ -190,7 +191,6 @@ namespace SU21_Final_Project
             ((System.ComponentModel.ISupportInitialize)(this.dgvPurchaseRecord)).BeginInit();
             this.gbxAddEditSupplier.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLowItem100)).BeginInit();
             this.SuspendLayout();
             // 
             // tabEmployee
@@ -626,6 +626,33 @@ namespace SU21_Final_Project
             this.tabInventory.TabIndex = 0;
             this.tabInventory.Text = "Inventory Control";
             this.tabInventory.UseVisualStyleBackColor = true;
+            // 
+            // lblLowItem2
+            // 
+            this.lblLowItem2.AutoSize = true;
+            this.lblLowItem2.BackColor = System.Drawing.Color.OrangeRed;
+            this.lblLowItem2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLowItem2.ForeColor = System.Drawing.Color.White;
+            this.lblLowItem2.Location = new System.Drawing.Point(841, 384);
+            this.lblLowItem2.Name = "lblLowItem2";
+            this.lblLowItem2.Size = new System.Drawing.Size(130, 18);
+            this.lblLowItem2.TabIndex = 42;
+            this.lblLowItem2.Text = "Items below 100";
+            // 
+            // dgvLowItem100
+            // 
+            this.dgvLowItem100.AllowUserToAddRows = false;
+            this.dgvLowItem100.AllowUserToDeleteRows = false;
+            this.dgvLowItem100.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLowItem100.Location = new System.Drawing.Point(829, 403);
+            this.dgvLowItem100.MultiSelect = false;
+            this.dgvLowItem100.Name = "dgvLowItem100";
+            this.dgvLowItem100.ReadOnly = true;
+            this.dgvLowItem100.RowHeadersVisible = false;
+            this.dgvLowItem100.RowHeadersWidth = 51;
+            this.dgvLowItem100.RowTemplate.Height = 24;
+            this.dgvLowItem100.Size = new System.Drawing.Size(281, 140);
+            this.dgvLowItem100.TabIndex = 41;
             // 
             // btnRefresh
             // 
@@ -1628,15 +1655,6 @@ namespace SU21_Final_Project
             this.dtpPurchaseDate.Size = new System.Drawing.Size(167, 22);
             this.dtpPurchaseDate.TabIndex = 12;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(709, 415);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 17);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Begin on";
-            // 
             // dgvPurchaseRecord
             // 
             this.dgvPurchaseRecord.AllowUserToAddRows = false;
@@ -1653,6 +1671,15 @@ namespace SU21_Final_Project
             this.dgvPurchaseRecord.Size = new System.Drawing.Size(488, 152);
             this.dgvPurchaseRecord.TabIndex = 20;
             this.dgvPurchaseRecord.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPurchaseRecord_CellClick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(709, 415);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 17);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Begin on";
             // 
             // btnSaveEditSupplier
             // 
@@ -2019,33 +2046,6 @@ namespace SU21_Final_Project
             this.btnHelpAdmin.UseVisualStyleBackColor = true;
             this.btnHelpAdmin.Click += new System.EventHandler(this.btnHelpAdmin_Click);
             // 
-            // dgvLowItem100
-            // 
-            this.dgvLowItem100.AllowUserToAddRows = false;
-            this.dgvLowItem100.AllowUserToDeleteRows = false;
-            this.dgvLowItem100.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLowItem100.Location = new System.Drawing.Point(829, 403);
-            this.dgvLowItem100.MultiSelect = false;
-            this.dgvLowItem100.Name = "dgvLowItem100";
-            this.dgvLowItem100.ReadOnly = true;
-            this.dgvLowItem100.RowHeadersVisible = false;
-            this.dgvLowItem100.RowHeadersWidth = 51;
-            this.dgvLowItem100.RowTemplate.Height = 24;
-            this.dgvLowItem100.Size = new System.Drawing.Size(281, 140);
-            this.dgvLowItem100.TabIndex = 41;
-            // 
-            // lblLowItem2
-            // 
-            this.lblLowItem2.AutoSize = true;
-            this.lblLowItem2.BackColor = System.Drawing.Color.OrangeRed;
-            this.lblLowItem2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLowItem2.ForeColor = System.Drawing.Color.White;
-            this.lblLowItem2.Location = new System.Drawing.Point(841, 384);
-            this.lblLowItem2.Name = "lblLowItem2";
-            this.lblLowItem2.Size = new System.Drawing.Size(130, 18);
-            this.lblLowItem2.TabIndex = 42;
-            this.lblLowItem2.Text = "Items below 100";
-            // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2075,6 +2075,7 @@ namespace SU21_Final_Project
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).EndInit();
             this.tabInventory.ResumeLayout(false);
             this.tabInventory.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLowItem100)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLowItem50)).EndInit();
             this.gbxUpdateField.ResumeLayout(false);
             this.gbxUpdateField.PerformLayout();
@@ -2098,7 +2099,6 @@ namespace SU21_Final_Project
             this.gbxAddEditSupplier.ResumeLayout(false);
             this.gbxAddEditSupplier.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSupplierView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLowItem100)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
