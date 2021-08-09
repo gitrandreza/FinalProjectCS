@@ -923,6 +923,7 @@ namespace SU21_Final_Project
             string strStateEdit;
             string strPhoneEdit;
             string strPersonID;
+            bool blnUpdated = false;
             try
             {
                 //Connection.Open();
@@ -937,6 +938,7 @@ namespace SU21_Final_Project
                 else
                 {
                     strNameFirst = tbxFirstName.Text;
+                    blnUpdated = true;
                 }
 
                 if (tbxLastName.Text == "")
@@ -947,6 +949,7 @@ namespace SU21_Final_Project
                 else
                 {
                     strNameLast = tbxLastName.Text;
+                    blnUpdated = true;
                 }
 
 
@@ -957,15 +960,18 @@ namespace SU21_Final_Project
                 else
                 {
                     strAddress = tbxAddress.Text;
+                    blnUpdated = true;
                 }
 
                 if (tbxCity.Text == "")
                 {
                     strCity = dgvEmployee.Rows[dgvEmployee.CurrentCell.RowIndex].Cells[4].Value.ToString();
+                   
                 }
                 else
                 {
                     strCity = tbxCity.Text;
+                    blnUpdated = true;
                 }
 
 
@@ -977,6 +983,7 @@ namespace SU21_Final_Project
                 else
                 {
                     strStateEdit = cboStates.SelectedItem.ToString();
+                    blnUpdated = true;
 
                 }
 
@@ -989,19 +996,24 @@ namespace SU21_Final_Project
                 else
                 {
                     strZip = tbxZip.Text;
+                    blnUpdated = true;
                 }
 
                 if (ValidEmail(tbxEmail.Text)==false)
                 {
                     strEmail = dgvEmployee.Rows[dgvEmployee.CurrentCell.RowIndex].Cells[7].Value.ToString();
-                    MessageBox.Show("This Email format can't be updated?", "Message", MessageBoxButtons.OK);
+                    if (cbxEmail.Checked == true)
+                    {
+                        MessageBox.Show("This Email format can't be updated?", "Message", MessageBoxButtons.OK);
+                    }                   
                     
                 }
                 else
                 {
                     
                     strEmail = tbxEmail.Text;
-          
+                    blnUpdated = true;
+
                 }
 
                 if (ValidPhone(mskPhones.Text)==false)
@@ -1012,6 +1024,7 @@ namespace SU21_Final_Project
                 else
                 {
                     strPhoneEdit = mskPhones.Text;
+                    blnUpdated = true;
                 }
 
                 Connection.Open();
@@ -1029,12 +1042,15 @@ namespace SU21_Final_Project
                 SqlParameter sqlpmPhone = editCommande.Parameters.AddWithValue("@Phone", strPhoneEdit);
                     editCommande.ExecuteNonQuery();
 
-
-
                     Connection.Close();
-
+                if (blnUpdated == true)
+                {
                     MessageBox.Show("The selected employee has been updated?", "Message", MessageBoxButtons.OK);
-
+                }
+                else
+                {
+                    MessageBox.Show("No fields to update", "Message", MessageBoxButtons.OK);
+                }
                     DisplayEmployees();
                     ResetEditFields();
               
@@ -1638,7 +1654,7 @@ namespace SU21_Final_Project
         }
 
    
-
+        //Edit updated fields(text boxes)
         private void btnEditCustomer_Click(object sender, EventArgs e)
         {
             string strNameFirst;
@@ -1649,6 +1665,7 @@ namespace SU21_Final_Project
             string strZip;
             string strStateEdit;
             string strPhoneEdit;
+            bool blnUpdateEmail = false;
           
             try
             {
@@ -1664,6 +1681,7 @@ namespace SU21_Final_Project
                 else
                 {
                     strNameFirst = tbxFirstNameCustomer.Text;
+                    blnUpdateEmail = true;
                 }
 
                 if (tbxLastNameCustomer.Text == "")
@@ -1674,6 +1692,7 @@ namespace SU21_Final_Project
                 else
                 {
                     strNameLast = tbxLastNameCustomer.Text;
+                    blnUpdateEmail = true;
                 }
 
 
@@ -1684,6 +1703,7 @@ namespace SU21_Final_Project
                 else
                 {
                     strAddress = tbxAddressCustomer.Text;
+                    blnUpdateEmail = true;
                 }
 
                 if (tbxCustomerCity.Text == "")
@@ -1693,6 +1713,7 @@ namespace SU21_Final_Project
                 else
                 {
                     strCity = tbxCustomerCity.Text;
+                    blnUpdateEmail = true;
                 }
 
 
@@ -1704,7 +1725,7 @@ namespace SU21_Final_Project
                 else
                 {
                     strStateEdit = cboStatesCustomer.SelectedItem.ToString();
-
+                    blnUpdateEmail = true;
                 }
 
 
@@ -1716,56 +1737,78 @@ namespace SU21_Final_Project
                 else
                 {
                     strZip = tbxZipCustomer.Text;
+                    blnUpdateEmail = true;
                 }
+
 
                 if (ValidEmail(tbxEmailCustomer.Text) == false)
                 {
-                    strEmail = dgvCustomer.Rows[dgvCustomer.CurrentCell.RowIndex].Cells[7].Value.ToString();
-                    
+                    strEmail = dgvCustomer.Rows[dgvCustomer.CurrentCell.RowIndex].Cells[8].Value.ToString();
+
 
                 }
                 else
                 {
 
                     strEmail = tbxEmailCustomer.Text;
-
+                    blnUpdateEmail = true;
                 }
+                
 
-                if (ValidPhone(mskPhoneCustomer.Text) == false)
+
+                if (ValidPhone(mskPhoneCustomer.Text)==false)
                 {
-                    strPhoneEdit = dgvCustomer.Rows[dgvCustomer.CurrentCell.RowIndex].Cells[8].Value.ToString();
+                    strPhoneEdit = dgvCustomer.Rows[dgvCustomer.CurrentCell.RowIndex].Cells[7].Value.ToString();
 
                 }
                 else
                 {
                     strPhoneEdit = mskPhoneCustomer.Text;
+                    blnUpdateEmail = true;
                 }
 
-                Connection.Open();
-
-                string strQuery = "UPDATE RandrezaVoharisoaM21Su2332.Person SET NameFirst = @NameFirst,NameLast = @NameLast,Address1 = @Address,City = @City,State=@State, Zipcode = @Zip, Email= @Email, PhonePrimary = @Phone" +
-                " where PersonID= '" + strPersonIdCustomerView + "'";
-                SqlCommand editCommande = new SqlCommand(strQuery, Connection);
-                SqlParameter sqlpmNameFirst = editCommande.Parameters.AddWithValue("@NameFirst", strNameFirst);
-                SqlParameter sqlpmNameLast = editCommande.Parameters.AddWithValue("@NameLast", strNameLast);
-                SqlParameter sqlpmAddress = editCommande.Parameters.AddWithValue("@Address", strAddress);
-                SqlParameter sqlpmCity = editCommande.Parameters.AddWithValue("@City", strCity);
-                SqlParameter sqlpmState = editCommande.Parameters.AddWithValue("@State", strStateEdit);
-                SqlParameter sqlpmZip = editCommande.Parameters.AddWithValue("@Zip", strZip);
-                SqlParameter sqlpmEmail = editCommande.Parameters.AddWithValue("@Email", strEmail);
-                SqlParameter sqlpmPhone = editCommande.Parameters.AddWithValue("@Phone", strPhoneEdit);
-                editCommande.ExecuteNonQuery();
 
 
 
-                Connection.Close();
+                
+                    Connection.Open();
 
-                MessageBox.Show("The selected Customer Information has been updated?", "Message", MessageBoxButtons.OK);
+                    string strQuery = "UPDATE RandrezaVoharisoaM21Su2332.Person SET NameFirst = @NameFirst,NameLast = @NameLast,Address1 = @Address,City = @City,State=@State, Zipcode = @Zip, Email= @Email, PhonePrimary = @Phone" +
+                    " where PersonID= '" + strPersonIdCustomerView + "'";
+                    SqlCommand editCommande = new SqlCommand(strQuery, Connection);
+                    SqlParameter sqlpmNameFirst = editCommande.Parameters.AddWithValue("@NameFirst", strNameFirst);
+                    SqlParameter sqlpmNameLast = editCommande.Parameters.AddWithValue("@NameLast", strNameLast);
+                    SqlParameter sqlpmAddress = editCommande.Parameters.AddWithValue("@Address", strAddress);
+                    SqlParameter sqlpmCity = editCommande.Parameters.AddWithValue("@City", strCity);
+                    SqlParameter sqlpmState = editCommande.Parameters.AddWithValue("@State", strStateEdit);
+                    SqlParameter sqlpmZip = editCommande.Parameters.AddWithValue("@Zip", strZip);
+               
+                    SqlParameter sqlpmEmail = editCommande.Parameters.AddWithValue("@Email", strEmail);
+                
+             
+                    
+                    SqlParameter sqlpmPhone = editCommande.Parameters.AddWithValue("@Phone", strPhoneEdit);
+                    editCommande.ExecuteNonQuery();
 
-                DisplayCustomers();
-                Reset();
-                btnAddCustomer.Enabled = true;
 
+
+                    Connection.Close();
+                if(blnUpdateEmail == true)
+                {
+                    MessageBox.Show("The selected Customer Information has been updated?", "Message", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("No fields has been changed?", "Message", MessageBoxButtons.OK);
+                }   
+
+                    DisplayCustomers();
+                    Reset();
+                    btnAddCustomer.Enabled = true;
+                    btnEditCustomer.Enabled = false;
+                
+             
+            
             }
             catch (Exception ex)
             {
@@ -2171,17 +2214,15 @@ namespace SU21_Final_Project
                     strSupplierZip = tbxSupplierZip.Text;
                 }
 
-                if (ValidEmail(tbxEmailSupplier.Text) == false)
+                if (ValidEmail(tbxEmailSupplier.Text) == true)
                 {
-                    strSupplierEmail = dgvSupplierView.Rows[dgvSupplierView.CurrentCell.RowIndex].Cells[8].Value.ToString();
 
-
+                    strSupplierEmail = tbxEmailSupplier.Text;
                 }
                 else
                 {
 
-                    strSupplierEmail = tbxEmailSupplier.Text;
-
+                    strSupplierEmail = dgvSupplierView.Rows[dgvSupplierView.CurrentCell.RowIndex].Cells[8].Value.ToString();
                 }
 
                 if (ValidPhone(mskSupplierPhone.Text) == false)

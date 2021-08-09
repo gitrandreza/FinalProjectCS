@@ -465,9 +465,9 @@ namespace SU21_Final_Project
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSave.Location = new System.Drawing.Point(2, 347);
+            this.btnSave.Location = new System.Drawing.Point(2, 348);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(717, 63);
+            this.btnSave.Size = new System.Drawing.Size(717, 62);
             this.btnSave.TabIndex = 14;
             this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = false;

@@ -31,6 +31,11 @@ namespace SU21_Final_Project
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmployee));
             this.tabInformation = new System.Windows.Forms.TabPage();
+            this.mskSearchPhone = new System.Windows.Forms.MaskedTextBox();
+            this.radPhone = new System.Windows.Forms.RadioButton();
+            this.radEmail = new System.Windows.Forms.RadioButton();
+            this.btnSearchEmail = new System.Windows.Forms.Button();
+            this.tbxSearchEmail = new System.Windows.Forms.TextBox();
             this.lblCustomerListLabel = new System.Windows.Forms.Label();
             this.btnPrintInvoice = new System.Windows.Forms.Button();
             this.btnClearCustomer = new System.Windows.Forms.Button();
@@ -99,6 +104,7 @@ namespace SU21_Final_Project
             this.lblDescriptionLabel = new System.Windows.Forms.Label();
             this.tbxDescription = new System.Windows.Forms.TextBox();
             this.gboDiscountChoice = new System.Windows.Forms.GroupBox();
+            this.cboCoupon = new System.Windows.Forms.ComboBox();
             this.lblCustomerName = new System.Windows.Forms.Label();
             this.tbxQuantityTotal = new System.Windows.Forms.TextBox();
             this.lblExpiration = new System.Windows.Forms.Label();
@@ -111,7 +117,6 @@ namespace SU21_Final_Project
             this.lblDisplayDiscountQuantity = new System.Windows.Forms.Label();
             this.btnCheckCoupon = new System.Windows.Forms.Button();
             this.radReturningDiscount = new System.Windows.Forms.RadioButton();
-            this.tbxCoupon = new System.Windows.Forms.TextBox();
             this.radCoupon = new System.Windows.Forms.RadioButton();
             this.radQuantityDiscount = new System.Windows.Forms.RadioButton();
             this.lblColorLabel = new System.Windows.Forms.Label();
@@ -168,11 +173,6 @@ namespace SU21_Final_Project
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnHelpEmployeeView = new System.Windows.Forms.Button();
             this.btnResetAll = new System.Windows.Forms.Button();
-            this.btnSearchEmail = new System.Windows.Forms.Button();
-            this.tbxSearchEmail = new System.Windows.Forms.TextBox();
-            this.radEmail = new System.Windows.Forms.RadioButton();
-            this.radPhone = new System.Windows.Forms.RadioButton();
-            this.mskSearchPhone = new System.Windows.Forms.MaskedTextBox();
             this.tabInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPurchaseDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerPurchase)).BeginInit();
@@ -221,6 +221,65 @@ namespace SU21_Final_Project
             this.tabInformation.Text = "               Additional Information                ";
             this.tabInformation.UseVisualStyleBackColor = true;
             // 
+            // mskSearchPhone
+            // 
+            this.mskSearchPhone.Enabled = false;
+            this.mskSearchPhone.Location = new System.Drawing.Point(189, 606);
+            this.mskSearchPhone.Mask = "000-000-0000";
+            this.mskSearchPhone.Name = "mskSearchPhone";
+            this.mskSearchPhone.Size = new System.Drawing.Size(136, 22);
+            this.mskSearchPhone.TabIndex = 58;
+            // 
+            // radPhone
+            // 
+            this.radPhone.AutoSize = true;
+            this.radPhone.Location = new System.Drawing.Point(25, 604);
+            this.radPhone.Name = "radPhone";
+            this.radPhone.Size = new System.Drawing.Size(158, 21);
+            this.radPhone.TabIndex = 57;
+            this.radPhone.TabStop = true;
+            this.radPhone.Text = "Search by  Phone";
+            this.radPhone.UseVisualStyleBackColor = true;
+            this.radPhone.CheckedChanged += new System.EventHandler(this.radPhone_CheckedChanged);
+            // 
+            // radEmail
+            // 
+            this.radEmail.AutoSize = true;
+            this.radEmail.Location = new System.Drawing.Point(25, 634);
+            this.radEmail.Name = "radEmail";
+            this.radEmail.Size = new System.Drawing.Size(112, 21);
+            this.radEmail.TabIndex = 56;
+            this.radEmail.TabStop = true;
+            this.radEmail.Text = "Enter Email";
+            this.radEmail.UseVisualStyleBackColor = true;
+            this.radEmail.CheckedChanged += new System.EventHandler(this.radEmail_CheckedChanged);
+            // 
+            // btnSearchEmail
+            // 
+            this.btnSearchEmail.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSearchEmail.BackgroundImage")));
+            this.btnSearchEmail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSearchEmail.Enabled = false;
+            this.btnSearchEmail.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnSearchEmail.FlatAppearance.BorderSize = 3;
+            this.btnSearchEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearchEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchEmail.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnSearchEmail.Location = new System.Drawing.Point(3, 660);
+            this.btnSearchEmail.Name = "btnSearchEmail";
+            this.btnSearchEmail.Size = new System.Drawing.Size(389, 62);
+            this.btnSearchEmail.TabIndex = 54;
+            this.btnSearchEmail.Text = "&Search";
+            this.btnSearchEmail.UseVisualStyleBackColor = true;
+            this.btnSearchEmail.Click += new System.EventHandler(this.btnSearchEmail_Click);
+            // 
+            // tbxSearchEmail
+            // 
+            this.tbxSearchEmail.Enabled = false;
+            this.tbxSearchEmail.Location = new System.Drawing.Point(189, 634);
+            this.tbxSearchEmail.Name = "tbxSearchEmail";
+            this.tbxSearchEmail.Size = new System.Drawing.Size(189, 22);
+            this.tbxSearchEmail.TabIndex = 53;
+            // 
             // lblCustomerListLabel
             // 
             this.lblCustomerListLabel.AutoSize = true;
@@ -237,9 +296,9 @@ namespace SU21_Final_Project
             this.btnPrintInvoice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPrintInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrintInvoice.ForeColor = System.Drawing.Color.Maroon;
-            this.btnPrintInvoice.Location = new System.Drawing.Point(923, 553);
+            this.btnPrintInvoice.Location = new System.Drawing.Point(885, 553);
             this.btnPrintInvoice.Name = "btnPrintInvoice";
-            this.btnPrintInvoice.Size = new System.Drawing.Size(156, 72);
+            this.btnPrintInvoice.Size = new System.Drawing.Size(194, 72);
             this.btnPrintInvoice.TabIndex = 51;
             this.btnPrintInvoice.Text = "Print Invoice";
             this.btnPrintInvoice.UseVisualStyleBackColor = true;
@@ -252,9 +311,9 @@ namespace SU21_Final_Project
             this.btnClearCustomer.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnClearCustomer.FlatAppearance.BorderSize = 3;
             this.btnClearCustomer.ForeColor = System.Drawing.Color.Maroon;
-            this.btnClearCustomer.Location = new System.Drawing.Point(923, 628);
+            this.btnClearCustomer.Location = new System.Drawing.Point(890, 628);
             this.btnClearCustomer.Name = "btnClearCustomer";
-            this.btnClearCustomer.Size = new System.Drawing.Size(151, 73);
+            this.btnClearCustomer.Size = new System.Drawing.Size(184, 73);
             this.btnClearCustomer.TabIndex = 50;
             this.btnClearCustomer.Text = "Clear All";
             this.btnClearCustomer.UseVisualStyleBackColor = true;
@@ -324,7 +383,7 @@ namespace SU21_Final_Project
             this.dgvCustomerPurchase.RowHeadersWidth = 51;
             this.dgvCustomerPurchase.RowTemplate.Height = 24;
             this.dgvCustomerPurchase.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCustomerPurchase.Size = new System.Drawing.Size(522, 149);
+            this.dgvCustomerPurchase.Size = new System.Drawing.Size(486, 149);
             this.dgvCustomerPurchase.TabIndex = 24;
             this.dgvCustomerPurchase.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomerPurchase_CellClick);
             // 
@@ -728,7 +787,7 @@ namespace SU21_Final_Project
             this.btnApplyDiscount.ForeColor = System.Drawing.Color.SaddleBrown;
             this.btnApplyDiscount.Location = new System.Drawing.Point(17, 762);
             this.btnApplyDiscount.Name = "btnApplyDiscount";
-            this.btnApplyDiscount.Size = new System.Drawing.Size(448, 48);
+            this.btnApplyDiscount.Size = new System.Drawing.Size(468, 48);
             this.btnApplyDiscount.TabIndex = 34;
             this.btnApplyDiscount.Text = "&Apply Discount";
             this.btnApplyDiscount.UseVisualStyleBackColor = true;
@@ -762,10 +821,10 @@ namespace SU21_Final_Project
             this.gbxCreditCard.Controls.Add(this.tbxSubTotalCustomer);
             this.gbxCreditCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxCreditCard.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.gbxCreditCard.Location = new System.Drawing.Point(478, 564);
+            this.gbxCreditCard.Location = new System.Drawing.Point(491, 564);
             this.gbxCreditCard.Name = "gbxCreditCard";
             this.gbxCreditCard.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.gbxCreditCard.Size = new System.Drawing.Size(615, 246);
+            this.gbxCreditCard.Size = new System.Drawing.Size(602, 246);
             this.gbxCreditCard.TabIndex = 38;
             this.gbxCreditCard.TabStop = false;
             this.gbxCreditCard.Text = "Payment Information";
@@ -824,7 +883,7 @@ namespace SU21_Final_Project
             this.btnViewInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnViewInvoice.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnViewInvoice.Location = new System.Drawing.Point(320, 198);
+            this.btnViewInvoice.Location = new System.Drawing.Point(296, 201);
             this.btnViewInvoice.Name = "btnViewInvoice";
             this.btnViewInvoice.Size = new System.Drawing.Size(295, 42);
             this.btnViewInvoice.TabIndex = 40;
@@ -851,7 +910,7 @@ namespace SU21_Final_Project
             this.btnPlaceOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlaceOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlaceOrder.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnPlaceOrder.Location = new System.Drawing.Point(319, 148);
+            this.btnPlaceOrder.Location = new System.Drawing.Point(296, 151);
             this.btnPlaceOrder.Name = "btnPlaceOrder";
             this.btnPlaceOrder.Size = new System.Drawing.Size(294, 47);
             this.btnPlaceOrder.TabIndex = 39;
@@ -1030,6 +1089,7 @@ namespace SU21_Final_Project
             // gboDiscountChoice
             // 
             this.gboDiscountChoice.BackColor = System.Drawing.Color.OldLace;
+            this.gboDiscountChoice.Controls.Add(this.cboCoupon);
             this.gboDiscountChoice.Controls.Add(this.lblCustomerName);
             this.gboDiscountChoice.Controls.Add(this.tbxQuantityTotal);
             this.gboDiscountChoice.Controls.Add(this.lblExpiration);
@@ -1042,16 +1102,24 @@ namespace SU21_Final_Project
             this.gboDiscountChoice.Controls.Add(this.lblDisplayDiscountQuantity);
             this.gboDiscountChoice.Controls.Add(this.btnCheckCoupon);
             this.gboDiscountChoice.Controls.Add(this.radReturningDiscount);
-            this.gboDiscountChoice.Controls.Add(this.tbxCoupon);
             this.gboDiscountChoice.Controls.Add(this.radCoupon);
             this.gboDiscountChoice.Controls.Add(this.radQuantityDiscount);
             this.gboDiscountChoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gboDiscountChoice.Location = new System.Drawing.Point(14, 564);
+            this.gboDiscountChoice.Location = new System.Drawing.Point(11, 556);
             this.gboDiscountChoice.Name = "gboDiscountChoice";
-            this.gboDiscountChoice.Size = new System.Drawing.Size(455, 197);
+            this.gboDiscountChoice.Size = new System.Drawing.Size(474, 205);
             this.gboDiscountChoice.TabIndex = 23;
             this.gboDiscountChoice.TabStop = false;
             this.gboDiscountChoice.Text = "Choose One Discount to Apply";
+            // 
+            // cboCoupon
+            // 
+            this.cboCoupon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCoupon.FormattingEnabled = true;
+            this.cboCoupon.Location = new System.Drawing.Point(103, 29);
+            this.cboCoupon.Name = "cboCoupon";
+            this.cboCoupon.Size = new System.Drawing.Size(113, 24);
+            this.cboCoupon.TabIndex = 36;
             // 
             // lblCustomerName
             // 
@@ -1077,7 +1145,7 @@ namespace SU21_Final_Project
             this.lblExpiration.AutoSize = true;
             this.lblExpiration.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblExpiration.Enabled = false;
-            this.lblExpiration.Location = new System.Drawing.Point(340, 37);
+            this.lblExpiration.Location = new System.Drawing.Point(347, 37);
             this.lblExpiration.Name = "lblExpiration";
             this.lblExpiration.Size = new System.Drawing.Size(2, 19);
             this.lblExpiration.TabIndex = 34;
@@ -1087,7 +1155,7 @@ namespace SU21_Final_Project
             this.lblCouponDescription.AutoSize = true;
             this.lblCouponDescription.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblCouponDescription.Enabled = false;
-            this.lblCouponDescription.Location = new System.Drawing.Point(110, 63);
+            this.lblCouponDescription.Location = new System.Drawing.Point(199, 68);
             this.lblCouponDescription.Name = "lblCouponDescription";
             this.lblCouponDescription.Size = new System.Drawing.Size(2, 19);
             this.lblCouponDescription.TabIndex = 33;
@@ -1097,7 +1165,7 @@ namespace SU21_Final_Project
             this.lblExpirationLabel.AutoSize = true;
             this.lblExpirationLabel.Enabled = false;
             this.lblExpirationLabel.ForeColor = System.Drawing.Color.Black;
-            this.lblExpirationLabel.Location = new System.Drawing.Point(333, 17);
+            this.lblExpirationLabel.Location = new System.Drawing.Point(352, 17);
             this.lblExpirationLabel.Name = "lblExpirationLabel";
             this.lblExpirationLabel.Size = new System.Drawing.Size(119, 17);
             this.lblExpirationLabel.TabIndex = 32;
@@ -1108,7 +1176,7 @@ namespace SU21_Final_Project
             this.lblCouponDescriptionLabel.AutoSize = true;
             this.lblCouponDescriptionLabel.Enabled = false;
             this.lblCouponDescriptionLabel.ForeColor = System.Drawing.Color.Black;
-            this.lblCouponDescriptionLabel.Location = new System.Drawing.Point(5, 63);
+            this.lblCouponDescriptionLabel.Location = new System.Drawing.Point(6, 67);
             this.lblCouponDescriptionLabel.Name = "lblCouponDescriptionLabel";
             this.lblCouponDescriptionLabel.Size = new System.Drawing.Size(155, 17);
             this.lblCouponDescriptionLabel.TabIndex = 31;
@@ -1164,7 +1232,7 @@ namespace SU21_Final_Project
             this.btnCheckCoupon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckCoupon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckCoupon.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnCheckCoupon.Location = new System.Drawing.Point(213, 19);
+            this.btnCheckCoupon.Location = new System.Drawing.Point(225, 20);
             this.btnCheckCoupon.Name = "btnCheckCoupon";
             this.btnCheckCoupon.Size = new System.Drawing.Size(108, 39);
             this.btnCheckCoupon.TabIndex = 29;
@@ -1185,24 +1253,16 @@ namespace SU21_Final_Project
             this.radReturningDiscount.UseVisualStyleBackColor = true;
             this.radReturningDiscount.CheckedChanged += new System.EventHandler(this.radReturningDiscount_CheckedChanged);
             // 
-            // tbxCoupon
-            // 
-            this.tbxCoupon.Enabled = false;
-            this.tbxCoupon.Location = new System.Drawing.Point(87, 25);
-            this.tbxCoupon.Name = "tbxCoupon";
-            this.tbxCoupon.Size = new System.Drawing.Size(120, 22);
-            this.tbxCoupon.TabIndex = 28;
-            // 
             // radCoupon
             // 
             this.radCoupon.AutoSize = true;
             this.radCoupon.ForeColor = System.Drawing.Color.Black;
-            this.radCoupon.Location = new System.Drawing.Point(6, 23);
+            this.radCoupon.Location = new System.Drawing.Point(6, 29);
             this.radCoupon.Name = "radCoupon";
-            this.radCoupon.Size = new System.Drawing.Size(84, 21);
+            this.radCoupon.Size = new System.Drawing.Size(93, 21);
             this.radCoupon.TabIndex = 27;
             this.radCoupon.TabStop = true;
-            this.radCoupon.Text = "Coupon";
+            this.radCoupon.Text = "Coupon#";
             this.radCoupon.UseVisualStyleBackColor = true;
             this.radCoupon.CheckedChanged += new System.EventHandler(this.radCoupon_CheckedChanged);
             // 
@@ -1210,7 +1270,7 @@ namespace SU21_Final_Project
             // 
             this.radQuantityDiscount.AutoSize = true;
             this.radQuantityDiscount.ForeColor = System.Drawing.Color.Black;
-            this.radQuantityDiscount.Location = new System.Drawing.Point(6, 98);
+            this.radQuantityDiscount.Location = new System.Drawing.Point(5, 98);
             this.radQuantityDiscount.Name = "radQuantityDiscount";
             this.radQuantityDiscount.Size = new System.Drawing.Size(223, 21);
             this.radQuantityDiscount.TabIndex = 30;
@@ -1936,65 +1996,6 @@ namespace SU21_Final_Project
             this.btnResetAll.UseVisualStyleBackColor = true;
             this.btnResetAll.Click += new System.EventHandler(this.btnResetAll_Click);
             // 
-            // btnSearchEmail
-            // 
-            this.btnSearchEmail.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSearchEmail.BackgroundImage")));
-            this.btnSearchEmail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSearchEmail.Enabled = false;
-            this.btnSearchEmail.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnSearchEmail.FlatAppearance.BorderSize = 3;
-            this.btnSearchEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearchEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchEmail.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnSearchEmail.Location = new System.Drawing.Point(3, 660);
-            this.btnSearchEmail.Name = "btnSearchEmail";
-            this.btnSearchEmail.Size = new System.Drawing.Size(389, 62);
-            this.btnSearchEmail.TabIndex = 54;
-            this.btnSearchEmail.Text = "&Search";
-            this.btnSearchEmail.UseVisualStyleBackColor = true;
-            this.btnSearchEmail.Click += new System.EventHandler(this.btnSearchEmail_Click);
-            // 
-            // tbxSearchEmail
-            // 
-            this.tbxSearchEmail.Enabled = false;
-            this.tbxSearchEmail.Location = new System.Drawing.Point(189, 634);
-            this.tbxSearchEmail.Name = "tbxSearchEmail";
-            this.tbxSearchEmail.Size = new System.Drawing.Size(189, 22);
-            this.tbxSearchEmail.TabIndex = 53;
-            // 
-            // radEmail
-            // 
-            this.radEmail.AutoSize = true;
-            this.radEmail.Location = new System.Drawing.Point(25, 634);
-            this.radEmail.Name = "radEmail";
-            this.radEmail.Size = new System.Drawing.Size(112, 21);
-            this.radEmail.TabIndex = 56;
-            this.radEmail.TabStop = true;
-            this.radEmail.Text = "Enter Email";
-            this.radEmail.UseVisualStyleBackColor = true;
-            this.radEmail.CheckedChanged += new System.EventHandler(this.radEmail_CheckedChanged);
-            // 
-            // radPhone
-            // 
-            this.radPhone.AutoSize = true;
-            this.radPhone.Location = new System.Drawing.Point(25, 604);
-            this.radPhone.Name = "radPhone";
-            this.radPhone.Size = new System.Drawing.Size(158, 21);
-            this.radPhone.TabIndex = 57;
-            this.radPhone.TabStop = true;
-            this.radPhone.Text = "Search by  Phone";
-            this.radPhone.UseVisualStyleBackColor = true;
-            this.radPhone.CheckedChanged += new System.EventHandler(this.radPhone_CheckedChanged);
-            // 
-            // mskSearchPhone
-            // 
-            this.mskSearchPhone.Enabled = false;
-            this.mskSearchPhone.Location = new System.Drawing.Point(189, 606);
-            this.mskSearchPhone.Mask = "000-000-0000";
-            this.mskSearchPhone.Name = "mskSearchPhone";
-            this.mskSearchPhone.Size = new System.Drawing.Size(136, 22);
-            this.mskSearchPhone.TabIndex = 58;
-            // 
             // frmEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2079,7 +2080,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblDisplayDiscountQuantity;
         private System.Windows.Forms.Button btnCheckCoupon;
         private System.Windows.Forms.RadioButton radReturningDiscount;
-        private System.Windows.Forms.TextBox tbxCoupon;
         private System.Windows.Forms.RadioButton radCoupon;
         private System.Windows.Forms.RadioButton radQuantityDiscount;
         private System.Windows.Forms.TextBox tbxTotalToPay;
@@ -2197,5 +2197,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.RadioButton radPhone;
         private System.Windows.Forms.RadioButton radEmail;
         private System.Windows.Forms.MaskedTextBox mskSearchPhone;
+        private System.Windows.Forms.ComboBox cboCoupon;
     }
 }

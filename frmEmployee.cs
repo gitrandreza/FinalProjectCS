@@ -997,8 +997,9 @@ namespace SU21_Final_Project
             }
             else
             {
-                MessageBox.Show("Please enter an ID number", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Enter an ID number or for more search option, please go to 'Additional Information Tab'", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 tbxIDSearch.Focus();
+
             }
            
         }
@@ -1329,8 +1330,8 @@ namespace SU21_Final_Project
         //FUNCTION TO CHECK COUPON IN DATABASE
         public void SearchValidCoupon()
         {
-            string strSearchCoupon = tbxCoupon.Text;
-            
+            string strSearchCoupon = cboCoupon.Text;
+            string strExpirationDate="";
             try
             {
                 //connect to database
@@ -1348,7 +1349,9 @@ namespace SU21_Final_Project
                 
                 var Expiration = reader.GetDateTime(2);              
                 lblCouponDescription.Text = reader["Description"].ToString();
-                lblExpiration.Text =Expiration.ToString("d");
+               
+                strExpirationDate= Expiration.ToString("d");
+                lblExpiration.Text = strExpirationDate;
 
                 int intCouponId = reader.GetInt32(0);
                 strDiscountIndex = reader["DiscountIndex"].ToString();
@@ -1371,18 +1374,19 @@ namespace SU21_Final_Project
             }
             catch (Exception )
             {
-                MessageBox.Show("Cannot find coupon, it's been already used or expired ", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tbxCoupon.Text = "";
-                tbxCoupon.Focus();
+                MessageBox.Show("Coupon already used or expired ", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboCoupon.Text = "";
+                cboCoupon.Focus();
                 lblCouponDescription.Text = "";
-                lblExpiration.Text = "";
+                lblExpiration.Text = strExpirationDate;
+                Connection.Close();
             }
         }
 
         //Check and apply coupon if existed
         private void btnCheckCoupon_Click(object sender, EventArgs e)
         {
-            if(tbxCoupon.Text!="")
+            if(cboCoupon.Text!="")
             {
                 SearchValidCoupon();
             }
@@ -1400,7 +1404,7 @@ namespace SU21_Final_Project
             {
                 if (tbxTotalPrice.Text != "")
                 {
-                    if (tbxCoupon.Text == "" && radCoupon.Checked == true)
+                    if (cboCoupon.Text == "" && radCoupon.Checked == true)
                     {
                         MessageBox.Show("Enter Coupon Number please", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -1532,25 +1536,52 @@ namespace SU21_Final_Project
             }
         }
 
+
+        //Adding coupon ID from database in the drop down list
+        public void AddListCoupon()
+        {
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+                Connection.Open();
+                dataAdapter = new SqlDataAdapter("SELECT CouponID FROM RandrezaVoharisoaM21Su2332.Coupon", Connection);
+                dataTable = new DataTable();
+                DataSet ds = new DataSet();
+                dataAdapter.Fill(ds, "Coupon");
+
+                cboCoupon.ValueMember = "CouponID";
+                cboCoupon.DataSource = ds.Tables["Coupon"];
+
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        //Activate Coupon
         private void radCoupon_CheckedChanged(object sender, EventArgs e)
         {
             if(radCoupon.Checked==true)
             {
-                tbxCoupon.Enabled = true;
+                cboCoupon.Enabled = true;
                 lblExpiration.Enabled = true;
                 lblExpirationLabel.Enabled = true;
                 lblCouponDescription.Enabled = true;
                 lblCouponDescription.Enabled = true;
                 btnCheckCoupon.Enabled = true;
                 lblCouponDescriptionLabel.Enabled = true;
+                AddListCoupon();
             }
             else
             {
-                tbxCoupon.Text = "";
+                cboCoupon.Text = "";
                 lblCouponDescription.Text = "";
                 lblExpiration.Text = "";
 
-                tbxCoupon.Enabled =false;
+                cboCoupon.Enabled =false;
                 lblExpiration.Enabled = false;
                 lblExpirationLabel.Enabled = false;
                 lblCouponDescription.Enabled = false;
@@ -2036,7 +2067,7 @@ namespace SU21_Final_Project
         private void radNoDiscount_CheckedChanged(object sender, EventArgs e)
         {
             radCoupon.Checked = false;
-            tbxCoupon.Text = "";
+            cboCoupon.Text = "";
             lblCouponDescription.Text = "";
             lblExpiration.Text = "";
             radQuantityDiscount.Checked = false;

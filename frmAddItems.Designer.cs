@@ -29,7 +29,7 @@ namespace SU21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddItems));
             this.gbxItemInformation = new System.Windows.Forms.GroupBox();
             this.tbxSupplier = new System.Windows.Forms.TextBox();
@@ -102,14 +102,14 @@ namespace SU21_Final_Project
             this.dgvSupplierList.AllowUserToAddRows = false;
             this.dgvSupplierList.AllowUserToDeleteRows = false;
             this.dgvSupplierList.BackgroundColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSupplierList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSupplierList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSupplierList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSupplierList.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dgvSupplierList.Location = new System.Drawing.Point(137, 272);
@@ -121,7 +121,7 @@ namespace SU21_Final_Project
             this.dgvSupplierList.RowHeadersWidth = 51;
             this.dgvSupplierList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvSupplierList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSupplierList.Size = new System.Drawing.Size(314, 126);
+            this.dgvSupplierList.Size = new System.Drawing.Size(299, 126);
             this.dgvSupplierList.StandardTab = true;
             this.dgvSupplierList.TabIndex = 6;
             this.dgvSupplierList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSupplierList_CellClick);
@@ -264,7 +264,7 @@ namespace SU21_Final_Project
             this.tbxDescription.MaxLength = 30000;
             this.tbxDescription.Multiline = true;
             this.tbxDescription.Name = "tbxDescription";
-            this.tbxDescription.Size = new System.Drawing.Size(314, 60);
+            this.tbxDescription.Size = new System.Drawing.Size(299, 60);
             this.tbxDescription.TabIndex = 5;
             // 
             // tbxQuantity

@@ -38,14 +38,10 @@ namespace SU21_Final_Project
         //Instantiate Item class
         Items myItems = new Items();
 
-       // double dblTax = 0.0825;
-       // double dblSubTotal;
-      //  double dblAmountTax;
-       // double dblTotalAmount;
+     
         
         double dblDiscount;
-       // double dblTotalList;
-       // int intQuantityTotal;
+   
         int intSaleId;
 
 
@@ -553,6 +549,7 @@ namespace SU21_Final_Project
         private void btnDisplayAmount_Click(object sender, EventArgs e)
         {
             CalculateAmount();
+            AddListCoupon();
             btnApplyCoupon.Enabled = true;
             btnCancelCoupon.Enabled = true;
         }
@@ -1027,15 +1024,15 @@ namespace SU21_Final_Project
             lblTotalList.Text = "";
             lblDiscount.Text = "";
             dblDiscount = 0;
-            tbxCoupon.Text = "";
+            cboCoupon.Text = "";
             tbxDescription.Text = "";
             btnApplyCoupon.Enabled = false;
             btnCancelCoupon.Enabled = false;
             tbxNameCredit.Text = "";
             tbxCardNumber.Text = "";
             mskCVV.Text = "";
-            
 
+            lblCouponDescription.Text = "";
             lblDeliveryOne.BackColor = Color.Silver;
             lblDeliveryTwo.BackColor = Color.Silver;
             lblDeliveryThree.BackColor = Color.Silver;
@@ -1194,7 +1191,7 @@ namespace SU21_Final_Project
         //FUNCTION TO CHECK COUPON IN DATABASE
         public void SearchValidCoupon()
         {
-            string strSearchCoupon = tbxCoupon.Text;
+            string strSearchCoupon = cboCoupon.Text;
 
             try
             {
@@ -1236,19 +1233,47 @@ namespace SU21_Final_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tbxCoupon.Text = "";
-                tbxCoupon.Focus();
-                lblCouponDescription.Text = "Cannot find coupon, it's been already used or expired";
-                
+                MessageBox.Show("Coupon Expired", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboCoupon.Text = "";
+                cboCoupon.Focus();
+                lblCouponDescription.Text = "Coupon Expired";
+                Connection.Close();
             }
         }
 
+
+        //Adding coupon ID from database in the drop down list
+        public void AddListCoupon()
+        {
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+                Connection.Open();
+                dataAdapter = new SqlDataAdapter("SELECT CouponID FROM RandrezaVoharisoaM21Su2332.Coupon", Connection);
+                dataTable = new DataTable();
+                DataSet ds = new DataSet();
+                dataAdapter.Fill(ds, "Coupon");
+
+                cboCoupon.ValueMember = "CouponID";
+                cboCoupon.DataSource = ds.Tables["Coupon"];
+
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        //Apply Coupon
         private void btnApplyCoupon_Click(object sender, EventArgs e)
         {
             try
             {
-                if (tbxCoupon.Text != "")
+                if (cboCoupon.Text != "")
                 {
                     if (MessageBox.Show("Are you sure you want to Apply this coupon, your other discount won't be applied?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
@@ -1322,7 +1347,7 @@ namespace SU21_Final_Project
         private void btnCancelCoupon_Click(object sender, EventArgs e)
         {
             CalculateAmount();
-            tbxCoupon.Text = "";
+            cboCoupon.Text = "";
             lblCouponDescription.Text = "";
         }
         //Acces to help content
@@ -1347,6 +1372,8 @@ namespace SU21_Final_Project
                 e.Handled = true;
             }
         }
+        
+      
     }
 }
 

@@ -30,8 +30,6 @@ namespace SU21_Final_Project
 
         }
 
-
-       
             
         //Connect to database and check for username and password
         private void btnLogin_Click(object sender, EventArgs e)
