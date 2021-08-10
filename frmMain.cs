@@ -817,9 +817,6 @@ namespace SU21_Final_Project
                             MessageBox.Show("Your Order has been successfully placed, here is your invoice", "Transaction Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             PrintReport(GenerateReport());
-                     
-                            
-                        
 
                             Reset();
 
@@ -841,15 +838,13 @@ namespace SU21_Final_Project
                 {
                     MessageBox.Show("Please  Display Amount before checking out", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-            }
+        }
            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
 
-           
-        }
+}
 
         //Display receipt in HTML
         private StringBuilder GenerateReport()
@@ -934,8 +929,8 @@ namespace SU21_Final_Project
         private void PrintReport(StringBuilder html)
         {
             string strPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string strFilepath = strPath + "\\"+strInvoiceCustomer+" ";
-           
+            string strFilepath = strPath + "\\"+strInvoiceCustomer;
+         
             try
             {
                 // A "using" statement will automatically close a file after opening it.               
@@ -952,23 +947,7 @@ namespace SU21_Final_Project
                     "Error with System Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            try
-            {
-                using (StreamWriter swInvoice = new StreamWriter($"{strInvoiceCustomer}"))
-                {
-                    swInvoice.WriteLine(html);
-                }
-            }
-            catch (IOException)
-            {
-                MessageBox.Show("You currently do not have write permissions for this feature.",
-                    "Error with System Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-           
         }
-
-   
-        
 
         //Call Reset Selection
         private void btnReset_Click(object sender, EventArgs e)

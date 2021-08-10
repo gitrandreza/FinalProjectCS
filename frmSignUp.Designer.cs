@@ -63,7 +63,6 @@ namespace SU21_Final_Project
             this.lblPhoneTwoLabel = new System.Windows.Forms.Label();
             this.lblEmailLabel = new System.Windows.Forms.Label();
             this.tbxEmail = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
             this.lblPasswordRulesOne = new System.Windows.Forms.Label();
             this.lblPasswordRulesTwo = new System.Windows.Forms.Label();
             this.lblPasswordRulesThree = new System.Windows.Forms.Label();
@@ -323,10 +322,11 @@ namespace SU21_Final_Project
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.Transparent;
+            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSave.FlatAppearance.BorderSize = 3;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnSave.ForeColor = System.Drawing.Color.SaddleBrown;
             this.btnSave.Location = new System.Drawing.Point(2, 516);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(795, 46);
@@ -370,14 +370,6 @@ namespace SU21_Final_Project
             this.tbxEmail.Name = "tbxEmail";
             this.tbxEmail.Size = new System.Drawing.Size(165, 22);
             this.tbxEmail.TabIndex = 5;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(-11, 541);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(0, 17);
-            this.label20.TabIndex = 40;
             // 
             // lblPasswordRulesOne
             // 
@@ -596,10 +588,11 @@ namespace SU21_Final_Project
             // btnBack
             // 
             this.btnBack.BackColor = System.Drawing.Color.Transparent;
+            this.btnBack.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnBack.FlatAppearance.BorderSize = 3;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnBack.ForeColor = System.Drawing.Color.SaddleBrown;
             this.btnBack.Location = new System.Drawing.Point(2, 568);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(795, 43);
@@ -613,9 +606,11 @@ namespace SU21_Final_Project
             // 
             this.btnHelpSignUp.BackColor = System.Drawing.Color.Transparent;
             this.btnHelpSignUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnHelpSignUp.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnHelpSignUp.FlatAppearance.BorderSize = 3;
             this.btnHelpSignUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHelpSignUp.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnHelpSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelpSignUp.ForeColor = System.Drawing.Color.SaddleBrown;
             this.btnHelpSignUp.Location = new System.Drawing.Point(690, 4);
             this.btnHelpSignUp.Name = "btnHelpSignUp";
             this.btnHelpSignUp.Size = new System.Drawing.Size(97, 46);
@@ -637,7 +632,6 @@ namespace SU21_Final_Project
             this.Controls.Add(this.gbxCreateLogin);
             this.Controls.Add(this.gbxSecurityQuestion);
             this.Controls.Add(this.gbxInformation);
-            this.Controls.Add(this.label20);
             this.Controls.Add(this.btnSave);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -654,7 +648,6 @@ namespace SU21_Final_Project
             this.gbxCreateLogin.ResumeLayout(false);
             this.gbxCreateLogin.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -693,7 +686,6 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblPhoneTwoLabel;
         private System.Windows.Forms.Label lblEmailLabel;
         private System.Windows.Forms.TextBox tbxEmail;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label lblPasswordRulesOne;
         private System.Windows.Forms.Label lblPasswordRulesTwo;
         private System.Windows.Forms.Label lblPasswordRulesThree;

@@ -46,14 +46,14 @@ namespace SU21_Final_Project
             this.lblPasswordRules3 = new System.Windows.Forms.Label();
             this.lblPasswordRules1 = new System.Windows.Forms.Label();
             this.lblPasswordRules2 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlResetPassword = new System.Windows.Forms.Panel();
             this.lblCheckUsername = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
             this.lblConfirmPassword = new System.Windows.Forms.Label();
             this.tbxConfirmPassword = new System.Windows.Forms.TextBox();
             this.btnHelpResetPassword = new System.Windows.Forms.Button();
             this.llblNewPassword = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
+            this.pnlResetPassword.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblQuestionThree
@@ -135,7 +135,7 @@ namespace SU21_Final_Project
             this.btnCheck.FlatAppearance.BorderSize = 4;
             this.btnCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheck.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnCheck.ForeColor = System.Drawing.Color.SaddleBrown;
             this.btnCheck.Location = new System.Drawing.Point(1, 144);
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.Size = new System.Drawing.Size(615, 53);
@@ -151,7 +151,7 @@ namespace SU21_Final_Project
             this.lblValidAnswers.BackColor = System.Drawing.Color.Transparent;
             this.lblValidAnswers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValidAnswers.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.lblValidAnswers.Location = new System.Drawing.Point(201, 338);
+            this.lblValidAnswers.Location = new System.Drawing.Point(184, 335);
             this.lblValidAnswers.Name = "lblValidAnswers";
             this.lblValidAnswers.Size = new System.Drawing.Size(302, 18);
             this.lblValidAnswers.TabIndex = 40;
@@ -175,11 +175,11 @@ namespace SU21_Final_Project
             // 
             this.tbxNewPassword.BackColor = System.Drawing.Color.White;
             this.tbxNewPassword.Enabled = false;
-            this.tbxNewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxNewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxNewPassword.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.tbxNewPassword.Location = new System.Drawing.Point(160, 368);
+            this.tbxNewPassword.Location = new System.Drawing.Point(158, 368);
             this.tbxNewPassword.Name = "tbxNewPassword";
-            this.tbxNewPassword.Size = new System.Drawing.Size(356, 24);
+            this.tbxNewPassword.Size = new System.Drawing.Size(356, 28);
             this.tbxNewPassword.TabIndex = 5;
             this.tbxNewPassword.UseSystemPasswordChar = true;
             // 
@@ -201,7 +201,7 @@ namespace SU21_Final_Project
             this.btnNewPassword.FlatAppearance.BorderSize = 3;
             this.btnNewPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewPassword.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnNewPassword.ForeColor = System.Drawing.Color.SaddleBrown;
             this.btnNewPassword.Location = new System.Drawing.Point(9, 479);
             this.btnNewPassword.Name = "btnNewPassword";
             this.btnNewPassword.Size = new System.Drawing.Size(615, 53);
@@ -247,23 +247,23 @@ namespace SU21_Final_Project
             this.lblPasswordRules2.TabIndex = 49;
             this.lblPasswordRules2.Text = "Must contains one digit, one upper case or one lower case";
             // 
-            // panel1
+            // pnlResetPassword
             // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.btnCheck);
-            this.panel1.Controls.Add(this.lblCheckUsername);
-            this.panel1.Controls.Add(this.lblInvalidAnswers);
-            this.panel1.Controls.Add(this.lblQuestionOne);
-            this.panel1.Controls.Add(this.lblQuestionTwo);
-            this.panel1.Controls.Add(this.lblQuestionThree);
-            this.panel1.Controls.Add(this.tbxIdol);
-            this.panel1.Controls.Add(this.tbxDrink);
-            this.panel1.Controls.Add(this.tbxDog);
-            this.panel1.Controls.Add(this.tbxEnterUsername);
-            this.panel1.Location = new System.Drawing.Point(6, 90);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(618, 230);
-            this.panel1.TabIndex = 51;
+            this.pnlResetPassword.BackColor = System.Drawing.Color.Transparent;
+            this.pnlResetPassword.Controls.Add(this.btnCheck);
+            this.pnlResetPassword.Controls.Add(this.lblCheckUsername);
+            this.pnlResetPassword.Controls.Add(this.lblInvalidAnswers);
+            this.pnlResetPassword.Controls.Add(this.lblQuestionOne);
+            this.pnlResetPassword.Controls.Add(this.lblQuestionTwo);
+            this.pnlResetPassword.Controls.Add(this.lblQuestionThree);
+            this.pnlResetPassword.Controls.Add(this.tbxIdol);
+            this.pnlResetPassword.Controls.Add(this.tbxDrink);
+            this.pnlResetPassword.Controls.Add(this.tbxDog);
+            this.pnlResetPassword.Controls.Add(this.tbxEnterUsername);
+            this.pnlResetPassword.Location = new System.Drawing.Point(6, 90);
+            this.pnlResetPassword.Name = "pnlResetPassword";
+            this.pnlResetPassword.Size = new System.Drawing.Size(618, 230);
+            this.pnlResetPassword.TabIndex = 51;
             // 
             // lblCheckUsername
             // 
@@ -286,7 +286,7 @@ namespace SU21_Final_Project
             this.btnBack.FlatAppearance.BorderSize = 3;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnBack.ForeColor = System.Drawing.Color.SaddleBrown;
             this.btnBack.Location = new System.Drawing.Point(9, 538);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(615, 49);
@@ -311,9 +311,10 @@ namespace SU21_Final_Project
             // tbxConfirmPassword
             // 
             this.tbxConfirmPassword.BackColor = System.Drawing.Color.White;
+            this.tbxConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxConfirmPassword.Location = new System.Drawing.Point(158, 398);
             this.tbxConfirmPassword.Name = "tbxConfirmPassword";
-            this.tbxConfirmPassword.Size = new System.Drawing.Size(356, 22);
+            this.tbxConfirmPassword.Size = new System.Drawing.Size(356, 28);
             this.tbxConfirmPassword.TabIndex = 6;
             this.tbxConfirmPassword.UseSystemPasswordChar = true;
             // 
@@ -324,7 +325,7 @@ namespace SU21_Final_Project
             this.btnHelpResetPassword.FlatAppearance.BorderSize = 3;
             this.btnHelpResetPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHelpResetPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelpResetPassword.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnHelpResetPassword.ForeColor = System.Drawing.Color.White;
             this.btnHelpResetPassword.Location = new System.Drawing.Point(527, 3);
             this.btnHelpResetPassword.Name = "btnHelpResetPassword";
             this.btnHelpResetPassword.Size = new System.Drawing.Size(97, 46);
@@ -365,7 +366,7 @@ namespace SU21_Final_Project
             this.Controls.Add(this.tbxNewPassword);
             this.Controls.Add(this.lblValidAnswers);
             this.Controls.Add(this.lblMessageText);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlResetPassword);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -375,8 +376,8 @@ namespace SU21_Final_Project
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reset Password";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmResetPassword_FormClosing);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlResetPassword.ResumeLayout(false);
+            this.pnlResetPassword.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -400,7 +401,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblPasswordRules3;
         private System.Windows.Forms.Label lblPasswordRules1;
         private System.Windows.Forms.Label lblPasswordRules2;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlResetPassword;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label lblConfirmPassword;
         private System.Windows.Forms.TextBox tbxConfirmPassword;
