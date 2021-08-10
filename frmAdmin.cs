@@ -840,19 +840,10 @@ namespace SU21_Final_Project
 
                             Connection.Open();
 
-
-                            string strDeleteQueryEmployee = "DELETE FROM RandrezaVoharisoaM21Su2332.Employees where UserID= '" + strUserID + "'";
-                            SqlCommand deleteCommandeEmployee = new SqlCommand(strDeleteQueryEmployee, Connection);
-
-                            deleteCommandeEmployee.ExecuteNonQuery();
-
-                            string strUpdateRole = "UPDATE RandrezaVoharisoaM21Su2332.Users SET RoleID= 3 where UserID= '" + strUserID + "'";
-                            SqlCommand UpdateCommandeUser = new SqlCommand(strUpdateRole, Connection);
-
-                            UpdateCommandeUser.ExecuteNonQuery();
-
-                         
-
+                            //get userID from personID in USers
+                            SqlCommand commandRemove = new SqlCommand("UPDATE RandrezaVoharisoaM21Su2332.Users SET Status ='Inactive' where PersonID = '" + strPersonID + "'", Connection);
+                            //SqlParameter sqlpmPhone = commandRemove.Parameters.AddWithValue("@Phone", strPhoneEdit);
+                            commandRemove.ExecuteNonQuery();
 
                             Connection.Close();
                         }
@@ -1536,9 +1527,9 @@ namespace SU21_Final_Project
                                 sr.Close();
                                 //generate Username and Password
                                 string strModidfiedLastName = strLastName.Substring(0, strLastName.Length - 2);
-                                string strCreateUsername = strModidfiedLastName + intPersonID.ToString();
+                                string strCreateUsername = strModidfiedLastName + intPersonID.ToString()+"Cust";
 
-                                string strCreatePassword = intRoleId.ToString() + intPersonID.ToString();
+                                string strCreatePassword = intRoleId.ToString() + intPersonID.ToString()+"@Cust";
 
                                 SqlCommand commandUsers = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Users(PersonID,Username,Password,Answer1,Answer2,RoleID,ThirdQuestion,SecondQuestion,FirstQuestion,Answer3,Status) VALUES(@PersonID,@Username,@Password,@Answer1,@Answer2,@RoleID,@ThirdQuestion,@SecondQuestion,@FirstQuestion,@Answer3,@Status)", Connection);
                                 commandUsers.Parameters.AddWithValue("@PersonID", intPersonID);
@@ -1818,10 +1809,10 @@ namespace SU21_Final_Project
 
         
     }
-
+        //Removing customer by changing their status to Inactive
         private void btnRemoveCustomer_Click(object sender, EventArgs e)
         {
-            string strCustomerUserID;
+           // string strCustomerUserID;
             try
             {
                 if (dgvCustomer.SelectedRows.Count > 0)
@@ -1854,7 +1845,7 @@ namespace SU21_Final_Project
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show("Error :" + ex);
+                            MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK);
                         }
                     }
 

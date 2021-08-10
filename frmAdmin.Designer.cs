@@ -121,7 +121,7 @@ namespace SU21_Final_Project
             this.radDaily = new System.Windows.Forms.RadioButton();
             this.btnDisplayReport = new System.Windows.Forms.Button();
             this.dtpReport = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblBeginDateLabel2 = new System.Windows.Forms.Label();
             this.gbxCreateCoupon = new System.Windows.Forms.GroupBox();
             this.btnCreateCoupon = new System.Windows.Forms.Button();
             this.dtpEndCoupon = new System.Windows.Forms.DateTimePicker();
@@ -144,7 +144,7 @@ namespace SU21_Final_Project
             this.radPurchaseDaily = new System.Windows.Forms.RadioButton();
             this.dtpPurchaseDate = new System.Windows.Forms.DateTimePicker();
             this.dgvPurchaseRecord = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblBeginDateLabel = new System.Windows.Forms.Label();
             this.btnSaveEditSupplier = new System.Windows.Forms.Button();
             this.gbxAddEditSupplier = new System.Windows.Forms.GroupBox();
             this.tbxSupplierCity = new System.Windows.Forms.TextBox();
@@ -1365,7 +1365,7 @@ namespace SU21_Final_Project
             this.gbxReport.Controls.Add(this.radDaily);
             this.gbxReport.Controls.Add(this.btnDisplayReport);
             this.gbxReport.Controls.Add(this.dtpReport);
-            this.gbxReport.Controls.Add(this.label2);
+            this.gbxReport.Controls.Add(this.lblBeginDateLabel2);
             this.gbxReport.Location = new System.Drawing.Point(13, 205);
             this.gbxReport.Name = "gbxReport";
             this.gbxReport.Size = new System.Drawing.Size(1091, 83);
@@ -1448,14 +1448,14 @@ namespace SU21_Final_Project
             this.dtpReport.Size = new System.Drawing.Size(167, 22);
             this.dtpReport.TabIndex = 5;
             // 
-            // label2
+            // lblBeginDateLabel2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(73, 48);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 17);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Begin on";
+            this.lblBeginDateLabel2.AutoSize = true;
+            this.lblBeginDateLabel2.Location = new System.Drawing.Point(73, 48);
+            this.lblBeginDateLabel2.Name = "lblBeginDateLabel2";
+            this.lblBeginDateLabel2.Size = new System.Drawing.Size(64, 17);
+            this.lblBeginDateLabel2.TabIndex = 2;
+            this.lblBeginDateLabel2.Text = "Begin on";
             // 
             // gbxCreateCoupon
             // 
@@ -1606,7 +1606,7 @@ namespace SU21_Final_Project
             this.tabSupplier.Controls.Add(this.radPurchaseDaily);
             this.tabSupplier.Controls.Add(this.dtpPurchaseDate);
             this.tabSupplier.Controls.Add(this.dgvPurchaseRecord);
-            this.tabSupplier.Controls.Add(this.label1);
+            this.tabSupplier.Controls.Add(this.lblBeginDateLabel);
             this.tabSupplier.Controls.Add(this.btnSaveEditSupplier);
             this.tabSupplier.Controls.Add(this.gbxAddEditSupplier);
             this.tabSupplier.Controls.Add(this.btnRemoveSupplier);
@@ -1723,14 +1723,14 @@ namespace SU21_Final_Project
             this.dgvPurchaseRecord.TabIndex = 20;
             this.dgvPurchaseRecord.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPurchaseRecord_CellClick);
             // 
-            // label1
+            // lblBeginDateLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(709, 415);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 17);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Begin on";
+            this.lblBeginDateLabel.AutoSize = true;
+            this.lblBeginDateLabel.Location = new System.Drawing.Point(709, 415);
+            this.lblBeginDateLabel.Name = "lblBeginDateLabel";
+            this.lblBeginDateLabel.Size = new System.Drawing.Size(64, 17);
+            this.lblBeginDateLabel.TabIndex = 21;
+            this.lblBeginDateLabel.Text = "Begin on";
             // 
             // btnSaveEditSupplier
             // 
@@ -2257,7 +2257,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.RadioButton radDaily;
         private System.Windows.Forms.Button btnDisplayReport;
         private System.Windows.Forms.DateTimePicker dtpReport;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblBeginDateLabel2;
         private System.Windows.Forms.RadioButton radAllReport;
         private System.Windows.Forms.Button btnPrintSelectedSalesReport;
         private System.Windows.Forms.TabPage tabSupplier;
@@ -2290,7 +2290,7 @@ namespace SU21_Final_Project
         private System.Windows.Forms.RadioButton radPurchaseWeekly;
         private System.Windows.Forms.RadioButton radPurchaseDaily;
         private System.Windows.Forms.DateTimePicker dtpPurchaseDate;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblBeginDateLabel;
         private System.Windows.Forms.DataGridView dgvPurchaseRecord;
         private System.Windows.Forms.Button btnPrintPurchaseReport;
         private System.Windows.Forms.Button btnDisplayPurchase;

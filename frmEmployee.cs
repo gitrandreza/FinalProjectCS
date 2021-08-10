@@ -684,24 +684,6 @@ namespace SU21_Final_Project
 
                                 Reset();
                                 ResetCustomerInformation();
-                                //if (MessageBox.Show("Do you need your invoice?", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                                //{
-                                //    try
-                                //    {
-                                //        string strExecutableLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                                //        string strLocation = Path.Combine(strExecutableLocation, strLastSaleReport);
-                                //        System.Diagnostics.Process.Start(strLocation);
-                                //    }
-                                //    catch (Exception ex)
-                                //    {
-                                //        MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                //    }
-                                //}
-                                //else
-                                //{
-
-                                //    MessageBox.Show("Customer Order has been successfully placed", "Transaction Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                //}
 
                                 btnViewInvoice.Enabled = true;
                             }
@@ -820,12 +802,7 @@ namespace SU21_Final_Project
                 }
                 System.Diagnostics.Process.Start(strFilepath); //Open the report in the default web browser
 
-                //unique filename  use for a date and time with part of a name
-
-                using (StreamWriter swHistory = new StreamWriter($"{strLastSaleReport}"))
-                {
-                    swHistory.WriteLine(html);
-                }
+               
             }
             catch (Exception)
             {
@@ -1214,7 +1191,7 @@ namespace SU21_Final_Project
                         {
                             if (ValidPhone() == true)
                             {
-                                if (!tbxZipCustomer.Text.Contains(".") && tbxZipCustomer.Text.Length > 5)
+                                if (!tbxZipCustomer.Text.Contains(".") && tbxZipCustomer.Text.Length > 4)
                                 {
                                     SqlCommand commandPerson = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Person(Title,NameFirst,NameLast,Address1,City,Zipcode,State,Email,PhonePrimary) VALUES (@Title,@NameFirst,@NameLast,@Address,@City,@Zipcode,@State,@Email,@Phone)", Connection);
                                     commandPerson.Parameters.AddWithValue("@Title", strTitle);
@@ -1250,9 +1227,9 @@ namespace SU21_Final_Project
                                     srOne.Close();
                                     //generate Username and Password
                                     string strModidfiedLastName = strLastName.Substring(0, strLastName.Length - 2);
-                                    string strCreateUsername = strModidfiedLastName + intPersonID.ToString();
+                                    string strCreateUsername ="Cust"+strModidfiedLastName + intPersonID.ToString();
 
-                                    string strCreatePassword = intRoleId.ToString() + intPersonID.ToString();
+                                    string strCreatePassword = intRoleId.ToString() + intPersonID.ToString()+"@Cust";
 
                                     SqlCommand commandUsers = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Users(PersonID,Username,Password,Answer1,Answer2,RoleID,ThirdQuestion,SecondQuestion,FirstQuestion,Answer3,Status) VALUES(@PersonID,@Username,@Password,@Answer1,@Answer2,@RoleID,@ThirdQuestion,@SecondQuestion,@FirstQuestion,@Answer3,@Status)", Connection);
                                     commandUsers.Parameters.AddWithValue("@PersonID", intPersonID);
@@ -1754,7 +1731,7 @@ namespace SU21_Final_Project
 
                         Connection.Close();
 
-                        MessageBox.Show("The selected employee has been updated successfully?", "Message", MessageBoxButtons.OK);
+                        MessageBox.Show("Employee has been updated successfully", "Message", MessageBoxButtons.OK);
                        
                         cbxEmployeePhone.Checked = false;
                         cbxEmployeeEmail.Checked = false;
@@ -2247,11 +2224,6 @@ namespace SU21_Final_Project
                 mskSearchPhone.Enabled = false;
                 mskSearchPhone.Text = "";
             }
-        }
-
-        private void dgvCouponList_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

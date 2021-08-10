@@ -401,7 +401,6 @@ namespace SU21_Final_Project
             this.dgvCouponList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCouponList.Size = new System.Drawing.Size(376, 257);
             this.dgvCouponList.TabIndex = 23;
-            this.dgvCouponList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCouponList_CellContentClick);
             // 
             // btnViewCouponList
             // 
@@ -1953,7 +1952,7 @@ namespace SU21_Final_Project
             this.btnLogout.FlatAppearance.BorderSize = 3;
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.ForeColor = System.Drawing.Color.SeaShell;
+            this.btnLogout.ForeColor = System.Drawing.Color.SaddleBrown;
             this.btnLogout.Location = new System.Drawing.Point(865, 5);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(124, 48);
@@ -1971,7 +1970,7 @@ namespace SU21_Final_Project
             this.btnHelpEmployeeView.FlatAppearance.BorderSize = 3;
             this.btnHelpEmployeeView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHelpEmployeeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelpEmployeeView.ForeColor = System.Drawing.Color.SeaShell;
+            this.btnHelpEmployeeView.ForeColor = System.Drawing.Color.SaddleBrown;
             this.btnHelpEmployeeView.Location = new System.Drawing.Point(992, 5);
             this.btnHelpEmployeeView.Name = "btnHelpEmployeeView";
             this.btnHelpEmployeeView.Size = new System.Drawing.Size(101, 48);
@@ -1988,7 +1987,7 @@ namespace SU21_Final_Project
             this.btnResetAll.FlatAppearance.BorderSize = 3;
             this.btnResetAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResetAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResetAll.ForeColor = System.Drawing.Color.SeaShell;
+            this.btnResetAll.ForeColor = System.Drawing.Color.SaddleBrown;
             this.btnResetAll.Location = new System.Drawing.Point(720, 5);
             this.btnResetAll.Name = "btnResetAll";
             this.btnResetAll.Size = new System.Drawing.Size(140, 48);

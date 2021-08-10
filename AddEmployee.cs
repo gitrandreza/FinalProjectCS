@@ -199,9 +199,9 @@ namespace SU21_Final_Project
 
                                         //generate Username and Password
                                         string strModidfiedLastName = strLastName.Substring(0,strLastName.Length-2);
-                                        strCreateUsername = strModidfiedLastName + intPersonID.ToString();
+                                        strCreateUsername = strModidfiedLastName + intPersonID.ToString()+"Emp";
 
-                                        strCreatePassword = intRoleID.ToString() + intPersonID.ToString();
+                                        strCreatePassword = "!Emp"+ intRoleID.ToString() + intPersonID.ToString();
 
                                                 SqlCommand commandUsers = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Users(PersonID,Username,Password,Answer1,Answer2,RoleID,ThirdQuestion,SecondQuestion,FirstQuestion,Answer3,Status) VALUES(@PersonID,@Username,@Password,@Answer1,@Answer2,@RoleID,@ThirdQuestion,@SecondQuestion,@FirstQuestion,@Answer3,@Status)", Connection);
                                                 commandUsers.Parameters.AddWithValue("@PersonID", intPersonID);

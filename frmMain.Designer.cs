@@ -917,12 +917,12 @@ namespace SU21_Final_Project
             this.btnLogout.FlatAppearance.BorderSize = 3;
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.ForeColor = System.Drawing.Color.SaddleBrown;
             this.btnLogout.Location = new System.Drawing.Point(867, -5);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(139, 55);
             this.btnLogout.TabIndex = 23;
-            this.btnLogout.Text = "&Log out";
+            this.btnLogout.Text = "&LOG OUT";
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             this.btnLogout.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnLogout_KeyDown);
@@ -952,8 +952,8 @@ namespace SU21_Final_Project
             this.btnHelpEmployeeView.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnHelpEmployeeView.FlatAppearance.BorderSize = 3;
             this.btnHelpEmployeeView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHelpEmployeeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelpEmployeeView.ForeColor = System.Drawing.Color.White;
+            this.btnHelpEmployeeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelpEmployeeView.ForeColor = System.Drawing.Color.SaddleBrown;
             this.btnHelpEmployeeView.Location = new System.Drawing.Point(1000, -5);
             this.btnHelpEmployeeView.Name = "btnHelpEmployeeView";
             this.btnHelpEmployeeView.Size = new System.Drawing.Size(134, 55);

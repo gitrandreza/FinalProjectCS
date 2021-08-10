@@ -349,7 +349,7 @@ namespace SU21_Final_Project
         public bool ValidUsername(string strUsername)
         {
 
-            if (strUsername.Length < 4)
+            if (strUsername.Length < 8)
             {
                 return false;
             }
