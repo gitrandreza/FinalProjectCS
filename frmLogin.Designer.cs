@@ -60,7 +60,11 @@ namespace SU21_Final_Project
             this.tbxPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxPassword.ForeColor = System.Drawing.SystemColors.InfoText;
+<<<<<<< HEAD
             this.tbxPassword.Location = new System.Drawing.Point(57, 309);
+=======
+            this.tbxPassword.Location = new System.Drawing.Point(57, 319);
+>>>>>>> 5f22a5e9abf6041240d3a4b992e991a1ea9c9e96
             this.tbxPassword.Margin = new System.Windows.Forms.Padding(4);
             this.tbxPassword.Name = "tbxPassword";
             this.tbxPassword.Size = new System.Drawing.Size(384, 25);
@@ -75,7 +79,11 @@ namespace SU21_Final_Project
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.Maroon;
+<<<<<<< HEAD
             this.btnLogin.Location = new System.Drawing.Point(13, 411);
+=======
+            this.btnLogin.Location = new System.Drawing.Point(10, 364);
+>>>>>>> 5f22a5e9abf6041240d3a4b992e991a1ea9c9e96
             this.btnLogin.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(480, 51);
@@ -93,7 +101,11 @@ namespace SU21_Final_Project
             this.btnSignUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSignUp.ForeColor = System.Drawing.Color.Maroon;
+<<<<<<< HEAD
             this.btnSignUp.Location = new System.Drawing.Point(12, 470);
+=======
+            this.btnSignUp.Location = new System.Drawing.Point(10, 433);
+>>>>>>> 5f22a5e9abf6041240d3a4b992e991a1ea9c9e96
             this.btnSignUp.Margin = new System.Windows.Forms.Padding(4);
             this.btnSignUp.Name = "btnSignUp";
             this.btnSignUp.Size = new System.Drawing.Size(480, 51);
@@ -123,7 +135,11 @@ namespace SU21_Final_Project
             this.btnResetPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResetPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnResetPassword.ForeColor = System.Drawing.Color.Maroon;
+<<<<<<< HEAD
             this.btnResetPassword.Location = new System.Drawing.Point(12, 528);
+=======
+            this.btnResetPassword.Location = new System.Drawing.Point(12, 500);
+>>>>>>> 5f22a5e9abf6041240d3a4b992e991a1ea9c9e96
             this.btnResetPassword.Name = "btnResetPassword";
             this.btnResetPassword.Size = new System.Drawing.Size(480, 51);
             this.btnResetPassword.TabIndex = 4;
@@ -140,7 +156,11 @@ namespace SU21_Final_Project
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.Color.Maroon;
+<<<<<<< HEAD
             this.btnExit.Location = new System.Drawing.Point(12, 585);
+=======
+            this.btnExit.Location = new System.Drawing.Point(12, 568);
+>>>>>>> 5f22a5e9abf6041240d3a4b992e991a1ea9c9e96
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(480, 51);
             this.btnExit.TabIndex = 5;
@@ -194,7 +214,11 @@ namespace SU21_Final_Project
             this.lblPassword.BackColor = System.Drawing.Color.Transparent;
             this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPassword.ForeColor = System.Drawing.Color.White;
+<<<<<<< HEAD
             this.lblPassword.Location = new System.Drawing.Point(199, 280);
+=======
+            this.lblPassword.Location = new System.Drawing.Point(203, 276);
+>>>>>>> 5f22a5e9abf6041240d3a4b992e991a1ea9c9e96
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(106, 25);
             this.lblPassword.TabIndex = 14;
