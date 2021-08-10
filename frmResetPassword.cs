@@ -33,7 +33,7 @@ namespace SU21_Final_Project
         {
             InitializeComponent();
 
-          
+            tbxEnterUsername.Focus();
         }
 
         //Check for username and security question
@@ -58,66 +58,67 @@ namespace SU21_Final_Project
 
                     Connection.Open();
 
-                    command = new SqlCommand("SELECT Username, Answer1, Answer2, Answer3 FROM RandrezaVoharisoaM21Su2332.Users;", Connection);
+                    command = new SqlCommand("SELECT Username, Answer1, Answer2, Answer3, Status  FROM RandrezaVoharisoaM21Su2332.Users where Username = '"+strEnterUsername+"';", Connection);
 
                     //gets the results from the sql command
                     reader = command.ExecuteReader();
                     
                     while (reader.Read())
                     {
-                        //check through the user table column to find a matching value
-                        if (reader["Username"].ToString().Equals(strEnterUsername, StringComparison.CurrentCultureIgnoreCase))
-                        {
-
-
-                            if (reader["Answer1"].ToString().Equals(strAnswerOne, StringComparison.CurrentCultureIgnoreCase)
-                                && reader["Answer2"].ToString().Equals(strAnswerTwo, StringComparison.CurrentCultureIgnoreCase)
-                                && reader["Answer3"].ToString().Equals(strAnswerThree, StringComparison.CurrentCultureIgnoreCase))
+                       
+                            //check through the user table column to find a matching value
+                            if (reader["Username"].ToString().Equals(strEnterUsername, StringComparison.CurrentCultureIgnoreCase) && reader["Status"].ToString().Equals("Active", StringComparison.CurrentCultureIgnoreCase))
                             {
-                                lblInvalidAnswers.Visible = false;
-                                lblValidAnswers.Visible = true;
-                                tbxNewPassword.Enabled = true;
-                                tbxConfirmPassword.Enabled = true;
-                                btnNewPassword.Enabled = true;
-                                blnMatch = true;
 
-                               
+
+                                if (reader["Answer1"].ToString().Equals(strAnswerOne, StringComparison.CurrentCultureIgnoreCase)
+                                    && reader["Answer2"].ToString().Equals(strAnswerTwo, StringComparison.CurrentCultureIgnoreCase)
+                                    && reader["Answer3"].ToString().Equals(strAnswerThree, StringComparison.CurrentCultureIgnoreCase))
+                                {
+                                    lblInvalidAnswers.Visible = false;
+                                    lblValidAnswers.Visible = true;
+                                    tbxNewPassword.Enabled = true;
+                                    tbxConfirmPassword.Enabled = true;
+                                    btnNewPassword.Enabled = true;
+                                    blnMatch = true;
+
+
+
+                                }
+
+                                else if (reader["Answer1"].ToString().Equals("Not Available", StringComparison.CurrentCultureIgnoreCase)
+                                  && reader["Answer2"].ToString().Equals("Not Available", StringComparison.CurrentCultureIgnoreCase)
+                                  && reader["Answer3"].ToString().Equals("Not Available", StringComparison.CurrentCultureIgnoreCase))
+                                {
+                                    lblInvalidAnswers.Visible = false;
+                                    lblValidAnswers.Visible = true;
+                                    tbxNewPassword.Enabled = true;
+                                    tbxConfirmPassword.Enabled = true;
+                                    btnNewPassword.Enabled = true;
+
+                                    tbxDog.Text = "Not Applicable, Customer created by Employee";
+                                    tbxDrink.Text = "Not Applicable, Customer created up by Employee";
+                                    tbxIdol.Text = "Not Applicable, Customer created up by Employee";
+                                    blnMatch = true;
+                                }
+
+                                else if (reader["Answer1"].ToString().Equals("N/A", StringComparison.CurrentCultureIgnoreCase)
+                                && reader["Answer2"].ToString().Equals("N/A", StringComparison.CurrentCultureIgnoreCase)
+                                && reader["Answer3"].ToString().Equals("N/A", StringComparison.CurrentCultureIgnoreCase))
+                                {
+                                    lblInvalidAnswers.Visible = false;
+                                    lblValidAnswers.Visible = true;
+                                    tbxNewPassword.Enabled = true;
+                                    tbxConfirmPassword.Enabled = true;
+                                    btnNewPassword.Enabled = true;
+
+                                    tbxDog.Text = "Not Applicable, Employee created by Manager";
+                                    tbxDrink.Text = "Not Applicable, Employee created up by Manager";
+                                    tbxIdol.Text = "Not Applicable, Employee created up by Manager";
+                                    blnMatch = true;
+                                }
 
                             }
-
-                            else if (reader["Answer1"].ToString().Equals("Not Available", StringComparison.CurrentCultureIgnoreCase)
-                              && reader["Answer2"].ToString().Equals("Not Available", StringComparison.CurrentCultureIgnoreCase)
-                              && reader["Answer3"].ToString().Equals("Not Available", StringComparison.CurrentCultureIgnoreCase))
-                            {
-                                lblInvalidAnswers.Visible = false;
-                                lblValidAnswers.Visible = true;
-                                tbxNewPassword.Enabled = true;
-                                tbxConfirmPassword.Enabled = true;
-                                btnNewPassword.Enabled = true;
-                               
-                                tbxDog.Text = "Not Applicable, Customer created by Employee";
-                                tbxDrink.Text= "Not Applicable, Customer created up by Employee";
-                                tbxIdol.Text= "Not Applicable, Customer created up by Employee";
-                                blnMatch = true;
-                            }
-
-                            else if (reader["Answer1"].ToString().Equals("N/A", StringComparison.CurrentCultureIgnoreCase)
-                            && reader["Answer2"].ToString().Equals("N/A", StringComparison.CurrentCultureIgnoreCase)
-                            && reader["Answer3"].ToString().Equals("N/A", StringComparison.CurrentCultureIgnoreCase))
-                            {
-                                lblInvalidAnswers.Visible = false;
-                                lblValidAnswers.Visible = true;
-                                tbxNewPassword.Enabled = true;
-                                tbxConfirmPassword.Enabled = true;
-                                btnNewPassword.Enabled = true;
-
-                                tbxDog.Text = "Not Applicable, Employee created by Manager";
-                                tbxDrink.Text = "Not Applicable, Employee created up by Manager";
-                                tbxIdol.Text = "Not Applicable, Employee created up by Manager";
-                                blnMatch = true;
-                            }
-
-                        }
 
                     }
 

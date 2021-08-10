@@ -111,7 +111,7 @@ namespace SU21_Final_Project
             // 
             this.dtpEmployeeHiredDate.CalendarForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dtpEmployeeHiredDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpEmployeeHiredDate.Location = new System.Drawing.Point(439, 204);
+            this.dtpEmployeeHiredDate.Location = new System.Drawing.Point(484, 204);
             this.dtpEmployeeHiredDate.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.dtpEmployeeHiredDate.Name = "dtpEmployeeHiredDate";
             this.dtpEmployeeHiredDate.Size = new System.Drawing.Size(158, 22);

@@ -198,7 +198,7 @@ namespace SU21_Final_Project
                                                 sr.Close();
 
 
-                                                SqlCommand commandUsers = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Users(PersonID,Username,Password,Answer1,Answer2,RoleID,ThirdQuestion,SecondQuestion,FirstQuestion,Answer3) VALUES(@PersonID,@Username,@Password,@Answer1,@Answer2,@RoleID,@ThirdQuestion,@SecondQuestion,@FirstQuestion,@Answer3)", Connection);
+                                                SqlCommand commandUsers = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Users(PersonID,Username,Password,Answer1,Answer2,RoleID,ThirdQuestion,SecondQuestion,FirstQuestion,Answer3,Status) VALUES(@PersonID,@Username,@Password,@Answer1,@Answer2,@RoleID,@ThirdQuestion,@SecondQuestion,@FirstQuestion,@Answer3,@Status)", Connection);
                                                 commandUsers.Parameters.AddWithValue("@PersonID", intPersonID);
                                                 commandUsers.Parameters.AddWithValue("@Username", strCreateUsername);
                                                 commandUsers.Parameters.AddWithValue("@Password", strCreatePassword);
@@ -209,8 +209,9 @@ namespace SU21_Final_Project
                                                 commandUsers.Parameters.AddWithValue("@SecondQuestion", strQuestionTwo);
                                                 commandUsers.Parameters.AddWithValue("@FirstQuestion", strQuestionOne);
                                                 commandUsers.Parameters.AddWithValue("@Answer3", strAnswerThree);
+                                                commandUsers.Parameters.AddWithValue("@Status", "Active");
 
-                                                commandUsers.ExecuteNonQuery();
+                                            commandUsers.ExecuteNonQuery();
                                                 MessageBox.Show("Client Successfully added", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                                                 Connection.Close();

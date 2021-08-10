@@ -46,7 +46,7 @@ namespace SU21_Final_Project
 
                 Connection.Open();
 
-                command = new SqlCommand("SELECT UserID, Username, Password FROM RandrezaVoharisoaM21Su2332.Users;", Connection);
+                command = new SqlCommand("SELECT UserID, Username, Password, Status FROM RandrezaVoharisoaM21Su2332.Users;", Connection);
 
                 //gets the results from the sql command
                 reader = command.ExecuteReader();
@@ -58,14 +58,15 @@ namespace SU21_Final_Project
                     {
                         if (reader["Password"].ToString() == strPassword)
                         {
+                            if (reader["Status"].ToString() == "Active")
+                            {
+                                frmMain mainForm = new frmMain();
+                                mainForm.LabelUserID = reader["UserID"].ToString();
 
-                            frmMain mainForm = new frmMain();
-                            mainForm.LabelUserID = reader["UserID"].ToString();
-
-                           
-
-                            mainForm.Show();
-                            this.Hide();
+                                mainForm.Show();
+                                this.Hide();
+                            }
+                               
                         }
                         
                     }

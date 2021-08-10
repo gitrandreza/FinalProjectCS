@@ -117,7 +117,7 @@ namespace SU21_Final_Project
 
                 Connection.Open();
 
-                dataAdapter = new SqlDataAdapter("SELECT RandrezaVoharisoaM21Su2332.Person.PersonID  as [Person ID],RandrezaVoharisoaM21Su2332.Person.NameFirst  as [First Name], RandrezaVoharisoaM21Su2332.Person.NameLast as [Last Name],RandrezaVoharisoaM21Su2332.Person.Address1  as [Address],RandrezaVoharisoaM21Su2332.Person.City,RandrezaVoharisoaM21Su2332.Person.State, RandrezaVoharisoaM21Su2332.Person.Zipcode,RandrezaVoharisoaM21Su2332.Person.PhonePrimary as [Phone] , RandrezaVoharisoaM21Su2332.Person.Email  FROM RandrezaVoharisoaM21Su2332.Person FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.PersonID = RandrezaVoharisoaM21Su2332.Person.PersonID WHERE RoleID = 3; ", Connection);
+                dataAdapter = new SqlDataAdapter("SELECT RandrezaVoharisoaM21Su2332.Person.PersonID  as [Person ID],RandrezaVoharisoaM21Su2332.Person.NameFirst  as [First Name], RandrezaVoharisoaM21Su2332.Person.NameLast as [Last Name],RandrezaVoharisoaM21Su2332.Person.Address1  as [Address],RandrezaVoharisoaM21Su2332.Person.City,RandrezaVoharisoaM21Su2332.Person.State, RandrezaVoharisoaM21Su2332.Person.Zipcode,RandrezaVoharisoaM21Su2332.Person.PhonePrimary as [Phone] , RandrezaVoharisoaM21Su2332.Person.Email  FROM RandrezaVoharisoaM21Su2332.Person FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.PersonID = RandrezaVoharisoaM21Su2332.Person.PersonID WHERE RoleID = 3  and Status= 'Active'; ", Connection);
 
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
@@ -583,16 +583,16 @@ namespace SU21_Final_Project
        
         private void PrintInvoice(StringBuilder html)
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string filepath = path + "\\" + strPurchaseInvoice + " ";
+            string strPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string strFilepath = strPath + "\\" + strPurchaseInvoice + " ";
             try
             {
                 // A "using" statement will automatically close a file after opening it.               
-                using (StreamWriter swPurchase = new StreamWriter(filepath))
+                using (StreamWriter swPurchase = new StreamWriter(strFilepath))
                 {
                     swPurchase.WriteLine(html);
                 }
-                System.Diagnostics.Process.Start(filepath); //Open the report in the default web browser
+                System.Diagnostics.Process.Start(strFilepath); //Open the report in the default web browser
             }
             catch (Exception)
             {
@@ -1540,7 +1540,7 @@ namespace SU21_Final_Project
 
                                 string strCreatePassword = intRoleId.ToString() + intPersonID.ToString();
 
-                                SqlCommand commandUsers = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Users(PersonID,Username,Password,Answer1,Answer2,RoleID,ThirdQuestion,SecondQuestion,FirstQuestion,Answer3) VALUES(@PersonID,@Username,@Password,@Answer1,@Answer2,@RoleID,@ThirdQuestion,@SecondQuestion,@FirstQuestion,@Answer3)", Connection);
+                                SqlCommand commandUsers = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Users(PersonID,Username,Password,Answer1,Answer2,RoleID,ThirdQuestion,SecondQuestion,FirstQuestion,Answer3,Status) VALUES(@PersonID,@Username,@Password,@Answer1,@Answer2,@RoleID,@ThirdQuestion,@SecondQuestion,@FirstQuestion,@Answer3,@Status)", Connection);
                                 commandUsers.Parameters.AddWithValue("@PersonID", intPersonID);
                                 commandUsers.Parameters.AddWithValue("@Username", strCreateUsername);
                                 commandUsers.Parameters.AddWithValue("@Password", strCreatePassword);
@@ -1551,6 +1551,7 @@ namespace SU21_Final_Project
                                 commandUsers.Parameters.AddWithValue("@SecondQuestion", strQuestionTwo);
                                 commandUsers.Parameters.AddWithValue("@FirstQuestion", strQuestionOne);
                                 commandUsers.Parameters.AddWithValue("@Answer3", strAnswerThree);
+                                commandUsers.Parameters.AddWithValue("@Status", "Active");
 
                                 commandUsers.ExecuteNonQuery();
                                 MessageBox.Show("Customer Successfully added", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1820,6 +1821,7 @@ namespace SU21_Final_Project
 
         private void btnRemoveCustomer_Click(object sender, EventArgs e)
         {
+            string strCustomerUserID;
             try
             {
                 if (dgvCustomer.SelectedRows.Count > 0)
@@ -1842,17 +1844,10 @@ namespace SU21_Final_Project
                                 "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                             Connection.Open();
-
-
-                            string strDeleteQueryUser = "DELETE FROM RandrezaVoharisoaM21Su2332.Users where PersonID= '" + strPersonIdCustomerView + "'";
-                            SqlCommand deleteCommandeUser = new SqlCommand(strDeleteQueryUser, Connection);
-
-                            deleteCommandeUser.ExecuteNonQuery();
-
-                            string strDeleteQueryPerson = "DELETE FROM RandrezaVoharisoaM21Su2332.Person where PersonID= '" + strPersonIdCustomerView + "'";
-                            SqlCommand deleteCommandePerson = new SqlCommand(strDeleteQueryPerson, Connection);
-
-                            deleteCommandePerson.ExecuteNonQuery();
+                            //get userID from personID in USers
+                            SqlCommand commandRemove = new SqlCommand("UPDATE RandrezaVoharisoaM21Su2332.Users SET Status ='Inactive' where PersonID = '" + strPersonIdCustomerView + "'", Connection);
+                            //SqlParameter sqlpmPhone = commandRemove.Parameters.AddWithValue("@Phone", strPhoneEdit);
+                            commandRemove.ExecuteNonQuery();
 
 
                             Connection.Close();
@@ -2044,9 +2039,9 @@ namespace SU21_Final_Project
                         }
                         else
                         {
-                            string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                            string xslLocation = Path.Combine(executableLocation, strInvoiceReport + ".html");
-                            System.Diagnostics.Process.Start(xslLocation);
+                            string strExecutableLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                            string strLocation = Path.Combine(strExecutableLocation, strInvoiceReport + ".html");
+                            System.Diagnostics.Process.Start(strLocation);
                         }
                     }
                     catch (Exception)
@@ -2566,9 +2561,9 @@ namespace SU21_Final_Project
                     try
                     {
 
-                        string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                        string xslLocation = Path.Combine(executableLocation, strPurchaseNumber + ".html");
-                        System.Diagnostics.Process.Start(xslLocation);
+                        string strExecutableLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                        string strLocation = Path.Combine(strExecutableLocation, strPurchaseNumber + ".html");
+                        System.Diagnostics.Process.Start(strLocation);
 
                     }
                     catch (Exception)
@@ -2631,12 +2626,83 @@ namespace SU21_Final_Project
             }
         }
 
-        private void lblLowItemLabel_Click(object sender, EventArgs e)
+        //Display Coupon List
+        private void btnViewCouponList_Click(object sender, EventArgs e)
         {
+            try
+            {
+                //connect to database
+                Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                    "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+                Connection.Open();
+                dataAdapter = new SqlDataAdapter("SELECT * FROM RandrezaVoharisoaM21Su2332.Coupon", Connection);
+                dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                dgvCouponList.DataSource = dataTable;
 
+                Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        //Delete coupon
+        private void btnRemoveCoupon_Click(object sender, EventArgs e)
+        {
+            string strCouponID="";
+            try
+            {
+                if (dgvCouponList.SelectedRows.Count > 0)
+                {
+                    if (MessageBox.Show("Do you want to remove this coupon?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        foreach (DataGridViewRow row in dgvCouponList.SelectedRows)
+                        {
+                            //grab current row index selected
+                            int intIndexRowSelected = dgvCouponList.CurrentCell.RowIndex;
+                            //grab item name to use in order to delete in the database
+                            strCouponID = dgvCouponList.Rows[intIndexRowSelected].Cells[0].Value.ToString();
+                            dgvCouponList.Rows.RemoveAt(row.Index);
+
+                        }
+                        try
+                        {
+                            //connect to database
+                            Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
+                                "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
+
+                            Connection.Open();
+
+                            string strDeleteQuery = "DELETE FROM RandrezaVoharisoaM21Su2332.Coupon where CouponID= '" + strCouponID + "'";
+                            SqlCommand deleteCommande = new SqlCommand(strDeleteQuery, Connection);
+
+                            deleteCommande.ExecuteNonQuery();
+
+                            Connection.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error :" + ex, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Please select the Coupon you want to remove", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
-
 }
+
+
         
 

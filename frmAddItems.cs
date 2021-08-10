@@ -300,17 +300,17 @@ namespace SU21_Final_Project
         // Write (and overwrite) to the hard drive using the same filename of "Report.html"
         private void PrintInvoice(StringBuilder html)
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string filepath = path + "\\" + strPurchaseInvoice + " ";
+            string strPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string strFilepath = strPath + "\\" + strPurchaseInvoice + " ";
 
             try
             {
                 // A "using" statement will automatically close a file after opening it.               
-                using (StreamWriter swNewItem = new StreamWriter(filepath))
+                using (StreamWriter swNewItem = new StreamWriter(strFilepath))
                 {
                     swNewItem.WriteLine(html);
                 }
-                System.Diagnostics.Process.Start(filepath); //Open the report in the default web browser
+                System.Diagnostics.Process.Start(strFilepath); //Open the report in the default web browser
             }
             catch (Exception)
             {

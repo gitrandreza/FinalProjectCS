@@ -812,32 +812,16 @@ namespace SU21_Final_Project
                             }
 
                             Connection.Close();
+
+
+                            MessageBox.Show("Your Order has been successfully placed, here is your invoice", "Transaction Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                             PrintReport(GenerateReport());
+                     
+                            
+                        
+
                             Reset();
-
-                            if (MessageBox.Show("Do you need your invoice?", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                            {
-                                try
-                                {
-
-                                    string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                                    string xslLocation = Path.Combine(executableLocation, strLastSaleReportCustomer + ".html");
-                                    System.Diagnostics.Process.Start(xslLocation);
-
-                                }
-                                catch (Exception)
-                                {
-                                    MessageBox.Show("Cannot find Report associate with this.",
-                                        "Error with System Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-                            }
-                            else
-                            {
-
-                                MessageBox.Show("Your Order has been successfully placed", "Transaction Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-
-
 
                         }
                         catch (SqlException ex)
@@ -949,18 +933,18 @@ namespace SU21_Final_Project
         // Print the HTML report on the desktop
         private void PrintReport(StringBuilder html)
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string filepath = path + "\\"+strInvoiceCustomer+" ";
+            string strPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string strFilepath = strPath + "\\"+strInvoiceCustomer+" ";
            
             try
             {
                 // A "using" statement will automatically close a file after opening it.               
-                using (StreamWriter swInvoice = new StreamWriter(filepath))
+                using (StreamWriter swInvoice = new StreamWriter(strFilepath))
                 {
                     swInvoice.WriteLine(html);
                 }
-                
-                
+                System.Diagnostics.Process.Start(strFilepath); //Open the report in the default web browser
+
             }
             catch (IOException )
             {
@@ -1132,10 +1116,10 @@ namespace SU21_Final_Project
 
             try
             {
-               
-                    string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                    string xslLocation = Path.Combine(executableLocation, strLastSaleReportCustomer + ".html");
-                    System.Diagnostics.Process.Start(xslLocation);
+
+                string strExecutableLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                    string strLocation = Path.Combine(strExecutableLocation, strLastSaleReportCustomer + ".html");
+                    System.Diagnostics.Process.Start(strLocation);
                 
             }
             catch (Exception)

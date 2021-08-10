@@ -110,6 +110,9 @@ namespace SU21_Final_Project
             this.btnAddCustomer = new System.Windows.Forms.Button();
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
             this.tabSalesReport = new System.Windows.Forms.TabPage();
+            this.btnRemoveCoupon = new System.Windows.Forms.Button();
+            this.dgvCouponList = new System.Windows.Forms.DataGridView();
+            this.btnViewCouponList = new System.Windows.Forms.Button();
             this.gbxReport = new System.Windows.Forms.GroupBox();
             this.btnPrintSelectedSalesReport = new System.Windows.Forms.Button();
             this.radAllReport = new System.Windows.Forms.RadioButton();
@@ -183,6 +186,7 @@ namespace SU21_Final_Project
             this.gbxAddNewCustomer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.tabSalesReport.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCouponList)).BeginInit();
             this.gbxReport.SuspendLayout();
             this.gbxCreateCoupon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesDetails)).BeginInit();
@@ -696,7 +700,6 @@ namespace SU21_Final_Project
             this.lblLowItemLabel.Size = new System.Drawing.Size(121, 18);
             this.lblLowItemLabel.TabIndex = 40;
             this.lblLowItemLabel.Text = "Items below 50";
-            this.lblLowItemLabel.Click += new System.EventHandler(this.lblLowItemLabel_Click);
             // 
             // gbxUpdateField
             // 
@@ -925,7 +928,7 @@ namespace SU21_Final_Project
             this.btnSaveUpdate.ForeColor = System.Drawing.Color.SaddleBrown;
             this.btnSaveUpdate.Location = new System.Drawing.Point(20, 449);
             this.btnSaveUpdate.Name = "btnSaveUpdate";
-            this.btnSaveUpdate.Size = new System.Drawing.Size(797, 61);
+            this.btnSaveUpdate.Size = new System.Drawing.Size(797, 75);
             this.btnSaveUpdate.TabIndex = 17;
             this.btnSaveUpdate.Text = "&Save Change";
             this.btnSaveUpdate.UseVisualStyleBackColor = true;
@@ -938,7 +941,7 @@ namespace SU21_Final_Project
             this.tabManagerFeatures.Controls.Add(this.tabCustomer);
             this.tabManagerFeatures.Controls.Add(this.tabSalesReport);
             this.tabManagerFeatures.Controls.Add(this.tabSupplier);
-            this.tabManagerFeatures.Location = new System.Drawing.Point(12, 52);
+            this.tabManagerFeatures.Location = new System.Drawing.Point(2, 55);
             this.tabManagerFeatures.Name = "tabManagerFeatures";
             this.tabManagerFeatures.SelectedIndex = 0;
             this.tabManagerFeatures.Size = new System.Drawing.Size(1118, 578);
@@ -1292,6 +1295,9 @@ namespace SU21_Final_Project
             // tabSalesReport
             // 
             this.tabSalesReport.BackColor = System.Drawing.Color.Transparent;
+            this.tabSalesReport.Controls.Add(this.btnRemoveCoupon);
+            this.tabSalesReport.Controls.Add(this.dgvCouponList);
+            this.tabSalesReport.Controls.Add(this.btnViewCouponList);
             this.tabSalesReport.Controls.Add(this.gbxReport);
             this.tabSalesReport.Controls.Add(this.gbxCreateCoupon);
             this.tabSalesReport.Controls.Add(this.lblSalesDetailLabel);
@@ -1302,7 +1308,52 @@ namespace SU21_Final_Project
             this.tabSalesReport.Name = "tabSalesReport";
             this.tabSalesReport.Size = new System.Drawing.Size(1110, 549);
             this.tabSalesReport.TabIndex = 3;
-            this.tabSalesReport.Text = "Sales Report";
+            this.tabSalesReport.Text = "Sales Report/Coupon";
+            // 
+            // btnRemoveCoupon
+            // 
+            this.btnRemoveCoupon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRemoveCoupon.BackgroundImage")));
+            this.btnRemoveCoupon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRemoveCoupon.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnRemoveCoupon.FlatAppearance.BorderSize = 3;
+            this.btnRemoveCoupon.ForeColor = System.Drawing.Color.Maroon;
+            this.btnRemoveCoupon.Location = new System.Drawing.Point(392, 416);
+            this.btnRemoveCoupon.Name = "btnRemoveCoupon";
+            this.btnRemoveCoupon.Size = new System.Drawing.Size(196, 71);
+            this.btnRemoveCoupon.TabIndex = 51;
+            this.btnRemoveCoupon.Text = "&Remove Coupon";
+            this.btnRemoveCoupon.UseVisualStyleBackColor = true;
+            this.btnRemoveCoupon.Click += new System.EventHandler(this.btnRemoveCoupon_Click);
+            // 
+            // dgvCouponList
+            // 
+            this.dgvCouponList.AllowUserToAddRows = false;
+            this.dgvCouponList.AllowUserToDeleteRows = false;
+            this.dgvCouponList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCouponList.Location = new System.Drawing.Point(590, 339);
+            this.dgvCouponList.Name = "dgvCouponList";
+            this.dgvCouponList.ReadOnly = true;
+            this.dgvCouponList.RowHeadersVisible = false;
+            this.dgvCouponList.RowHeadersWidth = 51;
+            this.dgvCouponList.RowTemplate.Height = 24;
+            this.dgvCouponList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCouponList.Size = new System.Drawing.Size(508, 210);
+            this.dgvCouponList.TabIndex = 49;
+            // 
+            // btnViewCouponList
+            // 
+            this.btnViewCouponList.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnViewCouponList.BackgroundImage")));
+            this.btnViewCouponList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnViewCouponList.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnViewCouponList.FlatAppearance.BorderSize = 3;
+            this.btnViewCouponList.ForeColor = System.Drawing.Color.Maroon;
+            this.btnViewCouponList.Location = new System.Drawing.Point(392, 339);
+            this.btnViewCouponList.Name = "btnViewCouponList";
+            this.btnViewCouponList.Size = new System.Drawing.Size(196, 77);
+            this.btnViewCouponList.TabIndex = 50;
+            this.btnViewCouponList.Text = "View Coupon List";
+            this.btnViewCouponList.UseVisualStyleBackColor = true;
+            this.btnViewCouponList.Click += new System.EventHandler(this.btnViewCouponList_Click);
             // 
             // gbxReport
             // 
@@ -1315,9 +1366,9 @@ namespace SU21_Final_Project
             this.gbxReport.Controls.Add(this.btnDisplayReport);
             this.gbxReport.Controls.Add(this.dtpReport);
             this.gbxReport.Controls.Add(this.label2);
-            this.gbxReport.Location = new System.Drawing.Point(28, 281);
+            this.gbxReport.Location = new System.Drawing.Point(13, 205);
             this.gbxReport.Name = "gbxReport";
-            this.gbxReport.Size = new System.Drawing.Size(411, 210);
+            this.gbxReport.Size = new System.Drawing.Size(1091, 83);
             this.gbxReport.TabIndex = 7;
             this.gbxReport.TabStop = false;
             this.gbxReport.Text = "Report Option";
@@ -1326,9 +1377,9 @@ namespace SU21_Final_Project
             // 
             this.btnPrintSelectedSalesReport.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPrintSelectedSalesReport.BackgroundImage")));
             this.btnPrintSelectedSalesReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnPrintSelectedSalesReport.Location = new System.Drawing.Point(0, 151);
+            this.btnPrintSelectedSalesReport.Location = new System.Drawing.Point(740, 21);
             this.btnPrintSelectedSalesReport.Name = "btnPrintSelectedSalesReport";
-            this.btnPrintSelectedSalesReport.Size = new System.Drawing.Size(411, 53);
+            this.btnPrintSelectedSalesReport.Size = new System.Drawing.Size(309, 44);
             this.btnPrintSelectedSalesReport.TabIndex = 7;
             this.btnPrintSelectedSalesReport.Text = "&Print Report";
             this.btnPrintSelectedSalesReport.UseVisualStyleBackColor = true;
@@ -1338,7 +1389,7 @@ namespace SU21_Final_Project
             // 
             this.radAllReport.AutoSize = true;
             this.radAllReport.Checked = true;
-            this.radAllReport.Location = new System.Drawing.Point(344, 30);
+            this.radAllReport.Location = new System.Drawing.Point(335, 21);
             this.radAllReport.Name = "radAllReport";
             this.radAllReport.Size = new System.Drawing.Size(44, 21);
             this.radAllReport.TabIndex = 4;
@@ -1349,7 +1400,7 @@ namespace SU21_Final_Project
             // radMonthly
             // 
             this.radMonthly.AutoSize = true;
-            this.radMonthly.Location = new System.Drawing.Point(227, 30);
+            this.radMonthly.Location = new System.Drawing.Point(214, 21);
             this.radMonthly.Name = "radMonthly";
             this.radMonthly.Size = new System.Drawing.Size(78, 21);
             this.radMonthly.TabIndex = 3;
@@ -1359,7 +1410,7 @@ namespace SU21_Final_Project
             // radWeekly
             // 
             this.radWeekly.AutoSize = true;
-            this.radWeekly.Location = new System.Drawing.Point(109, 30);
+            this.radWeekly.Location = new System.Drawing.Point(100, 21);
             this.radWeekly.Name = "radWeekly";
             this.radWeekly.Size = new System.Drawing.Size(75, 21);
             this.radWeekly.TabIndex = 2;
@@ -1369,7 +1420,7 @@ namespace SU21_Final_Project
             // radDaily
             // 
             this.radDaily.AutoSize = true;
-            this.radDaily.Location = new System.Drawing.Point(20, 30);
+            this.radDaily.Location = new System.Drawing.Point(11, 21);
             this.radDaily.Name = "radDaily";
             this.radDaily.Size = new System.Drawing.Size(60, 21);
             this.radDaily.TabIndex = 1;
@@ -1380,9 +1431,9 @@ namespace SU21_Final_Project
             // 
             this.btnDisplayReport.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDisplayReport.BackgroundImage")));
             this.btnDisplayReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDisplayReport.Location = new System.Drawing.Point(0, 109);
+            this.btnDisplayReport.Location = new System.Drawing.Point(441, 21);
             this.btnDisplayReport.Name = "btnDisplayReport";
-            this.btnDisplayReport.Size = new System.Drawing.Size(411, 44);
+            this.btnDisplayReport.Size = new System.Drawing.Size(289, 44);
             this.btnDisplayReport.TabIndex = 6;
             this.btnDisplayReport.Text = "Display";
             this.btnDisplayReport.UseVisualStyleBackColor = true;
@@ -1391,7 +1442,7 @@ namespace SU21_Final_Project
             // dtpReport
             // 
             this.dtpReport.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpReport.Location = new System.Drawing.Point(159, 77);
+            this.dtpReport.Location = new System.Drawing.Point(154, 48);
             this.dtpReport.MinDate = new System.DateTime(2021, 4, 21, 0, 0, 0, 0);
             this.dtpReport.Name = "dtpReport";
             this.dtpReport.Size = new System.Drawing.Size(167, 22);
@@ -1400,7 +1451,7 @@ namespace SU21_Final_Project
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(78, 77);
+            this.label2.Location = new System.Drawing.Point(73, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 17);
             this.label2.TabIndex = 2;
@@ -1408,7 +1459,7 @@ namespace SU21_Final_Project
             // 
             // gbxCreateCoupon
             // 
-            this.gbxCreateCoupon.BackColor = System.Drawing.Color.Linen;
+            this.gbxCreateCoupon.BackColor = System.Drawing.Color.RosyBrown;
             this.gbxCreateCoupon.Controls.Add(this.btnCreateCoupon);
             this.gbxCreateCoupon.Controls.Add(this.dtpEndCoupon);
             this.gbxCreateCoupon.Controls.Add(this.lblEndCouponLabel);
@@ -1416,9 +1467,9 @@ namespace SU21_Final_Project
             this.gbxCreateCoupon.Controls.Add(this.lblStartDateLabel);
             this.gbxCreateCoupon.Controls.Add(this.cboCouponDescription);
             this.gbxCreateCoupon.Controls.Add(this.lblCouponLabel);
-            this.gbxCreateCoupon.Location = new System.Drawing.Point(632, 275);
+            this.gbxCreateCoupon.Location = new System.Drawing.Point(16, 339);
             this.gbxCreateCoupon.Name = "gbxCreateCoupon";
-            this.gbxCreateCoupon.Size = new System.Drawing.Size(376, 210);
+            this.gbxCreateCoupon.Size = new System.Drawing.Size(568, 210);
             this.gbxCreateCoupon.TabIndex = 4;
             this.gbxCreateCoupon.TabStop = false;
             this.gbxCreateCoupon.Text = "Create Coupon";
@@ -1429,7 +1480,7 @@ namespace SU21_Final_Project
             this.btnCreateCoupon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCreateCoupon.Location = new System.Drawing.Point(0, 151);
             this.btnCreateCoupon.Name = "btnCreateCoupon";
-            this.btnCreateCoupon.Size = new System.Drawing.Size(376, 59);
+            this.btnCreateCoupon.Size = new System.Drawing.Size(568, 59);
             this.btnCreateCoupon.TabIndex = 11;
             this.btnCreateCoupon.Text = "Create Coupon";
             this.btnCreateCoupon.UseVisualStyleBackColor = true;
@@ -1524,7 +1575,7 @@ namespace SU21_Final_Project
             this.dgvSalesDetails.RowHeadersWidth = 51;
             this.dgvSalesDetails.RowTemplate.Height = 24;
             this.dgvSalesDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSalesDetails.Size = new System.Drawing.Size(659, 198);
+            this.dgvSalesDetails.Size = new System.Drawing.Size(659, 156);
             this.dgvSalesDetails.TabIndex = 1;
             // 
             // dgvSalesReport
@@ -1540,7 +1591,7 @@ namespace SU21_Final_Project
             this.dgvSalesReport.RowHeadersWidth = 51;
             this.dgvSalesReport.RowTemplate.Height = 24;
             this.dgvSalesReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSalesReport.Size = new System.Drawing.Size(426, 198);
+            this.dgvSalesReport.Size = new System.Drawing.Size(411, 156);
             this.dgvSalesReport.TabIndex = 0;
             this.dgvSalesReport.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSalesReport_CellClick);
             // 
@@ -2087,6 +2138,7 @@ namespace SU21_Final_Project
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
             this.tabSalesReport.ResumeLayout(false);
             this.tabSalesReport.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCouponList)).EndInit();
             this.gbxReport.ResumeLayout(false);
             this.gbxReport.PerformLayout();
             this.gbxCreateCoupon.ResumeLayout(false);
@@ -2245,5 +2297,8 @@ namespace SU21_Final_Project
         private System.Windows.Forms.Label lblPurchaseHistoryLabel;
         private System.Windows.Forms.DataGridView dgvLowItem100;
         private System.Windows.Forms.Label lblLowItem2;
+        private System.Windows.Forms.Button btnRemoveCoupon;
+        private System.Windows.Forms.DataGridView dgvCouponList;
+        private System.Windows.Forms.Button btnViewCouponList;
     }
 }

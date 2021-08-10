@@ -296,9 +296,9 @@ namespace SU21_Final_Project
             this.btnPrintInvoice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPrintInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrintInvoice.ForeColor = System.Drawing.Color.Maroon;
-            this.btnPrintInvoice.Location = new System.Drawing.Point(885, 553);
+            this.btnPrintInvoice.Location = new System.Drawing.Point(850, 553);
             this.btnPrintInvoice.Name = "btnPrintInvoice";
-            this.btnPrintInvoice.Size = new System.Drawing.Size(194, 72);
+            this.btnPrintInvoice.Size = new System.Drawing.Size(229, 72);
             this.btnPrintInvoice.TabIndex = 51;
             this.btnPrintInvoice.Text = "Print Invoice";
             this.btnPrintInvoice.UseVisualStyleBackColor = true;
@@ -311,9 +311,9 @@ namespace SU21_Final_Project
             this.btnClearCustomer.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnClearCustomer.FlatAppearance.BorderSize = 3;
             this.btnClearCustomer.ForeColor = System.Drawing.Color.Maroon;
-            this.btnClearCustomer.Location = new System.Drawing.Point(890, 628);
+            this.btnClearCustomer.Location = new System.Drawing.Point(850, 628);
             this.btnClearCustomer.Name = "btnClearCustomer";
-            this.btnClearCustomer.Size = new System.Drawing.Size(184, 73);
+            this.btnClearCustomer.Size = new System.Drawing.Size(224, 73);
             this.btnClearCustomer.TabIndex = 50;
             this.btnClearCustomer.Text = "Clear All";
             this.btnClearCustomer.UseVisualStyleBackColor = true;
@@ -340,9 +340,9 @@ namespace SU21_Final_Project
             this.lblSalesDetailLabel.ForeColor = System.Drawing.Color.Black;
             this.lblSalesDetailLabel.Location = new System.Drawing.Point(646, 710);
             this.lblSalesDetailLabel.Name = "lblSalesDetailLabel";
-            this.lblSalesDetailLabel.Size = new System.Drawing.Size(131, 17);
+            this.lblSalesDetailLabel.Size = new System.Drawing.Size(204, 17);
             this.lblSalesDetailLabel.TabIndex = 27;
-            this.lblSalesDetailLabel.Text = "Purchase Details";
+            this.lblSalesDetailLabel.Text = "Customer Purchase Details";
             // 
             // dgvPurchaseDetails
             // 
@@ -366,9 +366,9 @@ namespace SU21_Final_Project
             this.lblCustomerSaleReport.ForeColor = System.Drawing.Color.Black;
             this.lblCustomerSaleReport.Location = new System.Drawing.Point(636, 536);
             this.lblCustomerSaleReport.Name = "lblCustomerSaleReport";
-            this.lblCustomerSaleReport.Size = new System.Drawing.Size(132, 17);
+            this.lblCustomerSaleReport.Size = new System.Drawing.Size(205, 17);
             this.lblCustomerSaleReport.TabIndex = 25;
-            this.lblCustomerSaleReport.Text = "Purchase History";
+            this.lblCustomerSaleReport.Text = "Customer Purchase History";
             // 
             // dgvCustomerPurchase
             // 
@@ -383,7 +383,7 @@ namespace SU21_Final_Project
             this.dgvCustomerPurchase.RowHeadersWidth = 51;
             this.dgvCustomerPurchase.RowTemplate.Height = 24;
             this.dgvCustomerPurchase.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCustomerPurchase.Size = new System.Drawing.Size(486, 149);
+            this.dgvCustomerPurchase.Size = new System.Drawing.Size(446, 149);
             this.dgvCustomerPurchase.TabIndex = 24;
             this.dgvCustomerPurchase.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomerPurchase_CellClick);
             // 
@@ -401,6 +401,7 @@ namespace SU21_Final_Project
             this.dgvCouponList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCouponList.Size = new System.Drawing.Size(376, 257);
             this.dgvCouponList.TabIndex = 23;
+            this.dgvCouponList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCouponList_CellContentClick);
             // 
             // btnViewCouponList
             // 
