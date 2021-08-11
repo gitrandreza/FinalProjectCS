@@ -1769,7 +1769,7 @@ namespace SU21_Final_Project
                 Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
                 Connection.Open();
-                dataAdapter = new SqlDataAdapter("SELECT * FROM RandrezaVoharisoaM21Su2332.Coupon", Connection);
+                dataAdapter = new SqlDataAdapter("SELECT CouponID as [Coupon ID], Description, CreationDate as[Creation Date], Expiration FROM RandrezaVoharisoaM21Su2332.Coupon", Connection);
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvCouponList.DataSource = dataTable;

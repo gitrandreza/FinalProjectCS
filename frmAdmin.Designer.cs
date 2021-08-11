@@ -2056,7 +2056,7 @@ namespace SU21_Final_Project
             this.btnLogout.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnLogout.FlatAppearance.BorderSize = 3;
             this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.ForeColor = System.Drawing.Color.SaddleBrown;
             this.btnLogout.Location = new System.Drawing.Point(908, 8);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(111, 67);
@@ -2072,7 +2072,7 @@ namespace SU21_Final_Project
             this.btnAccessPOS.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnAccessPOS.FlatAppearance.BorderSize = 3;
             this.btnAccessPOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAccessPOS.ForeColor = System.Drawing.Color.White;
+            this.btnAccessPOS.ForeColor = System.Drawing.Color.SaddleBrown;
             this.btnAccessPOS.Location = new System.Drawing.Point(798, 8);
             this.btnAccessPOS.Name = "btnAccessPOS";
             this.btnAccessPOS.Size = new System.Drawing.Size(111, 67);
@@ -2088,7 +2088,7 @@ namespace SU21_Final_Project
             this.btnHelpAdmin.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnHelpAdmin.FlatAppearance.BorderSize = 3;
             this.btnHelpAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelpAdmin.ForeColor = System.Drawing.Color.White;
+            this.btnHelpAdmin.ForeColor = System.Drawing.Color.SaddleBrown;
             this.btnHelpAdmin.Location = new System.Drawing.Point(1018, 9);
             this.btnHelpAdmin.Name = "btnHelpAdmin";
             this.btnHelpAdmin.Size = new System.Drawing.Size(112, 65);
