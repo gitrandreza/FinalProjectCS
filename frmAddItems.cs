@@ -72,7 +72,7 @@ namespace SU21_Final_Project
                     while (reader.Read())
                     {
                         //check through the user table column to find a matching value
-                        if (reader["Name"].ToString() == strItemName)
+                        if (reader["Name"].ToString() == strItemName && reader["Status"].ToString() == "Available")
                         {
                             MessageBox.Show("Duplicate Item, please use 'Add quantity' using  'Update Item function'", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             blnDuplicateItemName = true;
@@ -138,8 +138,8 @@ namespace SU21_Final_Project
                                     if (dblRetailPrice > 0 && dblRetailPrice < double.MaxValue)
                                     {
 
-                                        SqlCommand commandItem = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Items(Name,Quantity,Cost,Image,CategoryID,RetailPrice,Description,SupplierID)" +
-                                    "VALUES(@Name,@Quantity,@Cost,@Image,@CategoryID,@RetailPrice,@Description,@SupplierID)", Connection);
+                                        SqlCommand commandItem = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Items(Name,Quantity,Cost,Image,CategoryID,RetailPrice,Description,SupplierID.Status)" +
+                                    "VALUES(@Name,@Quantity,@Cost,@Image,@CategoryID,@RetailPrice,@Description,@SupplierID,@Status)", Connection);
                                         commandItem.Parameters.AddWithValue("@Name", strItemName);
                                         commandItem.Parameters.AddWithValue("@Quantity", intQuantityPurchased);
                                         commandItem.Parameters.AddWithValue("@Cost", dblItemCost);
@@ -155,7 +155,7 @@ namespace SU21_Final_Project
                                         commandItem.Parameters.AddWithValue("@RetailPrice", dblRetailPrice);
                                         commandItem.Parameters.AddWithValue("@Description", strDescription);
                                         commandItem.Parameters.AddWithValue("@SupplierID", intSupplierID);
-
+                                        commandItem.Parameters.AddWithValue("@Status", "Available");
 
                                         commandItem.ExecuteNonQuery();
                                         MessageBox.Show("New Item added", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -242,9 +242,22 @@ namespace SU21_Final_Project
         private StringBuilder GenerateInvoice(string strItemName, int intItemQuantity, double dblCost)
         {
             double dblTax = 0.0825;
-            double dblTotalCost = dblCost * intItemQuantity;
-            double dblTaxValue = dblTotalCost * dblTax;
-            double dblTotalPay = dblTotalCost + dblTaxValue;
+            double dblTotalCost=0;
+            double dblTaxValue=0;
+            double dblTotalPay = 0;
+
+            try
+            {
+                
+                dblTotalCost = dblCost * intItemQuantity;
+                dblTaxValue = dblTotalCost * dblTax;
+                dblTotalPay = dblTotalCost + dblTaxValue;
+            }
+            catch(ArithmeticException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
 
             StringBuilder html = new StringBuilder();
             StringBuilder css = new StringBuilder();
@@ -319,10 +332,7 @@ namespace SU21_Final_Project
             }
 
           
-            using (StreamWriter swNewItem = new StreamWriter($"{strPurchaseInvoice}"))
-            {
-                swNewItem.WriteLine(html);
-            }
+         
         }
 
         private void btnSaveItems_KeyDown(object sender, KeyEventArgs e)
@@ -403,7 +413,7 @@ namespace SU21_Final_Project
                 Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
                 Connection.Open();
-                dataAdapter = new SqlDataAdapter("SELECT SupplierID as [Supplier ID], Name FROM RandrezaVoharisoaM21Su2332.Suppliers", Connection);
+                dataAdapter = new SqlDataAdapter("SELECT SupplierID as [Supplier ID], Name FROM RandrezaVoharisoaM21Su2332.Suppliers where Status='Active'", Connection);
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvSupplierList.DataSource = dataTable;

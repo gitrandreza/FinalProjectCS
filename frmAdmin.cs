@@ -68,7 +68,7 @@ namespace SU21_Final_Project
 
                 dataAdapter = new SqlDataAdapter("SELECT ItemID as [Item ID], Name, Quantity," +
                     "FORMAT(Cost, 'c', 'en-US') AS 'Cost' , " +
-                    "FORMAT(retailPrice, 'c', 'en-US') AS 'Retail Price' ,Description,CategoryID as [Category ID] ,SupplierID as [Supplier ID]FROM RandrezaVoharisoaM21Su2332.Items", Connection);
+                    "FORMAT(retailPrice, 'c', 'en-US') AS 'Retail Price' ,Description,CategoryID as [Category ID] ,SupplierID as [Supplier ID] FROM RandrezaVoharisoaM21Su2332.Items where Status='Available'", Connection);
 
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
@@ -93,7 +93,7 @@ namespace SU21_Final_Project
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                 Connection.Open();
-                dataAdapter = new SqlDataAdapter("SELECT RandrezaVoharisoaM21Su2332.Person.PersonID as [Employee ID], RandrezaVoharisoaM21Su2332.Person.NameFirst as [First Name], RandrezaVoharisoaM21Su2332.Person.NameLast as [Last Name],RandrezaVoharisoaM21Su2332.Person.Address1 as [Address],RandrezaVoharisoaM21Su2332.Person.City,RandrezaVoharisoaM21Su2332.Person.State, RandrezaVoharisoaM21Su2332.Person.Zipcode,RandrezaVoharisoaM21Su2332.Person.Email, RandrezaVoharisoaM21Su2332.Person.PhonePrimary as [Phone]  FROM RandrezaVoharisoaM21Su2332.Person FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.PersonID = RandrezaVoharisoaM21Su2332.Person.PersonID WHERE RoleID = 1 OR RoleID = 2; ", Connection);
+                dataAdapter = new SqlDataAdapter("SELECT RandrezaVoharisoaM21Su2332.Person.PersonID as [Employee ID], RandrezaVoharisoaM21Su2332.Person.NameFirst as [First Name], RandrezaVoharisoaM21Su2332.Person.NameLast as [Last Name],RandrezaVoharisoaM21Su2332.Person.Address1 as [Address],RandrezaVoharisoaM21Su2332.Person.City,RandrezaVoharisoaM21Su2332.Person.State, RandrezaVoharisoaM21Su2332.Person.Zipcode,RandrezaVoharisoaM21Su2332.Person.Email, RandrezaVoharisoaM21Su2332.Person.PhonePrimary as [Phone]  FROM RandrezaVoharisoaM21Su2332.Person FULL JOIN RandrezaVoharisoaM21Su2332.Users ON RandrezaVoharisoaM21Su2332.Users.PersonID = RandrezaVoharisoaM21Su2332.Person.PersonID WHERE RoleID = 1 OR RoleID = 2 and Status= 'Active'; ", Connection);
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvEmployee.DataSource = dataTable;
@@ -194,10 +194,10 @@ namespace SU21_Final_Project
 
                             Connection.Open();
 
-                            string strDeleteQuery = "DELETE FROM RandrezaVoharisoaM21Su2332.Items where ItemID= '" + strItemID + "'";
-                            SqlCommand deleteCommande = new SqlCommand(strDeleteQuery, Connection);
-
-                            deleteCommande.ExecuteNonQuery();
+                            //get userID from personID in USers
+                            SqlCommand commandRemove = new SqlCommand("UPDATE RandrezaVoharisoaM21Su2332.Items SET Status ='Unavailable' where ItemID = '" + strItemID + "'", Connection);
+  
+                            commandRemove.ExecuteNonQuery();
 
                             Connection.Close();
                         }
@@ -600,10 +600,6 @@ namespace SU21_Final_Project
                     "Error with System Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            using (StreamWriter swPurchase = new StreamWriter($"{strPurchaseInvoice}"))
-            {
-                swPurchase.WriteLine(html);
-            }
         }
 
 
@@ -1054,10 +1050,7 @@ namespace SU21_Final_Project
         }
 
 
-    //Enable textbox for updating when checkbox checked
-   
-
- 
+    //------------------Enable textbox for updating when checkbox checked-------------------------------------
         private void cbxFirstName_CheckedChanged_1(object sender, EventArgs e)
         {
             if (cbxFirstName.Checked == true)
@@ -1130,7 +1123,9 @@ namespace SU21_Final_Project
                 tbxEmail.Enabled = false;
             }
         }
-    
+    //-----------------------------------------------------------------------
+
+        //Reset all fildes edited
         public void ResetEditFields()
         {
             cbxFirstName.Checked = false; tbxFirstName.Text = "";
@@ -1145,12 +1140,14 @@ namespace SU21_Final_Project
             cbxStates.Checked = false;
         }
 
+        //Reset if user change selection in the datagrid
         private void dgvEmployee_SelectionChanged_1(object sender, EventArgs e)
         {
             gbxEdit.Enabled = false;
             ResetEditFields();
         }
 
+        //---------------Using digit keys only------------------
         private void tbxFirstName_KeyPress(object sender, KeyPressEventArgs e)
         {
 
@@ -1178,7 +1175,9 @@ namespace SU21_Final_Project
                 e.Handled = true;
             }
         }
-
+//--------------------------------------------------------------------------------------------------
+    
+        //Validation email and Phone
         public bool ValidEmail(string strValidEmail)
         {
 
@@ -1211,7 +1210,9 @@ namespace SU21_Final_Project
 
             return true;
         }
+//--------------------------------------------------------------------------------------------------------------------
 
+        //Enable text boxes for edit 
         private void cbxEditPhone_CheckedChanged(object sender, EventArgs e)
         {
             if (cbxEditPhone.Checked == true)
@@ -1245,7 +1246,7 @@ namespace SU21_Final_Project
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                 Connection.Open();
-                dataAdapter = new SqlDataAdapter("SELECT Name, Quantity FROM RandrezaVoharisoaM21Su2332.Items where Quantity <50;", Connection);
+                dataAdapter = new SqlDataAdapter("SELECT Name, Quantity FROM RandrezaVoharisoaM21Su2332.Items where Quantity <50 and Status='Available';", Connection);
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvLowItem50.DataSource = dataTable;
@@ -1268,7 +1269,7 @@ namespace SU21_Final_Project
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
 
                 Connection.Open();
-                dataAdapter = new SqlDataAdapter("SELECT Name, Quantity FROM RandrezaVoharisoaM21Su2332.Items where Quantity between 50 and 99;", Connection);
+                dataAdapter = new SqlDataAdapter("SELECT Name, Quantity FROM RandrezaVoharisoaM21Su2332.Items where Status='Available' and Quantity between 50 and 99;", Connection);
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvLowItem100.DataSource = dataTable;
@@ -1348,13 +1349,13 @@ namespace SU21_Final_Project
             
            
         }
-
+        
+        //Creating coupon
         private void btnCreateCoupon_Click(object sender, EventArgs e)
         {
             string strCouponDescription = cboCouponDescription.Text;
             string strIndex = "0";
-            //string strstartDate = dtpStartCoupon.Value.ToString("MM/dd/yyyy");
-            //string strEndDate = dtpEndCoupon.Value.ToString("MM/dd/yyyy");
+           
             string strCouponID;
 
             try
@@ -1434,7 +1435,7 @@ namespace SU21_Final_Project
             btnAddNewCustomer.Enabled = true;
         }
 
-
+        //-------------------Method for Valid  Phone and Valid Address-------------
         public bool ValidPhone()
         {
             if (mskPhoneCustomer.Text.Length < 12 && mskPhoneCustomer.Text.Contains(" "))
@@ -1461,6 +1462,10 @@ namespace SU21_Final_Project
             }
             return true;
         }
+
+//-------------------------------------------------------------------------
+
+        //Button to add customer
         private void btnAddNewCustomer_Click(object sender, EventArgs e)
         {
             string strFirstName = tbxFirstNameCustomer.Text;
@@ -1588,6 +1593,8 @@ namespace SU21_Final_Project
             }
         }
 
+
+        //Method to reset customer fields
         public void Reset()
         {
             tbxFirstNameCustomer.Text = "";
@@ -1600,6 +1607,7 @@ namespace SU21_Final_Project
             tbxCustomerCity.Text = "";
         }
 
+        //Method to reset Supplier fields
         public void ResetSupplierEntry()
         {
             tbxSupplierName.Text = "";
@@ -1612,6 +1620,8 @@ namespace SU21_Final_Project
            tbxSupplierCity.Text = "";
         }
 
+
+        //Activate update customer features
         private void btnUpdateCustomer_Click(object sender, EventArgs e)
         {
             try
@@ -1646,7 +1656,7 @@ namespace SU21_Final_Project
         }
 
    
-        //Edit updated fields(text boxes)
+        //Save Edited customer fields(text boxes)
         private void btnEditCustomer_Click(object sender, EventArgs e)
         {
             string strNameFirst;
@@ -2013,7 +2023,7 @@ namespace SU21_Final_Project
             }
         }
 
-
+        //Function for printing an html file
         private void btnPrintSelectedSalesReport_Click(object sender, EventArgs e)
         {
             try
@@ -2066,7 +2076,7 @@ namespace SU21_Final_Project
 
                 Connection.Open();
 
-                dataAdapter = new SqlDataAdapter("SELECT RandrezaVoharisoaM21Su2332.Suppliers.SupplierID  as [Supplier ID],RandrezaVoharisoaM21Su2332.Suppliers.Name  as [Company Name], RandrezaVoharisoaM21Su2332.Suppliers.Contact as [Contact Name],RandrezaVoharisoaM21Su2332.Suppliers.Address,RandrezaVoharisoaM21Su2332.Suppliers.City,RandrezaVoharisoaM21Su2332.Suppliers.State, RandrezaVoharisoaM21Su2332.Suppliers.Zip,RandrezaVoharisoaM21Su2332.Suppliers.Phone , RandrezaVoharisoaM21Su2332.Suppliers.Email  FROM RandrezaVoharisoaM21Su2332.Suppliers; ", Connection);
+                dataAdapter = new SqlDataAdapter("SELECT RandrezaVoharisoaM21Su2332.Suppliers.SupplierID  as [Supplier ID],RandrezaVoharisoaM21Su2332.Suppliers.Name  as [Company Name], RandrezaVoharisoaM21Su2332.Suppliers.Contact as [Contact Name],RandrezaVoharisoaM21Su2332.Suppliers.Address,RandrezaVoharisoaM21Su2332.Suppliers.City,RandrezaVoharisoaM21Su2332.Suppliers.State, RandrezaVoharisoaM21Su2332.Suppliers.Zip,RandrezaVoharisoaM21Su2332.Suppliers.Phone , RandrezaVoharisoaM21Su2332.Suppliers.Email  FROM RandrezaVoharisoaM21Su2332.Suppliers where Status='Active'; ", Connection);
 
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
@@ -2358,16 +2368,10 @@ namespace SU21_Final_Project
 
                             Connection.Open();
 
-                            string strDeleteQueryPurchase = "DELETE FROM RandrezaVoharisoaM21Su2332.Purchase where SupplierID= '" + strSupplierId + "'";
-                            SqlCommand deleteCommandPurchase = new SqlCommand(strDeleteQueryPurchase, Connection);
-
-                            deleteCommandPurchase.ExecuteNonQuery();
-
-                            string strDeleteQuery = "DELETE FROM RandrezaVoharisoaM21Su2332.Suppliers where SupplierID= '" + strSupplierId + "'";
-                            SqlCommand deleteCommand = new SqlCommand(strDeleteQuery, Connection);
-
-                            deleteCommand.ExecuteNonQuery();
-
+                            //get userID from personID in USers
+                            SqlCommand commandRemove = new SqlCommand("UPDATE RandrezaVoharisoaM21Su2332.Suppliers SET Status ='Inactive' where SupplierID= '" + strSupplierId + "'", Connection);
+                          
+                            commandRemove.ExecuteNonQuery();
 
 
 

@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 
 namespace SU21_Final_Project
 {
+
     public partial class frmAddEmployee : Form
     {
         SqlConnection Connection;
@@ -48,7 +49,7 @@ namespace SU21_Final_Project
         {
             InitializeComponent();
         }
-
+        //Save new Employee
         private void btnSave_Click(object sender, EventArgs e)
         {
            
@@ -282,7 +283,7 @@ namespace SU21_Final_Project
         }
         
 
-
+        //Method for Valid Valid Address, check for at least digit , letters and length
         public bool ValidAddress(string strAddress)
         {
 
@@ -313,7 +314,7 @@ namespace SU21_Final_Project
 
 
       
-
+        //Function to check valid Email
         public bool ValidEmail(string strValidEmail)
         {
 
@@ -359,7 +360,7 @@ namespace SU21_Final_Project
         }
 
 
-
+        //------------------Using keypress to allow digit only--------------------
         private void tbxFirstName_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) &&
@@ -401,6 +402,7 @@ namespace SU21_Final_Project
             this.Hide();
         }
 
+        //Handling form Closing
         private void frmAddEmployee_FormClosing(object sender, FormClosingEventArgs e)
         {
             switch (e.CloseReason)
@@ -419,12 +421,14 @@ namespace SU21_Final_Project
             }
         }
 
+        //Opening Help content form
         private void btnHelpAddEmployee_Click(object sender, EventArgs e)
         {
             new frmAddEmployeeHelp().Show();
             this.Visible = false;
         }
 
+        //Using keypress to allow digit only
         private void tbxSalary_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))

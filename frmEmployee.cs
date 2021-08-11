@@ -113,7 +113,7 @@ namespace SU21_Final_Project
                 Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
                 Connection.Open();
-                dataAdapter = new SqlDataAdapter("SELECT ItemID as [Item ID] , Name, Quantity,CategoryID as [Category ID], FORMAT(RetailPrice, 'c', 'en-US') AS 'Retail Price', Description,SupplierID as [Supplier ID] FROM RandrezaVoharisoaM21Su2332.Items", Connection);
+                dataAdapter = new SqlDataAdapter("SELECT ItemID as [Item ID] , Name, Quantity,CategoryID as [Category ID], FORMAT(RetailPrice, 'c', 'en-US') AS 'Retail Price', Description,SupplierID as [Supplier ID] FROM RandrezaVoharisoaM21Su2332.Items where Status='Available'", Connection);
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvEmployeeViewItem.DataSource = dataTable;
@@ -385,10 +385,9 @@ namespace SU21_Final_Project
                 MessageBox.Show("Error :" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            
-            
         }
 
+        //Removing select record in the datagrid view
         private void btnRemoveCart_Click(object sender, EventArgs e)
         {
             try
@@ -539,7 +538,7 @@ namespace SU21_Final_Project
 
         }
 
-      
+      //PLacing Order, store data and Generate report
         private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
             try
@@ -864,6 +863,7 @@ namespace SU21_Final_Project
             }
         }
 
+        //Reset
         public void Reset()
         {
             dgvItemList.Rows.Clear();
@@ -1111,6 +1111,8 @@ namespace SU21_Final_Project
            
 
         }
+
+        //-----------------------------------------Validation for Phone, Email and address input
         public bool ValidAddress(string strAddress)
         {
 
@@ -1160,7 +1162,7 @@ namespace SU21_Final_Project
             return true;
         }
 
-
+        //Adding a new customer
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
             string strFirstName = tbxFirstNameCustomer.Text;
@@ -1769,7 +1771,7 @@ namespace SU21_Final_Project
                 Connection = new SqlConnection("Server=cstnt.tstc.edu;" +
                     "Database= inew2332su21 ;User Id=RandrezaVoharisoaM21Su2332; password = 1760945");
                 Connection.Open();
-                dataAdapter = new SqlDataAdapter("SELECT * FROM RandrezaVoharisoaM21Su2332.Coupon", Connection);
+                dataAdapter = new SqlDataAdapter("SELECT CouponID as [Coupon ID], Description, CreationDate as[Creation Date], Expiration FROM RandrezaVoharisoaM21Su2332.Coupon", Connection);
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvCouponList.DataSource = dataTable;

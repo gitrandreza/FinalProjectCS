@@ -113,7 +113,7 @@ namespace SU21_Final_Project
             try
             {
                 Connection.Open();
-                dataAdapter = new SqlDataAdapter("SELECT Name, Quantity, CategoryID, RetailPrice ,Description FROM RandrezaVoharisoaM21Su2332.Items", Connection);
+                dataAdapter = new SqlDataAdapter("SELECT Name, Quantity, CategoryID, RetailPrice ,Description FROM RandrezaVoharisoaM21Su2332.Items where Status='Available'", Connection);
                 dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvAll.DataSource = dataTable;
