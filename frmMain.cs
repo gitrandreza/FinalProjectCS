@@ -853,19 +853,22 @@ namespace SU21_Final_Project
             StringBuilder css = new StringBuilder();
             css.AppendLine("<style>");            
             css.AppendLine("td {padding: 5px; text-align:center; font-weight: bold; text-align: center;}");
-            css.AppendLine("h1 {color: blue;}");           
-            css.AppendLine("h2 {color: red;}");
+            css.AppendLine("h1 {color: brown;}");           
+            css.AppendLine("h2 {color: blue;}");
             css.AppendLine("</style>");
 
             html.AppendLine("<html>");
             html.AppendLine($"<head>{css}<title>{"Imprint Store Report"}</title></head>");
             html.AppendLine("<body>");
 
-            html.AppendLine($"<h1>{"Customer Invoice"}</h1>");
+            html.AppendLine($"<h1>{"Imprint Store"}</h1>");
+            html.Append($"<h5>{"Abilene, TX"}</h5>");
+            html.Append($"<h5>{"79602"}</h5>");
 
-            html.Append($"<h5>{"Date: "}{lblDate.Text}</h5>");
             html.Append($"<h5>{"Customer Name: "}{lblNameOfUser.Text}</h5>");
-            html.Append($"<h5>{"Invoice: "}{strLastSaleReportCustomer}</h5>");
+            html.Append($"<h5>{"Date: "}{lblDate.Text}</h5>");
+           
+            html.Append($"<h5>{"Invoice Number: "}{strLastSaleReportCustomer}</h5>");
 
             html.AppendLine("<table>");
             html.AppendLine("<tr><td>Name</td><td>Decoration</td><td>Size</td><td>Color</td><td>Quantity</td><td>Price</td><td>Total Price</td></tr>");
@@ -918,7 +921,7 @@ namespace SU21_Final_Project
                 html.AppendLine($"<h5>{"Estimated Delivery: 2h "}</h5>");
             }
             
-            html.Append($"<h2>{"Company: Imprint Store  "}</h2>");
+            html.Append($"<h2>{"Thank you for shopping with us "}</h2>");
 
             html.Append("</body></html>");//close body
 
