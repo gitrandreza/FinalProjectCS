@@ -933,7 +933,7 @@ namespace SU21_Final_Project
         {
             string strPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string strFilepath = strPath + "\\"+strInvoiceCustomer;
-         
+            
             try
             {
                 // A "using" statement will automatically close a file after opening it.               
@@ -941,7 +941,10 @@ namespace SU21_Final_Project
                 {
                     swInvoice.WriteLine(html);
                 }
+             
+
                 System.Diagnostics.Process.Start(strFilepath); //Open the report in the default web browser
+                
 
             }
             catch (IOException )
@@ -949,6 +952,8 @@ namespace SU21_Final_Project
                 MessageBox.Show("You currently do not have write permissions for this feature.",
                     "Error with System Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+
 
         }
 

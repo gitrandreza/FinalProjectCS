@@ -138,7 +138,7 @@ namespace SU21_Final_Project
                                     if (dblRetailPrice > 0 && dblRetailPrice < double.MaxValue)
                                     {
 
-                                        SqlCommand commandItem = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Items(Name,Quantity,Cost,Image,CategoryID,RetailPrice,Description,SupplierID.Status)" +
+                                        SqlCommand commandItem = new SqlCommand("INSERT INTO RandrezaVoharisoaM21Su2332.Items(Name,Quantity,Cost,Image,CategoryID,RetailPrice,Description,SupplierID,Status)" +
                                     "VALUES(@Name,@Quantity,@Cost,@Image,@CategoryID,@RetailPrice,@Description,@SupplierID,@Status)", Connection);
                                         commandItem.Parameters.AddWithValue("@Name", strItemName);
                                         commandItem.Parameters.AddWithValue("@Quantity", intQuantityPurchased);
@@ -331,8 +331,7 @@ namespace SU21_Final_Project
                     "Error with System Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-          
-         
+           
         }
 
         private void btnSaveItems_KeyDown(object sender, KeyEventArgs e)
